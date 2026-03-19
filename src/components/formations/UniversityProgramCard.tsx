@@ -4,24 +4,18 @@ import Link from "next/link";
 import { MapPin, Clock, Globe, ArrowRight, AlertTriangle, Sparkles } from "lucide-react";
 import type { Program, UniversitySlug } from "@/data/universities";
 
-const universityAccent: Record<UniversitySlug, { bg: string; text: string; ring: string }> = {
-  link: { bg: "bg-emerald-500", text: "text-emerald-600", ring: "ring-emerald-500/20" },
-  ucjc: { bg: "bg-amber-500", text: "text-amber-600", ring: "ring-amber-500/20" },
-  ue: { bg: "bg-blue-500", text: "text-blue-600", ring: "ring-blue-500/20" },
-};
-
 const universityInitials: Record<UniversitySlug, string> = {
   link: "LINK",
   ucjc: "UCJC",
   ue: "UE",
 };
 
-const admissionLabels: Record<string, { label: string; color: string }> = {
-  "test-qcm": { label: "Test QCM", color: "bg-blue-50 text-blue-700" },
-  entretien: { label: "Entretien", color: "bg-amber-50 text-amber-700" },
-  "pe-4-epreuves": { label: "PE 4 épreuves", color: "bg-purple-50 text-purple-700" },
-  "pe-4-epreuves-francais": { label: "PE (parcours FR)", color: "bg-purple-50 text-purple-700" },
-  dossier: { label: "Sur dossier", color: "bg-green-50 text-green-700" },
+const admissionLabels: Record<string, string> = {
+  "test-qcm": "Test QCM",
+  entretien: "Entretien",
+  "pe-4-epreuves": "PE 4 épreuves",
+  "pe-4-epreuves-francais": "PE (parcours FR)",
+  dossier: "Sur dossier",
 };
 
 interface UniversityProgramCardProps {
@@ -42,9 +36,8 @@ export default function UniversityProgramCard({
   universityCountryFlag,
   isCheapest,
 }: UniversityProgramCardProps) {
-  const accent = universityAccent[universitySlug] ?? universityAccent.link;
   const initials = universityInitials[universitySlug] ?? universitySlug.toUpperCase();
-  const badge = admissionLabels[program.admissionType] ?? admissionLabels["dossier"];
+  const badgeLabel = admissionLabels[program.admissionType] ?? "Sur dossier";
 
   const slugMap: Record<UniversitySlug, string> = {
     link: "link-campus",
@@ -65,7 +58,7 @@ export default function UniversityProgramCard({
       {/* COMPLET overlay */}
       {program.isFull && (
         <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
-          <div className="bg-red-600/90 text-white font-bold text-sm px-6 py-2 rounded-full flex items-center gap-2 shadow-lg">
+          <div className="bg-[#1B1D3A]/85 text-white font-bold text-sm px-6 py-2 rounded-full flex items-center gap-2 shadow-lg">
             <AlertTriangle className="w-4 h-4" />
             COMPLET 2026-2027
           </div>
@@ -82,10 +75,11 @@ export default function UniversityProgramCard({
         </div>
       )}
 
-      {/* Top section: university identity */}
+      {/* Top section */}
       <div className="p-6 pb-4">
+        {/* University identity */}
         <div className="flex items-center gap-3 mb-4">
-          <div className={`w-11 h-11 rounded-xl ${accent.bg} flex items-center justify-center flex-shrink-0`}>
+          <div className="w-11 h-11 rounded-xl bg-[#615CA5] flex items-center justify-center flex-shrink-0">
             <span className="text-white font-bold text-xs tracking-wide">{initials}</span>
           </div>
           <div className="min-w-0">
@@ -100,34 +94,16 @@ export default function UniversityProgramCard({
         </div>
 
         {/* Admission badge */}
-        <span className={`inline-flex items-center text-[11px] font-semibold px-2.5 py-1 rounded-lg ${badge.color}`}>
-          {badge.label}
+        <span className="inline-flex items-center text-[11px] font-semibold px-2.5 py-1 rounded-lg bg-[#615CA5]/10 text-[#615CA5]">
+          {badgeLabel}
         </span>
       </div>
 
       {/* Divider */}
       <div className="mx-6 border-t border-gray-100" />
 
-      {/* Price + details */}
+      {/* Details */}
       <div className="p-6 pt-4 flex-1 flex flex-col">
-        {/* Price highlight */}
-        {program.tuitionPerYear > 0 && (
-          <div className="mb-4">
-            <div className="flex items-baseline gap-1">
-              <span className="text-3xl font-bold text-[#1B1D3A]">
-                {program.tuitionPerYear.toLocaleString("fr-FR")}
-              </span>
-              <span className="text-lg font-semibold text-[#1B1D3A]">&euro;</span>
-              <span className="text-sm text-[#94a3b8] ml-1">/ an</span>
-            </div>
-            {program.totalCost > 0 && (
-              <p className="text-xs text-[#94a3b8] mt-1">
-                Coût total : {program.totalCost.toLocaleString("fr-FR")}&nbsp;&euro;
-              </p>
-            )}
-          </div>
-        )}
-
         {/* Info chips */}
         <div className="flex flex-wrap gap-2 mb-4">
           {program.durationYears > 0 && (
@@ -141,7 +117,7 @@ export default function UniversityProgramCard({
             {program.language}
           </span>
           {program.minimumGrade && (
-            <span className="inline-flex items-center gap-1.5 bg-[#fafbff] border border-gray-100 text-[#334155] text-xs font-medium px-3 py-1.5 rounded-lg">
+            <span className="inline-flex items-center gap-1.5 bg-[#EC680A]/8 border border-[#EC680A]/15 text-[#EC680A] text-xs font-medium px-3 py-1.5 rounded-lg">
               Moy. {program.minimumGrade}
             </span>
           )}
@@ -157,7 +133,7 @@ export default function UniversityProgramCard({
           href={`/universites/${slugMap[universitySlug]}`}
           className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-[#EC680A] hover:text-[#D45E09] transition-colors group-hover:gap-2.5"
         >
-          Voir l&apos;université
+          Découvrir le programme
           <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
         </Link>
       </div>
