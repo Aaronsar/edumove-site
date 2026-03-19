@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { BookOpen, Clock, MapPin, Euro, FileText, CheckCircle, XCircle, Lightbulb, Zap, Globe, Brain, MessageCircle, Target } from "lucide-react";
+import Link from "next/link";
+import { BookOpen, Clock, MapPin, Euro, FileText, CheckCircle, XCircle, Lightbulb, Zap, Globe, Brain, MessageCircle, Target, ArrowRight } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 interface TestDetailsProps {
@@ -141,6 +142,29 @@ function LinkTestDetails() {
           <p className="text-sm text-[#334155]">
             <strong>Conseil :</strong> r&eacute;viser le programme de Terminale en sciences. Les questions sont de niveau bac.
           </p>
+        </motion.div>
+
+        {/* Lien guide complet */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-6"
+        >
+          <Link
+            href="/guides/reussir-test-admission-link-campus"
+            className="group flex items-center justify-between bg-gradient-to-r from-[#615CA5] to-[#1B1D3A] rounded-2xl p-5 hover:shadow-[0_20px_60px_-15px_rgba(97,92,165,0.25)] transition-shadow duration-300"
+          >
+            <div>
+              <p className="text-white/60 text-xs uppercase tracking-widest font-semibold mb-1">Guide complet</p>
+              <p className="text-white font-bold text-sm md:text-base">
+                Comment r&eacute;ussir le test de LINK Campus University ?
+              </p>
+            </div>
+            <span className="w-10 h-10 rounded-full bg-[#EC680A] flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+              <ArrowRight className="w-5 h-5 text-white" />
+            </span>
+          </Link>
         </motion.div>
       </div>
     </section>
@@ -297,6 +321,29 @@ function UETestDetails() {
               ))}
             </tbody>
           </table>
+        </motion.div>
+
+        {/* Lien guide complet */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-6"
+        >
+          <Link
+            href="/guides/reussir-test-pe-universidad-europea"
+            className="group flex items-center justify-between bg-gradient-to-r from-[#615CA5] to-[#1B1D3A] rounded-2xl p-5 hover:shadow-[0_20px_60px_-15px_rgba(97,92,165,0.25)] transition-shadow duration-300"
+          >
+            <div>
+              <p className="text-white/60 text-xs uppercase tracking-widest font-semibold mb-1">Guide complet</p>
+              <p className="text-white font-bold text-sm md:text-base">
+                Comment r&eacute;ussir le test de l&apos;Universidad Europea ?
+              </p>
+            </div>
+            <span className="w-10 h-10 rounded-full bg-[#EC680A] flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+              <ArrowRight className="w-5 h-5 text-white" />
+            </span>
+          </Link>
         </motion.div>
       </div>
     </section>

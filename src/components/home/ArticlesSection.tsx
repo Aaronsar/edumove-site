@@ -4,13 +4,22 @@ import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 
 const articles = [
   {
-    title: "Études de médecine en Europe : le guide complet pour les étudiants français",
-    date: "15 mars 2025",
-    tag: "Guides",
+    title: "Comment r\u00e9ussir le test PE de l'Universidad Europea ?",
+    date: "19 mars 2026",
+    tag: "Guide",
     tagColor: "bg-[#615ca5]",
-    href: "#",
+    href: "/guides/reussir-test-pe-universidad-europea",
     number: "01",
-    readTime: "8 min",
+    readTime: "12 min",
+  },
+  {
+    title: "Comment r\u00e9ussir le test d\u2019admission de LINK Campus University ?",
+    date: "19 mars 2026",
+    tag: "Guide",
+    tagColor: "bg-[#615ca5]",
+    href: "/guides/reussir-test-admission-link-campus",
+    number: "02",
+    readTime: "10 min",
   },
   {
     title: "Comment financer ses études de santé en Europe avec un prêt étudiant ?",
@@ -18,7 +27,7 @@ const articles = [
     tag: "Financement",
     tagColor: "bg-[#ec680a]",
     href: "#",
-    number: "02",
+    number: "03",
     readTime: "5 min",
   },
   {
@@ -27,7 +36,7 @@ const articles = [
     tag: "Actualités",
     tagColor: "bg-[#ec680a]",
     href: "#",
-    number: "03",
+    number: "04",
     readTime: "6 min",
   },
   {
@@ -36,7 +45,7 @@ const articles = [
     tag: "Témoignages",
     tagColor: "bg-[#615ca5]",
     href: "#",
-    number: "04",
+    number: "05",
     readTime: "4 min",
   },
   {
@@ -45,7 +54,7 @@ const articles = [
     tag: "Filières",
     tagColor: "bg-[#ec680a]",
     href: "#",
-    number: "05",
+    number: "06",
     readTime: "7 min",
   },
 ];
