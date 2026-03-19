@@ -35,6 +35,8 @@ export default function TarifsTable({
     }
   }
 
+  const showMoyenne = programs.some((p) => p.minimumGrade);
+
   return (
     <section className="py-12 px-4">
       <div className="max-w-6xl mx-auto">
@@ -42,7 +44,7 @@ export default function TarifsTable({
           Tarifs et fili&egrave;res
         </h2>
         <div className="overflow-x-auto rounded-xl shadow-sm border border-gray-200">
-          <table className="w-full min-w-[800px] text-sm">
+          <table className="w-full min-w-[700px] text-sm">
             <thead>
               <tr className="bg-[#1B1D3A] text-white">
                 <th className="text-left px-4 py-3 font-semibold">
@@ -57,14 +59,13 @@ export default function TarifsTable({
                 <th className="text-left px-4 py-3 font-semibold">
                   Tarif/an
                 </th>
-                <th className="text-left px-4 py-3 font-semibold">
-                  Co&ucirc;t total
-                </th>
                 <th className="text-left px-4 py-3 font-semibold">Langue</th>
                 <th className="text-left px-4 py-3 font-semibold">
                   Admission
                 </th>
-                <th className="text-left px-4 py-3 font-semibold">Moyenne</th>
+                {showMoyenne && (
+                  <th className="text-left px-4 py-3 font-semibold">Moyenne</th>
+                )}
               </tr>
             </thead>
             <tbody>
@@ -111,14 +112,13 @@ export default function TarifsTable({
                     <td className="px-4 py-3 font-bold">
                       {formatEuro(p.tuitionPerYear)}
                     </td>
-                    <td className="px-4 py-3">
-                      {formatEuro(p.totalCost)}
-                    </td>
                     <td className="px-4 py-3">{p.language}</td>
                     <td className="px-4 py-3">{p.admissionDescription}</td>
-                    <td className="px-4 py-3">
-                      {p.minimumGrade ?? "\u2014"}
-                    </td>
+                    {showMoyenne && (
+                      <td className="px-4 py-3">
+                        {p.minimumGrade ?? "\u2014"}
+                      </td>
+                    )}
                   </tr>
                 );
               })}
