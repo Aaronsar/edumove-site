@@ -40,7 +40,7 @@ export default function ProgramHero({ detail }: { detail: ProgramDetail }) {
             <div className="flex flex-col sm:flex-row items-start gap-3 mt-6">
               {detail.isCheapest && (
                 <span className="inline-flex items-center bg-[#EC680A] text-white text-sm font-semibold px-4 py-2.5 rounded-full">
-                  Option la moins ch\u00e8re
+                  Option la moins chère
                 </span>
               )}
               <a
