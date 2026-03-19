@@ -66,7 +66,7 @@ export default function FAQSection() {
   return (
     <section className="relative py-16 bg-white">
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#ec680a] via-[#615ca5] to-[#ec680a]" />
-      <div className="max-w-3xl mx-auto px-4">
+      <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-10">
           <p className="text-[#ec680a] text-xs uppercase tracking-widest font-semibold mb-2">FAQ</p>
           <h2 className="text-2xl md:text-3xl font-bold" style={{ color: "#1b1d3a" }}>
@@ -74,7 +74,7 @@ export default function FAQSection() {
           </h2>
         </div>
 
-        <div className="space-y-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {faqs.map((faq, i) => (
             <div
               key={i}
