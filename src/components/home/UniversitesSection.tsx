@@ -49,10 +49,10 @@ const universites = [
 
 export default function UniversitesSection() {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-14 bg-white">
       <div className="max-w-6xl mx-auto px-4">
         {/* Header with text left + CTA right */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-8">
           <div>
             <p className="text-[#ec680a] text-xs uppercase tracking-widest font-semibold mb-2">Nos universités</p>
             <h2 className="text-2xl md:text-3xl font-bold leading-tight" style={{ color: "#1b1d3a" }}>
@@ -66,59 +66,57 @@ export default function UniversitesSection() {
           </p>
         </div>
 
-        {/* University cards — modern layout */}
-        <div className="space-y-5">
+        {/* University cards — compact */}
+        <div className="space-y-3">
           {universites.map((u, i) => (
             <motion.div
               key={u.slug}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
+              transition={{ delay: i * 0.08 }}
             >
               <Link
                 href={`/universites/${u.slug}`}
-                className="group block rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300"
+                className="group block rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300"
               >
-                <div className={`bg-gradient-to-r ${u.gradient} p-6 md:p-8`}>
-                  <div className="flex flex-col md:flex-row md:items-center gap-6">
+                <div className={`bg-gradient-to-r ${u.gradient} px-5 py-4 md:px-6 md:py-5`}>
+                  <div className="flex flex-col md:flex-row md:items-center gap-4">
                     {/* Left — Info */}
-                    <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-3">
-                        <span className="text-3xl">{u.flag}</span>
-                        <div>
-                          <h3 className="text-xl md:text-2xl font-bold text-white" style={{ color: "white" }}>{u.name}</h3>
-                          <p className="text-white/50 text-xs">{u.country} · Partenaire depuis {u.since}</p>
-                        </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-1.5">
+                        <span className="text-xl">{u.flag}</span>
+                        <h3 className="text-base md:text-lg font-bold text-white truncate" style={{ color: "white" }}>{u.name}</h3>
+                        <span className="text-white/40 text-[10px] hidden md:inline">· depuis {u.since}</span>
                       </div>
-                      <p className="text-white/70 text-sm mb-4 max-w-md">{u.highlight}</p>
-                      <div className="flex flex-wrap gap-2">
+                      <p className="text-white/60 text-xs mb-2">{u.highlight}</p>
+                      <div className="flex flex-wrap gap-1.5">
                         {u.cities.map((c) => (
-                          <span key={c} className="text-xs bg-white/10 text-white/80 px-3 py-1 rounded-full backdrop-blur-sm">
+                          <span key={c} className="text-[10px] bg-white/10 text-white/70 px-2 py-0.5 rounded-full">
                             {c}
                           </span>
                         ))}
                       </div>
                     </div>
 
-                    {/* Right — Stats */}
-                    <div className="flex gap-4 md:gap-6">
+                    {/* Right — Stats compact */}
+                    <div className="flex gap-3">
                       {[
                         { value: u.campus.toString(), label: "Campus" },
                         { value: u.filieres.toString(), label: "Filières" },
                         { value: u.etudiants, label: "Étudiants" },
                       ].map((s, j) => (
-                        <div key={j} className="text-center bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 min-w-[70px]">
-                          <p className="text-xl md:text-2xl font-bold text-white" style={{ color: "white" }}>{s.value}</p>
-                          <p className="text-white/50 text-[10px] uppercase tracking-wide">{s.label}</p>
+                        <div key={j} className="text-center bg-white/10 rounded-lg px-3 py-2 min-w-[56px]">
+                          <p className="text-lg font-bold text-white" style={{ color: "white" }}>{s.value}</p>
+                          <p className="text-white/40 text-[9px] uppercase tracking-wide">{s.label}</p>
                         </div>
                       ))}
                     </div>
 
                     {/* Arrow */}
                     <div className="hidden md:flex items-center">
-                      <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-[#ec680a] transition-colors">
-                        <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
+                      <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-[#ec680a] transition-colors">
+                        <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
                       </div>
                     </div>
                   </div>
