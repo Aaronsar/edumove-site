@@ -114,7 +114,7 @@ export default function ArticlesSection() {
                     {article.tag}
                   </span>
                 </div>
-                <h3 className="font-bold text-white text-base leading-snug group-hover:text-[#ec680a] transition-colors duration-300 line-clamp-3 min-h-[60px]">
+                <h3 className="font-bold text-base leading-snug group-hover:text-[#ec680a] transition-colors duration-300 line-clamp-3 min-h-[60px]" style={{ color: "white" }}>
                   {article.title}
                 </h3>
               </div>
