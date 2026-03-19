@@ -105,7 +105,7 @@ export default function ArticlesSection() {
             <a
               key={article.number}
               href={article.href}
-              className="group snap-start shrink-0 w-[320px] bg-white/[0.12] backdrop-blur-md border border-white/20 rounded-2xl p-6 flex flex-col justify-between hover:border-[#ec680a]/50 hover:bg-white/[0.18] transition-all duration-300"
+              className="group snap-start shrink-0 w-[370px] bg-white/[0.12] backdrop-blur-md border border-white/20 rounded-2xl p-7 flex flex-col justify-between hover:border-[#ec680a]/50 hover:bg-white/[0.18] transition-all duration-300"
             >
               {/* Top */}
               <div>
@@ -114,7 +114,7 @@ export default function ArticlesSection() {
                     {article.tag}
                   </span>
                 </div>
-                <h3 className="font-bold text-base leading-snug group-hover:text-[#ec680a] transition-colors duration-300 line-clamp-3 min-h-[60px]" style={{ color: "white" }}>
+                <h3 className="font-bold text-lg leading-snug group-hover:text-[#ec680a] transition-colors duration-300 line-clamp-3 min-h-[70px]" style={{ color: "white" }}>
                   {article.title}
                 </h3>
               </div>
@@ -122,9 +122,9 @@ export default function ArticlesSection() {
               {/* Bottom */}
               <div className="flex items-center justify-between mt-6 pt-4 border-t border-white/10">
                 <div className="flex items-center gap-3">
-                  <span className="text-[11px] text-white/60">{article.date}</span>
+                  <span className="text-xs text-white/60">{article.date}</span>
                   <span className="w-1 h-1 rounded-full bg-white/20" />
-                  <span className="text-[11px] text-white/60">{article.readTime}</span>
+                  <span className="text-xs text-white/60">{article.readTime}</span>
                 </div>
                 <span className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-[#ec680a] group-hover:border-[#ec680a] transition-all duration-300">
                   <ArrowUpRight size={13} className="text-white/30 group-hover:text-white transition-colors" />
