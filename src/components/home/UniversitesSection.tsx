@@ -54,11 +54,9 @@ export default function UniversitesSection() {
         {/* Header with text left + CTA right */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-8">
           <div>
-            <p className="text-[#ec680a] text-xs uppercase tracking-widest font-semibold mb-2">Nos universités</p>
-            <h2 className="text-2xl md:text-3xl font-bold leading-tight" style={{ color: "#1b1d3a" }}>
-              Des universités d&apos;excellence,
-              <br />
-              <span className="text-[#615ca5]">reconnues à travers l&apos;Europe.</span>
+            <p className="text-[#ec680a] text-xs uppercase tracking-widest font-semibold mb-2">Nos partenaires</p>
+            <h2 className="text-3xl md:text-4xl font-bold leading-tight" style={{ color: "#1b1d3a" }}>
+              Nos universités partenaires
             </h2>
           </div>
           <p className="text-[#334155] text-sm max-w-sm mt-4 md:mt-0 leading-relaxed">
