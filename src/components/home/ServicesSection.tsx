@@ -37,7 +37,7 @@ export default function ServicesSection() {
                 <div className="rounded-xl overflow-hidden h-40">
                   <Image
                     src="/photos/dentiste.jpg"
-                    alt="Jeune dentiste avec patient"
+                    alt="Dentiste avec modèle dentaire"
                     width={400}
                     height={300}
                     className="w-full h-full object-cover"
@@ -46,7 +46,7 @@ export default function ServicesSection() {
                 <div className="rounded-xl overflow-hidden h-52">
                   <Image
                     src="/photos/medecin.jpg"
-                    alt="Jeune médecin avec stéthoscope"
+                    alt="Médecin avec stéthoscope"
                     width={400}
                     height={400}
                     className="w-full h-full object-cover"
@@ -57,7 +57,7 @@ export default function ServicesSection() {
                 <div className="rounded-xl overflow-hidden h-52">
                   <Image
                     src="/photos/cabinet-dentaire.jpg"
-                    alt="Cabinet dentaire moderne"
+                    alt="Cabinet dentaire équipé"
                     width={400}
                     height={400}
                     className="w-full h-full object-cover"
