@@ -7,11 +7,10 @@ import { Menu, X, ChevronDown, Phone } from "lucide-react";
 
 const formations = [
   { name: "Dentaire", href: "/formations/dentaire" },
-  { name: "Medecine", href: "/formations/medecine" },
-  { name: "Kinesitherapie", href: "/formations/kinesitherapie" },
+  { name: "Médecine", href: "/formations/medecine" },
+  { name: "Kinésithérapie", href: "/formations/kinesitherapie" },
   { name: "Pharmacie", href: "/formations/pharmacie" },
-  { name: "Veterinaire", href: "/formations/veterinaire" },
-  { name: "Prepa Dentaire", href: "/formations/prepa-dentaire" },
+  { name: "Vétérinaire", href: "/formations/veterinaire" },
 ];
 
 const universites = [
@@ -99,7 +98,7 @@ export default function Header() {
               }}
               className="flex items-center gap-1 text-sm font-medium text-[#1B1D3A] transition-colors hover:text-[#EC680A]"
             >
-              Les formations
+              Nos formations
               <ChevronDown
                 size={16}
                 className={`transition-transform duration-200 ${formationsOpen ? "rotate-180" : ""}`}
@@ -130,7 +129,7 @@ export default function Header() {
               }}
               className="flex items-center gap-1 text-sm font-medium text-[#1B1D3A] transition-colors hover:text-[#EC680A]"
             >
-              Nos universites
+              Nos universités partenaires
               <ChevronDown
                 size={16}
                 className={`transition-transform duration-200 ${universitesOpen ? "rotate-180" : ""}`}
@@ -202,7 +201,7 @@ export default function Header() {
                 onClick={() => setMobileFormationsOpen(!mobileFormationsOpen)}
                 className="flex w-full items-center justify-between py-4 text-base font-medium text-[#1B1D3A]"
               >
-                Les formations
+                Nos formations
                 <ChevronDown
                   size={20}
                   className={`text-[#EC680A] transition-transform duration-200 ${mobileFormationsOpen ? "rotate-180" : ""}`}
@@ -232,7 +231,7 @@ export default function Header() {
                 }
                 className="flex w-full items-center justify-between py-4 text-base font-medium text-[#1B1D3A]"
               >
-                Nos universites
+                Nos universités partenaires
                 <ChevronDown
                   size={20}
                   className={`text-[#EC680A] transition-transform duration-200 ${mobileUniversitesOpen ? "rotate-180" : ""}`}
