@@ -1,8 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight, MapPin } from "lucide-react";
+import { ArrowRight, ChevronRight, MapPin } from "lucide-react";
 import type { ProgramDetail } from "@/data/program-details";
-import FiliereIcon from "@/components/shared/FiliereIcon";
 
 export default function ProgramHero({ detail }: { detail: ProgramDetail }) {
   return (
@@ -18,7 +17,7 @@ export default function ProgramHero({ detail }: { detail: ProgramDetail }) {
         </div>
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4 py-16 md:py-20" style={{ color: "#ffffff" }}>
+      <div className="relative z-10 max-w-6xl mx-auto px-4 py-12 md:py-16" style={{ color: "#ffffff" }}>
         <nav className="flex items-center gap-1.5 text-sm mb-6" style={{ color: "#ffffff" }}>
           <Link href="/" className="hover:opacity-90 transition-opacity" style={{ color: "#ffffff" }}>Accueil</Link>
           <ChevronRight className="w-3.5 h-3.5" style={{ color: "#ffffff" }} />
@@ -43,6 +42,13 @@ export default function ProgramHero({ detail }: { detail: ProgramDetail }) {
                 Option la moins chère
               </span>
             )}
+            <a
+              href="https://candidature.edumove.fr"
+              className="group inline-flex items-center gap-2 mt-6 bg-[#EC680A] hover:bg-[#D45E09] text-white text-sm font-semibold px-6 py-3 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#EC680A]/25 hover:gap-3"
+            >
+              Déposer ma candidature gratuitement
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+            </a>
           </div>
 
           {/* Right — hero image mosaic */}

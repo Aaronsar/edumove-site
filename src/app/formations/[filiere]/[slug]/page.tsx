@@ -62,7 +62,6 @@ export default async function ProgramPage({
                 {detail.speRequired}
               </span>
             </div>
-            <MiniCTA align="left" />
           </div>
         </div>
       </section>
