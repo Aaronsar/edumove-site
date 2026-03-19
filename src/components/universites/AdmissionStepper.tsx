@@ -15,7 +15,7 @@ export default function AdmissionStepper({
   note,
 }: AdmissionStepperProps) {
   return (
-    <section className="relative bg-[#1B1D3A] py-20 overflow-hidden">
+    <section className="relative bg-[#1B1D3A] py-12 md:py-20 overflow-hidden">
       {/* Decorative background */}
       <div aria-hidden className="absolute inset-0 pointer-events-none">
         <div className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full bg-[#615CA5]/10 blur-3xl" />
@@ -27,7 +27,7 @@ export default function AdmissionStepper({
         </div>
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4">
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

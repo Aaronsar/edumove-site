@@ -50,11 +50,11 @@ export default function Header() {
           scrolled ? "shadow-md" : "border-b border-gray-100"
         }`}
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 py-4 sm:py-5">
           {/* Left — Menu button */}
           <button
             onClick={() => setMenuOpen(true)}
-            className="flex items-center gap-2 rounded-full border border-[#1B1D3A]/20 px-4 py-2 text-sm font-medium text-[#1B1D3A] transition-colors hover:border-[#1B1D3A]/40 hover:bg-gray-50"
+            className="flex items-center gap-2 rounded-full border border-[#1B1D3A]/20 px-3 sm:px-4 py-2 text-sm font-medium text-[#1B1D3A] transition-colors hover:border-[#1B1D3A]/40 hover:bg-gray-50"
           >
             <Menu size={18} />
             <span className="hidden sm:inline">Menu</span>
@@ -68,14 +68,14 @@ export default function Header() {
               width={52}
               height={52}
               priority
-              className="h-12 w-12"
+              className="h-10 w-10 sm:h-12 sm:w-12"
             />
           </Link>
 
-          {/* Right — CTA */}
+          {/* Right — CTA (hidden on mobile) */}
           <Link
             href="https://candidature.edumove.fr"
-            className="flex items-center gap-1.5 rounded-full bg-[#EC680A] px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#D45E09]"
+            className="hidden sm:flex items-center gap-1.5 rounded-full bg-[#EC680A] px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#D45E09]"
           >
             Candidater
             <ArrowRight size={15} />

@@ -58,7 +58,7 @@ export default function TestimonialsCarousel() {
   const current = testimonials[active];
 
   return (
-    <section className="py-20 bg-[#1b1d3a] relative overflow-hidden">
+    <section className="py-12 md:py-20 bg-[#1b1d3a] relative overflow-hidden">
       {/* Deco */}
       <div className="absolute top-8 right-8 grid grid-cols-5 gap-1.5 opacity-10">
         {Array.from({ length: 25 }).map((_, i) => (
@@ -71,7 +71,7 @@ export default function TestimonialsCarousel() {
         ))}
       </div>
 
-      <div className="max-w-4xl mx-auto px-4">
+      <div className="max-w-4xl mx-auto px-6">
         <div className="text-center mb-12">
           <p className="text-[#ec680a] text-xs uppercase tracking-widest font-semibold mb-2">
             Témoignages

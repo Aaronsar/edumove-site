@@ -40,14 +40,14 @@ export default function ProgramsList({
   });
 
   return (
-    <section className="relative py-20 bg-[#fafbff] overflow-hidden">
+    <section className="relative py-12 md:py-20 bg-[#fafbff] overflow-hidden">
       {/* Decorative blurs like home */}
       <div aria-hidden className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-[#EC680A]/5 via-transparent to-transparent rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-[#615CA5]/5 via-transparent to-transparent rounded-full blur-3xl" />
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4">
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
         {/* Header */}
         <p className="text-sm font-semibold uppercase tracking-widest text-[#EC680A] mb-3">
           Programmes disponibles

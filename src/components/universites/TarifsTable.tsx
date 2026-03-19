@@ -42,13 +42,15 @@ export default function TarifsTable({
   }
 
   return (
-    <section className="py-12 px-4">
+    <section className="py-10 md:py-12 px-6">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-2xl md:text-3xl font-bold italic text-[#1B1D3A] mb-6">
           Tarifs et fili&egrave;res
         </h2>
-        <div className="overflow-x-auto rounded-xl shadow-sm border border-gray-200">
-          <table className="w-full min-w-[600px] text-sm">
+
+        {/* Desktop table */}
+        <div className="hidden md:block overflow-x-auto rounded-xl shadow-sm border border-gray-200">
+          <table className="w-full text-sm">
             <thead>
               <tr className="bg-[#1B1D3A] text-white">
                 <th className="text-left px-4 py-3 font-semibold">
@@ -120,6 +122,67 @@ export default function TarifsTable({
               })}
             </tbody>
           </table>
+        </div>
+
+        {/* Mobile cards */}
+        <div className="md:hidden flex flex-col gap-3">
+          {visiblePrograms.map((p, i) => {
+            const isCheapest =
+              !p.isFull &&
+              p.totalCost === cheapestByFiliere[p.filiere] &&
+              programs.filter(
+                (x) => x.filiere === p.filiere && !x.isFull
+              ).length > 1;
+
+            return (
+              <div
+                key={`${p.filiere}-${p.campus}-${i}`}
+                className={`rounded-xl border p-4 ${
+                  p.isFull
+                    ? "bg-gray-50 border-gray-200 opacity-60"
+                    : isCheapest
+                    ? "bg-[#EC680A]/5 border-[#EC680A]/30"
+                    : "bg-white border-gray-200"
+                }`}
+              >
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="font-bold text-[#1B1D3A] text-base">
+                    {filiereLabels[p.filiere] ?? p.filiere}
+                  </span>
+                  {p.isFull && (
+                    <span className="bg-[#1B1D3A] text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase">
+                      Complet
+                    </span>
+                  )}
+                  {p.note && !p.isFull && (
+                    <span className="bg-[#EC680A]/15 text-[#D45E09] text-[10px] font-bold px-2 py-0.5 rounded">
+                      {p.note}
+                    </span>
+                  )}
+                </div>
+                <div className="grid grid-cols-2 gap-y-2 gap-x-4 text-sm">
+                  {showCampus && (
+                    <>
+                      <span className="text-gray-500">Campus</span>
+                      <span className="font-medium text-[#1B1D3A]">{p.campus}</span>
+                    </>
+                  )}
+                  <span className="text-gray-500">Dur&eacute;e</span>
+                  <span className="font-medium text-[#1B1D3A]">
+                    {p.durationYears > 0 ? `${p.durationYears} ans` : "\u2014"}
+                  </span>
+                  <span className="text-gray-500">Tarif/an</span>
+                  <span className="font-bold text-[#EC680A]">
+                    {formatEuro(p.tuitionPerYear)}
+                  </span>
+                  <span className="text-gray-500">Langue</span>
+                  <span className="font-medium text-[#1B1D3A]">{p.language}</span>
+                  <span className="text-gray-500">Admission</span>
+                  <span className="font-medium text-[#1B1D3A]">{p.admissionDescription}</span>
+                </div>
+              </div>
+            );
+          })}
         </div>
 
         {canCollapse && (

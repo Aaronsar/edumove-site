@@ -25,35 +25,35 @@ function Cell({ value, isCheapest, isComplet }: { value: string; isCheapest: boo
 
 export default function TarifsComparatif() {
   return (
-    <section className="py-20 bg-white">
-      <div className="max-w-6xl mx-auto px-4">
+    <section className="py-12 md:py-20 bg-white">
+      <div className="max-w-6xl mx-auto px-6">
         <p className="text-center text-sm uppercase tracking-widest text-[#EC680A] mb-3 font-semibold">Tarifs</p>
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12" style={{ color: "#1B1D3A" }}>Comparatif des tarifs par filière</h2>
 
         <div className="overflow-x-auto rounded-2xl border border-gray-200 shadow-sm">
-          <table className="w-full min-w-[700px]">
+          <table className="w-full min-w-[600px]">
             <thead>
               <tr className="bg-[#1B1D3A]">
-                <th className="text-left text-white font-semibold py-4 px-5 text-sm">Filière</th>
-                <th className="text-center text-white font-semibold py-4 px-5 text-sm"><Globe className="w-4 h-4 inline mx-1" /> LINK (Rome)</th>
-                <th className="text-center text-white font-semibold py-4 px-5 text-sm"><Globe className="w-4 h-4 inline mx-1" /> UCJC (Madrid)</th>
-                <th className="text-center text-white font-semibold py-4 px-5 text-sm"><Globe className="w-4 h-4 inline mx-1" /> UE — Le - cher</th>
-                <th className="text-center text-white font-semibold py-4 px-5 text-sm"><Globe className="w-4 h-4 inline mx-1" /> UE — Le + cher</th>
+                <th className="text-left text-white font-semibold py-3 px-3 sm:px-5 text-xs sm:text-sm">Fili&egrave;re</th>
+                <th className="text-center text-white font-semibold py-3 px-2 sm:px-5 text-xs sm:text-sm">LINK</th>
+                <th className="text-center text-white font-semibold py-3 px-2 sm:px-5 text-xs sm:text-sm">UCJC</th>
+                <th className="text-center text-white font-semibold py-3 px-2 sm:px-5 text-xs sm:text-sm">UE min</th>
+                <th className="text-center text-white font-semibold py-3 px-2 sm:px-5 text-xs sm:text-sm">UE max</th>
               </tr>
             </thead>
             <tbody>
               {rows.map((r, i) => (
                 <tr key={i} className="border-b border-gray-100 hover:bg-gray-50/50 transition-colors">
-                  <td className="py-4 px-5 font-semibold text-[#1B1D3A]">
-                    <span className="inline-flex items-center gap-2 mr-2">
-                      <FiliereIcon slug={r.filiereSlug} className="w-5 h-5 text-[#EC680A]" stroke="#EC680A" />
+                  <td className="py-3 px-3 sm:px-5 font-semibold text-[#1B1D3A] text-sm">
+                    <span className="inline-flex items-center gap-1.5 sm:gap-2 mr-1 sm:mr-2">
+                      <FiliereIcon slug={r.filiereSlug} className="w-4 h-4 sm:w-5 sm:h-5 text-[#EC680A]" stroke="#EC680A" />
                     </span>
                     {r.filiere}
                   </td>
-                  <td className="py-4 px-5 text-center"><Cell value={r.link} isCheapest={r.cheapest === "link"} isComplet={false} /></td>
-                  <td className="py-4 px-5 text-center"><Cell value={r.ucjc} isCheapest={r.cheapest === "ucjc"} isComplet={r.ucjc === "COMPLET"} /></td>
-                  <td className="py-4 px-5 text-center"><Cell value={r.ueLow} isCheapest={r.cheapest === "ue"} isComplet={false} /></td>
-                  <td className="py-4 px-5 text-center"><Cell value={r.ueHigh} isCheapest={false} isComplet={false} /></td>
+                  <td className="py-3 px-2 sm:px-5 text-center"><Cell value={r.link} isCheapest={r.cheapest === "link"} isComplet={false} /></td>
+                  <td className="py-3 px-2 sm:px-5 text-center"><Cell value={r.ucjc} isCheapest={r.cheapest === "ucjc"} isComplet={r.ucjc === "COMPLET"} /></td>
+                  <td className="py-3 px-2 sm:px-5 text-center"><Cell value={r.ueLow} isCheapest={r.cheapest === "ue"} isComplet={false} /></td>
+                  <td className="py-3 px-2 sm:px-5 text-center"><Cell value={r.ueHigh} isCheapest={false} isComplet={false} /></td>
                 </tr>
               ))}
             </tbody>

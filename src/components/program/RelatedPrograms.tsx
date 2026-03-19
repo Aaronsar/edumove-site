@@ -12,7 +12,7 @@ export default function RelatedPrograms({ detail }: { detail: ProgramDetail }) {
   if (others.length === 0) return null;
 
   return (
-    <section className="relative py-16 bg-[#fafbff] overflow-hidden">
+    <section className="relative py-10 md:py-16 bg-[#fafbff] overflow-hidden">
       <div aria-hidden className="absolute inset-0">
         <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#615CA5]/5 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 w-[350px] h-[350px] bg-[#EC680A]/5 rounded-full blur-3xl" />

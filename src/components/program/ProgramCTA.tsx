@@ -5,7 +5,7 @@ import type { ProgramDetail } from "@/data/program-details";
 
 export default function ProgramCTA({ detail }: { detail: ProgramDetail }) {
   return (
-    <section data-program-cta className="relative overflow-hidden bg-[#1B1D3A] py-24">
+    <section data-program-cta className="relative overflow-hidden bg-[#1B1D3A] py-14 md:py-24">
       {/* Decorative */}
       <div aria-hidden className="absolute inset-0 pointer-events-none">
         <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-[#615CA5]/15 blur-3xl" />

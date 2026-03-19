@@ -125,7 +125,7 @@ export default function StickyBar() {
             : "translate-y-full opacity-0 pointer-events-none"
         }`}
       >
-        <div className="px-4 py-3 flex items-center gap-2.5">
+        <div className="bg-white/95 backdrop-blur-md shadow-[0_-4px_20px_rgba(0,0,0,0.1)] px-4 py-3 flex items-center gap-2.5">
           <a
             href="https://candidature.edumove.fr"
             className="group flex-1 flex items-center justify-center gap-1.5 bg-[#EC680A] hover:bg-[#D45E09] text-white text-xs font-semibold h-11 rounded-xl border-2 border-white shadow-lg transition-colors"

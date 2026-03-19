@@ -18,7 +18,7 @@ export default function KeyInfoBar({ detail }: { detail: ProgramDetail }) {
   const colClass = stats.length === 5 ? "md:grid-cols-5" : "md:grid-cols-4";
 
   return (
-    <div className="max-w-6xl mx-auto px-4 -mt-8 relative z-20">
+    <div className="max-w-6xl mx-auto px-6 -mt-8 relative z-20">
       <div className={`bg-white rounded-2xl shadow-lg border border-gray-100 p-4 grid grid-cols-2 ${colClass} gap-4`}>
         {stats.map((s, i) => {
           const Icon = s.icon;

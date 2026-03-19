@@ -9,7 +9,7 @@ export default function CostCard({ detail }: { detail: ProgramDetail }) {
   const total = detail.totalCost;
 
   return (
-    <section className="max-w-6xl mx-auto px-4 py-20">
+    <section className="max-w-6xl mx-auto px-4 py-12 md:py-20">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

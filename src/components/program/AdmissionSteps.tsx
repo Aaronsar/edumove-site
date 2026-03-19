@@ -13,7 +13,7 @@ const stepIcons = [FileText, Search, Send, ClipboardCheck, BadgeCheck, Rocket];
 
 export default function AdmissionSteps({ steps }: { steps: string[] }) {
   return (
-    <section className="relative bg-[#1B1D3A] py-20 overflow-hidden">
+    <section className="relative bg-[#1B1D3A] py-12 md:py-20 overflow-hidden">
       {/* Decorative background */}
       <div aria-hidden className="absolute inset-0 pointer-events-none">
         <div className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full bg-[#615CA5]/10 blur-3xl" />

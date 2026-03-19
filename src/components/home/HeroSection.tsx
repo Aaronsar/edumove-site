@@ -78,7 +78,7 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <div className="relative z-10 max-w-6xl mx-auto px-4 py-16 md:py-20">
+        <div className="relative z-10 max-w-6xl mx-auto px-6 py-16 md:py-20">
           <div className="grid md:grid-cols-2 gap-10 items-center">
             {/* Left — Text */}
             <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }}>
@@ -124,7 +124,7 @@ export default function HeroSection() {
 
             {/* Right — Formation cards */}
             <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.2 }} id="formations" className="scroll-mt-20">
-              <p className="text-[#ec680a] text-xs uppercase tracking-widest mb-4 font-semibold">Choisis ta formation</p>
+              <p className="text-[#ec680a] text-sm md:text-base uppercase tracking-widest mb-5 font-bold">Choisis ta formation</p>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                 {formations.map((f, i) => (
                   <motion.div key={f.slug} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 + i * 0.07 }}>

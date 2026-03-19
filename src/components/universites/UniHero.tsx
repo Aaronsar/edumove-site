@@ -40,7 +40,7 @@ export default function UniHero({
         </div>
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4 py-16 md:py-20">
+      <div className="relative z-10 max-w-6xl mx-auto px-6 py-16 md:py-20">
         <div className="grid md:grid-cols-2 gap-10 items-center">
           {/* Left — Texte + nom bien visible */}
           <motion.div
@@ -76,7 +76,7 @@ export default function UniHero({
                 href="https://candidature.edumove.fr"
                 className="text-center bg-[#EC680A] hover:bg-[#D45E09] text-white font-semibold px-6 py-3 rounded-[5px] transition-all hover:shadow-lg hover:shadow-[#EC680A]/20"
               >
-                Déposer ma candidature gratuitement
+                Candidater
               </a>
               <a
                 href="#programmes"

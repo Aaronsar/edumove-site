@@ -22,15 +22,15 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section className="py-16 bg-white overflow-hidden">
-      <div className="max-w-6xl mx-auto px-4">
+    <section className="py-10 md:py-16 bg-white overflow-hidden">
+      <div className="max-w-6xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-10 items-center">
-          {/* Left — Photo grid */}
+          {/* Left — Photo grid (hidden on mobile) */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="relative"
+            className="relative hidden md:block"
           >
             <div className="grid grid-cols-2 gap-3">
               <div className="space-y-3">

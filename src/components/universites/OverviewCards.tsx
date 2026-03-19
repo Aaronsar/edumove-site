@@ -8,7 +8,7 @@ interface OverviewCardsProps {
 
 export default function OverviewCards({ cards }: OverviewCardsProps) {
   return (
-    <div className="-mt-8 relative z-10 max-w-6xl mx-auto px-4">
+    <div className="-mt-8 relative z-10 max-w-6xl mx-auto px-6">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 [&>*]:min-w-0">
         {cards.map((card, i) => (
           <motion.div

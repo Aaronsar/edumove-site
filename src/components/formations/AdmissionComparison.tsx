@@ -121,8 +121,8 @@ export default function AdmissionComparison({
   if (columns.length === 0) return null;
 
   return (
-    <section className="relative py-20 bg-white overflow-hidden">
-      <div className="max-w-6xl mx-auto px-4">
+    <section className="relative py-12 md:py-20 bg-white overflow-hidden">
+      <div className="max-w-6xl mx-auto px-6">
         {/* Section header */}
         <div className="mb-12 text-center">
           <p className="text-sm font-semibold uppercase tracking-widest text-[#EC680A] mb-3">

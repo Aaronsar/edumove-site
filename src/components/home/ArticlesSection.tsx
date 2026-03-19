@@ -72,20 +72,20 @@ export default function ArticlesSection() {
   };
 
   return (
-    <section className="relative py-20 bg-[#1b1d3a] overflow-hidden">
+    <section className="relative py-12 md:py-20 bg-[#1b1d3a] overflow-hidden">
       {/* Decorative */}
       <div className="absolute -top-32 right-0 w-72 h-72 rounded-full bg-[#615ca5]/15 blur-3xl" />
       <div className="absolute bottom-0 left-0 w-60 h-60 rounded-full bg-[#ec680a]/10 blur-3xl" />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4">
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="flex items-end justify-between mb-10">
           <div>
             <p className="text-[#ec680a] text-xs uppercase tracking-widest font-semibold mb-3">
               Blog
             </p>
-            <h2 className="text-2xl md:text-3xl font-bold text-white">
-              Ces lectures devraient vous intéresser !
+            <h2 className="text-2xl md:text-3xl font-bold" style={{ color: "#ffffff" }}>
+              Ces lectures devraient vous int&eacute;resser !
             </h2>
           </div>
           <div className="hidden md:flex items-center gap-2">
@@ -107,14 +107,14 @@ export default function ArticlesSection() {
         {/* Horizontal scroll cards */}
         <div
           ref={scrollRef}
-          className="flex gap-5 overflow-x-auto pb-4 -mx-4 px-4 snap-x snap-mandatory scrollbar-hide"
+          className="flex gap-4 overflow-x-auto pb-4 -mx-6 px-6 snap-x snap-mandatory scrollbar-hide"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           {articles.map((article) => (
             <a
               key={article.number}
               href={article.href}
-              className="group snap-start shrink-0 w-[370px] bg-white/[0.12] backdrop-blur-md border border-white/20 rounded-2xl p-7 flex flex-col justify-between hover:border-[#ec680a]/50 hover:bg-white/[0.18] transition-all duration-300"
+              className="group snap-start shrink-0 w-[85vw] sm:w-[370px] bg-white/[0.12] backdrop-blur-md border border-white/20 rounded-2xl p-5 sm:p-7 flex flex-col justify-between hover:border-[#ec680a]/50 hover:bg-white/[0.18] transition-all duration-300"
             >
               {/* Top */}
               <div>

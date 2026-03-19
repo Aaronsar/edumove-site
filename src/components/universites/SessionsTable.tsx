@@ -187,7 +187,7 @@ function SessionTable({
 
 export default function SessionsTable() {
   return (
-    <section className="py-12 px-4">
+    <section className="py-12 px-6">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-2xl md:text-3xl font-bold italic text-[#1B1D3A] mb-6">
           Calendrier des sessions 2026

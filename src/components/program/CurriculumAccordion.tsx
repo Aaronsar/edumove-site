@@ -28,7 +28,7 @@ export default function CurriculumAccordion({ program }: { program: YearProgram[
         <div className="absolute -bottom-40 -left-40 w-[400px] h-[400px] rounded-full bg-[#EC680A]/5 blur-3xl" />
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4">
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -46,7 +46,7 @@ export default function CurriculumAccordion({ program }: { program: YearProgram[
         </motion.div>
 
         {/* Year selector tabs */}
-        <div className="flex flex-nowrap gap-2 mb-10 overflow-x-auto pb-2 scrollbar-hide">
+        <div className="flex flex-wrap gap-2 mb-10">
           {program.map((y, i) => {
             const isActive = active === i;
             const color = rawColors[i % rawColors.length];
@@ -56,7 +56,7 @@ export default function CurriculumAccordion({ program }: { program: YearProgram[
                 onClick={() => setActive(i)}
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                className={`relative flex items-center gap-2.5 px-4 py-2.5 rounded-2xl text-left transition-all duration-300 shrink-0 ${
+                className={`relative flex items-center gap-2.5 px-3 sm:px-4 py-2.5 rounded-2xl text-left transition-all duration-300 ${
                   isActive
                     ? "bg-white shadow-lg text-[#1B1D3A]"
                     : "bg-white/50 hover:bg-white/80 text-[#334155]"

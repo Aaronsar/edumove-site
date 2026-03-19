@@ -63,9 +63,9 @@ export default function StatsSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-16 bg-white">
-      <div className="max-w-6xl mx-auto px-4" ref={ref}>
-        <div className="flex flex-col md:flex-row items-center gap-8">
+    <section className="py-10 md:py-16 bg-white">
+      <div className="max-w-6xl mx-auto px-6" ref={ref}>
+        <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8">
           {/* Left title */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -73,18 +73,17 @@ export default function StatsSection() {
             viewport={{ once: true }}
             className="shrink-0"
           >
+            <p className="text-[#ec680a] text-xs uppercase tracking-widest font-semibold mb-1 md:hidden">Edumove</p>
             <h2
-              className="text-2xl md:text-3xl font-bold leading-tight"
+              className="text-xl md:text-3xl font-bold leading-tight"
               style={{ color: "#615CA5" }}
             >
-              En quelques
-              <br />
-              chiffres.
+              En quelques chiffres<span className="hidden md:inline">.</span>
             </h2>
           </motion.div>
 
           {/* Stats cards */}
-          <div className="flex-1 grid grid-cols-3 md:grid-cols-6 gap-3">
+          <div className="flex-1 grid grid-cols-3 md:grid-cols-6 gap-2 sm:gap-3">
             {stats.map((s, i) => (
               <motion.div
                 key={i}
@@ -92,7 +91,7 @@ export default function StatsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="bg-white border-2 border-[#615ca5]/15 rounded-xl p-4 text-center hover:border-[#ec680a]/40 hover:shadow-md transition-all"
+                className="bg-white border-2 border-[#615ca5]/15 rounded-xl p-3 sm:p-4 text-center hover:border-[#ec680a]/40 hover:shadow-md transition-all"
               >
                 <p className="text-xl md:text-2xl font-bold text-[#615ca5]">
                   <AnimatedNumber

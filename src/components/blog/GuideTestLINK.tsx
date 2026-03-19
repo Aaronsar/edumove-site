@@ -201,7 +201,7 @@ export default function GuideTestLINK() {
   return (
     <div className="bg-white min-h-screen">
       {/* Hero */}
-      <section className="relative bg-[#1B1D3A] py-16 md:py-24 px-4 overflow-hidden">
+      <section className="relative bg-[#1B1D3A] py-16 md:py-24 px-6 overflow-hidden">
         <div aria-hidden className="absolute inset-0">
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#615CA5]/20 rounded-full blur-3xl" />
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#EC680A]/10 rounded-full blur-3xl" />
@@ -253,7 +253,7 @@ export default function GuideTestLINK() {
       </section>
 
       {/* Body */}
-      <section className="py-12 md:py-16 px-4">
+      <section className="py-12 md:py-16 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="lg:grid lg:grid-cols-[1fr_260px] lg:gap-12">
             {/* Content */}

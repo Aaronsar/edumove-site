@@ -66,7 +66,7 @@ export default function LinkPage() {
       <UniversityImageGallery images={universityImages.link} />
 
       {/* Description */}
-      <section className="relative py-14 px-4 bg-[#fafbff] overflow-hidden">
+      <section className="relative py-14 px-6 bg-[#fafbff] overflow-hidden">
         <div aria-hidden className="absolute inset-0">
           <div className="absolute top-0 right-0 w-[520px] h-[520px] bg-gradient-to-bl from-[#EC680A]/7 via-transparent to-transparent rounded-full blur-3xl" />
           <div className="absolute bottom-0 left-0 w-[460px] h-[460px] bg-gradient-to-tr from-[#615CA5]/7 via-transparent to-transparent rounded-full blur-3xl" />
@@ -106,7 +106,7 @@ export default function LinkPage() {
       <TarifsTable programs={uni.programs} showCampus={false} />
 
       {/* Pharmacie note */}
-      <section className="px-4 -mt-4 mb-4">
+      <section className="px-6 -mt-4 mb-4">
         <div className="max-w-6xl mx-auto">
           <div className="bg-[#EC680A]/10 border border-[#EC680A]/25 rounded-xl p-4 flex items-start gap-3">
             <BookOpen className="w-5 h-5 text-[#EC680A] shrink-0 mt-0.5" />
@@ -140,7 +140,7 @@ export default function LinkPage() {
       />
 
       {/* CTA */}
-      <section id="contact" data-program-cta className="py-16 px-4 bg-[#1B1D3A]">
+      <section id="contact" data-program-cta className="py-10 md:py-16 px-6 bg-[#1B1D3A]">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Prêt à rejoindre LINK Campus ?
@@ -152,12 +152,12 @@ export default function LinkPage() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="https://candidature.edumove.fr"
-              className="inline-flex items-center gap-2 bg-[#EC680A] text-white font-semibold px-8 py-4 rounded-xl hover:bg-[#D45E09] transition-colors text-lg"
+              className="inline-flex items-center gap-2 bg-[#EC680A] text-white font-semibold px-6 py-3 sm:px-8 sm:py-4 rounded-xl hover:bg-[#D45E09] transition-colors text-sm sm:text-lg"
             >
-              Déposer ma candidature gratuitement
+              Candidater
               <ArrowRight className="w-5 h-5" />
             </Link>
-            <ContactButton className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-semibold px-8 py-4 rounded-xl transition-colors text-lg border border-white/20">
+            <ContactButton className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-semibold px-6 py-3 sm:px-8 sm:py-4 rounded-xl transition-colors text-sm sm:text-lg border border-white/20">
               <span className="flex items-center gap-2">
                 <Phone className="w-5 h-5" />
                 Être recontacté

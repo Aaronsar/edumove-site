@@ -19,12 +19,12 @@ export default function ProgramLinks({ universityShort, programs }: ProgramLinks
   const allPrograms = programs;
 
   return (
-    <section id="programmes" className="relative py-16 bg-[#fafbff] overflow-hidden">
+    <section id="programmes" className="relative py-10 md:py-16 bg-[#fafbff] overflow-hidden">
       <div aria-hidden className="absolute inset-0">
         <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#615CA5]/5 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 w-[350px] h-[350px] bg-[#EC680A]/5 rounded-full blur-3xl" />
       </div>
-      <div className="relative max-w-6xl mx-auto px-4">
+      <div className="relative max-w-6xl mx-auto px-6">
         <p className="text-center text-sm uppercase tracking-widest text-[#EC680A] mb-3 font-semibold">Nos programmes</p>
         <h2 className="text-2xl md:text-3xl font-bold text-center mb-4" style={{ color: "#1B1D3A" }}>
           Toutes les formations &agrave; {universityShort}

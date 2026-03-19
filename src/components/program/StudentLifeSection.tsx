@@ -35,14 +35,14 @@ function getHighlightIcon(text: string) {
 
 export default function StudentLifeSection({ life }: { life: StudentLife }) {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-[#F8F7FF] to-[#FFF7F2] py-20">
+    <section className="relative overflow-hidden bg-gradient-to-br from-[#F8F7FF] to-[#FFF7F2] py-12 md:py-20">
       {/* Decorative */}
       <div aria-hidden className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-[#EC680A]/5 blur-3xl" />
         <div className="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full bg-[#615CA5]/5 blur-3xl" />
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4">
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

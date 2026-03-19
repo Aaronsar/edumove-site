@@ -87,7 +87,7 @@ export default function UniversitesSection() {
 
   return (
     <section className="py-14 bg-white" ref={sectionRef}>
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="max-w-6xl mx-auto px-6">
         {/* Header with text left + CTA right */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-8">
           <div>
@@ -133,15 +133,15 @@ export default function UniversitesSection() {
                       </div>
                     </div>
 
-                    <div className="flex gap-3 mr-auto md:mr-0 md:ml-4">
+                    <div className="flex gap-2 sm:gap-3 mr-auto md:mr-0 md:ml-4">
                       {[
                         { value: u.campus.toString(), label: "Campus" },
                         { value: u.filieres.toString(), label: "Filières" },
                         { value: u.etudiants, label: "Étudiants" },
                       ].map((s, j) => (
-                        <div key={j} className="text-center bg-white/10 rounded-lg px-4 py-2.5 min-w-[64px]">
-                          <p className="text-xl font-bold text-white" style={{ color: "white" }}><AnimatedStat value={s.value} isVisible={isInView} /></p>
-                          <p className="text-white/40 text-[9px] uppercase tracking-wide">{s.label}</p>
+                        <div key={j} className="text-center bg-white/10 rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 min-w-0 sm:min-w-[64px]">
+                          <p className="text-lg sm:text-xl font-bold text-white" style={{ color: "white" }}><AnimatedStat value={s.value} isVisible={isInView} /></p>
+                          <p className="text-white/40 text-[8px] sm:text-[9px] uppercase tracking-wide">{s.label}</p>
                         </div>
                       ))}
                     </div>

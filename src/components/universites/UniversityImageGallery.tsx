@@ -9,7 +9,7 @@ interface UniversityImageGalleryProps {
 
 export default function UniversityImageGallery({ images }: UniversityImageGalleryProps) {
   return (
-    <section className="py-16 px-4 bg-white">
+    <section className="py-10 md:py-16 px-6 bg-white">
       <div className="max-w-6xl mx-auto">
         <p className="text-sm font-semibold uppercase tracking-widest text-[#EC680A] mb-2">
           Découvrir le campus
