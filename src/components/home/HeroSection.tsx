@@ -15,10 +15,32 @@ export default function HeroSection() {
   return (
     <section className="relative min-h-[90vh] overflow-hidden bg-[#fafbff]">
       <div className="absolute inset-0">
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-bl from-[#EC680A]/8 via-transparent to-transparent rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-[#615CA5]/8 via-transparent to-transparent rounded-full blur-3xl" />
-        <div className="absolute top-1/3 left-1/3 w-[400px] h-[400px] bg-gradient-to-br from-blue-400/5 to-transparent rounded-full blur-2xl" />
-        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "radial-gradient(circle, #1B1D3A 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-[#EC680A]/6 via-transparent to-transparent rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-[#615CA5]/6 via-transparent to-transparent rounded-full blur-3xl" />
+        {/* Skyline Europe — monuments en silhouette subtile */}
+        <svg className="absolute bottom-0 left-0 right-0 w-full opacity-[0.04]" viewBox="0 0 1440 320" fill="#1b1d3a" preserveAspectRatio="xMidYMax meet">
+          {/* Colisée */}
+          <path d="M100 280 L100 240 C100 230 110 220 120 220 L130 220 L130 200 L140 200 L140 220 L150 220 L150 200 L160 200 L160 220 L170 220 L170 200 L180 200 L180 220 L190 220 C200 220 210 230 210 240 L210 280 Z" />
+          {/* Tour de Pise */}
+          <path d="M320 280 L325 180 L322 170 L328 160 L324 150 L330 140 L326 130 L332 120 L340 120 L346 130 L342 140 L348 150 L344 160 L350 170 L347 180 L352 280 Z" />
+          {/* Sagrada Familia */}
+          <path d="M500 280 L500 200 L510 200 L510 160 L515 140 L520 160 L520 200 L530 200 L530 180 L535 150 L537 120 L539 100 L541 120 L543 150 L548 180 L548 200 L558 200 L558 160 L563 140 L568 160 L568 200 L578 200 L578 280 Z" />
+          {/* Tour Eiffel */}
+          <path d="M730 280 L740 220 L735 220 L745 180 L742 180 L750 140 L748 140 L755 100 L753 100 L758 60 L760 40 L762 60 L767 100 L765 100 L770 140 L768 140 L775 180 L772 180 L780 220 L775 220 L785 280 Z M745 240 L775 240" />
+          {/* Dôme cathédrale (Rome/Florence) */}
+          <path d="M950 280 L950 230 L960 230 L960 200 C960 170 990 150 1010 150 C1030 150 1060 170 1060 200 L1060 230 L1070 230 L1070 280 Z M1005 150 L1008 130 L1010 120 L1012 130 L1015 150" />
+          {/* Alhambra */}
+          <path d="M1180 280 L1180 220 L1190 220 L1190 210 L1200 210 L1200 200 L1210 200 L1210 190 L1230 190 L1230 200 L1240 200 L1240 210 L1250 210 L1250 220 L1260 220 L1260 280 Z M1195 215 L1195 210 L1200 205 L1205 210 L1205 215 Z M1235 215 L1235 210 L1240 205 L1245 210 L1245 215 Z" />
+          {/* Sol / base */}
+          <rect x="0" y="278" width="1440" height="42" />
+        </svg>
+        {/* Dot pattern charte */}
+        <div className="absolute top-8 left-8 grid grid-cols-7 gap-1.5 opacity-[0.08]">
+          {Array.from({ length: 49 }).map((_, i) => <div key={i} className="w-1.5 h-1.5 rounded-full bg-[#ec680a]" />)}
+        </div>
+        <div className="absolute bottom-20 right-12 grid grid-cols-5 gap-1.5 opacity-[0.06]">
+          {Array.from({ length: 25 }).map((_, i) => <div key={i} className="w-1.5 h-1.5 rounded-full bg-[#615ca5]" />)}
+        </div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 pt-20 pb-16">

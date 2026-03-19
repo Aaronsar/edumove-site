@@ -1,6 +1,4 @@
 import HeroSection from "@/components/home/HeroSection";
-import TrustLogos from "@/components/home/TrustLogos";
-import OrangeBanner from "@/components/home/OrangeBanner";
 import UniversitesSection from "@/components/home/UniversitesSection";
 import ServicesSection from "@/components/home/ServicesSection";
 import TestimonialsCarousel from "@/components/shared/TestimonialsCarousel";
@@ -10,8 +8,6 @@ export default function Home() {
   return (
     <main>
       <HeroSection />
-      <TrustLogos />
-      <OrangeBanner />
       <UniversitesSection />
       <ServicesSection />
       <TestimonialsCarousel />
