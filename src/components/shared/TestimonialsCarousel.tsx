@@ -1,38 +1,38 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 
 const testimonials = [
   {
-    quote: "EduMove nous a accompagnés du début à la fin. Notre fils est maintenant en 2ème année de dentaire à Madrid et il est épanoui !",
+    quote: "EduMove nous a accompagnés du début à la fin. De la constitution du dossier à la recherche d'appartement à Madrid, tout a été pris en charge. Notre fils est maintenant en 2ème année de dentaire et il est épanoui. On recommande à 100% !",
     author: "Marie D.",
     context: "Parent d'étudiant en dentaire",
     initials: "MD",
     color: "bg-[#615ca5]",
   },
   {
-    quote: "Sans EduMove, je n'aurais jamais pensé pouvoir faire médecine. Le processus était simple et rapide.",
+    quote: "Sans EduMove, je n'aurais jamais pensé pouvoir faire médecine. Avec mon bac à 12 de moyenne, les portes étaient fermées en France. Aujourd'hui je suis en 3ème année à Rome et je vis une expérience incroyable. Le processus d'admission était simple et rapide.",
     author: "Lucas P.",
     context: "Étudiant en médecine à Rome",
     initials: "LP",
     color: "bg-[#ec680a]",
   },
   {
-    quote: "L'accompagnement pour le financement a été incroyable. Grâce au prêt LCL, on n'a rien avancé.",
+    quote: "L'accompagnement pour le financement a été incroyable. On ne savait pas comment financer 6 ans d'études à l'étranger. Grâce au partenariat avec LCL, on n'a rien avancé et notre fille commencera à rembourser une fois qu'elle exercera. C'est un vrai soulagement.",
     author: "Sophie M.",
     context: "Parent d'étudiant en pharmacie",
     initials: "SM",
     color: "bg-emerald-500",
   },
   {
-    quote: "Je suis en kiné à l'UCJC et c'est la meilleure décision de ma vie. Merci EduMove !",
+    quote: "Je suis en kiné à l'UCJC et c'est la meilleure décision de ma vie. L'équipe EduMove m'a aidé à préparer mon entretien, à trouver un logement et m'a accompagné même après mon arrivée à Madrid. Je me suis senti soutenu à chaque étape.",
     author: "Thomas R.",
     context: "Étudiant en kinésithérapie",
     initials: "TR",
     color: "bg-amber-500",
   },
   {
-    quote: "Étudiante en médecine à l'UEM Madrid, je ne regrette pas d'avoir choisi EduMove. Leur aide a été décisive.",
+    quote: "Après deux ans de PASS sans succès, j'ai contacté EduMove. En trois mois j'étais admise à l'Universidad Europea de Madrid. Aujourd'hui je suis en 2ème année de médecine et je ne regrette absolument rien. Leur aide a vraiment été décisive dans mon parcours.",
     author: "Léa B.",
     context: "Étudiante en médecine",
     initials: "LB",
@@ -43,8 +43,17 @@ const testimonials = [
 export default function TestimonialsCarousel() {
   const [active, setActive] = useState(0);
 
+  const next = useCallback(() => {
+    setActive((i) => (i === testimonials.length - 1 ? 0 : i + 1));
+  }, []);
+
   const prev = () => setActive((i) => (i === 0 ? testimonials.length - 1 : i - 1));
-  const next = () => setActive((i) => (i === testimonials.length - 1 ? 0 : i + 1));
+
+  // Auto-play every 3.5s
+  useEffect(() => {
+    const interval = setInterval(next, 5000);
+    return () => clearInterval(interval);
+  }, [next, active]);
 
   const current = testimonials[active];
 
@@ -73,7 +82,7 @@ export default function TestimonialsCarousel() {
         </div>
 
         {/* Main testimonial */}
-        <div className="relative">
+        <div className="relative min-h-[280px]">
           <div className="text-center">
             {/* Quote icon */}
             <div className="flex justify-center mb-6">
@@ -83,7 +92,7 @@ export default function TestimonialsCarousel() {
             </div>
 
             {/* Quote text */}
-            <p className="text-white text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-8 font-light italic">
+            <p key={active} className="text-white text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-8 font-light italic animate-fade-in">
               &ldquo;{current.quote}&rdquo;
             </p>
 
@@ -143,6 +152,16 @@ export default function TestimonialsCarousel() {
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes fade-in {
+          from { opacity: 0; transform: translateY(8px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+          animation: fade-in 0.4s ease-out;
+        }
+      `}</style>
     </section>
   );
 }
