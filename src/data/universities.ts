@@ -297,7 +297,6 @@ const ucjcUniversity: University = {
       testFee: 0,
       minimumGrade: null,
       requiredSpecialities: null,
-      note: "OPTION LA MOINS CH\u00C8RE",
     },
   ],
   admissionProcess: {
