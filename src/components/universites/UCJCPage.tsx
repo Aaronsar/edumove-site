@@ -6,6 +6,8 @@ import { getUniversityBySlug } from "@/data/universities";
 import { programDetails } from "@/data/program-details";
 import UniHero from "./UniHero";
 import OverviewCards from "./OverviewCards";
+import UniversityImageGallery from "./UniversityImageGallery";
+import { universityImages } from "@/data/university-images";
 import TarifsTable from "./TarifsTable";
 import AdmissionStepper from "./AdmissionStepper";
 import DocumentsList from "./DocumentsList";
@@ -58,6 +60,8 @@ export default function UCJCPage() {
       />
 
       <OverviewCards cards={overviewCards} />
+
+      <UniversityImageGallery images={universityImages.ucjc} />
 
       {/* Description */}
       <section className="relative py-14 px-4 bg-[#fafbff] overflow-hidden">

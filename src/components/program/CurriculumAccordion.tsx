@@ -7,7 +7,7 @@ const yearColors = ["bg-[#615CA5]", "bg-[#1B1D3A]", "bg-[#EC680A]", "bg-[#615CA5
 const yearBorders = ["border-[#615CA5]", "border-[#1B1D3A]", "border-[#EC680A]", "border-[#615CA5]", "border-[#1B1D3A]", "border-[#EC680A]"];
 
 export default function CurriculumAccordion({ program }: { program: YearProgram[] }) {
-  const [openIndex, setOpenIndex] = useState(0);
+  const [openIndex, setOpenIndex] = useState(-1);
 
   return (
     <section className="max-w-5xl mx-auto px-4 py-16">

@@ -32,7 +32,7 @@ export default function ProgramHero({ detail }: { detail: ProgramDetail }) {
           </div>
         </div>
 
-        <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-2 tracking-tight">
+        <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-2 tracking-tight text-white">
           {detail.filiere} — {detail.universityShort}
         </h1>
         <p className="text-xl text-white/80 mb-2">{detail.university}</p>
