@@ -10,7 +10,6 @@ import {
 } from "lucide-react";
 
 const stepIcons = [FileText, Search, Send, ClipboardCheck, BadgeCheck, Rocket];
-const stepColors = ["#615CA5", "#615CA5", "#EC680A", "#615CA5", "#615CA5", "#EC680A"];
 
 export default function AdmissionSteps({ steps }: { steps: string[] }) {
   return (
@@ -50,7 +49,6 @@ export default function AdmissionSteps({ steps }: { steps: string[] }) {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {steps.map((step, i) => {
             const Icon = stepIcons[i % stepIcons.length];
-            const color = stepColors[i % stepColors.length];
             return (
               <motion.div
                 key={i}
@@ -60,38 +58,26 @@ export default function AdmissionSteps({ steps }: { steps: string[] }) {
                 transition={{ delay: i * 0.1 }}
                 className="group relative"
               >
-                <div className="relative bg-white rounded-2xl p-6 h-full transition-all duration-300 hover:shadow-xl border border-gray-100">
+                <div className="relative bg-white/[0.07] backdrop-blur-sm border border-white/10 rounded-2xl p-6 h-full transition-all duration-300 hover:bg-white/[0.12] hover:border-white/20">
                   {/* Step number + icon row */}
                   <div className="flex items-center justify-between mb-5">
-                    <div
-                      className="w-12 h-12 rounded-2xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
-                      style={{ backgroundColor: `${color}15` }}
-                    >
-                      <Icon className="w-6 h-6" style={{ color }} />
+                    <div className="w-12 h-12 rounded-2xl bg-[#EC680A]/20 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                      <Icon className="w-6 h-6 text-[#EC680A]" />
                     </div>
-                    <span
-                      className="text-5xl font-black"
-                      style={{ color: `${color}15` }}
-                    >
+                    <span className="text-5xl font-black" style={{ color: "rgba(255,255,255,0.12)" }}>
                       {String(i + 1).padStart(2, "0")}
                     </span>
                   </div>
 
                   {/* Step label */}
-                  <p className="text-sm font-bold uppercase tracking-wider mb-2" style={{ color }}>
+                  <p className="text-sm font-bold uppercase tracking-wider mb-2 text-[#EC680A]">
                     Étape {i + 1}
                   </p>
 
                   {/* Step content */}
-                  <p className="text-[#334155] text-[15px] leading-relaxed">
+                  <p className="text-[15px] leading-relaxed" style={{ color: "rgba(255,255,255,0.85)" }}>
                     {step}
                   </p>
-
-                  {/* Bottom accent line */}
-                  <div
-                    className="absolute bottom-0 left-6 right-6 h-0.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    style={{ backgroundColor: color }}
-                  />
                 </div>
               </motion.div>
             );
