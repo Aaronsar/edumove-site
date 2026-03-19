@@ -35,21 +35,10 @@ export const universityImages: Record<string, UniversityImage[]> = {
     },
   ],
   link: [
-    {
-      src: "https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?w=800&q=80",
-      alt: "Rome, Italie",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800&q=80",
-      alt: "Colisée et patrimoine de Rome",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&q=80",
-      alt: "Étudiants sur le campus",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1562774053-701939374585?w=800&q=80",
-      alt: "Campus universitaire à Rome",
-    },
+    { src: "/images/universites/link/link-campus-6.jpg", alt: "Campus Link University — Sede Francisci, Rome" },
+    { src: "/images/universites/link/link-campus-15.jpg", alt: "Bâtiment principal Link University, Rome" },
+    { src: "/images/universites/link/link-campus-18.jpg", alt: "Intérieur du campus Link University" },
+    { src: "/images/universites/link/link-campus-35.jpg", alt: "Espaces d'études Link University, Rome" },
+    { src: "/images/universites/link/link-campus-80.jpg", alt: "Vie étudiante au campus Link University" },
   ],
 };
