@@ -1,18 +1,41 @@
 "use client";
 
+import {
+  FileText,
+  CreditCard,
+  ClipboardCheck,
+  BookOpen,
+  Scale,
+} from "lucide-react";
 import type { Program, University, UniversitySlug } from "@/data/universities";
+
+/* ---------- Colour mapping per university ---------- */
+
+const universityBannerBg: Record<UniversitySlug, string> = {
+  link: "bg-emerald-500",
+  ucjc: "bg-amber-500",
+  ue: "bg-blue-500",
+};
+
+const universityAccent: Record<UniversitySlug, string> = {
+  link: "text-emerald-500",
+  ucjc: "text-amber-500",
+  ue: "text-blue-500",
+};
+
+const universityDotBg: Record<UniversitySlug, string> = {
+  link: "bg-emerald-500",
+  ucjc: "bg-amber-500",
+  ue: "bg-blue-500",
+};
+
+const universityOrder: UniversitySlug[] = ["link", "ucjc", "ue"];
+
+/* ---------- Types & helpers ---------- */
 
 interface AdmissionComparisonProps {
   programs: { university: University; program: Program }[];
 }
-
-const universityColors: Record<UniversitySlug, string> = {
-  link: "border-t-emerald-500",
-  ucjc: "border-t-amber-500",
-  ue: "border-t-blue-500",
-};
-
-const universityOrder: UniversitySlug[] = ["link", "ucjc", "ue"];
 
 interface AdmissionColumn {
   university: University;
@@ -26,13 +49,13 @@ interface AdmissionColumn {
 function getAdmissionTypeLabel(type: string): string {
   switch (type) {
     case "test-qcm":
-      return "Test QCM en francais";
+      return "Test QCM en français";
     case "entretien":
-      return "Entretien (visio ou presentiel)";
+      return "Entretien (visio ou présentiel)";
     case "pe-4-epreuves":
-      return "PE 4 epreuves";
+      return "PE 4 épreuves";
     case "pe-4-epreuves-francais":
-      return "PE 4 epreuves (parcours FR)";
+      return "PE 4 épreuves (parcours FR)";
     case "dossier":
       return "Sur dossier";
     default:
@@ -40,11 +63,16 @@ function getAdmissionTypeLabel(type: string): string {
   }
 }
 
+/* ---------- Component ---------- */
+
 export default function AdmissionComparison({
   programs,
 }: AdmissionComparisonProps) {
   // Group programs by university
-  const byUniversity = new Map<UniversitySlug, { university: University; programs: Program[] }>();
+  const byUniversity = new Map<
+    UniversitySlug,
+    { university: University; programs: Program[] }
+  >();
 
   for (const item of programs) {
     const existing = byUniversity.get(item.university.slug);
@@ -65,31 +93,32 @@ export default function AdmissionComparison({
     const entry = byUniversity.get(slug);
     if (!entry) continue;
 
-    // Take the first non-full program's admission info, or the first one available
     const representativeProgram =
       entry.programs.find((p) => !p.isFull) ?? entry.programs[0];
 
-    // Collect all unique admission types for this filiere at this uni
-    const admissionTypes = [...new Set(entry.programs.map((p) => p.admissionType))];
-    const admissionLabel = admissionTypes.map(getAdmissionTypeLabel).join(" / ");
+    const admissionTypes = [
+      ...new Set(entry.programs.map((p) => p.admissionType)),
+    ];
+    const admissionLabel = admissionTypes
+      .map(getAdmissionTypeLabel)
+      .join(" / ");
 
-    // Test fee
-    const testFee = entry.university.testFee > 0
-      ? `${entry.university.testFee}\u00A0\u20AC`
-      : representativeProgram.testFee > 0
-        ? `${representativeProgram.testFee}\u00A0\u20AC`
-        : slug === "ue"
-          ? "Inclus"
-          : "0\u00A0\u20AC";
+    const testFee =
+      entry.university.testFee > 0
+        ? `${entry.university.testFee}\u00A0\u20AC`
+        : representativeProgram.testFee > 0
+          ? `${representativeProgram.testFee}\u00A0\u20AC`
+          : slug === "ue"
+            ? "Inclus"
+            : "0\u00A0\u20AC";
 
-    // Minimum grade - aggregate from all programs
     const grades = entry.programs
       .map((p) => p.minimumGrade)
       .filter((g): g is string => g !== null);
     const uniqueGrades = [...new Set(grades)];
-    const minimumGrade = uniqueGrades.length > 0 ? uniqueGrades.join(" / ") : "Aucune";
+    const minimumGrade =
+      uniqueGrades.length > 0 ? uniqueGrades.join(" / ") : "Aucune";
 
-    // Required specialities - aggregate
     const specs = entry.programs
       .map((p) => p.requiredSpecialities)
       .filter((s): s is string => s !== null);
@@ -110,11 +139,16 @@ export default function AdmissionComparison({
   if (columns.length === 0) return null;
 
   return (
-    <section className="max-w-5xl mx-auto px-4 py-12">
-      <h2 className="text-2xl md:text-3xl font-bold italic text-[#1B1D3A] mb-8">
-        Comparer les modes d&apos;admission
-      </h2>
+    <section className="max-w-6xl mx-auto px-4 py-14">
+      {/* Section header */}
+      <div className="flex items-center gap-3 mb-10">
+        <Scale className="w-7 h-7 text-[#615CA5]" />
+        <h2 className="text-2xl md:text-3xl font-bold italic text-[#1B1D3A]">
+          Comparer les modes d&apos;admission
+        </h2>
+      </div>
 
+      {/* Cards grid */}
       <div
         className={`grid grid-cols-1 ${
           columns.length === 2
@@ -125,97 +159,148 @@ export default function AdmissionComparison({
         } gap-6`}
       >
         {columns.map((col) => {
-          const borderColor = universityColors[col.university.slug as UniversitySlug];
+          const slug = col.university.slug as UniversitySlug;
+          const bannerBg = universityBannerBg[slug];
+          const accent = universityAccent[slug];
+          const dotBg = universityDotBg[slug];
 
           return (
             <div
-              key={col.university.slug}
-              className={`bg-white rounded-2xl p-6 shadow-sm border-t-4 ${borderColor}`}
+              key={slug}
+              className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
             >
-              {/* University header */}
-              <div className="mb-6">
-                <h3 className="text-lg font-bold text-[#1B1D3A]">
-                  {col.university.shortName}
-                </h3>
-                <p className="text-sm text-gray-500">
-                  {col.university.countryFlag} {col.university.country}
-                </p>
+              {/* Colored top banner (60px) */}
+              <div
+                className={`${bannerBg} px-6 py-4 flex items-center gap-3`}
+              >
+                <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">
+                    {col.university.shortName}
+                  </span>
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-white">
+                    {col.university.name}
+                  </h3>
+                  <p className="text-white/80 text-sm">
+                    {col.university.countryFlag} {col.university.country}
+                  </p>
+                </div>
               </div>
 
-              {/* Details */}
-              <div className="space-y-4">
-                <div>
-                  <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">
-                    Type d&apos;admission
-                  </p>
-                  <p className="text-sm font-medium text-gray-800">
-                    {col.admissionType}
-                  </p>
+              {/* Info list with icons */}
+              <div className="p-6 space-y-5">
+                {/* Admission type */}
+                <div className="flex items-start gap-3">
+                  <div className="mt-0.5">
+                    <FileText className={`w-5 h-5 ${accent}`} />
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-0.5">
+                      Type d&apos;admission
+                    </p>
+                    <p className="text-sm font-semibold text-[#1B1D3A]">
+                      {col.admissionType}
+                    </p>
+                  </div>
                 </div>
 
-                <div>
-                  <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">
-                    Frais d&apos;admission
-                  </p>
-                  <p className="text-sm font-medium text-gray-800">
-                    {col.testFee}
-                  </p>
+                {/* Test fee */}
+                <div className="flex items-start gap-3">
+                  <div className="mt-0.5">
+                    <CreditCard className={`w-5 h-5 ${accent}`} />
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-0.5">
+                      Frais d&apos;admission
+                    </p>
+                    <p className="text-sm font-semibold text-[#1B1D3A]">
+                      {col.testFee}
+                    </p>
+                  </div>
                 </div>
 
-                <div>
-                  <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">
-                    Moyenne minimale
-                  </p>
-                  <p
-                    className={`text-sm font-medium ${
-                      col.minimumGrade === "Aucune"
-                        ? "text-green-600"
-                        : "text-gray-800"
-                    }`}
-                  >
-                    {col.minimumGrade}
-                  </p>
+                {/* Minimum grade */}
+                <div className="flex items-start gap-3">
+                  <div className="mt-0.5">
+                    <BookOpen className={`w-5 h-5 ${accent}`} />
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-0.5">
+                      Moyenne minimale
+                    </p>
+                    <p
+                      className={`text-sm font-semibold ${
+                        col.minimumGrade === "Aucune"
+                          ? "text-green-600"
+                          : "text-[#1B1D3A]"
+                      }`}
+                    >
+                      {col.minimumGrade}
+                    </p>
+                  </div>
                 </div>
 
-                <div>
-                  <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">
-                    Specialites requises
-                  </p>
-                  <p
-                    className={`text-sm font-medium ${
-                      col.requiredSpecialities === "Aucune"
-                        ? "text-green-600"
-                        : "text-gray-800"
-                    }`}
-                  >
-                    {col.requiredSpecialities}
-                  </p>
+                {/* Required specialities */}
+                <div className="flex items-start gap-3">
+                  <div className="mt-0.5">
+                    <ClipboardCheck className={`w-5 h-5 ${accent}`} />
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-0.5">
+                      Spécialités requises
+                    </p>
+                    <p
+                      className={`text-sm font-semibold ${
+                        col.requiredSpecialities === "Aucune"
+                          ? "text-green-600"
+                          : "text-[#1B1D3A]"
+                      }`}
+                    >
+                      {col.requiredSpecialities}
+                    </p>
+                  </div>
                 </div>
 
-                {/* Admission process steps */}
-                <div>
-                  <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">
-                    Processus
+                {/* Divider */}
+                <div className="border-t border-gray-100 pt-4">
+                  <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-4">
+                    Processus d&apos;admission
                   </p>
-                  <ol className="space-y-2">
-                    {col.university.admissionProcess.steps.map((step) => (
-                      <li key={step.step} className="flex items-start gap-2">
-                        <span className="flex-shrink-0 w-5 h-5 rounded-full bg-[#EC680A]/10 text-[#EC680A] text-xs font-bold flex items-center justify-center mt-0.5">
-                          {step.step}
-                        </span>
-                        <div>
-                          <span className="text-sm font-medium text-gray-700">
-                            {step.label}
-                          </span>
-                          <p className="text-xs text-gray-500">
-                            {step.description}
-                          </p>
+
+                  {/* Steps with connecting dotted line */}
+                  <div className="relative">
+                    {col.university.admissionProcess.steps.map(
+                      (step, idx, arr) => (
+                        <div key={step.step} className="flex items-start gap-3 mb-4 last:mb-0 relative">
+                          {/* Dotted line connector */}
+                          {idx < arr.length - 1 && (
+                            <div
+                              className="absolute left-[11px] top-7 w-0.5 border-l-2 border-dotted border-gray-200"
+                              style={{ height: "calc(100% - 4px)" }}
+                            />
+                          )}
+                          {/* Step number dot */}
+                          <div
+                            className={`flex-shrink-0 w-6 h-6 rounded-full ${dotBg} text-white text-xs font-bold flex items-center justify-center z-10`}
+                          >
+                            {step.step}
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <span className="text-sm font-semibold text-[#1B1D3A]">
+                              {step.label}
+                            </span>
+                            <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">
+                              {step.description}
+                            </p>
+                          </div>
                         </div>
-                      </li>
-                    ))}
-                  </ol>
+                      )
+                    )}
+                  </div>
+
                   {col.university.admissionProcess.notes && (
-                    <p className="text-xs text-gray-400 italic mt-2">
+                    <p className="text-xs text-gray-400 italic mt-3 pl-9">
                       {col.university.admissionProcess.notes}
                     </p>
                   )}

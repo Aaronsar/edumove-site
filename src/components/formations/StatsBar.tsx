@@ -9,7 +9,7 @@ interface StatsBarProps {
   filiere: Filiere;
 }
 
-export default function StatsBar({ programs, filiere }: StatsBarProps) {
+export default function StatsBar({ programs }: StatsBarProps) {
   const availablePrograms = programs.filter((p) => !p.program.isFull);
 
   // Number of unique campuses
@@ -36,7 +36,7 @@ export default function StatsBar({ programs, filiere }: StatsBarProps) {
   const minPrice = prices.length > 0 ? Math.min(...prices) : 0;
   const priceText =
     minPrice > 0
-      ? `A partir de ${minPrice.toLocaleString("fr-FR")}\u00A0\u20AC/an`
+      ? `${minPrice.toLocaleString("fr-FR")}\u00A0\u20AC/an`
       : "N/A";
 
   // Number of unique universities
@@ -49,45 +49,55 @@ export default function StatsBar({ programs, filiere }: StatsBarProps) {
 
   const stats = [
     {
-      icon: <MapPin className="w-5 h-5 text-[#EC680A]" />,
+      icon: <MapPin className="w-5 h-5 text-white" />,
       value: `${campusCount} campus`,
-      label: "disponibles",
+      label: "Disponibles",
     },
     {
-      icon: <Clock className="w-5 h-5 text-[#EC680A]" />,
+      icon: <Clock className="w-5 h-5 text-white" />,
       value: durationText,
-      label: "de formation",
+      label: "De formation",
     },
     {
-      icon: <Euro className="w-5 h-5 text-[#EC680A]" />,
-      value: priceText,
-      label: "frais de scolarite",
+      icon: <Euro className="w-5 h-5 text-white" />,
+      value: `Dès ${priceText}`,
+      label: "Frais de scolarité",
     },
     {
-      icon: <GraduationCap className="w-5 h-5 text-[#EC680A]" />,
-      value: `${uniCount} universite${uniCount > 1 ? "s" : ""}`,
-      label: "partenaires",
+      icon: <GraduationCap className="w-5 h-5 text-white" />,
+      value: `${uniCount} université${uniCount > 1 ? "s" : ""}`,
+      label: "Partenaires",
     },
     {
-      icon: <Globe className="w-5 h-5 text-[#EC680A]" />,
+      icon: <Globe className="w-5 h-5 text-white" />,
       value: countriesText,
-      label: countries.size > 1 ? "pays" : "pays",
+      label: countries.size > 1 ? "Pays" : "Pays",
     },
   ];
 
   return (
-    <div className="bg-white shadow-sm rounded-2xl -mt-8 relative z-10 mx-auto max-w-5xl px-4 py-6 sm:mx-4 md:mx-auto">
+    <div className="bg-white shadow-lg rounded-2xl -mt-8 relative z-10 mx-auto max-w-6xl px-6 py-7 sm:mx-4 md:mx-auto border border-gray-100">
       <div className="flex flex-wrap justify-around items-start gap-4">
         {stats.map((stat, i) => (
-          <div
-            key={i}
-            className="flex flex-col items-center text-center min-w-[120px] flex-1"
-          >
-            <div className="mb-2">{stat.icon}</div>
-            <span className="text-sm md:text-base font-semibold text-gray-900">
-              {stat.value}
-            </span>
-            <span className="text-xs text-gray-500">{stat.label}</span>
+          <div key={i} className="flex items-center gap-3">
+            {/* Divider before each stat except the first */}
+            {i > 0 && (
+              <div className="hidden sm:block w-px h-12 bg-gray-200 mr-3" />
+            )}
+            <div className="flex items-center gap-3 min-w-[140px]">
+              {/* Colored icon circle */}
+              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#EC680A] flex items-center justify-center shadow-sm">
+                {stat.icon}
+              </div>
+              <div className="flex flex-col">
+                <span className="text-lg md:text-xl font-bold text-[#1B1D3A] leading-tight">
+                  {stat.value}
+                </span>
+                <span className="text-[11px] uppercase tracking-wider font-semibold text-gray-400">
+                  {stat.label}
+                </span>
+              </div>
+            </div>
           </div>
         ))}
       </div>
