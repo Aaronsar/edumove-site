@@ -3,7 +3,7 @@ export default function CTASection() {
     <section className="relative py-16 bg-white overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#ec680a] via-[#615ca5] to-[#ec680a]" />
       <div className="relative z-10 max-w-3xl mx-auto px-4 text-center">
-        <h2 className="text-2xl md:text-3xl font-bold text-[#1b1d3a] mb-3">
+        <h2 className="text-2xl md:text-3xl font-bold mb-3 bg-gradient-to-r from-[#ec680a] via-[#615ca5] to-[#ec680a] bg-clip-text" style={{ WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
           Prêt à commencer votre aventure ?
         </h2>
         <p className="text-slate-500 mb-8">
