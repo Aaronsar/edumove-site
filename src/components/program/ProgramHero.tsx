@@ -51,16 +51,18 @@ export default function ProgramHero({ detail }: { detail: ProgramDetail }) {
             )}
           </div>
 
-          {/* Right — hero image */}
-          {detail.heroImage && (
-            <div className="hidden md:block w-80 lg:w-96 h-56 lg:h-64 rounded-2xl overflow-hidden shadow-2xl shrink-0">
-              <Image
-                src={detail.heroImage}
-                alt={`Campus ${detail.university}`}
-                width={384}
-                height={256}
-                className="w-full h-full object-cover"
-              />
+          {/* Right — hero image mosaic */}
+          {detail.heroImages && detail.heroImages.length >= 4 && (
+            <div className="hidden md:grid grid-cols-2 grid-rows-2 gap-2 w-80 lg:w-[420px] h-64 lg:h-72 shrink-0">
+              <div className="row-span-2 rounded-l-3xl overflow-hidden border-2 border-white/10">
+                <Image src={detail.heroImages[0]} alt={`Campus ${detail.university}`} width={400} height={500} className="w-full h-full object-cover" />
+              </div>
+              <div className="rounded-tr-3xl overflow-hidden border-2 border-white/10">
+                <Image src={detail.heroImages[1]} alt={`Campus ${detail.university}`} width={300} height={250} className="w-full h-full object-cover" />
+              </div>
+              <div className="rounded-br-3xl overflow-hidden border-2 border-white/10">
+                <Image src={detail.heroImages[2]} alt={`Campus ${detail.university}`} width={300} height={250} className="w-full h-full object-cover" />
+              </div>
             </div>
           )}
         </div>
