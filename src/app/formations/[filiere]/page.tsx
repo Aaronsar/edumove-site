@@ -6,7 +6,6 @@ import { getProgramsByFiliere, getCheapestProgram } from "@/data/universities";
 import type { FiliereSlug } from "@/data/universities";
 
 import FormationHero from "@/components/formations/FormationHero";
-import StatsBar from "@/components/formations/StatsBar";
 import ProgramsList from "@/components/formations/ProgramsList";
 import AdmissionComparison from "@/components/formations/AdmissionComparison";
 import FormationCTA from "@/components/formations/FormationCTA";
@@ -68,13 +67,28 @@ export default async function FormationPage({
   const cheapest = getCheapestProgram(filiere.slug);
   const cheapestTotalCost = cheapest ? cheapest.program.totalCost : null;
 
-  return (
-    <main className="min-h-screen bg-gray-50">
-      {/* Hero section with gradient */}
-      <FormationHero filiere={filiere} />
+  // Compute stats for hero
+  const availablePrograms = programs.filter((p) => !p.program.isFull);
+  const uniqueCampuses = new Set(programs.map((p) => p.program.campus));
+  const durations = availablePrograms.map((p) => p.program.durationYears).filter((d) => d > 0);
+  const minDuration = durations.length > 0 ? Math.min(...durations) : 0;
+  const maxDuration = durations.length > 0 ? Math.max(...durations) : 0;
+  const durationText = durations.length === 0 ? "N/A" : minDuration === maxDuration ? `${minDuration} ans` : `${minDuration}-${maxDuration} ans`;
+  const uniqueUnis = new Set(programs.map((p) => p.university.slug));
+  const countries = new Set(programs.map((p) => p.university.country));
 
-      {/* Stats bar overlapping the hero */}
-      <StatsBar programs={programs} filiere={filiere} />
+  const heroStats = {
+    campusCount: uniqueCampuses.size,
+    durationText,
+    priceText: "",
+    uniCount: uniqueUnis.size,
+    countriesText: Array.from(countries).join(", "),
+  };
+
+  return (
+    <main className="min-h-screen bg-white">
+      {/* Hero section with gradient */}
+      <FormationHero filiere={filiere} stats={heroStats} />
 
       {/* University program cards */}
       <ProgramsList programs={programs} cheapestTotalCost={cheapestTotalCost} />

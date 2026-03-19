@@ -156,7 +156,8 @@ export default function ProgramsList({
 
   return (
     <section className="max-w-6xl mx-auto px-4 py-14">
-      <h2 className="text-2xl md:text-3xl font-bold text-[#1B1D3A] mb-2">
+      <p className="text-[#ec680a] text-xs uppercase tracking-widest font-semibold mb-2">Programmes disponibles</p>
+      <h2 className="text-2xl md:text-3xl font-bold text-[#1B1D3A] mb-2" style={{ color: "#1b1d3a" }}>
         Toutes les options disponibles
       </h2>
       <p className="text-gray-500 mb-10">

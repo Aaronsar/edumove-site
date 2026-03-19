@@ -139,13 +139,19 @@ export default function AdmissionComparison({
   if (columns.length === 0) return null;
 
   return (
-    <section className="max-w-6xl mx-auto px-4 py-14">
+    <section className="relative max-w-6xl mx-auto px-4 py-14">
+      {/* Gradient divider */}
+      <div className="absolute top-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-[#ec680a]/30 to-transparent" />
+
       {/* Section header */}
-      <div className="flex items-center gap-3 mb-10">
-        <Scale className="w-7 h-7 text-[#615CA5]" />
-        <h2 className="text-2xl md:text-3xl font-bold italic text-[#1B1D3A]">
-          Comparer les modes d&apos;admission
-        </h2>
+      <div className="mb-10">
+        <p className="text-[#ec680a] text-xs uppercase tracking-widest font-semibold mb-2">Admission</p>
+        <div className="flex items-center gap-3">
+          <Scale className="w-7 h-7 text-[#615CA5]" />
+          <h2 className="text-2xl md:text-3xl font-bold text-[#1B1D3A]" style={{ color: "#1b1d3a" }}>
+            Comparer les modes d&apos;admission
+          </h2>
+        </div>
       </div>
 
       {/* Cards grid */}
