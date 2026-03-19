@@ -53,16 +53,17 @@ export default function ProgramHero({ detail }: { detail: ProgramDetail }) {
 
           {/* Right — hero image mosaic */}
           {detail.heroImages && detail.heroImages.length >= 4 && (
-            <div className="hidden md:grid grid-cols-2 grid-rows-2 gap-2 w-80 lg:w-[420px] h-64 lg:h-72 shrink-0">
-              <div className="row-span-2 rounded-l-3xl overflow-hidden border-2 border-white/10">
-                <Image src={detail.heroImages[0]} alt={`Campus ${detail.university}`} width={400} height={500} className="w-full h-full object-cover" />
-              </div>
-              <div className="rounded-tr-3xl overflow-hidden border-2 border-white/10">
-                <Image src={detail.heroImages[1]} alt={`Campus ${detail.university}`} width={300} height={250} className="w-full h-full object-cover" />
-              </div>
-              <div className="rounded-br-3xl overflow-hidden border-2 border-white/10">
-                <Image src={detail.heroImages[2]} alt={`Campus ${detail.university}`} width={300} height={250} className="w-full h-full object-cover" />
-              </div>
+            <div className="hidden md:grid grid-cols-2 gap-3 w-80 lg:w-[400px] shrink-0">
+              {detail.heroImages.slice(0, 4).map((src, i) => (
+                <div key={i} className={`overflow-hidden shadow-lg ${
+                  i === 0 ? "rounded-tl-3xl rounded-tr-lg rounded-bl-lg rounded-br-lg" :
+                  i === 1 ? "rounded-tl-lg rounded-tr-3xl rounded-bl-lg rounded-br-lg" :
+                  i === 2 ? "rounded-tl-lg rounded-tr-lg rounded-bl-3xl rounded-br-lg" :
+                  "rounded-tl-lg rounded-tr-lg rounded-bl-lg rounded-br-3xl"
+                }`}>
+                  <Image src={src} alt={`Campus ${detail.university}`} width={400} height={267} className="w-full h-full object-cover aspect-[3/2]" />
+                </div>
+              ))}
             </div>
           )}
         </div>
