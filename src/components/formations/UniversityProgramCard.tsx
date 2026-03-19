@@ -1,8 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { MapPin, Clock, Globe, ArrowRight, AlertTriangle, Sparkles } from "lucide-react";
 import type { Program, UniversitySlug } from "@/data/universities";
+
+const universityImage: Partial<Record<UniversitySlug, string>> = {
+  ue: "/universities/ue-campus.png",
+};
 
 const universityInitials: Record<UniversitySlug, string> = {
   link: "LINK",
@@ -79,9 +84,21 @@ export default function UniversityProgramCard({
       <div className="p-6 pb-4">
         {/* University identity */}
         <div className="flex items-center gap-3 mb-4">
-          <div className="w-11 h-11 rounded-xl bg-[#615CA5] flex items-center justify-center flex-shrink-0">
-            <span className="text-white font-bold text-xs tracking-wide">{initials}</span>
-          </div>
+          {universityImage[universitySlug] ? (
+            <div className="w-11 h-11 rounded-xl overflow-hidden flex-shrink-0">
+              <Image
+                src={universityImage[universitySlug]!}
+                alt={universityName}
+                width={44}
+                height={44}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          ) : (
+            <div className="w-11 h-11 rounded-xl bg-[#615CA5] flex items-center justify-center flex-shrink-0">
+              <span className="text-white font-bold text-xs tracking-wide">{initials}</span>
+            </div>
+          )}
           <div className="min-w-0">
             <h3 className="text-base font-bold text-[#1B1D3A] leading-tight truncate">{universityName}</h3>
             <div className="flex items-center gap-1.5 mt-0.5">
