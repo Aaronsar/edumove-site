@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { getAllProgramSlugs, getProgramDetail } from "@/data/program-details";
 import ProgramHero from "@/components/program/ProgramHero";
 import KeyInfoBar from "@/components/program/KeyInfoBar";
+import ProgramHighlights from "@/components/program/ProgramHighlights";
 import CurriculumAccordion from "@/components/program/CurriculumAccordion";
 import AdmissionSteps from "@/components/program/AdmissionSteps";
 import CostCard from "@/components/program/CostCard";
@@ -41,21 +42,30 @@ export default async function ProgramPage({
       <ProgramHero detail={detail} />
       <KeyInfoBar detail={detail} />
 
-      <section className="max-w-5xl mx-auto px-4 py-12">
-        <h2 className="text-2xl md:text-3xl font-bold italic text-[#1B1D3A] mb-4">
-          Présentation
-        </h2>
-        <p className="text-[#334155] leading-relaxed text-lg">{detail.presentation}</p>
-        <div className="mt-4 flex flex-wrap gap-3">
-          <span className="bg-[#615CA5]/10 text-[#1B1D3A] text-sm px-3 py-1.5 rounded-full font-medium">
-            {detail.diploma}
-          </span>
-          <span className="bg-[#EC680A]/10 text-[#1B1D3A] text-sm px-3 py-1.5 rounded-full font-medium">
-            {detail.speRequired}
-          </span>
+      {/* Presentation */}
+      <section className="max-w-5xl mx-auto px-4 py-16">
+        <div className="flex items-start gap-4">
+          <div className="w-1 h-16 rounded-full bg-gradient-to-b from-[#EC680A] to-[#615CA5] shrink-0" />
+          <div>
+            <h2 className="text-2xl md:text-3xl font-bold text-[#1B1D3A] mb-4">
+              Présentation
+            </h2>
+            <p className="text-[#334155] leading-relaxed text-lg">
+              {detail.presentation}
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <span className="bg-[#615CA5]/10 text-[#615CA5] text-sm px-4 py-2 rounded-xl font-semibold border border-[#615CA5]/15">
+                {detail.diploma}
+              </span>
+              <span className="bg-[#EC680A]/10 text-[#EC680A] text-sm px-4 py-2 rounded-xl font-semibold border border-[#EC680A]/15">
+                {detail.speRequired}
+              </span>
+            </div>
+          </div>
         </div>
       </section>
 
+      <ProgramHighlights detail={detail} />
       <CurriculumAccordion program={detail.program} />
       <AdmissionSteps steps={detail.admissionSteps} />
       <CostCard detail={detail} />
