@@ -1,8 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, useMotionValue, useTransform, animate } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 const formations = [
   {
@@ -62,46 +61,10 @@ const formations = [
 ];
 
 export default function HeroSection() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const financableRef = useRef<HTMLDivElement>(null);
-  const lclRef = useRef<HTMLSpanElement>(null);
-  const [pathD, setPathD] = useState("");
-  const [lclActive, setLclActive] = useState(false);
-  const pathProgress = useMotionValue(0);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (!financableRef.current || !lclRef.current || !sectionRef.current) return;
-      const section = sectionRef.current.getBoundingClientRect();
-      const from = financableRef.current.getBoundingClientRect();
-      const to = lclRef.current.getBoundingClientRect();
-
-      const x1 = from.left + from.width / 2 - section.left;
-      const y1 = from.bottom - section.top + 4;
-      const x2 = to.left + to.width / 2 - section.left;
-      const y2 = to.top - section.top + to.height / 2;
-
-      const midY = y1 + (y2 - y1) * 0.5;
-      setPathD(`M ${x1} ${y1} C ${x1} ${midY}, ${x2} ${midY}, ${x2} ${y2}`);
-
-      // Animate the path drawing after a delay
-      setTimeout(() => {
-        animate(pathProgress, 1, {
-          duration: 1.5,
-          ease: "easeInOut",
-          onComplete: () => setLclActive(true),
-        });
-      }, 1200);
-    }, 600);
-    return () => clearTimeout(timer);
-  }, [pathProgress]);
-
-  const dashOffset = useTransform(pathProgress, [0, 1], [1, 0]);
-
   return (
     <>
       {/* HERO — Full width dark navy */}
-      <section ref={sectionRef} className="relative bg-[#1b1d3a] overflow-hidden">
+      <section className="relative bg-[#1b1d3a] overflow-hidden">
         {/* Decorative shapes */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-20 -right-20 w-96 h-96 rounded-full bg-[#615ca5]/20 blur-3xl" />
@@ -153,7 +116,7 @@ export default function HeroSection() {
                     <p className="text-white/50 text-xs">{s.label}</p>
                   </div>
                 ))}
-                <div ref={financableRef}>
+                <div>
                   <p className="text-2xl md:text-3xl font-bold text-[#ec680a]">100%</p>
                   <p className="text-white/50 text-xs">Finançable</p>
                 </div>
@@ -183,7 +146,7 @@ export default function HeroSection() {
                 <div className="flex flex-wrap items-center gap-4 opacity-40">
                   <span className="text-white font-black text-sm">BFMTV.</span>
                   <span className="text-white font-serif font-bold text-sm italic">Forbes</span>
-                  <span ref={lclRef} className={`font-bold text-sm transition-all duration-500 ${lclActive ? "text-[#ec680a] opacity-100 scale-110" : "text-white"}`}>LCL</span>
+                  <span className="text-white font-bold text-sm">LCL</span>
                   <span className="text-white font-bold text-xs">L&apos;Étudiant</span>
                   <span className="text-white font-serif text-xs font-bold">Le Figaro</span>
                 </div>
@@ -191,21 +154,6 @@ export default function HeroSection() {
             </motion.div>
           </div>
         </div>
-        {/* Animated path from 100% to LCL */}
-        {pathD && (
-          <svg className="absolute inset-0 w-full h-full pointer-events-none z-20 hidden md:block">
-            <motion.path
-              d={pathD}
-              fill="none"
-              stroke="#ec680a"
-              strokeWidth={2}
-              strokeDasharray="1"
-              strokeDashoffset={dashOffset}
-              pathLength={1}
-              opacity={0.6}
-            />
-          </svg>
-        )}
       </section>
     </>
   );
