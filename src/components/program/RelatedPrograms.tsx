@@ -53,11 +53,6 @@ export default function RelatedPrograms({ detail }: { detail: ProgramDetail }) {
                   </div>
                 </div>
 
-                <div className="mb-5">
-                  <span className="text-2xl font-extrabold text-[#EC680A]">{prog.costPerYear}</span>
-                  <span className="text-sm font-normal text-[#94a3b8] ml-0.5">/an</span>
-                </div>
-
                 <div className="flex flex-wrap gap-2 mb-5">
                   <span className="inline-flex items-center gap-1.5 bg-[#615CA5]/8 text-[#615CA5] text-xs font-medium px-3 py-1.5 rounded-lg">
                     <Clock className="w-3.5 h-3.5" />
