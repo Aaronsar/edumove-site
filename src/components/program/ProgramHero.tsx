@@ -37,18 +37,20 @@ export default function ProgramHero({ detail }: { detail: ProgramDetail }) {
               <MapPin className="w-5 h-5 text-[#EC680A]" />
               {detail.city}, {detail.country}
             </p>
-            {detail.isCheapest && (
-              <span className="inline-block mt-4 bg-[#EC680A] text-white text-sm font-semibold px-4 py-1.5 rounded-full">
-                Option la moins chère
-              </span>
-            )}
-            <a
-              href="https://candidature.edumove.fr"
-              className="group inline-flex items-center gap-2 mt-6 bg-[#EC680A] hover:bg-[#D45E09] text-white text-sm font-semibold px-6 py-3 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#EC680A]/25 hover:gap-3"
-            >
+            <div className="flex flex-col sm:flex-row items-start gap-3 mt-6">
+              {detail.isCheapest && (
+                <span className="inline-flex items-center bg-[#EC680A] text-white text-sm font-semibold px-4 py-2.5 rounded-full">
+                  Option la moins ch\u00e8re
+                </span>
+              )}
+              <a
+                href="https://candidature.edumove.fr"
+                className="group inline-flex items-center gap-2 bg-[#EC680A] hover:bg-[#D45E09] text-white text-sm font-semibold px-6 py-2.5 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#EC680A]/25 hover:gap-3"
+              >
               Déposer ma candidature gratuitement
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-            </a>
+              </a>
+            </div>
           </div>
 
           {/* Right — hero image mosaic */}
