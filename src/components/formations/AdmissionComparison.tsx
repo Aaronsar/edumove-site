@@ -6,32 +6,11 @@ import {
   ClipboardCheck,
   BookOpen,
   Scale,
+  Info,
 } from "lucide-react";
 import type { Program, University, UniversitySlug } from "@/data/universities";
 
-/* ---------- Colour mapping per university ---------- */
-
-const universityBannerBg: Record<UniversitySlug, string> = {
-  link: "bg-emerald-500",
-  ucjc: "bg-amber-500",
-  ue: "bg-blue-500",
-};
-
-const universityAccent: Record<UniversitySlug, string> = {
-  link: "text-emerald-500",
-  ucjc: "text-amber-500",
-  ue: "text-blue-500",
-};
-
-const universityDotBg: Record<UniversitySlug, string> = {
-  link: "bg-emerald-500",
-  ucjc: "bg-amber-500",
-  ue: "bg-blue-500",
-};
-
 const universityOrder: UniversitySlug[] = ["link", "ucjc", "ue"];
-
-/* ---------- Types & helpers ---------- */
 
 interface AdmissionComparisonProps {
   programs: { university: University; program: Program }[];
@@ -63,12 +42,16 @@ function getAdmissionTypeLabel(type: string): string {
   }
 }
 
-/* ---------- Component ---------- */
+const infoRows: { key: keyof Pick<AdmissionColumn, "admissionType" | "testFee" | "minimumGrade" | "requiredSpecialities">; label: string; icon: React.ElementType }[] = [
+  { key: "admissionType", label: "Type d'admission", icon: FileText },
+  { key: "testFee", label: "Frais d'admission", icon: CreditCard },
+  { key: "minimumGrade", label: "Moyenne minimale", icon: BookOpen },
+  { key: "requiredSpecialities", label: "Spécialités requises", icon: ClipboardCheck },
+];
 
 export default function AdmissionComparison({
   programs,
 }: AdmissionComparisonProps) {
-  // Group programs by university
   const byUniversity = new Map<
     UniversitySlug,
     { university: University; programs: Program[] }
@@ -86,7 +69,6 @@ export default function AdmissionComparison({
     }
   }
 
-  // Build columns in order
   const columns: AdmissionColumn[] = [];
 
   for (const slug of universityOrder) {
@@ -139,182 +121,116 @@ export default function AdmissionComparison({
   if (columns.length === 0) return null;
 
   return (
-    <section className="relative max-w-6xl mx-auto px-4 py-14">
-      {/* Gradient divider */}
-      <div className="absolute top-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-[#ec680a]/30 to-transparent" />
-
-      {/* Section header */}
-      <div className="mb-10">
-        <p className="text-[#ec680a] text-xs uppercase tracking-widest font-semibold mb-2">Admission</p>
-        <div className="flex items-center gap-3">
-          <Scale className="w-7 h-7 text-[#615CA5]" />
-          <h2 className="text-2xl md:text-3xl font-bold text-[#1B1D3A]" style={{ color: "#1b1d3a" }}>
-            Comparer les modes d&apos;admission
-          </h2>
+    <section className="relative py-20 bg-white overflow-hidden">
+      <div className="max-w-6xl mx-auto px-4">
+        {/* Section header */}
+        <div className="mb-12 text-center">
+          <p className="text-sm font-semibold uppercase tracking-widest text-[#EC680A] mb-3">
+            Admission
+          </p>
+          <div className="flex items-center justify-center gap-3">
+            <Scale className="w-7 h-7 text-[#615CA5]" />
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight" style={{ color: "#615CA5" }}>
+              Comparer les modes d&apos;admission
+            </h2>
+          </div>
         </div>
-      </div>
 
-      {/* Cards grid */}
-      <div
-        className={`grid grid-cols-1 ${
-          columns.length === 2
-            ? "md:grid-cols-2"
-            : columns.length >= 3
-              ? "md:grid-cols-2 lg:grid-cols-3"
-              : ""
-        } gap-6`}
-      >
-        {columns.map((col) => {
-          const slug = col.university.slug as UniversitySlug;
-          const bannerBg = universityBannerBg[slug];
-          const accent = universityAccent[slug];
-          const dotBg = universityDotBg[slug];
+        {/* Cards grid — always equal width */}
+        <div className={`grid grid-cols-1 ${columns.length === 2 ? "lg:grid-cols-2" : "lg:grid-cols-3"} gap-6`}>
+          {columns.map((col) => {
+            const slug = col.university.slug as UniversitySlug;
 
-          return (
-            <div
-              key={slug}
-              className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
-            >
-              {/* Colored top banner (60px) */}
+            return (
               <div
-                className={`${bannerBg} px-6 py-4 flex items-center gap-3`}
+                key={slug}
+                className="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-lg transition-shadow flex flex-col"
               >
-                <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">
-                    {col.university.shortName}
-                  </span>
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-white">
-                    {col.university.name}
-                  </h3>
-                  <p className="text-white/80 text-sm">
-                    {col.university.countryFlag} {col.university.country}
-                  </p>
-                </div>
-              </div>
-
-              {/* Info list with icons */}
-              <div className="p-6 space-y-5">
-                {/* Admission type */}
-                <div className="flex items-start gap-3">
-                  <div className="mt-0.5">
-                    <FileText className={`w-5 h-5 ${accent}`} />
+                {/* Header */}
+                <div className="bg-[#1B1D3A] px-6 py-5 flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-[#615CA5] flex items-center justify-center flex-shrink-0">
+                    <span className="text-white font-bold text-[11px] tracking-wide">
+                      {col.university.slug === "ue" ? "UE" : col.university.shortName}
+                    </span>
                   </div>
-                  <div>
-                    <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-0.5">
-                      Type d&apos;admission
-                    </p>
-                    <p className="text-sm font-semibold text-[#1B1D3A]">
-                      {col.admissionType}
+                  <div className="min-w-0">
+                    <h3 className="text-base font-bold text-white truncate">
+                      {col.university.name}
+                    </h3>
+                    <p className="text-white/60 text-sm">
+                      {col.university.countryFlag} {col.university.country}
                     </p>
                   </div>
                 </div>
 
-                {/* Test fee */}
-                <div className="flex items-start gap-3">
-                  <div className="mt-0.5">
-                    <CreditCard className={`w-5 h-5 ${accent}`} />
-                  </div>
-                  <div>
-                    <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-0.5">
-                      Frais d&apos;admission
-                    </p>
-                    <p className="text-sm font-semibold text-[#1B1D3A]">
-                      {col.testFee}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Minimum grade */}
-                <div className="flex items-start gap-3">
-                  <div className="mt-0.5">
-                    <BookOpen className={`w-5 h-5 ${accent}`} />
-                  </div>
-                  <div>
-                    <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-0.5">
-                      Moyenne minimale
-                    </p>
-                    <p
-                      className={`text-sm font-semibold ${
-                        col.minimumGrade === "Aucune"
-                          ? "text-green-600"
-                          : "text-[#1B1D3A]"
-                      }`}
-                    >
-                      {col.minimumGrade}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Required specialities */}
-                <div className="flex items-start gap-3">
-                  <div className="mt-0.5">
-                    <ClipboardCheck className={`w-5 h-5 ${accent}`} />
-                  </div>
-                  <div>
-                    <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-0.5">
-                      Spécialités requises
-                    </p>
-                    <p
-                      className={`text-sm font-semibold ${
-                        col.requiredSpecialities === "Aucune"
-                          ? "text-green-600"
-                          : "text-[#1B1D3A]"
-                      }`}
-                    >
-                      {col.requiredSpecialities}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Divider */}
-                <div className="border-t border-gray-100 pt-4">
-                  <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-4">
-                    Processus d&apos;admission
-                  </p>
-
-                  {/* Steps with connecting dotted line */}
-                  <div className="relative">
-                    {col.university.admissionProcess.steps.map(
-                      (step, idx, arr) => (
-                        <div key={step.step} className="flex items-start gap-3 mb-4 last:mb-0 relative">
-                          {/* Dotted line connector */}
-                          {idx < arr.length - 1 && (
-                            <div
-                              className="absolute left-[11px] top-7 w-0.5 border-l-2 border-dotted border-gray-200"
-                              style={{ height: "calc(100% - 4px)" }}
-                            />
-                          )}
-                          {/* Step number dot */}
-                          <div
-                            className={`flex-shrink-0 w-6 h-6 rounded-full ${dotBg} text-white text-xs font-bold flex items-center justify-center z-10`}
-                          >
-                            {step.step}
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <span className="text-sm font-semibold text-[#1B1D3A]">
-                              {step.label}
-                            </span>
-                            <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">
-                              {step.description}
-                            </p>
-                          </div>
+                {/* Info rows */}
+                <div className="p-6 space-y-4 flex-1">
+                  {infoRows.map(({ key, label, icon: Icon }) => {
+                    const value = col[key];
+                    const isPositive = value === "Aucune" || value === "0\u00A0\u20AC" || value === "Inclus";
+                    return (
+                      <div key={key} className="flex items-start gap-3">
+                        <div className="w-8 h-8 rounded-lg bg-[#615CA5]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <Icon className="w-4 h-4 text-[#615CA5]" />
                         </div>
-                      )
+                        <div className="min-w-0">
+                          <p className="text-[10px] font-bold text-[#94a3b8] uppercase tracking-wider mb-0.5">
+                            {label}
+                          </p>
+                          <p className={`text-sm font-semibold ${isPositive ? "text-[#EC680A]" : "text-[#1B1D3A]"}`}>
+                            {value}
+                          </p>
+                        </div>
+                      </div>
+                    );
+                  })}
+
+                  {/* Divider + Process */}
+                  <div className="border-t border-gray-100 pt-5">
+                    <p className="text-[10px] font-bold text-[#94a3b8] uppercase tracking-wider mb-4">
+                      Processus d&apos;admission
+                    </p>
+
+                    <div className="relative">
+                      {col.university.admissionProcess.steps.map(
+                        (step, idx, arr) => (
+                          <div key={step.step} className="flex items-start gap-3 mb-4 last:mb-0 relative">
+                            {idx < arr.length - 1 && (
+                              <div
+                                className="absolute left-[11px] top-7 w-px bg-[#615CA5]/20"
+                                style={{ height: "calc(100% - 4px)" }}
+                              />
+                            )}
+                            <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#EC680A] text-white text-xs font-bold flex items-center justify-center z-10">
+                              {step.step}
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <span className="text-sm font-semibold text-[#1B1D3A]">
+                                {step.label}
+                              </span>
+                              <p className="text-xs text-[#94a3b8] mt-0.5 leading-relaxed">
+                                {step.description}
+                              </p>
+                            </div>
+                          </div>
+                        )
+                      )}
+                    </div>
+
+                    {col.university.admissionProcess.notes && (
+                      <div className="mt-4 bg-[#EC680A]/8 border border-[#EC680A]/15 rounded-xl p-3 flex items-start gap-2">
+                        <Info className="w-4 h-4 text-[#EC680A] flex-shrink-0 mt-0.5" />
+                        <p className="text-xs text-[#1B1D3A] leading-relaxed">
+                          {col.university.admissionProcess.notes}
+                        </p>
+                      </div>
                     )}
                   </div>
-
-                  {col.university.admissionProcess.notes && (
-                    <p className="text-xs text-gray-400 italic mt-3 pl-9">
-                      {col.university.admissionProcess.notes}
-                    </p>
-                  )}
                 </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </section>
   );
