@@ -15,24 +15,38 @@ export default function HubSpotModal({ isOpen, onClose }: HubSpotModalProps) {
   useEffect(() => {
     if (!isOpen || !containerRef.current) return;
 
-    // Reset container with fresh hs-form-frame div
     containerRef.current.innerHTML = "";
-    const formDiv = document.createElement("div");
-    formDiv.className = "hs-form-frame";
-    formDiv.setAttribute("data-region", "eu1");
-    formDiv.setAttribute("data-form-id", "166547f8-2f86-46d3-b90f-14c77d57affa");
-    formDiv.setAttribute("data-portal-id", "26711031");
-    containerRef.current.appendChild(formDiv);
 
-    // Remove any previous embed script so we can re-add it
-    const scriptSrc = "https://js-eu1.hsforms.net/forms/embed/26711031.js";
-    document.querySelectorAll(`script[src="${scriptSrc}"]`).forEach((s) => s.remove());
+    // Use the legacy HubSpot Forms API (renders inline, not in iframe)
+    const legacyScript = "https://js-eu1.hsforms.net/forms/v2.js";
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const w = window as any;
 
-    // Add fresh script to trigger re-scan
-    const script = document.createElement("script");
-    script.src = scriptSrc;
-    script.defer = true;
-    document.head.appendChild(script);
+    const createForm = () => {
+      if (w.hbspt?.forms?.create) {
+        w.hbspt.forms.create({
+          region: "eu1",
+          portalId: "26711031",
+          formId: "166547f8-2f86-46d3-b90f-14c77d57affa",
+          target: "#hs-modal-form-container",
+        });
+      }
+    };
+
+    if (w.hbspt?.forms?.create) {
+      createForm();
+    } else {
+      const existing = document.querySelector(`script[src="${legacyScript}"]`);
+      if (!existing) {
+        const script = document.createElement("script");
+        script.src = legacyScript;
+        script.charset = "utf-8";
+        script.onload = () => setTimeout(createForm, 200);
+        document.head.appendChild(script);
+      } else {
+        setTimeout(createForm, 200);
+      }
+    }
   }, [isOpen]);
 
   const handleBackdrop = useCallback(
@@ -83,7 +97,7 @@ export default function HubSpotModal({ isOpen, onClose }: HubSpotModalProps) {
           </p>
         </div>
 
-        <div ref={containerRef} />
+        <div id="hs-modal-form-container" ref={containerRef} />
       </div>
     </div>,
     document.body
