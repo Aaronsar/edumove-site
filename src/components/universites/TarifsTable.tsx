@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import type { Program } from "@/data/universities";
 
 const filiereLabels: Record<string, string> = {
@@ -25,7 +27,11 @@ export default function TarifsTable({
   programs,
   showCampus = false,
 }: TarifsTableProps) {
-  // Determine the cheapest total cost per filiere (excluding full programs)
+  const [expanded, setExpanded] = useState(false);
+  const PREVIEW_COUNT = 3;
+  const canCollapse = programs.length > PREVIEW_COUNT;
+  const visiblePrograms = canCollapse && !expanded ? programs.slice(0, PREVIEW_COUNT) : programs;
+
   const cheapestByFiliere: Record<string, number> = {};
   for (const p of programs) {
     if (p.isFull) continue;
@@ -35,8 +41,6 @@ export default function TarifsTable({
     }
   }
 
-  const showMoyenne = programs.some((p) => p.minimumGrade);
-
   return (
     <section className="py-12 px-4">
       <div className="max-w-6xl mx-auto">
@@ -44,7 +48,7 @@ export default function TarifsTable({
           Tarifs et fili&egrave;res
         </h2>
         <div className="overflow-x-auto rounded-xl shadow-sm border border-gray-200">
-          <table className="w-full min-w-[700px] text-sm">
+          <table className="w-full min-w-[600px] text-sm">
             <thead>
               <tr className="bg-[#1B1D3A] text-white">
                 <th className="text-left px-4 py-3 font-semibold">
@@ -63,13 +67,10 @@ export default function TarifsTable({
                 <th className="text-left px-4 py-3 font-semibold">
                   Admission
                 </th>
-                {showMoyenne && (
-                  <th className="text-left px-4 py-3 font-semibold">Moyenne</th>
-                )}
               </tr>
             </thead>
             <tbody>
-              {programs.map((p, i) => {
+              {visiblePrograms.map((p, i) => {
                 const isCheapest =
                   !p.isFull &&
                   p.totalCost === cheapestByFiliere[p.filiere] &&
@@ -114,17 +115,31 @@ export default function TarifsTable({
                     </td>
                     <td className="px-4 py-3">{p.language}</td>
                     <td className="px-4 py-3">{p.admissionDescription}</td>
-                    {showMoyenne && (
-                      <td className="px-4 py-3">
-                        {p.minimumGrade ?? "\u2014"}
-                      </td>
-                    )}
                   </tr>
                 );
               })}
             </tbody>
           </table>
         </div>
+
+        {canCollapse && (
+          <button
+            onClick={() => setExpanded(!expanded)}
+            className="mt-4 mx-auto flex items-center gap-2 text-sm font-semibold text-[#615CA5] hover:text-[#EC680A] transition-colors"
+          >
+            {expanded ? (
+              <>
+                Voir moins
+                <ChevronUp className="w-4 h-4" />
+              </>
+            ) : (
+              <>
+                Voir toutes les formations ({programs.length})
+                <ChevronDown className="w-4 h-4" />
+              </>
+            )}
+          </button>
+        )}
       </div>
     </section>
   );
