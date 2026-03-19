@@ -82,7 +82,7 @@ export default function TestimonialsCarousel() {
         </div>
 
         {/* Main testimonial */}
-        <div className="relative min-h-[280px]">
+        <div className="relative min-h-[340px]">
           <div className="text-center">
             {/* Quote icon */}
             <div className="flex justify-center mb-6">
