@@ -1,163 +1,149 @@
 "use client";
-import { useState } from "react";
-import { ChevronLeft, ChevronRight, ArrowUpRight } from "lucide-react";
-
-const tagColors: Record<string, string> = {
-  Guides: "bg-[#615ca5]/10 text-[#615ca5]",
-  Financement: "bg-emerald-50 text-emerald-600",
-  Actualités: "bg-[#ec680a]/10 text-[#ec680a]",
-  Témoignages: "bg-amber-50 text-amber-600",
-  Filières: "bg-sky-50 text-sky-600",
-};
-
-const accentColors: Record<string, string> = {
-  Guides: "bg-[#615ca5]",
-  Financement: "bg-emerald-500",
-  Actualités: "bg-[#ec680a]",
-  Témoignages: "bg-amber-500",
-  Filières: "bg-sky-500",
-};
+import { useRef } from "react";
+import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 
 const articles = [
   {
     title: "Études de médecine en Europe : le guide complet pour les étudiants français",
     date: "15 mars 2025",
-    tags: ["Guides"],
+    tag: "Guides",
+    tagColor: "bg-[#615ca5]",
     href: "#",
-    emoji: "🩺",
+    number: "01",
     readTime: "8 min",
   },
   {
     title: "Comment financer ses études de santé en Europe avec un prêt étudiant ?",
     date: "28 février 2025",
-    tags: ["Financement"],
+    tag: "Financement",
+    tagColor: "bg-emerald-500",
     href: "#",
-    emoji: "💶",
+    number: "02",
     readTime: "5 min",
   },
   {
     title: "Reconnaissance des diplômes européens en France : ce qu'il faut savoir",
     date: "10 janvier 2025",
-    tags: ["Actualités"],
+    tag: "Actualités",
+    tagColor: "bg-[#ec680a]",
     href: "#",
-    emoji: "🎓",
+    number: "03",
     readTime: "6 min",
   },
   {
     title: "Témoignage : mon parcours en médecine en Espagne avec Edumove",
     date: "5 décembre 2024",
-    tags: ["Témoignages"],
+    tag: "Témoignages",
+    tagColor: "bg-amber-500",
     href: "#",
-    emoji: "✈️",
+    number: "04",
     readTime: "4 min",
   },
   {
     title: "Les avantages d'étudier la kinésithérapie en Europe",
     date: "20 novembre 2024",
-    tags: ["Guides", "Filières"],
+    tag: "Filières",
+    tagColor: "bg-sky-500",
     href: "#",
-    emoji: "🏥",
+    number: "05",
     readTime: "7 min",
   },
 ];
 
 export default function ArticlesSection() {
-  const [startIndex, setStartIndex] = useState(0);
-  const visibleCount = 3;
-  const maxIndex = Math.max(0, articles.length - visibleCount);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
-  const prev = () => setStartIndex((i) => Math.max(0, i - 1));
-  const next = () => setStartIndex((i) => Math.min(maxIndex, i + 1));
+  const scroll = (direction: "left" | "right") => {
+    if (!scrollRef.current) return;
+    const amount = 360;
+    scrollRef.current.scrollBy({
+      left: direction === "left" ? -amount : amount,
+      behavior: "smooth",
+    });
+  };
 
   return (
-    <section className="py-16 bg-[#faf9f6]">
-      <div className="max-w-6xl mx-auto px-4">
+    <section className="relative py-20 bg-[#1b1d3a] overflow-hidden">
+      {/* Decorative */}
+      <div className="absolute -top-32 right-0 w-72 h-72 rounded-full bg-[#615ca5]/15 blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-60 h-60 rounded-full bg-[#ec680a]/10 blur-3xl" />
+
+      <div className="relative z-10 max-w-6xl mx-auto px-4">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-10">
+        <div className="flex items-end justify-between mb-10">
           <div>
-            <p className="text-[#ec680a] text-xs uppercase tracking-widest font-semibold mb-2">
+            <p className="text-[#ec680a] text-xs uppercase tracking-widest font-semibold mb-3">
               Blog
             </p>
-            <h2 className="text-2xl md:text-3xl font-bold" style={{ color: "#1b1d3a" }}>
+            <h2 className="text-2xl md:text-3xl font-bold text-white">
               Ces lectures devraient vous intéresser !
             </h2>
           </div>
-          <div className="flex items-center gap-3 mt-4 md:mt-0">
+          <div className="hidden md:flex items-center gap-2">
             <button
-              onClick={prev}
-              disabled={startIndex === 0}
-              className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:border-[#1b1d3a] transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+              onClick={() => scroll("left")}
+              className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-[#ec680a] hover:bg-[#ec680a]/10 transition-all"
             >
-              <ChevronLeft size={18} className="text-[#1b1d3a]" />
+              <ChevronLeft size={18} className="text-white/60" />
             </button>
             <button
-              onClick={next}
-              disabled={startIndex >= maxIndex}
-              className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:border-[#1b1d3a] transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+              onClick={() => scroll("right")}
+              className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-[#ec680a] hover:bg-[#ec680a]/10 transition-all"
             >
-              <ChevronRight size={18} className="text-[#1b1d3a]" />
+              <ChevronRight size={18} className="text-white/60" />
             </button>
           </div>
         </div>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {articles.slice(startIndex, startIndex + visibleCount).map((article, i) => (
+        {/* Horizontal scroll cards */}
+        <div
+          ref={scrollRef}
+          className="flex gap-5 overflow-x-auto pb-4 -mx-4 px-4 snap-x snap-mandatory scrollbar-hide"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
+          {articles.map((article) => (
             <a
-              key={startIndex + i}
+              key={article.number}
               href={article.href}
-              className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-[#ec680a]/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#ec680a]/5 flex flex-col"
+              className="group snap-start shrink-0 w-[320px] bg-white/[0.06] backdrop-blur-sm border border-white/10 rounded-2xl p-6 flex flex-col justify-between hover:border-[#ec680a]/50 hover:bg-white/[0.1] transition-all duration-300"
             >
-              {/* Accent bar */}
-              <div className={`h-1.5 ${accentColors[article.tags[0]] || "bg-gray-300"}`} />
-
-              <div className="p-6 flex flex-col flex-1">
-                {/* Emoji + date */}
+              {/* Top */}
+              <div>
                 <div className="flex items-center justify-between mb-5">
-                  <span className="text-3xl">{article.emoji}</span>
-                  <span className="text-xs text-gray-400 font-medium">{article.date}</span>
-                </div>
-
-                {/* Title */}
-                <h3 className="font-bold text-[#1b1d3a] text-base leading-snug mb-2 group-hover:text-[#ec680a] transition-colors line-clamp-3 flex-1">
-                  {article.title}
-                </h3>
-
-                {/* Read time */}
-                <p className="text-xs text-gray-400 mb-4">{article.readTime} de lecture</p>
-
-                {/* Tags + arrow */}
-                <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                  <div className="flex flex-wrap gap-2">
-                    {article.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className={`text-xs px-2.5 py-1 rounded-md font-medium ${tagColors[tag] || "bg-gray-100 text-gray-500"}`}
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <span className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center group-hover:bg-[#ec680a] group-hover:text-white text-gray-400 transition-all duration-300">
-                    <ArrowUpRight size={14} />
+                  <span className="text-3xl font-black text-white/[0.07]">{article.number}</span>
+                  <span className={`text-[10px] uppercase tracking-wider font-semibold text-white px-3 py-1 rounded-full ${article.tagColor}`}>
+                    {article.tag}
                   </span>
                 </div>
+                <h3 className="font-bold text-white text-[15px] leading-snug group-hover:text-[#ec680a] transition-colors duration-300 line-clamp-3 min-h-[60px]">
+                  {article.title}
+                </h3>
+              </div>
+
+              {/* Bottom */}
+              <div className="flex items-center justify-between mt-6 pt-4 border-t border-white/10">
+                <div className="flex items-center gap-3">
+                  <span className="text-[11px] text-white/40">{article.date}</span>
+                  <span className="w-1 h-1 rounded-full bg-white/20" />
+                  <span className="text-[11px] text-white/40">{article.readTime}</span>
+                </div>
+                <span className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-[#ec680a] group-hover:border-[#ec680a] transition-all duration-300">
+                  <ArrowUpRight size={13} className="text-white/30 group-hover:text-white transition-colors" />
+                </span>
               </div>
             </a>
           ))}
         </div>
 
-        {/* Dots */}
-        <div className="flex justify-center gap-2 mt-8">
-          {Array.from({ length: maxIndex + 1 }).map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setStartIndex(i)}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                i === startIndex ? "bg-[#ec680a] w-6" : "bg-gray-300 w-2"
-              }`}
-            />
-          ))}
+        {/* Voir tous */}
+        <div className="mt-8 text-center">
+          <a
+            href="/blog"
+            className="inline-flex items-center gap-2 text-sm text-white/50 hover:text-[#ec680a] transition-colors font-medium"
+          >
+            Voir tous les articles
+            <ArrowUpRight size={14} />
+          </a>
         </div>
       </div>
     </section>
