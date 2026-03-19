@@ -100,8 +100,13 @@ export default function FAQSection() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-          {faqs.map((faq, i) => renderFaq(faq, i))}
+        <div className="flex flex-col md:flex-row gap-3">
+          <div className="flex-1 space-y-3">
+            {faqs.filter((_, i) => i % 2 === 0).map((faq, i) => renderFaq(faq, i * 2))}
+          </div>
+          <div className="flex-1 space-y-3">
+            {faqs.filter((_, i) => i % 2 === 1).map((faq, i) => renderFaq(faq, i * 2 + 1))}
+          </div>
         </div>
       </div>
     </section>
