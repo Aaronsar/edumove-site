@@ -51,7 +51,7 @@ const highlights = [
 
 export default function ProgramHighlights({ detail }: { detail: ProgramDetail }) {
   return (
-    <section className="py-20">
+    <section className="pt-10 pb-20">
       <div className="max-w-6xl mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
