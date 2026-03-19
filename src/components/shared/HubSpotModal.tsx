@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import { createPortal } from "react-dom";
-import { X, Loader2, CheckCircle2 } from "lucide-react";
+import { X, Loader2, CheckCircle2, ChevronDown } from "lucide-react";
 
 interface HubSpotModalProps {
   isOpen: boolean;
@@ -13,18 +13,69 @@ const PORTAL_ID = "26711031";
 const FORM_ID = "166547f8-2f86-46d3-b90f-14c77d57affa";
 const SUBMIT_URL = `https://api-eu1.hsforms.com/submissions/v3/integration/submit/${PORTAL_ID}/${FORM_ID}`;
 
+const CLASSE_OPTIONS = [
+  "Troisième",
+  "Seconde",
+  "Première",
+  "Terminale",
+  "PASS",
+  "LSPS 1",
+  "LSPS 2",
+  "LSPS 3",
+  "LAS 1",
+  "LAS 2",
+  "LAS 3",
+  "Etudes médicales",
+  "Etudes Sup.",
+  "Autre",
+];
+
+const PAYS_OPTIONS = [
+  "Espagne",
+  "Portugal",
+  "Belgique",
+  "Chypre",
+  "Italie",
+  "Croatie",
+  "Roumanie",
+  "France",
+];
+
+const SPECIALITE_OPTIONS = [
+  "Dentaire",
+  "Médecine",
+  "Pharmacie",
+  "Kinésithérapie",
+  "Orthophonie",
+  "Vétérinaire",
+];
+
 type FormState = "idle" | "submitting" | "success" | "error";
+
+const inputClass =
+  "w-full px-3.5 py-2.5 border-[1.5px] border-[#E2E8F0] rounded-xl text-sm text-[#1B1D3A] bg-[#F8FAFC] placeholder:text-[#94A3B8] outline-none transition-all focus:border-[#EC680A] focus:ring-[3px] focus:ring-[#EC680A]/10 focus:bg-white";
+
+const labelClass = "block text-[13px] font-semibold text-[#1B1D3A] mb-1";
+
+const selectWrapperClass = "relative";
+
+const selectClass =
+  "w-full px-3.5 py-2.5 border-[1.5px] border-[#E2E8F0] rounded-xl text-sm text-[#1B1D3A] bg-[#F8FAFC] outline-none transition-all focus:border-[#EC680A] focus:ring-[3px] focus:ring-[#EC680A]/10 focus:bg-white appearance-none cursor-pointer";
 
 export default function HubSpotModal({ isOpen, onClose }: HubSpotModalProps) {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [classe, setClasse] = useState("");
+  const [departement, setDepartement] = useState("");
+  const [pays, setPays] = useState("");
+  const [specialite, setSpecialite] = useState("");
+  const [financement, setFinancement] = useState("");
   const [formState, setFormState] = useState<FormState>("idle");
   const [errorMsg, setErrorMsg] = useState("");
   const firstInputRef = useRef<HTMLInputElement>(null);
 
-  // Focus first input on open
   useEffect(() => {
     if (isOpen && firstInputRef.current) {
       setTimeout(() => firstInputRef.current?.focus(), 100);
@@ -35,7 +86,6 @@ export default function HubSpotModal({ isOpen, onClose }: HubSpotModalProps) {
     }
   }, [isOpen]);
 
-  // Lock body scroll & Escape key
   useEffect(() => {
     if (!isOpen) return;
     const handleEsc = (e: KeyboardEvent) => {
@@ -71,6 +121,23 @@ export default function HubSpotModal({ isOpen, onClose }: HubSpotModalProps) {
             { objectTypeId: "0-1", name: "lastname", value: lastname },
             { objectTypeId: "0-1", name: "email", value: email },
             { objectTypeId: "0-1", name: "phone", value: phone },
+            { objectTypeId: "0-1", name: "classe_actuelle", value: classe },
+            { objectTypeId: "0-1", name: "departement", value: departement },
+            {
+              objectTypeId: "0-1",
+              name: "edumove_pays_souhaite",
+              value: pays,
+            },
+            {
+              objectTypeId: "0-1",
+              name: "edumove_specialite_souhaite",
+              value: specialite,
+            },
+            {
+              objectTypeId: "0-1",
+              name: "edumove_voulez_vous_un_financement_a_100_de_vos_etudes_a_letranger",
+              value: financement,
+            },
           ],
           context: {
             pageUri: window.location.href,
@@ -85,6 +152,11 @@ export default function HubSpotModal({ isOpen, onClose }: HubSpotModalProps) {
         setLastname("");
         setEmail("");
         setPhone("");
+        setClasse("");
+        setDepartement("");
+        setPays("");
+        setSpecialite("");
+        setFinancement("");
       } else {
         const data = await res.json().catch(() => null);
         setErrorMsg(
@@ -105,11 +177,11 @@ export default function HubSpotModal({ isOpen, onClose }: HubSpotModalProps) {
       className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#1B1D3A]/60 backdrop-blur-sm px-4"
       onClick={handleBackdrop}
     >
-      <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto p-8 animate-in fade-in zoom-in-95 duration-200">
+      <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto p-8">
         {/* Close */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors"
+          className="absolute top-4 right-4 w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors z-10"
           aria-label="Fermer"
         >
           <X className="w-4 h-4 text-[#1B1D3A]" />
@@ -131,9 +203,7 @@ export default function HubSpotModal({ isOpen, onClose }: HubSpotModalProps) {
         {formState === "success" ? (
           <div className="flex flex-col items-center gap-3 py-8">
             <CheckCircle2 className="w-14 h-14 text-green-500" />
-            <p className="text-lg font-semibold text-[#1B1D3A]">
-              Merci !
-            </p>
+            <p className="text-lg font-semibold text-[#1B1D3A]">Merci !</p>
             <p className="text-sm text-[#64748b] text-center">
               Un expert Edumove vous recontactera très rapidement.
             </p>
@@ -149,7 +219,7 @@ export default function HubSpotModal({ isOpen, onClose }: HubSpotModalProps) {
             {/* Prénom + Nom */}
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="block text-[13px] font-semibold text-[#1B1D3A] mb-1">
+                <label className={labelClass}>
                   Prénom <span className="text-[#EC680A]">*</span>
                 </label>
                 <input
@@ -159,11 +229,11 @@ export default function HubSpotModal({ isOpen, onClose }: HubSpotModalProps) {
                   value={firstname}
                   onChange={(e) => setFirstname(e.target.value)}
                   placeholder="Votre prénom"
-                  className="w-full px-3.5 py-2.5 border-[1.5px] border-[#E2E8F0] rounded-xl text-sm text-[#1B1D3A] bg-[#F8FAFC] placeholder:text-[#94A3B8] outline-none transition-all focus:border-[#EC680A] focus:ring-[3px] focus:ring-[#EC680A]/10 focus:bg-white"
+                  className={inputClass}
                 />
               </div>
               <div>
-                <label className="block text-[13px] font-semibold text-[#1B1D3A] mb-1">
+                <label className={labelClass}>
                   Nom <span className="text-[#EC680A]">*</span>
                 </label>
                 <input
@@ -172,15 +242,27 @@ export default function HubSpotModal({ isOpen, onClose }: HubSpotModalProps) {
                   value={lastname}
                   onChange={(e) => setLastname(e.target.value)}
                   placeholder="Votre nom"
-                  className="w-full px-3.5 py-2.5 border-[1.5px] border-[#E2E8F0] rounded-xl text-sm text-[#1B1D3A] bg-[#F8FAFC] placeholder:text-[#94A3B8] outline-none transition-all focus:border-[#EC680A] focus:ring-[3px] focus:ring-[#EC680A]/10 focus:bg-white"
+                  className={inputClass}
                 />
               </div>
             </div>
 
+            {/* Téléphone */}
+            <div>
+              <label className={labelClass}>Numéro de téléphone</label>
+              <input
+                type="tel"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                placeholder="+33 6 12 34 56 78"
+                className={inputClass}
+              />
+            </div>
+
             {/* Email */}
             <div>
-              <label className="block text-[13px] font-semibold text-[#1B1D3A] mb-1">
-                Email <span className="text-[#EC680A]">*</span>
+              <label className={labelClass}>
+                E-mail <span className="text-[#EC680A]">*</span>
               </label>
               <input
                 type="email"
@@ -188,23 +270,135 @@ export default function HubSpotModal({ isOpen, onClose }: HubSpotModalProps) {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="votre@email.com"
-                className="w-full px-3.5 py-2.5 border-[1.5px] border-[#E2E8F0] rounded-xl text-sm text-[#1B1D3A] bg-[#F8FAFC] placeholder:text-[#94A3B8] outline-none transition-all focus:border-[#EC680A] focus:ring-[3px] focus:ring-[#EC680A]/10 focus:bg-white"
+                className={inputClass}
               />
             </div>
 
-            {/* Téléphone */}
+            {/* Classe actuelle */}
             <div>
-              <label className="block text-[13px] font-semibold text-[#1B1D3A] mb-1">
-                Téléphone <span className="text-[#EC680A]">*</span>
+              <label className={labelClass}>
+                Classe actuelle <span className="text-[#EC680A]">*</span>
+              </label>
+              <div className={selectWrapperClass}>
+                <select
+                  required
+                  value={classe}
+                  onChange={(e) => setClasse(e.target.value)}
+                  className={`${selectClass} ${!classe ? "text-[#94A3B8]" : ""}`}
+                >
+                  <option value="" disabled>
+                    Sélectionnez votre classe
+                  </option>
+                  {CLASSE_OPTIONS.map((opt) => (
+                    <option key={opt} value={opt}>
+                      {opt}
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#94A3B8] pointer-events-none" />
+              </div>
+            </div>
+
+            {/* Département */}
+            <div>
+              <label className={labelClass}>
+                Département EX 75 (en 2 chiffres){" "}
+                <span className="text-[#EC680A]">*</span>
               </label>
               <input
-                type="tel"
+                type="text"
                 required
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                placeholder="+33 6 12 34 56 78"
-                className="w-full px-3.5 py-2.5 border-[1.5px] border-[#E2E8F0] rounded-xl text-sm text-[#1B1D3A] bg-[#F8FAFC] placeholder:text-[#94A3B8] outline-none transition-all focus:border-[#EC680A] focus:ring-[3px] focus:ring-[#EC680A]/10 focus:bg-white"
+                value={departement}
+                onChange={(e) => setDepartement(e.target.value)}
+                placeholder="75"
+                maxLength={3}
+                className={inputClass}
               />
+            </div>
+
+            {/* Pays souhaité */}
+            <div>
+              <label className={labelClass}>
+                Dans quel(s) pays souhaitez vous étudier ?{" "}
+                <span className="text-[#EC680A]">*</span>
+              </label>
+              <div className={selectWrapperClass}>
+                <select
+                  required
+                  value={pays}
+                  onChange={(e) => setPays(e.target.value)}
+                  className={`${selectClass} ${!pays ? "text-[#94A3B8]" : ""}`}
+                >
+                  <option value="" disabled>
+                    Sélectionnez un pays
+                  </option>
+                  {PAYS_OPTIONS.map((opt) => (
+                    <option key={opt} value={opt}>
+                      {opt}
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#94A3B8] pointer-events-none" />
+              </div>
+            </div>
+
+            {/* Spécialité souhaitée */}
+            <div>
+              <label className={labelClass}>
+                Quelle(s) spécialité(s) vous intéresse ?{" "}
+                <span className="text-[#EC680A]">*</span>
+              </label>
+              <div className={selectWrapperClass}>
+                <select
+                  required
+                  value={specialite}
+                  onChange={(e) => setSpecialite(e.target.value)}
+                  className={`${selectClass} ${!specialite ? "text-[#94A3B8]" : ""}`}
+                >
+                  <option value="" disabled>
+                    Sélectionnez une spécialité
+                  </option>
+                  {SPECIALITE_OPTIONS.map((opt) => (
+                    <option key={opt} value={opt}>
+                      {opt}
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#94A3B8] pointer-events-none" />
+              </div>
+            </div>
+
+            {/* Financement */}
+            <div>
+              <label className={labelClass}>
+                Voulez-vous un financement à 100% de vos études à
+                l&apos;étranger ? <span className="text-[#EC680A]">*</span>
+              </label>
+              <div className="flex gap-6 mt-1.5">
+                <label className="flex items-center gap-2 cursor-pointer text-sm text-[#1B1D3A]">
+                  <input
+                    type="radio"
+                    name="financement"
+                    value="Oui"
+                    required
+                    checked={financement === "Oui"}
+                    onChange={(e) => setFinancement(e.target.value)}
+                    className="w-4 h-4 accent-[#EC680A]"
+                  />
+                  Oui
+                </label>
+                <label className="flex items-center gap-2 cursor-pointer text-sm text-[#1B1D3A]">
+                  <input
+                    type="radio"
+                    name="financement"
+                    value="Non"
+                    checked={financement === "Non"}
+                    onChange={(e) => setFinancement(e.target.value)}
+                    className="w-4 h-4 accent-[#EC680A]"
+                  />
+                  Non
+                </label>
+              </div>
             </div>
 
             {/* Error */}
