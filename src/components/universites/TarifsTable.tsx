@@ -84,7 +84,7 @@ export default function TarifsTable({
                       border-t border-gray-200
                       ${p.isFull ? "bg-gray-100 text-gray-400" : ""}
                       ${!p.isFull && i % 2 === 1 ? "bg-gray-50" : ""}
-                      ${isCheapest ? "bg-orange-50" : ""}
+                      ${isCheapest ? "bg-[#EC680A]/10" : ""}
                     `}
                   >
                     <td className="px-4 py-3 font-medium">
@@ -96,7 +96,7 @@ export default function TarifsTable({
                           </span>
                         )}
                         {p.note && !p.isFull && (
-                          <span className="inline-block bg-amber-100 text-amber-800 text-[10px] font-bold px-2 py-0.5 rounded">
+                          <span className="inline-block bg-[#EC680A]/15 text-[#D45E09] text-[10px] font-bold px-2 py-0.5 rounded">
                             {p.note}
                           </span>
                         )}

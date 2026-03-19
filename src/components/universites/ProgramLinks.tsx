@@ -1,18 +1,16 @@
 import Link from "next/link";
+import { Clock, Globe, FileText } from "lucide-react";
 import type { ProgramDetail } from "@/data/program-details";
+import FiliereIcon from "@/components/shared/FiliereIcon";
 
-const filiereIcons: Record<string, string> = {
-  dentaire: "🦷", medecine: "🩺", kinesitherapie: "💪",
-  pharmacie: "💊", veterinaire: "🐾", "prepa-dentaire": "📚",
-};
-
+/* Charte : violet #615CA5 pour les en-têtes filière */
 const filiereColors: Record<string, string> = {
-  dentaire: "from-blue-500 to-blue-600",
-  medecine: "from-red-500 to-red-600",
-  kinesitherapie: "from-green-500 to-green-600",
-  pharmacie: "from-purple-500 to-purple-600",
-  veterinaire: "from-amber-500 to-amber-600",
-  "prepa-dentaire": "from-cyan-500 to-cyan-600",
+  dentaire: "from-[#615CA5] to-[#615CA5]/90",
+  medecine: "from-[#615CA5] to-[#615CA5]/90",
+  kinesitherapie: "from-[#615CA5] to-[#615CA5]/90",
+  pharmacie: "from-[#615CA5] to-[#615CA5]/90",
+  veterinaire: "from-[#615CA5] to-[#615CA5]/90",
+  "prepa-dentaire": "from-[#615CA5] to-[#615CA5]/90",
 };
 
 interface ProgramLinksProps {
@@ -29,8 +27,12 @@ export default function ProgramLinks({ universityShort, programs }: ProgramLinks
   }
 
   return (
-    <section className="py-16 bg-[#fafbff]">
-      <div className="max-w-6xl mx-auto px-4">
+    <section id="programmes" className="relative py-16 bg-[#fafbff] overflow-hidden">
+      <div aria-hidden className="absolute inset-0">
+        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#615CA5]/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-[350px] h-[350px] bg-[#EC680A]/5 rounded-full blur-3xl" />
+      </div>
+      <div className="relative max-w-6xl mx-auto px-4">
         <p className="text-center text-sm uppercase tracking-widest text-[#EC680A] mb-3 font-semibold">Nos programmes</p>
         <h2 className="text-2xl md:text-3xl font-bold text-center mb-4" style={{ color: "#1B1D3A" }}>
           Toutes les formations à {universityShort}
@@ -45,13 +47,15 @@ export default function ProgramLinks({ universityShort, programs }: ProgramLinks
               <Link
                 key={`${prog.filiereSlug}-${prog.slug}`}
                 href={`/formations/${prog.filiereSlug}/${prog.slug}`}
-                className="group block bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                className="group block bg-white rounded-2xl border-2 border-[#615CA5]/10 overflow-hidden hover:shadow-xl hover:-translate-y-1 hover:border-[#EC680A]/30 transition-all duration-300"
               >
                 <div className={`bg-gradient-to-r ${filiereColors[filiereSlug] || "from-gray-500 to-gray-600"} p-4 flex items-center gap-3`}>
-                  <span className="text-3xl">{filiereIcons[filiereSlug] || "🎓"}</span>
-                  <div>
-                    <h3 className="font-bold text-white text-lg" style={{ color: "white" }}>{prog.filiere}</h3>
-                    <p className="text-white/80 text-sm">{prog.city} {prog.countryFlag}</p>
+                  <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center shrink-0">
+                    <FiliereIcon slug={filiereSlug} className="w-6 h-6" stroke="white" />
+                  </div>
+                  <div className="min-w-0">
+                    <h3 className="font-bold text-white text-lg">{prog.filiere}</h3>
+                    <p className="text-white/80 text-sm">{prog.city} · {prog.country}</p>
                   </div>
                 </div>
                 <div className="p-5">
@@ -60,9 +64,18 @@ export default function ProgramLinks({ universityShort, programs }: ProgramLinks
                     {prog.isCheapest && <span className="bg-[#EC680A]/10 text-[#EC680A] text-xs font-bold px-2 py-1 rounded-full">Le - cher</span>}
                     {prog.isComplete && <span className="bg-red-100 text-red-600 text-xs font-bold px-2 py-1 rounded-full">COMPLET</span>}
                   </div>
-                  <div className="space-y-1 text-sm text-[#64748b]">
-                    <p>⏱ {prog.duration} · 🌍 {prog.language}</p>
-                    <p>📋 {prog.admission}</p>
+                  <div className="space-y-2 text-sm text-[#64748b]">
+                    <div className="flex items-center gap-2">
+                      <Clock className="w-4 h-4 text-[#615CA5] shrink-0" />
+                      <span>{prog.duration}</span>
+                      <span className="text-[#cbd5e1]">·</span>
+                      <Globe className="w-4 h-4 text-[#615CA5] shrink-0" />
+                      <span>{prog.language}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <FileText className="w-4 h-4 text-[#615CA5] shrink-0" />
+                      <span>{prog.admission}</span>
+                    </div>
                   </div>
                   <div className="mt-4 text-[#EC680A] font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
                     Voir le programme complet →

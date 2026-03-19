@@ -262,11 +262,11 @@ function UETestDetails() {
                   <td className="px-4 py-2.5 font-medium">{row.filiere}</td>
                   <td className="px-4 py-2.5">
                     {row.pe ? (
-                      <span className="inline-flex items-center gap-1 text-emerald-600">
+                      <span className="inline-flex items-center gap-1 text-[#615CA5]">
                         <CheckCircle className="w-4 h-4" />
                         OUI
                         {row.note && (
-                          <span className="text-[10px] text-amber-600 font-bold ml-1 uppercase">
+                          <span className="text-[10px] text-[#EC680A] font-bold ml-1 uppercase">
                             ({row.note})
                           </span>
                         )}

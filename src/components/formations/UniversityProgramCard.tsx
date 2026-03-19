@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { MapPin, Clock, Globe, ArrowRight, AlertTriangle, Sparkles } from "lucide-react";
 import type { Program, UniversitySlug } from "@/data/universities";
+import { getProgramSlugForHref } from "@/data/program-details";
 
 const universityInitials: Record<UniversitySlug, string> = {
   link: "LINK",
@@ -39,11 +40,15 @@ export default function UniversityProgramCard({
   const initials = universityInitials[universitySlug] ?? universitySlug.toUpperCase();
   const badgeLabel = admissionLabels[program.admissionType] ?? "Sur dossier";
 
+  const programSlug = getProgramSlugForHref(program.filiere, universitySlug, program.campus);
   const slugMap: Record<UniversitySlug, string> = {
     link: "link-campus",
     ucjc: "ucjc",
     ue: "universidad-europea",
   };
+  const programHref = programSlug
+    ? `/formations/${program.filiere}/${programSlug}`
+    : `/universites/${slugMap[universitySlug]}`;
 
   return (
     <div
@@ -121,7 +126,7 @@ export default function UniversityProgramCard({
 
         {/* CTA link */}
         <Link
-          href={`/universites/${slugMap[universitySlug]}`}
+          href={programHref}
           className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-[#EC680A] hover:text-[#D45E09] transition-colors group-hover:gap-2.5"
         >
           Découvrir le programme

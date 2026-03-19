@@ -18,9 +18,14 @@ export default function LinkPage() {
   const overviewCards = [
     { value: "Rome", label: "Ville" },
     { value: "Italien", label: "Langue" },
-    { value: "4", label: "Fili\u00e8res" },
-    { value: "200\u00a0\u20ac", label: "Frais test" },
+    { value: "4", label: "Filières" },
+    { value: "200 €", label: "Frais test" },
   ];
+
+  const linkPrograms = programDetails.filter((p) => p.universityShort === "LINK");
+  const formationLinks = linkPrograms
+    .filter((p, i, arr) => arr.findIndex((x) => x.filiereSlug === p.filiereSlug) === i)
+    .map((p) => ({ name: p.filiere, filiereSlug: p.filiereSlug, programSlug: p.slug }));
 
   const candidatureDocuments = [
     "Pi\u00e8ce d\u2019identit\u00e9 (carte d\u2019identit\u00e9 ou passeport)",
@@ -47,10 +52,9 @@ export default function LinkPage() {
   return (
     <div className="bg-white">
       <UniHero
-        flag={uni.countryFlag}
         name={uni.name}
         location="Rome, Italie"
-        color="emerald"
+        formationLinks={formationLinks}
       />
 
       <OverviewCards cards={overviewCards} />
@@ -116,6 +120,19 @@ export default function LinkPage() {
         color="emerald"
       />
 
+      {/* CTA 2 */}
+      <section className="py-12 px-4 bg-[#fafbff]">
+        <div className="max-w-3xl mx-auto text-center">
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 bg-[#EC680A] text-white font-semibold px-8 py-4 rounded-[5px] hover:bg-[#D45E09] transition-colors text-lg"
+          >
+            Déposer ma candidature gratuitement
+            <ArrowRight className="w-5 h-5" />
+          </Link>
+        </div>
+      </section>
+
       <TestDetails type="link" />
 
       <DocumentsList
@@ -130,7 +147,7 @@ export default function LinkPage() {
       />
 
       {/* CTA */}
-      <section className="py-16 px-4 bg-[#1B1D3A]">
+      <section id="contact" className="py-16 px-4 bg-[#1B1D3A]">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Prêt à rejoindre LINK Campus ?
@@ -143,7 +160,7 @@ export default function LinkPage() {
             href="/contact"
             className="inline-flex items-center gap-2 bg-[#EC680A] text-white font-semibold px-8 py-4 rounded-[5px] hover:bg-[#D45E09] transition-colors text-lg"
           >
-            Déposer ma candidature
+            Déposer ma candidature gratuitement
             <ArrowRight className="w-5 h-5" />
           </Link>
         </div>

@@ -47,13 +47,14 @@ const defaultAdmissionSteps = [
   "Entrée en 1ère année avec l'accompagnement EduMove (logement, traduction, vie étudiante)",
 ];
 
+/* Vie étudiante — contenu enrichi depuis site edumove 2026.docx */
 const madridLife: StudentLife = {
   city: "Madrid",
   highlights: [
-    "Campus de Villaviciosa de Odón : environnement spacieux, moderne et très sécurisé",
-    "Excellente connexion à la vie culturelle et urbaine de Madrid via les transports en commun",
-    "Coût de la vie raisonnable pour une capitale européenne",
-    "Vie nocturne et culturelle parmi les plus riches d'Europe",
+    "Cadre de Vie à l'UEM : Le campus de Villaviciosa de Odón offre un environnement spacieux, moderne et très sécurisé, favorisant la concentration pour des études exigeantes.",
+    "Proximité de la Capitale : Bien que le campus soit en périphérie, excellente connexion à la vie culturelle et urbaine de Madrid via les transports en commun.",
+    "Proximité de l'Aéroport : Madrid-Barajas (MAD) à 30-40 minutes du campus selon la circulation.",
+    "Liaison Rapide avec la France : Vol direct Paris-Madrid en 1h50 à 2h05, liaisons extrêmement fréquentes.",
   ],
   airport: "Aéroport Madrid-Barajas (MAD) à 30-40 minutes du campus",
   flightTime: "Vol direct Paris-Madrid : 1h50 à 2h05",
@@ -62,10 +63,11 @@ const madridLife: StudentLife = {
 const malagaLife: StudentLife = {
   city: "Málaga",
   highlights: [
-    "Grande ville d'Andalousie moderne, au bord de la mer, climat exceptionnel toute l'année",
-    "Campus neuf conçu avec les dernières technologies pour la santé",
-    "Coût de la vie très avantageux par rapport à la France",
-    "Cadre de vie idéal entre plage, montagne et culture andalouse",
+    "Cadre de Vie Idéal : Grande ville d'Andalousie moderne, au bord de la mer, avec un climat exceptionnel toute l'année.",
+    "Campus Neuf et Sécurisé : Conçu avec les dernières technologies pour la santé, environnement d'étude optimal pour la concentration.",
+    "Proximité de l'Aéroport : Málaga-Costa del Sol (AGP) à 10-15 minutes du campus.",
+    "Liaison Rapide avec la France : Vol direct Paris-Málaga (environ 2h20), fréquences bonnes pour la famille.",
+    "Coût de la vie très avantageux par rapport à la France.",
   ],
   airport: "Aéroport Málaga-Costa del Sol (AGP) à 10-15 minutes",
   flightTime: "Vol direct Paris-Málaga : environ 2h20",
@@ -74,10 +76,10 @@ const malagaLife: StudentLife = {
 const valenceLife: StudentLife = {
   city: "Valence",
   highlights: [
-    "Haute qualité de vie : ville dynamique et plus paisible que Madrid, idéale pour les études",
-    "Proximité de la plage pour concilier études et détente",
-    "Campus moderne avec encadrement académique rigoureux",
-    "Vie étudiante animée avec un coût de la vie accessible",
+    "Cadre de Vie Idéal : Valence offre une haute qualité de vie, dynamique et plus paisible que Madrid, très favorable aux études.",
+    "Sécurité et Encadrement : Campus moderne, environnement de travail sécurisé et encadrement académique rigoureux.",
+    "Proximité de l'Aéroport : Valence (VLC) à 15-20 minutes.",
+    "Liaison Rapide avec la France : Vol direct Paris-Valence en 1h45 à 2h00, liaisons rapides et simples avec la famille.",
   ],
   airport: "Aéroport de Valence (VLC) à 15-20 minutes",
   flightTime: "Vol direct Paris-Valence : 1h45 à 2h00",
@@ -86,10 +88,11 @@ const valenceLife: StudentLife = {
 const alicanteLife: StudentLife = {
   city: "Alicante",
   highlights: [
-    "Ville méditerranéenne sur la Costa Blanca, climat exceptionnel toute l'année",
-    "Infrastructures conçues avec les dernières technologies pour la santé",
-    "Coût de la vie très avantageux, loyers et dépenses courantes accessibles",
-    "Cadre de vie idéal entre mer, soleil et culture espagnole",
+    "Cadre de Vie Idéal : Ville méditerranéenne historique et moderne sur la Costa Blanca, climat exceptionnel toute l'année.",
+    "Campus Neuf et Sécurisé : Infrastructures conçues avec les dernières technologies pour la santé, environnement d'étude optimal.",
+    "Proximité de l'Aéroport : Alicante-Elche (ALC) à 15-20 minutes en voiture de la faculté.",
+    "Liaison Rapide avec la France : Vol direct Paris-Alicante (environ 2h05), fréquences excellentes.",
+    "Coût de la vie avantageux : Loyers et dépenses courantes généralement plus accessibles qu'en France.",
   ],
   airport: "Aéroport d'Alicante-Elche (ALC) à 15-20 minutes",
   flightTime: "Vol direct Paris-Alicante : environ 2h05",
@@ -98,10 +101,10 @@ const alicanteLife: StudentLife = {
 const canariesLife: StudentLife = {
   city: "Canaries",
   highlights: [
-    "Climat subtropical toute l'année, cadre insulaire unique",
-    "Campus moderne avec toutes les infrastructures nécessaires",
-    "Qualité de vie exceptionnelle dans un environnement naturel préservé",
-    "Coût de la vie avantageux par rapport à l'Espagne continentale",
+    "Climat subtropical toute l'année, cadre insulaire unique.",
+    "Campus moderne avec toutes les infrastructures nécessaires.",
+    "Qualité de vie exceptionnelle dans un environnement naturel préservé.",
+    "Coût de la vie avantageux par rapport à l'Espagne continentale.",
   ],
   airport: "Aéroports internationaux bien desservis depuis la France",
   flightTime: "Vol direct Paris-Canaries : environ 4h",
@@ -110,13 +113,26 @@ const canariesLife: StudentLife = {
 const romeLife: StudentLife = {
   city: "Rome",
   highlights: [
-    "Capitale historique et culturelle de l'Italie, patrimoine mondial UNESCO",
-    "Cours d'italien intensif inclus la 1ère année, aucun prérequis linguistique",
-    "Vie étudiante riche et cosmopolite dans une ville à taille humaine",
-    "Cuisine, art et histoire au quotidien",
+    "Cadre Historique Unique : Étudier à Rome offre un environnement culturel exceptionnel, propice à l'épanouissement personnel.",
+    "Campus Accessible : Bien intégré, accès facile aux transports et infrastructures de la capitale italienne.",
+    "Proximité de l'Aéroport : Rome Fiumicino (FCO) à 30-35 minutes en voiture ou taxi.",
+    "Liaison Rapide avec la France : Vol direct Paris-Rome très court (environ 2h).",
+    "Cours d'italien intensif inclus la 1ère année, aucun prérequis linguistique.",
   ],
   airport: "Aéroport Rome-Fiumicino (FCO) à 30 minutes du centre",
   flightTime: "Vol direct Paris-Rome : environ 2h",
+};
+
+const ucjcMadridLife: StudentLife = {
+  city: "Madrid",
+  highlights: [
+    "Cadre de Vie à l'UCJC : Campus moderne et dynamique à Villafranca del Castillo, cliniques dentaires de pointe, environnement favorisant l'apprentissage.",
+    "Proximité de la Capitale : Accès facile à la richesse culturelle, sociale et économique de Madrid via les transports en commun.",
+    "Proximité de l'Aéroport : Madrid-Barajas (MAD) à 45-60 minutes du campus.",
+    "Liaison Rapide avec la France : Nombreux vols directs quotidiens, durée environ 2 heures.",
+  ],
+  airport: "Aéroport Madrid-Barajas (MAD) à 45-60 minutes du campus",
+  flightTime: "Vol direct Paris-Madrid : environ 2h",
 };
 
 // ============================================================
@@ -294,7 +310,7 @@ const dentaireUCJC: ProgramDetail = {
     { year: "5ème année", theme: "Professionnalisation", description: "Synthèse clinique et préparation professionnelle.", subjects: ["Clinique Intégrée II (cas complexes)", "Implantologie, Esthétique Dentaire", "Déontologie et Gestion de Cabinet", "Travail de Fin de Diplôme (TFG)"] },
   ],
   admissionSteps: defaultAdmissionSteps,
-  studentLife: madridLife,
+  studentLife: ucjcMadridLife,
 };
 
 const dentaireLINK: ProgramDetail = {
@@ -442,7 +458,7 @@ const kineUEMadrid: ProgramDetail = {
   costPerYear: "10 020 €", totalCost: "40 080 €",
   admission: "PE 4 épreuves (cursus français)", averageMin: "13-14/20",
   speRequired: "Aucune spécialité requise", diploma: "Grado en Fisioterapia (reconnu UE)",
-  program: kineProgram4ans, admissionSteps: defaultAdmissionSteps, studentLife: madridLife,
+  program: kineProgram4ans, admissionSteps: defaultAdmissionSteps, studentLife: ucjcMadridLife,
 };
 
 const kineUEMalaga: ProgramDetail = {
@@ -502,7 +518,7 @@ const kineUCJC: ProgramDetail = {
   costPerYear: "9 420 €", totalCost: "37 680 €",
   admission: "Entretien uniquement", averageMin: "Aucune",
   speRequired: "Aucune spécialité requise", diploma: "Grado en Fisioterapia (reconnu UE)",
-  program: kineProgram4ans, admissionSteps: defaultAdmissionSteps, studentLife: madridLife,
+  program: kineProgram4ans, admissionSteps: defaultAdmissionSteps, studentLife: ucjcMadridLife,
   isCheapest: true,
 };
 
@@ -556,7 +572,7 @@ const pharmacieUCJC: ProgramDetail = {
   costPerYear: "10 140 €", totalCost: "50 700 €",
   admission: "Entretien uniquement", averageMin: "Aucune",
   speRequired: "Aucune spécialité requise", diploma: "Grado en Farmacia (reconnu UE)",
-  program: pharmacieProgram5ans, admissionSteps: defaultAdmissionSteps, studentLife: madridLife,
+  program: pharmacieProgram5ans, admissionSteps: defaultAdmissionSteps, studentLife: ucjcMadridLife,
 };
 
 const pharmacieLINK: ProgramDetail = {
@@ -645,4 +661,35 @@ export function getProgramsByFiliere(filiere: string): ProgramDetail[] {
 
 export function getAllProgramSlugs(): Array<{ filiere: string; slug: string }> {
   return programDetails.map((p) => ({ filiere: p.filiereSlug, slug: p.slug }));
+}
+
+/** Map university slug (link|ucjc|ue) + city to program-detail slug for URL building */
+const uniShortMap: Record<string, string> = {
+  link: "LINK",
+  ucjc: "UCJC",
+  ue: "UE",
+};
+
+function normalizeCity(city: string): string {
+  return city
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+}
+
+export function getProgramSlugForHref(
+  filiereSlug: string,
+  universitySlug: string,
+  campus: string
+): string | null {
+  const short = uniShortMap[universitySlug];
+  if (!short) return null;
+  const campusNorm = normalizeCity(campus);
+  const found = programDetails.find(
+    (p) =>
+      p.filiereSlug === filiereSlug &&
+      p.universityShort === short &&
+      normalizeCity(p.city) === campusNorm
+  );
+  return found?.slug ?? null;
 }

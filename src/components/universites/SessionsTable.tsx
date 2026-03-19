@@ -197,9 +197,9 @@ export default function SessionsTable() {
           />
         </div>
 
-        <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 flex items-start gap-3">
-          <AlertTriangle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
-          <p className="text-sm text-amber-800">
+        <div className="bg-[#EC680A]/10 border border-[#EC680A]/25 rounded-xl p-4 flex items-start gap-3">
+          <AlertTriangle className="w-5 h-5 text-[#EC680A] shrink-0 mt-0.5" />
+          <p className="text-sm text-[#1B1D3A]">
             Sessions valables pour les campus de Madrid et des Canaries. Plus on
             attend, moins il y a de places disponibles.
           </p>

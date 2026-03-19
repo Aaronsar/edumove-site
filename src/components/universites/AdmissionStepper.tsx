@@ -10,10 +10,11 @@ interface AdmissionStepperProps {
   color: "emerald" | "amber" | "blue";
 }
 
+/* Charte : violet pour les étapes, orange pour les notes */
 const accentMap: Record<AdmissionStepperProps["color"], { dot: string; note: string }> = {
-  emerald: { dot: "bg-emerald-600", note: "bg-emerald-50 border-emerald-200 text-emerald-800" },
-  amber: { dot: "bg-amber-600", note: "bg-amber-50 border-amber-200 text-amber-800" },
-  blue: { dot: "bg-[#046BD2]", note: "bg-blue-50 border-blue-200 text-blue-800" },
+  emerald: { dot: "bg-[#615CA5]", note: "bg-[#EC680A]/10 border-[#EC680A]/25 text-[#1B1D3A]" },
+  amber: { dot: "bg-[#615CA5]", note: "bg-[#EC680A]/10 border-[#EC680A]/25 text-[#1B1D3A]" },
+  blue: { dot: "bg-[#615CA5]", note: "bg-[#EC680A]/10 border-[#EC680A]/25 text-[#1B1D3A]" },
 };
 
 export default function AdmissionStepper({
@@ -32,7 +33,7 @@ export default function AdmissionStepper({
         {/* Desktop horizontal stepper */}
         <div className="hidden md:flex items-start justify-between relative">
           {/* Connecting line */}
-          <div className="absolute top-5 left-[10%] right-[10%] h-0.5 bg-white/30 z-0" />
+          <div className="absolute top-5 left-[10%] right-[10%] h-0.5 bg-[#615CA5]/20 z-0" />
 
           {steps.map((step, i) => (
             <motion.div
@@ -69,7 +70,7 @@ export default function AdmissionStepper({
                   {step.step}
                 </div>
                 {i < steps.length - 1 && (
-                  <div className="w-0.5 flex-1 bg-gray-200 my-1" />
+                  <div className="w-0.5 flex-1 bg-[#615CA5]/20 my-1" />
                 )}
               </div>
               {/* Right column: text */}

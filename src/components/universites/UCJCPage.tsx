@@ -17,9 +17,14 @@ export default function UCJCPage() {
   const overviewCards = [
     { value: "Madrid", label: "Ville" },
     { value: "Espagnol", label: "Langue" },
-    { value: "3", label: "Fili\u00e8res" },
-    { value: "0\u00a0\u20ac", label: "Entretien" },
+    { value: "3", label: "Filières" },
+    { value: "0 €", label: "Entretien" },
   ];
+
+  const ucjcPrograms = programDetails.filter((p) => p.universityShort === "UCJC");
+  const formationLinks = ucjcPrograms
+    .filter((p, i, arr) => arr.findIndex((x) => x.filiereSlug === p.filiereSlug) === i)
+    .map((p) => ({ name: p.filiere, filiereSlug: p.filiereSlug, programSlug: p.slug }));
 
   const candidatureDocuments = [
     "Pi\u00e8ce d\u2019identit\u00e9 (carte d\u2019identit\u00e9 ou passeport)",
@@ -45,20 +50,26 @@ export default function UCJCPage() {
   ];
 
   return (
-    <div>
+    <div className="bg-white">
       <UniHero
-        flag={uni.countryFlag}
         name={uni.name}
         location="Madrid, Espagne"
-        color="amber"
+        formationLinks={formationLinks}
       />
 
       <OverviewCards cards={overviewCards} />
 
       {/* Description */}
-      <section className="py-12 px-4">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold italic text-[#1B1D3A] mb-4">
+      <section className="relative py-14 px-4 bg-[#fafbff] overflow-hidden">
+        <div aria-hidden className="absolute inset-0">
+          <div className="absolute top-0 right-0 w-[520px] h-[520px] bg-gradient-to-bl from-[#EC680A]/7 via-transparent to-transparent rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-[460px] h-[460px] bg-gradient-to-tr from-[#615CA5]/7 via-transparent to-transparent rounded-full blur-3xl" />
+        </div>
+        <div className="relative max-w-4xl mx-auto">
+          <p className="text-sm font-semibold uppercase tracking-widest text-[#EC680A] mb-3">
+            Universit&eacute; partenaire
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-5" style={{ color: "#615CA5" }}>
             Pr&eacute;sentation
           </h2>
           <p className="text-[#334155] leading-relaxed mb-4">
@@ -104,9 +115,9 @@ export default function UCJCPage() {
       {/* Highlight: kine la moins chere */}
       <section className="px-4 -mt-4 mb-4">
         <div className="max-w-6xl mx-auto">
-          <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 flex items-start gap-3">
-            <Star className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
-            <p className="text-sm text-amber-800">
+          <div className="bg-[#EC680A]/10 border border-[#EC680A]/25 rounded-xl p-4 flex items-start gap-3">
+            <Star className="w-5 h-5 text-[#EC680A] shrink-0 mt-0.5" />
+            <p className="text-sm text-[#1B1D3A]">
               <strong>Kin&eacute;sith&eacute;rapie &agrave; l&apos;UCJC :</strong>{" "}
               c&apos;est l&apos;option la moins ch&egrave;re parmi toutes nos
               universit&eacute;s partenaires pour cette fili&egrave;re, avec un
@@ -122,6 +133,19 @@ export default function UCJCPage() {
         color="amber"
       />
 
+      {/* CTA 2 */}
+      <section className="py-12 px-4 bg-[#fafbff]">
+        <div className="max-w-3xl mx-auto text-center">
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 bg-[#EC680A] text-white font-semibold px-8 py-4 rounded-[5px] hover:bg-[#D45E09] transition-colors text-lg"
+          >
+            D&eacute;poser ma candidature gratuitement
+            <ArrowRight className="w-5 h-5" />
+          </Link>
+        </div>
+      </section>
+
       <DocumentsList
         candidature={candidatureDocuments}
         apresAcceptation={apresAcceptationDocuments}
@@ -134,7 +158,7 @@ export default function UCJCPage() {
       />
 
       {/* CTA */}
-      <section className="py-16 px-4 bg-[#1B1D3A]">
+      <section id="contact" className="py-16 px-4 bg-[#1B1D3A]">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Pr&ecirc;t &agrave; rejoindre l&apos;UCJC ?
@@ -147,7 +171,7 @@ export default function UCJCPage() {
             href="/contact"
             className="inline-flex items-center gap-2 bg-[#EC680A] text-white font-semibold px-8 py-4 rounded-[5px] hover:bg-[#D45E09] transition-colors text-lg"
           >
-            D&eacute;poser ma candidature
+            D&eacute;poser ma candidature gratuitement
             <ArrowRight className="w-5 h-5" />
           </Link>
         </div>

@@ -18,10 +18,15 @@ export default function UEPage() {
 
   const overviewCards = [
     { value: "5", label: "Campus" },
-    { value: "6", label: "Fili\u00e8res" },
+    { value: "6", label: "Filières" },
     { value: "3", label: "Langues" },
-    { value: "2\u00a0500\u00a0\u20ac", label: "Acompte" },
+    { value: "2 500 €", label: "Acompte" },
   ];
+
+  const uePrograms = programDetails.filter((p) => p.universityShort === "UE");
+  const formationLinks = uePrograms
+    .filter((p, i, arr) => arr.findIndex((x) => x.filiereSlug === p.filiereSlug) === i)
+    .map((p) => ({ name: p.filiere, filiereSlug: p.filiereSlug, programSlug: p.slug }));
 
   const candidatureDocuments = [
     "Pi\u00e8ce d\u2019identit\u00e9 (carte d\u2019identit\u00e9 ou passeport)",
@@ -49,20 +54,26 @@ export default function UEPage() {
   ];
 
   return (
-    <div>
+    <div className="bg-white">
       <UniHero
-        flag={uni.countryFlag}
         name={uni.name}
         location="5 campus en Espagne : Madrid, Malaga, Valence, Alicante, Canaries"
-        color="blue"
+        formationLinks={formationLinks}
       />
 
       <OverviewCards cards={overviewCards} />
 
       {/* Description */}
-      <section className="py-12 px-4">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold italic text-[#1B1D3A] mb-4">
+      <section className="relative py-14 px-4 bg-[#fafbff] overflow-hidden">
+        <div aria-hidden className="absolute inset-0">
+          <div className="absolute top-0 right-0 w-[520px] h-[520px] bg-gradient-to-bl from-[#EC680A]/7 via-transparent to-transparent rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-[460px] h-[460px] bg-gradient-to-tr from-[#615CA5]/7 via-transparent to-transparent rounded-full blur-3xl" />
+        </div>
+        <div className="relative max-w-4xl mx-auto">
+          <p className="text-sm font-semibold uppercase tracking-widest text-[#EC680A] mb-3">
+            Universit&eacute; partenaire
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-5" style={{ color: "#615CA5" }}>
             Pr&eacute;sentation
           </h2>
           <p className="text-[#334155] leading-relaxed mb-4">
@@ -97,6 +108,19 @@ export default function UEPage() {
         color="blue"
       />
 
+      {/* CTA 2 */}
+      <section className="py-12 px-4 bg-[#fafbff]">
+        <div className="max-w-3xl mx-auto text-center">
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 bg-[#EC680A] text-white font-semibold px-8 py-4 rounded-[5px] hover:bg-[#D45E09] transition-colors text-lg"
+          >
+            D&eacute;poser ma candidature gratuitement
+            <ArrowRight className="w-5 h-5" />
+          </Link>
+        </div>
+      </section>
+
       <TestDetails type="ue" />
 
       <SessionsTable />
@@ -113,7 +137,7 @@ export default function UEPage() {
       />
 
       {/* CTA */}
-      <section className="py-16 px-4 bg-[#1B1D3A]">
+      <section id="contact" className="py-16 px-4 bg-[#1B1D3A]">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Pr&ecirc;t &agrave; rejoindre l&apos;Universidad Europea ?
@@ -126,7 +150,7 @@ export default function UEPage() {
             href="/contact"
             className="inline-flex items-center gap-2 bg-[#EC680A] text-white font-semibold px-8 py-4 rounded-[5px] hover:bg-[#D45E09] transition-colors text-lg"
           >
-            D&eacute;poser ma candidature
+            D&eacute;poser ma candidature gratuitement
             <ArrowRight className="w-5 h-5" />
           </Link>
         </div>
