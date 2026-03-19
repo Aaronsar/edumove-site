@@ -68,6 +68,7 @@ export default async function ProgramPage({
           </div>
         </div>
       </section>
+      <MiniCTA />
 
       <ProgramHighlights detail={detail} />
       <CurriculumAccordion program={detail.program} />
