@@ -36,7 +36,7 @@ export default function ServicesSection() {
               <div className="space-y-3">
                 <div className="rounded-xl overflow-hidden h-40">
                   <Image
-                    src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&h=300&fit=crop"
+                    src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=400&h=300&fit=crop"
                     alt="Étudiants en médecine"
                     width={400}
                     height={300}
@@ -45,7 +45,7 @@ export default function ServicesSection() {
                 </div>
                 <div className="rounded-xl overflow-hidden h-52">
                   <Image
-                    src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=400&fit=crop"
+                    src="https://images.unsplash.com/photo-1607990283143-e81e7a2c9349?w=400&h=400&fit=crop"
                     alt="Campus universitaire"
                     width={400}
                     height={400}
@@ -56,7 +56,7 @@ export default function ServicesSection() {
               <div className="space-y-3 pt-6">
                 <div className="rounded-xl overflow-hidden h-52">
                   <Image
-                    src="https://images.unsplash.com/photo-1581093588401-fbb62a02f120?w=400&h=400&fit=crop"
+                    src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=400&h=400&fit=crop"
                     alt="Étudiants en clinique"
                     width={400}
                     height={400}
@@ -65,7 +65,7 @@ export default function ServicesSection() {
                 </div>
                 <div className="rounded-xl overflow-hidden h-40">
                   <Image
-                    src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=400&h=300&fit=crop"
+                    src="https://images.unsplash.com/photo-1516549655169-df83a0774514?w=400&h=300&fit=crop"
                     alt="Remise de diplômes"
                     width={400}
                     height={300}

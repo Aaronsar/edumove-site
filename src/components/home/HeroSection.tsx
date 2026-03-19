@@ -104,21 +104,7 @@ export default function HeroSection() {
         </div>
       </section>
 
-      {/* Photo band — étudiants */}
-      <div className="flex overflow-hidden h-[140px] md:h-[200px]">
-        {[
-          "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=350&h=200&fit=crop",
-          "https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=350&h=200&fit=crop",
-          "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=350&h=200&fit=crop",
-          "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=350&h=200&fit=crop",
-          "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=350&h=200&fit=crop",
-          "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=350&h=200&fit=crop",
-        ].map((src, i) => (
-          <div key={i} className="shrink-0 w-[200px] md:w-[280px] h-full relative">
-            <Image src={src} alt="" fill className="object-cover" sizes="280px" />
-          </div>
-        ))}
-      </div>
+      {/* spacer */}
     </>
   );
 }
