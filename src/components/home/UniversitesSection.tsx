@@ -1,82 +1,130 @@
+"use client";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const universites = [
   {
     name: "Universidad Europea",
     short: "UE",
-    location: "Espagne — 5 campus",
+    country: "Espagne",
     flag: "🇪🇸",
-    description: "Madrid, Málaga, Valence, Alicante, Canaries. 6 filières santé disponibles avec diplôme reconnu dans toute l'UE.",
-    tags: ["6 filières", "5 campus", "PE ou dossier"],
+    campus: 5,
+    filieres: 6,
+    etudiants: "+300",
+    since: "2019",
+    cities: ["Madrid", "Málaga", "Valence", "Alicante", "Canaries"],
+    highlight: "Le plus grand réseau universitaire santé en Espagne",
     slug: "universidad-europea",
-    cities: "Madrid · Málaga · Valence · Alicante · Canaries",
-    highlight: "Le plus grand réseau",
+    gradient: "from-[#1b1d3a] via-[#2a2d5a] to-[#615ca5]",
   },
   {
-    name: "LINK Campus University",
+    name: "LINK Campus",
     short: "LINK",
-    location: "Rome, Italie",
+    country: "Italie",
     flag: "🇮🇹",
-    description: "Test d'admission 100% en français. Cours d'italien intensif inclus. Ouvert à tous les profils bac sans prérequis.",
-    tags: ["4 filières", "Test en français", "Aucun prérequis"],
+    campus: 1,
+    filieres: 4,
+    etudiants: "+150",
+    since: "2020",
+    cities: ["Rome"],
+    highlight: "Test d'admission 100% en français, aucun prérequis",
     slug: "link-campus",
-    cities: "Rome",
-    highlight: "Test 100% en français",
+    gradient: "from-[#615ca5] via-[#4a4790] to-[#1b1d3a]",
   },
   {
     name: "UCJC",
     short: "UCJC",
-    location: "Madrid, Espagne",
+    country: "Espagne",
     flag: "🇪🇸",
-    description: "Admission par entretien uniquement, aucun test écrit. L'option la moins chère pour la kinésithérapie (9 420 €/an).",
-    tags: ["3 filières", "Entretien seul", "Le - cher"],
+    campus: 1,
+    filieres: 3,
+    etudiants: "+80",
+    since: "2021",
+    cities: ["Madrid"],
+    highlight: "Admission sur entretien, l'option la plus accessible",
     slug: "ucjc",
-    cities: "Madrid",
-    highlight: "Le moins cher",
+    gradient: "from-[#ec680a] via-[#e07520] to-[#d45e09]",
   },
 ];
 
 export default function UniversitesSection() {
   return (
-    <section className="py-16 bg-[#f7f7fb]">
+    <section className="py-20 bg-white">
       <div className="max-w-6xl mx-auto px-4">
-        <div className="text-center mb-12">
-          <p className="text-[#ec680a] text-xs uppercase tracking-widest font-semibold mb-2">Nos partenaires</p>
-          <h2 className="text-2xl md:text-3xl font-bold" style={{ color: "#615CA5" }}>
-            3 universités d&apos;excellence en Europe
-          </h2>
+        {/* Header with text left + CTA right */}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
+          <div>
+            <p className="text-[#ec680a] text-xs uppercase tracking-widest font-semibold mb-2">Nos universités</p>
+            <h2 className="text-2xl md:text-3xl font-bold leading-tight" style={{ color: "#1b1d3a" }}>
+              Des universités d&apos;excellence,
+              <br />
+              <span className="text-[#615ca5]">reconnues à travers l&apos;Europe.</span>
+            </h2>
+          </div>
+          <p className="text-[#334155] text-sm max-w-sm mt-4 md:mt-0 leading-relaxed">
+            On sélectionne pour vous les meilleures universités. Excellence académique, diplôme reconnu en France, accompagnement sur mesure.
+          </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-5">
-          {universites.map((u) => (
-            <Link
+        {/* University cards — modern layout */}
+        <div className="space-y-5">
+          {universites.map((u, i) => (
+            <motion.div
               key={u.slug}
-              href={`/universites/${u.slug}`}
-              className="group flex flex-col bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
             >
-              {/* Top badge */}
-              <div className="bg-[#615ca5] px-4 py-2 flex items-center justify-between">
-                <span className="text-white text-xs font-semibold">{u.highlight}</span>
-                <span className="text-white/60 text-lg">{u.flag}</span>
-              </div>
+              <Link
+                href={`/universites/${u.slug}`}
+                className="group block rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300"
+              >
+                <div className={`bg-gradient-to-r ${u.gradient} p-6 md:p-8`}>
+                  <div className="flex flex-col md:flex-row md:items-center gap-6">
+                    {/* Left — Info */}
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-3">
+                        <span className="text-3xl">{u.flag}</span>
+                        <div>
+                          <h3 className="text-xl md:text-2xl font-bold text-white" style={{ color: "white" }}>{u.name}</h3>
+                          <p className="text-white/50 text-xs">{u.country} · Partenaire depuis {u.since}</p>
+                        </div>
+                      </div>
+                      <p className="text-white/70 text-sm mb-4 max-w-md">{u.highlight}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {u.cities.map((c) => (
+                          <span key={c} className="text-xs bg-white/10 text-white/80 px-3 py-1 rounded-full backdrop-blur-sm">
+                            {c}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
 
-              <div className="p-5 flex flex-col flex-1">
-                <h3 className="font-bold text-[#1b1d3a] text-lg mb-1">{u.name}</h3>
-                <p className="text-[#615ca5] text-xs font-medium mb-3 flex items-center gap-1">
-                  <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" /></svg>
-                  {u.cities}
-                </p>
-                <p className="text-[#334155] text-sm leading-relaxed mb-4 flex-1">{u.description}</p>
-                <div className="flex flex-wrap gap-1.5 mb-4">
-                  {u.tags.map((t) => (
-                    <span key={t} className="text-[10px] bg-[#1b1d3a]/5 text-[#1b1d3a] px-2 py-0.5 rounded font-medium">{t}</span>
-                  ))}
+                    {/* Right — Stats */}
+                    <div className="flex gap-4 md:gap-6">
+                      {[
+                        { value: u.campus.toString(), label: "Campus" },
+                        { value: u.filieres.toString(), label: "Filières" },
+                        { value: u.etudiants, label: "Étudiants" },
+                      ].map((s, j) => (
+                        <div key={j} className="text-center bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 min-w-[70px]">
+                          <p className="text-xl md:text-2xl font-bold text-white" style={{ color: "white" }}>{s.value}</p>
+                          <p className="text-white/50 text-[10px] uppercase tracking-wide">{s.label}</p>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Arrow */}
+                    <div className="hidden md:flex items-center">
+                      <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-[#ec680a] transition-colors">
+                        <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <span className="text-[#ec680a] font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all mt-auto">
-                  Découvrir →
-                </span>
-              </div>
-            </Link>
+              </Link>
+            </motion.div>
           ))}
         </div>
       </div>
