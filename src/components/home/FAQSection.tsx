@@ -61,7 +61,7 @@ const faqs = [
 ];
 
 export default function FAQSection() {
-  const [open, setOpen] = useState<number | null>(0);
+  const [open, setOpen] = useState<number | null>(null);
 
   const renderFaq = (faq: { q: string; a: string }, originalIndex: number) => (
     <div
