@@ -40,12 +40,12 @@ export default function LinkPage() {
   ];
 
   const documentNotes = [
-    "Les traductions asserment\u00e9es sont \u00e0 votre charge. EduMove peut vous recommander un traducteur.",
-    "La d\u00e9claration de valeur est fournie par le consulat d\u2019Italie en France.",
+    "Les traductions assermentées sont à votre charge. EduMove peut vous recommander un traducteur.",
+    "La déclaration de valeur est fournie par le consulat d’Italie en France.",
   ];
 
   return (
-    <div>
+    <div className="bg-white">
       <UniHero
         flag={uni.countryFlag}
         name={uni.name}
@@ -56,31 +56,40 @@ export default function LinkPage() {
       <OverviewCards cards={overviewCards} />
 
       {/* Description */}
-      <section className="py-12 px-4">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold italic text-[#1B1D3A] mb-4">
-            Pr&eacute;sentation
+      <section className="relative py-14 px-4 bg-[#fafbff] overflow-hidden">
+        <div aria-hidden className="absolute inset-0">
+          <div className="absolute top-0 right-0 w-[520px] h-[520px] bg-gradient-to-bl from-[#EC680A]/7 via-transparent to-transparent rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-[460px] h-[460px] bg-gradient-to-tr from-[#615CA5]/7 via-transparent to-transparent rounded-full blur-3xl" />
+        </div>
+        <div className="relative max-w-4xl mx-auto">
+          <p className="text-sm font-semibold uppercase tracking-widest text-[#EC680A] mb-3">
+            Université partenaire
+          </p>
+          <h2
+            className="text-3xl md:text-4xl font-bold tracking-tight mb-5"
+            style={{ color: "#615CA5" }}
+          >
+            Présentation
           </h2>
-          <p className="text-[#334155] leading-relaxed mb-4">
-            LINK Campus University est une universit&eacute; priv&eacute;e
-            situ&eacute;e &agrave; Rome, en Italie. Elle propose des formations
-            en m&eacute;decine, dentaire, kin&eacute;sith&eacute;rapie et
-            pharmacie, toutes enseign&eacute;es en italien. Les
-            dipl&ocirc;mes sont reconnus dans l&apos;ensemble de l&apos;Union
-            europ&eacute;enne.
-          </p>
-          <p className="text-[#334155] leading-relaxed mb-4">
-            L&apos;admission se fait via un test QCM en fran&ccedil;ais
-            portant sur 5 mati&egrave;res scientifiques, organis&eacute; &agrave;
-            Paris. Aucun pr&eacute;requis linguistique n&apos;est
-            demand&eacute; : un cours d&apos;italien intensif est inclus
-            lors de la premi&egrave;re ann&eacute;e.
-          </p>
-          <p className="text-[#334155] leading-relaxed">
-            La fili&egrave;re Pharmacie fait exception : elle ne
-            n&eacute;cessite pas de test et l&apos;admission se fait sur
-            dossier uniquement.
-          </p>
+          <div className="space-y-4 text-[#334155] leading-relaxed">
+            <p>
+              LINK Campus University est une université privée située à Rome, en
+              Italie. Elle propose des formations en médecine, dentaire,
+              kinésithérapie et pharmacie, toutes enseignées en italien. Les
+              diplômes sont reconnus dans l&apos;ensemble de l&apos;Union
+              européenne.
+            </p>
+            <p>
+              L&apos;admission se fait via un test QCM en français portant sur 5
+              matières scientifiques, organisé à Paris. Aucun prérequis
+              linguistique n&apos;est demandé : un cours d&apos;italien intensif
+              est inclus lors de la première année.
+            </p>
+            <p>
+              La filière Pharmacie fait exception : elle ne nécessite pas de test
+              et l&apos;admission se fait sur dossier uniquement.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -89,12 +98,12 @@ export default function LinkPage() {
       {/* Pharmacie note */}
       <section className="px-4 -mt-4 mb-4">
         <div className="max-w-6xl mx-auto">
-          <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-4 flex items-start gap-3">
-            <BookOpen className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
-            <p className="text-sm text-emerald-800">
+          <div className="bg-[#EC680A]/10 border border-[#EC680A]/25 rounded-xl p-4 flex items-start gap-3">
+            <BookOpen className="w-5 h-5 text-[#EC680A] shrink-0 mt-0.5" />
+            <p className="text-sm text-[#1B1D3A]">
               <strong>Pharmacie :</strong> pas de test d&apos;admission.
-              L&apos;admission se fait sur dossier uniquement (les &eacute;tapes
-              2 et 3 du processus sont saut&eacute;es). Frais de test :
+              L&apos;admission se fait sur dossier uniquement (les étapes 2 et 3
+              du processus sont sautées). Frais de test :
               0&nbsp;&euro;.
             </p>
           </div>
@@ -124,17 +133,17 @@ export default function LinkPage() {
       <section className="py-16 px-4 bg-[#1B1D3A]">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Pr&ecirc;t &agrave; rejoindre LINK Campus ?
+            Prêt à rejoindre LINK Campus ?
           </h2>
           <p className="text-white/80 mb-8 text-lg">
-            Candidatez d&egrave;s maintenant et b&eacute;n&eacute;ficiez de
-            l&apos;accompagnement EduMove de A &agrave; Z.
+            Candidatez dès maintenant et bénéficiez de l&apos;accompagnement
+            EduMove de A à Z.
           </p>
           <Link
             href="/contact"
             className="inline-flex items-center gap-2 bg-[#EC680A] text-white font-semibold px-8 py-4 rounded-[5px] hover:bg-[#D45E09] transition-colors text-lg"
           >
-            D&eacute;poser ma candidature
+            Déposer ma candidature
             <ArrowRight className="w-5 h-5" />
           </Link>
         </div>
