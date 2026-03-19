@@ -93,10 +93,6 @@ export default function UniversityProgramCard({
           </div>
         </div>
 
-        {/* Admission badge */}
-        <span className="inline-flex items-center text-[11px] font-semibold px-2.5 py-1 rounded-lg bg-[#615CA5]/10 text-[#615CA5]">
-          {badgeLabel}
-        </span>
       </div>
 
       {/* Divider */}
