@@ -72,9 +72,9 @@ export default function FAQSection() {
     >
       <button
         onClick={() => setOpen(open === originalIndex ? null : originalIndex)}
-        className="w-full flex items-center justify-between p-5 min-h-[72px] text-left hover:bg-gray-50/50 transition-colors"
+        className="w-full flex items-center justify-between p-5 h-[68px] text-left hover:bg-gray-50/50 transition-colors"
       >
-        <span className="font-semibold text-[#1b1d3a] text-sm pr-4 line-clamp-2">{faq.q}</span>
+        <span className="font-semibold text-[#1b1d3a] text-sm pr-4 line-clamp-1">{faq.q}</span>
         <span className={`shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-sm transition-all ${
           open === originalIndex ? "bg-[#ec680a] text-white" : "bg-gray-100 text-[#334155]"
         }`}>
