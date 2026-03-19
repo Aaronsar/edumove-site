@@ -47,7 +47,7 @@ export default function UniversitesSection() {
             <Link
               key={u.slug}
               href={`/universites/${u.slug}`}
-              className="group block bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+              className="group flex flex-col bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
             >
               {/* Header compact */}
               <div className="bg-[#1b1d3a] px-5 py-4 relative">
@@ -61,7 +61,7 @@ export default function UniversitesSection() {
               </div>
 
               {/* Body */}
-              <div className="p-5">
+              <div className="p-5 flex flex-col flex-1">
                 <p className="text-[#334155] text-sm leading-relaxed mb-4">{u.description}</p>
 
                 {u.cities && (
@@ -77,7 +77,7 @@ export default function UniversitesSection() {
                   ))}
                 </div>
 
-                <span className="text-[#EC680A] font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
+                <span className="mt-auto text-[#EC680A] font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
                   En savoir plus
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
                 </span>

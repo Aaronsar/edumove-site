@@ -16,12 +16,12 @@ export default function OverviewCards({ cards }: OverviewCardsProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.1 }}
-            className="bg-white rounded-xl shadow-sm p-6 text-center"
+            className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 text-center hover:shadow-md transition-shadow"
           >
             <div className="text-3xl font-bold text-[#1B1D3A]">
               {card.value}
             </div>
-            <div className="text-sm text-gray-500 uppercase tracking-wide mt-1">
+            <div className="text-xs text-gray-500 uppercase tracking-widest mt-1">
               {card.label}
             </div>
           </motion.div>

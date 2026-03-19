@@ -10,11 +10,18 @@ interface AdmissionStepperProps {
   color: "emerald" | "amber" | "blue";
 }
 
+const accentMap: Record<AdmissionStepperProps["color"], { dot: string; note: string }> = {
+  emerald: { dot: "bg-emerald-600", note: "bg-emerald-50 border-emerald-200 text-emerald-800" },
+  amber: { dot: "bg-amber-600", note: "bg-amber-50 border-amber-200 text-amber-800" },
+  blue: { dot: "bg-[#046BD2]", note: "bg-blue-50 border-blue-200 text-blue-800" },
+};
+
 export default function AdmissionStepper({
   steps,
   note,
   color,
 }: AdmissionStepperProps) {
+  const accent = accentMap[color];
   return (
     <section className="py-12 px-4">
       <div className="max-w-6xl mx-auto">
@@ -25,7 +32,7 @@ export default function AdmissionStepper({
         {/* Desktop horizontal stepper */}
         <div className="hidden md:flex items-start justify-between relative">
           {/* Connecting line */}
-          <div className="absolute top-5 left-[10%] right-[10%] h-0.5 bg-[#1B1D3A] z-0" />
+          <div className="absolute top-5 left-[10%] right-[10%] h-0.5 bg-white/30 z-0" />
 
           {steps.map((step, i) => (
             <motion.div
@@ -36,7 +43,7 @@ export default function AdmissionStepper({
               className="flex flex-col items-center text-center relative z-10 flex-1"
             >
               <div
-                className="w-10 h-10 rounded-full bg-[#EC680A] text-white flex items-center justify-center font-bold text-sm mb-3"
+                className={`w-10 h-10 rounded-full ${accent.dot} text-white flex items-center justify-center font-bold text-sm mb-3 shadow-sm`}
               >
                 {step.step}
               </div>
@@ -57,12 +64,12 @@ export default function AdmissionStepper({
               {/* Left column: circle + line */}
               <div className="flex flex-col items-center">
                 <div
-                  className="w-10 h-10 rounded-full bg-[#EC680A] text-white flex items-center justify-center font-bold text-sm shrink-0"
+                  className={`w-10 h-10 rounded-full ${accent.dot} text-white flex items-center justify-center font-bold text-sm shrink-0 shadow-sm`}
                 >
                   {step.step}
                 </div>
                 {i < steps.length - 1 && (
-                  <div className="w-0.5 flex-1 bg-[#1B1D3A] my-1" />
+                  <div className="w-0.5 flex-1 bg-gray-200 my-1" />
                 )}
               </div>
               {/* Right column: text */}
@@ -80,9 +87,9 @@ export default function AdmissionStepper({
 
         {/* Note */}
         {note && (
-          <div className="mt-8 bg-amber-50 border border-amber-200 rounded-lg p-4 flex items-start gap-3">
-            <Info className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
-            <p className="text-sm text-amber-800">{note}</p>
+          <div className={`mt-8 border rounded-xl p-4 flex items-start gap-3 ${accent.note}`}>
+            <Info className="w-5 h-5 shrink-0 mt-0.5" />
+            <p className="text-sm">{note}</p>
           </div>
         )}
       </div>
