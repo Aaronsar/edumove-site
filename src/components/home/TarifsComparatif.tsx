@@ -1,166 +1,57 @@
 "use client";
 
-interface TarifRow {
-  filiere: string;
-  link: string | null;
-  ucjc: string | null;
-  ueCheap: string | null;
-  ueExpensive: string | null;
-  cheapestCol: "link" | "ucjc" | "ueCheap" | "ueExpensive" | null;
-  ucjcFull?: boolean;
-}
-
-const tarifs: TarifRow[] = [
-  {
-    filiere: "Médecine",
-    link: "19 800\u20AC/an",
-    ucjc: "COMPLET",
-    ueCheap: "21 480\u20AC/an",
-    ueExpensive: "21 480\u20AC/an",
-    cheapestCol: "link",
-    ucjcFull: true,
-  },
-  {
-    filiere: "Dentaire",
-    link: "19 800\u20AC/an",
-    ucjc: "18 420\u20AC/an",
-    ueCheap: "19 200\u20AC/an (Malaga)",
-    ueExpensive: "20 821\u20AC/an (Valence/Alicante)",
-    cheapestCol: "ucjc",
-  },
-  {
-    filiere: "Kinésithérapie",
-    link: "11 900\u20AC/an",
-    ucjc: "9 420\u20AC/an",
-    ueCheap: "10 020\u20AC/an (Madrid/Malaga/Canaries)",
-    ueExpensive: "10 080\u20AC/an (Valence/Alicante)",
-    cheapestCol: "ucjc",
-  },
-  {
-    filiere: "Pharmacie",
-    link: "7 900\u20AC/an",
-    ucjc: "10 140\u20AC/an",
-    ueCheap: "12 120\u20AC/an (Madrid seul)",
-    ueExpensive: null,
-    cheapestCol: "link",
-  },
-  {
-    filiere: "Vétérinaire",
-    link: null,
-    ucjc: null,
-    ueCheap: "19 500\u20AC/an (Madrid seul)",
-    ueExpensive: null,
-    cheapestCol: "ueCheap",
-  },
-  {
-    filiere: "Prépa Dentaire",
-    link: null,
-    ucjc: null,
-    ueCheap: "17 000\u20AC/an (Alicante seul)",
-    ueExpensive: null,
-    cheapestCol: "ueCheap",
-  },
+const rows = [
+  { filiere: "Médecine", icon: "🩺", link: "19 800 €/an", ucjc: "COMPLET", ueLow: "21 480 €/an", ueHigh: "21 480 €/an", cheapest: "link" },
+  { filiere: "Dentaire", icon: "🦷", link: "19 800 €/an", ucjc: "18 420 €/an", ueLow: "19 200 €/an", ueHigh: "20 821 €/an", cheapest: "ucjc" },
+  { filiere: "Kinésithérapie", icon: "💪", link: "11 900 €/an", ucjc: "9 420 €/an", ueLow: "10 020 €/an", ueHigh: "10 080 €/an", cheapest: "ucjc" },
+  { filiere: "Pharmacie", icon: "💊", link: "7 900 €/an", ucjc: "10 140 €/an", ueLow: "12 120 €/an", ueHigh: "—", cheapest: "link" },
+  { filiere: "Vétérinaire", icon: "🐾", link: "—", ucjc: "—", ueLow: "19 500 €/an", ueHigh: "—", cheapest: "ue" },
+  { filiere: "Prépa Dentaire", icon: "📚", link: "—", ucjc: "—", ueLow: "17 000 €/an", ueHigh: "—", cheapest: "ue" },
 ];
 
-function CellContent({
-  value,
-  isCheapest,
-  isFull,
-}: {
-  value: string | null;
-  isCheapest: boolean;
-  isFull?: boolean;
-}) {
-  if (!value) {
-    return <span className="text-gray-300">&mdash;</span>;
-  }
-  if (isFull) {
-    return <span className="text-red-500 line-through">{value}</span>;
-  }
-  if (isCheapest) {
-    return (
-      <span className="inline-flex items-center gap-1.5">
-        <span className="rounded-full bg-[#EC680A]/10 px-2.5 py-0.5 text-xs font-semibold text-[#EC680A]">
-          Le - cher
-        </span>
-        <span className="font-semibold text-[#EC680A]">{value}</span>
-      </span>
-    );
-  }
-  return <span>{value}</span>;
+function Cell({ value, isCheapest, isComplet }: { value: string; isCheapest: boolean; isComplet: boolean }) {
+  if (isComplet) return <span className="text-red-500 line-through text-sm">COMPLET</span>;
+  if (value === "—") return <span className="text-gray-300">—</span>;
+  return (
+    <span className={`text-sm font-semibold ${isCheapest ? "text-[#EC680A]" : "text-[#1B1D3A]"}`}>
+      {isCheapest && <span className="inline-block bg-[#EC680A]/10 text-[#EC680A] text-xs px-2 py-0.5 rounded-full mr-1 font-bold">✓</span>}
+      {value}
+    </span>
+  );
 }
 
 export default function TarifsComparatif() {
   return (
-    <section className="py-16 md:py-20">
-      <div className="mx-auto max-w-7xl px-4">
-        <h2 className="text-center text-3xl font-bold italic text-[#1B1D3A]">
-          Comparatif des tarifs par filière
-        </h2>
+    <section className="py-20 bg-white">
+      <div className="max-w-6xl mx-auto px-4">
+        <p className="text-center text-sm uppercase tracking-widest text-[#EC680A] mb-3 font-semibold">Tarifs</p>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12" style={{ color: "#1B1D3A" }}>Comparatif des tarifs par filière</h2>
 
-        <div className="mt-12 overflow-hidden rounded-2xl border border-gray-200 shadow-sm">
-          <div className="overflow-x-auto">
-            <table className="w-full min-w-[700px] text-sm">
-              <thead>
-                <tr className="bg-[#1B1D3A] text-white">
-                  <th className="px-6 py-4 text-left font-semibold">
-                    Filière
-                  </th>
-                  <th className="px-6 py-4 text-left font-semibold">
-                    LINK (Rome)
-                  </th>
-                  <th className="px-6 py-4 text-left font-semibold">
-                    UCJC (Madrid)
-                  </th>
-                  <th className="px-6 py-4 text-left font-semibold">
-                    UE &mdash; Le moins cher
-                  </th>
-                  <th className="px-6 py-4 text-left font-semibold">
-                    UE &mdash; Le plus cher
-                  </th>
+        <div className="overflow-x-auto rounded-2xl border border-gray-200 shadow-sm">
+          <table className="w-full min-w-[700px]">
+            <thead>
+              <tr className="bg-[#1B1D3A]">
+                <th className="text-left text-white font-semibold py-4 px-5 text-sm">Filière</th>
+                <th className="text-center text-white font-semibold py-4 px-5 text-sm">🇮🇹 LINK (Rome)</th>
+                <th className="text-center text-white font-semibold py-4 px-5 text-sm">🇪🇸 UCJC (Madrid)</th>
+                <th className="text-center text-white font-semibold py-4 px-5 text-sm">🇪🇸 UE — Le - cher</th>
+                <th className="text-center text-white font-semibold py-4 px-5 text-sm">🇪🇸 UE — Le + cher</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((r, i) => (
+                <tr key={i} className="border-b border-gray-100 hover:bg-gray-50/50 transition-colors">
+                  <td className="py-4 px-5 font-semibold text-[#1B1D3A]">
+                    <span className="mr-2">{r.icon}</span>{r.filiere}
+                  </td>
+                  <td className="py-4 px-5 text-center"><Cell value={r.link} isCheapest={r.cheapest === "link"} isComplet={false} /></td>
+                  <td className="py-4 px-5 text-center"><Cell value={r.ucjc} isCheapest={r.cheapest === "ucjc"} isComplet={r.ucjc === "COMPLET"} /></td>
+                  <td className="py-4 px-5 text-center"><Cell value={r.ueLow} isCheapest={r.cheapest === "ue"} isComplet={false} /></td>
+                  <td className="py-4 px-5 text-center"><Cell value={r.ueHigh} isCheapest={false} isComplet={false} /></td>
                 </tr>
-              </thead>
-              <tbody>
-                {tarifs.map((row, index) => (
-                  <tr
-                    key={row.filiere}
-                    className={`border-t border-gray-100 ${
-                      index % 2 === 0 ? "bg-white" : "bg-gray-50/50"
-                    }`}
-                  >
-                    <td className="px-6 py-4 font-semibold text-[#1B1D3A]">
-                      {row.filiere}
-                    </td>
-                    <td className="px-6 py-4">
-                      <CellContent
-                        value={row.link}
-                        isCheapest={row.cheapestCol === "link"}
-                      />
-                    </td>
-                    <td className="px-6 py-4">
-                      <CellContent
-                        value={row.ucjc}
-                        isCheapest={row.cheapestCol === "ucjc"}
-                        isFull={row.ucjcFull}
-                      />
-                    </td>
-                    <td className="px-6 py-4">
-                      <CellContent
-                        value={row.ueCheap}
-                        isCheapest={row.cheapestCol === "ueCheap"}
-                      />
-                    </td>
-                    <td className="px-6 py-4">
-                      <CellContent
-                        value={row.ueExpensive}
-                        isCheapest={row.cheapestCol === "ueExpensive"}
-                      />
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
