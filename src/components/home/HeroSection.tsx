@@ -1,8 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, animate } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 const formations = [
   {
@@ -62,70 +61,10 @@ const formations = [
 ];
 
 export default function HeroSection() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const financableRef = useRef<HTMLDivElement>(null);
-  const lclRef = useRef<HTMLSpanElement>(null);
-  const pathRef = useRef<SVGPathElement>(null);
-  const dotRef = useRef<SVGGElement>(null);
-  const [pathD, setPathD] = useState("");
-  const [lclActive, setLclActive] = useState(false);
-  const [showPath, setShowPath] = useState(false);
-
-  useEffect(() => {
-    // Desktop only (md breakpoint = 768px)
-    if (window.innerWidth < 768) return;
-
-    const timer = setTimeout(() => {
-      if (!financableRef.current || !lclRef.current || !sectionRef.current) return;
-      const section = sectionRef.current.getBoundingClientRect();
-      const from = financableRef.current.getBoundingClientRect();
-      const to = lclRef.current.getBoundingClientRect();
-
-      const x1 = from.left + from.width / 2 - section.left;
-      const y1 = from.bottom - section.top + 8;
-      const x2 = to.left + to.width / 2 - section.left;
-      const y2 = to.top - section.top;
-
-      const cp1y = y1 + 40;
-      const cp2y = y2 - 30;
-      setPathD(`M ${x1} ${y1} C ${x1} ${cp1y}, ${x2} ${cp2y}, ${x2} ${y2}`);
-      setShowPath(true);
-
-      // Animate the dot along the path after delay
-      setTimeout(() => {
-        if (!pathRef.current || !dotRef.current) return;
-        const pathEl = pathRef.current;
-        const dotEl = dotRef.current;
-        const length = pathEl.getTotalLength();
-
-        animate(0, 1, {
-          duration: 2,
-          ease: [0.4, 0, 0.2, 1],
-          onUpdate: (v) => {
-            const pt = pathEl.getPointAtLength(v * length);
-            dotEl.setAttribute("transform", `translate(${pt.x}, ${pt.y})`);
-            dotEl.setAttribute("opacity", "1");
-          },
-          onComplete: () => {
-            setLclActive(true);
-            // Fade out the arrow
-            animate(1, 0, {
-              duration: 0.3,
-              onUpdate: (v) => {
-                dotEl.setAttribute("opacity", String(v));
-              },
-            });
-          },
-        });
-      }, 1500);
-    }, 800);
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <>
       {/* HERO — Full width dark navy */}
-      <section ref={sectionRef} className="relative bg-[#1b1d3a] overflow-hidden">
+      <section className="relative bg-[#1b1d3a] overflow-hidden">
         {/* Decorative shapes */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-20 -right-20 w-96 h-96 rounded-full bg-[#615ca5]/20 blur-3xl" />
@@ -177,7 +116,7 @@ export default function HeroSection() {
                     <p className="text-white/50 text-xs">{s.label}</p>
                   </div>
                 ))}
-                <div ref={financableRef}>
+                <div>
                   <p className="text-2xl md:text-3xl font-bold text-[#ec680a]">100%</p>
                   <p className="text-white/50 text-xs">Finançable</p>
                 </div>
@@ -207,26 +146,7 @@ export default function HeroSection() {
                 <div className="flex flex-wrap items-center gap-4 opacity-40">
                   <span className="text-white font-black text-sm">BFMTV.</span>
                   <span className="text-white font-serif font-bold text-sm italic">Forbes</span>
-                  <motion.span
-                    ref={lclRef}
-                    className="font-bold text-sm inline-block"
-                    animate={
-                      lclActive
-                        ? {
-                            color: "#ec680a",
-                            scale: [1, 1.6, 1.3],
-                            opacity: [0.4, 1, 1],
-                          }
-                        : { color: "#ffffff", scale: 1 }
-                    }
-                    transition={
-                      lclActive
-                        ? { duration: 0.5, ease: "easeOut" }
-                        : {}
-                    }
-                  >
-                    LCL
-                  </motion.span>
+                  <span className="text-white font-bold text-sm">LCL</span>
                   <span className="text-white font-bold text-xs">L&apos;Étudiant</span>
                   <span className="text-white font-serif text-xs font-bold">Le Figaro</span>
                 </div>
@@ -234,50 +154,6 @@ export default function HeroSection() {
             </motion.div>
           </div>
 
-          {/* Animated arrow from 100% Finançable to LCL — desktop only */}
-          {showPath && pathD && (
-            <svg
-              className="absolute inset-0 w-full h-full pointer-events-none z-20 hidden md:block"
-              style={{ overflow: "visible" }}
-            >
-              {/* Dashed path trail */}
-              <motion.path
-                ref={pathRef}
-                d={pathD}
-                fill="none"
-                stroke="#ec680a"
-                strokeWidth="2"
-                strokeDasharray="6 4"
-                strokeLinecap="round"
-                initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ pathLength: 1, opacity: 0.5 }}
-                transition={{ duration: 2, delay: 0.3, ease: "easeInOut" }}
-              />
-
-              {/* Cute arrow head that travels along the path */}
-              <g ref={dotRef as React.RefObject<SVGGElement>} opacity="0">
-                {/* Glow behind arrow */}
-                <circle r="12" fill="#ec680a" opacity="0.2" />
-                {/* Arrow body - cute circle */}
-                <circle r="8" fill="#ec680a" />
-                {/* Arrow face - eyes */}
-                <circle cx="-2.5" cy="-1.5" r="1.2" fill="white" />
-                <circle cx="2.5" cy="-1.5" r="1.2" fill="white" />
-                <circle cx="-2.5" cy="-1.5" r="0.6" fill="#1b1d3a" />
-                <circle cx="2.5" cy="-1.5" r="0.6" fill="#1b1d3a" />
-                {/* Smile */}
-                <path d="M -2 2 Q 0 4 2 2" fill="none" stroke="white" strokeWidth="0.8" strokeLinecap="round" />
-                {/* Speech bubble */}
-                <g transform="translate(12, -20)">
-                  <rect x="-2" y="-10" width="58" height="18" rx="8" fill="white" />
-                  <polygon points="2,-1 8,8 10,-1" fill="white" />
-                  <text x="26" y="2" textAnchor="middle" fontSize="7" fontWeight="bold" fill="#1b1d3a">
-                    100% finançable !
-                  </text>
-                </g>
-              </g>
-            </svg>
-          )}
         </div>
       </section>
     </>

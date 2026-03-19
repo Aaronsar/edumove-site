@@ -63,9 +63,6 @@ const faqs = [
 export default function FAQSection() {
   const [open, setOpen] = useState<number | null>(0);
 
-  const leftFaqs = faqs.filter((_, i) => i % 2 === 0);
-  const rightFaqs = faqs.filter((_, i) => i % 2 === 1);
-
   const renderFaq = (faq: { q: string; a: string }, originalIndex: number) => (
     <div
       key={originalIndex}
@@ -75,9 +72,9 @@ export default function FAQSection() {
     >
       <button
         onClick={() => setOpen(open === originalIndex ? null : originalIndex)}
-        className="w-full flex items-center justify-between p-5 text-left hover:bg-gray-50/50 transition-colors"
+        className="w-full flex items-center justify-between p-5 min-h-[72px] text-left hover:bg-gray-50/50 transition-colors"
       >
-        <span className="font-semibold text-[#1b1d3a] text-sm pr-4">{faq.q}</span>
+        <span className="font-semibold text-[#1b1d3a] text-sm pr-4 line-clamp-2">{faq.q}</span>
         <span className={`shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-sm transition-all ${
           open === originalIndex ? "bg-[#ec680a] text-white" : "bg-gray-100 text-[#334155]"
         }`}>
@@ -103,15 +100,8 @@ export default function FAQSection() {
           </h2>
         </div>
 
-        <div className="flex flex-col md:flex-row gap-3">
-          {/* Left column */}
-          <div className="flex-1 space-y-3">
-            {leftFaqs.map((faq, i) => renderFaq(faq, i * 2))}
-          </div>
-          {/* Right column */}
-          <div className="flex-1 space-y-3">
-            {rightFaqs.map((faq, i) => renderFaq(faq, i * 2 + 1))}
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          {faqs.map((faq, i) => renderFaq(faq, i))}
         </div>
       </div>
     </section>
