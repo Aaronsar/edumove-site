@@ -17,26 +17,26 @@ export default function ProgramHero({ detail }: { detail: ProgramDetail }) {
         </div>
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4 py-16 md:py-20">
-        <nav className="flex items-center gap-1.5 text-sm text-white/70 mb-6">
-          <Link href="/" className="hover:text-white transition-colors">Accueil</Link>
-          <ChevronRight className="w-3.5 h-3.5" />
-          <Link href={`/formations/${detail.filiereSlug}`} className="hover:text-white transition-colors">{detail.filiere}</Link>
-          <ChevronRight className="w-3.5 h-3.5" />
-          <span className="text-white font-medium">{detail.universityShort} — {detail.city}</span>
+      <div className="relative z-10 max-w-6xl mx-auto px-4 py-16 md:py-20" style={{ color: "#ffffff" }}>
+        <nav className="flex items-center gap-1.5 text-sm mb-6" style={{ color: "#ffffff" }}>
+          <Link href="/" className="hover:opacity-90 transition-opacity" style={{ color: "#ffffff" }}>Accueil</Link>
+          <ChevronRight className="w-3.5 h-3.5" style={{ color: "#ffffff" }} />
+          <Link href={`/formations/${detail.filiereSlug}`} className="hover:opacity-90 transition-opacity" style={{ color: "#ffffff" }}>{detail.filiere}</Link>
+          <ChevronRight className="w-3.5 h-3.5" style={{ color: "inherit" }} />
+          <span className="font-medium" style={{ color: "#ffffff" }}>{detail.universityShort} — {detail.city}</span>
         </nav>
 
         <div className="flex items-start gap-4 mb-4">
-          <div className="text-white">
+          <div>
             <FiliereIcon slug={detail.filiereSlug} className="w-12 h-12 md:w-14 md:h-14" stroke="#ec680a" />
           </div>
         </div>
 
-        <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-2 tracking-tight text-white">
+        <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-2 tracking-tight" style={{ color: "#ffffff" }}>
           {detail.filiere} — {detail.universityShort}
         </h1>
-        <p className="text-xl text-white/80 mb-2">{detail.university}</p>
-        <p className="text-lg text-white/70 flex items-center gap-2">
+        <p className="text-xl mb-2" style={{ color: "#ffffff" }}>{detail.university}</p>
+        <p className="text-lg flex items-center gap-2" style={{ color: "#ffffff" }}>
           <MapPin className="w-5 h-5 text-[#EC680A]" />
           {detail.city}, {detail.country}
         </p>
