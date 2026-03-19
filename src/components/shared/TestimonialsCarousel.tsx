@@ -4,14 +4,14 @@ import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 
 const testimonials = [
   {
-    quote: "EduMove nous a accompagnés du début à la fin. De la constitution du dossier à la recherche d'appartement à Madrid, tout a été pris en charge. Notre fils est maintenant en 2ème année de dentaire et il est épanoui. On recommande à 100% !",
+    quote: "Edumove nous a accompagnés du début à la fin. De la constitution du dossier à la recherche d'appartement à Madrid, tout a été pris en charge. Notre fils est maintenant en 2ème année de dentaire et il est épanoui. On recommande à 100% !",
     author: "Marie D.",
     context: "Parent d'étudiant en dentaire",
     initials: "MD",
     color: "bg-[#615ca5]",
   },
   {
-    quote: "Sans EduMove, je n'aurais jamais pensé pouvoir faire médecine. Avec mon bac à 12 de moyenne, les portes étaient fermées en France. Aujourd'hui je suis en 3ème année à Rome et je vis une expérience incroyable. Le processus d'admission était simple et rapide.",
+    quote: "Sans Edumove, je n'aurais jamais pensé pouvoir faire médecine. Avec mon bac à 12 de moyenne, les portes étaient fermées en France. Aujourd'hui je suis en 3ème année à Rome et je vis une expérience incroyable. Le processus d'admission était simple et rapide.",
     author: "Lucas P.",
     context: "Étudiant en médecine à Rome",
     initials: "LP",
@@ -25,14 +25,14 @@ const testimonials = [
     color: "bg-[#615CA5]",
   },
   {
-    quote: "Je suis en kiné à l'UCJC et c'est la meilleure décision de ma vie. L'équipe EduMove m'a aidé à préparer mon entretien, à trouver un logement et m'a accompagné même après mon arrivée à Madrid. Je me suis senti soutenu à chaque étape.",
+    quote: "Je suis en kiné à l'UCJC et c'est la meilleure décision de ma vie. L'équipe Edumove m'a aidé à préparer mon entretien, à trouver un logement et m'a accompagné même après mon arrivée à Madrid. Je me suis senti soutenu à chaque étape.",
     author: "Thomas R.",
     context: "Étudiant en kinésithérapie",
     initials: "TR",
     color: "bg-[#EC680A]",
   },
   {
-    quote: "Après deux ans de PASS sans succès, j'ai contacté EduMove. En trois mois j'étais admise à l'Universidad Europea de Madrid. Aujourd'hui je suis en 2ème année de médecine et je ne regrette absolument rien. Leur aide a vraiment été décisive dans mon parcours.",
+    quote: "Après deux ans de PASS sans succès, j'ai contacté Edumove. En trois mois j'étais admise à l'Universidad Europea de Madrid. Aujourd'hui je suis en 2ème année de médecine et je ne regrette absolument rien. Leur aide a vraiment été décisive dans mon parcours.",
     author: "Léa B.",
     context: "Étudiante en médecine",
     initials: "LB",

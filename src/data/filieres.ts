@@ -1,5 +1,5 @@
 // =============================================================================
-// Filiere (Field of Study) Reference Data — EduMove
+// Filiere (Field of Study) Reference Data — Edumove
 // =============================================================================
 
 import type { FiliereSlug } from "./universities";

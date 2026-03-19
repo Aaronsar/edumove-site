@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, X, ChevronDown, Phone } from "lucide-react";
+import ContactButton from "@/components/shared/ContactButton";
 
 const formations = [
   { name: "Dentaire", href: "/formations/dentaire" },
@@ -79,7 +80,7 @@ export default function Header() {
         <Link href="/" className="flex-shrink-0">
           <Image
             src="https://edumove.fr/wp-content/uploads/2025/12/EDUMOVE-LOGO-2-1.svg"
-            alt="EduMove"
+            alt="Edumove"
             width={160}
             height={45}
             priority
@@ -169,12 +170,9 @@ export default function Header() {
             <Phone size={16} className="text-[#EC680A]" />
             +33 1 89 74 42 57
           </a>
-          <Link
-            href="#contact"
-            className="rounded-[5px] bg-[#EC680A] px-[30px] py-[8px] text-sm font-semibold text-white transition-colors hover:bg-[#D45E09]"
-          >
+          <ContactButton className="rounded-[5px] bg-[#EC680A] px-[30px] py-[8px] text-sm font-semibold text-white transition-colors hover:bg-[#D45E09]">
             Etre contacte
-          </Link>
+          </ContactButton>
         </div>
 
         {/* Mobile Hamburger */}
@@ -273,13 +271,9 @@ export default function Header() {
 
             {/* Mobile CTA */}
             <div className="pt-6">
-              <Link
-                href="#contact"
-                onClick={() => setMobileOpen(false)}
-                className="block w-full rounded-[5px] bg-[#EC680A] px-[30px] py-3 text-center text-base font-semibold text-white transition-colors hover:bg-[#D45E09]"
-              >
+              <ContactButton className="block w-full rounded-[5px] bg-[#EC680A] px-[30px] py-3 text-center text-base font-semibold text-white transition-colors hover:bg-[#D45E09]">
                 Etre contacte
-              </Link>
+              </ContactButton>
             </div>
           </nav>
         </div>

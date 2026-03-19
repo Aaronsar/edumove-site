@@ -34,7 +34,7 @@ export default function UEPage() {
     "Pi\u00e8ce d\u2019identit\u00e9 (carte d\u2019identit\u00e9 ou passeport)",
     "Photo d\u2019identit\u00e9 r\u00e9cente",
     "Bulletins scolaires (1\u00e8re et Terminale)",
-    "Rapport technique EduMove (pr\u00e9par\u00e9 avec votre conseiller)",
+    "Rapport technique Edumove (pr\u00e9par\u00e9 avec votre conseiller)",
     "Lettre de motivation",
   ];
 
@@ -147,7 +147,7 @@ export default function UEPage() {
             Pr&ecirc;t &agrave; rejoindre l&apos;Universidad Europea ?
           </h2>
           <p className="text-white/80 mb-8 text-lg">
-            5 campus, 6 fili&egrave;res, un accompagnement EduMove de A
+            5 campus, 6 fili&egrave;res, un accompagnement Edumove de A
             &agrave; Z.
           </p>
           <Link

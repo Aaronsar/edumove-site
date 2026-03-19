@@ -41,7 +41,7 @@ export default function AdmissionSteps({ steps }: { steps: string[] }) {
             Processus d&apos;admission
           </h2>
           <p className="mt-3 max-w-xl" style={{ color: "rgba(255,255,255,0.5)" }}>
-            Un parcours simple et accompagné de A à Z par votre expert EduMove
+            Un parcours simple et accompagné de A à Z par votre expert Edumove
           </p>
         </motion.div>
 
@@ -64,8 +64,9 @@ export default function AdmissionSteps({ steps }: { steps: string[] }) {
                     <div className="w-12 h-12 rounded-2xl bg-[#EC680A]/20 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
                       <Icon className="w-6 h-6 text-[#EC680A]" />
                     </div>
-                    <span className="text-5xl font-black" style={{ color: "rgba(255,255,255,0.12)" }}>
-                      {String(i + 1).padStart(2, "0")}
+                    <span className="text-5xl font-black">
+                      <span className="text-white">0</span>
+                      <span className="bg-gradient-to-b from-white via-white to-[#EC680A]/40 bg-clip-text" style={{ WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>{i + 1}</span>
                     </span>
                   </div>
 

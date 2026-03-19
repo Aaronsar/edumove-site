@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useCallback } from "react";
+import { useEffect, useCallback, useRef } from "react";
 import { X } from "lucide-react";
 
 interface HubSpotModalProps {
@@ -10,23 +10,28 @@ interface HubSpotModalProps {
 
 export default function HubSpotModal({ isOpen, onClose }: HubSpotModalProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const scriptLoaded = useRef(false);
 
   useEffect(() => {
-    if (!isOpen) return;
+    if (!isOpen || !containerRef.current) return;
 
-    if (!scriptLoaded.current) {
-      const existing = document.querySelector(
-        'script[src="https://js-eu1.hsforms.net/forms/embed/26711031.js"]'
-      );
-      if (!existing) {
-        const script = document.createElement("script");
-        script.src = "https://js-eu1.hsforms.net/forms/embed/26711031.js";
-        script.defer = true;
-        document.head.appendChild(script);
-      }
-      scriptLoaded.current = true;
-    }
+    // Reset container with fresh hs-form-frame div
+    containerRef.current.innerHTML = "";
+    const formDiv = document.createElement("div");
+    formDiv.className = "hs-form-frame";
+    formDiv.setAttribute("data-region", "eu1");
+    formDiv.setAttribute("data-form-id", "166547f8-2f86-46d3-b90f-14c77d57affa");
+    formDiv.setAttribute("data-portal-id", "26711031");
+    containerRef.current.appendChild(formDiv);
+
+    // Remove any previous embed script so we can re-add it
+    const scriptSrc = "https://js-eu1.hsforms.net/forms/embed/26711031.js";
+    document.querySelectorAll(`script[src="${scriptSrc}"]`).forEach((s) => s.remove());
+
+    // Add fresh script to trigger re-scan
+    const script = document.createElement("script");
+    script.src = scriptSrc;
+    script.defer = true;
+    document.head.appendChild(script);
   }, [isOpen]);
 
   const handleBackdrop = useCallback(
@@ -73,17 +78,11 @@ export default function HubSpotModal({ isOpen, onClose }: HubSpotModalProps) {
             Être contacté
           </h3>
           <p className="text-sm text-[#64748b] mt-1">
-            Un expert EduMove vous rappelle sous 24h.
+            Un expert Edumove vous rappelle sous 2h (8h-20h).
           </p>
         </div>
 
-        <div
-          ref={containerRef}
-          className="hs-form-frame"
-          data-region="eu1"
-          data-form-id="166547f8-2f86-46d3-b90f-14c77d57affa"
-          data-portal-id="26711031"
-        />
+        <div ref={containerRef} />
       </div>
     </div>
   );

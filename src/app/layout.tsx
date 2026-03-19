@@ -12,9 +12,9 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "EduMove — Etudes de sante en Europe",
+  title: "Edumove — Etudes de sante en Europe",
   description:
-    "EduMove vous accompagne de A a Z pour vos etudes de sante en Europe : medecine, dentaire, kinesitherapie, pharmacie, veterinaire. Orientation, admission, financement et vie etudiante.",
+    "Edumove vous accompagne de A a Z pour vos etudes de sante en Europe : medecine, dentaire, kinesitherapie, pharmacie, veterinaire. Orientation, admission, financement et vie etudiante.",
 };
 
 export default function RootLayout({

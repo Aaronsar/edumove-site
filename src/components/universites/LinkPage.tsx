@@ -47,7 +47,7 @@ export default function LinkPage() {
   ];
 
   const documentNotes = [
-    "Les traductions assermentées sont à votre charge. EduMove peut vous recommander un traducteur.",
+    "Les traductions assermentées sont à votre charge. Edumove peut vous recommander un traducteur.",
     "La déclaration de valeur est fournie par le consulat d’Italie en France.",
   ];
 
@@ -158,7 +158,7 @@ export default function LinkPage() {
           </h2>
           <p className="text-white/80 mb-8 text-lg">
             Candidatez dès maintenant et bénéficiez de l&apos;accompagnement
-            EduMove de A à Z.
+            Edumove de A à Z.
           </p>
           <Link
             href="https://candidature.edumove.fr"

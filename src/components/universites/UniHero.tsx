@@ -61,7 +61,7 @@ export default function UniHero({
             </nav>
 
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-1.5 mb-6">
-              <span className="text-white/80 text-xs font-medium">Université partenaire EduMove</span>
+              <span className="text-white/80 text-xs font-medium">Université partenaire Edumove</span>
             </div>
 
             {/* H1 — nom de la faculté très visible */}

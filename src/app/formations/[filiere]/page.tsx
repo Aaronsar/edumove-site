@@ -30,14 +30,14 @@ export async function generateMetadata({
   const filiere = getFiliereBySlug(filiereSlug as FiliereSlug);
 
   if (!filiere) {
-    return { title: "Formation introuvable | EduMove" };
+    return { title: "Formation introuvable | Edumove" };
   }
 
   return {
-    title: `${filiere.fullName} en Europe | EduMove`,
+    title: `${filiere.fullName} en Europe | Edumove`,
     description: filiere.description,
     openGraph: {
-      title: `${filiere.fullName} en Europe | EduMove`,
+      title: `${filiere.fullName} en Europe | Edumove`,
       description: filiere.description,
     },
   };

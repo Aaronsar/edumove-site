@@ -40,12 +40,12 @@ export interface ProgramDetail {
 }
 
 const defaultAdmissionSteps = [
-  "Candidature simple pour être rappelé par un expert EduMove",
+  "Candidature simple et gratuite pour être rappelé par un expert Edumove",
   "Étude de la faisabilité du dossier d'admission",
-  "Création et envoi du dossier d'admission avec un coach EduMove",
-  "Test d'entrée et entretien personnel : préparation assurée par EduMove",
-  "Réponse positive et financement jusqu'à 100% grâce au partenariat EduMove x LCL",
-  "Entrée en 1ère année avec l'accompagnement EduMove (logement, traduction, vie étudiante)",
+  "Création et envoi du dossier d'admission avec un coach Edumove",
+  "Test d'entrée et entretien personnel : préparation assurée par Edumove",
+  "Réponse positive et financement jusqu'à 100% grâce au partenariat Edumove x LCL",
+  "Entrée en 1ère année avec l'accompagnement Edumove (logement, traduction, vie étudiante)",
 ];
 
 /* Vie étudiante — contenu enrichi depuis site edumove 2026.docx */

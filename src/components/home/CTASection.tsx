@@ -7,7 +7,7 @@ export default function CTASection() {
           Prêt à commencer votre aventure ?
         </h2>
         <p className="text-slate-500 mb-8">
-          Un expert EduMove vous rappelle sous 24h. Sans engagement, sans frais.
+          Un expert Edumove vous rappelle sous 24h. Sans engagement, sans frais.
         </p>
         <a href="https://candidature.edumove.fr" className="inline-block bg-[#ec680a] hover:bg-[#d45e09] text-white font-semibold px-8 py-3.5 rounded-[5px] transition-all hover:shadow-xl hover:shadow-[#ec680a]/20">
           Déposer ma candidature →

@@ -107,7 +107,7 @@ export default function StudentLifeSection({ life }: { life: StudentLife }) {
               </div>
             </motion.div>
 
-            {/* EduMove accompagnement */}
+            {/* Edumove accompagnement */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -124,7 +124,7 @@ export default function StudentLifeSection({ life }: { life: StudentLife }) {
                     <Users className="w-5 h-5 text-[#EC680A]" />
                   </div>
                   <p className="font-bold" style={{ color: "#ffffff" }}>
-                    Accompagnement EduMove
+                    Accompagnement Edumove
                   </p>
                 </div>
                 <ul className="space-y-2">

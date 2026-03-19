@@ -21,7 +21,7 @@ export default function CurriculumAccordion({ program }: { program: YearProgram[
   const year = program[active];
 
   return (
-    <section className="relative overflow-hidden bg-[#F8F7FF] py-20">
+    <section className="relative overflow-hidden bg-[#F8F7FF] pt-12 pb-20">
       {/* Decorative background */}
       <div aria-hidden className="absolute inset-0 pointer-events-none">
         <div className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-[#615CA5]/5 blur-3xl" />

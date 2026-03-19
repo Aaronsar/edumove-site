@@ -54,14 +54,10 @@ export default function CostCard({ detail }: { detail: ProgramDetail }) {
 
             <div className="mt-6 flex items-center gap-2 bg-[#EC680A]/20 rounded-xl px-4 py-2.5">
               <Euro className="w-4 h-4 text-[#EC680A]" />
-              <span className="text-sm font-semibold text-[#EC680A]">Finançable jusqu&apos;à 100% avec EduMove</span>
+              <span className="text-sm font-semibold text-[#EC680A]">Finançable jusqu&apos;à 100% avec Edumove</span>
             </div>
 
-            <div className="mt-6 pt-6 border-t border-white/10 space-y-3">
-              <div className="flex justify-between items-center">
-                <span className="text-white/50 text-sm" style={{ color: "rgba(255,255,255,0.5)" }}>Coût total</span>
-                <span className="text-xl font-bold" style={{ color: "#ffffff" }}>{total}</span>
-              </div>
+            <div className="mt-6 pt-6 border-t border-white/10">
               <div className="flex justify-between items-center">
                 <span className="text-white/50 text-sm" style={{ color: "rgba(255,255,255,0.5)" }}>Diplôme</span>
                 <span className="text-sm font-medium text-[#EC680A]">{detail.diploma}</span>
@@ -92,7 +88,7 @@ export default function CostCard({ detail }: { detail: ProgramDetail }) {
             </div>
             <p className="font-bold text-[#1B1D3A] text-lg mb-2">Prêt étudiant garanti</p>
             <p className="text-[#334155] text-sm leading-relaxed flex-1">
-              Partenariat EduMove x LCL : prêt jusqu&apos;à <strong>75 000 €</strong> pour financer
+              Partenariat Edumove x LCL : prêt jusqu&apos;à <strong>75 000 €</strong> pour financer
               100% de vos études.
             </p>
             <div className="mt-4 pt-4 border-t border-[#615CA5]/10">

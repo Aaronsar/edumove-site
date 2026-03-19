@@ -50,8 +50,8 @@ export async function generateMetadata({
   const filiereCount = uni.programs.length;
 
   return {
-    title: `${uni.name} \u2014 \u00c9tudes de sant\u00e9 ${uni.country} | EduMove`,
-    description: `D\u00e9couvrez les ${filiereCount} formations sant\u00e9 propos\u00e9es par ${uni.name} (${uni.campuses.join(", ")}). Tarifs, admission, documents et calendrier. Accompagnement EduMove de A \u00e0 Z.`,
+    title: `${uni.name} \u2014 \u00c9tudes de sant\u00e9 ${uni.country} | Edumove`,
+    description: `D\u00e9couvrez les ${filiereCount} formations sant\u00e9 propos\u00e9es par ${uni.name} (${uni.campuses.join(", ")}). Tarifs, admission, documents et calendrier. Accompagnement Edumove de A \u00e0 Z.`,
   };
 }
 

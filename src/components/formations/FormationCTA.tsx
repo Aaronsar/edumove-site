@@ -15,7 +15,7 @@ export default function FormationCTA({ filiereName }: FormationCTAProps) {
           Intéressé(e) par {filiereName}&nbsp;?
         </h2>
         <p className="text-slate-500 mb-8">
-          Un expert EduMove vous rappelle sous 24h pour étudier votre dossier gratuitement.
+          Un expert Edumove vous rappelle sous 24h pour étudier votre dossier gratuitement.
         </p>
         <Link
           href="/contact"

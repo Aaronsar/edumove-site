@@ -9,7 +9,6 @@ import AdmissionSteps from "@/components/program/AdmissionSteps";
 import CostCard from "@/components/program/CostCard";
 import StudentLifeSection from "@/components/program/StudentLifeSection";
 import ProgramCTA from "@/components/program/ProgramCTA";
-import MiniCTA from "@/components/program/MiniCTA";
 import StickyBar from "@/components/program/StickyBar";
 
 export function generateStaticParams() {
@@ -25,7 +24,7 @@ export async function generateMetadata({
   const detail = getProgramDetail(filiere, slug);
   if (!detail) return { title: "Programme non trouvé" };
   return {
-    title: `${detail.filiere} à ${detail.university} ${detail.city} — EduMove`,
+    title: `${detail.filiere} à ${detail.university} ${detail.city} — Edumove`,
     description: detail.presentation.slice(0, 160),
   };
 }
@@ -69,10 +68,8 @@ export default async function ProgramPage({
 
       <ProgramHighlights detail={detail} />
       <CurriculumAccordion program={detail.program} />
-      <MiniCTA />
       <AdmissionSteps steps={detail.admissionSteps} />
       <CostCard detail={detail} />
-      <MiniCTA />
       <StudentLifeSection life={detail.studentLife} />
       <ProgramCTA detail={detail} />
       <StickyBar />

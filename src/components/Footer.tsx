@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { Phone, Mail, MapPin } from "lucide-react";
+import ContactButton from "@/components/shared/ContactButton";
 
 const formationLinks = [
   { name: "Dentaire", href: "/formations/dentaire" },
@@ -28,7 +31,7 @@ export default function Footer() {
             <Link href="/" className="inline-block">
               <Image
                 src="https://edumove.fr/wp-content/uploads/2025/12/EDUMOVE-LOGO-2-1.svg"
-                alt="EduMove"
+                alt="Edumove"
                 width={150}
                 height={42}
                 className="h-10 w-auto brightness-0 invert"
@@ -39,12 +42,9 @@ export default function Footer() {
               Accompagnement personnalise de A a Z.
             </p>
             <div className="mt-6">
-              <Link
-                href="#contact"
-                className="inline-block rounded-[5px] border border-[#EC680A] px-6 py-2 text-sm font-medium text-[#EC680A] transition-colors hover:bg-[#EC680A] hover:text-white"
-              >
+              <ContactButton className="inline-block rounded-[5px] border border-[#EC680A] px-6 py-2 text-sm font-medium text-[#EC680A] transition-colors hover:bg-[#EC680A] hover:text-white">
                 Etre contacte
-              </Link>
+              </ContactButton>
             </div>
           </div>
 
@@ -132,7 +132,7 @@ export default function Footer() {
       {/* Bottom Bar */}
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 py-6 text-sm text-gray-400 sm:flex-row">
-          <p>&copy; 2026 EduMove. Tous droits reserves.</p>
+          <p>&copy; 2026 Edumove. Tous droits reserves.</p>
           <div className="flex gap-6">
             <Link
               href="/mentions-legales"

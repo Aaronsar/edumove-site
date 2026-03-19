@@ -48,7 +48,7 @@ export default function UCJCPage() {
 
   const documentNotes = [
     "L\u2019apostille de La Haye peut \u00eatre demand\u00e9e aupr\u00e8s de votre rectorat.",
-    "EduMove vous accompagne pour toutes les d\u00e9marches administratives.",
+    "Edumove vous accompagne pour toutes les d\u00e9marches administratives.",
   ];
 
   return (
@@ -169,7 +169,7 @@ export default function UCJCPage() {
           </h2>
           <p className="text-white/80 mb-8 text-lg">
             Admission sans test &eacute;crit. Candidatez d&egrave;s maintenant
-            avec l&apos;accompagnement EduMove.
+            avec l&apos;accompagnement Edumove.
           </p>
           <Link
             href="https://candidature.edumove.fr"

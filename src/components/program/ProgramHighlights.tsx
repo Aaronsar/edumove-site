@@ -32,7 +32,7 @@ const highlights = [
   {
     icon: Users,
     title: "Accompagnement 360°",
-    description: "EduMove vous accompagne de la candidature jusqu'au diplôme.",
+    description: "Edumove vous accompagne de la candidature jusqu'au diplôme.",
     color: "#EC680A",
   },
   {
@@ -51,7 +51,7 @@ const highlights = [
 
 export default function ProgramHighlights({ detail }: { detail: ProgramDetail }) {
   return (
-    <section className="pt-10 pb-20">
+    <section className="pt-10 pb-8">
       <div className="max-w-6xl mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -87,7 +87,7 @@ export default function ServicesSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <p className="text-[#ec680a] text-xs uppercase tracking-widest font-semibold mb-2">Pourquoi EduMove ?</p>
+            <p className="text-[#ec680a] text-xs uppercase tracking-widest font-semibold mb-2">Pourquoi Edumove ?</p>
             <h2 className="text-2xl md:text-3xl font-bold mb-6 leading-tight" style={{ color: "#1b1d3a" }}>
               L&apos;accompagnement qui fait{" "}
               <span className="text-[#615ca5]">la différence</span>

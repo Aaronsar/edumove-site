@@ -5,7 +5,7 @@ import type { ProgramDetail } from "@/data/program-details";
 
 export default function ProgramCTA({ detail }: { detail: ProgramDetail }) {
   return (
-    <section className="relative overflow-hidden bg-[#1B1D3A] py-24">
+    <section data-program-cta className="relative overflow-hidden bg-[#1B1D3A] py-24">
       {/* Decorative */}
       <div aria-hidden className="absolute inset-0 pointer-events-none">
         <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-[#615CA5]/15 blur-3xl" />
@@ -41,7 +41,7 @@ export default function ProgramCTA({ detail }: { detail: ProgramDetail }) {
             className="text-lg max-w-2xl mx-auto mb-10"
             style={{ color: "rgba(255,255,255,0.6)" }}
           >
-            Un expert EduMove analyse gratuitement votre dossier et vous guide
+            Un expert Edumove analyse gratuitement votre dossier et vous guide
             dans chaque étape de votre candidature.
           </p>
 

@@ -26,7 +26,7 @@ export default function DocumentsList({
             <div className="flex items-center gap-2 mb-4">
               <FileCheck className="w-5 h-5 text-[#615CA5]" />
               <h3 className="font-bold text-[#1B1D3A]">
-                Documents pour la candidature EduMove
+                Documents pour la candidature Edumove
               </h3>
             </div>
             <ol className="space-y-2">
