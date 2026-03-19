@@ -10,7 +10,7 @@ export default function OrangeBanner() {
           Chez Edumove, vous êtes admis ou remboursé.
         </h2>
         <p className="text-lg md:text-xl text-white/90 font-medium">
-          Financement étudiant garanti jusqu&apos;à 75 000 € avec LCL 🏦
+          Financement étudiant garanti jusqu&apos;à 75 000 € avec LCL
         </p>
       </div>
     </section>

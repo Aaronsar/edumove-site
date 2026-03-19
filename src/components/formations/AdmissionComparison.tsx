@@ -158,7 +158,7 @@ export default function AdmissionComparison({
                       {col.university.name}
                     </h3>
                     <p className="text-white/60 text-sm">
-                      {col.university.countryFlag} {col.university.country}
+                      {col.university.country}
                     </p>
                   </div>
                 </div>

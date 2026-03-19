@@ -11,7 +11,7 @@ export interface Filiere {
   name: string;
   /** Longer descriptive name. */
   fullName: string;
-  /** Emoji icon representing the field. */
+  /** Icon slug for FiliereIcon (replaces emoji). */
   icon: string;
   /** Short description (1-2 sentences) for cards / hero sections. */
   description: string;
@@ -28,7 +28,7 @@ export const filieres: Filiere[] = [
     slug: "medecine",
     name: "M\u00E9decine",
     fullName: "\u00C9tudes de M\u00E9decine",
-    icon: "\u{1FA7A}",
+    icon: "medecine",
     description:
       "Devenez m\u00E9decin en Europe avec un dipl\u00F4me reconnu dans toute l\u2019Union europ\u00E9enne. Formations de 6 ans accessibles sans concours PASS/LAS.",
     durationRange: "6 ans",
@@ -46,7 +46,7 @@ export const filieres: Filiere[] = [
     slug: "dentaire",
     name: "Dentaire",
     fullName: "\u00C9tudes d\u2019Odontologie / Dentaire",
-    icon: "\u{1F9B7}",
+    icon: "dentaire",
     description:
       "Acc\u00E9dez aux \u00E9tudes dentaires en Espagne ou en Italie sans concours. Formations de 5 \u00E0 6 ans avec dipl\u00F4me reconnu UE.",
     durationRange: "5\u20136 ans",
@@ -62,7 +62,7 @@ export const filieres: Filiere[] = [
     slug: "kinesitherapie",
     name: "Kin\u00E9sith\u00E9rapie",
     fullName: "\u00C9tudes de Kin\u00E9sith\u00E9rapie / Physioth\u00E9rapie",
-    icon: "\u{1F4AA}",
+    icon: "kinesitherapie",
     description:
       "Formez-vous \u00E0 la kin\u00E9sith\u00E9rapie en Europe. Cursus de 3 \u00E0 4 ans, option la moins ch\u00E8re d\u00E8s 9\u00A0420\u00A0\u20AC/an.",
     durationRange: "3\u20134 ans",
@@ -78,7 +78,7 @@ export const filieres: Filiere[] = [
     slug: "pharmacie",
     name: "Pharmacie",
     fullName: "\u00C9tudes de Pharmacie",
-    icon: "\u{1F48A}",
+    icon: "pharmacie",
     description:
       "Poursuivez des \u00E9tudes de pharmacie en Italie ou en Espagne. Admission sur dossier ou entretien, sans concours.",
     durationRange: "5 ans",
@@ -94,7 +94,7 @@ export const filieres: Filiere[] = [
     slug: "veterinaire",
     name: "V\u00E9t\u00E9rinaire",
     fullName: "\u00C9tudes V\u00E9t\u00E9rinaires",
-    icon: "\u{1F43E}",
+    icon: "veterinaire",
     description:
       "Int\u00E9grez une formation v\u00E9t\u00E9rinaire \u00E0 Madrid avec l\u2019Universidad Europea. 5 ans, admission via PE.",
     durationRange: "5 ans",
@@ -110,7 +110,7 @@ export const filieres: Filiere[] = [
     slug: "prepa-dentaire",
     name: "Pr\u00E9pa Dentaire",
     fullName: "Ann\u00E9e pr\u00E9paratoire Dentaire",
-    icon: "\u{1F4D6}",
+    icon: "prepa-dentaire",
     description:
       "Ann\u00E9e pr\u00E9paratoire en anglais \u00E0 Alicante avant d\u2019int\u00E9grer le cursus dentaire de 5 ans. Aucun test d\u2019entr\u00E9e, B2 anglais requis.",
     durationRange: "1 + 5 ans",

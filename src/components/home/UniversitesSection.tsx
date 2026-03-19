@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
+import { Globe } from "lucide-react";
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 
@@ -37,7 +38,6 @@ const universites = [
     name: "Universidad Europea",
     short: "UE",
     country: "Espagne",
-    flag: "🇪🇸",
     campus: 5,
     filieres: 6,
     etudiants: "+300",
@@ -53,7 +53,6 @@ const universites = [
     name: "LINK Campus",
     short: "LINK",
     country: "Italie",
-    flag: "🇮🇹",
     campus: 1,
     filieres: 4,
     etudiants: "+150",
@@ -69,7 +68,6 @@ const universites = [
     name: "UCJC",
     short: "UCJC",
     country: "Espagne",
-    flag: "🇪🇸",
     campus: 1,
     filieres: 3,
     etudiants: "+80",
@@ -121,7 +119,7 @@ export default function UniversitesSection() {
                   <div className="flex flex-col md:flex-row md:items-center gap-4">
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-1.5">
-                        <span className="text-xl">{u.flag}</span>
+                        <Globe className="w-5 h-5 text-white/80 shrink-0" />
                         <h3 className="text-base md:text-lg font-bold text-white truncate" style={{ color: "white" }}>{u.name}</h3>
                         <span className="text-white/40 text-[10px] hidden md:inline">· depuis {u.since}</span>
                       </div>

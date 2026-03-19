@@ -93,7 +93,7 @@ export default function UniversityProgramCard({
               <MapPin className="w-3.5 h-3.5 text-[#EC680A] flex-shrink-0" />
               <span className="text-sm text-[#64748b]">{program.campus}</span>
               <span className="text-[#64748b] text-xs">·</span>
-              <span className="text-sm text-[#64748b]">{universityCountryFlag} {universityCountry}</span>
+              <span className="text-sm text-[#64748b]">{universityCountry}</span>
             </div>
           </div>
         </div>

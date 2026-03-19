@@ -1,12 +1,15 @@
 "use client";
 
+import FiliereIcon from "@/components/shared/FiliereIcon";
+import { Check, Globe } from "lucide-react";
+
 const rows = [
-  { filiere: "Médecine", icon: "🩺", link: "19 800 €/an", ucjc: "COMPLET", ueLow: "21 480 €/an", ueHigh: "21 480 €/an", cheapest: "link" },
-  { filiere: "Dentaire", icon: "🦷", link: "19 800 €/an", ucjc: "18 420 €/an", ueLow: "19 200 €/an", ueHigh: "20 821 €/an", cheapest: "ucjc" },
-  { filiere: "Kinésithérapie", icon: "💪", link: "11 900 €/an", ucjc: "9 420 €/an", ueLow: "10 020 €/an", ueHigh: "10 080 €/an", cheapest: "ucjc" },
-  { filiere: "Pharmacie", icon: "💊", link: "7 900 €/an", ucjc: "10 140 €/an", ueLow: "12 120 €/an", ueHigh: "—", cheapest: "link" },
-  { filiere: "Vétérinaire", icon: "🐾", link: "—", ucjc: "—", ueLow: "19 500 €/an", ueHigh: "—", cheapest: "ue" },
-  { filiere: "Prépa Dentaire", icon: "📚", link: "—", ucjc: "—", ueLow: "17 000 €/an", ueHigh: "—", cheapest: "ue" },
+  { filiere: "Médecine", filiereSlug: "medecine", link: "19 800 €/an", ucjc: "COMPLET", ueLow: "21 480 €/an", ueHigh: "21 480 €/an", cheapest: "link" },
+  { filiere: "Dentaire", filiereSlug: "dentaire", link: "19 800 €/an", ucjc: "18 420 €/an", ueLow: "19 200 €/an", ueHigh: "20 821 €/an", cheapest: "ucjc" },
+  { filiere: "Kinésithérapie", filiereSlug: "kinesitherapie", link: "11 900 €/an", ucjc: "9 420 €/an", ueLow: "10 020 €/an", ueHigh: "10 080 €/an", cheapest: "ucjc" },
+  { filiere: "Pharmacie", filiereSlug: "pharmacie", link: "7 900 €/an", ucjc: "10 140 €/an", ueLow: "12 120 €/an", ueHigh: "—", cheapest: "link" },
+  { filiere: "Vétérinaire", filiereSlug: "veterinaire", link: "—", ucjc: "—", ueLow: "19 500 €/an", ueHigh: "—", cheapest: "ue" },
+  { filiere: "Prépa Dentaire", filiereSlug: "prepa-dentaire", link: "—", ucjc: "—", ueLow: "17 000 €/an", ueHigh: "—", cheapest: "ue" },
 ];
 
 function Cell({ value, isCheapest, isComplet }: { value: string; isCheapest: boolean; isComplet: boolean }) {
@@ -14,7 +17,7 @@ function Cell({ value, isCheapest, isComplet }: { value: string; isCheapest: boo
   if (value === "—") return <span className="text-gray-300">—</span>;
   return (
     <span className={`text-sm font-semibold ${isCheapest ? "text-[#EC680A]" : "text-[#1B1D3A]"}`}>
-      {isCheapest && <span className="inline-block bg-[#EC680A]/10 text-[#EC680A] text-xs px-2 py-0.5 rounded-full mr-1 font-bold">✓</span>}
+      {isCheapest && <span className="inline-flex items-center bg-[#EC680A]/10 text-[#EC680A] text-xs px-2 py-0.5 rounded-full mr-1 font-bold"><Check className="w-3 h-3" /></span>}
       {value}
     </span>
   );
@@ -32,17 +35,20 @@ export default function TarifsComparatif() {
             <thead>
               <tr className="bg-[#1B1D3A]">
                 <th className="text-left text-white font-semibold py-4 px-5 text-sm">Filière</th>
-                <th className="text-center text-white font-semibold py-4 px-5 text-sm">🇮🇹 LINK (Rome)</th>
-                <th className="text-center text-white font-semibold py-4 px-5 text-sm">🇪🇸 UCJC (Madrid)</th>
-                <th className="text-center text-white font-semibold py-4 px-5 text-sm">🇪🇸 UE — Le - cher</th>
-                <th className="text-center text-white font-semibold py-4 px-5 text-sm">🇪🇸 UE — Le + cher</th>
+                <th className="text-center text-white font-semibold py-4 px-5 text-sm"><Globe className="w-4 h-4 inline mx-1" /> LINK (Rome)</th>
+                <th className="text-center text-white font-semibold py-4 px-5 text-sm"><Globe className="w-4 h-4 inline mx-1" /> UCJC (Madrid)</th>
+                <th className="text-center text-white font-semibold py-4 px-5 text-sm"><Globe className="w-4 h-4 inline mx-1" /> UE — Le - cher</th>
+                <th className="text-center text-white font-semibold py-4 px-5 text-sm"><Globe className="w-4 h-4 inline mx-1" /> UE — Le + cher</th>
               </tr>
             </thead>
             <tbody>
               {rows.map((r, i) => (
                 <tr key={i} className="border-b border-gray-100 hover:bg-gray-50/50 transition-colors">
                   <td className="py-4 px-5 font-semibold text-[#1B1D3A]">
-                    <span className="mr-2">{r.icon}</span>{r.filiere}
+                    <span className="inline-flex items-center gap-2 mr-2">
+                      <FiliereIcon slug={r.filiereSlug} className="w-5 h-5 text-[#EC680A]" stroke="#EC680A" />
+                    </span>
+                    {r.filiere}
                   </td>
                   <td className="py-4 px-5 text-center"><Cell value={r.link} isCheapest={r.cheapest === "link"} isComplet={false} /></td>
                   <td className="py-4 px-5 text-center"><Cell value={r.ucjc} isCheapest={r.cheapest === "ucjc"} isComplet={r.ucjc === "COMPLET"} /></td>

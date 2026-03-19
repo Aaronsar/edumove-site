@@ -148,7 +148,7 @@ const dentaireUEMadrid: ProgramDetail = {
   universitySlug: "universidad-europea",
   city: "Madrid",
   country: "Espagne",
-  countryFlag: "🇪🇸",
+  countryFlag: "",
   presentation:
     "Les études de Grado en Odontología à l'Université Européenne de Madrid offrent une formation solide et reconnue dans toute l'Union Européenne. Le cursus s'étend sur 5 ans dans un environnement moderne et sécurisé. Les étudiants bénéficient d'un encadrement clinique intensif dans la Clinique Universitaire Odontologique sur le campus, garantissant une préparation pratique de haut niveau. Votre diplôme sera reconnu en France sans équivalence.",
   language: "Espagnol / Anglais",
@@ -179,7 +179,7 @@ const dentaireUEMalaga: ProgramDetail = {
   universitySlug: "universidad-europea",
   city: "Málaga",
   country: "Espagne",
-  countryFlag: "🇪🇸",
+  countryFlag: "",
   presentation:
     "L'Universidad Europea de Málaga s'apprête à ouvrir son programme de Grado en Odontología dans un nouveau campus ultramoderne. Ce programme bénéficiera de l'expertise du réseau UEM, garantissant une formation de haute qualité reconnue en Europe. Le campus intégrera une Clinique Universitaire Odontologique de pointe, offrant une pratique clinique intensive et précoce.",
   language: "Espagnol / Anglais",
@@ -210,7 +210,7 @@ const dentaireUEValence: ProgramDetail = {
   universitySlug: "universidad-europea",
   city: "Valence",
   country: "Espagne",
-  countryFlag: "🇪🇸",
+  countryFlag: "",
   presentation:
     "Les études de Grado en Odontología à l'Universidad Europea de Valencia offrent une formation complète et reconnue. Le diplôme est reconnu en France sans problème. Le cursus met l'accent sur l'acquisition rapide de compétences pratiques grâce à sa propre Clinique Universitaire Odontologique.",
   language: "Espagnol / Anglais",
@@ -241,7 +241,7 @@ const dentaireUEAlicante: ProgramDetail = {
   universitySlug: "universidad-europea",
   city: "Alicante",
   country: "Espagne",
-  countryFlag: "🇪🇸",
+  countryFlag: "",
   presentation:
     "L'Universidad Europea de Alicante est un centre universitaire dynamique sur la Costa Blanca, offrant le programme de Grado en Odontología dans des installations modernes. Le campus intègre une Clinique Universitaire Odontologique de pointe pour une pratique clinique intensive et précoce.",
   language: "Espagnol / Anglais",
@@ -266,7 +266,7 @@ const dentaireUECanaries: ProgramDetail = {
   universitySlug: "universidad-europea",
   city: "Canaries",
   country: "Espagne",
-  countryFlag: "🇪🇸",
+  countryFlag: "",
   presentation:
     "Le programme de Grado en Odontología aux Canaries offre une formation d'excellence dans un cadre insulaire unique. Le diplôme est reconnu dans toute l'UE. Le cursus combine théorie et pratique clinique intensive.",
   language: "Espagnol",
@@ -291,7 +291,7 @@ const dentaireUCJC: ProgramDetail = {
   universitySlug: "ucjc",
   city: "Madrid",
   country: "Espagne",
-  countryFlag: "🇪🇸",
+  countryFlag: "",
   presentation:
     "L'UCJC propose un programme de dentaire en 5 ans entièrement en espagnol, avec une admission simplifiée par entretien uniquement (pas de test écrit). Le campus moderne de Madrid offre un environnement professionnalisant. L'entretien peut se faire en visio.",
   language: "Espagnol",
@@ -322,7 +322,7 @@ const dentaireLINK: ProgramDetail = {
   universitySlug: "link-campus",
   city: "Rome",
   country: "Italie",
-  countryFlag: "🇮🇹",
+  countryFlag: "",
   presentation:
     "LINK Campus University propose un cursus de dentaire en 6 ans à Rome. Le test d'admission est intégralement en français (QCM 5 matières). Aucun prérequis linguistique : un cours d'italien intensif est inclus dès la 1ère année. Ouvert à tous les profils bac.",
   language: "Italien (cours intensif inclus)",
@@ -358,7 +358,7 @@ const medecineUEMadrid: ProgramDetail = {
   universitySlug: "universidad-europea",
   city: "Madrid",
   country: "Espagne",
-  countryFlag: "🇪🇸",
+  countryFlag: "",
   presentation:
     "Les études de Grado en Medicina à l'Université Européenne de Madrid offrent une formation prestigieuse dont le diplôme est reconnu dans toute l'UE. Le cursus de 6 ans est dispensé dans des installations ultramodernes, incluant un Hôpital Simulé et des laboratoires spécialisés. Les étudiants sont plongés très tôt dans la pratique clinique.",
   language: "Espagnol",
@@ -390,7 +390,7 @@ const medecineUECanaries: ProgramDetail = {
   universitySlug: "universidad-europea",
   city: "Canaries",
   country: "Espagne",
-  countryFlag: "🇪🇸",
+  countryFlag: "",
   presentation:
     "Le programme de Grado en Medicina aux Canaries offre une formation d'excellence dans un cadre insulaire unique. Le cursus de 6 ans suit les standards européens les plus élevés avec une forte composante clinique.",
   language: "Espagnol",
@@ -415,7 +415,7 @@ const medecineLINK: ProgramDetail = {
   universitySlug: "link-campus",
   city: "Rome",
   country: "Italie",
-  countryFlag: "🇮🇹",
+  countryFlag: "",
   presentation:
     "Le cursus de médecine à LINK dure 6 ans. Les cours sont en italien avec un programme d'italien intensif la 1ère année. Le diplôme est reconnu dans toute l'Union européenne. Le test d'admission est intégralement en français.",
   language: "Italien (cours intensif inclus)",
@@ -452,7 +452,7 @@ const kineProgram4ans: YearProgram[] = [
 const kineUEMadrid: ProgramDetail = {
   slug: "ue-madrid", filiere: "Kinésithérapie", filiereSlug: "kinesitherapie",
   university: "Universidad Europea", universityShort: "UE", universitySlug: "universidad-europea",
-  city: "Madrid", country: "Espagne", countryFlag: "🇪🇸",
+  city: "Madrid", country: "Espagne", countryFlag: "",
   presentation: "Les études de Grado en Fisioterapia à l'UEM offrent une formation reconnue pour son approche pratique et son excellence clinique. Le cursus de 4 ans bénéficie d'installations de pointe. La 1ère année est en français, puis les cours passent en espagnol.",
   language: "Français / Espagnol / Anglais", duration: "4 ans",
   costPerYear: "10 020 €", totalCost: "40 080 €",
@@ -464,7 +464,7 @@ const kineUEMadrid: ProgramDetail = {
 const kineUEMalaga: ProgramDetail = {
   slug: "ue-malaga", filiere: "Kinésithérapie", filiereSlug: "kinesitherapie",
   university: "Universidad Europea", universityShort: "UE", universitySlug: "universidad-europea",
-  city: "Málaga", country: "Espagne", countryFlag: "🇪🇸",
+  city: "Málaga", country: "Espagne", countryFlag: "",
   presentation: "Les études de Grado en Fisioterapia à Málaga seront lancées dans un campus flambant neuf. Le programme reconnu en France s'étend sur 4 ans avec une pratique intensive dès la 1ère année.",
   language: "Espagnol", duration: "4 ans",
   costPerYear: "10 020 €", totalCost: "40 080 €",
@@ -476,7 +476,7 @@ const kineUEMalaga: ProgramDetail = {
 const kineUEValence: ProgramDetail = {
   slug: "ue-valence", filiere: "Kinésithérapie", filiereSlug: "kinesitherapie",
   university: "Universidad Europea", universityShort: "UE", universitySlug: "universidad-europea",
-  city: "Valence", country: "Espagne", countryFlag: "🇪🇸",
+  city: "Valence", country: "Espagne", countryFlag: "",
   presentation: "Les études de Grado en Fisioterapia à l'UEV offrent une formation reconnue et axée sur l'excellence clinique. Le cursus de 4 ans bénéficie d'installations de pointe pour la rééducation et l'analyse du mouvement.",
   language: "Espagnol", duration: "4 ans",
   costPerYear: "10 080 €", totalCost: "40 320 €",
@@ -488,7 +488,7 @@ const kineUEValence: ProgramDetail = {
 const kineUEAlicante: ProgramDetail = {
   slug: "ue-alicante", filiere: "Kinésithérapie", filiereSlug: "kinesitherapie",
   university: "Universidad Europea", universityShort: "UE", universitySlug: "universidad-europea",
-  city: "Alicante", country: "Espagne", countryFlag: "🇪🇸",
+  city: "Alicante", country: "Espagne", countryFlag: "",
   presentation: "Le programme de kinésithérapie à Alicante offre 4 ans de formation intensive sur la Costa Blanca. Admission sur dossier, sans test d'entrée.",
   language: "Espagnol", duration: "4 ans",
   costPerYear: "10 080 €", totalCost: "40 320 €",
@@ -500,7 +500,7 @@ const kineUEAlicante: ProgramDetail = {
 const kineUECanaries: ProgramDetail = {
   slug: "ue-canaries", filiere: "Kinésithérapie", filiereSlug: "kinesitherapie",
   university: "Universidad Europea", universityShort: "UE", universitySlug: "universidad-europea",
-  city: "Canaries", country: "Espagne", countryFlag: "🇪🇸",
+  city: "Canaries", country: "Espagne", countryFlag: "",
   presentation: "Le programme de kinésithérapie aux Canaries offre une formation d'excellence dans un cadre insulaire unique. Admission sur dossier.",
   language: "Espagnol", duration: "4 ans",
   costPerYear: "10 020 €", totalCost: "40 080 €",
@@ -512,7 +512,7 @@ const kineUECanaries: ProgramDetail = {
 const kineUCJC: ProgramDetail = {
   slug: "ucjc-madrid", filiere: "Kinésithérapie", filiereSlug: "kinesitherapie",
   university: "UCJC — Universidad Camilo José Cela", universityShort: "UCJC", universitySlug: "ucjc",
-  city: "Madrid", country: "Espagne", countryFlag: "🇪🇸",
+  city: "Madrid", country: "Espagne", countryFlag: "",
   presentation: "La kiné UCJC est l'option la moins chère de toutes nos universités (9 420 €/an, soit 37 680 € total sur 4 ans). Aucun test, aucune moyenne requise. Idéal pour les profils non-scientifiques ou avec une moyenne modeste.",
   language: "Espagnol", duration: "4 ans",
   costPerYear: "9 420 €", totalCost: "37 680 €",
@@ -525,7 +525,7 @@ const kineUCJC: ProgramDetail = {
 const kineLINK: ProgramDetail = {
   slug: "link-rome", filiere: "Kinésithérapie", filiereSlug: "kinesitherapie",
   university: "LINK Campus University", universityShort: "LINK", universitySlug: "link-campus",
-  city: "Rome", country: "Italie", countryFlag: "🇮🇹",
+  city: "Rome", country: "Italie", countryFlag: "",
   presentation: "3 ans seulement contre 5 en France ! Le cursus pratique dès la 1ère année avec stages cliniques. Le diplôme est reconnu en France. Test d'admission en français, aucun prérequis linguistique.",
   language: "Italien (cours intensif inclus)", duration: "3 ans",
   costPerYear: "11 900 €", totalCost: "35 700 €",
@@ -554,7 +554,7 @@ const pharmacieProgram5ans: YearProgram[] = [
 const pharmacieUEMadrid: ProgramDetail = {
   slug: "ue-madrid", filiere: "Pharmacie", filiereSlug: "pharmacie",
   university: "Universidad Europea", universityShort: "UE", universitySlug: "universidad-europea",
-  city: "Madrid", country: "Espagne", countryFlag: "🇪🇸",
+  city: "Madrid", country: "Espagne", countryFlag: "",
   presentation: "Les études de Grado en Farmacia à l'UEM offrent une formation solide en sciences de la santé. Le cursus de 5 ans est dispensé sur le campus de Villaviciosa de Odón. Admission sur dossier, sans test d'entrée.",
   language: "Espagnol", duration: "5 ans",
   costPerYear: "12 120 €", totalCost: "60 600 €",
@@ -566,7 +566,7 @@ const pharmacieUEMadrid: ProgramDetail = {
 const pharmacieUCJC: ProgramDetail = {
   slug: "ucjc-madrid", filiere: "Pharmacie", filiereSlug: "pharmacie",
   university: "UCJC — Universidad Camilo José Cela", universityShort: "UCJC", universitySlug: "ucjc",
-  city: "Madrid", country: "Espagne", countryFlag: "🇪🇸",
+  city: "Madrid", country: "Espagne", countryFlag: "",
   presentation: "L'UCJC propose un programme de pharmacie en 5 ans en espagnol. Admission par entretien uniquement, sans test écrit. Processus le plus simple des 3 universités.",
   language: "Espagnol", duration: "5 ans",
   costPerYear: "10 140 €", totalCost: "50 700 €",
@@ -578,7 +578,7 @@ const pharmacieUCJC: ProgramDetail = {
 const pharmacieLINK: ProgramDetail = {
   slug: "link-rome", filiere: "Pharmacie", filiereSlug: "pharmacie",
   university: "LINK Campus University", universityShort: "LINK", universitySlug: "link-campus",
-  city: "Rome", country: "Italie", countryFlag: "🇮🇹",
+  city: "Rome", country: "Italie", countryFlag: "",
   presentation: "Pharmacie est la seule filière LINK sans test d'admission. L'admission se fait uniquement sur dossier. C'est aussi le tarif le plus bas de toutes les filières LINK (7 900 €/an). Idéal pour les étudiants ne souhaitant pas passer de test.",
   language: "Italien (cours intensif inclus)", duration: "5 ans",
   costPerYear: "7 900 €", totalCost: "39 500 €",
@@ -595,7 +595,7 @@ const pharmacieLINK: ProgramDetail = {
 const veterinaireUEMadrid: ProgramDetail = {
   slug: "ue-madrid", filiere: "Vétérinaire", filiereSlug: "veterinaire",
   university: "Universidad Europea", universityShort: "UE", universitySlug: "universidad-europea",
-  city: "Madrid", country: "Espagne", countryFlag: "🇪🇸",
+  city: "Madrid", country: "Espagne", countryFlag: "",
   presentation: "Le programme de vétérinaire est disponible uniquement à Madrid. Le cursus de 5 ans combine sciences fondamentales et pratique clinique avec des animaux. Admission via le test PE (4 épreuves).",
   language: "Espagnol", duration: "5 ans",
   costPerYear: "19 500 €", totalCost: "97 500 €",
@@ -618,7 +618,7 @@ const veterinaireUEMadrid: ProgramDetail = {
 const prepaDentaireUEAlicante: ProgramDetail = {
   slug: "ue-alicante", filiere: "Prépa Dentaire", filiereSlug: "prepa-dentaire",
   university: "Universidad Europea", universityShort: "UE", universitySlug: "universidad-europea",
-  city: "Alicante", country: "Espagne", countryFlag: "🇪🇸",
+  city: "Alicante", country: "Espagne", countryFlag: "",
   presentation: "Une année préparatoire en anglais à Alicante avant d'intégrer le cursus dentaire de 5 ans. Aucun test d'entrée, juste un niveau B2 en anglais requis. Après la prépa, intégration en Dentaire Alicante à 20 821 €/an.",
   language: "Anglais (B2 requis)", duration: "1 an + 5 ans dentaire",
   costPerYear: "17 000 €", totalCost: "17 000 € (prépa) + 104 105 € (dentaire)",

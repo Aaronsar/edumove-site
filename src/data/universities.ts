@@ -124,7 +124,7 @@ const linkCampusUniversity: University = {
   name: "LINK Campus University",
   shortName: "LINK",
   country: "Italie",
-  countryFlag: "\u{1F1EE}\u{1F1F9}",
+  countryFlag: "",
   campuses: ["Rome"],
   languages: "Italien (cours d\u2019italien intensif inclus 1\u00E8re ann\u00E9e)",
   linguisticPrerequisite: "Aucun",
@@ -237,7 +237,7 @@ const ucjcUniversity: University = {
   name: "Universidad Camilo Jos\u00E9 Cela",
   shortName: "UCJC",
   country: "Espagne",
-  countryFlag: "\u{1F1EA}\u{1F1F8}",
+  countryFlag: "",
   campuses: ["Madrid"],
   languages: "Espagnol",
   linguisticPrerequisite:
@@ -344,7 +344,7 @@ const universidadEuropea: University = {
   name: "Universidad Europea",
   shortName: "Universidad Europea",
   country: "Espagne",
-  countryFlag: "\u{1F1EA}\u{1F1F8}",
+  countryFlag: "",
   campuses: ["Madrid", "Malaga", "Valence", "Alicante", "Canaries"],
   languages: "Espagnol, Anglais, Fran\u00E7ais (Kin\u00E9 Madrid)",
   linguisticPrerequisite:

@@ -30,7 +30,6 @@ export default function ProgramHero({ detail }: { detail: ProgramDetail }) {
           <div className="text-white">
             <FiliereIcon slug={detail.filiereSlug} className="w-12 h-12 md:w-14 md:h-14" stroke="#ec680a" />
           </div>
-          <span className="text-3xl md:text-4xl">{detail.countryFlag}</span>
         </div>
 
         <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-2 tracking-tight">
