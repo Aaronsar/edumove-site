@@ -116,11 +116,6 @@ export default function UniversityProgramCard({
             <Globe className="w-3.5 h-3.5 text-[#615CA5]" />
             {program.language}
           </span>
-          {program.minimumGrade && (
-            <span className="inline-flex items-center gap-1.5 bg-[#EC680A]/8 border border-[#EC680A]/15 text-[#EC680A] text-xs font-medium px-3 py-1.5 rounded-lg">
-              Moy. {program.minimumGrade}
-            </span>
-          )}
         </div>
 
         {/* Note */}
