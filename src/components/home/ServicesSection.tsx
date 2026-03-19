@@ -36,8 +36,8 @@ export default function ServicesSection() {
               <div className="space-y-3">
                 <div className="rounded-xl overflow-hidden h-40">
                   <Image
-                    src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=400&h=300&fit=crop"
-                    alt="Étudiants en médecine"
+                    src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=300&fit=crop"
+                    alt="Étudiants souriants sur un campus"
                     width={400}
                     height={300}
                     className="w-full h-full object-cover"
@@ -45,8 +45,8 @@ export default function ServicesSection() {
                 </div>
                 <div className="rounded-xl overflow-hidden h-52">
                   <Image
-                    src="https://images.unsplash.com/photo-1607990283143-e81e7a2c9349?w=400&h=400&fit=crop"
-                    alt="Campus universitaire"
+                    src="https://images.unsplash.com/photo-1606761568499-6d2451b23c66?w=400&h=400&fit=crop"
+                    alt="Étudiants en blouse dans un hôpital"
                     width={400}
                     height={400}
                     className="w-full h-full object-cover"
@@ -56,8 +56,8 @@ export default function ServicesSection() {
               <div className="space-y-3 pt-6">
                 <div className="rounded-xl overflow-hidden h-52">
                   <Image
-                    src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=400&h=400&fit=crop"
-                    alt="Étudiants en clinique"
+                    src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=400&h=400&fit=crop"
+                    alt="Groupe d'étudiants en cours"
                     width={400}
                     height={400}
                     className="w-full h-full object-cover"
@@ -65,8 +65,8 @@ export default function ServicesSection() {
                 </div>
                 <div className="rounded-xl overflow-hidden h-40">
                   <Image
-                    src="https://images.unsplash.com/photo-1516549655169-df83a0774514?w=400&h=300&fit=crop"
-                    alt="Remise de diplômes"
+                    src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=300&fit=crop"
+                    alt="Jeune médecin souriante"
                     width={400}
                     height={300}
                     className="w-full h-full object-cover"
