@@ -10,6 +10,7 @@ import CostCard from "@/components/program/CostCard";
 import StudentLifeSection from "@/components/program/StudentLifeSection";
 import ProgramCTA from "@/components/program/ProgramCTA";
 import MiniCTA from "@/components/program/MiniCTA";
+import StickyBar from "@/components/program/StickyBar";
 
 export function generateStaticParams() {
   return getAllProgramSlugs();
@@ -74,6 +75,7 @@ export default async function ProgramPage({
       <MiniCTA />
       <StudentLifeSection life={detail.studentLife} />
       <ProgramCTA detail={detail} />
+      <StickyBar />
     </main>
   );
 }
