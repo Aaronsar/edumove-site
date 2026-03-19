@@ -16,7 +16,7 @@ const articles = [
     title: "Comment financer ses études de santé en Europe avec un prêt étudiant ?",
     date: "28 février 2025",
     tag: "Financement",
-    tagColor: "bg-emerald-500",
+    tagColor: "bg-[#ec680a]",
     href: "#",
     number: "02",
     readTime: "5 min",
@@ -34,7 +34,7 @@ const articles = [
     title: "Témoignage : mon parcours en médecine en Espagne avec Edumove",
     date: "5 décembre 2024",
     tag: "Témoignages",
-    tagColor: "bg-amber-500",
+    tagColor: "bg-[#615ca5]",
     href: "#",
     number: "04",
     readTime: "4 min",
@@ -43,7 +43,7 @@ const articles = [
     title: "Les avantages d'étudier la kinésithérapie en Europe",
     date: "20 novembre 2024",
     tag: "Filières",
-    tagColor: "bg-sky-500",
+    tagColor: "bg-[#ec680a]",
     href: "#",
     number: "05",
     readTime: "7 min",
@@ -105,17 +105,17 @@ export default function ArticlesSection() {
             <a
               key={article.number}
               href={article.href}
-              className="group snap-start shrink-0 w-[320px] bg-white/[0.06] backdrop-blur-sm border border-white/10 rounded-2xl p-6 flex flex-col justify-between hover:border-[#ec680a]/50 hover:bg-white/[0.1] transition-all duration-300"
+              className="group snap-start shrink-0 w-[320px] bg-white/[0.12] backdrop-blur-md border border-white/20 rounded-2xl p-6 flex flex-col justify-between hover:border-[#ec680a]/50 hover:bg-white/[0.18] transition-all duration-300"
             >
               {/* Top */}
               <div>
                 <div className="flex items-center justify-between mb-5">
-                  <span className="text-3xl font-black text-white/[0.07]">{article.number}</span>
+                  <span className="text-3xl font-black text-white/20">{article.number}</span>
                   <span className={`text-[10px] uppercase tracking-wider font-semibold text-white px-3 py-1 rounded-full ${article.tagColor}`}>
                     {article.tag}
                   </span>
                 </div>
-                <h3 className="font-bold text-white text-[15px] leading-snug group-hover:text-[#ec680a] transition-colors duration-300 line-clamp-3 min-h-[60px]">
+                <h3 className="font-bold text-white text-base leading-snug group-hover:text-[#ec680a] transition-colors duration-300 line-clamp-3 min-h-[60px]">
                   {article.title}
                 </h3>
               </div>
@@ -123,9 +123,9 @@ export default function ArticlesSection() {
               {/* Bottom */}
               <div className="flex items-center justify-between mt-6 pt-4 border-t border-white/10">
                 <div className="flex items-center gap-3">
-                  <span className="text-[11px] text-white/40">{article.date}</span>
+                  <span className="text-[11px] text-white/60">{article.date}</span>
                   <span className="w-1 h-1 rounded-full bg-white/20" />
-                  <span className="text-[11px] text-white/40">{article.readTime}</span>
+                  <span className="text-[11px] text-white/60">{article.readTime}</span>
                 </div>
                 <span className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-[#ec680a] group-hover:border-[#ec680a] transition-all duration-300">
                   <ArrowUpRight size={13} className="text-white/30 group-hover:text-white transition-colors" />
