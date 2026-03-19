@@ -48,11 +48,11 @@ export default function HeroSection() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3">
-                <a href="#formations" className="text-center bg-[#ec680a] hover:bg-[#d45e09] text-white font-semibold px-6 py-3 rounded-[5px] transition-all hover:shadow-lg hover:shadow-[#ec680a]/20">
-                  Découvrir nos formations
+                <a href="#" className="text-center bg-[#ec680a] hover:bg-[#d45e09] text-white font-semibold px-6 py-3 rounded-[5px] transition-all hover:shadow-lg hover:shadow-[#ec680a]/20">
+                  Être contacté gratuitement
                 </a>
-                <a href="#" className="text-center border border-white/30 text-white font-medium px-6 py-3 rounded-[5px] hover:bg-white/10 transition-all">
-                  Être contacté
+                <a href="#formations" className="text-center border border-white/30 text-white font-medium px-6 py-3 rounded-[5px] hover:bg-white/10 transition-all">
+                  En savoir plus
                 </a>
               </div>
 

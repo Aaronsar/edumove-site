@@ -10,6 +10,7 @@ const universites = [
     tags: ["6 filières", "5 campus", "PE ou dossier"],
     slug: "universidad-europea",
     cities: "Madrid · Málaga · Valence · Alicante · Canaries",
+    highlight: "Le plus grand réseau",
   },
   {
     name: "LINK Campus University",
@@ -20,6 +21,7 @@ const universites = [
     tags: ["4 filières", "Test en français", "Aucun prérequis"],
     slug: "link-campus",
     cities: "Rome",
+    highlight: "Test 100% en français",
   },
   {
     name: "UCJC",
@@ -30,66 +32,52 @@ const universites = [
     tags: ["3 filières", "Entretien seul", "Le - cher"],
     slug: "ucjc",
     cities: "Madrid",
+    highlight: "Le moins cher",
   },
 ];
 
 export default function UniversitesSection() {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-16 bg-[#f7f7fb]">
       <div className="max-w-6xl mx-auto px-4">
-        <p className="text-center text-sm uppercase tracking-widest text-[#EC680A] mb-3 font-semibold">Nos partenaires</p>
-        <h2 className="text-2xl md:text-3xl font-bold text-center mb-12" style={{ color: "#615CA5" }}>
-          Universités partenaires d&apos;excellence
-        </h2>
+        <div className="text-center mb-12">
+          <p className="text-[#ec680a] text-xs uppercase tracking-widest font-semibold mb-2">Nos partenaires</p>
+          <h2 className="text-2xl md:text-3xl font-bold" style={{ color: "#615CA5" }}>
+            3 universités d&apos;excellence en Europe
+          </h2>
+        </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-5">
           {universites.map((u) => (
             <Link
               key={u.slug}
               href={`/universites/${u.slug}`}
-              className="group flex flex-col bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+              className="group flex flex-col bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
-              {/* Header compact */}
-              <div className="bg-[#1b1d3a] px-5 py-4 relative">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-white/60 text-xs">{u.flag} {u.location}</p>
-                    <h3 className="text-white font-bold text-lg leading-tight" style={{ color: "white" }}>{u.name}</h3>
-                  </div>
-                  <span className="text-white/10 font-black text-3xl">{u.short}</span>
-                </div>
+              {/* Top badge */}
+              <div className="bg-[#615ca5] px-4 py-2 flex items-center justify-between">
+                <span className="text-white text-xs font-semibold">{u.highlight}</span>
+                <span className="text-white/60 text-lg">{u.flag}</span>
               </div>
 
-              {/* Body */}
               <div className="p-5 flex flex-col flex-1">
-                <p className="text-[#334155] text-sm leading-relaxed mb-4">{u.description}</p>
-
-                {u.cities && (
-                  <p className="text-xs text-[#615ca5] font-medium mb-3">
-                    <svg className="w-3.5 h-3.5 inline mr-1 -mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" /></svg>
-                    {u.cities}
-                  </p>
-                )}
-
+                <h3 className="font-bold text-[#1b1d3a] text-lg mb-1">{u.name}</h3>
+                <p className="text-[#615ca5] text-xs font-medium mb-3 flex items-center gap-1">
+                  <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" /></svg>
+                  {u.cities}
+                </p>
+                <p className="text-[#334155] text-sm leading-relaxed mb-4 flex-1">{u.description}</p>
                 <div className="flex flex-wrap gap-1.5 mb-4">
                   {u.tags.map((t) => (
-                    <span key={t} className="text-xs bg-[#615ca5]/8 text-[#615ca5] px-2.5 py-1 rounded-full font-medium">{t}</span>
+                    <span key={t} className="text-[10px] bg-[#1b1d3a]/5 text-[#1b1d3a] px-2 py-0.5 rounded font-medium">{t}</span>
                   ))}
                 </div>
-
-                <span className="mt-auto text-[#EC680A] font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
-                  En savoir plus
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
+                <span className="text-[#ec680a] font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all mt-auto">
+                  Découvrir →
                 </span>
               </div>
             </Link>
           ))}
-        </div>
-
-        <div className="text-center mt-10">
-          <a href="#" className="inline-block border border-[#EC680A] text-[#EC680A] font-medium px-6 py-2.5 rounded-[5px] text-sm hover:bg-[#EC680A] hover:text-white transition-all">
-            Être contacté par un expert
-          </a>
         </div>
       </div>
     </section>
