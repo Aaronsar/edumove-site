@@ -7,7 +7,6 @@ import type { FiliereSlug } from "@/data/universities";
 
 import FormationHero from "@/components/formations/FormationHero";
 import ProgramsList from "@/components/formations/ProgramsList";
-import AdmissionComparison from "@/components/formations/AdmissionComparison";
 import FormationCTA from "@/components/formations/FormationCTA";
 
 // ---------------------------------------------------------------------------
@@ -92,9 +91,6 @@ export default async function FormationPage({
 
       {/* University program cards */}
       <ProgramsList programs={programs} cheapestTotalCost={cheapestTotalCost} />
-
-      {/* Admission comparison table */}
-      <AdmissionComparison programs={programs} />
 
       {/* Call to action */}
       <FormationCTA filiereName={filiere.name} />
