@@ -27,28 +27,26 @@ function AnimatedNumber({
   useEffect(() => {
     if (!isVisible) return;
 
-    if (target === 0) {
-      setCount(0);
-      return;
-    }
-
-    let start = 0;
     const duration = 1800;
-    const steps = 60;
-    const increment = target / steps;
-    const stepTime = duration / steps;
 
-    const timer = setInterval(() => {
-      start += increment;
-      if (start >= target) {
+    let frameId: number;
+    const startTime = performance.now();
+
+    const animate = (now: number) => {
+      const elapsed = now - startTime;
+      if (elapsed >= duration) {
         setCount(target);
-        clearInterval(timer);
-      } else {
-        setCount(Math.floor(start));
+        return;
       }
-    }, stepTime);
+      const progress = elapsed / duration;
+      const nextValue = Math.floor(progress * target);
+      setCount(nextValue);
+      frameId = requestAnimationFrame(animate);
+    };
 
-    return () => clearInterval(timer);
+    frameId = requestAnimationFrame(animate);
+
+    return () => cancelAnimationFrame(frameId);
   }, [isVisible, target]);
 
   return (

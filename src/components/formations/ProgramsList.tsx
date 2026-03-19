@@ -1,7 +1,6 @@
 "use client";
 
-import { useRef } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import type { Program, University } from "@/data/universities";
 import type { Program, University } from "@/data/universities";
 import UniversityProgramCard from "./UniversityProgramCard";
 
@@ -31,7 +30,7 @@ interface ProgramsListProps {
   cheapestTotalCost: number | null;
 }
 
-/* ---------- Horizontal scroll row per country ---------- */
+/* ---------- Vertical stack per country ---------- */
 
 function CountryRow({
   group,
@@ -40,17 +39,6 @@ function CountryRow({
   group: CountryGroup;
   cheapestTotalCost: number | null;
 }) {
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  const scroll = (direction: "left" | "right") => {
-    if (!scrollRef.current) return;
-    const amount = 340;
-    scrollRef.current.scrollBy({
-      left: direction === "left" ? -amount : amount,
-      behavior: "smooth",
-    });
-  };
-
   const display = countryDisplay[group.country] ?? {
     flag: "\u{1F30D}",
     name: group.country.toUpperCase(),
@@ -79,54 +67,25 @@ function CountryRow({
         </span>
       </div>
 
-      {/* Scrollable row with arrows */}
-      <div className="relative group">
-        {/* Left arrow */}
-        <button
-          onClick={() => scroll("left")}
-          className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-3 z-10 w-10 h-10 rounded-full bg-white shadow-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors opacity-0 group-hover:opacity-100"
-          aria-label="Défiler à gauche"
-        >
-          <ChevronLeft className="w-5 h-5 text-gray-600" />
-        </button>
+      {/* Cards grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {sorted.map((item, index) => {
+          const isCheapest =
+            cheapestTotalCost !== null &&
+            !item.program.isFull &&
+            item.program.totalCost === cheapestTotalCost;
 
-        {/* Cards container */}
-        <div
-          ref={scrollRef}
-          className="flex gap-5 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory px-1"
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-        >
-          {sorted.map((item, index) => {
-            const isCheapest =
-              cheapestTotalCost !== null &&
-              !item.program.isFull &&
-              item.program.totalCost === cheapestTotalCost;
-
-            return (
-              <div
-                key={`${item.university.slug}-${item.program.campus}-${index}`}
-                className="flex-shrink-0 w-[300px] snap-start"
-              >
-                <UniversityProgramCard
-                  program={item.program}
-                  universityName={item.university.shortName}
-                  universitySlug={item.university.slug}
-                  universityColor={item.university.slug}
-                  isCheapest={isCheapest}
-                />
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Right arrow */}
-        <button
-          onClick={() => scroll("right")}
-          className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-3 z-10 w-10 h-10 rounded-full bg-white shadow-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors opacity-0 group-hover:opacity-100"
-          aria-label="Défiler à droite"
-        >
-          <ChevronRight className="w-5 h-5 text-gray-600" />
-        </button>
+          return (
+            <UniversityProgramCard
+              key={`${item.university.slug}-${item.program.campus}-${index}`}
+              program={item.program}
+              universityName={item.university.shortName}
+              universitySlug={item.university.slug}
+              universityColor={item.university.slug}
+              isCheapest={isCheapest}
+            />
+          );
+        })}
       </div>
     </div>
   );
