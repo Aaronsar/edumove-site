@@ -109,8 +109,7 @@ export default function ArticlesSection() {
             >
               {/* Top */}
               <div>
-                <div className="flex items-center justify-between mb-5">
-                  <span className="text-3xl font-black text-white/20">{article.number}</span>
+                <div className="flex items-center justify-end mb-5">
                   <span className={`text-[10px] uppercase tracking-wider font-semibold text-white px-3 py-1 rounded-full ${article.tagColor}`}>
                     {article.tag}
                   </span>
