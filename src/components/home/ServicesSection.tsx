@@ -114,7 +114,7 @@ export default function ServicesSection() {
               ))}
             </div>
 
-            <a href="#" className="inline-block mt-8 bg-[#ec680a] hover:bg-[#d45e09] text-white font-semibold px-6 py-3 rounded-[5px] text-sm transition-all hover:shadow-lg">
+            <a href="https://candidature.edumove.fr" className="inline-block mt-8 bg-[#ec680a] hover:bg-[#d45e09] text-white font-semibold px-6 py-3 rounded-[5px] text-sm transition-all hover:shadow-lg">
               Déposer ma candidature →
             </a>
           </motion.div>

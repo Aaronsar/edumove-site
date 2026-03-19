@@ -47,7 +47,7 @@ export default function ProgramCTA({ detail }: { detail: ProgramDetail }) {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href="#"
+              href="https://candidature.edumove.fr"
               className="group inline-flex items-center gap-3 bg-[#EC680A] hover:bg-[#D45E09] text-white font-semibold px-8 py-4 rounded-2xl text-lg transition-all duration-300 hover:shadow-lg hover:shadow-[#EC680A]/30"
             >
               Déposer ma candidature

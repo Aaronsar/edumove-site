@@ -57,7 +57,7 @@ export default function ProgramHighlights({ detail }: { detail: ProgramDetail })
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-14"
+          className="mb-14"
         >
           <span className="inline-flex items-center gap-2 text-[#EC680A] text-sm font-semibold uppercase tracking-widest mb-3">
             <Sparkles className="w-4 h-4" />

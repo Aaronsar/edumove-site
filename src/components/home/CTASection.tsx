@@ -9,7 +9,7 @@ export default function CTASection() {
         <p className="text-slate-500 mb-8">
           Un expert EduMove vous rappelle sous 24h. Sans engagement, sans frais.
         </p>
-        <a href="#" className="inline-block bg-[#ec680a] hover:bg-[#d45e09] text-white font-semibold px-8 py-3.5 rounded-[5px] transition-all hover:shadow-xl hover:shadow-[#ec680a]/20">
+        <a href="https://candidature.edumove.fr" className="inline-block bg-[#ec680a] hover:bg-[#d45e09] text-white font-semibold px-8 py-3.5 rounded-[5px] transition-all hover:shadow-xl hover:shadow-[#ec680a]/20">
           Déposer ma candidature →
         </a>
         <p className="text-slate-400 mt-4 text-sm">+33 1 89 74 42 57</p>

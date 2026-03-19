@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 
 const stepIcons = [FileText, Search, Send, ClipboardCheck, BadgeCheck, Rocket];
-const stepColors = ["#615CA5", "#1B1D3A", "#EC680A", "#615CA5", "#1B1D3A", "#EC680A"];
+const stepColors = ["#615CA5", "#615CA5", "#EC680A", "#615CA5", "#615CA5", "#EC680A"];
 
 export default function AdmissionSteps({ steps }: { steps: string[] }) {
   return (
@@ -32,16 +32,16 @@ export default function AdmissionSteps({ steps }: { steps: string[] }) {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="mb-16"
         >
           <span className="inline-flex items-center gap-2 text-[#EC680A] text-sm font-semibold uppercase tracking-widest mb-3">
             <ClipboardCheck className="w-4 h-4" />
             Comment candidater
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-white" style={{ color: "#ffffff" }}>
+          <h2 className="text-3xl md:text-4xl font-bold" style={{ color: "#ffffff" }}>
             Processus d&apos;admission
           </h2>
-          <p className="mt-3 text-white/50 max-w-xl mx-auto" style={{ color: "rgba(255,255,255,0.5)" }}>
+          <p className="mt-3 max-w-xl" style={{ color: "rgba(255,255,255,0.5)" }}>
             Un parcours simple et accompagné de A à Z par votre expert EduMove
           </p>
         </motion.div>
@@ -60,51 +60,38 @@ export default function AdmissionSteps({ steps }: { steps: string[] }) {
                 transition={{ delay: i * 0.1 }}
                 className="group relative"
               >
-                <div className="relative bg-white/[0.06] backdrop-blur-sm border border-white/10 rounded-2xl p-6 h-full transition-all duration-300 hover:bg-white/[0.10] hover:border-white/20 hover:shadow-2xl"
-                  style={{ boxShadow: `0 0 0 0 ${color}00` }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.boxShadow = `0 20px 40px ${color}20`;
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.boxShadow = `0 0 0 0 ${color}00`;
-                  }}
-                >
-                  {/* Step number badge */}
+                <div className="relative bg-white rounded-2xl p-6 h-full transition-all duration-300 hover:shadow-xl border border-gray-100">
+                  {/* Step number + icon row */}
                   <div className="flex items-center justify-between mb-5">
                     <div
                       className="w-12 h-12 rounded-2xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
-                      style={{ backgroundColor: `${color}25` }}
+                      style={{ backgroundColor: `${color}15` }}
                     >
                       <Icon className="w-6 h-6" style={{ color }} />
                     </div>
                     <span
-                      className="text-4xl font-black opacity-15"
-                      style={{ color }}
+                      className="text-5xl font-black"
+                      style={{ color: `${color}15` }}
                     >
                       {String(i + 1).padStart(2, "0")}
                     </span>
                   </div>
 
                   {/* Step label */}
-                  <p className="text-sm font-semibold uppercase tracking-wider mb-3" style={{ color }}>
+                  <p className="text-sm font-bold uppercase tracking-wider mb-2" style={{ color }}>
                     Étape {i + 1}
                   </p>
 
                   {/* Step content */}
-                  <p className="text-white/80 text-[15px] leading-relaxed" style={{ color: "rgba(255,255,255,0.8)" }}>
+                  <p className="text-[#334155] text-[15px] leading-relaxed">
                     {step}
                   </p>
 
-                  {/* Connector arrow (visible between cards on mobile) */}
-                  {i < steps.length - 1 && (
-                    <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 md:hidden">
-                      <div className="w-6 h-6 rounded-full bg-[#EC680A] flex items-center justify-center">
-                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                          <path d="M6 2v8m0 0l3-3m-3 3L3 7" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      </div>
-                    </div>
-                  )}
+                  {/* Bottom accent line */}
+                  <div
+                    className="absolute bottom-0 left-6 right-6 h-0.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style={{ backgroundColor: color }}
+                  />
                 </div>
               </motion.div>
             );
@@ -119,9 +106,9 @@ export default function AdmissionSteps({ steps }: { steps: string[] }) {
           transition={{ delay: 0.5 }}
           className="mt-12 text-center"
         >
-          <div className="inline-flex items-center gap-3 bg-[#EC680A]/10 border border-[#EC680A]/20 rounded-full px-6 py-3">
+          <div className="inline-flex items-center gap-3 bg-[#EC680A]/15 border border-[#EC680A]/25 rounded-full px-6 py-3">
             <Rocket className="w-5 h-5 text-[#EC680A]" />
-            <span className="text-white/70 text-sm" style={{ color: "rgba(255,255,255,0.7)" }}>
+            <span className="text-sm" style={{ color: "rgba(255,255,255,0.8)" }}>
               Durée moyenne du processus : <strong className="text-[#EC680A]">2 à 4 semaines</strong>
             </span>
           </div>

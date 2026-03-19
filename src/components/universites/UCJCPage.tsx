@@ -141,7 +141,7 @@ export default function UCJCPage() {
       <section className="py-12 px-4 bg-[#fafbff]">
         <div className="max-w-3xl mx-auto text-center">
           <Link
-            href="/contact"
+            href="https://candidature.edumove.fr"
             className="inline-flex items-center gap-2 bg-[#EC680A] text-white font-semibold px-8 py-4 rounded-[5px] hover:bg-[#D45E09] transition-colors text-lg"
           >
             D&eacute;poser ma candidature gratuitement
@@ -172,7 +172,7 @@ export default function UCJCPage() {
             avec l&apos;accompagnement EduMove.
           </p>
           <Link
-            href="/contact"
+            href="https://candidature.edumove.fr"
             className="inline-flex items-center gap-2 bg-[#EC680A] text-white font-semibold px-8 py-4 rounded-[5px] hover:bg-[#D45E09] transition-colors text-lg"
           >
             D&eacute;poser ma candidature gratuitement

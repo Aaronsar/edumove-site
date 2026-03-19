@@ -73,7 +73,7 @@ export default function UniHero({
 
             <div className="flex flex-col sm:flex-row gap-3 mb-10">
               <a
-                href="#contact"
+                href="https://candidature.edumove.fr"
                 className="text-center bg-[#EC680A] hover:bg-[#D45E09] text-white font-semibold px-6 py-3 rounded-[5px] transition-all hover:shadow-lg hover:shadow-[#EC680A]/20"
               >
                 Déposer ma candidature gratuitement

@@ -9,6 +9,7 @@ import AdmissionSteps from "@/components/program/AdmissionSteps";
 import CostCard from "@/components/program/CostCard";
 import StudentLifeSection from "@/components/program/StudentLifeSection";
 import ProgramCTA from "@/components/program/ProgramCTA";
+import MiniCTA from "@/components/program/MiniCTA";
 
 export function generateStaticParams() {
   return getAllProgramSlugs();
@@ -63,12 +64,15 @@ export default async function ProgramPage({
             </div>
           </div>
         </div>
+        <MiniCTA />
       </section>
 
       <ProgramHighlights detail={detail} />
       <CurriculumAccordion program={detail.program} />
+      <MiniCTA />
       <AdmissionSteps steps={detail.admissionSteps} />
       <CostCard detail={detail} />
+      <MiniCTA />
       <StudentLifeSection life={detail.studentLife} />
       <ProgramCTA detail={detail} />
     </main>

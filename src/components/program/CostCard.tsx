@@ -52,7 +52,12 @@ export default function CostCard({ detail }: { detail: ProgramDetail }) {
             </p>
             <p className="text-white/40 text-lg" style={{ color: "rgba(255,255,255,0.4)" }}>par an</p>
 
-            <div className="mt-8 pt-6 border-t border-white/10 space-y-3">
+            <div className="mt-6 flex items-center gap-2 bg-[#EC680A]/20 rounded-xl px-4 py-2.5">
+              <Euro className="w-4 h-4 text-[#EC680A]" />
+              <span className="text-sm font-semibold text-[#EC680A]">Finançable jusqu&apos;à 100% avec EduMove</span>
+            </div>
+
+            <div className="mt-6 pt-6 border-t border-white/10 space-y-3">
               <div className="flex justify-between items-center">
                 <span className="text-white/50 text-sm" style={{ color: "rgba(255,255,255,0.5)" }}>Coût total</span>
                 <span className="text-xl font-bold" style={{ color: "#ffffff" }}>{total}</span>
