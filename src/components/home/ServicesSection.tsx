@@ -36,8 +36,8 @@ export default function ServicesSection() {
               <div className="space-y-3">
                 <div className="rounded-xl overflow-hidden h-40">
                   <Image
-                    src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=400&h=300&fit=crop"
-                    alt="Étudiants en blouse blanche"
+                    src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&h=300&fit=crop"
+                    alt="Étudiante en médecine avec microscope"
                     width={400}
                     height={300}
                     className="w-full h-full object-cover"
@@ -45,8 +45,8 @@ export default function ServicesSection() {
                 </div>
                 <div className="rounded-xl overflow-hidden h-52">
                   <Image
-                    src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&h=400&fit=crop"
-                    alt="Jeune médecin avec stéthoscope"
+                    src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=400&h=400&fit=crop"
+                    alt="Groupe d'étudiants en blouse blanche"
                     width={400}
                     height={400}
                     className="w-full h-full object-cover"
@@ -56,8 +56,8 @@ export default function ServicesSection() {
               <div className="space-y-3 pt-6">
                 <div className="rounded-xl overflow-hidden h-52">
                   <Image
-                    src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=400&h=400&fit=crop"
-                    alt="Dentiste en pratique clinique"
+                    src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?w=400&h=400&fit=crop"
+                    alt="Étudiante kiné avec patient"
                     width={400}
                     height={400}
                     className="w-full h-full object-cover"
@@ -65,8 +65,8 @@ export default function ServicesSection() {
                 </div>
                 <div className="rounded-xl overflow-hidden h-40">
                   <Image
-                    src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=400&h=300&fit=crop"
-                    alt="Kinésithérapeute avec patient"
+                    src="https://images.unsplash.com/photo-1562774053-701939374585?w=400&h=300&fit=crop"
+                    alt="Campus universitaire européen"
                     width={400}
                     height={300}
                     className="w-full h-full object-cover"
