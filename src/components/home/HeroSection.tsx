@@ -13,7 +13,7 @@ const formations = [
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-[90vh] overflow-hidden bg-[#fafbff]">
+    <section className="relative overflow-hidden bg-[#fafbff]">
       <div className="absolute inset-0">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-[#EC680A]/6 via-transparent to-transparent rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-[#615CA5]/6 via-transparent to-transparent rounded-full blur-3xl" />
@@ -43,7 +43,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-      <div className="relative z-10 max-w-4xl mx-auto px-4 pt-16 pb-16 text-center">
+      <div className="relative z-10 max-w-4xl mx-auto px-4 pt-10 pb-10 text-center">
         {/* Logo icon */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="flex justify-center mb-6">
           <Image src="/edumove-icon-orange.svg" alt="" width={60} height={60} />
@@ -80,6 +80,26 @@ export default function HeroSection() {
                 <span className="font-bold text-[#615CA5] text-xs md:text-sm text-center group-hover:text-[#EC680A] transition-colors">{f.name}</span>
               </Link>
             ))}
+          </div>
+        </motion.div>
+
+        {/* CTA */}
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.45 }} className="mt-8 mb-6">
+          <a href="#" className="inline-block bg-[#EC680A] hover:bg-[#d45e09] text-white font-semibold px-6 py-3 rounded-[5px] text-sm transition-all hover:shadow-lg">
+            Être contacté gratuitement →
+          </a>
+        </motion.div>
+
+        {/* Logos confiance */}
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="mt-6">
+          <p className="text-xs text-[#94a3b8] uppercase tracking-widest mb-4">Ils nous font confiance</p>
+          <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10 opacity-30">
+            <span className="text-[#1b1d3a] font-black text-lg">BFMTV.</span>
+            <span className="text-[#1b1d3a] font-serif font-bold text-lg italic">Forbes</span>
+            <span className="text-blue-700 font-bold text-lg">LCL</span>
+            <span className="text-red-600 font-bold text-base">L&apos;Étudiant</span>
+            <span className="text-[#1b1d3a] font-serif text-base font-bold tracking-wide">Le Figaro</span>
+            <span className="text-[#1b1d3a] font-bold text-base tracking-widest">DIPLOMA</span>
           </div>
         </motion.div>
       </div>
