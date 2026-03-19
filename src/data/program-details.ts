@@ -167,6 +167,7 @@ const dentaireUEMadrid: ProgramDetail = {
     { year: "4ème année", theme: "Clinique avec Patients", description: "Pratique clinique avec de vrais patients dans les cliniques universitaires (plus de 900 heures).", subjects: ["Chirurgie Buccale II (avec pratique clinique)", "Parodontie", "Odontologie Pédiatrique (Pédodontie)", "Prothèses II", "Clinique Intégrée (gestion complète des cas)", "Endodontie"] },
     { year: "5ème année", theme: "Clinique Intégrée et Professionnalisation", description: "Intégration des compétences cliniques et préparation à l'exercice professionnel.", subjects: ["Clinique Intégrée (24 ECTS, gestion globale des patients)", "Chirurgie Maxillo-Faciale", "Clinique Intégrée avec Patients Spéciaux", "Cadre Légal et Déontologie Professionnelle", "Travail de Fin de Diplôme (TFG)", "Implantologie, Odontologie Digitale et Esthétique"] },
   ],
+  heroImages: ["/images/universites/ue/ue-hospital-1.jpg", "/images/universites/ue/ue-salud-grado.jpg", "/images/universites/ue/ue-hospital-simulation.jpg", "/images/universites/ue/ue-campus-club.jpg"],
   admissionSteps: defaultAdmissionSteps,
   studentLife: madridLife,
 };
@@ -198,6 +199,7 @@ const dentaireUEMalaga: ProgramDetail = {
     { year: "4ème année", theme: "Clinique avec Patients et Spécialités", description: "Immersion clinique intense, gestion de patients réels supervisée.", subjects: ["Chirurgie Orale I, Orthodontie", "Odontologie Pédiatrique (Pédodontie)", "Clinique Intégrée II (cas complexes)", "Plus de 1000 heures de pratique clinique"] },
     { year: "5ème année", theme: "Intégration et Professionnalisation", description: "Synthèse, gestion de cas avancés et préparation au marché du travail.", subjects: ["Clinique Intégrée III (Gestion multidisciplinaire)", "Implantologie, Esthétique Dentaire", "Déontologie, Droit et Gestion de Clinique", "Travail de Fin de Diplôme (TFG)"] },
   ],
+  heroImages: ["/images/universites/ue/ue-hospital-2.jpg", "/images/universites/ue/ue-hospital-1.jpg", "/images/universites/ue/ue-salud-grado.jpg", "/images/universites/ue/ue-hospital-simulation.jpg"],
   admissionSteps: defaultAdmissionSteps,
   studentLife: malagaLife,
 };
@@ -229,6 +231,7 @@ const dentaireUEValence: ProgramDetail = {
     { year: "4ème année", theme: "Pratique Clinique Avancée", description: "Forte augmentation des heures de pratique clinique avec de vrais patients.", subjects: ["Odontologie Restauratrice II / Endodontie", "Chirurgie Buccale et Pathologie Médico-chirurgicale", "Odontopédiatrie, Prothèses II", "Pratiques Cliniques pour Adultes et Enfants"] },
     { year: "5ème année", theme: "Clinique Intégrée et Professionnalisation", description: "Gestion de cas complexes et préparation à l'exercice.", subjects: ["Clinique Intégrée (soins multidisciplinaires)", "Orthodontie Avancée, Implantologie", "Médecine et Urgences dans la Clinique Dentaire", "TFG, Déontologie et Gestion de Clinique"] },
   ],
+  heroImages: ["/images/universites/ue/ue-hospital-simulation.jpg", "/images/universites/ue/ue-hospital-3.jpg", "/images/universites/ue/ue-campus-club.jpg", "/images/universites/ue/ue-hospital-1.jpg"],
   admissionSteps: defaultAdmissionSteps,
   studentLife: valenceLife,
 };
@@ -253,6 +256,7 @@ const dentaireUEAlicante: ProgramDetail = {
   averageMin: "15-16/20",
   speRequired: "2 spécialités scientifiques requises",
   diploma: "Grado en Odontología (reconnu UE)",
+  heroImages: ["/images/universites/ue/ue-salud-grado.jpg", "/images/universites/ue/ue-hospital-4.jpg", "/images/universites/ue/ue-hospital-1.jpg", "/images/universites/ue/ue-hospital-simulation.jpg"],
   program: dentaireUEMalaga.program,
   admissionSteps: defaultAdmissionSteps,
   studentLife: alicanteLife,
@@ -278,6 +282,7 @@ const dentaireUECanaries: ProgramDetail = {
   averageMin: "15-16/20",
   speRequired: "2 spécialités scientifiques requises",
   diploma: "Grado en Odontología (reconnu UE)",
+  heroImages: ["/images/universites/ue/ue-campus-club.jpg", "/images/universites/ue/ue-hospital-5.jpg", "/images/universites/ue/ue-salud-grado.jpg", "/images/universites/ue/ue-hospital-2.jpg"],
   program: dentaireUEMalaga.program,
   admissionSteps: defaultAdmissionSteps,
   studentLife: canariesLife,
@@ -379,6 +384,7 @@ const medecineUEMadrid: ProgramDetail = {
     { year: "5ème année", theme: "Pathologies Spécialisées II + Stages", description: "Spécialités complexes et multidisciplinaires.", subjects: ["Gynécologie et Obstétrique", "Pédiatrie, Psychiatrie", "Ophtalmologie, ORL", "Stages Cliniques Rotatifs II"] },
     { year: "6ème année", theme: "Clinique Intégrée et Examen Final", description: "Consolidation et préparation au MIR ou EDN.", subjects: ["Médecine Légale et Toxicologie", "Urgences Médicales et Soins Intensifs", "Stages Cliniques Tutélés (pratique supervisée)", "Travail de Fin de Diplôme (TFG)"] },
   ],
+  heroImages: ["/images/universites/ue/ue-hospital-6.jpg", "/images/universites/ue/ue-hospital-1.jpg", "/images/universites/ue/ue-campus-club.jpg", "/images/universites/ue/ue-salud-grado.jpg"],
   admissionSteps: defaultAdmissionSteps,
   studentLife: madridLife,
 };
@@ -403,6 +409,7 @@ const medecineUECanaries: ProgramDetail = {
   averageMin: "16-17/20",
   speRequired: "2 spécialités scientifiques requises",
   diploma: "Grado en Medicina (reconnu UE)",
+  heroImages: ["/images/universites/ue/ue-hospital-7.jpg", "/images/universites/ue/ue-hospital-simulation.jpg", "/images/universites/ue/ue-hospital-1.jpg", "/images/universites/ue/ue-campus-club.jpg"],
   program: medecineUEMadrid.program,
   admissionSteps: defaultAdmissionSteps,
   studentLife: canariesLife,
@@ -461,6 +468,7 @@ const kineUEMadrid: ProgramDetail = {
   costPerYear: "10 020 €", totalCost: "40 080 €",
   admission: "PE 4 épreuves (cursus français)", averageMin: "13-14/20",
   speRequired: "Aucune spécialité requise", diploma: "Grado en Fisioterapia (reconnu UE)",
+  heroImages: ["/images/universites/ue/ue-hospital-1.jpg", "/images/universites/ue/ue-hospital-8.jpg", "/images/universites/ue/ue-salud-grado.jpg", "/images/universites/ue/ue-campus-club.jpg"],
   program: kineProgram4ans, admissionSteps: defaultAdmissionSteps, studentLife: ucjcMadridLife,
 };
 
@@ -473,6 +481,7 @@ const kineUEMalaga: ProgramDetail = {
   costPerYear: "10 020 €", totalCost: "40 080 €",
   admission: "Sur dossier (Hors PE)", averageMin: "13-14/20",
   speRequired: "Aucune spécialité requise", diploma: "Grado en Fisioterapia (reconnu UE)",
+  heroImages: ["/images/universites/ue/ue-hospital-2.jpg", "/images/universites/ue/ue-hospital-simulation.jpg", "/images/universites/ue/ue-hospital-1.jpg", "/images/universites/ue/ue-salud-grado.jpg"],
   program: kineProgram4ans, admissionSteps: defaultAdmissionSteps, studentLife: malagaLife,
 };
 
@@ -485,6 +494,7 @@ const kineUEValence: ProgramDetail = {
   costPerYear: "10 080 €", totalCost: "40 320 €",
   admission: "Sur dossier (Hors PE)", averageMin: "13-14/20",
   speRequired: "Aucune spécialité requise", diploma: "Grado en Fisioterapia (reconnu UE)",
+  heroImages: ["/images/universites/ue/ue-hospital-3.jpg", "/images/universites/ue/ue-campus-club.jpg", "/images/universites/ue/ue-hospital-simulation.jpg", "/images/universites/ue/ue-hospital-1.jpg"],
   program: kineProgram4ans, admissionSteps: defaultAdmissionSteps, studentLife: valenceLife,
 };
 
@@ -497,6 +507,7 @@ const kineUEAlicante: ProgramDetail = {
   costPerYear: "10 080 €", totalCost: "40 320 €",
   admission: "Sur dossier (Hors PE)", averageMin: "13-14/20",
   speRequired: "Aucune spécialité requise", diploma: "Grado en Fisioterapia (reconnu UE)",
+  heroImages: ["/images/universites/ue/ue-salud-grado.jpg", "/images/universites/ue/ue-hospital-4.jpg", "/images/universites/ue/ue-hospital-1.jpg", "/images/universites/ue/ue-campus-club.jpg"],
   program: kineProgram4ans, admissionSteps: defaultAdmissionSteps, studentLife: alicanteLife,
 };
 
@@ -509,6 +520,7 @@ const kineUECanaries: ProgramDetail = {
   costPerYear: "10 020 €", totalCost: "40 080 €",
   admission: "Sur dossier (Hors PE)", averageMin: "13-14/20",
   speRequired: "Aucune spécialité requise", diploma: "Grado en Fisioterapia (reconnu UE)",
+  heroImages: ["/images/universites/ue/ue-hospital-5.jpg", "/images/universites/ue/ue-hospital-1.jpg", "/images/universites/ue/ue-salud-grado.jpg", "/images/universites/ue/ue-hospital-simulation.jpg"],
   program: kineProgram4ans, admissionSteps: defaultAdmissionSteps, studentLife: canariesLife,
 };
 
@@ -564,6 +576,7 @@ const pharmacieUEMadrid: ProgramDetail = {
   costPerYear: "12 120 €", totalCost: "60 600 €",
   admission: "Sur dossier (Hors PE)", averageMin: "Aucune",
   speRequired: "Aucune spécialité requise", diploma: "Grado en Farmacia (reconnu UE)",
+  heroImages: ["/images/universites/ue/ue-hospital-6.jpg", "/images/universites/ue/ue-campus-club.jpg", "/images/universites/ue/ue-hospital-1.jpg", "/images/universites/ue/ue-salud-grado.jpg"],
   program: pharmacieProgram5ans, admissionSteps: defaultAdmissionSteps, studentLife: madridLife,
 };
 
@@ -613,6 +626,7 @@ const veterinaireUEMadrid: ProgramDetail = {
     { year: "4ème année", theme: "Clinique II et Spécialités", description: "Pratique avancée et spécialisation.", subjects: ["Médecine des Grands Animaux", "Chirurgie Vétérinaire II", "Santé Publique Vétérinaire", "Stages Cliniques II"] },
     { year: "5ème année", theme: "Professionnalisation", description: "Consolidation et préparation à l'exercice.", subjects: ["Clinique Intégrée (cas complexes)", "Stages Tutelés en Clinique et Élevage", "Déontologie et Gestion de Cabinet", "Travail de Fin de Diplôme (TFG)"] },
   ],
+  heroImages: ["/images/universites/ue/ue-hospital-7.jpg", "/images/universites/ue/ue-hospital-1.jpg", "/images/universites/ue/ue-hospital-simulation.jpg", "/images/universites/ue/ue-campus-club.jpg"],
   admissionSteps: defaultAdmissionSteps, studentLife: madridLife,
 };
 
@@ -632,6 +646,7 @@ const prepaDentaireUEAlicante: ProgramDetail = {
   program: [
     { year: "Année préparatoire", theme: "Fondamentaux Scientifiques et Linguistiques", description: "Mise à niveau scientifique et préparation au cursus dentaire.", subjects: ["Biologie et Chimie (mise à niveau)", "Anglais Académique et Scientifique", "Introduction aux Sciences Dentaires", "Anatomie et Physiologie de Base", "Méthodologie Universitaire", "Projet de Recherche Introductif"] },
   ],
+  heroImages: ["/images/universites/ue/ue-hospital-8.jpg", "/images/universites/ue/ue-salud-grado.jpg", "/images/universites/ue/ue-campus-club.jpg", "/images/universites/ue/ue-hospital-1.jpg"],
   admissionSteps: defaultAdmissionSteps, studentLife: alicanteLife,
 };
 
