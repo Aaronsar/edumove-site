@@ -1,254 +1,41 @@
 "use client";
 
-import { useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { createPortal } from "react-dom";
-import { X } from "lucide-react";
-
-const HUBSPOT_FORM_CSS = `
-  /* Font */
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-
-  body, form, input, select, textarea, label, span, p, div {
-    font-family: 'Poppins', sans-serif !important;
-  }
-
-  /* Labels */
-  .hs-form label {
-    font-size: 13px !important;
-    font-weight: 600 !important;
-    color: #1B1D3A !important;
-    margin-bottom: 4px !important;
-  }
-
-  /* Required asterisk */
-  .hs-form-required {
-    color: #EC680A !important;
-  }
-
-  /* Inputs */
-  .hs-form input[type="text"],
-  .hs-form input[type="email"],
-  .hs-form input[type="tel"],
-  .hs-form input[type="number"],
-  .hs-form textarea,
-  .hs-form select,
-  .hs-input {
-    width: 100% !important;
-    padding: 10px 14px !important;
-    border: 1.5px solid #E2E8F0 !important;
-    border-radius: 12px !important;
-    font-size: 14px !important;
-    color: #1B1D3A !important;
-    background: #F8FAFC !important;
-    transition: border-color 0.2s, box-shadow 0.2s !important;
-    outline: none !important;
-    box-shadow: none !important;
-    font-family: 'Poppins', sans-serif !important;
-    box-sizing: border-box !important;
-  }
-
-  .hs-form input:focus,
-  .hs-form select:focus,
-  .hs-form textarea:focus {
-    border-color: #EC680A !important;
-    box-shadow: 0 0 0 3px rgba(236, 104, 10, 0.1) !important;
-    background: #FFFFFF !important;
-  }
-
-  /* Field spacing */
-  .hs-form-field {
-    margin-bottom: 16px !important;
-  }
-
-  /* Fieldset */
-  fieldset {
-    max-width: 100% !important;
-  }
-  fieldset.form-columns-2 .hs-form-field {
-    width: 48% !important;
-  }
-
-  /* Submit button */
-  .hs-button.primary,
-  input[type="submit"],
-  button[type="submit"] {
-    font-family: 'Poppins', sans-serif !important;
-    width: 100% !important;
-    padding: 12px 24px !important;
-    background: #EC680A !important;
-    color: #FFFFFF !important;
-    border: none !important;
-    border-radius: 12px !important;
-    font-size: 14px !important;
-    font-weight: 600 !important;
-    cursor: pointer !important;
-    transition: background 0.3s, box-shadow 0.3s, transform 0.15s !important;
-    box-shadow: none !important;
-    margin-top: 8px !important;
-  }
-
-  .hs-button.primary:hover,
-  input[type="submit"]:hover,
-  button[type="submit"]:hover {
-    background: #D45E09 !important;
-    box-shadow: 0 8px 20px rgba(236, 104, 10, 0.2) !important;
-    transform: translateY(-1px) !important;
-  }
-
-  .hs-button.primary:active,
-  input[type="submit"]:active,
-  button[type="submit"]:active {
-    transform: translateY(0) !important;
-  }
-
-  /* Error messages */
-  .hs-error-msg {
-    font-family: 'Poppins', sans-serif !important;
-    color: #EF4444 !important;
-    font-size: 12px !important;
-    margin-top: 4px !important;
-  }
-
-  .hs-input.error {
-    border-color: #EF4444 !important;
-  }
-
-  /* Legal / GDPR */
-  .legal-consent-container {
-    font-size: 11px !important;
-    color: #94A3B8 !important;
-    margin-top: 12px !important;
-  }
-
-  .legal-consent-container a {
-    color: #615CA5 !important;
-  }
-
-  /* Hide branding */
-  .hubspot-link__container {
-    display: none !important;
-  }
-
-  /* Phone field */
-  .hs-phone .hs-input {
-    border-radius: 12px !important;
-  }
-
-  /* Select dropdown arrow fix */
-  .hs-form select {
-    appearance: auto !important;
-    -webkit-appearance: auto !important;
-  }
-
-  /* Checkboxes / radio */
-  .hs-form-checkbox label,
-  .hs-form-radio label {
-    font-weight: 400 !important;
-    font-size: 13px !important;
-  }
-
-  /* Success message */
-  .submitted-message {
-    font-family: 'Poppins', sans-serif !important;
-    color: #1B1D3A !important;
-    font-size: 15px !important;
-    text-align: center !important;
-    padding: 20px !important;
-  }
-`;
+import { X, Loader2, CheckCircle2 } from "lucide-react";
 
 interface HubSpotModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
+const PORTAL_ID = "26711031";
+const FORM_ID = "166547f8-2f86-46d3-b90f-14c77d57affa";
+const SUBMIT_URL = `https://api-eu1.hsforms.com/submissions/v3/integration/submit/${PORTAL_ID}/${FORM_ID}`;
+
+type FormState = "idle" | "submitting" | "success" | "error";
+
 export default function HubSpotModal({ isOpen, onClose }: HubSpotModalProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [formState, setFormState] = useState<FormState>("idle");
+  const [errorMsg, setErrorMsg] = useState("");
+  const firstInputRef = useRef<HTMLInputElement>(null);
 
+  // Focus first input on open
   useEffect(() => {
-    if (!isOpen || !containerRef.current) return;
-
-    containerRef.current.innerHTML = "";
-
-    const legacyScript = "https://js-eu1.hsforms.net/forms/v2.js";
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const w = window as any;
-
-    const injectStylesIntoIframe = () => {
-      const container = containerRef.current;
-      if (!container) return;
-
-      // Check for iframe (HubSpot may render in one)
-      const iframe = container.querySelector("iframe") as HTMLIFrameElement;
-      if (iframe) {
-        const tryInject = () => {
-          try {
-            const iframeDoc =
-              iframe.contentDocument || iframe.contentWindow?.document;
-            if (iframeDoc) {
-              const existing = iframeDoc.getElementById("edumove-hs-styles");
-              if (!existing) {
-                const style = iframeDoc.createElement("style");
-                style.id = "edumove-hs-styles";
-                style.textContent = HUBSPOT_FORM_CSS;
-                iframeDoc.head.appendChild(style);
-              }
-            }
-          } catch {
-            // Cross-origin iframe — can't inject
-          }
-        };
-
-        // Try immediately and also on iframe load
-        tryInject();
-        iframe.addEventListener("load", tryInject);
-
-        // Retry a few times as the iframe content might load async
-        const retries = [300, 600, 1000, 2000];
-        retries.forEach((delay) => setTimeout(tryInject, delay));
-      }
-    };
-
-    const createForm = () => {
-      if (w.hbspt?.forms?.create) {
-        w.hbspt.forms.create({
-          region: "eu1",
-          portalId: "26711031",
-          formId: "166547f8-2f86-46d3-b90f-14c77d57affa",
-          target: "#hs-modal-form-container",
-          onFormReady: () => {
-            // Small delay to let HubSpot finish rendering
-            setTimeout(injectStylesIntoIframe, 100);
-          },
-        });
-      }
-    };
-
-    if (w.hbspt?.forms?.create) {
-      createForm();
-    } else {
-      const existing = document.querySelector(
-        `script[src="${legacyScript}"]`
-      );
-      if (!existing) {
-        const script = document.createElement("script");
-        script.src = legacyScript;
-        script.charset = "utf-8";
-        script.onload = () => setTimeout(createForm, 200);
-        document.head.appendChild(script);
-      } else {
-        setTimeout(createForm, 200);
-      }
+    if (isOpen && firstInputRef.current) {
+      setTimeout(() => firstInputRef.current?.focus(), 100);
+    }
+    if (isOpen) {
+      setFormState("idle");
+      setErrorMsg("");
     }
   }, [isOpen]);
 
-  const handleBackdrop = useCallback(
-    (e: React.MouseEvent) => {
-      if (e.target === e.currentTarget) onClose();
-    },
-    [onClose]
-  );
-
+  // Lock body scroll & Escape key
   useEffect(() => {
     if (!isOpen) return;
     const handleEsc = (e: KeyboardEvent) => {
@@ -262,6 +49,55 @@ export default function HubSpotModal({ isOpen, onClose }: HubSpotModalProps) {
     };
   }, [isOpen, onClose]);
 
+  const handleBackdrop = useCallback(
+    (e: React.MouseEvent) => {
+      if (e.target === e.currentTarget) onClose();
+    },
+    [onClose]
+  );
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormState("submitting");
+    setErrorMsg("");
+
+    try {
+      const res = await fetch(SUBMIT_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fields: [
+            { objectTypeId: "0-1", name: "firstname", value: firstname },
+            { objectTypeId: "0-1", name: "lastname", value: lastname },
+            { objectTypeId: "0-1", name: "email", value: email },
+            { objectTypeId: "0-1", name: "phone", value: phone },
+          ],
+          context: {
+            pageUri: window.location.href,
+            pageName: document.title,
+          },
+        }),
+      });
+
+      if (res.ok) {
+        setFormState("success");
+        setFirstname("");
+        setLastname("");
+        setEmail("");
+        setPhone("");
+      } else {
+        const data = await res.json().catch(() => null);
+        setErrorMsg(
+          data?.message || "Une erreur est survenue. Veuillez réessayer."
+        );
+        setFormState("error");
+      }
+    } catch {
+      setErrorMsg("Erreur de connexion. Veuillez réessayer.");
+      setFormState("error");
+    }
+  };
+
   if (!isOpen) return null;
 
   return createPortal(
@@ -269,7 +105,8 @@ export default function HubSpotModal({ isOpen, onClose }: HubSpotModalProps) {
       className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#1B1D3A]/60 backdrop-blur-sm px-4"
       onClick={handleBackdrop}
     >
-      <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto p-8">
+      <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto p-8 animate-in fade-in zoom-in-95 duration-200">
+        {/* Close */}
         <button
           onClick={onClose}
           className="absolute top-4 right-4 w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors"
@@ -278,6 +115,7 @@ export default function HubSpotModal({ isOpen, onClose }: HubSpotModalProps) {
           <X className="w-4 h-4 text-[#1B1D3A]" />
         </button>
 
+        {/* Header */}
         <div className="mb-6 text-center">
           <p className="text-sm font-semibold uppercase tracking-widest text-[#EC680A] mb-2">
             Contact
@@ -290,7 +128,114 @@ export default function HubSpotModal({ isOpen, onClose }: HubSpotModalProps) {
           </p>
         </div>
 
-        <div id="hs-modal-form-container" ref={containerRef} />
+        {formState === "success" ? (
+          <div className="flex flex-col items-center gap-3 py-8">
+            <CheckCircle2 className="w-14 h-14 text-green-500" />
+            <p className="text-lg font-semibold text-[#1B1D3A]">
+              Merci !
+            </p>
+            <p className="text-sm text-[#64748b] text-center">
+              Un expert Edumove vous recontactera très rapidement.
+            </p>
+            <button
+              onClick={onClose}
+              className="mt-4 px-6 py-2.5 bg-[#1B1D3A] text-white text-sm font-semibold rounded-xl hover:bg-[#2a2d52] transition-colors"
+            >
+              Fermer
+            </button>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} className="space-y-4">
+            {/* Prénom + Nom */}
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <label className="block text-[13px] font-semibold text-[#1B1D3A] mb-1">
+                  Prénom <span className="text-[#EC680A]">*</span>
+                </label>
+                <input
+                  ref={firstInputRef}
+                  type="text"
+                  required
+                  value={firstname}
+                  onChange={(e) => setFirstname(e.target.value)}
+                  placeholder="Votre prénom"
+                  className="w-full px-3.5 py-2.5 border-[1.5px] border-[#E2E8F0] rounded-xl text-sm text-[#1B1D3A] bg-[#F8FAFC] placeholder:text-[#94A3B8] outline-none transition-all focus:border-[#EC680A] focus:ring-[3px] focus:ring-[#EC680A]/10 focus:bg-white"
+                />
+              </div>
+              <div>
+                <label className="block text-[13px] font-semibold text-[#1B1D3A] mb-1">
+                  Nom <span className="text-[#EC680A]">*</span>
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={lastname}
+                  onChange={(e) => setLastname(e.target.value)}
+                  placeholder="Votre nom"
+                  className="w-full px-3.5 py-2.5 border-[1.5px] border-[#E2E8F0] rounded-xl text-sm text-[#1B1D3A] bg-[#F8FAFC] placeholder:text-[#94A3B8] outline-none transition-all focus:border-[#EC680A] focus:ring-[3px] focus:ring-[#EC680A]/10 focus:bg-white"
+                />
+              </div>
+            </div>
+
+            {/* Email */}
+            <div>
+              <label className="block text-[13px] font-semibold text-[#1B1D3A] mb-1">
+                Email <span className="text-[#EC680A]">*</span>
+              </label>
+              <input
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="votre@email.com"
+                className="w-full px-3.5 py-2.5 border-[1.5px] border-[#E2E8F0] rounded-xl text-sm text-[#1B1D3A] bg-[#F8FAFC] placeholder:text-[#94A3B8] outline-none transition-all focus:border-[#EC680A] focus:ring-[3px] focus:ring-[#EC680A]/10 focus:bg-white"
+              />
+            </div>
+
+            {/* Téléphone */}
+            <div>
+              <label className="block text-[13px] font-semibold text-[#1B1D3A] mb-1">
+                Téléphone <span className="text-[#EC680A]">*</span>
+              </label>
+              <input
+                type="tel"
+                required
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                placeholder="+33 6 12 34 56 78"
+                className="w-full px-3.5 py-2.5 border-[1.5px] border-[#E2E8F0] rounded-xl text-sm text-[#1B1D3A] bg-[#F8FAFC] placeholder:text-[#94A3B8] outline-none transition-all focus:border-[#EC680A] focus:ring-[3px] focus:ring-[#EC680A]/10 focus:bg-white"
+              />
+            </div>
+
+            {/* Error */}
+            {formState === "error" && (
+              <p className="text-[#EF4444] text-xs font-medium">{errorMsg}</p>
+            )}
+
+            {/* Submit */}
+            <button
+              type="submit"
+              disabled={formState === "submitting"}
+              className="w-full flex items-center justify-center gap-2 bg-[#EC680A] hover:bg-[#D45E09] disabled:opacity-70 disabled:cursor-not-allowed text-white text-sm font-semibold py-3 rounded-xl transition-all hover:shadow-lg hover:shadow-[#EC680A]/20 hover:-translate-y-0.5 active:translate-y-0"
+            >
+              {formState === "submitting" ? (
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  Envoi en cours…
+                </>
+              ) : (
+                "Être recontacté"
+              )}
+            </button>
+
+            {/* Legal */}
+            <p className="text-[11px] text-[#94A3B8] text-center leading-relaxed">
+              En soumettant ce formulaire, vous acceptez d&apos;être recontacté
+              par Edumove. Vos données sont traitées conformément à notre
+              politique de confidentialité.
+            </p>
+          </form>
+        )}
       </div>
     </div>,
     document.body
