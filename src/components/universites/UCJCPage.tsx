@@ -3,11 +3,13 @@
 import Link from "next/link";
 import { ArrowRight, AlertTriangle, Star } from "lucide-react";
 import { getUniversityBySlug } from "@/data/universities";
+import { programDetails } from "@/data/program-details";
 import UniHero from "./UniHero";
 import OverviewCards from "./OverviewCards";
 import TarifsTable from "./TarifsTable";
 import AdmissionStepper from "./AdmissionStepper";
 import DocumentsList from "./DocumentsList";
+import ProgramLinks from "./ProgramLinks";
 
 export default function UCJCPage() {
   const uni = getUniversityBySlug("ucjc")!;
@@ -124,6 +126,11 @@ export default function UCJCPage() {
         candidature={candidatureDocuments}
         apresAcceptation={apresAcceptationDocuments}
         notes={documentNotes}
+      />
+
+      <ProgramLinks
+        universityShort="UCJC"
+        programs={programDetails.filter(p => p.universityShort === "UCJC")}
       />
 
       {/* CTA */}

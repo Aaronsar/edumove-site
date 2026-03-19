@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { getUniversityBySlug } from "@/data/universities";
+import { programDetails } from "@/data/program-details";
 import UniHero from "./UniHero";
 import OverviewCards from "./OverviewCards";
 import TarifsTable from "./TarifsTable";
@@ -10,6 +11,7 @@ import AdmissionStepper from "./AdmissionStepper";
 import TestDetails from "./TestDetails";
 import SessionsTable from "./SessionsTable";
 import DocumentsList from "./DocumentsList";
+import ProgramLinks from "./ProgramLinks";
 
 export default function UEPage() {
   const uni = getUniversityBySlug("ue")!;
@@ -103,6 +105,11 @@ export default function UEPage() {
         candidature={candidatureDocuments}
         apresAcceptation={apresAcceptationDocuments}
         notes={documentNotes}
+      />
+
+      <ProgramLinks
+        universityShort="UE"
+        programs={programDetails.filter(p => p.universityShort === "UE")}
       />
 
       {/* CTA */}
