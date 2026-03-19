@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useCallback, useRef } from "react";
+import { createPortal } from "react-dom";
 import { X } from "lucide-react";
 
 interface HubSpotModalProps {
@@ -56,7 +57,7 @@ export default function HubSpotModal({ isOpen, onClose }: HubSpotModalProps) {
 
   if (!isOpen) return null;
 
-  return (
+  return createPortal(
     <div
       className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#1B1D3A]/60 backdrop-blur-sm px-4"
       onClick={handleBackdrop}
@@ -84,6 +85,7 @@ export default function HubSpotModal({ isOpen, onClose }: HubSpotModalProps) {
 
         <div ref={containerRef} />
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
