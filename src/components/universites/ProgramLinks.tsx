@@ -1,5 +1,8 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
-import { Clock, Globe, FileText, ArrowRight } from "lucide-react";
+import { Clock, Globe, FileText, ArrowRight, ChevronDown, ChevronUp } from "lucide-react";
 import type { ProgramDetail } from "@/data/program-details";
 import FiliereIcon from "@/components/shared/FiliereIcon";
 
@@ -9,12 +12,11 @@ interface ProgramLinksProps {
 }
 
 export default function ProgramLinks({ universityShort, programs }: ProgramLinksProps) {
-  // Group programs by filiere
-  const grouped: Record<string, ProgramDetail[]> = {};
-  for (const p of programs) {
-    if (!grouped[p.filiereSlug]) grouped[p.filiereSlug] = [];
-    grouped[p.filiereSlug].push(p);
-  }
+  const [expanded, setExpanded] = useState(false);
+  const PREVIEW_COUNT = 3;
+
+  // Flatten all programs
+  const allPrograms = programs;
 
   return (
     <section id="programmes" className="relative py-16 bg-[#fafbff] overflow-hidden">
@@ -32,8 +34,7 @@ export default function ProgramLinks({ universityShort, programs }: ProgramLinks
         </p>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {Object.entries(grouped).map(([filiereSlug, progs]) => (
-            progs.map((prog) => (
+          {(expanded ? allPrograms : allPrograms.slice(0, PREVIEW_COUNT)).map((prog) => (
               <Link
                 key={`${prog.filiereSlug}-${prog.slug}`}
                 href={`/formations/${prog.filiereSlug}/${prog.slug}`}
@@ -55,7 +56,7 @@ export default function ProgramLinks({ universityShort, programs }: ProgramLinks
                   {/* Header: icon + name */}
                   <div className="flex items-center gap-4 mb-5">
                     <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#615CA5] to-[#EC680A]/80 flex items-center justify-center shrink-0 shadow-md shadow-[#615CA5]/20">
-                      <FiliereIcon slug={filiereSlug} className="w-6 h-6" stroke="white" />
+                      <FiliereIcon slug={prog.filiereSlug} className="w-6 h-6" stroke="white" />
                     </div>
                     <div className="min-w-0">
                       <h3 className="font-bold text-[#1B1D3A] text-lg leading-tight">{prog.filiere}</h3>
@@ -94,9 +95,27 @@ export default function ProgramLinks({ universityShort, programs }: ProgramLinks
                   </div>
                 </div>
               </Link>
-            ))
           ))}
         </div>
+
+        {allPrograms.length > PREVIEW_COUNT && (
+          <button
+            onClick={() => setExpanded(!expanded)}
+            className="mt-6 mx-auto flex items-center gap-2 text-sm font-semibold text-[#615CA5] hover:text-[#EC680A] transition-colors"
+          >
+            {expanded ? (
+              <>
+                Voir moins
+                <ChevronUp className="w-4 h-4" />
+              </>
+            ) : (
+              <>
+                Voir toutes les formations ({allPrograms.length})
+                <ChevronDown className="w-4 h-4" />
+              </>
+            )}
+          </button>
+        )}
       </div>
     </section>
   );

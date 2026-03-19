@@ -1,6 +1,8 @@
 "use client";
 
-import { BookOpen, Clock, MapPin, Euro, FileText, CheckCircle, XCircle, Lightbulb } from "lucide-react";
+import { motion } from "framer-motion";
+import { BookOpen, Clock, MapPin, Euro, FileText, CheckCircle, XCircle, Lightbulb, Zap, Globe, Brain, MessageCircle, Target } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
 interface TestDetailsProps {
   type: "link" | "ue";
@@ -15,163 +17,157 @@ function LinkTestDetails() {
     { name: "Culture g\u00e9n\u00e9rale", questions: "~12" },
   ];
 
+  const infoPratiques = [
+    { icon: Clock, label: "Date", value: "15 avril 2026" },
+    { icon: MapPin, label: "Lieu", value: "Paris" },
+    { icon: Euro, label: "Frais", value: "200\u00a0\u20ac" },
+    { icon: FileText, label: "Format", value: "QCM en fran\u00e7ais" },
+    { icon: Clock, label: "Dur\u00e9e", value: "~2h30" },
+    { icon: BookOpen, label: "R\u00e9sultats", value: "sous quelques jours" },
+  ];
+
+  const formatQcm = [
+    { label: "80 questions", desc: "au total" },
+    { label: "5 mati\u00e8res", desc: "toutes en fran\u00e7ais" },
+    { label: "+1.5 pt", desc: "par bonne r\u00e9ponse" },
+    { label: "\u20130.4 pt", desc: "par mauvaise r\u00e9ponse" },
+    { label: "0 pt", desc: "si non r\u00e9pondue" },
+  ];
+
   return (
-    <section className="py-12 px-4">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-2xl md:text-3xl font-bold italic text-[#1B1D3A] mb-8">
-          D&eacute;tails du test d&apos;admission
-        </h2>
+    <section className="relative py-16 bg-[#fafbff] overflow-hidden">
+      <div aria-hidden className="absolute inset-0">
+        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#615CA5]/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-[350px] h-[350px] bg-[#EC680A]/5 rounded-full blur-3xl" />
+      </div>
+
+      <div className="relative max-w-6xl mx-auto px-4">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+          <p className="text-sm font-semibold uppercase tracking-widest text-[#EC680A] mb-3">
+            Test d&apos;admission
+          </p>
+          <h2 className="text-2xl md:text-3xl font-bold text-[#1B1D3A] mb-10">
+            D&eacute;tails du test d&apos;admission LINK
+          </h2>
+        </motion.div>
 
         <div className="grid md:grid-cols-2 gap-6 mb-8">
-          {/* Left: Informations pratiques */}
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-            <h3 className="font-bold text-lg italic text-[#1B1D3A] mb-4">
+          {/* Informations pratiques */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-white rounded-2xl border border-gray-200/80 p-6 hover:shadow-[0_20px_60px_-15px_rgba(97,92,165,0.12)] transition-shadow duration-300"
+          >
+            <h3 className="font-bold text-lg text-[#1B1D3A] mb-5 flex items-center gap-2">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#615CA5] to-[#EC680A]/80 flex items-center justify-center">
+                <FileText className="w-4 h-4 text-white" />
+              </div>
               Informations pratiques
             </h3>
-            <ul className="space-y-3">
-              <li className="flex items-center gap-3 text-sm">
-                <Clock className="w-4 h-4 text-[#EC680A] shrink-0" />
-                <span>
-                  <strong>Date :</strong> 15 avril 2026
-                </span>
-              </li>
-              <li className="flex items-center gap-3 text-sm">
-                <MapPin className="w-4 h-4 text-[#EC680A] shrink-0" />
-                <span>
-                  <strong>Lieu :</strong> Paris
-                </span>
-              </li>
-              <li className="flex items-center gap-3 text-sm">
-                <Euro className="w-4 h-4 text-[#EC680A] shrink-0" />
-                <span>
-                  <strong>Frais :</strong> 200&nbsp;&euro;
-                </span>
-              </li>
-              <li className="flex items-center gap-3 text-sm">
-                <FileText className="w-4 h-4 text-[#EC680A] shrink-0" />
-                <span>
-                  <strong>Format :</strong> QCM en fran&ccedil;ais
-                </span>
-              </li>
-              <li className="flex items-center gap-3 text-sm">
-                <Clock className="w-4 h-4 text-[#EC680A] shrink-0" />
-                <span>
-                  <strong>Dur&eacute;e :</strong> ~2h30
-                </span>
-              </li>
-              <li className="flex items-center gap-3 text-sm">
-                <BookOpen className="w-4 h-4 text-[#EC680A] shrink-0" />
-                <span>
-                  <strong>R&eacute;sultats :</strong> sous quelques jours par
-                  e-mail
-                </span>
-              </li>
+            <ul className="space-y-3.5">
+              {infoPratiques.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <li key={item.label} className="flex items-center gap-3 text-sm">
+                    <Icon className="w-4 h-4 text-[#EC680A] shrink-0" />
+                    <span><strong className="text-[#1B1D3A]">{item.label} :</strong> <span className="text-[#64748b]">{item.value}</span></span>
+                  </li>
+                );
+              })}
             </ul>
-          </div>
+          </motion.div>
 
-          {/* Right: Format du QCM */}
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-            <h3 className="font-bold text-lg italic text-[#1B1D3A] mb-4">
+          {/* Format du QCM */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="bg-white rounded-2xl border border-gray-200/80 p-6 hover:shadow-[0_20px_60px_-15px_rgba(97,92,165,0.12)] transition-shadow duration-300"
+          >
+            <h3 className="font-bold text-lg text-[#1B1D3A] mb-5 flex items-center gap-2">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#615CA5] to-[#EC680A]/80 flex items-center justify-center">
+                <Zap className="w-4 h-4 text-white" />
+              </div>
               Format du QCM
             </h3>
-            <ul className="space-y-3 text-sm">
-              <li className="flex items-start gap-2">
-                <span className="text-[#EC680A] font-bold">&#8226;</span>
-                <span>
-                  <strong>80 questions</strong> au total
-                </span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-[#EC680A] font-bold">&#8226;</span>
-                <span>
-                  <strong>5 mati&egrave;res</strong>, toutes en fran&ccedil;ais
-                </span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-[#EC680A] font-bold">&#8226;</span>
-                <span>
-                  <strong>+1.5 pt</strong> par bonne r&eacute;ponse
-                </span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-[#EC680A] font-bold">&#8226;</span>
-                <span>
-                  <strong>-0.4 pt</strong> par mauvaise r&eacute;ponse
-                </span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-[#EC680A] font-bold">&#8226;</span>
-                <span>
-                  <strong>0 pt</strong> si non r&eacute;pondue
-                </span>
-              </li>
+            <ul className="space-y-3.5 text-sm">
+              {formatQcm.map((item) => (
+                <li key={item.label} className="flex items-center gap-3">
+                  <span className="w-5 h-5 rounded-full bg-[#EC680A]/15 flex items-center justify-center shrink-0">
+                    <span className="w-2 h-2 rounded-full bg-[#EC680A]" />
+                  </span>
+                  <span><strong className="text-[#1B1D3A]">{item.label}</strong> <span className="text-[#64748b]">{item.desc}</span></span>
+                </li>
+              ))}
             </ul>
-          </div>
+          </motion.div>
         </div>
 
         {/* Table des matieres */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden mb-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="bg-white rounded-2xl border border-gray-200/80 overflow-hidden mb-8"
+        >
           <table className="w-full text-sm">
             <thead>
               <tr className="bg-[#1B1D3A] text-white">
-                <th className="text-left px-4 py-3 font-semibold">
-                  Mati&egrave;re
-                </th>
-                <th className="text-left px-4 py-3 font-semibold">
-                  Nombre de questions
-                </th>
+                <th className="text-left px-5 py-3.5 font-semibold">Mati&egrave;re</th>
+                <th className="text-left px-5 py-3.5 font-semibold">Nombre de questions</th>
               </tr>
             </thead>
             <tbody>
               {matieres.map((m, i) => (
-                <tr
-                  key={m.name}
-                  className={`border-t border-gray-200 ${
-                    i % 2 === 1 ? "bg-gray-50" : ""
-                  }`}
-                >
-                  <td className="px-4 py-3 font-medium">{m.name}</td>
-                  <td className="px-4 py-3">{m.questions} questions</td>
+                <tr key={m.name} className={`border-t border-gray-100 hover:bg-[#615CA5]/[0.03] transition-colors ${i % 2 === 1 ? "bg-gray-50/50" : ""}`}>
+                  <td className="px-5 py-3.5 font-medium text-[#1B1D3A]">{m.name}</td>
+                  <td className="px-5 py-3.5 text-[#64748b]">{m.questions} questions</td>
                 </tr>
               ))}
             </tbody>
           </table>
-        </div>
+        </motion.div>
 
         {/* Conseil */}
-        <div className="bg-orange-50 border border-[#EC680A]/30 rounded-lg p-4 flex items-start gap-3">
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="bg-white rounded-2xl border-l-4 border-[#EC680A] shadow-sm p-5 flex items-start gap-3"
+        >
           <Lightbulb className="w-5 h-5 text-[#EC680A] shrink-0 mt-0.5" />
           <p className="text-sm text-[#334155]">
-            <strong>Conseil :</strong> r&eacute;viser le programme de Terminale
-            en sciences. Les questions sont de niveau bac.
+            <strong>Conseil :</strong> r&eacute;viser le programme de Terminale en sciences. Les questions sont de niveau bac.
           </p>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
 }
 
 function UETestDetails() {
-  const epreuves = [
+  const epreuves: { name: string; description: string; icon: LucideIcon }[] = [
     {
       name: "Test de langue",
-      description:
-        "\u00c9valuation du niveau de langue (espagnol ou anglais selon la fili\u00e8re).",
+      description: "Évaluation du niveau de langue (espagnol ou anglais selon la filière).",
+      icon: Globe,
     },
     {
       name: "Test talent / aptitudes",
-      description:
-        "\u00c9valuation des capacit\u00e9s cognitives et aptitudes sp\u00e9cifiques.",
+      description: "Évaluation des capacités cognitives et aptitudes spécifiques.",
+      icon: Brain,
     },
     {
       name: "Test motivation (entretien)",
-      description:
-        "Entretien portant sur la motivation et le projet professionnel.",
+      description: "Entretien portant sur la motivation et le projet professionnel.",
+      icon: MessageCircle,
     },
     {
-      name: "\u00c9preuve sp\u00e9cifique",
-      description:
-        "\u00c9preuve adapt\u00e9e \u00e0 la fili\u00e8re choisie.",
+      name: "Épreuve spécifique",
+      description: "Épreuve adaptée à la filière choisie.",
+      icon: Target,
     },
   ];
 
@@ -186,94 +182,113 @@ function UETestDetails() {
   ];
 
   return (
-    <section className="py-12 px-4">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-2xl md:text-3xl font-bold italic text-[#1B1D3A] mb-8">
-          D&eacute;tails du test PE (Prueba Espec&iacute;fica)
-        </h2>
+    <section className="relative py-16 bg-[#fafbff] overflow-hidden">
+      <div aria-hidden className="absolute inset-0">
+        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#615CA5]/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-[350px] h-[350px] bg-[#EC680A]/5 rounded-full blur-3xl" />
+      </div>
+
+      <div className="relative max-w-6xl mx-auto px-4">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+          <p className="text-sm font-semibold uppercase tracking-widest text-[#EC680A] mb-3">
+            Test d&apos;admission
+          </p>
+          <h2 className="text-2xl md:text-3xl font-bold text-[#1B1D3A] mb-10">
+            D&eacute;tails du test PE (Prueba Espec&iacute;fica)
+          </h2>
+        </motion.div>
 
         {/* 4 epreuves */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
           {epreuves.map((e, i) => (
-            <div
+            <motion.div
               key={e.name}
-              className="bg-white rounded-xl shadow-sm border border-gray-200 p-5"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="group bg-white rounded-2xl border border-gray-200/80 border-l-4 border-l-[#615CA5] p-5 hover:shadow-[0_20px_60px_-15px_rgba(97,92,165,0.15)] hover:-translate-y-1 hover:border-l-[#EC680A] transition-all duration-300"
             >
-              <div className="w-8 h-8 rounded-full bg-[#EC680A] text-white flex items-center justify-center font-bold text-sm mb-3">
-                {i + 1}
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#615CA5] to-[#EC680A]/80 flex items-center justify-center text-white font-bold text-sm shadow-md shadow-[#615CA5]/20">
+                  {i + 1}
+                </div>
+                <e.icon className="w-5 h-5 text-[#615CA5]" />
               </div>
-              <h3 className="font-semibold italic text-[#1B1D3A] text-sm mb-1">
+              <h3 className="font-bold text-[#1B1D3A] text-sm mb-2">
                 {e.name}
               </h3>
-              <p className="text-xs text-gray-500 leading-relaxed">
+              <p className="text-xs text-[#64748b] leading-relaxed">
                 {e.description}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* Points cles */}
-        <div className="bg-orange-50 border border-[#EC680A]/30 rounded-xl p-6 mb-8">
-          <h3 className="font-bold italic text-[#1B1D3A] mb-3">Points cl&eacute;s</h3>
-          <ul className="space-y-2 text-sm text-[#334155]">
-            <li className="flex items-start gap-2">
-              <span className="text-[#EC680A] font-bold mt-0.5">&#8226;</span>
-              <span>R&eacute;sultats communiqu&eacute;s sous 48h</span>
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="bg-white rounded-2xl border-l-4 border-[#EC680A] shadow-sm p-6 mb-10"
+        >
+          <h3 className="font-bold text-[#1B1D3A] mb-4 flex items-center gap-2">
+            <Zap className="w-5 h-5 text-[#EC680A]" />
+            Points cl&eacute;s
+          </h3>
+          <ul className="space-y-3 text-sm text-[#334155]">
+            <li className="flex items-center gap-3">
+              <CheckCircle className="w-4 h-4 text-[#EC680A] shrink-0" />
+              R&eacute;sultats communiqu&eacute;s sous 48h
             </li>
-            <li className="flex items-start gap-2">
-              <span className="text-[#EC680A] font-bold mt-0.5">&#8226;</span>
-              <span>
-                2 jours pour verser l&apos;acompte de 2&nbsp;500&nbsp;&euro;
-              </span>
+            <li className="flex items-center gap-3">
+              <CheckCircle className="w-4 h-4 text-[#EC680A] shrink-0" />
+              2 jours pour verser l&apos;acompte de 2&nbsp;500&nbsp;&euro;
             </li>
-            <li className="flex items-start gap-2">
-              <span className="text-[#EC680A] font-bold mt-0.5">&#8226;</span>
-              <span>Tests en ligne ou en pr&eacute;sentiel</span>
+            <li className="flex items-center gap-3">
+              <CheckCircle className="w-4 h-4 text-[#EC680A] shrink-0" />
+              Tests en ligne ou en pr&eacute;sentiel
             </li>
           </ul>
-        </div>
+        </motion.div>
 
         {/* Who needs PE */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-          <div className="px-4 py-3 bg-[#1B1D3A]">
-            <h3 className="font-semibold text-white text-sm">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="bg-white rounded-2xl border border-gray-200/80 overflow-hidden"
+        >
+          <div className="px-5 py-4 bg-[#1B1D3A]">
+            <h3 className="font-bold text-white text-sm">
               Fili&egrave;res soumises au PE
             </h3>
           </div>
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-gray-200 bg-gray-50">
-                <th className="text-left px-4 py-2 font-semibold text-[#1B1D3A]">
-                  Fili&egrave;re
-                </th>
-                <th className="text-left px-4 py-2 font-semibold text-[#1B1D3A]">
-                  PE requis ?
-                </th>
+              <tr className="border-b border-gray-200 bg-gray-50/50">
+                <th className="text-left px-5 py-3 font-semibold text-[#1B1D3A]">Fili&egrave;re</th>
+                <th className="text-left px-5 py-3 font-semibold text-[#1B1D3A]">PE requis ?</th>
               </tr>
             </thead>
             <tbody>
               {peTable.map((row, i) => (
-                <tr
-                  key={row.filiere}
-                  className={`border-t border-gray-200 ${
-                    i % 2 === 1 ? "bg-gray-50" : ""
-                  }`}
-                >
-                  <td className="px-4 py-2.5 font-medium">{row.filiere}</td>
-                  <td className="px-4 py-2.5">
+                <tr key={row.filiere} className={`border-t border-gray-100 hover:bg-[#615CA5]/[0.03] transition-colors ${i % 2 === 1 ? "bg-gray-50/50" : ""}`}>
+                  <td className="px-5 py-3 font-medium text-[#1B1D3A]">{row.filiere}</td>
+                  <td className="px-5 py-3">
                     {row.pe ? (
-                      <span className="inline-flex items-center gap-1 text-[#615CA5]">
-                        <CheckCircle className="w-4 h-4" />
-                        OUI
+                      <span className="inline-flex items-center gap-1.5">
+                        <span className="inline-flex items-center gap-1 bg-[#615CA5]/10 text-[#615CA5] text-xs font-bold px-2.5 py-1 rounded-full">
+                          <CheckCircle className="w-3.5 h-3.5" />
+                          OUI
+                        </span>
                         {row.note && (
-                          <span className="text-[10px] text-[#EC680A] font-bold ml-1 uppercase">
-                            ({row.note})
-                          </span>
+                          <span className="text-[10px] text-[#EC680A] font-bold uppercase">({row.note})</span>
                         )}
                       </span>
                     ) : (
-                      <span className="inline-flex items-center gap-1 text-[#1B1D3A] opacity-70">
-                        <XCircle className="w-4 h-4" />
+                      <span className="inline-flex items-center gap-1 bg-gray-100 text-[#94a3b8] text-xs font-bold px-2.5 py-1 rounded-full">
+                        <XCircle className="w-3.5 h-3.5" />
                         NON
                       </span>
                     )}
@@ -282,7 +297,7 @@ function UETestDetails() {
               ))}
             </tbody>
           </table>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

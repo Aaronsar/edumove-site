@@ -13,7 +13,7 @@ interface Session {
 
 const medecineSessions: Session[] = [
   {
-    label: "1\u00e8re session",
+    label: "1ère session",
     inscription: "13/01/2026",
     tests: "21/01/2026",
     resultats: "28/01/2026",
@@ -21,7 +21,7 @@ const medecineSessions: Session[] = [
     isNext: false,
   },
   {
-    label: "2\u00e8me session",
+    label: "2ème session",
     inscription: "17/02/2026",
     tests: "24/02/2026",
     resultats: "03/03/2026",
@@ -29,7 +29,7 @@ const medecineSessions: Session[] = [
     isNext: false,
   },
   {
-    label: "3\u00e8me session",
+    label: "3ème session",
     inscription: "17/04/2026",
     tests: "22/04/2026",
     resultats: "29/04/2026",
@@ -37,7 +37,7 @@ const medecineSessions: Session[] = [
     isNext: true,
   },
   {
-    label: "4\u00e8me session",
+    label: "4ème session",
     inscription: "18/05/2026",
     tests: "21/05/2026",
     resultats: "28/05/2026",
@@ -45,7 +45,7 @@ const medecineSessions: Session[] = [
     isNext: false,
   },
   {
-    label: "5\u00e8me session",
+    label: "5ème session",
     inscription: "06/07/2026",
     tests: "08/07/2026",
     resultats: "15/07/2026",
@@ -56,7 +56,7 @@ const medecineSessions: Session[] = [
 
 const autresSessions: Session[] = [
   {
-    label: "1\u00e8re session",
+    label: "1ère session",
     inscription: "09/01/2026",
     tests: "14/01/2026",
     resultats: "16/01/2026",
@@ -64,7 +64,7 @@ const autresSessions: Session[] = [
     isNext: false,
   },
   {
-    label: "2\u00e8me session",
+    label: "2ème session",
     inscription: "13/02/2026",
     tests: "18/02/2026",
     resultats: "20/02/2026",
@@ -72,7 +72,7 @@ const autresSessions: Session[] = [
     isNext: false,
   },
   {
-    label: "3\u00e8me session",
+    label: "3ème session",
     inscription: "13/03/2026",
     tests: "18/03/2026",
     resultats: "20/03/2026",
@@ -80,7 +80,7 @@ const autresSessions: Session[] = [
     isNext: false,
   },
   {
-    label: "4\u00e8me session",
+    label: "4ème session",
     inscription: "16/04/2026",
     tests: "21/04/2026",
     resultats: "23/04/2026",
@@ -88,7 +88,7 @@ const autresSessions: Session[] = [
     isNext: true,
   },
   {
-    label: "5\u00e8me session",
+    label: "5ème session",
     inscription: "08/05/2026",
     tests: "12/05/2026",
     resultats: "14/05/2026",
@@ -96,7 +96,7 @@ const autresSessions: Session[] = [
     isNext: false,
   },
   {
-    label: "6\u00e8me session",
+    label: "6ème session",
     inscription: "08/06/2026",
     tests: "11/06/2026",
     resultats: "13/06/2026",
@@ -104,7 +104,7 @@ const autresSessions: Session[] = [
     isNext: false,
   },
   {
-    label: "7\u00e8me session",
+    label: "7ème session",
     inscription: "15/07/2026",
     tests: "21/07/2026",
     resultats: "23/07/2026",
@@ -115,16 +115,23 @@ const autresSessions: Session[] = [
 
 function SessionTable({
   title,
+  subtitle,
   sessions,
 }: {
   title: string;
+  subtitle?: string;
   sessions: Session[];
 }) {
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-      <div className="px-4 py-3 bg-[#1B1D3A] flex items-center gap-2">
-        <CalendarDays className="w-4 h-4 text-white" />
-        <h3 className="font-semibold text-white text-sm">{title}</h3>
+      <div className="px-5 py-4 bg-[#1B1D3A] flex flex-col items-center justify-center gap-1">
+        <div className="flex items-center gap-2">
+          <CalendarDays className="w-5 h-5 shrink-0" style={{ color: "#EC680A" }} />
+          <h3 className="font-bold text-base" style={{ color: "#ffffff" }}>{title}</h3>
+        </div>
+        {subtitle && (
+          <p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.5)" }}>{subtitle}</p>
+        )}
       </div>
       <div className="overflow-x-auto">
         <table className="w-full text-sm">
@@ -188,11 +195,13 @@ export default function SessionsTable() {
 
         <div className="grid lg:grid-cols-2 gap-6 mb-6">
           <SessionTable
-            title="Sessions M\u00e9decine"
+            title="Sessions Médecine"
+            subtitle="Campus de Madrid et Canaries — Tests en ligne ou en présentiel"
             sessions={medecineSessions}
           />
           <SessionTable
-            title="Sessions Dentaire / Kin\u00e9 / V\u00e9to"
+            title="Sessions Dentaire / Kiné / Véto"
+            subtitle="Campus de Madrid et Canaries — Tests en ligne ou en présentiel"
             sessions={autresSessions}
           />
         </div>
