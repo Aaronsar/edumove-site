@@ -8,6 +8,10 @@ const nextConfig: NextConfig = {
         hostname: "edumove.fr",
         pathname: "/wp-content/uploads/**",
       },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
     ],
   },
 };
