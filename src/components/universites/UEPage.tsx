@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Phone } from "lucide-react";
 import { getUniversityBySlug } from "@/data/universities";
 import { programDetails } from "@/data/program-details";
 import UniHero from "./UniHero";
@@ -14,6 +14,8 @@ import TestDetails from "./TestDetails";
 import SessionsTable from "./SessionsTable";
 import DocumentsList from "./DocumentsList";
 import ProgramLinks from "./ProgramLinks";
+import StickyBar from "@/components/program/StickyBar";
+import ContactButton from "@/components/shared/ContactButton";
 
 export default function UEPage() {
   const uni = getUniversityBySlug("ue")!;
@@ -112,19 +114,6 @@ export default function UEPage() {
         color="blue"
       />
 
-      {/* CTA 2 */}
-      <section className="py-12 px-4 bg-[#fafbff]">
-        <div className="max-w-3xl mx-auto text-center">
-          <Link
-            href="https://candidature.edumove.fr"
-            className="inline-flex items-center gap-2 bg-[#EC680A] text-white font-semibold px-8 py-4 rounded-[5px] hover:bg-[#D45E09] transition-colors text-lg"
-          >
-            D&eacute;poser ma candidature gratuitement
-            <ArrowRight className="w-5 h-5" />
-          </Link>
-        </div>
-      </section>
-
       <TestDetails type="ue" />
 
       <SessionsTable />
@@ -141,7 +130,7 @@ export default function UEPage() {
       />
 
       {/* CTA */}
-      <section id="contact" className="py-16 px-4 bg-[#1B1D3A]">
+      <section id="contact" data-program-cta className="py-16 px-4 bg-[#1B1D3A]">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Pr&ecirc;t &agrave; rejoindre l&apos;Universidad Europea ?
@@ -150,15 +139,25 @@ export default function UEPage() {
             5 campus, 6 fili&egrave;res, un accompagnement Edumove de A
             &agrave; Z.
           </p>
-          <Link
-            href="https://candidature.edumove.fr"
-            className="inline-flex items-center gap-2 bg-[#EC680A] text-white font-semibold px-8 py-4 rounded-[5px] hover:bg-[#D45E09] transition-colors text-lg"
-          >
-            D&eacute;poser ma candidature gratuitement
-            <ArrowRight className="w-5 h-5" />
-          </Link>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              href="https://candidature.edumove.fr"
+              className="inline-flex items-center gap-2 bg-[#EC680A] text-white font-semibold px-8 py-4 rounded-xl hover:bg-[#D45E09] transition-colors text-lg"
+            >
+              D&eacute;poser ma candidature gratuitement
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+            <ContactButton className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-semibold px-8 py-4 rounded-xl transition-colors text-lg border border-white/20">
+              <span className="flex items-center gap-2">
+                <Phone className="w-5 h-5" />
+                Être recontacté
+              </span>
+            </ContactButton>
+          </div>
         </div>
       </section>
+
+      <StickyBar />
     </div>
   );
 }

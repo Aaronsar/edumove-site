@@ -122,7 +122,7 @@ export default function HubSpotModal({ isOpen, onClose }: HubSpotModalProps) {
             { objectTypeId: "0-1", name: "email", value: email },
             { objectTypeId: "0-1", name: "phone", value: phone },
             { objectTypeId: "0-1", name: "classe_actuelle", value: classe },
-            { objectTypeId: "0-1", name: "departement", value: departement },
+            { objectTypeId: "0-1", name: "dpartement_ex__75", value: departement },
             {
               objectTypeId: "0-1",
               name: "edumove_pays_souhaite",
