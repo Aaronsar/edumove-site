@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
+import ContactButton from "@/components/shared/ContactButton";
 import type { Filiere } from "@/data/filieres";
 
 /* ---------- SVG icon per filiere (80px, white) ---------- */
@@ -267,9 +268,7 @@ export default function FormationHero({ filiere, stats }: FormationHeroProps) {
               <a href="https://candidature.edumove.fr" className="text-center bg-[#ec680a] hover:bg-[#d45e09] text-white font-semibold px-6 py-3 rounded-[5px] transition-all hover:shadow-lg hover:shadow-[#ec680a]/20">
                 Déposer ma candidature
               </a>
-              <a href="#" className="text-center border border-white/30 text-white font-medium px-6 py-3 rounded-[5px] hover:bg-white/10 transition-all">
-                Être contacté
-              </a>
+              <ContactButton className="text-center border border-white/30 text-white font-medium px-6 py-3 rounded-[5px] hover:bg-white/10 transition-all" />
             </div>
           </div>
 

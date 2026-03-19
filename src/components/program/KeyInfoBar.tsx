@@ -13,7 +13,7 @@ export default function KeyInfoBar({ detail }: { detail: ProgramDetail }) {
   ];
 
   return (
-    <div className="max-w-5xl mx-auto px-4 -mt-8 relative z-20">
+    <div className="max-w-6xl mx-auto px-4 -mt-8 relative z-20">
       <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-4 grid grid-cols-2 md:grid-cols-5 gap-4">
         {stats.map((s, i) => {
           const Icon = icons[i];

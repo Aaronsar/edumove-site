@@ -64,7 +64,7 @@ export default function ProgramHighlights({ detail }: { detail: ProgramDetail })
             Pourquoi cette formation
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-[#1B1D3A]">
-            Les points forts de {detail.filiere} à {detail.universityShort}
+            Les points forts de {detail.filiere} à l&apos;{detail.university}, {detail.city}
           </h2>
         </motion.div>
 

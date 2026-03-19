@@ -44,7 +44,7 @@ export default async function ProgramPage({
       <KeyInfoBar detail={detail} />
 
       {/* Presentation */}
-      <section className="max-w-5xl mx-auto px-4 py-16">
+      <section className="max-w-6xl mx-auto px-4 py-16">
         <div className="flex items-start gap-4">
           <div className="w-1 h-16 rounded-full bg-gradient-to-b from-[#EC680A] to-[#615CA5] shrink-0" />
           <div>

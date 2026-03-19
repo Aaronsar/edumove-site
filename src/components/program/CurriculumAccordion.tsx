@@ -69,13 +69,15 @@ export default function CurriculumAccordion({ program }: { program: YearProgram[
                 >
                   {i + 1}
                 </span>
-                <div className="hidden sm:block">
-                  <p className={`text-sm font-semibold ${isActive ? "text-[#1B1D3A]" : "text-[#64748b]"}`}>
+                <div className="hidden sm:block min-w-0">
+                  <p className={`text-sm font-semibold whitespace-nowrap ${isActive ? "text-[#1B1D3A]" : "text-[#64748b]"}`}>
                     {y.year}
                   </p>
-                  <p className={`text-xs ${isActive ? "text-[#334155]" : "text-[#94a3b8]"}`}>
-                    {y.theme}
-                  </p>
+                  {isActive && (
+                    <p className="text-xs text-[#334155] whitespace-nowrap overflow-hidden text-ellipsis max-w-[160px]">
+                      {y.theme}
+                    </p>
+                  )}
                 </div>
                 {isActive && (
                   <motion.div
