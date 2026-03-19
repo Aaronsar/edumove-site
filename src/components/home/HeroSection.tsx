@@ -43,77 +43,45 @@ export default function HeroSection() {
         </div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 pt-20 pb-16">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="flex justify-center mb-8">
-          <div className="inline-flex items-center gap-2 bg-white border border-gray-200 rounded-full px-5 py-2 shadow-sm">
-            <Image src="/edumove-icon-orange.svg" alt="" width={24} height={24} />
-            <span className="text-sm font-medium text-[#334155]">N°1 de l&apos;accompagnement santé en Europe</span>
-            <span className="bg-[#EC680A] text-white text-xs font-bold px-2 py-0.5 rounded-full">2026</span>
-          </div>
+      <div className="relative z-10 max-w-4xl mx-auto px-4 pt-16 pb-16 text-center">
+        {/* Logo icon */}
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="flex justify-center mb-6">
+          <Image src="/edumove-icon-orange.svg" alt="" width={60} height={60} />
         </motion.div>
 
-        <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="text-center max-w-4xl mx-auto mb-6">
-          <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight" style={{ color: "#615CA5" }}>
+        {/* Titre principal */}
+        <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="mb-5">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight" style={{ color: "#615CA5" }}>
             L&apos;accompagnement d&apos;excellence pour vos{" "}
             <span className="text-[#EC680A]">études universitaires en Europe</span>
           </h1>
         </motion.div>
 
-        <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }} className="text-center text-lg md:text-xl text-[#64748b] max-w-2xl mx-auto mb-10 leading-relaxed">
-          Orientation, admission, financement jusqu&apos;à 100% et vie étudiante.
-          <br className="hidden md:block" />
-          <strong className="text-[#334155]">Admis ou remboursé.</strong> Vous ne payez rien avant d&apos;être praticien.
+        {/* Sous-titre */}
+        <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }} className="text-sm md:text-base text-[#334155] max-w-xl mx-auto mb-8 leading-relaxed">
+          Avec Edumove, vos études en Europe peuvent être financées jusqu&apos;à 100% sans aucun frais à avancer. Vous ne remboursez qu&apos;une fois praticien, lorsque votre carrière sera lancée.
         </motion.p>
 
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }} className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-          <a href="#formations" className="text-center bg-[#EC680A] hover:bg-[#d45e09] text-white font-semibold px-8 py-4 rounded-xl text-lg transition-all hover:shadow-xl hover:shadow-[#EC680A]/20 hover:-translate-y-0.5">
-            Découvrir nos formations →
-          </a>
-          <a href="#" className="text-center border-2 border-[#1B1D3A] text-[#1B1D3A] font-semibold px-8 py-4 rounded-xl text-lg hover:bg-[#1B1D3A] hover:text-white transition-all">
-            Être contacté
-          </a>
-        </motion.div>
+        {/* Choisis une formation */}
+        <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="font-bold text-[#1b1d3a] text-sm mb-6">
+          Choisis une formation <span className="text-[#EC680A]">›</span>
+        </motion.p>
 
-        <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4 }} className="flex flex-wrap justify-center gap-6 md:gap-12 mb-20">
-          {[
-            { value: "3", label: "Universités partenaires", icon: <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" /></svg> },
-            { value: "6", label: "Filières de santé", icon: <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" /></svg> },
-            { value: "2", label: "Pays (Italie, Espagne)", icon: <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" /></svg> },
-            { value: "100%", label: "Financement possible", icon: <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm3 0h.008v.008H18V10.5Zm-12 0h.008v.008H6V10.5Z" /></svg> },
-          ].map((s, i) => (
-            <div key={i} className="text-center group">
-              <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#EC680A]/10 text-[#EC680A] mb-3 group-hover:bg-[#EC680A] group-hover:text-white transition-all">
-                {s.icon}
-              </div>
-              <p className="text-3xl md:text-4xl font-bold text-[#1B1D3A]">{s.value}</p>
-              <p className="text-sm text-[#64748b]">{s.label}</p>
-            </div>
-          ))}
-        </motion.div>
-
-        <div id="formations" className="scroll-mt-20">
-          <p className="text-center text-sm font-semibold uppercase tracking-widest text-[#EC680A] mb-3">Choisis ta formation</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12" style={{ color: "#615CA5" }}>Nos formations</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
-            {formations.map((f, i) => (
-              <motion.div key={f.slug} initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.5 + i * 0.08 }}>
-                <Link href={`/formations/${f.slug}`} className="group block bg-white rounded-2xl border border-gray-100 p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
-                  <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${f.color} opacity-0 group-hover:opacity-100 transition-opacity`} />
-                  <div className="flex items-center gap-4">
-                    <div className="text-[#EC680A]">{f.icon}</div>
-                    <div>
-                      <h3 className="font-bold text-[#615CA5] text-lg group-hover:text-[#EC680A] transition-colors">{f.name}</h3>
-                      <p className="text-sm text-[#94a3b8]">{f.duration} · {f.count}</p>
-                    </div>
-                  </div>
-                  <div className="mt-3 flex items-center text-[#EC680A] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
-                    Découvrir <span className="ml-1">→</span>
-                  </div>
-                </Link>
-              </motion.div>
+        {/* Formation cards — style site actuel : centré, icône + nom */}
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.35 }} id="formations" className="scroll-mt-20">
+          <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 gap-3 max-w-3xl mx-auto">
+            {formations.map((f) => (
+              <Link
+                key={f.slug}
+                href={`/formations/${f.slug}`}
+                className="group flex flex-col items-center justify-center bg-white rounded-xl border border-gray-200 p-4 md:p-5 hover:shadow-lg hover:border-[#615ca5]/30 hover:-translate-y-0.5 transition-all duration-200"
+              >
+                <div className="text-[#EC680A] mb-2">{f.icon}</div>
+                <span className="font-bold text-[#615CA5] text-xs md:text-sm text-center group-hover:text-[#EC680A] transition-colors">{f.name}</span>
+              </Link>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

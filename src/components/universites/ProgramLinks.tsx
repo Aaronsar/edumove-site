@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { getProgramsByFiliere } from "@/data/program-details";
 import type { ProgramDetail } from "@/data/program-details";
 
 const filiereIcons: Record<string, string> = {

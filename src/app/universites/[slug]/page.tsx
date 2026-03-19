@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { universities, getUniversityBySlug } from "@/data/universities";
+import { getUniversityBySlug } from "@/data/universities";
 import type { UniversitySlug } from "@/data/universities";
 import LinkPage from "@/components/universites/LinkPage";
 import UCJCPage from "@/components/universites/UCJCPage";
@@ -13,12 +13,6 @@ const slugMap: Record<string, UniversitySlug> = {
   "link-campus": "link",
   ucjc: "ucjc",
   "universidad-europea": "ue",
-};
-
-const reverseSlugMap: Record<UniversitySlug, string> = {
-  link: "link-campus",
-  ucjc: "ucjc",
-  ue: "universidad-europea",
 };
 
 // ---------------------------------------------------------------------------
