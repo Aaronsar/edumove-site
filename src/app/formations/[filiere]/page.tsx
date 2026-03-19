@@ -16,7 +16,7 @@ import FormationCTA from "@/components/formations/FormationCTA";
 // ---------------------------------------------------------------------------
 
 export function generateStaticParams() {
-  return filieres.map((f) => ({ slug: f.slug }));
+  return filieres.map((f) => ({ filiere: f.slug }));
 }
 
 // ---------------------------------------------------------------------------
@@ -26,10 +26,10 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ filiere: string }>;
 }): Promise<Metadata> {
-  const { slug } = await params;
-  const filiere = getFiliereBySlug(slug as FiliereSlug);
+  const { filiere: filiereSlug } = await params;
+  const filiere = getFiliereBySlug(filiereSlug as FiliereSlug);
 
   if (!filiere) {
     return { title: "Formation introuvable | EduMove" };
@@ -52,10 +52,10 @@ export async function generateMetadata({
 export default async function FormationPage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ filiere: string }>;
 }) {
-  const { slug } = await params;
-  const filiere = getFiliereBySlug(slug as FiliereSlug);
+  const { filiere: filiereSlug } = await params;
+  const filiere = getFiliereBySlug(filiereSlug as FiliereSlug);
 
   if (!filiere) {
     notFound();

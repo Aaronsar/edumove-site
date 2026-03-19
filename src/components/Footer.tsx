@@ -19,7 +19,8 @@ const universiteLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#1B1D3A] text-white">
+    <footer className="relative bg-[#1B1D3A] text-white">
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#ec680a] via-[#615ca5] to-[#ec680a]" />
       <div className="mx-auto max-w-7xl px-4 py-16">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
           {/* Column 1: Brand */}

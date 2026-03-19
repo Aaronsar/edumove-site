@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 const universites = [
@@ -16,6 +17,8 @@ const universites = [
     highlight: "Le plus grand réseau universitaire santé en Espagne",
     slug: "universidad-europea",
     gradient: "from-[#1b1d3a] via-[#2a2d5a] to-[#615ca5]",
+    photo: "/images/universites/ue-campus.jpg",
+    photoAlt: "Campus Universidad Europea Madrid",
   },
   {
     name: "LINK Campus",
@@ -30,6 +33,8 @@ const universites = [
     highlight: "Test d'admission 100% en français, aucun prérequis",
     slug: "link-campus",
     gradient: "from-[#615ca5] via-[#4a4790] to-[#1b1d3a]",
+    photo: "/images/universites/link-campus.png",
+    photoAlt: "LINK Campus University Rome",
   },
   {
     name: "UCJC",
@@ -44,6 +49,8 @@ const universites = [
     highlight: "Admission sur entretien, l'option la plus accessible",
     slug: "ucjc",
     gradient: "from-[#ec680a] via-[#e07520] to-[#d45e09]",
+    photo: "/images/universites/ucjc-campus.jpg",
+    photoAlt: "UCJC Madrid Campus",
   },
 ];
 
@@ -78,44 +85,58 @@ export default function UniversitesSection() {
                 href={`/universites/${u.slug}`}
                 className="group block rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300"
               >
-                <div className={`bg-gradient-to-r ${u.gradient} px-5 py-4 md:px-6 md:py-5`}>
-                  <div className="flex flex-col md:flex-row md:items-center gap-4">
-                    {/* Left — Info */}
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 mb-1.5">
-                        <span className="text-xl">{u.flag}</span>
-                        <h3 className="text-base md:text-lg font-bold text-white truncate" style={{ color: "white" }}>{u.name}</h3>
-                        <span className="text-white/40 text-[10px] hidden md:inline">· depuis {u.since}</span>
-                      </div>
-                      <p className="text-white/60 text-xs mb-2">{u.highlight}</p>
-                      <div className="flex flex-wrap gap-1.5">
-                        {u.cities.map((c) => (
-                          <span key={c} className="text-[10px] bg-white/10 text-white/70 px-2 py-0.5 rounded-full">
-                            {c}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Right — Stats compact */}
-                    <div className="flex gap-3">
-                      {[
-                        { value: u.campus.toString(), label: "Campus" },
-                        { value: u.filieres.toString(), label: "Filières" },
-                        { value: u.etudiants, label: "Étudiants" },
-                      ].map((s, j) => (
-                        <div key={j} className="text-center bg-white/10 rounded-lg px-3 py-2 min-w-[56px]">
-                          <p className="text-lg font-bold text-white" style={{ color: "white" }}>{s.value}</p>
-                          <p className="text-white/40 text-[9px] uppercase tracking-wide">{s.label}</p>
+                <div className={`bg-gradient-to-r ${u.gradient} relative overflow-hidden`}>
+                  <div className="flex">
+                    {/* Left — Content */}
+                    <div className="flex-1 px-5 py-4 md:px-6 md:py-5 z-10">
+                      <div className="flex flex-col md:flex-row md:items-center gap-4">
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2 mb-1.5">
+                            <span className="text-xl">{u.flag}</span>
+                            <h3 className="text-base md:text-lg font-bold text-white truncate" style={{ color: "white" }}>{u.name}</h3>
+                            <span className="text-white/40 text-[10px] hidden md:inline">· depuis {u.since}</span>
+                          </div>
+                          <p className="text-white/60 text-xs mb-2">{u.highlight}</p>
+                          <div className="flex flex-wrap gap-1.5">
+                            {u.cities.map((c) => (
+                              <span key={c} className="text-[10px] bg-white/10 text-white/70 px-2 py-0.5 rounded-full">
+                                {c}
+                              </span>
+                            ))}
+                          </div>
                         </div>
-                      ))}
+
+                        <div className="flex gap-3">
+                          {[
+                            { value: u.campus.toString(), label: "Campus" },
+                            { value: u.filieres.toString(), label: "Filières" },
+                            { value: u.etudiants, label: "Étudiants" },
+                          ].map((s, j) => (
+                            <div key={j} className="text-center bg-white/10 rounded-lg px-3 py-2 min-w-[56px]">
+                              <p className="text-lg font-bold text-white" style={{ color: "white" }}>{s.value}</p>
+                              <p className="text-white/40 text-[9px] uppercase tracking-wide">{s.label}</p>
+                            </div>
+                          ))}
+                        </div>
+
+                        <div className="hidden md:flex items-center">
+                          <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-[#ec680a] transition-colors">
+                            <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
+                          </div>
+                        </div>
+                      </div>
                     </div>
 
-                    {/* Arrow */}
-                    <div className="hidden md:flex items-center">
-                      <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-[#ec680a] transition-colors">
-                        <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
-                      </div>
+                    {/* Right — Campus photo */}
+                    <div className="hidden lg:block relative w-52 shrink-0">
+                      <Image
+                        src={u.photo}
+                        alt={u.photoAlt}
+                        fill
+                        className="object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-500"
+                      />
+                      <div className={`absolute inset-0 bg-gradient-to-r ${u.gradient} opacity-40`} />
+                      <div className="absolute left-0 inset-y-0 w-16 bg-gradient-to-r from-black/30 to-transparent" />
                     </div>
                   </div>
                 </div>
