@@ -1,6 +1,7 @@
 "use client";
 
-import { FileCheck, FolderOpen } from "lucide-react";
+import Link from "next/link";
+import { FileCheck, FolderOpen, ArrowRight } from "lucide-react";
 
 interface DocumentsListProps {
   candidature: string[];
@@ -39,6 +40,13 @@ export default function DocumentsList({
                 </li>
               ))}
             </ol>
+            <Link
+              href="https://candidature.edumove.fr"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#615CA5] hover:text-[#EC680A] mt-4 transition-colors"
+            >
+              Déposer ma candidature
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
 
           {/* After acceptance documents — charte orange */}
