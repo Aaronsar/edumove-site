@@ -71,7 +71,7 @@ export default function UCJCPage() {
           <div className="absolute top-0 right-0 w-[520px] h-[520px] bg-gradient-to-bl from-[#EC680A]/7 via-transparent to-transparent rounded-full blur-3xl" />
           <div className="absolute bottom-0 left-0 w-[460px] h-[460px] bg-gradient-to-tr from-[#615CA5]/7 via-transparent to-transparent rounded-full blur-3xl" />
         </div>
-        <div className="relative max-w-4xl mx-auto">
+        <div className="relative max-w-6xl mx-auto">
           <p className="text-sm font-semibold uppercase tracking-widest text-[#EC680A] mb-3">
             Universit&eacute; partenaire
           </p>
