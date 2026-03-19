@@ -49,10 +49,10 @@ export default function HeroSection() {
 
               <div className="flex flex-col sm:flex-row gap-3">
                 <a href="#" className="text-center bg-[#ec680a] hover:bg-[#d45e09] text-white font-semibold px-6 py-3 rounded-[5px] transition-all hover:shadow-lg hover:shadow-[#ec680a]/20">
-                  Être contacté gratuitement
+                  Déposer ma candidature
                 </a>
-                <a href="#formations" className="text-center border border-white/30 text-white font-medium px-6 py-3 rounded-[5px] hover:bg-white/10 transition-all">
-                  En savoir plus
+                <a href="#" className="text-center border border-white/30 text-white font-medium px-6 py-3 rounded-[5px] hover:bg-white/10 transition-all">
+                  Être contacté
                 </a>
               </div>
 
