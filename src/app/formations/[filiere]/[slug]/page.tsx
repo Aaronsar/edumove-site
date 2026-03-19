@@ -9,6 +9,7 @@ import AdmissionSteps from "@/components/program/AdmissionSteps";
 import CostCard from "@/components/program/CostCard";
 import StudentLifeSection from "@/components/program/StudentLifeSection";
 import ProgramCTA from "@/components/program/ProgramCTA";
+import RelatedPrograms from "@/components/program/RelatedPrograms";
 import StickyBar from "@/components/program/StickyBar";
 
 export function generateStaticParams() {
@@ -71,6 +72,7 @@ export default async function ProgramPage({
       <AdmissionSteps steps={detail.admissionSteps} />
       <CostCard detail={detail} />
       <StudentLifeSection life={detail.studentLife} />
+      <RelatedPrograms detail={detail} />
       <ProgramCTA detail={detail} />
       <StickyBar />
     </main>

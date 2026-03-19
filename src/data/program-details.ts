@@ -664,6 +664,10 @@ export function getProgramsByFiliere(filiere: string): ProgramDetail[] {
   return programDetails.filter((p) => p.filiereSlug === filiere);
 }
 
+export function getProgramsByUniversity(universityShort: string): ProgramDetail[] {
+  return programDetails.filter((p) => p.universityShort === universityShort);
+}
+
 export function getAllProgramSlugs(): Array<{ filiere: string; slug: string }> {
   return programDetails.map((p) => ({ filiere: p.filiereSlug, slug: p.slug }));
 }
