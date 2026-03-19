@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight, MapPin } from "lucide-react";
 import type { ProgramDetail } from "@/data/program-details";
@@ -26,25 +27,43 @@ export default function ProgramHero({ detail }: { detail: ProgramDetail }) {
           <span className="font-medium" style={{ color: "#ffffff" }}>{detail.universityShort} — {detail.city}</span>
         </nav>
 
-        <div className="flex items-start gap-4 mb-4">
-          <div>
-            <FiliereIcon slug={detail.filiereSlug} className="w-12 h-12 md:w-14 md:h-14" stroke="#ec680a" />
-          </div>
-        </div>
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+          {/* Left — text */}
+          <div className="flex-1">
+            <div className="flex items-start gap-4 mb-4">
+              <div>
+                <FiliereIcon slug={detail.filiereSlug} className="w-12 h-12 md:w-14 md:h-14" stroke="#ec680a" />
+              </div>
+            </div>
 
-        <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-2 tracking-tight" style={{ color: "#ffffff" }}>
-          {detail.filiere} — {detail.universityShort}
-        </h1>
-        <p className="text-xl mb-2" style={{ color: "#ffffff" }}>{detail.university}</p>
-        <p className="text-lg flex items-center gap-2" style={{ color: "#ffffff" }}>
-          <MapPin className="w-5 h-5 text-[#EC680A]" />
-          {detail.city}, {detail.country}
-        </p>
-        {detail.isCheapest && (
-          <span className="inline-block mt-4 bg-[#EC680A] text-white text-sm font-semibold px-4 py-1.5 rounded-full">
-            Option la moins chère
-          </span>
-        )}
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-2 tracking-tight" style={{ color: "#ffffff" }}>
+              {detail.filiere} — {detail.universityShort}
+            </h1>
+            <p className="text-xl mb-2" style={{ color: "#ffffff" }}>{detail.university}</p>
+            <p className="text-lg flex items-center gap-2" style={{ color: "#ffffff" }}>
+              <MapPin className="w-5 h-5 text-[#EC680A]" />
+              {detail.city}, {detail.country}
+            </p>
+            {detail.isCheapest && (
+              <span className="inline-block mt-4 bg-[#EC680A] text-white text-sm font-semibold px-4 py-1.5 rounded-full">
+                Option la moins chère
+              </span>
+            )}
+          </div>
+
+          {/* Right — hero image */}
+          {detail.heroImage && (
+            <div className="hidden md:block w-80 lg:w-96 h-56 lg:h-64 rounded-2xl overflow-hidden shadow-2xl shrink-0">
+              <Image
+                src={detail.heroImage}
+                alt={`Campus ${detail.university}`}
+                width={384}
+                height={256}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          )}
+        </div>
       </div>
     </section>
   );

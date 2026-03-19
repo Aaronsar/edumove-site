@@ -36,6 +36,7 @@ export interface ProgramDetail {
   studentLife: StudentLife;
   isCheapest?: boolean;
   isComplete?: boolean;
+  heroImage?: string;
 }
 
 const defaultAdmissionSteps = [
@@ -323,6 +324,7 @@ const dentaireLINK: ProgramDetail = {
   city: "Rome",
   country: "Italie",
   countryFlag: "",
+  heroImage: "/images/universites/link/link-campus-6.jpg",
   presentation:
     "LINK Campus University propose un cursus de dentaire en 6 ans à Rome. Le test d'admission est intégralement en français (QCM 5 matières). Aucun prérequis linguistique : un cours d'italien intensif est inclus dès la 1ère année. Ouvert à tous les profils bac.",
   language: "Italien (cours intensif inclus)",
@@ -416,6 +418,7 @@ const medecineLINK: ProgramDetail = {
   city: "Rome",
   country: "Italie",
   countryFlag: "",
+  heroImage: "/images/universites/link/link-campus-15.jpg",
   presentation:
     "Le cursus de médecine à LINK dure 6 ans. Les cours sont en italien avec un programme d'italien intensif la 1ère année. Le diplôme est reconnu dans toute l'Union européenne. Le test d'admission est intégralement en français.",
   language: "Italien (cours intensif inclus)",
@@ -526,6 +529,7 @@ const kineLINK: ProgramDetail = {
   slug: "link-rome", filiere: "Kinésithérapie", filiereSlug: "kinesitherapie",
   university: "LINK Campus University", universityShort: "LINK", universitySlug: "link-campus",
   city: "Rome", country: "Italie", countryFlag: "",
+  heroImage: "/images/universites/link/link-campus-35.jpg",
   presentation: "3 ans seulement contre 5 en France ! Le cursus pratique dès la 1ère année avec stages cliniques. Le diplôme est reconnu en France. Test d'admission en français, aucun prérequis linguistique.",
   language: "Italien (cours intensif inclus)", duration: "3 ans",
   costPerYear: "11 900 €", totalCost: "35 700 €",
@@ -579,6 +583,7 @@ const pharmacieLINK: ProgramDetail = {
   slug: "link-rome", filiere: "Pharmacie", filiereSlug: "pharmacie",
   university: "LINK Campus University", universityShort: "LINK", universitySlug: "link-campus",
   city: "Rome", country: "Italie", countryFlag: "",
+  heroImage: "/images/universites/link/link-campus-80.jpg",
   presentation: "Pharmacie est la seule filière LINK sans test d'admission. L'admission se fait uniquement sur dossier. C'est aussi le tarif le plus bas de toutes les filières LINK (7 900 €/an). Idéal pour les étudiants ne souhaitant pas passer de test.",
   language: "Italien (cours intensif inclus)", duration: "5 ans",
   costPerYear: "7 900 €", totalCost: "39 500 €",
