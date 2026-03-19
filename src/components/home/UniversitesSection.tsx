@@ -135,22 +135,22 @@ export default function UniversitesSection() {
                       </div>
                     </div>
 
-                    <div className="flex gap-3">
+                    <div className="flex gap-3 mr-auto md:mr-0 md:ml-4">
                       {[
                         { value: u.campus.toString(), label: "Campus" },
                         { value: u.filieres.toString(), label: "Filières" },
                         { value: u.etudiants, label: "Étudiants" },
                       ].map((s, j) => (
-                        <div key={j} className="text-center bg-white/10 rounded-lg px-3 py-2 min-w-[56px]">
-                          <p className="text-lg font-bold text-white" style={{ color: "white" }}><AnimatedStat value={s.value} isVisible={isInView} /></p>
+                        <div key={j} className="text-center bg-white/10 rounded-lg px-4 py-2.5 min-w-[64px]">
+                          <p className="text-xl font-bold text-white" style={{ color: "white" }}><AnimatedStat value={s.value} isVisible={isInView} /></p>
                           <p className="text-white/40 text-[9px] uppercase tracking-wide">{s.label}</p>
                         </div>
                       ))}
                     </div>
 
                     <div className="flex items-center">
-                      <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-[#ec680a] transition-colors">
-                        <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
+                      <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-[#ec680a] transition-colors">
+                        <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
                       </div>
                     </div>
                   </div>
