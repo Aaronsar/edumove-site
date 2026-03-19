@@ -10,29 +10,16 @@ export interface UniversityImage {
 
 export const universityImages: Record<string, UniversityImage[]> = {
   ue: [
-    { src: "https://images.unsplash.com/photo-1562774053-701939374585?w=800&q=80", alt: "Campus universitaire en Espagne" },
-    { src: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&q=80", alt: "Étudiants sur le campus" },
-    { src: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80", alt: "Bibliothèque universitaire" },
-    { src: "https://images.unsplash.com/photo-1539033466270-4b3d4f72997c?w=800&q=80", alt: "Madrid, Espagne" },
-    { src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80", alt: "Côte méditerranéenne — Málaga, Valence, Alicante" },
+    { src: "/images/universites/ue/ue-hospital-1.jpg", alt: "Installations hospitalières Universidad Europea" },
+    { src: "/images/universites/ue/ue-campus-club.jpg", alt: "Vie étudiante sur le campus UE" },
+    { src: "/images/universites/ue/ue-hospital-simulation.jpg", alt: "Salle de simulation hospitalière UE" },
+    { src: "/images/universites/ue/ue-salud-grado.jpg", alt: "Formation santé Universidad Europea" },
   ],
   ucjc: [
-    {
-      src: "https://images.unsplash.com/photo-1562774053-701939374585?w=800&q=80",
-      alt: "Campus UCJC Madrid",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&q=80",
-      alt: "Vie étudiante à Madrid",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1539033466270-4b3d4f72997c?w=800&q=80",
-      alt: "Madrid, Espagne",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=800&q=80",
-      alt: "Étudiants en formation santé",
-    },
+    { src: "/images/universites/ue/ue-hospital-2.jpg", alt: "Campus UCJC Madrid" },
+    { src: "/images/universites/ue/ue-hospital-3.jpg", alt: "Vie étudiante à Madrid" },
+    { src: "/images/universites/ue/ue-hospital-4.jpg", alt: "Installations hospitalières UCJC" },
+    { src: "/images/universites/ue/ue-hospital-5.jpg", alt: "Formation santé UCJC Madrid" },
   ],
   link: [
     { src: "/images/universites/link/link-campus-6.jpg", alt: "Campus Link University — Sede Francisci, Rome" },
