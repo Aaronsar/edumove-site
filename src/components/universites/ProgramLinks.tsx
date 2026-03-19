@@ -1,17 +1,7 @@
 import Link from "next/link";
-import { Clock, Globe, FileText } from "lucide-react";
+import { Clock, Globe, FileText, ArrowRight } from "lucide-react";
 import type { ProgramDetail } from "@/data/program-details";
 import FiliereIcon from "@/components/shared/FiliereIcon";
-
-/* Charte : violet #615CA5 pour les en-têtes filière */
-const filiereColors: Record<string, string> = {
-  dentaire: "from-[#615CA5] to-[#615CA5]/90",
-  medecine: "from-[#615CA5] to-[#615CA5]/90",
-  kinesitherapie: "from-[#615CA5] to-[#615CA5]/90",
-  pharmacie: "from-[#615CA5] to-[#615CA5]/90",
-  veterinaire: "from-[#615CA5] to-[#615CA5]/90",
-  "prepa-dentaire": "from-[#615CA5] to-[#615CA5]/90",
-};
 
 interface ProgramLinksProps {
   universityShort: string; // "LINK", "UCJC", "UE"
@@ -35,50 +25,72 @@ export default function ProgramLinks({ universityShort, programs }: ProgramLinks
       <div className="relative max-w-6xl mx-auto px-4">
         <p className="text-center text-sm uppercase tracking-widest text-[#EC680A] mb-3 font-semibold">Nos programmes</p>
         <h2 className="text-2xl md:text-3xl font-bold text-center mb-4" style={{ color: "#1B1D3A" }}>
-          Toutes les formations à {universityShort}
+          Toutes les formations &agrave; {universityShort}
         </h2>
         <p className="text-center text-[#64748b] mb-12 max-w-xl mx-auto">
-          Cliquez sur une formation pour découvrir le programme détaillé, les tarifs et le processus d&apos;admission.
+          Cliquez sur une formation pour d&eacute;couvrir le programme d&eacute;taill&eacute;, les tarifs et le processus d&apos;admission.
         </p>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {Object.entries(grouped).map(([filiereSlug, progs]) => (
             progs.map((prog) => (
               <Link
                 key={`${prog.filiereSlug}-${prog.slug}`}
                 href={`/formations/${prog.filiereSlug}/${prog.slug}`}
-                className="group block bg-white rounded-2xl border-2 border-[#615CA5]/10 overflow-hidden hover:shadow-xl hover:-translate-y-1 hover:border-[#EC680A]/30 transition-all duration-300"
+                className="group relative block bg-white rounded-2xl border border-gray-200/80 overflow-hidden hover:shadow-[0_20px_60px_-15px_rgba(97,92,165,0.15)] hover:-translate-y-1.5 hover:border-[#EC680A]/30 transition-all duration-300"
               >
-                <div className={`bg-gradient-to-r ${filiereColors[filiereSlug] || "from-gray-500 to-gray-600"} p-4 flex items-center gap-3`}>
-                  <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center shrink-0">
-                    <FiliereIcon slug={filiereSlug} className="w-6 h-6" stroke="white" />
-                  </div>
-                  <div className="min-w-0">
-                    <h3 className="font-bold text-white text-lg">{prog.filiere}</h3>
-                    <p className="text-white/80 text-sm">{prog.city} · {prog.country}</p>
-                  </div>
-                </div>
-                <div className="p-5">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-2xl font-bold text-[#1B1D3A]">{prog.costPerYear}<span className="text-sm font-normal text-[#94a3b8]">/an</span></span>
-                    {prog.isCheapest && <span className="bg-[#EC680A]/10 text-[#EC680A] text-xs font-bold px-2 py-1 rounded-full">Le - cher</span>}
-                    {prog.isComplete && <span className="bg-[#1B1D3A]/10 text-[#1B1D3A] text-xs font-bold px-2 py-1 rounded-full">COMPLET</span>}
-                  </div>
-                  <div className="space-y-2 text-sm text-[#64748b]">
-                    <div className="flex items-center gap-2">
-                      <Clock className="w-4 h-4 text-[#615CA5] shrink-0" />
-                      <span>{prog.duration}</span>
-                      <span className="text-[#cbd5e1]">·</span>
-                      <Globe className="w-4 h-4 text-[#615CA5] shrink-0" />
-                      <span>{prog.language}</span>
+                {/* Badge */}
+                {prog.isCheapest && (
+                  <span className="absolute top-4 right-4 z-10 bg-[#EC680A] text-white text-[10px] font-bold px-2.5 py-1 rounded-full shadow-sm">
+                    Le - cher
+                  </span>
+                )}
+                {prog.isComplete && (
+                  <span className="absolute top-4 right-4 z-10 bg-[#1B1D3A] text-white text-[10px] font-bold px-2.5 py-1 rounded-full shadow-sm uppercase">
+                    Complet
+                  </span>
+                )}
+
+                <div className="p-6">
+                  {/* Header: icon + name */}
+                  <div className="flex items-center gap-4 mb-5">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#615CA5] to-[#EC680A]/80 flex items-center justify-center shrink-0 shadow-md shadow-[#615CA5]/20">
+                      <FiliereIcon slug={filiereSlug} className="w-6 h-6" stroke="white" />
                     </div>
-                    <div className="flex items-center gap-2">
-                      <FileText className="w-4 h-4 text-[#615CA5] shrink-0" />
-                      <span>{prog.admission}</span>
+                    <div className="min-w-0">
+                      <h3 className="font-bold text-[#1B1D3A] text-lg leading-tight">{prog.filiere}</h3>
+                      <p className="text-[#94a3b8] text-sm">{prog.city} &middot; {prog.country}</p>
                     </div>
                   </div>
-                  <div className="mt-4 text-[#EC680A] font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
-                    Voir le programme complet →
+
+                  {/* Price */}
+                  <div className="mb-5">
+                    <span className="text-2xl font-extrabold text-[#EC680A]">{prog.costPerYear}</span>
+                    <span className="text-sm font-normal text-[#94a3b8] ml-0.5">/an</span>
+                  </div>
+
+                  {/* Info pills */}
+                  <div className="flex flex-wrap gap-2 mb-5">
+                    <span className="inline-flex items-center gap-1.5 bg-[#615CA5]/8 text-[#615CA5] text-xs font-medium px-3 py-1.5 rounded-lg">
+                      <Clock className="w-3.5 h-3.5" />
+                      {prog.duration}
+                    </span>
+                    <span className="inline-flex items-center gap-1.5 bg-[#615CA5]/8 text-[#615CA5] text-xs font-medium px-3 py-1.5 rounded-lg">
+                      <Globe className="w-3.5 h-3.5" />
+                      {prog.language}
+                    </span>
+                  </div>
+
+                  {/* Admission */}
+                  <div className="flex items-center gap-2 text-sm text-[#64748b] mb-5 pb-5 border-b border-gray-100">
+                    <FileText className="w-4 h-4 text-[#615CA5] shrink-0" />
+                    <span>{prog.admission}</span>
+                  </div>
+
+                  {/* CTA */}
+                  <div className="flex items-center gap-1.5 text-[#EC680A] font-semibold text-sm">
+                    Voir le programme complet
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                   </div>
                 </div>
               </Link>
