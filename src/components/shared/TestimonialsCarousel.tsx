@@ -19,7 +19,7 @@ export default function TestimonialsCarousel() {
     <section className="py-20 bg-[#fafbff]">
       <div className="max-w-6xl mx-auto px-4">
         <p className="text-center text-sm uppercase tracking-widest text-[#EC680A] mb-3 font-semibold">Témoignages</p>
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12" style={{ color: "#1B1D3A" }}>Ils nous font confiance</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12" style={{ color: "#615CA5" }}>Ils nous font confiance</h2>
 
         <div className="relative">
           <button onClick={() => scroll(-1)} className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#EC680A] hover:text-white transition-colors text-[#1B1D3A] border border-gray-200">‹</button>

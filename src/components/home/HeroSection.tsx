@@ -31,14 +31,9 @@ export default function HeroSection() {
         </motion.div>
 
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="text-center max-w-4xl mx-auto mb-6">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight" style={{ color: "#1B1D3A" }}>
-            Vos études de santé
-            <br />
-            <span className="relative inline-block">
-              <span className="bg-gradient-to-r from-[#EC680A] to-[#f59e0b] bg-clip-text text-transparent">en Europe</span>
-              <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 300 12" fill="none"><path d="M2 8Q75 2 150 8T298 6" stroke="#EC680A" strokeWidth="3" strokeLinecap="round" opacity="0.3" /></svg>
-            </span>
-            {" "}commence ici.
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight" style={{ color: "#615CA5" }}>
+            L&apos;accompagnement d&apos;excellence pour vos{" "}
+            <span className="text-[#EC680A]">études universitaires en Europe</span>
           </h1>
         </motion.div>
 
@@ -76,7 +71,7 @@ export default function HeroSection() {
 
         <div id="formations" className="scroll-mt-20">
           <p className="text-center text-sm font-semibold uppercase tracking-widest text-[#EC680A] mb-3">Choisis ta formation</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12" style={{ color: "#1B1D3A" }}>Nos formations</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12" style={{ color: "#615CA5" }}>Nos formations</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
             {formations.map((f, i) => (
               <motion.div key={f.slug} initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.5 + i * 0.08 }}>
@@ -85,7 +80,7 @@ export default function HeroSection() {
                   <div className="flex items-center gap-4">
                     <div className="text-[#EC680A]">{f.icon}</div>
                     <div>
-                      <h3 className="font-bold text-[#1B1D3A] text-lg group-hover:text-[#EC680A] transition-colors">{f.name}</h3>
+                      <h3 className="font-bold text-[#615CA5] text-lg group-hover:text-[#EC680A] transition-colors">{f.name}</h3>
                       <p className="text-sm text-[#94a3b8]">{f.duration} · {f.count}</p>
                     </div>
                   </div>

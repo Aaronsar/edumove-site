@@ -41,7 +41,7 @@ export default function UniversitesSection() {
     <section className="py-20 bg-white">
       <div className="max-w-6xl mx-auto px-4">
         <p className="text-center text-sm uppercase tracking-widest text-[#EC680A] mb-3 font-semibold">Nos partenaires</p>
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-14" style={{ color: "#1B1D3A" }}>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-14" style={{ color: "#615CA5" }}>
           Universités partenaires d&apos;excellence
         </h2>
 
