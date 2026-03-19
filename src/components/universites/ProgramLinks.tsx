@@ -62,7 +62,7 @@ export default function ProgramLinks({ universityShort, programs }: ProgramLinks
                   <div className="flex items-center justify-between mb-3">
                     <span className="text-2xl font-bold text-[#1B1D3A]">{prog.costPerYear}<span className="text-sm font-normal text-[#94a3b8]">/an</span></span>
                     {prog.isCheapest && <span className="bg-[#EC680A]/10 text-[#EC680A] text-xs font-bold px-2 py-1 rounded-full">Le - cher</span>}
-                    {prog.isComplete && <span className="bg-red-100 text-red-600 text-xs font-bold px-2 py-1 rounded-full">COMPLET</span>}
+                    {prog.isComplete && <span className="bg-[#1B1D3A]/10 text-[#1B1D3A] text-xs font-bold px-2 py-1 rounded-full">COMPLET</span>}
                   </div>
                   <div className="space-y-2 text-sm text-[#64748b]">
                     <div className="flex items-center gap-2">

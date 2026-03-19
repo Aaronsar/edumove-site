@@ -16,7 +16,7 @@ export default function ProgramCTA({ detail }: { detail: ProgramDetail }) {
         >
           Candidater pour {detail.filiere} à {detail.universityShort} →
         </a>
-        <p className="text-white/50 mt-4 text-sm">📞 +33 1 89 74 42 57</p>
+        <p className="text-white/50 mt-4 text-sm">+33 1 89 74 42 57</p>
       </div>
     </section>
   );

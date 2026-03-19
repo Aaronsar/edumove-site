@@ -93,13 +93,13 @@ export default function UCJCPage() {
       {/* Alert: Medecine complet */}
       <section className="px-4 mb-4">
         <div className="max-w-6xl mx-auto">
-          <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-start gap-3">
-            <AlertTriangle className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
+          <div className="bg-[#EC680A]/10 border border-[#EC680A]/25 rounded-lg p-4 flex items-start gap-3">
+            <AlertTriangle className="w-5 h-5 text-[#EC680A] shrink-0 mt-0.5" />
             <div>
-              <p className="text-sm font-bold text-red-800">
+              <p className="text-sm font-bold text-[#1B1D3A]">
                 M&eacute;decine COMPLET pour 2026-2027
               </p>
-              <p className="text-sm text-red-700 mt-1">
+              <p className="text-sm text-[#334155] mt-1">
                 La fili&egrave;re m&eacute;decine &agrave; l&apos;UCJC
                 n&apos;accepte plus de nouvelles candidatures pour la
                 rentr&eacute;e 2026-2027. Les fili&egrave;res dentaire,

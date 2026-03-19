@@ -272,7 +272,7 @@ function UETestDetails() {
                         )}
                       </span>
                     ) : (
-                      <span className="inline-flex items-center gap-1 text-red-500">
+                      <span className="inline-flex items-center gap-1 text-[#1B1D3A] opacity-70">
                         <XCircle className="w-4 h-4" />
                         NON
                       </span>

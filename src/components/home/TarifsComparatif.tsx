@@ -10,7 +10,7 @@ const rows = [
 ];
 
 function Cell({ value, isCheapest, isComplet }: { value: string; isCheapest: boolean; isComplet: boolean }) {
-  if (isComplet) return <span className="text-red-500 line-through text-sm">COMPLET</span>;
+  if (isComplet) return <span className="text-[#1B1D3A] opacity-70 line-through text-sm">COMPLET</span>;
   if (value === "—") return <span className="text-gray-300">—</span>;
   return (
     <span className={`text-sm font-semibold ${isCheapest ? "text-[#EC680A]" : "text-[#1B1D3A]"}`}>

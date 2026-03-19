@@ -1,53 +1,49 @@
 import Link from "next/link";
+import { ChevronRight, MapPin } from "lucide-react";
 import type { ProgramDetail } from "@/data/program-details";
-
-const filiereGradients: Record<string, string> = {
-  dentaire: "from-[#1B1D3A] to-blue-800",
-  medecine: "from-[#1B1D3A] to-red-900",
-  kinesitherapie: "from-[#1B1D3A] to-green-800",
-  pharmacie: "from-[#1B1D3A] to-purple-900",
-  veterinaire: "from-[#1B1D3A] to-amber-800",
-  "prepa-dentaire": "from-[#1B1D3A] to-cyan-800",
-};
-
-const filiereIcons: Record<string, string> = {
-  dentaire: "🦷", medecine: "🩺", kinesitherapie: "💪",
-  pharmacie: "💊", veterinaire: "🐾", "prepa-dentaire": "📚",
-};
+import FiliereIcon from "@/components/shared/FiliereIcon";
 
 export default function ProgramHero({ detail }: { detail: ProgramDetail }) {
-  const gradient = filiereGradients[detail.filiereSlug] || "from-[#1B1D3A] to-blue-800";
-  const icon = filiereIcons[detail.filiereSlug] || "🎓";
-
   return (
-    <section className={`bg-gradient-to-r ${gradient} text-white py-16 relative overflow-hidden`}>
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-10 right-10 w-64 h-64 rounded-full border-2 border-white/20" />
-        <div className="absolute bottom-5 right-40 w-40 h-40 rounded-full border border-white/10" />
-        <div className="absolute top-20 right-60 w-20 h-20 rounded-full bg-white/5" />
-      </div>
-      <div className="max-w-6xl mx-auto px-4 relative z-10">
-        <nav className="text-sm text-white/60 mb-6">
-          <Link href="/" className="hover:text-white">Accueil</Link>
-          <span className="mx-2">›</span>
-          <Link href={`/formations/${detail.filiereSlug}`} className="hover:text-white">{detail.filiere}</Link>
-          <span className="mx-2">›</span>
-          <span className="text-white">{detail.universityShort} — {detail.city}</span>
-        </nav>
-        <div className="flex items-start gap-4 mb-4">
-          <span className="text-5xl">{icon}</span>
-          <span className="text-4xl">{detail.countryFlag}</span>
+    <section className="relative w-full overflow-hidden bg-[#1B1D3A] text-white">
+      {/* Decorative shapes — aligné UniHero / home */}
+      <div aria-hidden className="absolute inset-0 overflow-hidden">
+        <div className="absolute -top-20 -right-20 w-96 h-96 rounded-full bg-[#615CA5]/20 blur-3xl" />
+        <div className="absolute -bottom-32 -left-20 w-80 h-80 rounded-full bg-[#EC680A]/10 blur-3xl" />
+        <div className="absolute top-10 left-10 grid grid-cols-7 gap-2 opacity-[0.15]">
+          {Array.from({ length: 49 }).map((_, i) => (
+            <div key={i} className="w-2 h-2 rounded-full bg-[#EC680A]" />
+          ))}
         </div>
-        <h1 className="text-3xl md:text-5xl font-bold mb-2" style={{ color: "white" }}>
+      </div>
+
+      <div className="relative z-10 max-w-6xl mx-auto px-4 py-16 md:py-20">
+        <nav className="flex items-center gap-1.5 text-sm text-white/70 mb-6">
+          <Link href="/" className="hover:text-white transition-colors">Accueil</Link>
+          <ChevronRight className="w-3.5 h-3.5" />
+          <Link href={`/formations/${detail.filiereSlug}`} className="hover:text-white transition-colors">{detail.filiere}</Link>
+          <ChevronRight className="w-3.5 h-3.5" />
+          <span className="text-white font-medium">{detail.universityShort} — {detail.city}</span>
+        </nav>
+
+        <div className="flex items-start gap-4 mb-4">
+          <div className="text-white">
+            <FiliereIcon slug={detail.filiereSlug} className="w-12 h-12 md:w-14 md:h-14" stroke="#ec680a" />
+          </div>
+          <span className="text-3xl md:text-4xl">{detail.countryFlag}</span>
+        </div>
+
+        <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-2 tracking-tight">
           {detail.filiere} — {detail.universityShort}
         </h1>
         <p className="text-xl text-white/80 mb-2">{detail.university}</p>
         <p className="text-lg text-white/70 flex items-center gap-2">
-          📍 {detail.city}, {detail.country}
+          <MapPin className="w-5 h-5 text-[#EC680A]" />
+          {detail.city}, {detail.country}
         </p>
         {detail.isCheapest && (
-          <span className="inline-block mt-3 bg-[#EC680A] text-white text-sm font-semibold px-4 py-1 rounded-full">
-            💰 Option la moins chère
+          <span className="inline-block mt-4 bg-[#EC680A] text-white text-sm font-semibold px-4 py-1.5 rounded-full">
+            Option la moins chère
           </span>
         )}
       </div>

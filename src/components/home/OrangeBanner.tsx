@@ -1,6 +1,6 @@
 export default function OrangeBanner() {
   return (
-    <section className="relative bg-gradient-to-r from-[#EC680A] to-[#f59e0b] py-14 overflow-hidden">
+    <section className="relative bg-gradient-to-r from-[#EC680A] to-[#D45E09] py-14 overflow-hidden">
       <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,0.1) 20px, rgba(255,255,255,0.1) 40px)" }} />
       <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
         <div className="inline-flex items-center justify-center w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl mb-5">

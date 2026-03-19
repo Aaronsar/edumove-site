@@ -43,15 +43,15 @@ export default async function ProgramPage({
 
       <section className="max-w-5xl mx-auto px-4 py-12">
         <h2 className="text-2xl md:text-3xl font-bold italic text-[#1B1D3A] mb-4">
-          🏛️ Présentation
+          Présentation
         </h2>
         <p className="text-[#334155] leading-relaxed text-lg">{detail.presentation}</p>
         <div className="mt-4 flex flex-wrap gap-3">
-          <span className="bg-gray-100 text-sm px-3 py-1 rounded-full text-[#334155]">
-            🎓 {detail.diploma}
+          <span className="bg-[#615CA5]/10 text-[#1B1D3A] text-sm px-3 py-1.5 rounded-full font-medium">
+            {detail.diploma}
           </span>
-          <span className="bg-gray-100 text-sm px-3 py-1 rounded-full text-[#334155]">
-            📝 {detail.speRequired}
+          <span className="bg-[#EC680A]/10 text-[#1B1D3A] text-sm px-3 py-1.5 rounded-full font-medium">
+            {detail.speRequired}
           </span>
         </div>
       </section>

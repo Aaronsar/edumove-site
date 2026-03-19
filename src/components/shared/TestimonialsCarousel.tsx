@@ -22,14 +22,14 @@ const testimonials = [
     author: "Sophie M.",
     context: "Parent d'étudiant en pharmacie",
     initials: "SM",
-    color: "bg-emerald-500",
+    color: "bg-[#615CA5]",
   },
   {
     quote: "Je suis en kiné à l'UCJC et c'est la meilleure décision de ma vie. L'équipe EduMove m'a aidé à préparer mon entretien, à trouver un logement et m'a accompagné même après mon arrivée à Madrid. Je me suis senti soutenu à chaque étape.",
     author: "Thomas R.",
     context: "Étudiant en kinésithérapie",
     initials: "TR",
-    color: "bg-amber-500",
+    color: "bg-[#EC680A]",
   },
   {
     quote: "Après deux ans de PASS sans succès, j'ai contacté EduMove. En trois mois j'étais admise à l'Universidad Europea de Madrid. Aujourd'hui je suis en 2ème année de médecine et je ne regrette absolument rien. Leur aide a vraiment été décisive dans mon parcours.",

@@ -91,7 +91,7 @@ export default function TarifsTable({
                       <div className="flex items-center gap-2">
                         {filiereLabels[p.filiere] ?? p.filiere}
                         {p.isFull && (
-                          <span className="inline-block bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase">
+                          <span className="inline-block bg-[#1B1D3A] text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase">
                             Complet
                           </span>
                         )}

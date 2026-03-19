@@ -4,15 +4,6 @@ import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import type { Filiere } from "@/data/filieres";
 
-const gradientMap: Record<string, string> = {
-  red: "from-[#1B1D3A] to-red-900",
-  blue: "from-[#1B1D3A] to-[#046BD2]",
-  green: "from-[#1B1D3A] to-green-800",
-  purple: "from-[#1B1D3A] to-purple-900",
-  amber: "from-[#1B1D3A] to-amber-800",
-  cyan: "from-[#1B1D3A] to-cyan-800",
-};
-
 /* ---------- SVG icon per filiere (80px, white) ---------- */
 
 function FiliereIcon({ slug }: { slug: string }) {

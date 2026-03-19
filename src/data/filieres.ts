@@ -40,7 +40,7 @@ export const filieres: Filiere[] = [
       "PASS",
       "LAS",
     ],
-    color: "red",
+    color: "violet",
   },
   {
     slug: "dentaire",
@@ -56,7 +56,7 @@ export const filieres: Filiere[] = [
       "dentiste",
       "chirurgien-dentiste",
     ],
-    color: "blue",
+    color: "violet",
   },
   {
     slug: "kinesitherapie",
@@ -72,7 +72,7 @@ export const filieres: Filiere[] = [
       "physioth\u00E9rapie",
       "r\u00E9\u00E9ducation",
     ],
-    color: "green",
+    color: "violet",
   },
   {
     slug: "pharmacie",
@@ -88,7 +88,7 @@ export const filieres: Filiere[] = [
       "m\u00E9dicaments",
       "officine",
     ],
-    color: "purple",
+    color: "violet",
   },
   {
     slug: "veterinaire",
@@ -104,7 +104,7 @@ export const filieres: Filiere[] = [
       "animaux",
       "sciences animales",
     ],
-    color: "amber",
+    color: "orange",
   },
   {
     slug: "prepa-dentaire",
@@ -121,7 +121,7 @@ export const filieres: Filiere[] = [
       "gateway",
       "foundation",
     ],
-    color: "cyan",
+    color: "violet",
   },
 ];
 

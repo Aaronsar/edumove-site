@@ -2,8 +2,9 @@
 import { useState } from "react";
 import type { YearProgram } from "@/data/program-details";
 
-const yearColors = ["bg-blue-500", "bg-green-500", "bg-[#EC680A]", "bg-purple-500", "bg-red-500", "bg-[#1B1D3A]"];
-const yearBorders = ["border-blue-500", "border-green-500", "border-[#EC680A]", "border-purple-500", "border-red-500", "border-[#1B1D3A]"];
+/* Charte EduMove uniquement */
+const yearColors = ["bg-[#615CA5]", "bg-[#1B1D3A]", "bg-[#EC680A]", "bg-[#615CA5]", "bg-[#1B1D3A]", "bg-[#EC680A]"];
+const yearBorders = ["border-[#615CA5]", "border-[#1B1D3A]", "border-[#EC680A]", "border-[#615CA5]", "border-[#1B1D3A]", "border-[#EC680A]"];
 
 export default function CurriculumAccordion({ program }: { program: YearProgram[] }) {
   const [openIndex, setOpenIndex] = useState(0);
@@ -11,7 +12,7 @@ export default function CurriculumAccordion({ program }: { program: YearProgram[
   return (
     <section className="max-w-5xl mx-auto px-4 py-16">
       <h2 className="text-2xl md:text-3xl font-bold italic text-[#1B1D3A] mb-8">
-        📖 Programme année par année
+        Programme année par année
       </h2>
       <div className="space-y-4">
         {program.map((year, i) => (
