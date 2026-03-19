@@ -128,7 +128,7 @@ export default function UniversitesSection() {
                     </div>
 
                     {/* Right — Campus photo */}
-                    <div className="hidden lg:block relative w-52 shrink-0">
+                    <div className="hidden lg:block relative w-52 shrink-0 overflow-hidden">
                       <Image
                         src={u.photo}
                         alt={u.photoAlt}
