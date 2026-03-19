@@ -1,7 +1,36 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
+
+function AnimatedStat({ value, isVisible }: { value: string; isVisible: boolean }) {
+  const num = parseInt(value.replace(/[^0-9]/g, ""));
+  const prefix = value.startsWith("+") ? "+" : "";
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!isVisible || isNaN(num)) return;
+    let start = 0;
+    const duration = 1500;
+    const steps = 50;
+    const increment = num / steps;
+    const stepTime = duration / steps;
+
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= num) {
+        setCount(num);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(start));
+      }
+    }, stepTime);
+    return () => clearInterval(timer);
+  }, [isVisible, num]);
+
+  return <>{prefix}{count}</>;
+}
 
 const universites = [
   {
@@ -55,8 +84,11 @@ const universites = [
 ];
 
 export default function UniversitesSection() {
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+
   return (
-    <section className="py-14 bg-white">
+    <section className="py-14 bg-white" ref={sectionRef}>
       <div className="max-w-6xl mx-auto px-4">
         {/* Header with text left + CTA right */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-8">
@@ -113,7 +145,7 @@ export default function UniversitesSection() {
                             { value: u.etudiants, label: "Étudiants" },
                           ].map((s, j) => (
                             <div key={j} className="text-center bg-white/10 rounded-lg px-3 py-2 min-w-[56px]">
-                              <p className="text-lg font-bold text-white" style={{ color: "white" }}>{s.value}</p>
+                              <p className="text-lg font-bold text-white" style={{ color: "white" }}><AnimatedStat value={s.value} isVisible={isInView} /></p>
                               <p className="text-white/40 text-[9px] uppercase tracking-wide">{s.label}</p>
                             </div>
                           ))}
