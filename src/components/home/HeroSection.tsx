@@ -31,7 +31,7 @@ export default function HeroSection() {
         </motion.div>
 
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="text-center max-w-4xl mx-auto mb-6">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight" style={{ color: "#615CA5" }}>
+          <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight" style={{ color: "#615CA5" }}>
             L&apos;accompagnement d&apos;excellence pour vos{" "}
             <span className="text-[#EC680A]">études universitaires en Europe</span>
           </h1>
