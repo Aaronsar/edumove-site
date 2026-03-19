@@ -119,7 +119,7 @@ export default function StickyBar() {
 
       {/* Mobile — barre en bas */}
       <div
-        className={`md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-100 shadow-[0_-8px_30px_rgba(0,0,0,0.08)] pb-[env(safe-area-inset-bottom)] transition-all duration-500 ${
+        className={`md:hidden fixed bottom-0 left-0 right-0 z-50 bg-[#1B1D3A] pb-[env(safe-area-inset-bottom)] transition-all duration-500 ${
           show
             ? "translate-y-0 opacity-100"
             : "translate-y-full opacity-0 pointer-events-none"
@@ -129,12 +129,12 @@ export default function StickyBar() {
         <div className="px-4 py-3 flex items-center gap-2.5">
           <a
             href="https://candidature.edumove.fr"
-            className="group flex-1 flex items-center justify-center gap-1.5 bg-[#EC680A] hover:bg-[#D45E09] text-white text-xs font-semibold h-11 rounded-xl transition-colors"
+            className="group flex-1 flex items-center justify-center gap-1.5 bg-[#EC680A] hover:bg-[#D45E09] text-white text-xs font-semibold h-11 rounded-xl border border-white/30 transition-colors"
           >
             Candidater
             <ArrowRight className="w-3.5 h-3.5" />
           </a>
-          <ContactButton className="group flex-1 flex items-center justify-center gap-1.5 bg-[#1B1D3A] hover:bg-[#2a2d52] text-white text-xs font-semibold h-11 rounded-xl transition-colors">
+          <ContactButton className="group flex-1 flex items-center justify-center gap-1.5 text-white text-xs font-semibold h-11 rounded-xl border border-white/50 hover:bg-white/10 transition-colors">
             <span className="flex items-center gap-1.5">
               <Phone className="w-3.5 h-3.5" />
               Être recontacté
