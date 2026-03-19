@@ -30,14 +30,8 @@ export default function ProgramHero({ detail }: { detail: ProgramDetail }) {
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
           {/* Left — text */}
           <div className="flex-1">
-            <div className="flex items-start gap-4 mb-4">
-              <div>
-                <FiliereIcon slug={detail.filiereSlug} className="w-12 h-12 md:w-14 md:h-14" stroke="#ec680a" />
-              </div>
-            </div>
-
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-2 tracking-tight" style={{ color: "#ffffff" }}>
-              {detail.filiere} — {detail.universityShort}
+              {detail.filiere} <span className="text-[#EC680A]">—</span> {detail.universityShort}
             </h1>
             <p className="text-xl mb-2" style={{ color: "#ffffff" }}>{detail.university}</p>
             <p className="text-lg flex items-center gap-2" style={{ color: "#ffffff" }}>
