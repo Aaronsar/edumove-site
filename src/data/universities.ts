@@ -343,7 +343,7 @@ const ucjcUniversity: University = {
 const universidadEuropea: University = {
   slug: "ue",
   name: "Universidad Europea",
-  shortName: "UE",
+  shortName: "Universidad Europea",
   country: "Espagne",
   countryFlag: "\u{1F1EA}\u{1F1F8}",
   campuses: ["Madrid", "Malaga", "Valence", "Alicante", "Canaries"],
