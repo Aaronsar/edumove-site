@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import {
   ChevronRight,
   ArrowRight,
@@ -13,12 +12,12 @@ import {
   Heart,
   Target,
   CheckCircle2,
-  Star,
-  MapPin,
   BookOpen,
 } from "lucide-react";
 import ContactButton from "@/components/shared/ContactButton";
 import StickyBar from "@/components/program/StickyBar";
+import UniversitesSection from "@/components/home/UniversitesSection";
+import TestimonialsCarousel from "@/components/shared/TestimonialsCarousel";
 
 /* ---------- DATA ---------- */
 
@@ -80,54 +79,6 @@ const steps = [
   },
 ];
 
-const universities = [
-  {
-    name: "Universidad Europea",
-    city: "Madrid, Espagne",
-    students: "300+",
-    fields: 6,
-    href: "/universites/universidad-europea",
-    since: "2019",
-  },
-  {
-    name: "LINK Campus University",
-    city: "Rome, Italie",
-    students: "150+",
-    fields: 4,
-    href: "/universites/link-campus",
-    since: "2020",
-  },
-  {
-    name: "UCJC Madrid",
-    city: "Madrid, Espagne",
-    students: "80+",
-    fields: 3,
-    href: "/universites/ucjc",
-    since: "2021",
-  },
-];
-
-const testimonials = [
-  {
-    name: "Léa B.",
-    role: "Étudiante en médecine, Universidad Europea",
-    text: "Après deux ans de PASS sans succès, j'ai contacté Edumove. En trois mois j'étais admise à l'Universidad Europea de Madrid. Aujourd'hui je suis en 2e année de médecine et je ne regrette rien.",
-    stars: 5,
-  },
-  {
-    name: "Thomas R.",
-    role: "Étudiant en kinésithérapie, UCJC Madrid",
-    text: "L'équipe Edumove m'a aidé à préparer mon entretien, trouver un logement et m'a accompagné même après mon arrivée à Madrid. Je me suis senti soutenu à chaque étape.",
-    stars: 5,
-  },
-  {
-    name: "Sophie M.",
-    role: "Mère d'une étudiante en pharmacie",
-    text: "L'accompagnement au financement a été incroyable. Grâce au partenariat avec LCL, nous n'avons rien avancé et notre fille commencera à rembourser une fois diplômée.",
-    stars: 5,
-  },
-];
-
 const mediaCoverage = ["BFMTV", "Forbes", "LCL", "L'Étudiant", "Le Figaro"];
 
 /* ---------- COMPONENT ---------- */
@@ -170,6 +121,23 @@ export default function AboutPage() {
             universités de santé en Europe. Orientation, candidature, financement, installation
             — nous sommes à vos côtés de A à Z.
           </p>
+
+          {/* Ils parlent de nous */}
+          <div className="mt-12 pt-8 border-t border-white/10">
+            <p className="text-xs uppercase tracking-widest text-white/30 mb-4">
+              Ils parlent de nous
+            </p>
+            <div className="flex flex-wrap gap-6 items-center">
+              {mediaCoverage.map((m) => (
+                <span
+                  key={m}
+                  className="text-base font-bold text-white/20"
+                >
+                  {m}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -301,132 +269,11 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Universités partenaires */}
-      <section className="py-16 md:py-24">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-14">
-            <p className="text-[#EC680A] text-xs uppercase tracking-widest font-semibold mb-3">
-              Nos partenaires
-            </p>
-            <h2 className="text-2xl md:text-3xl font-bold text-[#1B1D3A]">
-              3 universités partenaires d&apos;excellence
-            </h2>
-          </div>
+      {/* Universités partenaires — réutilise le composant de la homepage */}
+      <UniversitesSection />
 
-          <div className="grid md:grid-cols-3 gap-6">
-            {universities.map((uni) => (
-              <Link
-                key={uni.href}
-                href={uni.href}
-                className="group bg-white rounded-2xl border border-gray-200 p-6 hover:border-[#EC680A]/30 hover:shadow-lg transition-all"
-              >
-                <h3 className="font-bold text-[#1B1D3A] text-lg mb-1 group-hover:text-[#EC680A] transition-colors">
-                  {uni.name}
-                </h3>
-                <p className="text-sm text-[#64748b] flex items-center gap-1 mb-4">
-                  <MapPin className="w-3.5 h-3.5" />
-                  {uni.city}
-                </p>
-                <div className="grid grid-cols-3 gap-3 text-center">
-                  <div>
-                    <p className="text-lg font-bold text-[#1B1D3A]">{uni.students}</p>
-                    <p className="text-xs text-[#64748b]">Étudiants</p>
-                  </div>
-                  <div>
-                    <p className="text-lg font-bold text-[#1B1D3A]">{uni.fields}</p>
-                    <p className="text-xs text-[#64748b]">Filières</p>
-                  </div>
-                  <div>
-                    <p className="text-lg font-bold text-[#1B1D3A]">{uni.since}</p>
-                    <p className="text-xs text-[#64748b]">Depuis</p>
-                  </div>
-                </div>
-                <span className="inline-flex items-center gap-1 text-sm text-[#EC680A] font-medium mt-4 group-hover:underline">
-                  Découvrir <ArrowRight className="w-3.5 h-3.5" />
-                </span>
-              </Link>
-            ))}
-          </div>
-
-          {/* Filières */}
-          <div className="mt-10 text-center">
-            <p className="text-sm text-[#64748b] mb-4">Nos 5 filières de santé</p>
-            <div className="flex flex-wrap justify-center gap-3">
-              {[
-                { name: "Médecine", href: "/formations/medecine" },
-                { name: "Dentaire", href: "/formations/dentaire" },
-                { name: "Kinésithérapie", href: "/formations/kinesitherapie" },
-                { name: "Pharmacie", href: "/formations/pharmacie" },
-                { name: "Vétérinaire", href: "/formations/veterinaire" },
-              ].map((f) => (
-                <Link
-                  key={f.href}
-                  href={f.href}
-                  className="bg-gray-50 border border-gray-200 rounded-full px-5 py-2.5 text-sm font-medium text-[#1B1D3A] hover:border-[#EC680A]/30 hover:text-[#EC680A] transition-all"
-                >
-                  {f.name}
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Témoignages */}
-      <section className="py-16 md:py-24 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-14">
-            <p className="text-[#EC680A] text-xs uppercase tracking-widest font-semibold mb-3">
-              Témoignages
-            </p>
-            <h2 className="text-2xl md:text-3xl font-bold text-[#1B1D3A]">
-              Ils nous ont fait confiance
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {testimonials.map((t) => (
-              <div
-                key={t.name}
-                className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm"
-              >
-                <div className="flex gap-0.5 mb-3">
-                  {Array.from({ length: t.stars }).map((_, i) => (
-                    <Star
-                      key={i}
-                      className="w-4 h-4 text-[#EC680A] fill-[#EC680A]"
-                    />
-                  ))}
-                </div>
-                <p className="text-sm text-[#334155] leading-relaxed mb-4 italic">
-                  &ldquo;{t.text}&rdquo;
-                </p>
-                <div>
-                  <p className="font-bold text-[#1B1D3A] text-sm">{t.name}</p>
-                  <p className="text-xs text-[#64748b]">{t.role}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Ils parlent de nous */}
-      <section className="py-12 border-b border-gray-100">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <p className="text-sm text-[#64748b] mb-6">Ils parlent de nous</p>
-          <div className="flex flex-wrap justify-center gap-8 items-center">
-            {mediaCoverage.map((m) => (
-              <span
-                key={m}
-                className="text-lg font-bold text-[#1B1D3A]/20"
-              >
-                {m}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Témoignages — réutilise le carousel de la homepage */}
+      <TestimonialsCarousel />
 
       {/* Garanties */}
       <section className="py-16 md:py-24">
