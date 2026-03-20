@@ -73,6 +73,57 @@ export const articles: Article[] = [
     relatedUniversities: ["/universites/universidad-europea", "/universites/ucjc", "/universites/link-campus"],
   },
   {
+    slug: "echec-pass-alternatives",
+    title: "Échec en PASS : quelles alternatives en 2026 ?",
+    date: "20 mars 2026",
+    dateISO: "2026-03-20",
+    tag: "Actualités",
+    tagColor: "bg-[#ec680a]",
+    readTime: "7 min",
+    excerpt:
+      "Plus de 50 000 étudiants échouent chaque année en PASS. Redoubler, se réorienter, ou partir en Europe ? On fait le point sur les vraies alternatives.",
+    metaTitle: "Échec en PASS : quelles alternatives en 2026 ? | Edumove",
+    metaDescription:
+      "Après un échec en PASS ou LAS, quelles options ? Redoublement, réorientation, études de santé en Europe : toutes les alternatives concrètes.",
+    relatedSlugs: ["financer-etudes-sante-europe", "reconnaissance-diplomes-europeens", "etudes-medecine-espagne"],
+    relatedFormations: ["medecine", "dentaire", "kinesitherapie", "pharmacie"],
+    relatedUniversities: ["/universites/universidad-europea", "/universites/ucjc", "/universites/link-campus"],
+  },
+  {
+    slug: "cout-etudes-sante-europe",
+    title: "Combien coûtent les études de santé en Europe ? Tous les tarifs",
+    date: "20 mars 2026",
+    dateISO: "2026-03-20",
+    tag: "Financement",
+    tagColor: "bg-[#ec680a]",
+    readTime: "8 min",
+    excerpt:
+      "Tarifs université par université, comparaison avec la France, coût de la vie et solutions de financement : tous les chiffres pour y voir clair.",
+    metaTitle: "Coût des études de santé en Europe : tous les tarifs | Edumove",
+    metaDescription:
+      "Prix des études de médecine, dentaire, kiné en Espagne et Italie. Tarifs par université, coût de la vie et financement détaillés.",
+    relatedSlugs: ["financer-etudes-sante-europe", "echec-pass-alternatives", "avantages-kinesitherapie-europe"],
+    relatedFormations: ["medecine", "dentaire", "kinesitherapie", "pharmacie", "veterinaire"],
+    relatedUniversities: ["/universites/universidad-europea", "/universites/ucjc", "/universites/link-campus"],
+  },
+  {
+    slug: "etudes-medecine-espagne",
+    title: "Études de médecine en Espagne : le guide complet pour les Français",
+    date: "20 mars 2026",
+    dateISO: "2026-03-20",
+    tag: "Guide",
+    tagColor: "bg-[#615ca5]",
+    readTime: "10 min",
+    excerpt:
+      "Universités, admission, programme, retour en France : tout ce qu\u2019il faut savoir pour faire médecine en Espagne en tant que Français.",
+    metaTitle: "Études de médecine en Espagne : guide complet pour les Français | Edumove",
+    metaDescription:
+      "Comment faire médecine en Espagne ? Universités, test PE, programme de 6 ans, reconnaissance du diplôme et retour en France.",
+    relatedSlugs: ["echec-pass-alternatives", "cout-etudes-sante-europe", "reussir-test-pe-universidad-europea"],
+    relatedFormations: ["medecine"],
+    relatedUniversities: ["/universites/universidad-europea", "/universites/ucjc"],
+  },
+  {
     slug: "financer-etudes-sante-europe",
     title: "Comment financer ses études de santé en Europe avec un prêt étudiant ?",
     date: "28 février 2025",

@@ -15,12 +15,24 @@ import TemoignageMedecine, {
 import AvantagesKinesitherapie, {
   sommaire as kinesitherapieSommaire,
 } from "@/components/blog/articles/AvantagesKinesitherapie";
+import EchecPassAlternatives, {
+  sommaire as echecPassSommaire,
+} from "@/components/blog/articles/EchecPassAlternatives";
+import CoutEtudesSanteEurope, {
+  sommaire as coutEtudesSommaire,
+} from "@/components/blog/articles/CoutEtudesSanteEurope";
+import EtudesMedecineEspagne, {
+  sommaire as medecineEspagneSommaire,
+} from "@/components/blog/articles/EtudesMedecineEspagne";
 
 const blogSlugs = [
   "financer-etudes-sante-europe",
   "reconnaissance-diplomes-europeens",
   "temoignage-medecine-espagne",
   "avantages-kinesitherapie-europe",
+  "echec-pass-alternatives",
+  "cout-etudes-sante-europe",
+  "etudes-medecine-espagne",
 ];
 
 export function generateStaticParams() {
@@ -68,6 +80,18 @@ const contentMap: Record<
   "avantages-kinesitherapie-europe": {
     Component: AvantagesKinesitherapie,
     sommaire: kinesitherapieSommaire,
+  },
+  "echec-pass-alternatives": {
+    Component: EchecPassAlternatives,
+    sommaire: echecPassSommaire,
+  },
+  "cout-etudes-sante-europe": {
+    Component: CoutEtudesSanteEurope,
+    sommaire: coutEtudesSommaire,
+  },
+  "etudes-medecine-espagne": {
+    Component: EtudesMedecineEspagne,
+    sommaire: medecineEspagneSommaire,
   },
 };
 
