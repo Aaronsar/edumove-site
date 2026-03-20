@@ -167,20 +167,20 @@ const categories: FAQCategory[] = [
     icon: Home,
     items: [
       {
-        q: "Comment trouver un logement sur place ?",
-        a: "Edumove vous accompagne dans la recherche de logement : résidences étudiantes, colocations ou appartements à proximité du campus. Nous avons des contacts avec des agences locales et des retours d'expérience de nos anciens étudiants.",
+        q: "Comment trouver un logement à Madrid ou à Rome ?",
+        a: "Edumove vous accompagne dans la recherche de logement à Madrid comme à Rome : résidences étudiantes, colocations ou appartements à proximité du campus. Nous avons des contacts avec des agences locales dans chaque ville et des retours d'expérience de nos anciens étudiants.",
       },
       {
         q: "Quel est le coût de la vie à Madrid / Rome ?",
         a: "Le budget mensuel moyen (loyer + alimentation + transports + loisirs) se situe entre 800 € et 1 200 € selon la ville et le mode de vie. Madrid et Rome offrent un coût de la vie inférieur à Paris.",
       },
       {
-        q: "Y a-t-il une communauté d'étudiants français sur place ?",
-        a: "Oui. Les universités partenaires d'Edumove accueillent chaque année de nombreux étudiants francophones. Des groupes WhatsApp, des événements d'intégration et un réseau d'anciens facilitent l'adaptation et créent une vraie communauté.",
+        q: "Y a-t-il une communauté d'étudiants français à Madrid et à Rome ?",
+        a: "Oui. Que ce soit à Madrid (Universidad Europea, UCJC) ou à Rome (LINK Campus), les universités partenaires d'Edumove accueillent chaque année de nombreux étudiants francophones. Des groupes WhatsApp, des événements d'intégration et un réseau d'anciens facilitent l'adaptation et créent une vraie communauté sur chaque campus.",
       },
       {
-        q: "Faut-il parler espagnol / italien pour candidater ?",
-        a: "Un niveau de base suffit au départ pour les formations en espagnol — vous progresserez rapidement sur place grâce à l'immersion. Pour les formations en anglais, un niveau B1-B2 est recommandé. Des programmes de mise à niveau linguistique sont disponibles.",
+        q: "Faut-il parler espagnol ou italien pour candidater ?",
+        a: "Pour les formations à Madrid (Universidad Europea, UCJC), un niveau de base en espagnol suffit au départ — vous progresserez rapidement grâce à l'immersion. Pour LINK Campus à Rome, certaines formations sont en anglais (niveau B1-B2 recommandé) ou en italien. Des programmes de mise à niveau linguistique sont disponibles dans chaque université.",
       },
       {
         q: "Comment fonctionne l'assurance maladie à l'étranger ?",
@@ -190,9 +190,34 @@ const categories: FAQCategory[] = [
   },
 ];
 
+/* ---------- JSON-LD FAQ Schema ---------- */
+
+function FAQJsonLd() {
+  const allItems = categories.flatMap((cat) => cat.items);
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: allItems.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.a,
+      },
+    })),
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
 /* ---------- COMPONENTS ---------- */
 
-function FAQItem({
+function FAQAccordionItem({
   faq,
   isOpen,
   onToggle,
@@ -237,16 +262,15 @@ function FAQItem({
 
 export default function FAQPage() {
   const [openItem, setOpenItem] = useState<string | null>(null);
-  const [activeCategory, setActiveCategory] = useState<string>("diplomes");
 
   const toggleItem = (key: string) => {
     setOpenItem(openItem === key ? null : key);
   };
 
-  const activeData = categories.find((c) => c.id === activeCategory);
-
   return (
     <div className="bg-white min-h-screen">
+      <FAQJsonLd />
+
       {/* Hero */}
       <section className="relative bg-[#1B1D3A] overflow-hidden">
         <div aria-hidden className="absolute inset-0">
@@ -291,61 +315,41 @@ export default function FAQPage() {
         </div>
       </section>
 
-      {/* Category tabs + FAQ */}
-      <section className="py-12 md:py-16">
-        <div className="max-w-6xl mx-auto px-6">
-          {/* Category pills */}
-          <div className="flex flex-wrap gap-2 mb-10">
-            {categories.map((cat) => {
-              const Icon = cat.icon;
-              return (
-                <button
-                  key={cat.id}
-                  onClick={() => {
-                    setActiveCategory(cat.id);
-                    setOpenItem(null);
-                  }}
-                  className={`flex items-center gap-2 text-sm font-medium px-4 py-2.5 rounded-full transition-all ${
-                    activeCategory === cat.id
-                      ? "bg-[#EC680A] text-white"
-                      : "bg-gray-100 text-[#1B1D3A] hover:bg-gray-200"
-                  }`}
-                >
-                  <Icon className="w-4 h-4" />
+      {/* All categories with questions */}
+      <section className="py-12 md:py-20">
+        <div className="max-w-3xl mx-auto px-6 space-y-14">
+          {categories.map((cat) => {
+            const Icon = cat.icon;
+            return (
+              <div key={cat.id}>
+                <h2 className="text-xl md:text-2xl font-bold text-[#1B1D3A] mb-6 flex items-center gap-3">
+                  <span className="w-10 h-10 rounded-xl bg-[#EC680A]/10 flex items-center justify-center">
+                    <Icon className="w-5 h-5 text-[#EC680A]" />
+                  </span>
                   {cat.label}
-                </button>
-              );
-            })}
-          </div>
-
-          {/* FAQ items */}
-          {activeData && (
-            <div className="max-w-3xl">
-              <h2 className="text-xl md:text-2xl font-bold text-[#1B1D3A] mb-6 flex items-center gap-3">
-                <activeData.icon className="w-6 h-6 text-[#EC680A]" />
-                {activeData.label}
-              </h2>
-              <div className="space-y-3">
-                {activeData.items.map((faq, i) => {
-                  const key = `${activeData.id}-${i}`;
-                  return (
-                    <FAQItem
-                      key={key}
-                      faq={faq}
-                      isOpen={openItem === key}
-                      onToggle={() => toggleItem(key)}
-                    />
-                  );
-                })}
+                </h2>
+                <div className="space-y-3">
+                  {cat.items.map((faq, i) => {
+                    const key = `${cat.id}-${i}`;
+                    return (
+                      <FAQAccordionItem
+                        key={key}
+                        faq={faq}
+                        isOpen={openItem === key}
+                        onToggle={() => toggleItem(key)}
+                      />
+                    );
+                  })}
+                </div>
               </div>
-            </div>
-          )}
+            );
+          })}
 
           {/* CTA */}
-          <div className="mt-16 bg-[#1B1D3A] rounded-2xl p-8 md:p-10 text-center max-w-3xl">
-            <h3 className="text-xl md:text-2xl font-bold text-white mb-3">
+          <div className="bg-[#1B1D3A] rounded-2xl p-8 md:p-10 text-center">
+            <h2 className="text-xl md:text-2xl font-bold text-white mb-3">
               Vous n&apos;avez pas trouvé votre réponse ?
-            </h3>
+            </h2>
             <p className="text-white/60 text-sm mb-6 max-w-md mx-auto">
               Contactez-nous directement — un conseiller Edumove vous répond
               sous 2h.
