@@ -41,13 +41,13 @@ const values = [
   },
   {
     icon: Target,
-    title: "Accompagnement sur-mesure",
-    desc: "Chaque étudiant est unique. Nous adaptons notre accompagnement à votre profil, vos ambitions et votre situation personnelle.",
+    title: "Du sur-mesure",
+    desc: "Chaque étudiant est différent. On adapte les conseils et le suivi à votre profil, vos ambitions et votre situation perso.",
   },
   {
     icon: Users,
     title: "Proximité",
-    desc: "Un conseiller dédié vous accompagne du premier contact jusqu'à votre installation sur place. Vous n'êtes jamais seul dans votre projet.",
+    desc: "Un conseiller dédié qui vous suit du premier appel jusqu'à votre arrivée sur place. On reste joignable, toujours.",
   },
 ];
 
@@ -119,7 +119,7 @@ export default function AboutPage() {
           <p className="text-lg max-w-2xl" style={{ color: "rgba(255,255,255,0.6)" }}>
             Edumove accompagne chaque année des centaines d&apos;étudiants vers les meilleures
             universités de santé en Europe. Orientation, candidature, financement, installation
-            — nous sommes à vos côtés de A à Z.
+            — on s&apos;occupe de tout, avec vous.
           </p>
 
           {/* Ils parlent de nous */}
@@ -291,7 +291,7 @@ export default function AboutPage() {
             {[
               "Admis ou remboursé : nous nous engageons sur votre admission",
               "Financement jusqu'à 100 % grâce à notre partenariat LCL",
-              "Accompagnement de A à Z, du premier contact à l'installation",
+              "Suivi complet, du premier appel jusqu'à l'installation sur place",
               "Préparation complète aux tests d'admission",
               "Diplômes reconnus dans toute l'Union européenne",
               "Un conseiller dédié qui répond sous 2h",
@@ -320,18 +320,18 @@ export default function AboutPage() {
             </div>
             <div className="relative z-10">
               <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: "#ffffff" }}>
-                Prêt à démarrer votre projet ?
+                Envie d&apos;en parler ?
               </h2>
               <p className="text-sm mb-8 max-w-lg mx-auto" style={{ color: "rgba(255,255,255,0.6)" }}>
-                Prenez contact avec un conseiller Edumove pour un premier échange gratuit
-                et sans engagement. Nous vous rappelons sous 2h.
+                Un premier échange gratuit et sans engagement avec un conseiller.
+                On vous rappelle sous 2h.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
                 <Link
                   href="https://candidature.edumove.fr"
                   className="inline-flex items-center gap-2 bg-[#EC680A] text-white font-semibold px-7 py-3.5 rounded-xl hover:bg-[#D45E09] transition-colors"
                 >
-                  Candidater maintenant
+                  Je candidate
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <ContactButton className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-semibold px-7 py-3.5 rounded-xl transition-colors border border-white/20">

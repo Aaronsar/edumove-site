@@ -303,8 +303,7 @@ export default function AvantagesKinesitherapie() {
         qu&apos;Edumove intervient.
       </p>
       <p className="text-[#334155] leading-relaxed mb-4">
-        <strong>Edumove vous accompagne de A &agrave; Z</strong>, &agrave; chaque &eacute;tape de votre
-        projet. D&egrave;s le premier contact, un conseiller d&eacute;di&eacute; analyse votre profil
+        <strong>Edumove s&apos;occupe de tout avec vous</strong> : d&egrave;s le premier contact, un conseiller d&eacute;di&eacute; analyse votre profil
         &mdash; vos r&eacute;sultats, vos envies, votre budget &mdash; pour vous
         <strong> orienter vers la formation la plus adapt&eacute;e</strong>. Pas de r&eacute;ponse
         g&eacute;n&eacute;rique : chaque parcours est personnalis&eacute;.

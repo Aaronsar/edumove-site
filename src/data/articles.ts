@@ -30,7 +30,7 @@ export const articles: Article[] = [
       "Guide complet sur la Prueba Específica : les 4 épreuves détaillées, la plateforme Langoo, le Talent Test et nos conseils pour maximiser vos chances.",
     metaTitle: "Comment réussir le test PE de l\u2019Universidad Europea ? | Edumove",
     metaDescription:
-      "Guide complet sur le test PE (Prueba Específica) de l\u2019Universidad Europea. Découvrez les 4 épreuves, nos conseils et comment bien vous préparer.",
+      "Test PE (Prueba Específica) de l\u2019Universidad Europea : les 4 épreuves détaillées, nos conseils de préparation et les erreurs à éviter.",
     isGuide: true,
     relatedSlugs: ["reussir-test-admission-link-campus", "financer-etudes-sante-europe"],
     relatedFormations: ["medecine", "dentaire", "veterinaire"],
@@ -84,7 +84,7 @@ export const articles: Article[] = [
       "Prêt étudiant, bourses, aides : toutes les solutions pour financer vos études de santé en Europe sans avancer un centime.",
     metaTitle: "Financer ses études de santé en Europe : prêt étudiant et aides | Edumove",
     metaDescription:
-      "Découvrez comment financer vos études de médecine, dentaire ou kiné en Europe grâce au prêt étudiant LCL, bourses et aides.",
+      "Prêt étudiant LCL, bourses du CROUS, aides régionales : toutes les solutions pour financer des études de santé en Europe sans avance.",
     relatedSlugs: ["reconnaissance-diplomes-europeens", "avantages-kinesitherapie-europe"],
     relatedFormations: ["medecine", "dentaire", "kinesitherapie", "pharmacie", "veterinaire"],
     relatedUniversities: ["/universites/universidad-europea", "/universites/link-campus", "/universites/ucjc"],
@@ -118,7 +118,7 @@ export const articles: Article[] = [
       "Clara partage son expérience : après un échec en PASS, elle a intégré médecine à l\u2019Universidad Europea de Madrid grâce à Edumove.",
     metaTitle: "Témoignage médecine en Espagne avec Edumove | Clara",
     metaDescription:
-      "Découvrez le parcours de Clara, étudiante en médecine à Madrid après un échec en PASS. Son témoignage avec Edumove.",
+      "Clara raconte : après deux échecs en PASS, elle a intégré médecine à Madrid via Edumove. Son parcours, ses doutes, ses conseils.",
     relatedSlugs: ["reussir-test-pe-universidad-europea", "financer-etudes-sante-europe"],
     relatedFormations: ["medecine"],
     relatedUniversities: ["/universites/universidad-europea"],

@@ -15,7 +15,7 @@ const services = [
   },
   {
     icon: <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>,
-    title: "De A à Z",
+    title: "On gère tout",
     desc: "Orientation, admission, logement, traduction, vie étudiante.",
   },
 ];
@@ -37,7 +37,7 @@ export default function ServicesSection() {
                 <div className="rounded-xl overflow-hidden h-40">
                   <Image
                     src="/photos/dentiste.jpg"
-                    alt="Dentiste avec modèle dentaire"
+                    alt="Étudiant en clinique dentaire"
                     width={400}
                     height={300}
                     className="w-full h-full object-cover"
@@ -46,7 +46,7 @@ export default function ServicesSection() {
                 <div className="rounded-xl overflow-hidden h-52">
                   <Image
                     src="/photos/medecin.jpg"
-                    alt="Médecin avec stéthoscope"
+                    alt="Cours de médecine en amphi"
                     width={400}
                     height={400}
                     className="w-full h-full object-cover"
@@ -57,7 +57,7 @@ export default function ServicesSection() {
                 <div className="rounded-xl overflow-hidden h-52">
                   <Image
                     src="/photos/cabinet-dentaire.jpg"
-                    alt="Cabinet dentaire équipé"
+                    alt="Travaux pratiques en cabinet"
                     width={400}
                     height={400}
                     className="w-full h-full object-cover"
@@ -66,7 +66,7 @@ export default function ServicesSection() {
                 <div className="rounded-xl overflow-hidden h-40">
                   <Image
                     src="/photos/campus.jpg"
-                    alt="Campus universitaire"
+                    alt="Campus Universidad Europea"
                     width={400}
                     height={300}
                     className="w-full h-full object-cover"
@@ -115,7 +115,7 @@ export default function ServicesSection() {
             </div>
 
             <a href="https://candidature.edumove.fr" className="inline-block mt-8 bg-[#ec680a] hover:bg-[#d45e09] text-white font-semibold px-6 py-3 rounded-[5px] text-sm transition-all hover:shadow-lg">
-              Déposer ma candidature →
+              Commencer mon projet →
             </a>
           </motion.div>
         </div>

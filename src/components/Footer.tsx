@@ -38,8 +38,8 @@ export default function Footer() {
               />
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-gray-300">
-              Votre partenaire pour les etudes de sante en Europe.
-              Accompagnement personnalise de A a Z.
+              Etudes de sante en Europe : orientation, candidature,
+              financement et installation.
             </p>
             <div className="mt-6">
               <ContactButton className="inline-block rounded-[5px] border border-[#EC680A] px-6 py-2 text-sm font-medium text-[#EC680A] transition-colors hover:bg-[#EC680A] hover:text-white">

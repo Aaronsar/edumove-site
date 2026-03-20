@@ -47,10 +47,10 @@ const categories: FAQCategory[] = [
     items: [
       {
         q: "Les diplômes obtenus en Europe sont-ils reconnus en France ?",
-        a: "Oui. Les universités partenaires d'Edumove délivrent des diplômes officiels et reconnus dans l'Union européenne, conformes aux standards européens (ECTS). La directive européenne 2005/36/CE permet la reconnaissance mutuelle des qualifications au sein de l'UE et de l'Espace économique européen.",
+        a: "Tout à fait. Nos universités partenaires délivrent des diplômes officiels, conformes aux standards européens (ECTS). C'est la directive 2005/36/CE qui encadre la reconnaissance mutuelle des qualifications entre pays de l'UE et de l'Espace économique européen.",
         content: (
           <>
-            Oui. Les <IL href="/universites/universidad-europea">universités partenaires d&apos;Edumove</IL> délivrent des diplômes officiels et reconnus dans l&apos;Union européenne, conformes aux standards européens (ECTS). La directive européenne 2005/36/CE permet la reconnaissance mutuelle des qualifications au sein de l&apos;UE et de l&apos;Espace économique européen. Consultez notre article dédié : <IL href="/blog/reconnaissance-diplomes-europeens">Reconnaissance des diplômes européens en France</IL>.
+            Tout à fait. Nos <IL href="/universites/universidad-europea">universités partenaires</IL> délivrent des diplômes officiels, conformes aux standards européens (ECTS). C&apos;est la directive 2005/36/CE qui encadre la reconnaissance mutuelle des qualifications entre pays de l&apos;UE et de l&apos;Espace économique européen. On détaille tout ici : <IL href="/blog/reconnaissance-diplomes-europeens">Reconnaissance des diplômes européens en France</IL>.
           </>
         ),
       },
@@ -65,16 +65,16 @@ const categories: FAQCategory[] = [
       },
       {
         q: "Puis-je exercer en France après mes études en Europe ?",
-        a: "Oui. Une fois votre diplôme reconnu, vous pouvez vous inscrire à l'Ordre professionnel correspondant (Ordre des médecins, des chirurgiens-dentistes, des kinésithérapeutes, etc.) et exercer en France dans les mêmes conditions qu'un diplômé français.",
+        a: "Absolument. Une fois le diplôme reconnu, il suffit de s'inscrire à l'Ordre professionnel correspondant (médecins, chirurgiens-dentistes, kinésithérapeutes…) pour exercer en France, exactement comme un diplômé français.",
         content: (
           <>
-            Oui. Une fois votre diplôme reconnu, vous pouvez vous inscrire à l&apos;Ordre professionnel correspondant (Ordre des médecins, des chirurgiens-dentistes, des kinésithérapeutes, etc.) et exercer en France dans les mêmes conditions qu&apos;un diplômé français. Découvrez toutes les démarches dans notre article sur la <IL href="/blog/reconnaissance-diplomes-europeens">reconnaissance des diplômes</IL>.
+            Absolument. Une fois le diplôme reconnu, il suffit de s&apos;inscrire à l&apos;Ordre professionnel correspondant (médecins, chirurgiens-dentistes, kinésithérapeutes…) pour exercer en France, exactement comme un diplômé français. Les démarches sont détaillées dans notre article sur la <IL href="/blog/reconnaissance-diplomes-europeens">reconnaissance des diplômes</IL>.
           </>
         ),
       },
       {
         q: "Le diplôme est-il reconnu dans d'autres pays que la France ?",
-        a: "Oui. Grâce à la directive européenne, votre diplôme est reconnu dans l'ensemble des 27 pays de l'Union européenne ainsi que dans l'Espace économique européen (Norvège, Islande, Liechtenstein) et en Suisse.",
+        a: "La directive européenne couvre les 27 pays de l'UE, plus la Norvège, l'Islande, le Liechtenstein (Espace économique européen) et la Suisse. Vous pouvez donc exercer dans n'importe lequel de ces pays.",
       },
     ],
   },
@@ -85,10 +85,10 @@ const categories: FAQCategory[] = [
     items: [
       {
         q: "Quel niveau est requis pour candidater ?",
-        a: "Le niveau requis varie selon la filière et l'université. De manière générale, un baccalauréat (toutes filières) est nécessaire. Edumove étudie chaque dossier au cas par cas — parcours scolaire, motivation, projet professionnel — et oriente l'étudiant vers les formations les plus adaptées.",
+        a: "Ça dépend de la filière et de l'université visée, mais dans tous les cas il faut un baccalauréat. La bonne nouvelle : toutes les filières de bac sont acceptées dans plusieurs de nos universités partenaires. On regarde chaque dossier individuellement — notes, motivation, projet pro — pour orienter vers la formation la plus adaptée.",
         content: (
           <>
-            Le niveau requis varie selon la filière et l&apos;université. De manière générale, un baccalauréat (toutes filières) est nécessaire. Edumove étudie chaque dossier au cas par cas — parcours scolaire, motivation, projet professionnel — et oriente l&apos;étudiant vers les formations les plus adaptées. Consultez notre <IL href="/guides/presenter-sa-candidature">guide complet pour présenter sa candidature</IL>.
+            Ça dépend de la filière et de l&apos;université visée, mais dans tous les cas il faut un baccalauréat. La bonne nouvelle : toutes les filières de bac sont acceptées dans plusieurs de nos universités partenaires. On regarde chaque dossier individuellement — notes, motivation, projet pro — pour orienter vers la formation la plus adaptée. Plus de détails dans notre <IL href="/guides/presenter-sa-candidature">guide de candidature</IL>.
           </>
         ),
       },
@@ -103,10 +103,10 @@ const categories: FAQCategory[] = [
       },
       {
         q: "Est-il possible de postuler à plusieurs universités en même temps ?",
-        a: "Oui. Edumove accompagne les étudiants dans des candidatures multiples, afin de sécuriser leur admission et maximiser leurs chances d'intégration dans une université partenaire.",
+        a: "Bien sûr, et c'est même recommandé. On peut candidater à plusieurs universités en parallèle pour maximiser ses chances. Votre conseiller vous aide à cibler les meilleures options selon votre profil.",
         content: (
           <>
-            Oui. Edumove accompagne les étudiants dans des candidatures multiples auprès de nos <IL href="/universites/universidad-europea">universités partenaires</IL>, afin de sécuriser leur admission et maximiser leurs chances d&apos;intégration. Découvrez comment dans notre <IL href="/guides/presenter-sa-candidature">guide de candidature</IL>.
+            Bien sûr, et c&apos;est même recommandé. On peut candidater à plusieurs <IL href="/universites/universidad-europea">universités</IL> en parallèle pour maximiser ses chances. Votre conseiller vous aide à cibler les meilleures options selon votre profil. Tout est expliqué dans notre <IL href="/guides/presenter-sa-candidature">guide de candidature</IL>.
           </>
         ),
       },
@@ -121,10 +121,10 @@ const categories: FAQCategory[] = [
       },
       {
         q: "À qui s'adresse Edumove ?",
-        a: "Edumove s'adresse aux lycéens de Terminale, aux étudiants en réorientation (après un échec en PASS/LAS par exemple), et à tous les candidats souhaitant poursuivre des études de santé en Europe dans un cadre structuré et accompagné.",
+        a: "Principalement les lycéens de Terminale et les étudiants en réorientation (beaucoup viennent après un ou deux échecs en PASS/LAS). Mais on accompagne aussi des profils plus atypiques — l'important c'est d'avoir un projet sérieux en santé.",
         content: (
           <>
-            Edumove s&apos;adresse aux lycéens de Terminale, aux étudiants en réorientation (après un échec en PASS/LAS par exemple), et à tous les candidats souhaitant poursuivre des études de santé en Europe. Découvrez comment <IL href="/guides/presenter-sa-candidature">présenter votre candidature</IL>.
+            Principalement les lycéens de Terminale et les étudiants en réorientation (beaucoup viennent après un ou deux échecs en PASS/LAS). Mais on accompagne aussi des profils plus atypiques — l&apos;important c&apos;est d&apos;avoir un projet sérieux en santé. Pour en savoir plus : <IL href="/guides/presenter-sa-candidature">présenter votre candidature</IL>.
           </>
         ),
       },
@@ -141,19 +141,19 @@ const categories: FAQCategory[] = [
     items: [
       {
         q: "Quel est le rôle d'Edumove dans le projet d'études ?",
-        a: "Edumove propose un accompagnement complet pour les études de santé en Europe : orientation personnalisée, constitution du dossier, candidatures, préparation aux tests d'admission, relation avec les universités partenaires, aide au logement et suivi des démarches jusqu'à l'admission et au-delà.",
+        a: "Concrètement, on gère tout le parcours avec vous : d'abord l'orientation pour trouver la bonne filière et la bonne université, puis le dossier de candidature, la préparation aux tests d'entrée, le lien avec les universités, et même la recherche de logement une fois admis.",
         content: (
           <>
-            Edumove propose un accompagnement complet pour les études de santé en Europe : orientation personnalisée, constitution du dossier, candidatures, <IL href="/guides/reussir-test-pe-universidad-europea">préparation aux tests d&apos;admission</IL>, relation avec les <IL href="/universites/universidad-europea">universités partenaires</IL>, aide au logement et suivi des démarches jusqu&apos;à l&apos;admission et au-delà. Consultez notre <IL href="/guides/presenter-sa-candidature">guide de candidature</IL> pour tout comprendre.
+            Concrètement, on gère tout le parcours avec vous : d&apos;abord l&apos;orientation pour trouver la bonne filière et la bonne université, puis le dossier de candidature, la <IL href="/guides/reussir-test-pe-universidad-europea">préparation aux tests d&apos;entrée</IL>, le lien avec les <IL href="/universites/universidad-europea">universités</IL>, et même la recherche de logement une fois admis. Le détail est dans notre <IL href="/guides/presenter-sa-candidature">guide de candidature</IL>.
           </>
         ),
       },
       {
         q: "Comment être contacté pour un premier échange ?",
-        a: "Il suffit de remplir le formulaire de candidature sur notre site ou de cliquer sur « Être recontacté ». Un conseiller Edumove vous rappelle sous 2h (entre 8h et 20h) pour un premier échange gratuit et sans engagement.",
+        a: "Le plus simple : cliquez sur « Être recontacté » ou remplissez le formulaire sur notre site. Un conseiller vous rappelle sous 2h (entre 8h et 20h). C'est gratuit et sans engagement.",
         content: (
           <>
-            Il suffit de remplir le formulaire sur notre <IL href="/guides/presenter-sa-candidature">page de candidature</IL> ou de cliquer sur « Être recontacté ». Un conseiller Edumove vous rappelle sous 2h (entre 8h et 20h) pour un premier échange gratuit et sans engagement.
+            Le plus simple : cliquez sur « Être recontacté » ou remplissez le formulaire sur notre <IL href="/guides/presenter-sa-candidature">page de candidature</IL>. Un conseiller vous rappelle sous 2h (entre 8h et 20h). C&apos;est gratuit et sans engagement.
           </>
         ),
       },
@@ -168,7 +168,7 @@ const categories: FAQCategory[] = [
       },
       {
         q: "Edumove m'accompagne-t-il aussi après l'admission ?",
-        a: "Oui. L'accompagnement Edumove ne s'arrête pas à l'admission. Nous vous aidons aussi pour la recherche de logement, les démarches administratives (inscription définitive, assurance, carte étudiante européenne) et l'organisation de votre départ.",
+        a: "L'accompagnement ne s'arrête pas à l'admission, loin de là. On reste disponible pour le logement, les démarches administratives (inscription définitive, assurance, carte étudiante européenne) et l'organisation du départ.",
       },
     ],
   },
@@ -179,19 +179,19 @@ const categories: FAQCategory[] = [
     items: [
       {
         q: "Combien coûtent les études de santé en Europe ?",
-        a: "Les frais de scolarité varient selon le pays, l'université et le statut de l'établissement. Ils se situent généralement entre 5 000 € et 20 000 € par an. Edumove accompagne les étudiants dans la mise en place de solutions de financement permettant de démarrer ses études sans avance immédiate.",
+        a: "Les frais de scolarité se situent entre 5 000 € et 20 000 € par an environ, selon le pays et l'université. C'est un investissement important, mais des solutions de financement existent pour démarrer sans avance immédiate.",
         content: (
           <>
-            Les frais de scolarité varient selon le pays, l&apos;université et le statut de l&apos;établissement. Ils se situent généralement entre 5 000 € et 20 000 € par an. Edumove accompagne les étudiants dans la mise en place de solutions de financement. Retrouvez tous les détails dans notre article <IL href="/blog/financer-etudes-sante-europe">Comment financer ses études de santé en Europe</IL>.
+            Les frais de scolarité se situent entre 5 000 € et 20 000 € par an environ, selon le pays et l&apos;université. C&apos;est un investissement important, mais des solutions de financement existent pour démarrer sans avance immédiate. Tous les détails dans notre article <IL href="/blog/financer-etudes-sante-europe">Comment financer ses études de santé en Europe</IL>.
           </>
         ),
       },
       {
         q: "Edumove finance-t-il les études ?",
-        a: "Edumove n'est pas un organisme de financement, mais accompagne les étudiants et leurs familles dans la mise en place de solutions de financement adaptées, en lien avec des partenaires bancaires reconnus (notamment LCL). Les étudiants peuvent financer leurs études jusqu'à 75 000 €, avec des dispositifs permettant de commencer le remboursement une fois diplômés.",
+        a: "Non, on n'est pas une banque. Par contre on fait le lien avec des partenaires bancaires, notamment LCL, pour mettre en place un prêt étudiant pouvant aller jusqu'à 75 000 €. Le principe : vous ne commencez à rembourser qu'une fois diplômé et en poste.",
         content: (
           <>
-            Edumove n&apos;est pas un organisme de financement, mais accompagne les étudiants et leurs familles dans la mise en place de solutions de financement adaptées, en lien avec des partenaires bancaires reconnus (notamment LCL). Les étudiants peuvent financer leurs études jusqu&apos;à 75 000 €, avec des dispositifs permettant de commencer le remboursement une fois diplômés. En savoir plus sur le <IL href="/blog/financer-etudes-sante-europe">financement des études</IL>.
+            Non, on n&apos;est pas une banque. Par contre on fait le lien avec des partenaires bancaires, notamment LCL, pour mettre en place un prêt étudiant pouvant aller jusqu&apos;à 75 000 €. Le principe : vous ne commencez à rembourser qu&apos;une fois diplômé et en poste. On explique tout dans notre article sur le <IL href="/blog/financer-etudes-sante-europe">financement des études</IL>.
           </>
         ),
       },
@@ -206,10 +206,10 @@ const categories: FAQCategory[] = [
       },
       {
         q: "Existe-t-il des bourses pour étudier en Europe ?",
-        a: "Oui. Selon votre situation, vous pouvez bénéficier de la bourse du CROUS (maintenue pour les études en Europe), de bourses régionales, ou d'aides spécifiques des universités partenaires. Votre conseiller Edumove vous aide à identifier toutes les aides disponibles.",
+        a: "Plusieurs pistes existent : la bourse du CROUS (elle est maintenue même pour des études en Europe), les bourses régionales, et certaines aides spécifiques des universités. Votre conseiller fait le point avec vous pour ne rien rater.",
         content: (
           <>
-            Oui. Selon votre situation, vous pouvez bénéficier de la bourse du CROUS (maintenue pour les études en Europe), de bourses régionales, ou d&apos;aides spécifiques des <IL href="/universites/universidad-europea">universités partenaires</IL>. Votre conseiller Edumove vous aide à identifier toutes les <IL href="/blog/financer-etudes-sante-europe">aides disponibles</IL>.
+            Plusieurs pistes existent : la bourse du CROUS (elle est maintenue même pour des études en Europe), les bourses régionales, et certaines aides spécifiques des <IL href="/universites/universidad-europea">universités</IL>. Votre conseiller fait le point avec vous pour ne rien rater. Détails dans notre <IL href="/blog/financer-etudes-sante-europe">guide financement</IL>.
           </>
         ),
       },
@@ -226,19 +226,19 @@ const categories: FAQCategory[] = [
     items: [
       {
         q: "Quelles filières de santé sont proposées ?",
-        a: "Edumove accompagne les étudiants dans 5 filières de santé : médecine, dentaire, kinésithérapie, pharmacie et vétérinaire. Chaque filière est disponible dans une ou plusieurs universités partenaires.",
+        a: "Cinq filières sont accessibles : médecine, dentaire, kinésithérapie, pharmacie et vétérinaire. Chacune est disponible dans une ou plusieurs de nos universités partenaires, en Espagne ou en Italie.",
         content: (
           <>
-            Edumove accompagne les étudiants dans 5 filières de santé : <IL href="/formations/medecine">médecine</IL>, <IL href="/formations/dentaire">dentaire</IL>, <IL href="/formations/kinesitherapie">kinésithérapie</IL>, <IL href="/formations/pharmacie">pharmacie</IL> et <IL href="/formations/veterinaire">vétérinaire</IL>. Chaque filière est disponible dans une ou plusieurs universités partenaires.
+            Cinq filières sont accessibles : <IL href="/formations/medecine">médecine</IL>, <IL href="/formations/dentaire">dentaire</IL>, <IL href="/formations/kinesitherapie">kinésithérapie</IL>, <IL href="/formations/pharmacie">pharmacie</IL> et <IL href="/formations/veterinaire">vétérinaire</IL>. Chacune est disponible dans une ou plusieurs de nos universités partenaires, en Espagne ou en Italie.
           </>
         ),
       },
       {
         q: "Dans quels pays peut-on étudier avec Edumove ?",
-        a: "Edumove travaille avec des universités partenaires en Espagne (Universidad Europea à Madrid, UCJC à Madrid) et en Italie (LINK Campus University à Rome). Les destinations dépendent des filières et des places disponibles.",
+        a: "Aujourd'hui, deux pays : l'Espagne (Universidad Europea et UCJC, toutes deux à Madrid) et l'Italie (LINK Campus University à Rome). La destination dépend de la filière choisie et des places disponibles.",
         content: (
           <>
-            Edumove travaille avec des universités partenaires en Espagne (<IL href="/universites/universidad-europea">Universidad Europea</IL> à Madrid, <IL href="/universites/ucjc">UCJC</IL> à Madrid) et en Italie (<IL href="/universites/link-campus">LINK Campus University</IL> à Rome). Les destinations dépendent des filières et des places disponibles.
+            Aujourd&apos;hui, deux pays : l&apos;Espagne (<IL href="/universites/universidad-europea">Universidad Europea</IL> et <IL href="/universites/ucjc">UCJC</IL>, toutes deux à Madrid) et l&apos;Italie (<IL href="/universites/link-campus">LINK Campus University</IL> à Rome). La destination dépend de la filière choisie et des places disponibles.
           </>
         ),
       },
@@ -262,10 +262,10 @@ const categories: FAQCategory[] = [
       },
       {
         q: "Y a-t-il des stages pratiques pendant les études ?",
-        a: "Oui. Toutes les formations incluent des stages cliniques en milieu hospitalier, souvent dès les premières années. C'est un atout majeur des formations en Europe par rapport au système français, où la pratique arrive plus tardivement.",
+        a: "C'est même l'un des gros points forts des formations en Europe : les stages cliniques en milieu hospitalier commencent souvent dès les premières années, bien plus tôt qu'en France.",
         content: (
           <>
-            Oui. Toutes les formations incluent des stages cliniques en milieu hospitalier, souvent dès les premières années. C&apos;est un atout majeur des formations en Europe par rapport au système français. Découvrez par exemple les <IL href="/blog/avantages-kinesitherapie-europe">avantages de la kinésithérapie en Europe</IL>.
+            C&apos;est même l&apos;un des gros points forts des formations en Europe : les stages cliniques en milieu hospitalier commencent souvent dès les premières années, bien plus tôt qu&apos;en France. Un exemple concret avec la <IL href="/blog/avantages-kinesitherapie-europe">kinésithérapie en Europe</IL>.
           </>
         ),
       },
@@ -278,10 +278,10 @@ const categories: FAQCategory[] = [
     items: [
       {
         q: "Comment trouver un logement à Madrid ou à Rome ?",
-        a: "Edumove vous accompagne dans la recherche de logement à Madrid comme à Rome : résidences étudiantes, colocations ou appartements à proximité du campus. Nous avons des contacts avec des agences locales dans chaque ville et des retours d'expérience de nos anciens étudiants.",
+        a: "On vous aide à trouver un logement dans les deux villes : résidences étudiantes, colocations, appartements proches du campus. On a des contacts avec des agences locales et les retours d'expérience de nos anciens étudiants, ça facilite beaucoup les choses.",
         content: (
           <>
-            Edumove vous accompagne dans la recherche de logement à Madrid comme à Rome : résidences étudiantes, colocations ou appartements à proximité du campus. Retrouvez toutes les infos pratiques dans notre <IL href="/guides/presenter-sa-candidature">guide de candidature</IL>, section « Après l&apos;admission ».
+            On vous aide à trouver un logement dans les deux villes : résidences étudiantes, colocations, appartements proches du campus. On a des contacts avec des agences locales et les retours d&apos;expérience des anciens, ça facilite beaucoup les choses. Plus d&apos;infos dans notre <IL href="/guides/presenter-sa-candidature">guide de candidature</IL>, section « Après l&apos;admission ».
           </>
         ),
       },
@@ -296,10 +296,10 @@ const categories: FAQCategory[] = [
       },
       {
         q: "Y a-t-il une communauté d'étudiants français à Madrid et à Rome ?",
-        a: "Oui. Que ce soit à Madrid (Universidad Europea, UCJC) ou à Rome (LINK Campus), les universités partenaires d'Edumove accueillent chaque année de nombreux étudiants francophones. Des groupes WhatsApp, des événements d'intégration et un réseau d'anciens facilitent l'adaptation et créent une vraie communauté sur chaque campus.",
+        a: "Il y en a une vraie, oui. À Madrid comme à Rome, vous retrouverez d'autres étudiants francophones. Il y a des groupes WhatsApp, des événements d'intégration en début d'année, et un réseau d'anciens qui aide beaucoup pour s'installer.",
         content: (
           <>
-            Oui. Que ce soit à Madrid (<IL href="/universites/universidad-europea">Universidad Europea</IL>, <IL href="/universites/ucjc">UCJC</IL>) ou à Rome (<IL href="/universites/link-campus">LINK Campus</IL>), nos universités partenaires accueillent chaque année de nombreux étudiants francophones. Découvrez le <IL href="/blog/temoignage-medecine-espagne">témoignage de Clara, étudiante en médecine à Madrid</IL>.
+            Il y en a une vraie, oui. À Madrid (<IL href="/universites/universidad-europea">Universidad Europea</IL>, <IL href="/universites/ucjc">UCJC</IL>) comme à Rome (<IL href="/universites/link-campus">LINK Campus</IL>), vous retrouverez d&apos;autres étudiants francophones. Il y a des groupes WhatsApp, des événements d&apos;intégration, et un réseau d&apos;anciens. Le <IL href="/blog/temoignage-medecine-espagne">témoignage de Clara</IL> en donne un bon aperçu.
           </>
         ),
       },

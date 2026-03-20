@@ -31,8 +31,8 @@ const highlights = [
   },
   {
     icon: Users,
-    title: "Accompagnement 360°",
-    description: "Edumove vous accompagne de la candidature jusqu'au diplôme.",
+    title: "Suivi personnalisé",
+    description: "Un conseiller dédié, du premier appel jusqu'à votre installation sur place.",
     color: "#EC680A",
   },
   {

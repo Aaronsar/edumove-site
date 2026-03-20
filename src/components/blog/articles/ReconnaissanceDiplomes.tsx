@@ -357,7 +357,7 @@ export default function ReconnaissanceDiplomes() {
       </div>
 
       <p className="text-[#334155] leading-relaxed mb-4">
-        Si vous avez encore des doutes, n&apos;hésitez pas à consulter directement
+        Pour aller plus loin, vous pouvez consulter directement
         le texte de la directive 2005/36/CE ou à contacter le centre ENIC-NARIC
         France. Vous pouvez aussi lire le{" "}
         <Link href="/blog/temoignage-medecine-espagne" className="text-[#EC680A] underline underline-offset-2 font-medium hover:text-[#D45E09] transition-colors">

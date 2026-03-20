@@ -40,22 +40,22 @@ export interface ProgramDetail {
 }
 
 const defaultAdmissionSteps = [
-  "Candidature simple et gratuite pour être rappelé par un expert Edumove",
-  "Étude de la faisabilité du dossier d'admission",
-  "Création et envoi du dossier d'admission avec un coach Edumove",
-  "Test d'entrée et entretien personnel : préparation assurée par Edumove",
-  "Réponse positive et financement jusqu'à 100% grâce au partenariat Edumove x LCL",
-  "Entrée en 1ère année avec l'accompagnement Edumove (logement, traduction, vie étudiante)",
+  "Vous remplissez le formulaire — un conseiller vous rappelle sous 24h pour faire le point",
+  "On étudie votre dossier ensemble et on évalue la faisabilité",
+  "Votre conseiller monte le dossier d'admission avec vous et l'envoie à l'université",
+  "Préparation au test d'entrée et à l'entretien : on vous coache jusqu'au jour J",
+  "Admission confirmée + mise en place du financement (prêt LCL jusqu'à 75 000 €)",
+  "Rentrée : on vous aide aussi pour le logement, les papiers et l'installation sur place",
 ];
 
 /* Vie étudiante — contenu enrichi depuis site edumove 2026.docx */
 const madridLife: StudentLife = {
   city: "Madrid",
   highlights: [
-    "Cadre de Vie à l'UEM : Le campus de Villaviciosa de Odón offre un environnement spacieux, moderne et très sécurisé, favorisant la concentration pour des études exigeantes.",
-    "Proximité de la Capitale : Bien que le campus soit en périphérie, excellente connexion à la vie culturelle et urbaine de Madrid via les transports en commun.",
-    "Proximité de l'Aéroport : Madrid-Barajas (MAD) à 30-40 minutes du campus selon la circulation.",
-    "Liaison Rapide avec la France : Vol direct Paris-Madrid en 1h50 à 2h05, liaisons extrêmement fréquentes.",
+    "Le campus de Villaviciosa de Odón est spacieux, moderne et sécurisé — idéal pour se concentrer sur des études exigeantes.",
+    "Même si le campus est en périphérie, Madrid centre est accessible rapidement en transports en commun (bus, cercanías).",
+    "L'aéroport Madrid-Barajas (MAD) est à 30-40 min du campus.",
+    "Paris-Madrid en vol direct : 1h50 à 2h05, avec des dizaines de vols par jour.",
   ],
   airport: "Aéroport Madrid-Barajas (MAD) à 30-40 minutes du campus",
   flightTime: "Vol direct Paris-Madrid : 1h50 à 2h05",
@@ -64,11 +64,11 @@ const madridLife: StudentLife = {
 const malagaLife: StudentLife = {
   city: "Málaga",
   highlights: [
-    "Cadre de Vie Idéal : Grande ville d'Andalousie moderne, au bord de la mer, avec un climat exceptionnel toute l'année.",
-    "Campus Neuf et Sécurisé : Conçu avec les dernières technologies pour la santé, environnement d'étude optimal pour la concentration.",
-    "Proximité de l'Aéroport : Málaga-Costa del Sol (AGP) à 10-15 minutes du campus.",
-    "Liaison Rapide avec la France : Vol direct Paris-Málaga (environ 2h20), fréquences bonnes pour la famille.",
-    "Coût de la vie très avantageux par rapport à la France.",
+    "Málaga, c'est le soleil toute l'année et la mer à côté — difficile de trouver mieux pour la qualité de vie étudiante.",
+    "Le campus est neuf, pensé pour les études de santé, avec des équipements récents.",
+    "L'aéroport Málaga-Costa del Sol (AGP) est à 10-15 min seulement.",
+    "Vol direct depuis Paris en 2h20. Les familles viennent facilement le week-end.",
+    "Le coût de la vie est nettement plus bas qu'en France (logement, courses, sorties).",
   ],
   airport: "Aéroport Málaga-Costa del Sol (AGP) à 10-15 minutes",
   flightTime: "Vol direct Paris-Málaga : environ 2h20",
@@ -77,10 +77,10 @@ const malagaLife: StudentLife = {
 const valenceLife: StudentLife = {
   city: "Valence",
   highlights: [
-    "Cadre de Vie Idéal : Valence offre une haute qualité de vie, dynamique et plus paisible que Madrid, très favorable aux études.",
-    "Sécurité et Encadrement : Campus moderne, environnement de travail sécurisé et encadrement académique rigoureux.",
-    "Proximité de l'Aéroport : Valence (VLC) à 15-20 minutes.",
-    "Liaison Rapide avec la France : Vol direct Paris-Valence en 1h45 à 2h00, liaisons rapides et simples avec la famille.",
+    "Valence combine le dynamisme d'une grande ville avec un rythme de vie plus calme que Madrid — parfait pour étudier sereinement.",
+    "Campus moderne avec un encadrement académique rigoureux et des installations récentes.",
+    "Aéroport de Valence (VLC) accessible en 15-20 min.",
+    "Vol direct depuis Paris : 1h45 à 2h, ce qui permet de rentrer facilement en France.",
   ],
   airport: "Aéroport de Valence (VLC) à 15-20 minutes",
   flightTime: "Vol direct Paris-Valence : 1h45 à 2h00",
@@ -89,11 +89,11 @@ const valenceLife: StudentLife = {
 const alicanteLife: StudentLife = {
   city: "Alicante",
   highlights: [
-    "Cadre de Vie Idéal : Ville méditerranéenne historique et moderne sur la Costa Blanca, climat exceptionnel toute l'année.",
-    "Campus Neuf et Sécurisé : Infrastructures conçues avec les dernières technologies pour la santé, environnement d'étude optimal.",
-    "Proximité de l'Aéroport : Alicante-Elche (ALC) à 15-20 minutes en voiture de la faculté.",
-    "Liaison Rapide avec la France : Vol direct Paris-Alicante (environ 2h05), fréquences excellentes.",
-    "Coût de la vie avantageux : Loyers et dépenses courantes généralement plus accessibles qu'en France.",
+    "Alicante, sur la Costa Blanca : une ville à taille humaine avec du soleil quasi permanent et la plage à deux pas.",
+    "Le campus est récent, bien équipé pour les formations santé.",
+    "Aéroport d'Alicante-Elche (ALC) à 15-20 min en voiture.",
+    "Paris-Alicante en vol direct : environ 2h05, avec beaucoup de créneaux disponibles.",
+    "Côté budget, les loyers et le quotidien sont plus abordables qu'en France.",
   ],
   airport: "Aéroport d'Alicante-Elche (ALC) à 15-20 minutes",
   flightTime: "Vol direct Paris-Alicante : environ 2h05",
@@ -102,10 +102,10 @@ const alicanteLife: StudentLife = {
 const canariesLife: StudentLife = {
   city: "Canaries",
   highlights: [
-    "Climat subtropical toute l'année, cadre insulaire unique.",
-    "Campus moderne avec toutes les infrastructures nécessaires.",
-    "Qualité de vie exceptionnelle dans un environnement naturel préservé.",
-    "Coût de la vie avantageux par rapport à l'Espagne continentale.",
+    "Un climat subtropical permanent — il fait entre 18 et 28°C toute l'année.",
+    "Campus moderne avec les équipements nécessaires aux études de santé.",
+    "Un cadre de vie différent du continent, plus calme, entouré de nature.",
+    "Les prix sont généralement plus bas que sur le continent espagnol.",
   ],
   airport: "Aéroports internationaux bien desservis depuis la France",
   flightTime: "Vol direct Paris-Canaries : environ 4h",
@@ -114,11 +114,11 @@ const canariesLife: StudentLife = {
 const romeLife: StudentLife = {
   city: "Rome",
   highlights: [
-    "Cadre Historique Unique : Étudier à Rome offre un environnement culturel exceptionnel, propice à l'épanouissement personnel.",
-    "Campus Accessible : Bien intégré, accès facile aux transports et infrastructures de la capitale italienne.",
-    "Proximité de l'Aéroport : Rome Fiumicino (FCO) à 30-35 minutes en voiture ou taxi.",
-    "Liaison Rapide avec la France : Vol direct Paris-Rome très court (environ 2h).",
-    "Cours d'italien intensif inclus la 1ère année, aucun prérequis linguistique.",
+    "Étudier à Rome, c'est vivre dans une des villes les plus riches culturellement au monde — et ça change une vie étudiante.",
+    "Le campus est bien situé, facile d'accès en transports en commun.",
+    "Aéroport Rome-Fiumicino (FCO) à 30-35 min en voiture.",
+    "Paris-Rome en vol direct : environ 2h. On rentre en France très facilement.",
+    "Un cours d'italien intensif est inclus la première année — pas besoin de parler italien avant d'arriver.",
   ],
   airport: "Aéroport Rome-Fiumicino (FCO) à 30 minutes du centre",
   flightTime: "Vol direct Paris-Rome : environ 2h",
@@ -127,10 +127,10 @@ const romeLife: StudentLife = {
 const ucjcMadridLife: StudentLife = {
   city: "Madrid",
   highlights: [
-    "Cadre de Vie à l'UCJC : Campus moderne et dynamique à Villafranca del Castillo, cliniques dentaires de pointe, environnement favorisant l'apprentissage.",
-    "Proximité de la Capitale : Accès facile à la richesse culturelle, sociale et économique de Madrid via les transports en commun.",
-    "Proximité de l'Aéroport : Madrid-Barajas (MAD) à 45-60 minutes du campus.",
-    "Liaison Rapide avec la France : Nombreux vols directs quotidiens, durée environ 2 heures.",
+    "Le campus UCJC à Villafranca del Castillo est moderne, avec des cliniques dentaires de pointe intégrées — on y pratique dès les premières années.",
+    "Madrid centre est accessible en transports, avec toute la vie culturelle et sociale que ça implique.",
+    "Aéroport Madrid-Barajas (MAD) : comptez 45-60 min depuis le campus.",
+    "Des dizaines de vols directs Paris-Madrid chaque jour, en environ 2h.",
   ],
   airport: "Aéroport Madrid-Barajas (MAD) à 45-60 minutes du campus",
   flightTime: "Vol direct Paris-Madrid : environ 2h",

@@ -133,11 +133,11 @@ export default function UEPage() {
       <section id="contact" data-program-cta className="py-10 md:py-16 px-6 bg-[#1B1D3A]">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Pr&ecirc;t &agrave; rejoindre l&apos;Universidad Europea ?
+            L&apos;Universidad Europea vous int&eacute;resse&nbsp;?
           </h2>
           <p className="text-white/80 mb-8 text-lg">
-            5 campus, 6 fili&egrave;res, un accompagnement Edumove de A
-            &agrave; Z.
+            5 campus, 6 fili&egrave;res. On vous explique tout lors d&apos;un
+            premier &eacute;change gratuit.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link

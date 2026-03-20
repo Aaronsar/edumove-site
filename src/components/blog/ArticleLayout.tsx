@@ -134,10 +134,10 @@ function ArticleCTA() {
   return (
     <div className="mt-16 rounded-2xl bg-[#1B1D3A] p-8 md:p-10 text-center">
       <h3 className="text-xl md:text-2xl font-bold mb-3" style={{ color: "#ffffff" }}>
-        Prêt(e) à démarrer votre projet&nbsp;?
+        Envie d&apos;en savoir plus&nbsp;?
       </h3>
       <p className="text-sm mb-8 max-w-md mx-auto" style={{ color: "rgba(255,255,255,0.5)" }}>
-        Un expert Edumove analyse gratuitement votre dossier et vous guide dans chaque étape.
+        On analyse votre dossier gratuitement et on vous dit ce qui est faisable pour vous.
       </p>
       <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
         <a

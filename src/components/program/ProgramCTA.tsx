@@ -25,24 +25,24 @@ export default function ProgramCTA({ detail }: { detail: ProgramDetail }) {
         >
           <div className="inline-flex items-center gap-2 bg-[#EC680A]/15 border border-[#EC680A]/25 rounded-full px-5 py-2 mb-8">
             <MessageCircle className="w-4 h-4 text-[#EC680A]" />
-            <span className="text-sm text-[#EC680A] font-semibold">Rappel gratuit sous 24h</span>
+            <span className="text-sm text-[#EC680A] font-semibold">On vous rappelle sous 24h</span>
           </div>
 
           <h2
             className="text-3xl md:text-5xl font-bold mb-6 leading-tight"
             style={{ color: "#ffffff" }}
           >
-            Prêt(e) à commencer vos études de{" "}
+            Intéressé(e) par{" "}
             <span className="text-[#EC680A]">{detail.filiere}</span> à{" "}
-            <span className="text-[#EC680A]">{detail.city}</span> ?
+            <span className="text-[#EC680A]">{detail.city}</span>&nbsp;?
           </h2>
 
           <p
             className="text-lg max-w-2xl mx-auto mb-10"
             style={{ color: "rgba(255,255,255,0.6)" }}
           >
-            Un expert Edumove analyse gratuitement votre dossier et vous guide
-            dans chaque étape de votre candidature.
+            On analyse votre dossier gratuitement et on vous dit si c&apos;est
+            faisable pour vous.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

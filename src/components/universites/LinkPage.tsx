@@ -143,11 +143,10 @@ export default function LinkPage() {
       <section id="contact" data-program-cta className="py-10 md:py-16 px-6 bg-[#1B1D3A]">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Prêt à rejoindre LINK Campus ?
+            LINK Campus vous intéresse ?
           </h2>
           <p className="text-white/80 mb-8 text-lg">
-            Candidatez dès maintenant et bénéficiez de l&apos;accompagnement
-            Edumove de A à Z.
+            Candidatez dès maintenant. On s&apos;occupe du reste avec vous.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link

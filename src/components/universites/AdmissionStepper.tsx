@@ -43,7 +43,7 @@ export default function AdmissionStepper({
             Processus d&apos;admission
           </h2>
           <p className="mt-3 max-w-xl" style={{ color: "rgba(255,255,255,0.5)" }}>
-            Un parcours simple et accompagné de A à Z par votre expert Edumove
+            Un parcours simple, avec un conseiller dédié qui gère tout avec vous
           </p>
         </motion.div>
 
