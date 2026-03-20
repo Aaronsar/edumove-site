@@ -28,7 +28,7 @@ export default function AdminLoginPage() {
     });
 
     if (authError) {
-      setError("Email ou mot de passe incorrect");
+      setError(authError.message || "Email ou mot de passe incorrect");
       setLoading(false);
       return;
     }
