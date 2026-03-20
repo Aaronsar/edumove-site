@@ -55,6 +55,24 @@ export const articles: Article[] = [
     relatedUniversities: ["/universites/link-campus"],
   },
   {
+    slug: "presenter-sa-candidature",
+    title: "Comment présenter sa candidature en études de santé en Europe ?",
+    date: "20 mars 2026",
+    dateISO: "2026-03-20",
+    tag: "Guide",
+    tagColor: "bg-[#615ca5]",
+    readTime: "8 min",
+    excerpt:
+      "Toutes les étapes pour candidater : dossier, conditions, test d\u2019admission. L\u2019accompagnement Edumove est 100 % gratuit.",
+    metaTitle: "Comment présenter sa candidature ? Guide complet | Edumove",
+    metaDescription:
+      "Guide étape par étape pour candidater en médecine, dentaire, kiné ou pharmacie en Europe. Accompagnement Edumove gratuit.",
+    isGuide: true,
+    relatedSlugs: ["reussir-test-pe-universidad-europea", "reussir-test-admission-link-campus", "financer-etudes-sante-europe"],
+    relatedFormations: ["medecine", "dentaire", "kinesitherapie", "pharmacie", "veterinaire"],
+    relatedUniversities: ["/universites/universidad-europea", "/universites/ucjc", "/universites/link-campus"],
+  },
+  {
     slug: "financer-etudes-sante-europe",
     title: "Comment financer ses études de santé en Europe avec un prêt étudiant ?",
     date: "28 février 2025",

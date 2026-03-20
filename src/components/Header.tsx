@@ -209,7 +209,7 @@ export default function Header() {
 
             {/* Presenter sa candidature */}
             <Link
-              href="/presenter-sa-candidature"
+              href="/guides/presenter-sa-candidature"
               onClick={closeMenu}
               className="block py-3 text-base font-medium text-[#1B1D3A] hover:text-[#EC680A] transition-colors"
             >
