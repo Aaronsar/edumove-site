@@ -92,7 +92,8 @@ export default function SEOPanel({
     [title, metaTitle, metaDescription, slug, focusKeyword, sections]
   );
 
-  const baseUrl = isGuide ? "edumove.fr/guides/" : "edumove.fr/blog/";
+  // For pages (slug contains "/"), show full path; for articles use blog/guides prefix
+  const baseUrl = slug.includes("/") ? "edumove.fr/" : isGuide ? "edumove.fr/guides/" : "edumove.fr/blog/";
   const basicChecks = analysis.checks.filter((c) => c.category === "basic");
   const contentChecks = analysis.checks.filter((c) => c.category === "content");
   const linksChecks = analysis.checks.filter((c) => c.category === "links");

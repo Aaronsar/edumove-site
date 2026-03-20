@@ -1,8 +1,10 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useMemo } from "react";
 import { createClient } from "@/lib/supabase/client";
 import type { ArticleSection } from "@/types/sections";
+import { analyzeSEO } from "@/lib/seo/analyzeSEO";
+import SEOPanel from "./SEOPanel";
 import HeadingBlock from "./blocks/HeadingBlock";
 import ParagraphBlock from "./blocks/ParagraphBlock";
 import CalloutBlock from "./blocks/CalloutBlock";
@@ -29,7 +31,6 @@ import {
   Loader2,
   Check,
   ExternalLink,
-  Search,
 } from "lucide-react";
 
 const blockTypes = [
@@ -87,6 +88,8 @@ interface PageData {
   meta_description: string | null;
   sections: ArticleSection[];
   status: string;
+  focus_keyword?: string | null;
+  seo_score?: number;
 }
 
 interface Props {
@@ -104,12 +107,27 @@ export default function PageEditor({ page, publicUrl }: Props) {
   const [title, setTitle] = useState(page.title);
   const [metaTitle, setMetaTitle] = useState(page.meta_title ?? "");
   const [metaDescription, setMetaDescription] = useState(page.meta_description ?? "");
+  const [focusKeyword, setFocusKeyword] = useState(page.focus_keyword ?? "");
   const [sections, setSections] = useState<ArticleSection[]>(page.sections ?? []);
   const [status, setStatus] = useState(page.status);
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
   const [error, setError] = useState("");
   const [addMenuOpen, setAddMenuOpen] = useState<number | null>(null);
+
+  // SEO score calculation in real-time
+  const seoAnalysis = useMemo(
+    () =>
+      analyzeSEO({
+        title,
+        metaTitle: metaTitle || title,
+        metaDescription,
+        slug: page.page_slug,
+        focusKeyword,
+        sections,
+      }),
+    [title, metaTitle, metaDescription, page.page_slug, focusKeyword, sections]
+  );
 
   const updateSection = useCallback((index: number, updated: ArticleSection) => {
     setSections((prev) => prev.map((s, i) => (i === index ? updated : s)));
@@ -142,12 +160,16 @@ export default function PageEditor({ page, publicUrl }: Props) {
     setSaving(true);
     setError("");
 
+    const currentScore = seoAnalysis.score;
+
     const { error: saveError } = await getSupabase()
       .from("edumove_pages")
       .update({
         title,
         meta_title: metaTitle || null,
         meta_description: metaDescription || null,
+        focus_keyword: focusKeyword || null,
+        seo_score: currentScore,
         sections,
         status,
         updated_at: new Date().toISOString(),
@@ -162,7 +184,7 @@ export default function PageEditor({ page, publicUrl }: Props) {
     }
 
     setSaved(true);
-    setTimeout(() => setSaved(false), 2000);
+    setTimeout(() => setSaved(false), 3000);
   }
 
   function renderBlock(section: ArticleSection, index: number) {
@@ -318,8 +340,24 @@ export default function PageEditor({ page, publicUrl }: Props) {
 
       {/* Right: Settings panel */}
       <div className="w-80 shrink-0 space-y-4 sticky top-20">
-        {/* Save + View */}
+        {/* Save + View + Score */}
         <div className="bg-white rounded-xl border border-gray-200/80 p-4 space-y-3">
+          {/* Mini SEO score */}
+          <div className="flex items-center justify-center gap-2 py-1">
+            <div
+              className={`w-3 h-3 rounded-full ${
+                seoAnalysis.score >= 71
+                  ? "bg-green-500"
+                  : seoAnalysis.score >= 41
+                  ? "bg-amber-500"
+                  : "bg-red-500"
+              }`}
+            />
+            <span className="text-xs font-semibold text-[#334155]">
+              SEO : {seoAnalysis.score}/100
+            </span>
+          </div>
+
           <div className="flex gap-2">
             <button
               onClick={handleSave}
@@ -333,7 +371,7 @@ export default function PageEditor({ page, publicUrl }: Props) {
               ) : (
                 <Save className="w-4 h-4" />
               )}
-              {saving ? "Enregistrement..." : saved ? "Enregistr\u00e9 !" : "Enregistrer"}
+              {saving ? "..." : saved ? "Enregistré !" : "Enregistrer"}
             </button>
             <a
               href={`https://edumove-site.vercel.app${publicUrl}`}
@@ -367,58 +405,21 @@ export default function PageEditor({ page, publicUrl }: Props) {
           </div>
         </div>
 
-        {/* SEO */}
-        <div className="bg-white rounded-xl border border-gray-200/80 p-4 space-y-3">
-          <h3 className="text-xs font-bold uppercase tracking-wider text-[#94a3b8] flex items-center gap-1.5">
-            <Search className="w-3 h-3" />
-            SEO
-          </h3>
-
-          {/* SERP Preview */}
-          <div className="bg-[#f8f9fb] rounded-lg p-3 space-y-0.5">
-            <p className="text-[10px] uppercase tracking-wider text-[#94a3b8] font-semibold mb-1.5">
-              Aperçu Google
-            </p>
-            <p className="text-sm text-[#1a0dab] font-medium truncate">
-              {metaTitle || title || "Titre de la page"}
-            </p>
-            <p className="text-xs text-[#006621] truncate">
-              edumove.fr{publicUrl}
-            </p>
-            <p className="text-xs text-[#545454] line-clamp-2">
-              {metaDescription || "Description de la page..."}
-            </p>
-          </div>
-
-          <div>
-            <label className="block text-xs font-semibold text-[#334155] mb-1">
-              Titre SEO
-              <span className={`ml-1 font-normal ${(metaTitle || title).length > 60 ? "text-red-500" : "text-[#94a3b8]"}`}>
-                ({(metaTitle || title).length}/60)
-              </span>
-            </label>
-            <input
-              type="text"
-              value={metaTitle}
-              onChange={(e) => setMetaTitle(e.target.value)}
-              placeholder={title || "Titre SEO..."}
-              className="w-full px-3 py-1.5 rounded-lg border border-gray-200 bg-[#f8f9fb] text-sm text-[#334155] focus:outline-none focus:ring-2 focus:ring-[#615CA5]/20"
-            />
-          </div>
-
-          <div>
-            <label className="block text-xs font-semibold text-[#334155] mb-1">
-              Meta description
-              <span className={`ml-1 font-normal ${metaDescription.length > 160 ? "text-red-500" : metaDescription.length < 120 ? "text-amber-500" : "text-[#94a3b8]"}`}>
-                ({metaDescription.length}/160)
-              </span>
-            </label>
-            <textarea
-              value={metaDescription}
-              onChange={(e) => setMetaDescription(e.target.value)}
-              placeholder="Description pour Google..."
-              rows={3}
-              className="w-full px-3 py-1.5 rounded-lg border border-gray-200 bg-[#f8f9fb] text-sm text-[#334155] focus:outline-none focus:ring-2 focus:ring-[#615CA5]/20 resize-y"
+        {/* SEO Panel — full RankMath-like analysis */}
+        <div className="bg-white rounded-xl border border-gray-200/80 overflow-hidden">
+          <div className="p-4">
+            <SEOPanel
+              title={title}
+              metaTitle={metaTitle}
+              metaDescription={metaDescription}
+              slug={page.page_slug}
+              focusKeyword={focusKeyword}
+              sections={sections}
+              isGuide={false}
+              onMetaTitleChange={setMetaTitle}
+              onMetaDescriptionChange={setMetaDescription}
+              onSlugChange={() => {}}
+              onFocusKeywordChange={setFocusKeyword}
             />
           </div>
         </div>
