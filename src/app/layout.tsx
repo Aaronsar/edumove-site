@@ -13,6 +13,11 @@ export const metadata: Metadata = {
   title: "Edumove — Etudes de sante en Europe",
   description:
     "Edumove : orientation, candidature, financement et installation pour vos etudes de sante en Europe. Medecine, dentaire, kinesitherapie, pharmacie, veterinaire.",
+  icons: {
+    icon: "/edumove-icon-orange.svg",
+    shortcut: "/edumove-icon-orange.svg",
+    apple: "/edumove-icon-orange.svg",
+  },
 };
 
 export default function RootLayout({
