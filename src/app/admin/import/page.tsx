@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { parseWordPressContent } from "@/lib/import/parseWordPressContent";
@@ -22,7 +22,12 @@ const GEDS_API = "https://www.geds.fr/wp-json/wp/v2/posts";
 
 export default function ImportPage() {
   const router = useRouter();
-  const supabase = createClient();
+  const supabaseRef = useRef<ReturnType<typeof createClient> | null>(null);
+  function getSupabase() {
+    if (!supabaseRef.current) supabaseRef.current = createClient();
+    return supabaseRef.current;
+  }
+  const supabase = getSupabase();
   const [posts, setPosts] = useState<GEDSPost[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
