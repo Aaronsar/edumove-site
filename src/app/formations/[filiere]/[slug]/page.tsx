@@ -13,6 +13,7 @@ import RelatedPrograms from "@/components/program/RelatedPrograms";
 import GuideTestPEBanner from "@/components/program/GuideTestPEBanner";
 import GuideTestLINKBanner from "@/components/program/GuideTestLINKBanner";
 import StickyBar from "@/components/program/StickyBar";
+import MiniCTA from "@/components/program/MiniCTA";
 
 export function generateStaticParams() {
   return getAllProgramSlugs();
