@@ -1,50 +1,59 @@
 import { redirect } from "next/navigation";
-import { createClient } from "@/lib/supabase/server";
 import Link from "next/link";
 import { FileText, FilePlus, Library, TrendingUp } from "lucide-react";
 
 async function getStats() {
-  const supabase = await createClient();
+  try {
+    const { createClient } = await import("@/lib/supabase/server");
+    const supabase = await createClient();
 
-  const { count: totalCount } = await supabase
-    .from("edumove_articles")
-    .select("*", { count: "exact", head: true });
+    const { count: totalCount } = await supabase
+      .from("edumove_articles")
+      .select("*", { count: "exact", head: true });
 
-  const { count: publishedCount } = await supabase
-    .from("edumove_articles")
-    .select("*", { count: "exact", head: true })
-    .eq("status", "published");
+    const { count: publishedCount } = await supabase
+      .from("edumove_articles")
+      .select("*", { count: "exact", head: true })
+      .eq("status", "published");
 
-  const { count: draftCount } = await supabase
-    .from("edumove_articles")
-    .select("*", { count: "exact", head: true })
-    .eq("status", "draft");
+    const { count: draftCount } = await supabase
+      .from("edumove_articles")
+      .select("*", { count: "exact", head: true })
+      .eq("status", "draft");
 
-  const { count: gedsCount } = await supabase
-    .from("edumove_articles")
-    .select("*", { count: "exact", head: true })
-    .eq("source", "geds_import");
+    const { count: gedsCount } = await supabase
+      .from("edumove_articles")
+      .select("*", { count: "exact", head: true })
+      .eq("source", "geds_import");
 
-  const { data: recentArticles } = await supabase
-    .from("edumove_articles")
-    .select("id, title, slug, status, tag, updated_at")
-    .order("updated_at", { ascending: false })
-    .limit(5);
+    const { data: recentArticles } = await supabase
+      .from("edumove_articles")
+      .select("id, title, slug, status, tag, updated_at")
+      .order("updated_at", { ascending: false })
+      .limit(5);
 
-  return {
-    total: totalCount ?? 0,
-    published: publishedCount ?? 0,
-    drafts: draftCount ?? 0,
-    geds: gedsCount ?? 0,
-    recent: recentArticles ?? [],
-  };
+    return {
+      total: totalCount ?? 0,
+      published: publishedCount ?? 0,
+      drafts: draftCount ?? 0,
+      geds: gedsCount ?? 0,
+      recent: recentArticles ?? [],
+    };
+  } catch {
+    return { total: 0, published: 0, drafts: 0, geds: 0, recent: [] as Array<{ id: number; title: string; slug: string; status: string; tag: string; updated_at: string }> };
+  }
 }
 
 export default async function AdminDashboardPage() {
   // Auth guard
-  const supabaseAuth = await createClient();
-  const { data: { user } } = await supabaseAuth.auth.getUser();
-  if (!user) redirect("/admin/login");
+  try {
+    const { createClient } = await import("@/lib/supabase/server");
+    const supabaseAuth = await createClient();
+    const { data: { user } } = await supabaseAuth.auth.getUser();
+    if (!user) redirect("/admin/login");
+  } catch {
+    redirect("/admin/login");
+  }
 
   const stats = await getStats();
 

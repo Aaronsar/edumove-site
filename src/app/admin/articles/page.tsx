@@ -1,20 +1,24 @@
-import { createClient } from "@/lib/supabase/server";
 import Link from "next/link";
-import { Plus, Search } from "lucide-react";
+import { Plus } from "lucide-react";
 import ArticlesListClient from "@/components/admin/ArticlesList";
 
 async function getArticles() {
-  const supabase = await createClient();
-  const { data, error } = await supabase
-    .from("edumove_articles")
-    .select("id, title, slug, status, tag, tag_color, read_time, seo_score, source, updated_at, published_at")
-    .order("updated_at", { ascending: false });
+  try {
+    const { createClient } = await import("@/lib/supabase/server");
+    const supabase = await createClient();
+    const { data, error } = await supabase
+      .from("edumove_articles")
+      .select("id, title, slug, status, tag, tag_color, read_time, seo_score, source, updated_at, published_at")
+      .order("updated_at", { ascending: false });
 
-  if (error) {
-    console.error("Error fetching articles:", error);
+    if (error) {
+      console.error("Error fetching articles:", error);
+      return [];
+    }
+    return data ?? [];
+  } catch {
     return [];
   }
-  return data ?? [];
 }
 
 export default async function AdminArticlesPage() {
