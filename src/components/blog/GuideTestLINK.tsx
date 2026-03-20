@@ -530,8 +530,8 @@ export default function GuideTestLINK() {
               {/* CTA */}
               <div className="bg-[#1B1D3A] rounded-2xl p-8 md:p-10 text-center">
                 <BookOpen className="w-8 h-8 text-[#EC680A] mx-auto mb-4" />
-                <h3 className="text-xl md:text-2xl font-bold text-white mb-3">
-                  Pr&ecirc;t &agrave; passer le test LINK ?
+                <h3 className="text-xl md:text-2xl font-bold mb-3" style={{ color: "#ffffff" }}>
+                  Le test LINK vous attend&nbsp;?
                 </h3>
                 <p className="text-white/60 text-sm mb-6 max-w-md mx-auto">
                   D&eacute;posez votre candidature gratuitement et un conseiller Edumove vous accompagnera

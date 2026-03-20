@@ -589,8 +589,8 @@ export default function GuideCandidature() {
               {/* CTA */}
               <div className="bg-[#1B1D3A] rounded-2xl p-8 md:p-10 text-center">
                 <Sparkles className="w-8 h-8 text-[#EC680A] mx-auto mb-4" />
-                <h3 className="text-xl md:text-2xl font-bold text-white mb-3">
-                  Prêt(e) à candidater ?
+                <h3 className="text-xl md:text-2xl font-bold mb-3" style={{ color: "#ffffff" }}>
+                  Envie de vous lancer&nbsp;?
                 </h3>
                 <p className="text-white/60 text-sm mb-2 max-w-md mx-auto">
                   Déposez votre candidature et un conseiller Edumove vous rappelle sous 2h pour lancer votre projet.

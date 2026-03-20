@@ -132,7 +132,7 @@ export default function UEPage() {
       {/* CTA */}
       <section id="contact" data-program-cta className="py-10 md:py-16 px-6 bg-[#1B1D3A]">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: "#ffffff" }}>
             L&apos;Universidad Europea vous int&eacute;resse&nbsp;?
           </h2>
           <p className="text-white/80 mb-8 text-lg">
