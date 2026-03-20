@@ -30,25 +30,6 @@ const CLASSE_OPTIONS = [
   "Autre",
 ];
 
-const PAYS_OPTIONS = [
-  "Espagne",
-  "Portugal",
-  "Belgique",
-  "Chypre",
-  "Italie",
-  "Croatie",
-  "Roumanie",
-  "France",
-];
-
-const SPECIALITE_OPTIONS = [
-  "Dentaire",
-  "Médecine",
-  "Pharmacie",
-  "Kinésithérapie",
-  "Orthophonie",
-  "Vétérinaire",
-];
 
 type FormState = "idle" | "submitting" | "success" | "error";
 
@@ -69,8 +50,6 @@ export default function HubSpotModal({ isOpen, onClose }: HubSpotModalProps) {
   const [phone, setPhone] = useState("");
   const [classe, setClasse] = useState("");
   const [departement, setDepartement] = useState("");
-  const [pays, setPays] = useState("");
-  const [specialite, setSpecialite] = useState("");
   const [financement, setFinancement] = useState("");
   const [formState, setFormState] = useState<FormState>("idle");
   const [errorMsg, setErrorMsg] = useState("");
@@ -125,16 +104,6 @@ export default function HubSpotModal({ isOpen, onClose }: HubSpotModalProps) {
             { objectTypeId: "0-1", name: "dpartement_ex__75", value: departement },
             {
               objectTypeId: "0-1",
-              name: "edumove_pays_souhaite",
-              value: pays,
-            },
-            {
-              objectTypeId: "0-1",
-              name: "edumove_specialite_souhaite",
-              value: specialite,
-            },
-            {
-              objectTypeId: "0-1",
               name: "edumove_voulez_vous_un_financement_a_100_de_vos_etudes_a_letranger",
               value: financement,
             },
@@ -154,8 +123,6 @@ export default function HubSpotModal({ isOpen, onClose }: HubSpotModalProps) {
         setPhone("");
         setClasse("");
         setDepartement("");
-        setPays("");
-        setSpecialite("");
         setFinancement("");
       } else {
         const data = await res.json().catch(() => null);
@@ -316,57 +283,6 @@ export default function HubSpotModal({ isOpen, onClose }: HubSpotModalProps) {
               />
             </div>
 
-            {/* Pays souhaité */}
-            <div>
-              <label className={labelClass}>
-                Dans quel(s) pays souhaitez vous étudier ?{" "}
-                <span className="text-[#EC680A]">*</span>
-              </label>
-              <div className={selectWrapperClass}>
-                <select
-                  required
-                  value={pays}
-                  onChange={(e) => setPays(e.target.value)}
-                  className={`${selectClass} ${!pays ? "text-[#94A3B8]" : ""}`}
-                >
-                  <option value="" disabled>
-                    Sélectionnez un pays
-                  </option>
-                  {PAYS_OPTIONS.map((opt) => (
-                    <option key={opt} value={opt}>
-                      {opt}
-                    </option>
-                  ))}
-                </select>
-                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#94A3B8] pointer-events-none" />
-              </div>
-            </div>
-
-            {/* Spécialité souhaitée */}
-            <div>
-              <label className={labelClass}>
-                Quelle(s) spécialité(s) vous intéresse ?{" "}
-                <span className="text-[#EC680A]">*</span>
-              </label>
-              <div className={selectWrapperClass}>
-                <select
-                  required
-                  value={specialite}
-                  onChange={(e) => setSpecialite(e.target.value)}
-                  className={`${selectClass} ${!specialite ? "text-[#94A3B8]" : ""}`}
-                >
-                  <option value="" disabled>
-                    Sélectionnez une spécialité
-                  </option>
-                  {SPECIALITE_OPTIONS.map((opt) => (
-                    <option key={opt} value={opt}>
-                      {opt}
-                    </option>
-                  ))}
-                </select>
-                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#94A3B8] pointer-events-none" />
-              </div>
-            </div>
 
             {/* Financement */}
             <div>
