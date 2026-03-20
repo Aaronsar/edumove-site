@@ -375,7 +375,7 @@ export default function GuideCandidature() {
               </div>
 
               <Callout variant="warning">
-                <strong>Rappel :</strong> chaque étape est <strong>accompagnée gratuitement par Edumove</strong>. Vous n&apos;êtes jamais seul(e) dans le processus. Votre conseiller est disponible par téléphone, WhatsApp et email.
+                <strong>Rappel :</strong> <strong>Edumove vous accompagne gratuitement à chaque étape</strong>. Vous n&apos;êtes jamais seul(e) dans le processus. Votre conseiller est disponible par téléphone, WhatsApp et email.
               </Callout>
 
               {/* Section 4 — Constituer un dossier solide */}
