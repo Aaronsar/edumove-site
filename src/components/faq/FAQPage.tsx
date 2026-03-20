@@ -124,7 +124,7 @@ const categories: FAQCategory[] = [
         a: "Edumove s'adresse aux lycéens de Terminale, aux étudiants en réorientation (après un échec en PASS/LAS par exemple), et à tous les candidats souhaitant poursuivre des études de santé en Europe dans un cadre structuré et accompagné.",
         content: (
           <>
-            Edumove s&apos;adresse aux lycéens de Terminale, aux étudiants en réorientation (après un échec en PASS/LAS par exemple), et à tous les candidats souhaitant poursuivre des études de santé en Europe. Découvrez <IL href="/a-propos">qui nous sommes</IL> et comment nous vous accompagnons.
+            Edumove s&apos;adresse aux lycéens de Terminale, aux étudiants en réorientation (après un échec en PASS/LAS par exemple), et à tous les candidats souhaitant poursuivre des études de santé en Europe. Découvrez comment <IL href="/guides/presenter-sa-candidature">présenter votre candidature</IL>.
           </>
         ),
       },
@@ -144,7 +144,7 @@ const categories: FAQCategory[] = [
         a: "Edumove propose un accompagnement complet pour les études de santé en Europe : orientation personnalisée, constitution du dossier, candidatures, préparation aux tests d'admission, relation avec les universités partenaires, aide au logement et suivi des démarches jusqu'à l'admission et au-delà.",
         content: (
           <>
-            Edumove propose un accompagnement complet pour les études de santé en Europe : orientation personnalisée, constitution du dossier, candidatures, <IL href="/guides/reussir-test-pe-universidad-europea">préparation aux tests d&apos;admission</IL>, relation avec les <IL href="/universites/universidad-europea">universités partenaires</IL>, aide au logement et suivi des démarches jusqu&apos;à l&apos;admission et au-delà. En savoir plus <IL href="/a-propos">à propos d&apos;Edumove</IL>.
+            Edumove propose un accompagnement complet pour les études de santé en Europe : orientation personnalisée, constitution du dossier, candidatures, <IL href="/guides/reussir-test-pe-universidad-europea">préparation aux tests d&apos;admission</IL>, relation avec les <IL href="/universites/universidad-europea">universités partenaires</IL>, aide au logement et suivi des démarches jusqu&apos;à l&apos;admission et au-delà. Consultez notre <IL href="/guides/presenter-sa-candidature">guide de candidature</IL> pour tout comprendre.
           </>
         ),
       },
@@ -153,7 +153,7 @@ const categories: FAQCategory[] = [
         a: "Il suffit de remplir le formulaire de candidature sur notre site ou de cliquer sur « Être recontacté ». Un conseiller Edumove vous rappelle sous 2h (entre 8h et 20h) pour un premier échange gratuit et sans engagement.",
         content: (
           <>
-            Il suffit de remplir le <IL href="https://candidature.edumove.fr">formulaire de candidature</IL> sur notre site ou de cliquer sur « Être recontacté ». Un conseiller Edumove vous rappelle sous 2h (entre 8h et 20h) pour un premier échange gratuit et sans engagement. Consultez notre <IL href="/guides/presenter-sa-candidature">guide de candidature</IL> pour en savoir plus.
+            Il suffit de remplir le formulaire sur notre <IL href="/guides/presenter-sa-candidature">page de candidature</IL> ou de cliquer sur « Être recontacté ». Un conseiller Edumove vous rappelle sous 2h (entre 8h et 20h) pour un premier échange gratuit et sans engagement.
           </>
         ),
       },
