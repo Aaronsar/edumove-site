@@ -158,21 +158,21 @@ export default function PageEditor({ page, publicUrl }: Props) {
 
     switch (section.type) {
       case "heading":
-        return <HeadingBlock section={section} {...props} />;
+        return <HeadingBlock block={section} {...props} />;
       case "paragraph":
-        return <ParagraphBlock section={section} {...props} />;
+        return <ParagraphBlock block={section} {...props} />;
       case "callout":
-        return <CalloutBlock section={section} {...props} />;
+        return <CalloutBlock block={section} {...props} />;
       case "list":
-        return <ListBlock section={section} {...props} />;
+        return <ListBlock block={section} {...props} />;
       case "table":
-        return <TableBlock section={section} {...props} />;
+        return <TableBlock block={section} {...props} />;
       case "image":
-        return <ImageBlock section={section} {...props} />;
+        return <ImageBlock block={section} {...props} />;
       case "grid":
-        return <GridBlock section={section} {...props} />;
+        return <GridBlock block={section} {...props} />;
       case "faq":
-        return <FAQBlock section={section} {...props} />;
+        return <FAQBlock block={section} {...props} />;
       default:
         return <p className="text-xs text-red-400">Bloc inconnu : {section.type}</p>;
     }

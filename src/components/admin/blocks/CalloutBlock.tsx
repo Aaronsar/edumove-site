@@ -15,8 +15,8 @@ export default function CalloutBlock({ block, onChange }: Props) {
         onChange={(e) => onChange({ ...block, variant: e.target.value as "info" | "warning" })}
         className="px-2 py-1.5 rounded-lg border border-gray-200 bg-[#f8f9fb] text-xs font-semibold text-[#334155] focus:outline-none focus:ring-2 focus:ring-[#615CA5]/20"
       >
-        <option value="info">\u2139\ufe0f Info (violet)</option>
-        <option value="warning">\u26a0\ufe0f Warning (orange)</option>
+        <option value="info">ℹ️ Info (violet)</option>
+        <option value="warning">⚠️ Warning (orange)</option>
       </select>
       <textarea
         value={block.html}
