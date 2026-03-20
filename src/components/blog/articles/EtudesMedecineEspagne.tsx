@@ -217,6 +217,20 @@ export default function EtudesMedecineEspagne() {
         d&apos;y jeter un œil.
       </Callout>
 
+      <p className="text-[#334155] leading-relaxed mb-4">
+        Et si c&apos;est plutôt le <strong>dentaire</strong> qui vous
+        intéresse, on a un article dédié :{" "}
+        <a
+          href="https://diploma-sante.fr/les-etudes-dentaires-en-espagne/"
+          className="text-[#EC680A] underline underline-offset-2 font-medium hover:text-[#D45E09] transition-colors"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          les études dentaires en Espagne
+        </a>
+        . Admission, coûts, diplômes reconnus — tout y est détaillé.
+      </p>
+
       {/* Section 3 */}
       <SectionTitle
         id="admission"
