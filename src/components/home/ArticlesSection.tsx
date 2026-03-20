@@ -1,63 +1,17 @@
 "use client";
 import { useRef } from "react";
 import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { articles as articlesData, getArticleHref } from "@/data/articles";
 
-const articles = [
-  {
-    title: "Comment r\u00e9ussir le test PE de l'Universidad Europea ?",
-    date: "19 mars 2026",
-    tag: "Guide",
-    tagColor: "bg-[#615ca5]",
-    href: "/guides/reussir-test-pe-universidad-europea",
-    number: "01",
-    readTime: "12 min",
-  },
-  {
-    title: "Comment r\u00e9ussir le test d\u2019admission de LINK Campus University ?",
-    date: "19 mars 2026",
-    tag: "Guide",
-    tagColor: "bg-[#615ca5]",
-    href: "/guides/reussir-test-admission-link-campus",
-    number: "02",
-    readTime: "10 min",
-  },
-  {
-    title: "Comment financer ses études de santé en Europe avec un prêt étudiant ?",
-    date: "28 février 2025",
-    tag: "Financement",
-    tagColor: "bg-[#ec680a]",
-    href: "#",
-    number: "03",
-    readTime: "5 min",
-  },
-  {
-    title: "Reconnaissance des diplômes européens en France : ce qu'il faut savoir",
-    date: "10 janvier 2025",
-    tag: "Actualités",
-    tagColor: "bg-[#ec680a]",
-    href: "#",
-    number: "04",
-    readTime: "6 min",
-  },
-  {
-    title: "Témoignage : mon parcours en médecine en Espagne avec Edumove",
-    date: "5 décembre 2024",
-    tag: "Témoignages",
-    tagColor: "bg-[#615ca5]",
-    href: "#",
-    number: "05",
-    readTime: "4 min",
-  },
-  {
-    title: "Les avantages d'étudier la kinésithérapie en Europe",
-    date: "20 novembre 2024",
-    tag: "Filières",
-    tagColor: "bg-[#ec680a]",
-    href: "#",
-    number: "06",
-    readTime: "7 min",
-  },
-];
+const articles = articlesData.map((a, i) => ({
+  title: a.title,
+  date: a.date,
+  tag: a.tag,
+  tagColor: a.tagColor,
+  href: getArticleHref(a),
+  number: String(i + 1).padStart(2, "0"),
+  readTime: a.readTime,
+}));
 
 export default function ArticlesSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
