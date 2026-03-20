@@ -29,6 +29,7 @@ export default async function EditArticlePage({
     tagColor: article.tag_color,
     isGuide: article.is_guide,
     focusKeyword: article.focus_keyword ?? "",
+    heroPills: (article.hero_pills as ArticleEditorState["heroPills"]) ?? [],
     sections: article.sections as ArticleEditorState["sections"],
     relatedSlugs: article.related_slugs ?? [],
     relatedFormations: article.related_formations ?? [],

@@ -1,13 +1,14 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import {
   useArticleEditor,
   type ArticleEditorState,
 } from "@/lib/editor/useArticleEditor";
-import type { ArticleSection } from "@/types/sections";
+import type { ArticleSection, HeroPill } from "@/types/sections";
+import { analyzeSEO } from "@/lib/seo/analyzeSEO";
 import SEOPanel from "./SEOPanel";
 import HeadingBlock from "./blocks/HeadingBlock";
 import ParagraphBlock from "./blocks/ParagraphBlock";
@@ -32,8 +33,70 @@ import {
   Image as ImageIcon,
   LayoutGrid,
   HelpCircle,
-  ChevronRight,
+  Clock,
+  X,
+  FileText,
+  GraduationCap,
+  Sparkles,
+  Globe,
+  Brain,
+  PenLine,
+  MessageCircle,
+  ClipboardList,
+  Heart,
+  Star,
+  Zap,
+  Shield,
+  Target,
+  Award,
+  BookOpen,
+  Users,
+  MapPin,
+  Phone,
+  Mail,
+  Calendar,
+  CheckCircle,
+  Stethoscope,
+  Pill,
+  Dog,
+  Building2,
 } from "lucide-react";
+
+/* ---------- Icon Map for Hero Pills ---------- */
+
+const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  FileText,
+  GraduationCap,
+  Sparkles,
+  Globe,
+  Brain,
+  PenLine,
+  MessageCircle,
+  ClipboardList,
+  Heart,
+  Star,
+  Zap,
+  Shield,
+  Target,
+  Award,
+  BookOpen,
+  Users,
+  MapPin,
+  Phone,
+  Mail,
+  Calendar,
+  CheckCircle,
+  Stethoscope,
+  Pill,
+  Dog,
+  Building2,
+  HelpCircle,
+  Eye,
+};
+
+const iconOptions = Object.keys(iconMap);
+
+/* ---------- Block Types ---------- */
 
 const blockTypes = [
   { type: "heading", label: "Titre", icon: Heading2 },
@@ -77,12 +140,22 @@ const tagOptions = [
   { value: "Filières", label: "Filières" },
 ];
 
+const tagColorMap: Record<string, string> = {
+  Guide: "bg-[#615ca5]",
+  Financement: "bg-[#ec680a]",
+  Actualités: "bg-[#ec680a]",
+  Témoignages: "bg-[#615ca5]",
+  Filières: "bg-[#ec680a]",
+};
+
 const formationOptions = ["medecine", "dentaire", "kinesitherapie", "pharmacie", "veterinaire"];
 const universityOptions = [
   { value: "/universites/universidad-europea", label: "Universidad Europea" },
   { value: "/universites/ucjc", label: "UCJC" },
   { value: "/universites/link-campus", label: "LINK Campus" },
 ];
+
+/* ---------- Sub-components ---------- */
 
 interface BlockEditorProps {
   block: ArticleSection;
@@ -158,6 +231,232 @@ const blockLabels: Record<string, string> = {
   "stats-grid": "Stats",
 };
 
+/* ---------- Hero Pills Editor ---------- */
+
+function HeroPillsEditor({
+  pills,
+  onChange,
+}: {
+  pills: HeroPill[];
+  onChange: (pills: HeroPill[]) => void;
+}) {
+  const [showIconPicker, setShowIconPicker] = useState<number | null>(null);
+
+  function addPill() {
+    onChange([...pills, { icon: "Star", label: "" }]);
+  }
+
+  function removePill(index: number) {
+    onChange(pills.filter((_, i) => i !== index));
+  }
+
+  function updatePill(index: number, field: "icon" | "label", value: string) {
+    const updated = [...pills];
+    updated[index] = { ...updated[index], [field]: value };
+    onChange(updated);
+  }
+
+  return (
+    <div className="space-y-2">
+      {pills.map((pill, i) => {
+        const IconComp = iconMap[pill.icon] || Star;
+        return (
+          <div key={i} className="flex items-center gap-2">
+            <div className="relative">
+              <button
+                onClick={() => setShowIconPicker(showIconPicker === i ? null : i)}
+                className="w-8 h-8 rounded-lg bg-[#EC680A]/10 flex items-center justify-center hover:bg-[#EC680A]/20 transition-colors"
+                title="Changer l'icône"
+              >
+                <IconComp className="w-4 h-4 text-[#EC680A]" />
+              </button>
+              {showIconPicker === i && (
+                <div className="absolute top-full left-0 mt-1 z-20 bg-white rounded-xl border border-gray-200 shadow-lg p-2 grid grid-cols-5 gap-1 w-52">
+                  {iconOptions.map((name) => {
+                    const IC = iconMap[name];
+                    return (
+                      <button
+                        key={name}
+                        onClick={() => {
+                          updatePill(i, "icon", name);
+                          setShowIconPicker(null);
+                        }}
+                        className={`w-8 h-8 rounded-lg flex items-center justify-center transition-colors ${
+                          pill.icon === name
+                            ? "bg-[#EC680A]/20 text-[#EC680A]"
+                            : "hover:bg-gray-100 text-[#64748b]"
+                        }`}
+                        title={name}
+                      >
+                        <IC className="w-4 h-4" />
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+            <input
+              type="text"
+              value={pill.label}
+              onChange={(e) => updatePill(i, "label", e.target.value)}
+              placeholder="Label du badge..."
+              className="flex-1 px-2.5 py-1.5 rounded-lg border border-gray-200 bg-[#f8f9fb] text-xs text-[#334155] focus:outline-none focus:ring-2 focus:ring-[#615CA5]/20"
+            />
+            <button
+              onClick={() => removePill(i)}
+              className="p-1.5 text-[#94a3b8] hover:text-red-500 transition-colors"
+            >
+              <X className="w-3.5 h-3.5" />
+            </button>
+          </div>
+        );
+      })}
+      <button
+        onClick={addPill}
+        className="flex items-center gap-1.5 text-[10px] font-semibold text-[#615CA5] hover:text-[#4e4a8a] bg-[#615CA5]/5 hover:bg-[#615CA5]/10 px-3 py-1.5 rounded-full transition-all"
+      >
+        <Plus className="w-3 h-3" />
+        Ajouter un badge
+      </button>
+    </div>
+  );
+}
+
+/* ---------- Hero Preview Component ---------- */
+
+function HeroPreview({
+  state,
+  readTime,
+  setField,
+}: {
+  state: ArticleEditorState;
+  readTime: string;
+  setField: <K extends keyof ArticleEditorState>(field: K, value: ArticleEditorState[K]) => void;
+}) {
+  const [editingPills, setEditingPills] = useState(false);
+
+  return (
+    <div className="bg-[#1B1D3A] rounded-2xl p-6 md:p-8 overflow-hidden relative">
+      {/* Background blurs */}
+      <div aria-hidden className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-[#615CA5]/20 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-[200px] h-[200px] bg-[#EC680A]/10 rounded-full blur-3xl" />
+      </div>
+
+      <div className="relative">
+        {/* Label */}
+        <div className="flex items-center justify-between mb-4">
+          <p className="text-[10px] uppercase tracking-widest text-white/30 font-semibold">
+            Hero de l&apos;article (H1)
+          </p>
+          <span className="text-[10px] text-white/20 bg-white/5 px-2 py-0.5 rounded-full">
+            Visible en haut de la page publique
+          </span>
+        </div>
+
+        {/* Breadcrumb preview */}
+        <nav className="text-xs mb-5" style={{ color: "rgba(255,255,255,0.3)" }}>
+          Accueil / Blog / {state.tag}
+        </nav>
+
+        {/* Tag + Read time */}
+        <div className="flex items-center gap-3 mb-5">
+          <select
+            value={state.tag}
+            onChange={(e) => setField("tag", e.target.value as ArticleEditorState["tag"])}
+            className="text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full bg-transparent border border-white/20 focus:outline-none focus:ring-2 focus:ring-[#EC680A]/40"
+            style={{ backgroundColor: tagColorMap[state.tag] ? "rgba(97,92,165,0.6)" : "rgba(236,104,10,0.6)" }}
+          >
+            {tagOptions.map((t) => (
+              <option key={t.value} value={t.value} className="bg-[#1B1D3A] text-white">
+                {t.label}
+              </option>
+            ))}
+          </select>
+          <span
+            className="inline-flex items-center gap-1.5 text-[10px] font-medium px-3 py-1.5 rounded-full border"
+            style={{ color: "rgba(255,255,255,0.5)", borderColor: "rgba(255,255,255,0.15)" }}
+          >
+            <Clock className="w-3 h-3" />
+            {readTime} de lecture
+          </span>
+        </div>
+
+        {/* H1 Title - editable */}
+        <input
+          type="text"
+          value={state.title}
+          onChange={(e) => setField("title", e.target.value)}
+          placeholder="Titre de l'article (H1)..."
+          className="w-full text-2xl md:text-3xl font-extrabold leading-[1.15] mb-4 bg-transparent border-none outline-none text-white placeholder:text-white/20 focus:ring-0"
+        />
+
+        {/* Excerpt - editable */}
+        <textarea
+          value={state.excerpt}
+          onChange={(e) => setField("excerpt", e.target.value)}
+          placeholder="Sous-titre / résumé court visible dans le hero..."
+          rows={2}
+          className="w-full text-sm leading-relaxed bg-transparent border border-white/10 rounded-xl px-3 py-2.5 outline-none resize-y focus:border-white/25 placeholder:text-white/15"
+          style={{ color: "rgba(255,255,255,0.6)" }}
+        />
+
+        {/* Hero Pills */}
+        <div className="mt-5">
+          <div className="flex items-center justify-between mb-2">
+            <p className="text-[10px] uppercase tracking-wider text-white/30 font-semibold">
+              Badges / mots-clés du hero
+            </p>
+            <button
+              onClick={() => setEditingPills(!editingPills)}
+              className="text-[10px] font-medium text-[#EC680A] hover:text-[#D45E09] transition-colors"
+            >
+              {editingPills ? "Aperçu" : "Modifier"}
+            </button>
+          </div>
+
+          {editingPills ? (
+            <div className="bg-white/5 rounded-xl p-3 border border-white/10">
+              <HeroPillsEditor
+                pills={state.heroPills}
+                onChange={(pills) => setField("heroPills", pills)}
+              />
+            </div>
+          ) : state.heroPills.length > 0 ? (
+            <div className="flex flex-wrap gap-2">
+              {state.heroPills.map((pill, i) => {
+                const IconComp = iconMap[pill.icon] || Star;
+                return (
+                  <div
+                    key={i}
+                    className="flex items-center gap-2 text-xs px-3 py-2 rounded-lg"
+                    style={{
+                      backgroundColor: "rgba(255,255,255,0.07)",
+                      color: "rgba(255,255,255,0.7)",
+                    }}
+                  >
+                    <IconComp className="w-3.5 h-3.5 text-[#EC680A]" />
+                    {pill.label}
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <button
+              onClick={() => setEditingPills(true)}
+              className="text-[10px] text-white/20 hover:text-white/40 border border-dashed border-white/10 rounded-lg px-4 py-2 transition-colors"
+            >
+              + Ajouter des badges au hero (optionnel)
+            </button>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ---------- Main Editor ---------- */
+
 interface ArticleEditorProps {
   articleId?: number;
   initialData?: Partial<ArticleEditorState>;
@@ -184,9 +483,26 @@ export default function ArticleEditor({ articleId, initialData }: ArticleEditorP
   const [message, setMessage] = useState("");
   const [activePanel, setActivePanel] = useState<"seo" | "relations" | "publish">("seo");
 
+  // Calculate SEO score in real-time
+  const seoAnalysis = useMemo(
+    () =>
+      analyzeSEO({
+        title: state.title,
+        metaTitle: state.metaTitle || state.title,
+        metaDescription: state.metaDescription,
+        slug: state.slug,
+        focusKeyword: state.focusKeyword,
+        sections: state.sections,
+      }),
+    [state.title, state.metaTitle, state.metaDescription, state.slug, state.focusKeyword, state.sections]
+  );
+
   async function handleSave(publishStatus?: "draft" | "published") {
     setSaving(true);
     setMessage("");
+
+    // Calculate SEO score before saving
+    const currentScore = seoAnalysis.score;
 
     const status = publishStatus ?? state.status;
     const data = {
@@ -196,15 +512,17 @@ export default function ArticleEditor({ articleId, initialData }: ArticleEditorP
       meta_description: state.metaDescription,
       excerpt: state.excerpt,
       tag: state.tag,
-      tag_color: state.tagColor,
+      tag_color: tagColorMap[state.tag] ?? "bg-[#615ca5]",
       sections: state.sections,
       read_time: readTime,
       is_guide: state.isGuide,
+      hero_pills: state.heroPills,
       related_slugs: state.relatedSlugs,
       related_formations: state.relatedFormations,
       related_universities: state.relatedUniversities,
       status,
       focus_keyword: state.focusKeyword,
+      seo_score: currentScore,
       published_at: status === "published" ? new Date().toISOString() : null,
     };
 
@@ -230,8 +548,12 @@ export default function ArticleEditor({ articleId, initialData }: ArticleEditorP
     if (error) {
       setMessage(`Erreur : ${error.message}`);
     } else {
-      setMessage(status === "published" ? "Article publié !" : "Brouillon enregistré !");
-      setTimeout(() => setMessage(""), 3000);
+      setMessage(
+        status === "published"
+          ? `Article publié ! (SEO: ${currentScore}/100)`
+          : `Brouillon enregistré ! (SEO: ${currentScore}/100)`
+      );
+      setTimeout(() => setMessage(""), 4000);
     }
     setSaving(false);
   }
@@ -240,28 +562,13 @@ export default function ArticleEditor({ articleId, initialData }: ArticleEditorP
     <div className="flex gap-6 items-start">
       {/* Left column — Editor */}
       <div className="flex-1 min-w-0 space-y-4">
-        {/* Title */}
-        <input
-          type="text"
-          value={state.title}
-          onChange={(e) => setField("title", e.target.value)}
-          placeholder="Titre de l’article..."
-          className="w-full text-2xl font-bold text-[#1B1D3A] bg-transparent border-none outline-none placeholder:text-[#c8c9d0]"
-        />
+        {/* Hero Preview — Title H1 + Excerpt + Tag + Pills */}
+        <HeroPreview state={state} readTime={readTime} setField={setField} />
 
-        {/* Excerpt */}
-        <textarea
-          value={state.excerpt}
-          onChange={(e) => setField("excerpt", e.target.value)}
-          placeholder="Résumé court (chapeau)..."
-          rows={2}
-          className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-sm text-[#334155] focus:outline-none focus:ring-2 focus:ring-[#615CA5]/20 resize-y"
-        />
-
-        {/* Blocks */}
+        {/* Content Blocks */}
         <div className="bg-white rounded-xl border border-gray-200/80 p-4">
           <p className="text-xs uppercase tracking-wider text-[#94a3b8] font-semibold mb-3">
-            Contenu de l&apos;article
+            Contenu de l&apos;article (sections H2, paragraphes, etc.)
           </p>
 
           <AddBlockButton onAdd={(type) => addBlock(0, newBlock(type))} />
@@ -339,6 +646,23 @@ export default function ArticleEditor({ articleId, initialData }: ArticleEditorP
               {message}
             </p>
           )}
+
+          {/* Mini SEO score */}
+          <div className="flex items-center justify-center gap-2 py-1">
+            <div
+              className={`w-3 h-3 rounded-full ${
+                seoAnalysis.score >= 71
+                  ? "bg-green-500"
+                  : seoAnalysis.score >= 41
+                  ? "bg-amber-500"
+                  : "bg-red-500"
+              }`}
+            />
+            <span className="text-xs font-semibold text-[#334155]">
+              SEO : {seoAnalysis.score}/100
+            </span>
+          </div>
+
           <div className="flex gap-2">
             <button
               onClick={() => handleSave("draft")}
@@ -503,6 +827,7 @@ export default function ArticleEditor({ articleId, initialData }: ArticleEditorP
                 <div className="text-xs text-[#94a3b8] space-y-1">
                   <p>Temps de lecture : <strong>{readTime}</strong></p>
                   <p>Blocs : <strong>{state.sections.length}</strong></p>
+                  <p>Score SEO : <strong>{seoAnalysis.score}/100</strong></p>
                 </div>
               </div>
             )}

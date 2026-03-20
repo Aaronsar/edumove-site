@@ -10,7 +10,40 @@ import {
   ArrowRight,
   Phone,
   ArrowUpRight,
+  FileText,
+  GraduationCap,
+  Sparkles,
+  Globe,
+  Brain,
+  PenLine,
+  MessageCircle,
+  ClipboardList,
+  Heart,
+  Star,
+  Zap,
+  Shield,
+  Target,
+  Award,
+  BookOpen,
+  Users,
+  MapPin,
+  Mail,
+  Calendar,
+  CheckCircle,
+  Stethoscope,
+  Pill,
+  Dog,
+  Building2,
+  HelpCircle,
+  Eye,
 } from "lucide-react";
+
+const heroIconMap: Record<string, React.ComponentType<{ className?: string; style?: React.CSSProperties }>> = {
+  FileText, GraduationCap, Sparkles, Globe, Brain, PenLine, MessageCircle,
+  ClipboardList, Heart, Star, Zap, Shield, Target, Award, BookOpen,
+  Users, MapPin, Phone, Mail, Calendar, CheckCircle, Stethoscope,
+  Pill, Dog, Building2, HelpCircle, Eye,
+};
 import ContactButton from "@/components/shared/ContactButton";
 import type { Article } from "@/data/articles";
 import { getRelatedArticles, getArticleHref } from "@/data/articles";
@@ -210,6 +243,28 @@ export default function ArticleLayout({ article, sommaire, children }: ArticleLa
           >
             {article.excerpt}
           </p>
+
+          {/* Hero Pills / Keyword badges */}
+          {article.heroPills && article.heroPills.length > 0 && (
+            <div className="flex flex-wrap gap-3 mt-8">
+              {article.heroPills.map((pill, i) => {
+                const IconComp = heroIconMap[pill.icon] || Star;
+                return (
+                  <div
+                    key={i}
+                    className="flex items-center gap-2 text-sm px-3.5 py-2 rounded-lg"
+                    style={{
+                      backgroundColor: "rgba(255,255,255,0.07)",
+                      color: "rgba(255,255,255,0.7)",
+                    }}
+                  >
+                    <IconComp className="w-4 h-4" style={{ color: "#EC680A" }} />
+                    {pill.label}
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </div>
       </section>
 

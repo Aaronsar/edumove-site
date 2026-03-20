@@ -1,7 +1,7 @@
 "use client";
 
 import { useReducer, useCallback } from "react";
-import type { ArticleSection } from "@/types/sections";
+import type { ArticleSection, HeroPill } from "@/types/sections";
 
 export interface ArticleEditorState {
   title: string;
@@ -9,10 +9,11 @@ export interface ArticleEditorState {
   metaTitle: string;
   metaDescription: string;
   excerpt: string;
-  tag: "Guide" | "Financement" | "Actualit\u00e9s" | "T\u00e9moignages" | "Fili\u00e8res";
+  tag: "Guide" | "Financement" | "Actualités" | "Témoignages" | "Filières";
   tagColor: string;
   isGuide: boolean;
   focusKeyword: string;
+  heroPills: HeroPill[];
   sections: ArticleSection[];
   relatedSlugs: string[];
   relatedFormations: string[];
@@ -39,6 +40,7 @@ export const initialState: ArticleEditorState = {
   tagColor: "bg-[#615ca5]",
   isGuide: false,
   focusKeyword: "",
+  heroPills: [],
   sections: [],
   relatedSlugs: [],
   relatedFormations: [],

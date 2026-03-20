@@ -12,6 +12,7 @@ export interface Article {
   metaTitle: string;
   metaDescription: string;
   isGuide?: boolean; // lives at /guides/ instead of /blog/
+  heroPills?: { icon: string; label: string }[];
   relatedSlugs: string[];
   relatedFormations: string[];
   relatedUniversities: string[];

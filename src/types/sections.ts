@@ -74,6 +74,11 @@ export type ArticleSection =
 
 /* ---------- Database Row ---------- */
 
+export interface HeroPill {
+  icon: string;  // Lucide icon name e.g. "FileText", "GraduationCap"
+  label: string;
+}
+
 export interface EdumoveArticle {
   id: number;
   slug: string;
@@ -86,6 +91,7 @@ export interface EdumoveArticle {
   sections: ArticleSection[];
   read_time: string;
   is_guide: boolean;
+  hero_pills: HeroPill[];
   related_slugs: string[];
   related_formations: string[];
   related_universities: string[];
