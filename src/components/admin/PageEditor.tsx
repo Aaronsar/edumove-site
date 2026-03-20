@@ -29,6 +29,7 @@ import {
   Loader2,
   Check,
   ExternalLink,
+  Search,
 } from "lucide-react";
 
 const blockTypes = [
@@ -64,6 +65,19 @@ function newBlock(type: string): ArticleSection {
       return { type: "paragraph", html: "" };
   }
 }
+
+const blockLabels: Record<string, string> = {
+  heading: "TITRE H2",
+  paragraph: "PARAGRAPHE",
+  callout: "CALLOUT",
+  list: "LISTE",
+  table: "TABLEAU",
+  image: "IMAGE",
+  grid: "GRILLE",
+  faq: "FAQ",
+  "link-card": "CARTE LIEN",
+  "stats-grid": "STATS",
+};
 
 interface PageData {
   id: number;
@@ -182,17 +196,53 @@ export default function PageEditor({ page, publicUrl }: Props) {
     <div className="flex gap-6">
       {/* Left: Block editor */}
       <div className="flex-1 min-w-0">
-        {/* Title */}
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          placeholder="Titre de la page"
-          className="w-full text-2xl font-bold text-[#1B1D3A] bg-transparent border-none outline-none placeholder:text-gray-300 mb-6"
-        />
 
-        {/* Blocks */}
+        {/* ===== HERO SECTION — H1 ===== */}
+        <div className="bg-[#1B1D3A] rounded-2xl p-6 md:p-8 mb-6 overflow-hidden relative">
+          {/* Background blurs */}
+          <div aria-hidden className="absolute inset-0 pointer-events-none">
+            <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-[#615CA5]/20 rounded-full blur-3xl" />
+            <div className="absolute bottom-0 left-0 w-[200px] h-[200px] bg-[#EC680A]/10 rounded-full blur-3xl" />
+          </div>
+
+          <div className="relative">
+            {/* Label */}
+            <div className="flex items-center justify-between mb-4">
+              <p className="text-[10px] uppercase tracking-widest text-white/30 font-semibold">
+                Hero de la page (H1)
+              </p>
+              <span className="text-[10px] text-white/20 bg-white/5 px-2 py-0.5 rounded-full">
+                Titre principal visible en haut de la page
+              </span>
+            </div>
+
+            {/* Breadcrumb preview */}
+            <nav className="text-xs mb-5" style={{ color: "rgba(255,255,255,0.25)" }}>
+              edumove.fr{publicUrl}
+            </nav>
+
+            {/* H1 Title - EDITABLE */}
+            <input
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              placeholder="Titre H1 de la page..."
+              className="w-full text-2xl md:text-3xl font-extrabold leading-[1.15] mb-2 bg-transparent border-none outline-none text-white placeholder:text-white/20 focus:ring-0"
+            />
+
+            {/* Slug */}
+            <p className="text-xs font-mono" style={{ color: "rgba(255,255,255,0.25)" }}>
+              /{page.page_slug}
+            </p>
+          </div>
+        </div>
+
+        {/* ===== CONTENT BLOCKS ===== */}
         <div className="space-y-3">
+          <p className="text-xs uppercase tracking-wider text-[#94a3b8] font-semibold mb-1">
+            Contenu de la page (sections H2, paragraphes, listes, etc.)
+          </p>
+
           {/* Add block at top */}
           <AddBlockButton
             index={-1}
@@ -206,8 +256,8 @@ export default function PageEditor({ page, publicUrl }: Props) {
               <div className="bg-white rounded-xl border border-gray-200/80 p-4 group hover:border-[#615CA5]/30 transition-colors">
                 {/* Block toolbar */}
                 <div className="flex items-center justify-between mb-3 opacity-50 group-hover:opacity-100 transition-opacity">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#94a3b8]">
-                    {section.type}
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#615CA5]">
+                    {blockLabels[section.type] ?? section.type}
                   </span>
                   <div className="flex items-center gap-1">
                     <button
@@ -267,7 +317,7 @@ export default function PageEditor({ page, publicUrl }: Props) {
       </div>
 
       {/* Right: Settings panel */}
-      <div className="w-80 shrink-0 space-y-4">
+      <div className="w-80 shrink-0 space-y-4 sticky top-20">
         {/* Save + View */}
         <div className="bg-white rounded-xl border border-gray-200/80 p-4 space-y-3">
           <div className="flex gap-2">
@@ -283,7 +333,7 @@ export default function PageEditor({ page, publicUrl }: Props) {
               ) : (
                 <Save className="w-4 h-4" />
               )}
-              {saving ? "Enregistrement..." : saved ? "Enregistré !" : "Enregistrer"}
+              {saving ? "Enregistrement..." : saved ? "Enregistr\u00e9 !" : "Enregistrer"}
             </button>
             <a
               href={`https://edumove-site.vercel.app${publicUrl}`}
@@ -311,11 +361,34 @@ export default function PageEditor({ page, publicUrl }: Props) {
               <option value="published">Publié</option>
             </select>
           </div>
+
+          <div className="text-[10px] text-[#94a3b8] text-center">
+            {sections.length} blocs
+          </div>
         </div>
 
         {/* SEO */}
         <div className="bg-white rounded-xl border border-gray-200/80 p-4 space-y-3">
-          <h3 className="text-xs font-bold uppercase tracking-wider text-[#94a3b8]">SEO</h3>
+          <h3 className="text-xs font-bold uppercase tracking-wider text-[#94a3b8] flex items-center gap-1.5">
+            <Search className="w-3 h-3" />
+            SEO
+          </h3>
+
+          {/* SERP Preview */}
+          <div className="bg-[#f8f9fb] rounded-lg p-3 space-y-0.5">
+            <p className="text-[10px] uppercase tracking-wider text-[#94a3b8] font-semibold mb-1.5">
+              Aperçu Google
+            </p>
+            <p className="text-sm text-[#1a0dab] font-medium truncate">
+              {metaTitle || title || "Titre de la page"}
+            </p>
+            <p className="text-xs text-[#006621] truncate">
+              edumove.fr{publicUrl}
+            </p>
+            <p className="text-xs text-[#545454] line-clamp-2">
+              {metaDescription || "Description de la page..."}
+            </p>
+          </div>
 
           <div>
             <label className="block text-xs font-semibold text-[#334155] mb-1">
@@ -336,7 +409,7 @@ export default function PageEditor({ page, publicUrl }: Props) {
           <div>
             <label className="block text-xs font-semibold text-[#334155] mb-1">
               Meta description
-              <span className={`ml-1 font-normal ${(metaDescription).length > 160 ? "text-red-500" : "text-[#94a3b8]"}`}>
+              <span className={`ml-1 font-normal ${metaDescription.length > 160 ? "text-red-500" : metaDescription.length < 120 ? "text-amber-500" : "text-[#94a3b8]"}`}>
                 ({metaDescription.length}/160)
               </span>
             </label>
@@ -347,22 +420,6 @@ export default function PageEditor({ page, publicUrl }: Props) {
               rows={3}
               className="w-full px-3 py-1.5 rounded-lg border border-gray-200 bg-[#f8f9fb] text-sm text-[#334155] focus:outline-none focus:ring-2 focus:ring-[#615CA5]/20 resize-y"
             />
-          </div>
-
-          {/* SERP Preview */}
-          <div className="bg-[#f8f9fb] rounded-lg p-3 space-y-0.5">
-            <p className="text-[10px] uppercase tracking-wider text-[#94a3b8] font-semibold mb-1.5">
-              Aperçu Google
-            </p>
-            <p className="text-sm text-[#1a0dab] font-medium truncate">
-              {metaTitle || title || "Titre de la page"}
-            </p>
-            <p className="text-xs text-[#006621] truncate">
-              edumove.fr{publicUrl}
-            </p>
-            <p className="text-xs text-[#545454] line-clamp-2">
-              {metaDescription || "Description de la page..."}
-            </p>
           </div>
         </div>
 
