@@ -160,12 +160,12 @@ export default function LinkPage() {
         notes={documentNotes}
       />
 
+      <TestimonialsCarousel testimonials={linkTestimonials} />
+
       <ProgramLinks
         universityShort="LINK Campus"
         programs={programDetails.filter(p => p.universityShort === "LINK")}
       />
-
-      <TestimonialsCarousel testimonials={linkTestimonials} />
 
       {/* CTA */}
       <section id="contact" data-program-cta className="py-10 md:py-16 px-6 bg-[#1B1D3A]">

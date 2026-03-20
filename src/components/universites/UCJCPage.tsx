@@ -171,12 +171,12 @@ export default function UCJCPage() {
         notes={documentNotes}
       />
 
+      <TestimonialsCarousel testimonials={ucjcTestimonials} />
+
       <ProgramLinks
         universityShort="UCJC"
         programs={programDetails.filter(p => p.universityShort === "UCJC")}
       />
-
-      <TestimonialsCarousel testimonials={ucjcTestimonials} />
 
       {/* CTA */}
       <section id="contact" data-program-cta className="py-10 md:py-16 px-6 bg-[#1B1D3A]">

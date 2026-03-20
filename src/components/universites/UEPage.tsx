@@ -150,12 +150,12 @@ export default function UEPage() {
         notes={documentNotes}
       />
 
+      <TestimonialsCarousel testimonials={ueTestimonials} />
+
       <ProgramLinks
         universityShort="UE"
         programs={programDetails.filter(p => p.universityShort === "UE")}
       />
-
-      <TestimonialsCarousel testimonials={ueTestimonials} />
 
       {/* CTA */}
       <section id="contact" data-program-cta className="py-10 md:py-16 px-6 bg-[#1B1D3A]">
