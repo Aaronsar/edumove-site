@@ -21,6 +21,7 @@ import {
   Heart,
   Dog,
   FlaskConical,
+  MapPin,
 } from "lucide-react";
 
 interface NavItem {
@@ -33,17 +34,16 @@ interface NavGroup {
   label: string;
   icon: React.ComponentType<{ className?: string }>;
   basePath: string;
-  children: (NavItem | NavSubGroup)[];
+  children: (NavItem | NavGroup)[];
 }
 
-interface NavSubGroup {
-  label: string;
-  icon: React.ComponentType<{ className?: string }>;
-  basePath: string;
-  children: NavItem[];
+type NavEntry = NavItem | NavGroup;
+
+function isGroup(entry: NavEntry): entry is NavGroup {
+  return "children" in entry;
 }
 
-const navItems: NavItem[] = [
+const topNav: NavItem[] = [
   { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
   { href: "/admin/articles", label: "Articles", icon: FileText },
 ];
@@ -61,12 +61,76 @@ const pagesConfig: NavGroup = {
       icon: GraduationCap,
       basePath: "/admin/pages/formations",
       children: [
-        { href: "/admin/pages/formations/medecine", label: "Médecine", icon: Stethoscope },
-        { href: "/admin/pages/formations/dentaire", label: "Dentaire", icon: Bone },
-        { href: "/admin/pages/formations/kinesitherapie", label: "Kinésithérapie", icon: Heart },
-        { href: "/admin/pages/formations/pharmacie", label: "Pharmacie", icon: Pill },
-        { href: "/admin/pages/formations/veterinaire", label: "Vétérinaire", icon: Dog },
-        { href: "/admin/pages/formations/prepa-dentaire", label: "Prépa Dentaire", icon: FlaskConical },
+        {
+          label: "Médecine",
+          icon: Stethoscope,
+          basePath: "/admin/pages/formations/medecine",
+          children: [
+            { href: "/admin/pages/formations/medecine", label: "Vue d'ensemble", icon: Stethoscope },
+            { href: "/admin/pages/formations/medecine/ue-madrid", label: "UE Madrid", icon: MapPin },
+            { href: "/admin/pages/formations/medecine/ue-canaries", label: "UE Canaries", icon: MapPin },
+            { href: "/admin/pages/formations/medecine/link-rome", label: "LINK Rome", icon: MapPin },
+          ],
+        },
+        {
+          label: "Dentaire",
+          icon: Bone,
+          basePath: "/admin/pages/formations/dentaire",
+          children: [
+            { href: "/admin/pages/formations/dentaire", label: "Vue d'ensemble", icon: Bone },
+            { href: "/admin/pages/formations/dentaire/ue-madrid", label: "UE Madrid", icon: MapPin },
+            { href: "/admin/pages/formations/dentaire/ue-malaga", label: "UE Málaga", icon: MapPin },
+            { href: "/admin/pages/formations/dentaire/ue-valence", label: "UE Valence", icon: MapPin },
+            { href: "/admin/pages/formations/dentaire/ue-alicante", label: "UE Alicante", icon: MapPin },
+            { href: "/admin/pages/formations/dentaire/ue-canaries", label: "UE Canaries", icon: MapPin },
+            { href: "/admin/pages/formations/dentaire/ucjc-madrid", label: "UCJC Madrid", icon: MapPin },
+            { href: "/admin/pages/formations/dentaire/link-rome", label: "LINK Rome", icon: MapPin },
+          ],
+        },
+        {
+          label: "Kinésithérapie",
+          icon: Heart,
+          basePath: "/admin/pages/formations/kinesitherapie",
+          children: [
+            { href: "/admin/pages/formations/kinesitherapie", label: "Vue d'ensemble", icon: Heart },
+            { href: "/admin/pages/formations/kinesitherapie/ue-madrid", label: "UE Madrid (FR)", icon: MapPin },
+            { href: "/admin/pages/formations/kinesitherapie/ue-malaga", label: "UE Málaga", icon: MapPin },
+            { href: "/admin/pages/formations/kinesitherapie/ue-valence", label: "UE Valence", icon: MapPin },
+            { href: "/admin/pages/formations/kinesitherapie/ue-alicante", label: "UE Alicante", icon: MapPin },
+            { href: "/admin/pages/formations/kinesitherapie/ue-canaries", label: "UE Canaries", icon: MapPin },
+            { href: "/admin/pages/formations/kinesitherapie/ucjc-madrid", label: "UCJC Madrid", icon: MapPin },
+            { href: "/admin/pages/formations/kinesitherapie/link-rome", label: "LINK Rome", icon: MapPin },
+          ],
+        },
+        {
+          label: "Pharmacie",
+          icon: Pill,
+          basePath: "/admin/pages/formations/pharmacie",
+          children: [
+            { href: "/admin/pages/formations/pharmacie", label: "Vue d'ensemble", icon: Pill },
+            { href: "/admin/pages/formations/pharmacie/ue-madrid", label: "UE Madrid", icon: MapPin },
+            { href: "/admin/pages/formations/pharmacie/ucjc-madrid", label: "UCJC Madrid", icon: MapPin },
+            { href: "/admin/pages/formations/pharmacie/link-rome", label: "LINK Rome", icon: MapPin },
+          ],
+        },
+        {
+          label: "Vétérinaire",
+          icon: Dog,
+          basePath: "/admin/pages/formations/veterinaire",
+          children: [
+            { href: "/admin/pages/formations/veterinaire", label: "Vue d'ensemble", icon: Dog },
+            { href: "/admin/pages/formations/veterinaire/ue-madrid", label: "UE Madrid", icon: MapPin },
+          ],
+        },
+        {
+          label: "Prépa Dentaire",
+          icon: FlaskConical,
+          basePath: "/admin/pages/formations/prepa-dentaire",
+          children: [
+            { href: "/admin/pages/formations/prepa-dentaire", label: "Vue d'ensemble", icon: FlaskConical },
+            { href: "/admin/pages/formations/prepa-dentaire/ue-alicante", label: "UE Alicante", icon: MapPin },
+          ],
+        },
       ],
     },
     {
@@ -92,22 +156,92 @@ const pagesConfig: NavGroup = {
   ],
 };
 
-function isSubGroup(item: NavItem | NavSubGroup): item is NavSubGroup {
-  return "children" in item;
-}
-
 export default function AdminSidebar() {
   const pathname = usePathname();
   const [pagesOpen, setPagesOpen] = useState(pathname.startsWith("/admin/pages"));
-  const [openSubGroups, setOpenSubGroups] = useState<Record<string, boolean>>({});
+  const [openGroups, setOpenGroups] = useState<Record<string, boolean>>({});
 
   function isActive(href: string) {
     if (href === "/admin") return pathname === "/admin";
-    return pathname.startsWith(href);
+    return pathname === href;
   }
 
-  function toggleSubGroup(key: string) {
-    setOpenSubGroups((prev) => ({ ...prev, [key]: !prev[key] }));
+  function isGroupActive(basePath: string) {
+    return pathname.startsWith(basePath);
+  }
+
+  function toggleGroup(key: string) {
+    setOpenGroups((prev) => ({ ...prev, [key]: !prev[key] }));
+  }
+
+  function isGroupOpen(basePath: string) {
+    return openGroups[basePath] ?? pathname.startsWith(basePath);
+  }
+
+  function renderEntry(entry: NavEntry, depth: number) {
+    if (isGroup(entry)) {
+      return renderGroup(entry, depth);
+    }
+    return renderItem(entry, depth);
+  }
+
+  function renderItem(item: NavItem, depth: number) {
+    const active = isActive(item.href);
+    const sizes = depth <= 1
+      ? "px-3 py-2 text-xs"
+      : "px-2.5 py-1.5 text-[11px]";
+    const colors = active
+      ? "bg-white/10 text-white"
+      : depth <= 1
+        ? "text-white/40 hover:text-white/70 hover:bg-white/5"
+        : "text-white/35 hover:text-white/60 hover:bg-white/5";
+    const iconSize = depth <= 1 ? "w-3.5 h-3.5" : "w-3 h-3";
+
+    return (
+      <Link
+        key={item.href}
+        href={item.href}
+        className={`flex items-center gap-2 rounded-lg font-medium transition-all ${sizes} ${colors}`}
+      >
+        <item.icon className={iconSize} />
+        {item.label}
+      </Link>
+    );
+  }
+
+  function renderGroup(group: NavGroup, depth: number) {
+    const open = isGroupOpen(group.basePath);
+    const active = isGroupActive(group.basePath);
+    const sizes = depth <= 1
+      ? "px-3 py-2 text-xs"
+      : "px-2.5 py-1.5 text-[11px]";
+    const colors = active
+      ? "bg-white/10 text-white"
+      : depth <= 1
+        ? "text-white/40 hover:text-white/70 hover:bg-white/5"
+        : "text-white/35 hover:text-white/60 hover:bg-white/5";
+    const iconSize = depth <= 1 ? "w-3.5 h-3.5" : "w-3 h-3";
+    const chevronSize = depth <= 1 ? "w-3 h-3" : "w-2.5 h-2.5";
+
+    return (
+      <div key={group.basePath}>
+        <button
+          onClick={() => toggleGroup(group.basePath)}
+          className={`w-full flex items-center gap-2 rounded-lg font-medium transition-all ${sizes} ${colors}`}
+        >
+          <group.icon className={iconSize} />
+          {group.label}
+          <ChevronDown
+            className={`${chevronSize} ml-auto transition-transform ${open ? "rotate-180" : ""}`}
+          />
+        </button>
+        {open && (
+          <div className="ml-3 pl-2 border-l border-white/5 space-y-0.5 mt-0.5">
+            {group.children.map((child) => renderEntry(child, depth + 1))}
+          </div>
+        )}
+      </div>
+    );
   }
 
   const isPagesActive = pathname.startsWith("/admin/pages");
@@ -129,9 +263,9 @@ export default function AdminSidebar() {
 
       {/* Navigation */}
       <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
-        {/* Main nav items */}
-        {navItems.map((item) => {
-          const active = isActive(item.href);
+        {/* Top nav */}
+        {topNav.map((item) => {
+          const active = isActive(item.href) || (item.href === "/admin/articles" && pathname.startsWith("/admin/articles"));
           return (
             <Link
               key={item.href}
@@ -167,68 +301,7 @@ export default function AdminSidebar() {
 
           {pagesOpen && (
             <div className="mt-1 ml-3 pl-3 border-l border-white/10 space-y-0.5">
-              {pagesConfig.children.map((item) => {
-                if (isSubGroup(item)) {
-                  const subOpen = openSubGroups[item.basePath] ?? pathname.startsWith(item.basePath);
-                  const subActive = pathname.startsWith(item.basePath);
-                  return (
-                    <div key={item.basePath}>
-                      <button
-                        onClick={() => toggleSubGroup(item.basePath)}
-                        className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium transition-all ${
-                          subActive
-                            ? "bg-white/10 text-white"
-                            : "text-white/40 hover:text-white/70 hover:bg-white/5"
-                        }`}
-                      >
-                        <item.icon className="w-3.5 h-3.5" />
-                        {item.label}
-                        <ChevronDown
-                          className={`w-3 h-3 ml-auto transition-transform ${subOpen ? "rotate-180" : ""}`}
-                        />
-                      </button>
-                      {subOpen && (
-                        <div className="ml-3 pl-2 border-l border-white/5 space-y-0.5 mt-0.5">
-                          {item.children.map((sub) => {
-                            const active = isActive(sub.href);
-                            return (
-                              <Link
-                                key={sub.href}
-                                href={sub.href}
-                                className={`flex items-center gap-2 px-2.5 py-1.5 rounded-md text-[11px] font-medium transition-all ${
-                                  active
-                                    ? "bg-white/10 text-white"
-                                    : "text-white/35 hover:text-white/60 hover:bg-white/5"
-                                }`}
-                              >
-                                <sub.icon className="w-3 h-3" />
-                                {sub.label}
-                              </Link>
-                            );
-                          })}
-                        </div>
-                      )}
-                    </div>
-                  );
-                }
-
-                // Simple nav item
-                const active = isActive(item.href);
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={`flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium transition-all ${
-                      active
-                        ? "bg-white/10 text-white"
-                        : "text-white/40 hover:text-white/70 hover:bg-white/5"
-                    }`}
-                  >
-                    <item.icon className="w-3.5 h-3.5" />
-                    {item.label}
-                  </Link>
-                );
-              })}
+              {pagesConfig.children.map((entry) => renderEntry(entry, 0))}
             </div>
           )}
         </div>
@@ -238,7 +311,7 @@ export default function AdminSidebar() {
           <Link
             href="/admin/import"
             className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
-              isActive("/admin/import")
+              pathname.startsWith("/admin/import")
                 ? "bg-[#615CA5] text-white"
                 : "text-white/50 hover:text-white/80 hover:bg-white/5"
             }`}

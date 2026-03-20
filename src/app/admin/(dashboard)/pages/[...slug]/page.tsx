@@ -4,18 +4,59 @@ import PageEditor from "@/components/admin/PageEditor";
 /* ---------- Page registry (maps slug to public URL) ---------- */
 
 const publicUrls: Record<string, string> = {
+  // Pages principales
   accueil: "/",
   "a-propos": "/a-propos",
   faq: "/questions-frequentes",
+
+  // Formations — vues d'ensemble
   "formations/medecine": "/formations/medecine",
   "formations/dentaire": "/formations/dentaire",
   "formations/kinesitherapie": "/formations/kinesitherapie",
   "formations/pharmacie": "/formations/pharmacie",
   "formations/veterinaire": "/formations/veterinaire",
   "formations/prepa-dentaire": "/formations/prepa-dentaire",
+
+  // Médecine — par fac
+  "formations/medecine/ue-madrid": "/formations/medecine/ue-madrid",
+  "formations/medecine/ue-canaries": "/formations/medecine/ue-canaries",
+  "formations/medecine/link-rome": "/formations/medecine/link-rome",
+
+  // Dentaire — par fac
+  "formations/dentaire/ue-madrid": "/formations/dentaire/ue-madrid",
+  "formations/dentaire/ue-malaga": "/formations/dentaire/ue-malaga",
+  "formations/dentaire/ue-valence": "/formations/dentaire/ue-valence",
+  "formations/dentaire/ue-alicante": "/formations/dentaire/ue-alicante",
+  "formations/dentaire/ue-canaries": "/formations/dentaire/ue-canaries",
+  "formations/dentaire/ucjc-madrid": "/formations/dentaire/ucjc-madrid",
+  "formations/dentaire/link-rome": "/formations/dentaire/link-rome",
+
+  // Kinésithérapie — par fac
+  "formations/kinesitherapie/ue-madrid": "/formations/kinesitherapie/ue-madrid",
+  "formations/kinesitherapie/ue-malaga": "/formations/kinesitherapie/ue-malaga",
+  "formations/kinesitherapie/ue-valence": "/formations/kinesitherapie/ue-valence",
+  "formations/kinesitherapie/ue-alicante": "/formations/kinesitherapie/ue-alicante",
+  "formations/kinesitherapie/ue-canaries": "/formations/kinesitherapie/ue-canaries",
+  "formations/kinesitherapie/ucjc-madrid": "/formations/kinesitherapie/ucjc-madrid",
+  "formations/kinesitherapie/link-rome": "/formations/kinesitherapie/link-rome",
+
+  // Pharmacie — par fac
+  "formations/pharmacie/ue-madrid": "/formations/pharmacie/ue-madrid",
+  "formations/pharmacie/ucjc-madrid": "/formations/pharmacie/ucjc-madrid",
+  "formations/pharmacie/link-rome": "/formations/pharmacie/link-rome",
+
+  // Vétérinaire — par fac
+  "formations/veterinaire/ue-madrid": "/formations/veterinaire/ue-madrid",
+
+  // Prépa Dentaire — par fac
+  "formations/prepa-dentaire/ue-alicante": "/formations/prepa-dentaire/ue-alicante",
+
+  // Universités
   "universites/universidad-europea": "/universites/universidad-europea",
   "universites/ucjc": "/universites/ucjc",
   "universites/link-campus": "/universites/link-campus",
+
+  // Guides
   "guides/presenter-sa-candidature": "/guides/presenter-sa-candidature",
   "guides/test-pe-universidad-europea": "/guides/reussir-test-pe-universidad-europea",
   "guides/test-admission-link-campus": "/guides/reussir-test-admission-link-campus",
