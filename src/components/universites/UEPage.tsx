@@ -16,6 +16,32 @@ import DocumentsList from "./DocumentsList";
 import ProgramLinks from "./ProgramLinks";
 import StickyBar from "@/components/program/StickyBar";
 import ContactButton from "@/components/shared/ContactButton";
+import TestimonialsCarousel from "@/components/shared/TestimonialsCarousel";
+import type { Testimonial } from "@/components/shared/TestimonialsCarousel";
+
+const ueTestimonials: Testimonial[] = [
+  {
+    quote: "Le test PE me faisait flipper, j'avais lu plein de trucs sur internet. Au final mon conseiller m'a envoyé des annales, on a fait des sessions de révision ensemble, et le jour J c'était dur mais faisable. J'ai eu ma place en médecine à Madrid, campus Villaviciosa. Ça fait 2 ans et j'en reviens toujours pas.",
+    author: "Inès K.",
+    context: "Étudiante en 2e année de médecine — UE Madrid",
+    initials: "IK",
+    color: "bg-[#615ca5]",
+  },
+  {
+    quote: "On hésitait entre Madrid et Malaga pour notre fils. Le conseiller nous a expliqué les différences, le coût de la vie, l'ambiance de chaque campus. Au final c'est Malaga qui collait le mieux. Le prêt LCL a été bouclé en un mois, et notre fils est parti serein.",
+    author: "Philippe G.",
+    context: "Parent d'un étudiant en dentaire — UE Malaga",
+    initials: "PG",
+    color: "bg-[#ec680a]",
+  },
+  {
+    quote: "J'avais pas trouvé de place en véto en France, même avec 14 de moyenne. À l'UE Valence les cours sont en anglais, les labos sont neufs, et on est 40 par promo. C'est un autre monde. Et Valence en tant que ville pour un étudiant, franchement c'est le rêve.",
+    author: "Raphaël C.",
+    context: "Étudiant en 1re année de vétérinaire — UE Valence",
+    initials: "RC",
+    color: "bg-[#615ca5]",
+  },
+];
 
 export default function UEPage() {
   const uni = getUniversityBySlug("ue")!;
@@ -128,6 +154,8 @@ export default function UEPage() {
         universityShort="UE"
         programs={programDetails.filter(p => p.universityShort === "UE")}
       />
+
+      <TestimonialsCarousel testimonials={ueTestimonials} />
 
       {/* CTA */}
       <section id="contact" data-program-cta className="py-10 md:py-16 px-6 bg-[#1B1D3A]">

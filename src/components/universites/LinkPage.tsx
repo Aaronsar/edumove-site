@@ -15,6 +15,32 @@ import DocumentsList from "./DocumentsList";
 import ProgramLinks from "./ProgramLinks";
 import StickyBar from "@/components/program/StickyBar";
 import ContactButton from "@/components/shared/ContactButton";
+import TestimonialsCarousel from "@/components/shared/TestimonialsCarousel";
+import type { Testimonial } from "@/components/shared/TestimonialsCarousel";
+
+const linkTestimonials: Testimonial[] = [
+  {
+    quote: "Le test de LINK c'est un QCM qu'on passe à Paris, en français. J'avais révisé bio et chimie pendant un mois avec les fiches d'Edumove. Le plus dur c'est culture générale, faut lire un peu avant. Résultat : admis en médecine à Rome, j'ai commencé l'italien sur place et en 6 mois je suivais les cours.",
+    author: "Antoine F.",
+    context: "Étudiant en 2e année de médecine — LINK Campus, Rome",
+    initials: "AF",
+    color: "bg-[#615ca5]",
+  },
+  {
+    quote: "Notre fils voulait faire pharmacie mais en France les places sont rares. À LINK il a été admis sur dossier, sans test. La déclaration de valeur au consulat, l'inscription, le logement à Rome… on a rien eu à gérer nous-mêmes, le conseiller s'est occupé de tout.",
+    author: "Catherine B.",
+    context: "Mère d'un étudiant en pharmacie — LINK Campus",
+    initials: "CB",
+    color: "bg-[#ec680a]",
+  },
+  {
+    quote: "Vivre à Rome en tant qu'étudiant c'est quelque chose. La fac est à taille humaine, les profs connaissent ton prénom. En kiné on fait beaucoup de pratique, les stages en hôpital commencent tôt. Et le week-end t'es au Trastevere avec tes potes. Honnêtement je changerais pour rien.",
+    author: "Emma D.",
+    context: "Étudiante en 3e année de kinésithérapie — LINK Campus",
+    initials: "ED",
+    color: "bg-[#615ca5]",
+  },
+];
 
 export default function LinkPage() {
   const uni = getUniversityBySlug("link")!;
@@ -138,6 +164,8 @@ export default function LinkPage() {
         universityShort="LINK Campus"
         programs={programDetails.filter(p => p.universityShort === "LINK")}
       />
+
+      <TestimonialsCarousel testimonials={linkTestimonials} />
 
       {/* CTA */}
       <section id="contact" data-program-cta className="py-10 md:py-16 px-6 bg-[#1B1D3A]">

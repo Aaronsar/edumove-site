@@ -2,7 +2,15 @@
 import { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 
-const testimonials = [
+export interface Testimonial {
+  quote: string;
+  author: string;
+  context: string;
+  initials: string;
+  color: string;
+}
+
+const defaultTestimonials: Testimonial[] = [
   {
     quote: "On était un peu perdus au début, on connaissait personne qui avait fait ça. Le conseiller nous a tout expliqué, il a géré le dossier, trouvé l'appart à Madrid… Aujourd'hui notre fils est en 2e année de dentaire là-bas et il adore. Franchement on referait ce choix sans hésiter.",
     author: "Marie D.",
@@ -40,22 +48,23 @@ const testimonials = [
   },
 ];
 
-export default function TestimonialsCarousel() {
+export default function TestimonialsCarousel({ testimonials }: { testimonials?: Testimonial[] } = {}) {
+  const items = testimonials ?? defaultTestimonials;
   const [active, setActive] = useState(0);
 
   const next = useCallback(() => {
-    setActive((i) => (i === testimonials.length - 1 ? 0 : i + 1));
-  }, []);
+    setActive((i) => (i === items.length - 1 ? 0 : i + 1));
+  }, [items.length]);
 
-  const prev = () => setActive((i) => (i === 0 ? testimonials.length - 1 : i - 1));
+  const prev = () => setActive((i) => (i === 0 ? items.length - 1 : i - 1));
 
-  // Auto-play every 3.5s
+  // Auto-play every 5s
   useEffect(() => {
     const interval = setInterval(next, 5000);
     return () => clearInterval(interval);
   }, [next, active]);
 
-  const current = testimonials[active];
+  const current = items[active];
 
   return (
     <section className="py-12 md:py-20 bg-[#1b1d3a] relative overflow-hidden">
@@ -128,7 +137,7 @@ export default function TestimonialsCarousel() {
 
             {/* Avatars row */}
             <div className="flex items-center gap-2">
-              {testimonials.map((t, i) => (
+              {items.map((t, i) => (
                 <button
                   key={i}
                   onClick={() => setActive(i)}

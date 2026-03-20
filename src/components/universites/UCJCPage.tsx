@@ -14,6 +14,32 @@ import DocumentsList from "./DocumentsList";
 import ProgramLinks from "./ProgramLinks";
 import StickyBar from "@/components/program/StickyBar";
 import ContactButton from "@/components/shared/ContactButton";
+import TestimonialsCarousel from "@/components/shared/TestimonialsCarousel";
+import type { Testimonial } from "@/components/shared/TestimonialsCarousel";
+
+const ucjcTestimonials: Testimonial[] = [
+  {
+    quote: "Ce qui m'a décidé pour l'UCJC c'est qu'il y a pas de test écrit, juste un entretien. J'étais stressée mais c'était plus une discussion qu'un oral. En kiné les stages commencent dès la première année, et pour le prix c'est clairement l'option la plus accessible.",
+    author: "Camille V.",
+    context: "Étudiante en 2e année de kinésithérapie — UCJC",
+    initials: "CV",
+    color: "bg-[#615ca5]",
+  },
+  {
+    quote: "On cherchait une solution pour notre fille après son échec en PASS. L'UCJC a répondu en 48h, l'entretien s'est fait en visio, et deux semaines plus tard on avait la confirmation. C'était fluide, pas de paperasse infinie. Elle est en dentaire maintenant et tout se passe bien.",
+    author: "Nathalie L.",
+    context: "Mère d'une étudiante en dentaire — UCJC",
+    initials: "NL",
+    color: "bg-[#ec680a]",
+  },
+  {
+    quote: "J'avais pas un gros dossier, 11 de moyenne au bac. En France c'était même pas la peine d'essayer dentaire. L'UCJC m'a accepté sur entretien, et la fac est en plein Madrid. Les cours sont en espagnol mais on progresse vite. Je regrette zéro.",
+    author: "Mehdi A.",
+    context: "Étudiant en 1re année de dentaire — UCJC",
+    initials: "MA",
+    color: "bg-[#615ca5]",
+  },
+];
 
 export default function UCJCPage() {
   const uni = getUniversityBySlug("ucjc")!;
@@ -149,6 +175,8 @@ export default function UCJCPage() {
         universityShort="UCJC"
         programs={programDetails.filter(p => p.universityShort === "UCJC")}
       />
+
+      <TestimonialsCarousel testimonials={ucjcTestimonials} />
 
       {/* CTA */}
       <section id="contact" data-program-cta className="py-10 md:py-16 px-6 bg-[#1B1D3A]">
