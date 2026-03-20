@@ -25,8 +25,8 @@ export default function ListBlock({ block, onChange }: Props) {
         onChange={(e) => onChange({ ...block, style: e.target.value as "bullet" | "numbered" })}
         className="px-2 py-1.5 rounded-lg border border-gray-200 bg-[#f8f9fb] text-xs font-semibold text-[#334155] focus:outline-none focus:ring-2 focus:ring-[#615CA5]/20"
       >
-        <option value="bullet">\u2022 Liste \u00e0 puces</option>
-        <option value="numbered">1. Liste num\u00e9rot\u00e9e</option>
+        <option value="bullet">\u2022 Liste à puces</option>
+        <option value="numbered">1. Liste numérotée</option>
       </select>
       {block.items.map((item, i) => (
         <div key={i} className="flex items-start gap-2">
@@ -37,7 +37,7 @@ export default function ListBlock({ block, onChange }: Props) {
             type="text"
             value={item}
             onChange={(e) => updateItem(i, e.target.value)}
-            placeholder={`\u00c9l\u00e9ment ${i + 1}...`}
+            placeholder={`Élément ${i + 1}...`}
             className="flex-1 px-3 py-1.5 rounded-lg border border-gray-200 bg-[#f8f9fb] text-sm text-[#334155] focus:outline-none focus:ring-2 focus:ring-[#615CA5]/20"
           />
           <button
@@ -52,7 +52,7 @@ export default function ListBlock({ block, onChange }: Props) {
         onClick={addItem}
         className="flex items-center gap-1 text-xs text-[#615CA5] hover:text-[#4e4a8a] font-medium"
       >
-        <Plus className="w-3 h-3" /> Ajouter un \u00e9l\u00e9ment
+        <Plus className="w-3 h-3" /> Ajouter un élément
       </button>
     </div>
   );

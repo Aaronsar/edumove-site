@@ -28,7 +28,7 @@ export default function ImageBlock({ block, onChange }: Props) {
         type="text"
         value={block.caption ?? ""}
         onChange={(e) => onChange({ ...block, caption: e.target.value || undefined })}
-        placeholder="L\u00e9gende (optionnel)"
+        placeholder="Légende (optionnel)"
         className="w-full px-3 py-1.5 rounded-lg border border-gray-200 bg-[#f8f9fb] text-xs text-[#64748b] focus:outline-none focus:ring-2 focus:ring-[#615CA5]/20"
       />
       {block.src && (

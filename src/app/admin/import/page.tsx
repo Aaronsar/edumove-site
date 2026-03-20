@@ -60,7 +60,7 @@ export default function ImportPage() {
         });
       }
     } catch (err) {
-      setError("Impossible de charger les articles GEDS. V\u00e9rifiez la connexion.");
+      setError("Impossible de charger les articles GEDS. Vérifiez la connexion.");
     }
     setLoading(false);
   }
@@ -139,10 +139,10 @@ export default function ImportPage() {
       <div className="mb-6">
         <h1 className="text-2xl font-bold text-[#1B1D3A] flex items-center gap-2">
           <Library className="w-6 h-6 text-[#615CA5]" />
-          Biblioth\u00e8que GEDS
+          Bibliothèque GEDS
         </h1>
         <p className="text-sm text-[#64748b] mt-1">
-          Parcourez les 193 articles de GEDS pour vous inspirer et cr\u00e9er des articles Edumove
+          Parcourez les 193 articles de GEDS pour vous inspirer et créer des articles Edumove
         </p>
       </div>
 
@@ -214,7 +214,7 @@ export default function ImportPage() {
                     ) : (
                       <Sparkles className="w-4 h-4" />
                     )}
-                    {generating ? "G\u00e9n\u00e9ration..." : "Cr\u00e9er un article sur ce sujet"}
+                    {generating ? "Génération..." : "Créer un article sur ce sujet"}
                   </button>
                   <a
                     href={selectedPost.link}
@@ -269,7 +269,7 @@ export default function ImportPage() {
                     disabled={generating}
                     className="flex items-center gap-1 text-xs text-[#EC680A] hover:text-[#D45E09] font-medium"
                   >
-                    <Sparkles className="w-3 h-3" /> Cr\u00e9er un article
+                    <Sparkles className="w-3 h-3" /> Créer un article
                   </button>
                 </div>
               </div>

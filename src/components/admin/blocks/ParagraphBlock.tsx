@@ -13,7 +13,7 @@ export default function ParagraphBlock({ block, onChange }: Props) {
       <textarea
         value={block.html}
         onChange={(e) => onChange({ ...block, html: e.target.value })}
-        placeholder="Texte du paragraphe... (HTML autoris\u00e9 : <strong>, <a href=''>, <em>)"
+        placeholder="Texte du paragraphe... (HTML autorisé : <strong>, <a href=''>, <em>)"
         rows={4}
         className="w-full px-3 py-2 rounded-lg border border-gray-200 bg-[#f8f9fb] text-sm text-[#334155] focus:outline-none focus:ring-2 focus:ring-[#615CA5]/20 resize-y"
       />

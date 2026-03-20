@@ -31,7 +31,7 @@ export default function AdminHeader({ email }: { email?: string }) {
           className="flex items-center gap-1.5 text-xs text-[#94a3b8] hover:text-red-500 transition-colors"
         >
           <LogOut className="w-3.5 h-3.5" />
-          D\u00e9connexion
+          Déconnexion
         </button>
       </div>
     </header>

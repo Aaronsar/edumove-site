@@ -12,7 +12,7 @@ import {
 const navItems = [
   { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
   { href: "/admin/articles", label: "Articles", icon: FileText },
-  { href: "/admin/import", label: "Biblioth\u00e8que GEDS", icon: Library },
+  { href: "/admin/import", label: "Bibliothèque GEDS", icon: Library },
 ];
 
 export default function AdminSidebar() {

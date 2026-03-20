@@ -108,17 +108,17 @@ export default function SEOPanel({
       {/* SERP Preview */}
       <div className="bg-white rounded-lg border border-gray-200 p-3">
         <p className="text-[10px] uppercase tracking-wider text-[#94a3b8] font-semibold mb-2 flex items-center gap-1">
-          <Search className="w-3 h-3" /> Aper\u00e7u Google
+          <Search className="w-3 h-3" /> Aperçu Google
         </p>
         <div className="space-y-0.5">
           <p className="text-sm text-[#1a0dab] font-medium truncate">
-            {metaTitle || title || "Titre de l\u2019article"}
+            {metaTitle || title || "Titre de l’article"}
           </p>
           <p className="text-xs text-[#006621] truncate">
             {baseUrl}{slug || "slug-article"}
           </p>
           <p className="text-xs text-[#545454] line-clamp-2">
-            {metaDescription || "Description de l\u2019article..."}
+            {metaDescription || "Description de l’article..."}
           </p>
         </div>
       </div>
@@ -126,13 +126,13 @@ export default function SEOPanel({
       {/* Keyword focus */}
       <div>
         <label className="block text-xs font-semibold text-[#334155] mb-1">
-          Mot-cl\u00e9 focus
+          Mot-clé focus
         </label>
         <input
           type="text"
           value={focusKeyword}
           onChange={(e) => onFocusKeywordChange(e.target.value)}
-          placeholder="ex: \u00e9tudes m\u00e9decine espagne"
+          placeholder="ex: études médecine espagne"
           className="w-full px-3 py-1.5 rounded-lg border border-gray-200 bg-[#f8f9fb] text-sm text-[#334155] focus:outline-none focus:ring-2 focus:ring-[#615CA5]/20"
         />
       </div>
@@ -207,7 +207,7 @@ export default function SEOPanel({
         </div>
         <div>
           <p className="text-[10px] uppercase tracking-wider text-[#94a3b8] font-semibold mb-1">
-            Liens & M\u00e9dias
+            Liens & Médias
           </p>
           {linksChecks.map((c) => (
             <CheckItem key={c.id} check={c} />

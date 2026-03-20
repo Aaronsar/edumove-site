@@ -19,12 +19,12 @@ interface ArticleRow {
 }
 
 const statusLabels: Record<string, { label: string; color: string }> = {
-  published: { label: "Publi\u00e9", color: "bg-green-100 text-green-700" },
+  published: { label: "Publié", color: "bg-green-100 text-green-700" },
   draft: { label: "Brouillon", color: "bg-orange-100 text-orange-700" },
-  archived: { label: "Archiv\u00e9", color: "bg-gray-100 text-gray-500" },
+  archived: { label: "Archivé", color: "bg-gray-100 text-gray-500" },
 };
 
-const tagOptions = ["Tous", "Guide", "Financement", "Actualit\u00e9s", "T\u00e9moignages", "Fili\u00e8res"];
+const tagOptions = ["Tous", "Guide", "Financement", "Actualités", "Témoignages", "Filières"];
 const statusOptions = ["Tous", "published", "draft", "archived"];
 
 function SEOBadge({ score }: { score: number }) {
@@ -93,7 +93,7 @@ export default function ArticlesListClient({ articles }: { articles: ArticleRow[
       <div className="bg-white rounded-xl border border-gray-200/80 overflow-hidden">
         {filtered.length === 0 ? (
           <div className="px-5 py-12 text-center">
-            <p className="text-sm text-[#94a3b8]">Aucun article trouv\u00e9</p>
+            <p className="text-sm text-[#94a3b8]">Aucun article trouvé</p>
           </div>
         ) : (
           <table className="w-full">
@@ -112,7 +112,7 @@ export default function ArticlesListClient({ articles }: { articles: ArticleRow[
                   Statut
                 </th>
                 <th className="px-3 py-3 text-xs font-semibold text-[#94a3b8] uppercase tracking-wider hidden lg:table-cell">
-                  Modifi\u00e9
+                  Modifié
                 </th>
               </tr>
             </thead>

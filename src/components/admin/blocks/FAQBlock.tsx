@@ -42,7 +42,7 @@ export default function FAQBlock({ block, onChange }: Props) {
             <textarea
               value={item.answer}
               onChange={(e) => updateItem(i, "answer", e.target.value)}
-              placeholder="R\u00e9ponse..."
+              placeholder="Réponse..."
               rows={2}
               className="flex-1 px-3 py-1.5 rounded-lg border border-gray-200 bg-white text-sm text-[#334155] focus:outline-none focus:ring-2 focus:ring-[#615CA5]/20 resize-y"
             />

@@ -58,10 +58,10 @@ export default async function AdminDashboardPage() {
   const stats = await getStats();
 
   const cards = [
-    { label: "Articles publi\u00e9s", value: stats.published, icon: FileText, color: "text-green-600 bg-green-50" },
+    { label: "Articles publiés", value: stats.published, icon: FileText, color: "text-green-600 bg-green-50" },
     { label: "Brouillons", value: stats.drafts, icon: FilePlus, color: "text-[#EC680A] bg-orange-50" },
     { label: "Total articles", value: stats.total, icon: TrendingUp, color: "text-[#615CA5] bg-purple-50" },
-    { label: "Import\u00e9s GEDS", value: stats.geds, icon: Library, color: "text-blue-600 bg-blue-50" },
+    { label: "Importés GEDS", value: stats.geds, icon: Library, color: "text-blue-600 bg-blue-50" },
   ];
 
   return (
@@ -101,9 +101,9 @@ export default async function AdminDashboardPage() {
             <FilePlus className="w-5 h-5 text-white" />
           </div>
           <div>
-            <p className="font-semibold text-sm">Cr\u00e9er un article</p>
+            <p className="font-semibold text-sm">Créer un article</p>
             <p className="text-xs text-white/50">
-              Nouvel article avec l&apos;\u00e9diteur par blocs
+              Nouvel article avec l&apos;éditeur par blocs
             </p>
           </div>
         </Link>
@@ -116,7 +116,7 @@ export default async function AdminDashboardPage() {
           </div>
           <div>
             <p className="font-semibold text-sm text-[#1B1D3A]">
-              Biblioth\u00e8que GEDS
+              Bibliothèque GEDS
             </p>
             <p className="text-xs text-[#94a3b8]">
               Consulter les 193 articles GEDS pour inspiration
@@ -129,7 +129,7 @@ export default async function AdminDashboardPage() {
       <div className="bg-white rounded-xl border border-gray-200/80">
         <div className="px-5 py-4 border-b border-gray-100 flex items-center justify-between">
           <h2 className="font-semibold text-sm text-[#1B1D3A]">
-            Derniers articles modifi\u00e9s
+            Derniers articles modifiés
           </h2>
           <Link
             href="/admin/articles"
@@ -145,7 +145,7 @@ export default async function AdminDashboardPage() {
               href="/admin/articles/new"
               className="text-sm text-[#EC680A] hover:text-[#D45E09] font-medium mt-2 inline-block"
             >
-              Cr\u00e9er votre premier article &rarr;
+              Créer votre premier article &rarr;
             </Link>
           </div>
         ) : (

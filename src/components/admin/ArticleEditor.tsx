@@ -72,9 +72,9 @@ function newBlock(type: string): ArticleSection {
 const tagOptions = [
   { value: "Guide", label: "Guide" },
   { value: "Financement", label: "Financement" },
-  { value: "Actualit\u00e9s", label: "Actualit\u00e9s" },
-  { value: "T\u00e9moignages", label: "T\u00e9moignages" },
-  { value: "Fili\u00e8res", label: "Fili\u00e8res" },
+  { value: "Actualités", label: "Actualités" },
+  { value: "Témoignages", label: "Témoignages" },
+  { value: "Filières", label: "Filières" },
 ];
 
 const formationOptions = ["medecine", "dentaire", "kinesitherapie", "pharmacie", "veterinaire"];
@@ -230,7 +230,7 @@ export default function ArticleEditor({ articleId, initialData }: ArticleEditorP
     if (error) {
       setMessage(`Erreur : ${error.message}`);
     } else {
-      setMessage(status === "published" ? "Article publi\u00e9 !" : "Brouillon enregistr\u00e9 !");
+      setMessage(status === "published" ? "Article publié !" : "Brouillon enregistré !");
       setTimeout(() => setMessage(""), 3000);
     }
     setSaving(false);
@@ -245,7 +245,7 @@ export default function ArticleEditor({ articleId, initialData }: ArticleEditorP
           type="text"
           value={state.title}
           onChange={(e) => setField("title", e.target.value)}
-          placeholder="Titre de l\u2019article..."
+          placeholder="Titre de l’article..."
           className="w-full text-2xl font-bold text-[#1B1D3A] bg-transparent border-none outline-none placeholder:text-[#c8c9d0]"
         />
 
@@ -253,7 +253,7 @@ export default function ArticleEditor({ articleId, initialData }: ArticleEditorP
         <textarea
           value={state.excerpt}
           onChange={(e) => setField("excerpt", e.target.value)}
-          placeholder="R\u00e9sum\u00e9 court (chapeau)..."
+          placeholder="Résumé court (chapeau)..."
           rows={2}
           className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-sm text-[#334155] focus:outline-none focus:ring-2 focus:ring-[#615CA5]/20 resize-y"
         />
@@ -403,7 +403,7 @@ export default function ArticleEditor({ articleId, initialData }: ArticleEditorP
               <div className="space-y-4">
                 <div>
                   <label className="block text-xs font-semibold text-[#334155] mb-2">
-                    Formations li\u00e9es
+                    Formations liées
                   </label>
                   <div className="space-y-1">
                     {formationOptions.map((f) => (
@@ -427,7 +427,7 @@ export default function ArticleEditor({ articleId, initialData }: ArticleEditorP
 
                 <div>
                   <label className="block text-xs font-semibold text-[#334155] mb-2">
-                    Universit\u00e9s li\u00e9es
+                    Universités liées
                   </label>
                   <div className="space-y-1">
                     {universityOptions.map((u) => (
@@ -495,8 +495,8 @@ export default function ArticleEditor({ articleId, initialData }: ArticleEditorP
                     className="w-full px-3 py-1.5 rounded-lg border border-gray-200 bg-[#f8f9fb] text-sm text-[#334155] focus:outline-none focus:ring-2 focus:ring-[#615CA5]/20"
                   >
                     <option value="draft">Brouillon</option>
-                    <option value="published">Publi\u00e9</option>
-                    <option value="archived">Archiv\u00e9</option>
+                    <option value="published">Publié</option>
+                    <option value="archived">Archivé</option>
                   </select>
                 </div>
 

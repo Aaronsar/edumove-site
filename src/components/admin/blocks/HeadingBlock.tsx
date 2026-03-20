@@ -31,7 +31,7 @@ export default function HeadingBlock({ block, onChange }: Props) {
         type="text"
         value={block.icon ?? ""}
         onChange={(e) => onChange({ ...block, icon: e.target.value || undefined })}
-        placeholder="Ic\u00f4ne Lucide (ex: GraduationCap, Stethoscope)"
+        placeholder="Icône Lucide (ex: GraduationCap, Stethoscope)"
         className="w-full px-3 py-1.5 rounded-lg border border-gray-200 bg-[#f8f9fb] text-xs text-[#64748b] focus:outline-none focus:ring-2 focus:ring-[#615CA5]/20"
       />
     </div>
