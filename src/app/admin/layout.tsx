@@ -17,9 +17,8 @@ export default async function AdminLayout({
     data: { user },
   } = await supabase.auth.getUser();
 
-  // Login page renders without sidebar/header
-  // The middleware handles redirect for unauthenticated users
-  // but this is a fallback
+  // Allow login page to render without auth
+  // Other admin pages redirect to login if not authenticated
   if (!user) {
     return <>{children}</>;
   }

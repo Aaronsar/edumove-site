@@ -1,3 +1,4 @@
+import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import Link from "next/link";
 import { FileText, FilePlus, Library, TrendingUp } from "lucide-react";
@@ -40,6 +41,11 @@ async function getStats() {
 }
 
 export default async function AdminDashboardPage() {
+  // Auth guard
+  const supabaseAuth = await createClient();
+  const { data: { user } } = await supabaseAuth.auth.getUser();
+  if (!user) redirect("/admin/login");
+
   const stats = await getStats();
 
   const cards = [
