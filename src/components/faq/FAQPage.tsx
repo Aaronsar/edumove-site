@@ -479,7 +479,7 @@ export default function FAQPage() {
 
           {/* CTA */}
           <div className="bg-[#1B1D3A] rounded-2xl p-8 md:p-10 text-center">
-            <h2 className="text-xl md:text-2xl font-bold text-white mb-3">
+            <h2 className="text-xl md:text-2xl font-bold mb-3" style={{ color: "#ffffff" }}>
               Vous n&apos;avez pas trouvé votre réponse ?
             </h2>
             <p className="text-white/60 text-sm mb-6 max-w-md mx-auto">
