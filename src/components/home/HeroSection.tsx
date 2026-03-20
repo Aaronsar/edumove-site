@@ -94,7 +94,7 @@ export default function HeroSection() {
               </h1>
 
               <p className="text-white/70 text-base md:text-lg mb-8 leading-relaxed max-w-lg">
-                Admis ou remboursé. Financement jusqu&apos;à 100%. Vous ne payez rien avant d&apos;être praticien.
+                Accompagnement complet. Financement jusqu&apos;à 100%. Vous ne payez rien avant d&apos;être praticien.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3">

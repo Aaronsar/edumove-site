@@ -289,7 +289,7 @@ export default function AboutPage() {
 
           <div className="grid sm:grid-cols-2 gap-4">
             {[
-              "Admis ou remboursé : nous nous engageons sur votre admission",
+              "Accompagnement personnalisé : nous nous engageons sur votre admission",
               "Financement jusqu'à 100 % grâce à notre partenariat LCL",
               "Suivi complet, du premier appel jusqu'à l'installation sur place",
               "Préparation complète aux tests d'admission",
