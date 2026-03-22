@@ -29,10 +29,10 @@ export default function ProgramHero({ detail }: { detail: ProgramDetail }) {
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
           {/* Left — text */}
           <div className="flex-1">
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-2 tracking-tight" style={{ color: "#ffffff" }}>
-              {detail.filiere}
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-2 tracking-tight" style={{ color: "#ffffff" }}>
+              {detail.filiere} à {detail.city}
             </h1>
-            <p className="text-xl mb-2" style={{ color: "#ffffff" }}>{detail.university}</p>
+            <p className="text-xl mb-2" style={{ color: "rgba(255,255,255,0.8)" }}>{detail.university}</p>
             <p className="text-lg flex items-center gap-2" style={{ color: "#ffffff" }}>
               <MapPin className="w-5 h-5 text-[#EC680A]" />
               {detail.city}, {detail.country}

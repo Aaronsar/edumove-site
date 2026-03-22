@@ -142,7 +142,7 @@ const ucjcMadridLife: StudentLife = {
 
 const dentaireUEMadrid: ProgramDetail = {
   slug: "ue-madrid",
-  filiere: "Dentaire",
+  filiere: "Études Dentaires",
   filiereSlug: "dentaire",
   university: "Universidad Europea",
   universityShort: "UE",
@@ -174,7 +174,7 @@ const dentaireUEMadrid: ProgramDetail = {
 
 const dentaireUEMalaga: ProgramDetail = {
   slug: "ue-malaga",
-  filiere: "Dentaire",
+  filiere: "Études Dentaires",
   filiereSlug: "dentaire",
   university: "Universidad Europea",
   universityShort: "UE",
@@ -206,7 +206,7 @@ const dentaireUEMalaga: ProgramDetail = {
 
 const dentaireUEValence: ProgramDetail = {
   slug: "ue-valence",
-  filiere: "Dentaire",
+  filiere: "Études Dentaires",
   filiereSlug: "dentaire",
   university: "Universidad Europea",
   universityShort: "UE",
@@ -238,7 +238,7 @@ const dentaireUEValence: ProgramDetail = {
 
 const dentaireUEAlicante: ProgramDetail = {
   slug: "ue-alicante",
-  filiere: "Dentaire",
+  filiere: "Études Dentaires",
   filiereSlug: "dentaire",
   university: "Universidad Europea",
   universityShort: "UE",
@@ -264,7 +264,7 @@ const dentaireUEAlicante: ProgramDetail = {
 
 const dentaireUECanaries: ProgramDetail = {
   slug: "ue-canaries",
-  filiere: "Dentaire",
+  filiere: "Études Dentaires",
   filiereSlug: "dentaire",
   university: "Universidad Europea",
   universityShort: "UE",
@@ -290,7 +290,7 @@ const dentaireUECanaries: ProgramDetail = {
 
 const dentaireUCJC: ProgramDetail = {
   slug: "ucjc-madrid",
-  filiere: "Dentaire",
+  filiere: "Études Dentaires",
   filiereSlug: "dentaire",
   university: "UCJC — Universidad Camilo José Cela",
   universityShort: "UCJC",
@@ -321,7 +321,7 @@ const dentaireUCJC: ProgramDetail = {
 
 const dentaireLINK: ProgramDetail = {
   slug: "link-rome",
-  filiere: "Dentaire",
+  filiere: "Études Dentaires",
   filiereSlug: "dentaire",
   university: "LINK Campus University",
   universityShort: "LINK",
@@ -358,7 +358,7 @@ const dentaireLINK: ProgramDetail = {
 
 const medecineUEMadrid: ProgramDetail = {
   slug: "ue-madrid",
-  filiere: "Médecine",
+  filiere: "Études de Médecine",
   filiereSlug: "medecine",
   university: "Universidad Europea",
   universityShort: "UE",
@@ -391,7 +391,7 @@ const medecineUEMadrid: ProgramDetail = {
 
 const medecineUECanaries: ProgramDetail = {
   slug: "ue-canaries",
-  filiere: "Médecine",
+  filiere: "Études de Médecine",
   filiereSlug: "medecine",
   university: "Universidad Europea",
   universityShort: "UE",
@@ -417,7 +417,7 @@ const medecineUECanaries: ProgramDetail = {
 
 const medecineLINK: ProgramDetail = {
   slug: "link-rome",
-  filiere: "Médecine",
+  filiere: "Études de Médecine",
   filiereSlug: "medecine",
   university: "LINK Campus University",
   universityShort: "LINK",
@@ -460,7 +460,7 @@ const kineProgram4ans: YearProgram[] = [
 ];
 
 const kineUEMadrid: ProgramDetail = {
-  slug: "ue-madrid", filiere: "Kinésithérapie", filiereSlug: "kinesitherapie",
+  slug: "ue-madrid", filiere: "Études de Kinésithérapie", filiereSlug: "kinesitherapie",
   university: "Universidad Europea", universityShort: "UE", universitySlug: "universidad-europea",
   city: "Madrid", country: "Espagne", countryFlag: "",
   presentation: "Les études de Grado en Fisioterapia à l'UEM offrent une formation reconnue pour son approche pratique et son excellence clinique. Le cursus de 4 ans bénéficie d'installations de pointe. La 1ère année est en français, puis les cours passent en espagnol.",
@@ -473,7 +473,7 @@ const kineUEMadrid: ProgramDetail = {
 };
 
 const kineUEMalaga: ProgramDetail = {
-  slug: "ue-malaga", filiere: "Kinésithérapie", filiereSlug: "kinesitherapie",
+  slug: "ue-malaga", filiere: "Études de Kinésithérapie", filiereSlug: "kinesitherapie",
   university: "Universidad Europea", universityShort: "UE", universitySlug: "universidad-europea",
   city: "Málaga", country: "Espagne", countryFlag: "",
   presentation: "Les études de Grado en Fisioterapia à Málaga seront lancées dans un campus flambant neuf. Le programme reconnu en France s'étend sur 4 ans avec une pratique intensive dès la 1ère année.",
@@ -486,7 +486,7 @@ const kineUEMalaga: ProgramDetail = {
 };
 
 const kineUEValence: ProgramDetail = {
-  slug: "ue-valence", filiere: "Kinésithérapie", filiereSlug: "kinesitherapie",
+  slug: "ue-valence", filiere: "Études de Kinésithérapie", filiereSlug: "kinesitherapie",
   university: "Universidad Europea", universityShort: "UE", universitySlug: "universidad-europea",
   city: "Valence", country: "Espagne", countryFlag: "",
   presentation: "Les études de Grado en Fisioterapia à l'UEV offrent une formation reconnue et axée sur l'excellence clinique. Le cursus de 4 ans bénéficie d'installations de pointe pour la rééducation et l'analyse du mouvement.",
@@ -499,7 +499,7 @@ const kineUEValence: ProgramDetail = {
 };
 
 const kineUEAlicante: ProgramDetail = {
-  slug: "ue-alicante", filiere: "Kinésithérapie", filiereSlug: "kinesitherapie",
+  slug: "ue-alicante", filiere: "Études de Kinésithérapie", filiereSlug: "kinesitherapie",
   university: "Universidad Europea", universityShort: "UE", universitySlug: "universidad-europea",
   city: "Alicante", country: "Espagne", countryFlag: "",
   presentation: "Le programme de kinésithérapie à Alicante offre 4 ans de formation intensive sur la Costa Blanca. Admission sur dossier, sans test d'entrée.",
@@ -512,7 +512,7 @@ const kineUEAlicante: ProgramDetail = {
 };
 
 const kineUECanaries: ProgramDetail = {
-  slug: "ue-canaries", filiere: "Kinésithérapie", filiereSlug: "kinesitherapie",
+  slug: "ue-canaries", filiere: "Études de Kinésithérapie", filiereSlug: "kinesitherapie",
   university: "Universidad Europea", universityShort: "UE", universitySlug: "universidad-europea",
   city: "Canaries", country: "Espagne", countryFlag: "",
   presentation: "Le programme de kinésithérapie aux Canaries offre une formation d'excellence dans un cadre insulaire unique. Admission sur dossier.",
@@ -525,7 +525,7 @@ const kineUECanaries: ProgramDetail = {
 };
 
 const kineUCJC: ProgramDetail = {
-  slug: "ucjc-madrid", filiere: "Kinésithérapie", filiereSlug: "kinesitherapie",
+  slug: "ucjc-madrid", filiere: "Études de Kinésithérapie", filiereSlug: "kinesitherapie",
   university: "UCJC — Universidad Camilo José Cela", universityShort: "UCJC", universitySlug: "ucjc",
   city: "Madrid", country: "Espagne", countryFlag: "",
   presentation: "La kiné UCJC est l'option la moins chère de toutes nos universités (9 420 €/an, soit 37 680 € total sur 4 ans). Aucun test, aucune moyenne requise. Idéal pour les profils non-scientifiques ou avec une moyenne modeste.",
@@ -538,7 +538,7 @@ const kineUCJC: ProgramDetail = {
 };
 
 const kineLINK: ProgramDetail = {
-  slug: "link-rome", filiere: "Kinésithérapie", filiereSlug: "kinesitherapie",
+  slug: "link-rome", filiere: "Études de Kinésithérapie", filiereSlug: "kinesitherapie",
   university: "LINK Campus University", universityShort: "LINK", universitySlug: "link-campus",
   city: "Rome", country: "Italie", countryFlag: "",
   heroImages: ["/images/universites/link/link-campus-35.jpg", "/images/universites/link/link-campus-18.jpg", "/images/universites/link/link-campus-6.jpg", "/images/universites/link/link-campus-15.jpg"],
@@ -568,7 +568,7 @@ const pharmacieProgram5ans: YearProgram[] = [
 ];
 
 const pharmacieUEMadrid: ProgramDetail = {
-  slug: "ue-madrid", filiere: "Pharmacie", filiereSlug: "pharmacie",
+  slug: "ue-madrid", filiere: "Études de Pharmacie", filiereSlug: "pharmacie",
   university: "Universidad Europea", universityShort: "UE", universitySlug: "universidad-europea",
   city: "Madrid", country: "Espagne", countryFlag: "",
   presentation: "Les études de Grado en Farmacia à l'UEM offrent une formation solide en sciences de la santé. Le cursus de 5 ans est dispensé sur le campus de Villaviciosa de Odón. Admission sur dossier, sans test d'entrée.",
@@ -581,7 +581,7 @@ const pharmacieUEMadrid: ProgramDetail = {
 };
 
 const pharmacieUCJC: ProgramDetail = {
-  slug: "ucjc-madrid", filiere: "Pharmacie", filiereSlug: "pharmacie",
+  slug: "ucjc-madrid", filiere: "Études de Pharmacie", filiereSlug: "pharmacie",
   university: "UCJC — Universidad Camilo José Cela", universityShort: "UCJC", universitySlug: "ucjc",
   city: "Madrid", country: "Espagne", countryFlag: "",
   presentation: "L'UCJC propose un programme de pharmacie en 5 ans en espagnol. Admission par entretien uniquement, sans test écrit. Processus le plus simple des 3 universités.",
@@ -593,7 +593,7 @@ const pharmacieUCJC: ProgramDetail = {
 };
 
 const pharmacieLINK: ProgramDetail = {
-  slug: "link-rome", filiere: "Pharmacie", filiereSlug: "pharmacie",
+  slug: "link-rome", filiere: "Études de Pharmacie", filiereSlug: "pharmacie",
   university: "LINK Campus University", universityShort: "LINK", universitySlug: "link-campus",
   city: "Rome", country: "Italie", countryFlag: "",
   heroImages: ["/images/universites/link/link-campus-80.jpg", "/images/universites/link/link-campus-35.jpg", "/images/universites/link/link-campus-15.jpg", "/images/universites/link/link-campus-18.jpg"],
@@ -611,7 +611,7 @@ const pharmacieLINK: ProgramDetail = {
 // ============================================================
 
 const veterinaireUEMadrid: ProgramDetail = {
-  slug: "ue-madrid", filiere: "Vétérinaire", filiereSlug: "veterinaire",
+  slug: "ue-madrid", filiere: "Études Vétérinaires", filiereSlug: "veterinaire",
   university: "Universidad Europea", universityShort: "UE", universitySlug: "universidad-europea",
   city: "Madrid", country: "Espagne", countryFlag: "",
   presentation: "Le programme de vétérinaire est disponible uniquement à Madrid. Le cursus de 5 ans combine sciences fondamentales et pratique clinique avec des animaux. Admission via le test PE (4 épreuves).",
@@ -635,7 +635,7 @@ const veterinaireUEMadrid: ProgramDetail = {
 // ============================================================
 
 const prepaDentaireUEAlicante: ProgramDetail = {
-  slug: "ue-alicante", filiere: "Prépa Dentaire", filiereSlug: "prepa-dentaire",
+  slug: "ue-alicante", filiere: "Année Préparatoire Dentaire", filiereSlug: "prepa-dentaire",
   university: "Universidad Europea", universityShort: "UE", universitySlug: "universidad-europea",
   city: "Alicante", country: "Espagne", countryFlag: "",
   presentation: "Une année préparatoire en anglais à Alicante avant d'intégrer le cursus dentaire de 5 ans. Aucun test d'entrée, juste un niveau B2 en anglais requis. Après la prépa, intégration en Dentaire Alicante à 20 821 €/an.",

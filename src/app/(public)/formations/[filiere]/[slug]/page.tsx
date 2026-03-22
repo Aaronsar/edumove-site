@@ -1,6 +1,15 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getAllProgramSlugs, getProgramDetail } from "@/data/program-details";
+import { getFiliereBySlug, filieres } from "@/data/filieres";
+import type { FiliereSlug } from "@/data/universities";
+import { getCheapestProgram } from "@/data/universities";
+import {
+  isCountrySlug,
+  getCountryPageData,
+  getAvailableCountries,
+  getProgramsByFiliereAndCountry,
+} from "@/data/country-pages";
 import ProgramHero from "@/components/program/ProgramHero";
 import KeyInfoBar from "@/components/program/KeyInfoBar";
 import ProgramHighlights from "@/components/program/ProgramHighlights";
@@ -14,10 +23,29 @@ import GuideTestPEBanner from "@/components/program/GuideTestPEBanner";
 import GuideTestLINKBanner from "@/components/program/GuideTestLINKBanner";
 import StickyBar from "@/components/program/StickyBar";
 import MiniCTA from "@/components/program/MiniCTA";
+import CountryFilierePage from "@/components/formations/CountryFilierePage";
+import FinancingBanner from "@/components/shared/FinancingBanner";
+
+// ---------------------------------------------------------------------------
+// Static params — program slugs + country slugs
+// ---------------------------------------------------------------------------
 
 export function generateStaticParams() {
-  return getAllProgramSlugs();
+  const programParams = getAllProgramSlugs();
+
+  const countryParams: Array<{ filiere: string; slug: string }> = [];
+  for (const f of filieres) {
+    for (const c of getAvailableCountries(f.slug)) {
+      countryParams.push({ filiere: f.slug, slug: c });
+    }
+  }
+
+  return [...programParams, ...countryParams];
 }
+
+// ---------------------------------------------------------------------------
+// Dynamic metadata
+// ---------------------------------------------------------------------------
 
 export async function generateMetadata({
   params,
@@ -25,21 +53,72 @@ export async function generateMetadata({
   params: Promise<{ filiere: string; slug: string }>;
 }): Promise<Metadata> {
   const { filiere, slug } = await params;
+
+  // Country page metadata
+  if (isCountrySlug(slug)) {
+    const data = getCountryPageData(filiere as FiliereSlug, slug);
+    if (!data) return { title: "Page introuvable" };
+    return {
+      title: data.metaTitle,
+      description: data.metaDescription,
+      alternates: { canonical: `/formations/${filiere}/${slug}` },
+      openGraph: {
+        title: data.metaTitle,
+        description: data.metaDescription,
+      },
+    };
+  }
+
+  // Program detail metadata
   const detail = getProgramDetail(filiere, slug);
   if (!detail) return { title: "Programme non trouvé" };
   return {
-    title: `${detail.filiere} à ${detail.university} ${detail.city} — Edumove`,
-    description: detail.presentation.slice(0, 160),
+    title: `${detail.filiere} à ${detail.city} – ${detail.universityShort} | Edumove`,
+    description: detail.presentation.slice(0, 155) + "...",
+    alternates: { canonical: `/formations/${filiere}/${slug}` },
   };
 }
 
-export default async function ProgramPage({
+// ---------------------------------------------------------------------------
+// Page component
+// ---------------------------------------------------------------------------
+
+export default async function SlugPage({
   params,
 }: {
   params: Promise<{ filiere: string; slug: string }>;
 }) {
-  const { filiere, slug } = await params;
-  const detail = getProgramDetail(filiere, slug);
+  const { filiere: filiereSlug, slug } = await params;
+
+  // ── Country page ──
+  if (isCountrySlug(slug)) {
+    const countryData = getCountryPageData(filiereSlug as FiliereSlug, slug);
+    const filiere = getFiliereBySlug(filiereSlug as FiliereSlug);
+    if (!countryData || !filiere) notFound();
+
+    const programs = getProgramsByFiliereAndCountry(filiere.slug, slug);
+    const available = programs.filter((p) => !p.program.isFull);
+    const minCost = available.length > 0
+      ? Math.min(...available.map((p) => p.program.totalCost))
+      : null;
+    // Only show "cheapest" badge if exactly 1 program has that price
+    const cheapestCount = minCost !== null
+      ? available.filter((p) => p.program.totalCost === minCost).length
+      : 0;
+    const cheapestTotalCost = cheapestCount === 1 ? minCost : null;
+
+    return (
+      <CountryFilierePage
+        data={countryData}
+        filiere={filiere}
+        programs={programs}
+        cheapestTotalCost={cheapestTotalCost}
+      />
+    );
+  }
+
+  // ── Program detail page (existing logic) ──
+  const detail = getProgramDetail(filiereSlug, slug);
   if (!detail) notFound();
 
   return (
@@ -79,6 +158,7 @@ export default async function ProgramPage({
       <RelatedPrograms detail={detail} />
       {detail.universityShort === "UE" && <GuideTestPEBanner />}
       {detail.universityShort === "LINK" && <GuideTestLINKBanner />}
+      <FinancingBanner />
       <ProgramCTA detail={detail} />
       <StickyBar />
     </main>
