@@ -169,10 +169,20 @@ export default function SEOPanel({
               .map((c) => c.message)
               .join(". ");
             onImprove(
-              `Optimise automatiquement l'article pour atteindre un score SEO de 80+ minimum. Voici les problèmes à corriger : ${failedChecks}. ` +
-              `Le mot-clé focus est "${focusKeyword || "(à définir)"}". ` +
-              `Assure-toi que : le mot-clé apparaît dans le titre SEO, dans la meta description (140-155 chars), dans le premier paragraphe, dans au moins un H2, et que la densité est entre 0.5% et 2.5%. ` +
-              `Ajoute des liens internes et au moins 1 lien externe si manquants.`
+              `OPTIMISATION SEO COMPLÈTE OBLIGATOIRE. Score actuel: ${analysis.score}/100, objectif: 80+ minimum.\n\n` +
+              `PROBLÈMES À CORRIGER ABSOLUMENT:\n${failedChecks}\n\n` +
+              `MOT-CLÉ FOCUS: "${focusKeyword || "(à définir — choisis-en un pertinent de 2-3 mots)"}"\n\n` +
+              `CHECKLIST OBLIGATOIRE — chaque point DOIT être vert:\n` +
+              `1. focusKeyword: définis un mot-clé pertinent de 2-3 mots si vide\n` +
+              `2. metaTitle: 50-60 chars, DOIT contenir le mot-clé au début\n` +
+              `3. metaDescription: 140-155 chars, DOIT contenir le mot-clé\n` +
+              `4. Premier paragraphe: DOIT contenir le mot-clé dans les 150 premiers mots\n` +
+              `5. Au moins un H2 DOIT contenir le mot-clé\n` +
+              `6. Densité du mot-clé: entre 0.5% et 2.5% (utilise le mot-clé naturellement ~5-10 fois dans le texte)\n` +
+              `7. Contenu: minimum 600 mots (ajoute du contenu pertinent si trop court)\n` +
+              `8. Liens internes: minimum 3 liens <a href="/..."> dans les paragraphes\n` +
+              `9. Liens externes: minimum 1 lien vers une source officielle (ex: conseil-national.medecin.fr, education.gouv.fr)\n` +
+              `IMPORTANT: Retourne TOUS les champs (focusKeyword, metaTitle, metaDescription, excerpt, sections). Ne laisse RIEN de côté.`
             );
           }}
           disabled={improving}

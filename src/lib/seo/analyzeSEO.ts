@@ -207,14 +207,17 @@ export function analyzeSEO(params: {
     category: "basic",
   });
 
-  // 4. Keyword in slug
-  const slugNormalized = normalize(slug.replace(/-/g, " "));
+  // 4. Keyword in slug (check each word of keyword is present in slug)
+  const slugNormalized = normalize(slug.replace(/-/g, " ").replace(/\//g, " "));
+  const kwWordsInSlug = kw
+    ? kw.split(/\s+/).filter((w) => w.length > 2).every((word) => slugNormalized.includes(word))
+    : false;
   checks.push({
     id: "kw-in-slug",
     label: "Mot-cl\u00e9 dans l\u2019URL",
-    passed: kw ? slugNormalized.includes(kw.replace(/\s+/g, " ")) : false,
+    passed: kwWordsInSlug,
     message: kw
-      ? slugNormalized.includes(kw.replace(/\s+/g, " "))
+      ? kwWordsInSlug
         ? `L\u2019URL contient le mot-cl\u00e9`
         : `Ajoutez "${focusKeyword}" dans le slug`
       : "D\u00e9finissez un mot-cl\u00e9 focus",
