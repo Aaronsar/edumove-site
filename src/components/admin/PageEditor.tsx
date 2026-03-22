@@ -145,6 +145,7 @@ export default function PageEditor({ page, publicUrl }: Props) {
         return;
       }
       const imp = data.improvements;
+      if (imp.focusKeyword) setFocusKeyword(imp.focusKeyword);
       if (imp.metaTitle) setMetaTitle(imp.metaTitle);
       if (imp.metaDescription) setMetaDescription(imp.metaDescription);
       if (imp.sections && Array.isArray(imp.sections)) {

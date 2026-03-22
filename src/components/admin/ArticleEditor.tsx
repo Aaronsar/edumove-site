@@ -554,6 +554,7 @@ export default function ArticleEditor({ articleId, initialData }: ArticleEditorP
         return;
       }
       const imp = data.improvements;
+      if (imp.focusKeyword) setField("focusKeyword", imp.focusKeyword);
       if (imp.metaTitle) setField("metaTitle", imp.metaTitle);
       if (imp.metaDescription) setField("metaDescription", imp.metaDescription);
       if (imp.excerpt) setField("excerpt", imp.excerpt);
