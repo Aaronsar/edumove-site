@@ -292,7 +292,7 @@ export default function PageEditor({ page, publicUrl }: Props) {
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="Titre H1 de la page..."
-              className="w-full text-2xl md:text-3xl font-extrabold leading-[1.15] mb-2 bg-transparent border-none outline-none text-white placeholder:text-white/20 focus:ring-0"
+              className="w-full text-2xl md:text-3xl font-extrabold leading-[1.15] mb-2 bg-white/5 hover:bg-white/10 focus:bg-white/10 border border-white/10 hover:border-white/20 focus:border-[#EC680A]/50 rounded-xl px-4 py-2 outline-none text-white placeholder:text-white/20 transition-all cursor-text"
             />
 
             {/* Slug */}
