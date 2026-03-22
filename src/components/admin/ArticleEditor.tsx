@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useMemo } from "react";
+import { useState, useRef, useMemo, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import {
@@ -10,6 +10,7 @@ import {
 import type { ArticleSection, HeroPill } from "@/types/sections";
 import { analyzeSEO } from "@/lib/seo/analyzeSEO";
 import SEOPanel from "./SEOPanel";
+import ArticlePreviewModal from "./ArticlePreviewModal";
 import HeadingBlock from "./blocks/HeadingBlock";
 import ParagraphBlock from "./blocks/ParagraphBlock";
 import CalloutBlock from "./blocks/CalloutBlock";
@@ -35,6 +36,8 @@ import {
   HelpCircle,
   Clock,
   X,
+  Wand2,
+  Loader2,
   FileText,
   GraduationCap,
   Sparkles,
@@ -328,10 +331,16 @@ function HeroPreview({
   state,
   readTime,
   setField,
+  onGenerate,
+  generating,
+  generateError,
 }: {
   state: ArticleEditorState;
   readTime: string;
   setField: <K extends keyof ArticleEditorState>(field: K, value: ArticleEditorState[K]) => void;
+  onGenerate: () => void;
+  generating: boolean;
+  generateError: string;
 }) {
   const [editingPills, setEditingPills] = useState(false);
 
@@ -383,13 +392,40 @@ function HeroPreview({
         </div>
 
         {/* H1 Title - editable */}
-        <input
-          type="text"
-          value={state.title}
-          onChange={(e) => setField("title", e.target.value)}
-          placeholder="Titre de l'article (H1)..."
-          className="w-full text-2xl md:text-3xl font-extrabold leading-[1.15] mb-4 bg-transparent border-none outline-none text-white placeholder:text-white/20 focus:ring-0"
-        />
+        <div className="flex items-start gap-3">
+          <input
+            type="text"
+            value={state.title}
+            onChange={(e) => setField("title", e.target.value)}
+            placeholder="Titre de l'article (H1)..."
+            className="flex-1 text-2xl md:text-3xl font-extrabold leading-[1.15] bg-transparent border-none outline-none text-white placeholder:text-white/20 focus:ring-0"
+          />
+          <button
+            onClick={onGenerate}
+            disabled={generating || !state.title.trim()}
+            className={`shrink-0 mt-1 flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all ${
+              generating
+                ? "bg-white/10 text-white/50 cursor-wait"
+                : "bg-[#EC680A] hover:bg-[#D45E09] text-white hover:shadow-lg hover:shadow-[#EC680A]/20"
+            }`}
+          >
+            {generating ? (
+              <>
+                <Loader2 className="w-4 h-4 animate-spin" />
+                Génération...
+              </>
+            ) : (
+              <>
+                <Wand2 className="w-4 h-4" />
+                Générer avec l&apos;IA
+              </>
+            )}
+          </button>
+        </div>
+        {generateError && (
+          <p className="text-red-400 text-xs mt-1">{generateError}</p>
+        )}
+        <div className="mb-4" />
 
         {/* Excerpt - editable */}
         <textarea
@@ -472,16 +508,65 @@ export default function ArticleEditor({ articleId, initialData }: ArticleEditorP
   const supabase = getSupabase();
   const {
     state,
+    dispatch,
     setField,
     addBlock,
     updateBlock,
     deleteBlock,
     moveBlock,
     readTime,
+    sommaire,
   } = useArticleEditor(initialData);
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState("");
   const [activePanel, setActivePanel] = useState<"seo" | "relations" | "publish">("seo");
+  const [generating, setGenerating] = useState(false);
+  const [generateError, setGenerateError] = useState("");
+  const [previewOpen, setPreviewOpen] = useState(false);
+
+  const handleGenerate = useCallback(async () => {
+    if (!state.title.trim() || generating) return;
+    setGenerating(true);
+    setGenerateError("");
+    try {
+      // Try Supabase Edge Function first, fallback to local API
+      const edgeFnUrl = "https://jhopwqpbaiyjfoggvcaf.supabase.co/functions/v1/generate-article";
+      const localUrl = "/api/generate-article";
+      const url = edgeFnUrl;
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          title: state.title,
+          focusKeyword: state.focusKeyword,
+          tag: state.tag,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        setGenerateError(data.error || "Erreur lors de la génération");
+        return;
+      }
+      const a = data.article;
+      // Fill all fields from the generated article
+      if (a.slug) setField("slug", a.slug);
+      if (a.metaTitle) setField("metaTitle", a.metaTitle);
+      if (a.metaDescription) setField("metaDescription", a.metaDescription);
+      if (a.excerpt) setField("excerpt", a.excerpt);
+      if (a.heroPills) setField("heroPills", a.heroPills);
+      if (a.relatedFormations) setField("relatedFormations", a.relatedFormations);
+      if (a.relatedUniversities) setField("relatedUniversities", a.relatedUniversities);
+      if (a.relatedSlugs) setField("relatedSlugs", a.relatedSlugs);
+      if (a.sections && Array.isArray(a.sections)) {
+        dispatch({ type: "SET_SECTIONS", sections: a.sections });
+      }
+      setMessage("Article généré avec succès ! Vérifiez et ajustez le contenu avant de publier.");
+    } catch {
+      setGenerateError("Erreur réseau. Vérifiez votre connexion.");
+    } finally {
+      setGenerating(false);
+    }
+  }, [state.title, state.focusKeyword, state.tag, generating, setField, dispatch]);
 
   // Calculate SEO score in real-time
   const seoAnalysis = useMemo(
@@ -563,7 +648,7 @@ export default function ArticleEditor({ articleId, initialData }: ArticleEditorP
       {/* Left column — Editor */}
       <div className="flex-1 min-w-0 space-y-4">
         {/* Hero Preview — Title H1 + Excerpt + Tag + Pills */}
-        <HeroPreview state={state} readTime={readTime} setField={setField} />
+        <HeroPreview state={state} readTime={readTime} setField={setField} onGenerate={handleGenerate} generating={generating} generateError={generateError} />
 
         {/* Content Blocks */}
         <div className="bg-white rounded-xl border border-gray-200/80 p-4">
@@ -663,6 +748,16 @@ export default function ArticleEditor({ articleId, initialData }: ArticleEditorP
             </span>
           </div>
 
+          {/* Preview button */}
+          <button
+            onClick={() => setPreviewOpen(true)}
+            disabled={!state.title || state.sections.length === 0}
+            className="w-full flex items-center justify-center gap-1.5 bg-[#1B1D3A] hover:bg-[#2a2d4a] text-white text-sm font-medium py-2 rounded-xl transition-colors disabled:opacity-40"
+          >
+            <Eye className="w-3.5 h-3.5" />
+            Aperçu
+          </button>
+
           <div className="flex gap-2">
             <button
               onClick={() => handleSave("draft")}
@@ -677,7 +772,7 @@ export default function ArticleEditor({ articleId, initialData }: ArticleEditorP
               disabled={saving || !state.title || !state.slug}
               className="flex-1 flex items-center justify-center gap-1.5 bg-[#EC680A] hover:bg-[#D45E09] text-white text-sm font-semibold py-2.5 rounded-xl transition-colors disabled:opacity-40"
             >
-              <Eye className="w-3.5 h-3.5" />
+              <Save className="w-3.5 h-3.5" />
               {saving ? "..." : "Publier"}
             </button>
           </div>
@@ -834,6 +929,15 @@ export default function ArticleEditor({ articleId, initialData }: ArticleEditorP
           </div>
         </div>
       </div>
+
+      {/* Article preview modal */}
+      <ArticlePreviewModal
+        isOpen={previewOpen}
+        onClose={() => setPreviewOpen(false)}
+        state={state}
+        readTime={readTime}
+        sommaire={sommaire}
+      />
     </div>
   );
 }

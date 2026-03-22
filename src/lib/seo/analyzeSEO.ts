@@ -17,6 +17,15 @@ function stripHtml(html: string): string {
   return html.replace(/<[^>]*>/g, "").trim();
 }
 
+/** Normalize text: lowercase, remove accents, trim */
+function normalize(text: string): string {
+  return text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .trim();
+}
+
 function countWords(text: string): number {
   return text
     .split(/\s+/)
@@ -53,19 +62,54 @@ function extractText(sections: ArticleSection[]): string {
 function extractLinks(sections: ArticleSection[]): { internal: number; external: number } {
   let internal = 0;
   let external = 0;
-  const htmlSections = sections.filter(
-    (s) => s.type === "paragraph" || s.type === "callout" || s.type === "list"
-  );
-  for (const s of htmlSections) {
-    const html = s.type === "list" ? s.items.join(" ") : (s as { html: string }).html;
+
+  function classifyHref(href: string) {
+    if (href.startsWith("/") || href.includes("edumove")) {
+      internal++;
+    } else if (href.startsWith("http")) {
+      external++;
+    }
+  }
+
+  function extractFromHtml(html: string) {
     const links = html.match(/<a[^>]*href="([^"]*)"[^>]*>/g) || [];
     for (const link of links) {
       const href = link.match(/href="([^"]*)"/)?.[1] || "";
-      if (href.startsWith("/") || href.includes("edumove")) {
-        internal++;
-      } else if (href.startsWith("http")) {
-        external++;
+      classifyHref(href);
+    }
+  }
+
+  for (const s of sections) {
+    switch (s.type) {
+      case "paragraph":
+      case "callout":
+        extractFromHtml((s as { html: string }).html || "");
+        break;
+      case "list":
+        extractFromHtml((s as { items: string[] }).items.join(" "));
+        break;
+      case "faq":
+        for (const item of (s as { items: { question: string; answer: string }[] }).items) {
+          extractFromHtml(item.answer);
+        }
+        break;
+      case "link-card": {
+        const href = (s as { href: string }).href || "";
+        if (href) classifyHref(href);
+        break;
       }
+      case "table":
+        for (const row of (s as { rows: string[][] }).rows) {
+          for (const cell of row) {
+            extractFromHtml(cell);
+          }
+        }
+        break;
+      case "grid":
+        for (const item of (s as { items: { title: string; description: string }[] }).items) {
+          extractFromHtml(item.description || "");
+        }
+        break;
     }
   }
   return { internal, external };
@@ -90,8 +134,8 @@ export function analyzeSEO(params: {
 }): SEOAnalysis {
   const { title, metaTitle, metaDescription, slug, focusKeyword, sections } = params;
   const checks: SEOCheck[] = [];
-  const kw = focusKeyword.toLowerCase().trim();
-  const fullText = extractText(sections).toLowerCase();
+  const kw = normalize(focusKeyword);
+  const fullText = normalize(extractText(sections));
   const wordCount = countWords(fullText);
   const links = extractLinks(sections);
   const images = countImages(sections);
@@ -99,7 +143,7 @@ export function analyzeSEO(params: {
   // Count images with keyword
   const imagesWithKw = kw
     ? sections.filter(
-        (s) => s.type === "image" && (s as { alt: string }).alt.toLowerCase().includes(kw)
+        (s) => s.type === "image" && normalize((s as { alt: string }).alt).includes(kw)
       ).length
     : 0;
 
@@ -114,7 +158,7 @@ export function analyzeSEO(params: {
   // Find first paragraph text
   const firstParagraph = sections.find((s) => s.type === "paragraph");
   const firstParaText = firstParagraph
-    ? stripHtml((firstParagraph as { html: string }).html).toLowerCase()
+    ? normalize(stripHtml((firstParagraph as { html: string }).html))
     : "";
   const first150Words = firstParaText.split(/\s+/).slice(0, 150).join(" ");
 
@@ -128,9 +172,9 @@ export function analyzeSEO(params: {
   checks.push({
     id: "kw-in-title",
     label: "Mot-cl\u00e9 dans le titre SEO",
-    passed: kw ? metaTitle.toLowerCase().includes(kw) : false,
+    passed: kw ? normalize(metaTitle).includes(kw) : false,
     message: kw
-      ? metaTitle.toLowerCase().includes(kw)
+      ? normalize(metaTitle).includes(kw)
         ? `Le mot-cl\u00e9 "${focusKeyword}" apparait dans le titre SEO`
         : `Ajoutez "${focusKeyword}" dans votre titre SEO`
       : "D\u00e9finissez un mot-cl\u00e9 focus",
@@ -141,9 +185,9 @@ export function analyzeSEO(params: {
   checks.push({
     id: "kw-start-title",
     label: "Mot-cl\u00e9 au d\u00e9but du titre",
-    passed: kw ? metaTitle.toLowerCase().startsWith(kw) || metaTitle.toLowerCase().indexOf(kw) < 20 : false,
+    passed: kw ? normalize(metaTitle).startsWith(kw) || normalize(metaTitle).indexOf(kw) < 20 : false,
     message: kw
-      ? metaTitle.toLowerCase().indexOf(kw) < 20
+      ? normalize(metaTitle).indexOf(kw) < 20
         ? `Le mot-cl\u00e9 est bien plac\u00e9 dans le titre`
         : `Placez "${focusKeyword}" plus t\u00f4t dans le titre`
       : "D\u00e9finissez un mot-cl\u00e9 focus",
@@ -154,9 +198,9 @@ export function analyzeSEO(params: {
   checks.push({
     id: "kw-in-meta",
     label: "Mot-cl\u00e9 dans la meta description",
-    passed: kw ? metaDescription.toLowerCase().includes(kw) : false,
+    passed: kw ? normalize(metaDescription).includes(kw) : false,
     message: kw
-      ? metaDescription.toLowerCase().includes(kw)
+      ? normalize(metaDescription).includes(kw)
         ? `Le mot-cl\u00e9 apparait dans la meta description`
         : `Ajoutez "${focusKeyword}" dans la meta description`
       : "D\u00e9finissez un mot-cl\u00e9 focus",
@@ -164,7 +208,7 @@ export function analyzeSEO(params: {
   });
 
   // 4. Keyword in slug
-  const slugNormalized = slug.toLowerCase().replace(/-/g, " ");
+  const slugNormalized = normalize(slug.replace(/-/g, " "));
   checks.push({
     id: "kw-in-slug",
     label: "Mot-cl\u00e9 dans l\u2019URL",
@@ -223,7 +267,7 @@ export function analyzeSEO(params: {
   });
 
   // 8. Keyword in H2
-  const kwInH2 = kw ? h2s.some((h) => h.text.toLowerCase().includes(kw)) : false;
+  const kwInH2 = kw ? h2s.some((h) => normalize(h.text).includes(kw)) : false;
   checks.push({
     id: "kw-in-h2",
     label: "Mot-cl\u00e9 dans un H2",
