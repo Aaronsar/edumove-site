@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import { analyzeSEO, type SEOCheck } from "@/lib/seo/analyzeSEO";
 import type { ArticleSection } from "@/types/sections";
-import { CheckCircle, XCircle, Search, Wand2, Loader2, Send } from "lucide-react";
+import { CheckCircle, XCircle, Search, Wand2, Loader2, Send, Zap } from "lucide-react";
 
 interface Props {
   title: string;
@@ -158,6 +158,38 @@ export default function SEOPanel({
             )}
           </button>
         </div>
+      )}
+
+      {/* Auto SEO Fix Button */}
+      {onImprove && analysis.score < 80 && (
+        <button
+          onClick={() => {
+            const failedChecks = analysis.checks
+              .filter((c) => !c.passed)
+              .map((c) => c.message)
+              .join(". ");
+            onImprove(
+              `Optimise automatiquement l'article pour atteindre un score SEO de 80+ minimum. Voici les problèmes à corriger : ${failedChecks}. ` +
+              `Le mot-clé focus est "${focusKeyword || "(à définir)"}". ` +
+              `Assure-toi que : le mot-clé apparaît dans le titre SEO, dans la meta description (140-155 chars), dans le premier paragraphe, dans au moins un H2, et que la densité est entre 0.5% et 2.5%. ` +
+              `Ajoute des liens internes et au moins 1 lien externe si manquants.`
+            );
+          }}
+          disabled={improving}
+          className="w-full flex items-center justify-center gap-1.5 bg-gradient-to-r from-[#615CA5] to-[#4e4a8a] hover:from-[#4e4a8a] hover:to-[#3d3974] text-white text-xs font-semibold py-2.5 rounded-xl transition-all disabled:opacity-40 disabled:cursor-not-allowed shadow-sm"
+        >
+          {improving ? (
+            <>
+              <Loader2 className="w-3.5 h-3.5 animate-spin" />
+              Optimisation en cours...
+            </>
+          ) : (
+            <>
+              <Zap className="w-3.5 h-3.5" />
+              Optimiser SEO auto → 80+
+            </>
+          )}
+        </button>
       )}
 
       {/* SERP Preview */}

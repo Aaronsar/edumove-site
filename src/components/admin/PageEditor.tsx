@@ -114,6 +114,48 @@ export default function PageEditor({ page, publicUrl }: Props) {
   const [saved, setSaved] = useState(false);
   const [error, setError] = useState("");
   const [addMenuOpen, setAddMenuOpen] = useState<number | null>(null);
+  const [improving, setImproving] = useState(false);
+
+  const handleImprove = useCallback(async (userFeedback: string) => {
+    if (improving || !title.trim()) return;
+    setImproving(true);
+    setError("");
+    try {
+      const res = await fetch(
+        "https://jhopwqpbaiyjfoggvcaf.supabase.co/functions/v1/improve-article",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            title,
+            metaTitle,
+            metaDescription,
+            slug: page.page_slug,
+            focusKeyword,
+            excerpt: "",
+            tag: "",
+            sections,
+            userFeedback,
+          }),
+        }
+      );
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        setError("Erreur : " + (data.error || "Échec de l'amélioration"));
+        return;
+      }
+      const imp = data.improvements;
+      if (imp.metaTitle) setMetaTitle(imp.metaTitle);
+      if (imp.metaDescription) setMetaDescription(imp.metaDescription);
+      if (imp.sections && Array.isArray(imp.sections)) {
+        setSections(imp.sections);
+      }
+    } catch {
+      setError("Erreur réseau lors de l'amélioration.");
+    } finally {
+      setImproving(false);
+    }
+  }, [improving, title, metaTitle, metaDescription, page.page_slug, focusKeyword, sections]);
 
   // SEO score calculation in real-time
   const seoAnalysis = useMemo(
@@ -420,6 +462,8 @@ export default function PageEditor({ page, publicUrl }: Props) {
               onMetaDescriptionChange={setMetaDescription}
               onSlugChange={() => {}}
               onFocusKeywordChange={setFocusKeyword}
+              onImprove={handleImprove}
+              improving={improving}
             />
           </div>
         </div>
