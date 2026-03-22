@@ -1,8 +1,10 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { Search, Filter } from "lucide-react";
+import { Search, Filter, Trash2 } from "lucide-react";
+import { createClient } from "@/lib/supabase/client";
 
 interface ArticleRow {
   id: number;
@@ -38,9 +40,29 @@ function SEOBadge({ score }: { score: number }) {
 }
 
 export default function ArticlesListClient({ articles }: { articles: ArticleRow[] }) {
+  const router = useRouter();
   const [search, setSearch] = useState("");
   const [tagFilter, setTagFilter] = useState("Tous");
   const [statusFilter, setStatusFilter] = useState("Tous");
+  const [deleting, setDeleting] = useState<number | null>(null);
+
+  async function handleDelete(id: number, title: string) {
+    if (!confirm(`Supprimer l'article "${title}" ?\nCette action est irréversible.`)) return;
+    setDeleting(id);
+    try {
+      const supabase = createClient();
+      const { error } = await supabase.from("edumove_articles").delete().eq("id", id);
+      if (error) {
+        alert("Erreur lors de la suppression : " + error.message);
+      } else {
+        router.refresh();
+      }
+    } catch {
+      alert("Erreur réseau lors de la suppression");
+    } finally {
+      setDeleting(null);
+    }
+  }
 
   const filtered = useMemo(() => {
     return articles.filter((a) => {
@@ -114,6 +136,8 @@ export default function ArticlesListClient({ articles }: { articles: ArticleRow[
                 <th className="px-3 py-3 text-xs font-semibold text-[#94a3b8] uppercase tracking-wider hidden lg:table-cell">
                   Modifié
                 </th>
+                <th className="px-3 py-3 text-xs font-semibold text-[#94a3b8] uppercase tracking-wider w-16">
+                </th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
@@ -156,6 +180,26 @@ export default function ArticlesListClient({ articles }: { articles: ArticleRow[
                       <span className="text-xs text-[#94a3b8]">
                         {new Date(article.updated_at).toLocaleDateString("fr-FR")}
                       </span>
+                    </td>
+                    <td className="px-3 py-3">
+                      {article.status !== "published" && (
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            handleDelete(article.id, article.title);
+                          }}
+                          disabled={deleting === article.id}
+                          className="p-1.5 rounded-lg text-gray-400 hover:text-red-500 hover:bg-red-50 transition-colors disabled:opacity-50"
+                          title="Supprimer l'article"
+                        >
+                          {deleting === article.id ? (
+                            <div className="w-3.5 h-3.5 border-2 border-red-300 border-t-transparent rounded-full animate-spin" />
+                          ) : (
+                            <Trash2 className="w-3.5 h-3.5" />
+                          )}
+                        </button>
+                      )}
                     </td>
                   </tr>
                 );
