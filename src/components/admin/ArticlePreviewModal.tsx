@@ -81,8 +81,17 @@ export default function ArticlePreviewModal({
         </button>
       </div>
 
-      {/* Preview content */}
-      <div className="flex-1 overflow-y-auto">
+      {/* Preview content — block all link clicks to prevent navigation */}
+      <div
+        className="flex-1 overflow-y-auto"
+        onClick={(e) => {
+          const target = (e.target as HTMLElement).closest("a");
+          if (target) {
+            e.preventDefault();
+            e.stopPropagation();
+          }
+        }}
+      >
         <ArticleLayout article={article} sommaire={sommaire}>
           <SectionRenderer sections={state.sections} />
         </ArticleLayout>
