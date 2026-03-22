@@ -523,6 +523,50 @@ export default function ArticleEditor({ articleId, initialData }: ArticleEditorP
   const [generating, setGenerating] = useState(false);
   const [generateError, setGenerateError] = useState("");
   const [previewOpen, setPreviewOpen] = useState(false);
+  const [improving, setImproving] = useState(false);
+
+  const handleImprove = useCallback(async (userFeedback: string) => {
+    if (improving || !state.title.trim()) return;
+    setImproving(true);
+    setMessage("");
+    try {
+      const res = await fetch(
+        "https://jhopwqpbaiyjfoggvcaf.supabase.co/functions/v1/improve-article",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            title: state.title,
+            metaTitle: state.metaTitle,
+            metaDescription: state.metaDescription,
+            slug: state.slug,
+            focusKeyword: state.focusKeyword,
+            excerpt: state.excerpt,
+            tag: state.tag,
+            sections: state.sections,
+            userFeedback,
+          }),
+        }
+      );
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        setMessage("Erreur : " + (data.error || "Échec de l'amélioration"));
+        return;
+      }
+      const imp = data.improvements;
+      if (imp.metaTitle) setField("metaTitle", imp.metaTitle);
+      if (imp.metaDescription) setField("metaDescription", imp.metaDescription);
+      if (imp.excerpt) setField("excerpt", imp.excerpt);
+      if (imp.sections && Array.isArray(imp.sections)) {
+        dispatch({ type: "SET_SECTIONS", sections: imp.sections });
+      }
+      setMessage("Article amélioré ! Vérifiez les modifications.");
+    } catch {
+      setMessage("Erreur réseau lors de l'amélioration.");
+    } finally {
+      setImproving(false);
+    }
+  }, [improving, state, setField, dispatch]);
 
   const handleGenerate = useCallback(async () => {
     if (!state.title.trim() || generating) return;
@@ -814,6 +858,8 @@ export default function ArticleEditor({ articleId, initialData }: ArticleEditorP
                 onMetaDescriptionChange={(v) => setField("metaDescription", v)}
                 onSlugChange={(v) => setField("slug", v)}
                 onFocusKeywordChange={(v) => setField("focusKeyword", v)}
+                onImprove={handleImprove}
+                improving={improving}
               />
             )}
 

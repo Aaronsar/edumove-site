@@ -1,9 +1,9 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { analyzeSEO, type SEOCheck } from "@/lib/seo/analyzeSEO";
 import type { ArticleSection } from "@/types/sections";
-import { CheckCircle, XCircle, Search } from "lucide-react";
+import { CheckCircle, XCircle, Search, Wand2, Loader2, Send } from "lucide-react";
 
 interface Props {
   title: string;
@@ -17,6 +17,8 @@ interface Props {
   onMetaDescriptionChange: (v: string) => void;
   onSlugChange: (v: string) => void;
   onFocusKeywordChange: (v: string) => void;
+  onImprove?: (feedback: string) => Promise<void>;
+  improving?: boolean;
 }
 
 function ScoreGauge({ score }: { score: number }) {
@@ -78,7 +80,10 @@ export default function SEOPanel({
   onMetaDescriptionChange,
   onSlugChange,
   onFocusKeywordChange,
+  onImprove,
+  improving,
 }: Props) {
+  const [feedback, setFeedback] = useState("");
   const analysis = useMemo(
     () =>
       analyzeSEO({
@@ -105,6 +110,55 @@ export default function SEOPanel({
       <p className="text-center text-xs text-[#94a3b8]">
         Score SEO : {analysis.score}/100
       </p>
+
+      {/* AI Improve Block */}
+      {onImprove && (
+        <div className="bg-gradient-to-br from-[#1B1D3A] to-[#2a2d52] rounded-xl p-3.5 space-y-2.5">
+          <div className="flex items-center gap-2">
+            <Wand2 className="w-3.5 h-3.5 text-[#EC680A]" />
+            <span className="text-[10px] uppercase tracking-wider text-white/60 font-semibold">
+              Assistant IA
+            </span>
+          </div>
+          <textarea
+            value={feedback}
+            onChange={(e) => setFeedback(e.target.value)}
+            placeholder="Ex: Améliore le SEO, ajoute des liens internes, reformule l'intro..."
+            rows={2}
+            disabled={improving}
+            className="w-full px-3 py-2 rounded-lg bg-white/10 border border-white/10 text-xs text-white placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-[#EC680A]/40 resize-none disabled:opacity-50"
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && !e.shiftKey && feedback.trim() && !improving) {
+                e.preventDefault();
+                onImprove(feedback.trim());
+                setFeedback("");
+              }
+            }}
+          />
+          <button
+            onClick={() => {
+              if (feedback.trim() && !improving) {
+                onImprove(feedback.trim());
+                setFeedback("");
+              }
+            }}
+            disabled={!feedback.trim() || improving}
+            className="w-full flex items-center justify-center gap-1.5 bg-[#EC680A] hover:bg-[#D45E09] text-white text-xs font-semibold py-2 rounded-lg transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+          >
+            {improving ? (
+              <>
+                <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                Amélioration en cours...
+              </>
+            ) : (
+              <>
+                <Send className="w-3 h-3" />
+                Améliorer
+              </>
+            )}
+          </button>
+        </div>
+      )}
 
       {/* SERP Preview */}
       <div className="bg-white rounded-lg border border-gray-200 p-3">
