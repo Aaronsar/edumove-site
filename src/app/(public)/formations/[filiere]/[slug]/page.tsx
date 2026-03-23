@@ -28,6 +28,9 @@ import FinancingBanner from "@/components/shared/FinancingBanner";
 import SectionRenderer from "@/components/blog/SectionRenderer";
 import { createPublicAnonClient } from "@/lib/supabase/public-anon";
 
+// Revalidate every 60 seconds so backoffice changes appear on the public site
+export const revalidate = 60;
+
 // ---------------------------------------------------------------------------
 // Static params — program slugs + country slugs
 // ---------------------------------------------------------------------------

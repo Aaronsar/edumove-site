@@ -16,6 +16,9 @@ import FinancingBanner from "@/components/shared/FinancingBanner";
 import BreadcrumbSchema from "@/components/shared/BreadcrumbSchema";
 import SectionRenderer from "@/components/blog/SectionRenderer";
 
+// Revalidate every 60 seconds so backoffice changes appear on the public site
+export const revalidate = 60;
+
 // ---------------------------------------------------------------------------
 // Static params — pre-render all 6 filiere pages
 // ---------------------------------------------------------------------------
