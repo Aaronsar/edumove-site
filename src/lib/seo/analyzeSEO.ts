@@ -14,16 +14,24 @@ export interface SEOAnalysis {
 }
 
 function stripHtml(html: string): string {
+  if (!html || typeof html !== "string") return "";
   return html.replace(/<[^>]*>/g, "").trim();
 }
 
 /** Normalize text: lowercase, remove accents, trim */
 function normalize(text: string): string {
+  if (!text || typeof text !== "string") return "";
   return text
     .toLowerCase()
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .trim();
+}
+
+function safeStr(val: unknown): string {
+  if (typeof val === "string") return val;
+  if (val === null || val === undefined) return "";
+  return String(val);
 }
 
 function countWords(text: string): number {
