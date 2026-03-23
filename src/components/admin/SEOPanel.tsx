@@ -213,6 +213,47 @@ export default function SEOPanel({
         </button>
       )}
 
+      {/* Auto GEO Fix Button */}
+      {onImprove && geoAnalysis.score < 80 && (
+        <button
+          onClick={() => {
+            const failedGeo = geoAnalysis.checks
+              .filter((c) => !c.passed)
+              .map((c) => c.message)
+              .join(". ");
+            onImprove(
+              `OPTIMISATION GEO (Generative Engine Optimization) OBLIGATOIRE. Score GEO actuel: ${geoAnalysis.score}/100, objectif: 80+.\n\n` +
+              `PROBLÈMES GEO À CORRIGER:\n${failedGeo}\n\n` +
+              `CHECKLIST GEO OBLIGATOIRE:\n` +
+              `1. Ajoute une section FAQ avec minimum 5 questions/réponses détaillées (>80 chars par réponse). Type: {type:"faq", items:[{question:"...", answer:"..."}]}\n` +
+              `2. Ajoute au moins 1 liste à puces structurée. Type: {type:"list", style:"bullet", items:[...]}\n` +
+              `3. Ajoute un tableau ou grille comparative si absent. Type: {type:"table", headers:[...], rows:[[...]]}\n` +
+              `4. Ajoute des chiffres concrets dans les paragraphes (prix, durées, taux, nombre de places...)\n` +
+              `5. Reformule au moins 2 H2 sous forme de questions (ex: "Comment faire médecine en Espagne ?" "Combien coûtent les études ?")\n` +
+              `6. Ajoute au moins 2 liens externes vers des sources officielles dans les paragraphes\n` +
+              `7. Ajoute au moins 1 callout avec un conseil clé. Type: {type:"callout", variant:"info", html:"..."}\n` +
+              `8. Ajoute des définitions directes ("Le PASS est...", "consiste à...")\n` +
+              `9. Contenu minimum 800 mots\n` +
+              `NE TOUCHE PAS au titre H1. Retourne focusKeyword, metaTitle, metaDescription, sections.`
+            );
+          }}
+          disabled={improving}
+          className="w-full flex items-center justify-center gap-1.5 bg-gradient-to-r from-[#0ea5e9] to-[#0284c7] hover:from-[#0284c7] hover:to-[#0369a1] text-white text-xs font-semibold py-2.5 rounded-xl transition-all disabled:opacity-40 disabled:cursor-not-allowed shadow-sm"
+        >
+          {improving ? (
+            <>
+              <Loader2 className="w-3.5 h-3.5 animate-spin" />
+              Optimisation GEO en cours...
+            </>
+          ) : (
+            <>
+              <Zap className="w-3.5 h-3.5" />
+              🤖 Optimiser GEO auto → 80+
+            </>
+          )}
+        </button>
+      )}
+
       {/* SERP Preview */}
       <div className="bg-white rounded-lg border border-gray-200 p-3">
         <p className="text-[10px] uppercase tracking-wider text-[#94a3b8] font-semibold mb-2 flex items-center gap-1">
