@@ -2,12 +2,11 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import type { ArticleTag } from "@/data/articles";
-import { articles } from "@/data/articles";
+import type { Article, ArticleTag } from "@/data/articles";
 import BlogTagFilter from "./BlogTagFilter";
 import ArticleCard from "./ArticleCard";
 
-export default function BlogContent() {
+export default function BlogContent({ articles }: { articles: Article[] }) {
   const [activeTag, setActiveTag] = useState<ArticleTag | null>(null);
 
   const filtered = activeTag ? articles.filter((a) => a.tag === activeTag) : articles;
