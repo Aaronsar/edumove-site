@@ -38,6 +38,7 @@ import {
   X,
   Wand2,
   Loader2,
+  Pen,
   FileText,
   GraduationCap,
   Sparkles,
@@ -334,6 +335,8 @@ function HeroPreview({
   onGenerate,
   generating,
   generateError,
+  onHumanize,
+  humanizing,
 }: {
   state: ArticleEditorState;
   readTime: string;
@@ -341,6 +344,8 @@ function HeroPreview({
   onGenerate: () => void;
   generating: boolean;
   generateError: string;
+  onHumanize: () => void;
+  humanizing: boolean;
 }) {
   const [editingPills, setEditingPills] = useState(false);
 
@@ -421,6 +426,29 @@ function HeroPreview({
               </>
             )}
           </button>
+          {state.sections.length > 0 && (
+            <button
+              onClick={onHumanize}
+              disabled={humanizing}
+              className={`shrink-0 mt-1 flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all ${
+                humanizing
+                  ? "bg-white/10 text-white/50 cursor-wait"
+                  : "bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-white/40"
+              }`}
+            >
+              {humanizing ? (
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  Humanisation...
+                </>
+              ) : (
+                <>
+                  <Pen className="w-4 h-4" />
+                  Humaniser
+                </>
+              )}
+            </button>
+          )}
         </div>
         {generateError && (
           <p className="text-red-400 text-xs mt-1">{generateError}</p>
@@ -524,6 +552,42 @@ export default function ArticleEditor({ articleId, initialData }: ArticleEditorP
   const [generateError, setGenerateError] = useState("");
   const [previewOpen, setPreviewOpen] = useState(false);
   const [improving, setImproving] = useState(false);
+  const [humanizing, setHumanizing] = useState(false);
+
+  const handleHumanize = useCallback(async () => {
+    if (humanizing || state.sections.length === 0) return;
+    setHumanizing(true);
+    setMessage("");
+    try {
+      const res = await fetch(
+        "https://jhopwqpbaiyjfoggvcaf.supabase.co/functions/v1/humanize-article",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            title: state.title,
+            excerpt: state.excerpt,
+            sections: state.sections,
+          }),
+        }
+      );
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        setMessage("Erreur : " + (data.error || "Échec de l'humanisation"));
+        return;
+      }
+      const h = data.humanized;
+      if (h.excerpt) setField("excerpt", h.excerpt);
+      if (h.sections && Array.isArray(h.sections)) {
+        dispatch({ type: "SET_SECTIONS", sections: h.sections });
+      }
+      setMessage("✅ Article humanisé ! Les formulations IA ont été supprimées.");
+    } catch {
+      setMessage("Erreur réseau lors de l'humanisation.");
+    } finally {
+      setHumanizing(false);
+    }
+  }, [humanizing, state.title, state.excerpt, state.sections, setField, dispatch]);
 
   const handleImprove = useCallback(async (userFeedback: string) => {
     if (improving || !state.title.trim()) return;
@@ -718,7 +782,7 @@ export default function ArticleEditor({ articleId, initialData }: ArticleEditorP
       {/* Left column — Editor */}
       <div className="flex-1 min-w-0 space-y-4">
         {/* Hero Preview — Title H1 + Excerpt + Tag + Pills */}
-        <HeroPreview state={state} readTime={readTime} setField={setField} onGenerate={handleGenerate} generating={generating} generateError={generateError} />
+        <HeroPreview state={state} readTime={readTime} setField={setField} onGenerate={handleGenerate} generating={generating} generateError={generateError} onHumanize={handleHumanize} humanizing={humanizing} />
 
         {/* Content Blocks */}
         <div className="bg-white rounded-xl border border-gray-200/80 p-4">
