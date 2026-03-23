@@ -33,28 +33,31 @@ function countWords(text: string): number {
 }
 
 function extractText(sections: ArticleSection[]): string {
+  if (!sections || !Array.isArray(sections)) return "";
   return sections
     .map((s) => {
+      try {
       switch (s.type) {
         case "heading":
-          return s.text;
+          return (s as any).text || "";
         case "paragraph":
-          return stripHtml(s.html);
+          return stripHtml((s as any).html || "");
         case "callout":
-          return stripHtml(s.html);
+          return stripHtml((s as any).html || "");
         case "list":
-          return s.items.map(stripHtml).join(" ");
+          return ((s as any).items || []).map((i: string) => stripHtml(i || "")).join(" ");
         case "table":
-          return [...s.headers, ...s.rows.flat()].join(" ");
+          return [...((s as any).headers || []), ...((s as any).rows || []).flat()].join(" ");
         case "faq":
-          return s.items.map((i) => `${i.question} ${i.answer}`).join(" ");
+          return ((s as any).items || []).map((i: any) => `${i?.question || ""} ${i?.answer || ""}`).join(" ");
         case "grid":
-          return s.items.map((i) => `${i.title} ${i.description}`).join(" ");
+          return ((s as any).items || []).map((i: any) => `${i?.title || ""} ${i?.description || ""}`).join(" ");
         case "stats-grid":
-          return s.items.map((i) => `${i.value} ${i.label}`).join(" ");
+          return ((s as any).items || []).map((i: any) => `${i?.value || ""} ${i?.label || ""}`).join(" ");
         default:
           return "";
       }
+      } catch { return ""; }
     })
     .join(" ");
 }
@@ -405,13 +408,21 @@ export function analyzeGEO(params: {
   sections: ArticleSection[];
 }): GEOAnalysis {
   const { sections } = params;
+  if (!sections || !Array.isArray(sections)) return { score: 0, checks: [] };
+
   const checks: GEOCheck[] = [];
-  const fullText = extractText(sections);
+  let fullText = "";
+  try { fullText = extractText(sections); } catch { fullText = ""; }
   const wordCount = countWords(fullText);
 
   // 1. FAQ section present with enough questions
   const faqSections = sections.filter((s) => s.type === "faq");
-  const faqItems = faqSections.flatMap((s) => (s as { items: { question: string; answer: string }[] }).items || []);
+  const faqItems = faqSections.flatMap((s) => {
+    try {
+      const items = (s as any).items;
+      return Array.isArray(items) ? items.filter((i: any) => i && typeof i.question === "string") : [];
+    } catch { return []; }
+  });
   checks.push({
     id: "faq-present",
     label: "Section FAQ",
@@ -422,7 +433,7 @@ export function analyzeGEO(params: {
   });
 
   // 2. FAQ answers are detailed (>80 chars)
-  const detailedFaq = faqItems.filter((i) => i.answer.length > 80);
+  const detailedFaq = faqItems.filter((i) => (i.answer || "").length > 80);
   checks.push({
     id: "faq-detailed",
     label: "Réponses FAQ détaillées",
