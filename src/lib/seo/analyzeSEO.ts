@@ -384,3 +384,150 @@ export function analyzeSEO(params: {
 
   return { score, checks };
 }
+
+// =============================================================================
+// GEO Analysis (Generative Engine Optimization)
+// =============================================================================
+
+export interface GEOCheck {
+  id: string;
+  label: string;
+  passed: boolean;
+  message: string;
+}
+
+export interface GEOAnalysis {
+  score: number;
+  checks: GEOCheck[];
+}
+
+export function analyzeGEO(params: {
+  sections: ArticleSection[];
+}): GEOAnalysis {
+  const { sections } = params;
+  const checks: GEOCheck[] = [];
+  const fullText = extractText(sections);
+  const wordCount = countWords(fullText);
+
+  // 1. FAQ section present with enough questions
+  const faqSections = sections.filter((s) => s.type === "faq");
+  const faqItems = faqSections.flatMap((s) => (s as { items: { question: string; answer: string }[] }).items || []);
+  checks.push({
+    id: "faq-present",
+    label: "Section FAQ",
+    passed: faqItems.length >= 3,
+    message: faqItems.length >= 3
+      ? `${faqItems.length} questions/réponses trouvées`
+      : `Ajoutez une FAQ avec au moins 3 questions (${faqItems.length} trouvée(s))`,
+  });
+
+  // 2. FAQ answers are detailed (>80 chars)
+  const detailedFaq = faqItems.filter((i) => i.answer.length > 80);
+  checks.push({
+    id: "faq-detailed",
+    label: "Réponses FAQ détaillées",
+    passed: faqItems.length === 0 || detailedFaq.length >= faqItems.length * 0.7,
+    message: faqItems.length === 0
+      ? "Ajoutez une FAQ pour les IA"
+      : detailedFaq.length >= faqItems.length * 0.7
+      ? `${detailedFaq.length}/${faqItems.length} réponses détaillées (>80 chars)`
+      : `Seulement ${detailedFaq.length}/${faqItems.length} réponses détaillées. Développez les réponses courtes`,
+  });
+
+  // 3. Lists present (structured data for AI)
+  const listSections = sections.filter((s) => s.type === "list");
+  checks.push({
+    id: "lists-present",
+    label: "Listes structurées",
+    passed: listSections.length >= 1,
+    message: listSections.length >= 1
+      ? `${listSections.length} liste(s) structurée(s) trouvée(s)`
+      : "Ajoutez au moins 1 liste (bullet points) pour les réponses IA",
+  });
+
+  // 4. Table or grid present (structured data)
+  const structuredSections = sections.filter((s) => s.type === "table" || s.type === "grid" || s.type === "stats-grid");
+  checks.push({
+    id: "structured-data",
+    label: "Données structurées (tableau/grille)",
+    passed: structuredSections.length >= 1,
+    message: structuredSections.length >= 1
+      ? `${structuredSections.length} bloc(s) de données structurées`
+      : "Ajoutez un tableau ou une grille comparative",
+  });
+
+  // 5. Statistics/numbers in content
+  const numbers = fullText.match(/\d+[\s,.]\d+|\d+\s*[%€$£]|\d+\s*(ans?|mois|euros?|places?)/gi) || [];
+  checks.push({
+    id: "stats-present",
+    label: "Chiffres et statistiques",
+    passed: numbers.length >= 3,
+    message: numbers.length >= 3
+      ? `${numbers.length} données chiffrées trouvées`
+      : `Seulement ${numbers.length} chiffre(s). Ajoutez des statistiques concrètes (prix, durées, taux...)`,
+  });
+
+  // 6. Content length for AI (minimum 800 words for comprehensive answers)
+  checks.push({
+    id: "geo-content-length",
+    label: "Contenu exhaustif (800+ mots)",
+    passed: wordCount >= 800,
+    message: wordCount >= 800
+      ? `Contenu suffisant pour les IA (${wordCount} mots)`
+      : `Contenu trop court pour les IA (${wordCount} mots). Visez 800+ mots`,
+  });
+
+  // 7. H2 headings as questions (AI prefers Q&A format)
+  const h2s = sections.filter((s) => s.type === "heading" && (s as { level: string }).level === "h2");
+  const questionH2s = h2s.filter((h) => {
+    const text = (h as { text: string }).text;
+    return text.includes("?") || /^(comment|pourquoi|quand|combien|quel|quelle|quels|quelles|où|est-ce|faut-il)/i.test(text);
+  });
+  checks.push({
+    id: "question-headings",
+    label: "H2 sous forme de questions",
+    passed: questionH2s.length >= 2,
+    message: questionH2s.length >= 2
+      ? `${questionH2s.length} H2 en format question (parfait pour les IA)`
+      : `Seulement ${questionH2s.length} H2 en question. Reformulez des H2 en questions (ex: "Comment...?" "Combien...?")`,
+  });
+
+  // 8. External citations/sources
+  const links = extractLinks(sections);
+  checks.push({
+    id: "geo-citations",
+    label: "Sources citées (liens externes)",
+    passed: links.external >= 2,
+    message: links.external >= 2
+      ? `${links.external} source(s) externe(s) citée(s)`
+      : `Ajoutez au moins 2 liens vers des sources officielles (${links.external} trouvé(s))`,
+  });
+
+  // 9. Callout/highlight boxes (AI loves key takeaways)
+  const callouts = sections.filter((s) => s.type === "callout");
+  checks.push({
+    id: "callouts-present",
+    label: "Encadrés clés (callouts)",
+    passed: callouts.length >= 1,
+    message: callouts.length >= 1
+      ? `${callouts.length} encadré(s) trouvé(s)`
+      : "Ajoutez au moins 1 callout avec une info clé ou un conseil",
+  });
+
+  // 10. Direct definitions (phrases starting with "est" or containing "c'est", "désigne", "signifie")
+  const definitionPatterns = /(?:c'est|c'est|désigne|signifie|consiste à|se définit|on appelle)/i;
+  const hasDefinitions = definitionPatterns.test(fullText);
+  checks.push({
+    id: "definitions",
+    label: "Définitions directes",
+    passed: hasDefinitions,
+    message: hasDefinitions
+      ? "Définitions claires trouvées dans le contenu"
+      : "Ajoutez des définitions directes (ex: \"Le PASS est...\" \"La kinésithérapie consiste à...\")",
+  });
+
+  const passedCount = checks.filter((c) => c.passed).length;
+  const score = Math.round((passedCount / checks.length) * 100);
+
+  return { score, checks };
+}

@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { analyzeSEO, type SEOCheck } from "@/lib/seo/analyzeSEO";
+import { analyzeSEO, analyzeGEO, type SEOCheck, type GEOCheck } from "@/lib/seo/analyzeSEO";
 import type { ArticleSection } from "@/types/sections";
 import { CheckCircle, XCircle, Search, Wand2, Loader2, Send, Zap } from "lucide-react";
 
@@ -97,6 +97,11 @@ export default function SEOPanel({
     [title, metaTitle, metaDescription, slug, focusKeyword, sections]
   );
 
+  const geoAnalysis = useMemo(
+    () => analyzeGEO({ sections }),
+    [sections]
+  );
+
   // For pages (slug contains "/"), show full path; for articles use blog/guides prefix
   const baseUrl = slug.includes("/") ? "edumove.fr/" : isGuide ? "edumove.fr/guides/" : "edumove.fr/blog/";
   const basicChecks = analysis.checks.filter((c) => c.category === "basic");
@@ -105,11 +110,17 @@ export default function SEOPanel({
 
   return (
     <div className="space-y-4">
-      {/* Score */}
-      <ScoreGauge score={analysis.score} />
-      <p className="text-center text-xs text-[#94a3b8]">
-        Score SEO : {analysis.score}/100
-      </p>
+      {/* Scores SEO + GEO */}
+      <div className="flex items-center justify-center gap-6">
+        <div className="text-center">
+          <ScoreGauge score={analysis.score} />
+          <p className="text-[10px] text-[#94a3b8] mt-1 font-semibold">SEO {analysis.score}/100</p>
+        </div>
+        <div className="text-center">
+          <ScoreGauge score={geoAnalysis.score} />
+          <p className="text-[10px] text-[#94a3b8] mt-1 font-semibold">GEO {geoAnalysis.score}/100</p>
+        </div>
+      </div>
 
       {/* AI Improve Block */}
       {onImprove && (
@@ -308,6 +319,16 @@ export default function SEOPanel({
           </p>
           {linksChecks.map((c) => (
             <CheckItem key={c.id} check={c} />
+          ))}
+        </div>
+
+        {/* GEO Checks */}
+        <div>
+          <p className="text-[10px] uppercase tracking-wider text-[#615CA5] font-semibold mb-1 flex items-center gap-1">
+            🤖 GEO (IA génératives)
+          </p>
+          {geoAnalysis.checks.map((c) => (
+            <CheckItem key={c.id} check={{ ...c, category: "links" }} />
           ))}
         </div>
       </div>
