@@ -25,6 +25,8 @@ import StickyBar from "@/components/program/StickyBar";
 import MiniCTA from "@/components/program/MiniCTA";
 import CountryFilierePage from "@/components/formations/CountryFilierePage";
 import FinancingBanner from "@/components/shared/FinancingBanner";
+import SectionRenderer from "@/components/blog/SectionRenderer";
+import { createPublicAnonClient } from "@/lib/supabase/public-anon";
 
 // ---------------------------------------------------------------------------
 // Static params — program slugs + country slugs
@@ -121,6 +123,20 @@ export default async function SlugPage({
   const detail = getProgramDetail(filiereSlug, slug);
   if (!detail) notFound();
 
+  // Fetch editable sections from database
+  let dbSections: any[] = [];
+  try {
+    const supabase = createPublicAnonClient();
+    const { data } = await supabase
+      .from("edumove_pages")
+      .select("sections")
+      .eq("page_slug", `formations/${filiereSlug}/${slug}`)
+      .single();
+    if (data?.sections && Array.isArray(data.sections)) {
+      dbSections = data.sections;
+    }
+  } catch {}
+
   return (
     <main>
       <ProgramHero detail={detail} />
@@ -155,6 +171,16 @@ export default async function SlugPage({
       <AdmissionSteps steps={detail.admissionSteps} />
       <CostCard detail={detail} />
       <StudentLifeSection life={detail.studentLife} />
+
+      {/* Editable content sections from backoffice */}
+      {dbSections.length > 0 && (
+        <section className="py-12 px-6 bg-white">
+          <div className="max-w-4xl mx-auto">
+            <SectionRenderer sections={dbSections} />
+          </div>
+        </section>
+      )}
+
       <RelatedPrograms detail={detail} />
       {detail.universityShort === "UE" && <GuideTestPEBanner />}
       {detail.universityShort === "LINK" && <GuideTestLINKBanner />}
