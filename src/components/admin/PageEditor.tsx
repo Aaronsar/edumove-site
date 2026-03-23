@@ -113,6 +113,7 @@ export default function PageEditor({ page, publicUrl }: Props) {
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
   const [error, setError] = useState("");
+  const [improveMessage, setImproveMessage] = useState("");
   const [addMenuOpen, setAddMenuOpen] = useState<number | null>(null);
   const [improving, setImproving] = useState(false);
 
@@ -145,12 +146,33 @@ export default function PageEditor({ page, publicUrl }: Props) {
         return;
       }
       const imp = data.improvements;
-      if (imp.focusKeyword) setFocusKeyword(imp.focusKeyword);
-      if (imp.metaTitle) setMetaTitle(imp.metaTitle);
-      if (imp.metaDescription) setMetaDescription(imp.metaDescription);
-      if (imp.sections && Array.isArray(imp.sections)) {
-        setSections(imp.sections);
+      const changes: string[] = [];
+      if (imp.focusKeyword && imp.focusKeyword !== focusKeyword) {
+        setFocusKeyword(imp.focusKeyword);
+        changes.push(`✅ Mot-clé focus → "${imp.focusKeyword}"`);
       }
+      if (imp.metaTitle && imp.metaTitle !== metaTitle) {
+        setMetaTitle(imp.metaTitle);
+        changes.push(`✅ Titre SEO mis à jour`);
+      }
+      if (imp.metaDescription && imp.metaDescription !== metaDescription) {
+        setMetaDescription(imp.metaDescription);
+        changes.push(`✅ Meta description mise à jour`);
+      }
+      if (imp.sections && Array.isArray(imp.sections)) {
+        const oldCount = sections.length;
+        const newCount = imp.sections.length;
+        setSections(imp.sections);
+        if (newCount > oldCount) changes.push(`✅ ${newCount - oldCount} bloc(s) ajouté(s)`);
+        else changes.push(`✅ Contenu des sections amélioré`);
+        const hasExt = JSON.stringify(imp.sections).includes('target="_blank"');
+        if (hasExt) changes.push(`✅ Lien(s) externe(s) ajouté(s)`);
+        const intLinks = (JSON.stringify(imp.sections).match(/href="\//g) || []).length;
+        if (intLinks > 0) changes.push(`✅ ${intLinks} lien(s) interne(s)`);
+      }
+      if (changes.length === 0) changes.push("ℹ️ Aucune modification détectée");
+      setImproveMessage(changes.join("\n"));
+      setTimeout(() => setImproveMessage(""), 15000);
     } catch {
       setError("Erreur réseau lors de l'amélioration.");
     } finally {
@@ -428,6 +450,12 @@ export default function PageEditor({ page, publicUrl }: Props) {
 
           {error && (
             <p className="text-xs text-red-500 bg-red-50 rounded-lg px-3 py-2">{error}</p>
+          )}
+
+          {improveMessage && (
+            <div className="text-xs text-green-700 bg-green-50 border border-green-200 rounded-lg px-3 py-2 whitespace-pre-line">
+              {improveMessage}
+            </div>
           )}
 
           {/* Status */}

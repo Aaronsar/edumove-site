@@ -554,14 +554,39 @@ export default function ArticleEditor({ articleId, initialData }: ArticleEditorP
         return;
       }
       const imp = data.improvements;
-      if (imp.focusKeyword) setField("focusKeyword", imp.focusKeyword);
-      if (imp.metaTitle) setField("metaTitle", imp.metaTitle);
-      if (imp.metaDescription) setField("metaDescription", imp.metaDescription);
-      if (imp.excerpt) setField("excerpt", imp.excerpt);
-      if (imp.sections && Array.isArray(imp.sections)) {
-        dispatch({ type: "SET_SECTIONS", sections: imp.sections });
+      const changes: string[] = [];
+      if (imp.focusKeyword && imp.focusKeyword !== state.focusKeyword) {
+        setField("focusKeyword", imp.focusKeyword);
+        changes.push(`✅ Mot-clé focus → "${imp.focusKeyword}"`);
       }
-      setMessage("Article amélioré ! Vérifiez les modifications.");
+      if (imp.metaTitle && imp.metaTitle !== state.metaTitle) {
+        setField("metaTitle", imp.metaTitle);
+        changes.push(`✅ Titre SEO mis à jour`);
+      }
+      if (imp.metaDescription && imp.metaDescription !== state.metaDescription) {
+        setField("metaDescription", imp.metaDescription);
+        changes.push(`✅ Meta description mise à jour`);
+      }
+      if (imp.excerpt && imp.excerpt !== state.excerpt) {
+        setField("excerpt", imp.excerpt);
+        changes.push(`✅ Extrait mis à jour`);
+      }
+      if (imp.sections && Array.isArray(imp.sections)) {
+        const oldCount = state.sections.length;
+        const newCount = imp.sections.length;
+        dispatch({ type: "SET_SECTIONS", sections: imp.sections });
+        if (newCount > oldCount) changes.push(`✅ ${newCount - oldCount} bloc(s) ajouté(s)`);
+        if (newCount !== oldCount) changes.push(`✅ Contenu restructuré (${newCount} blocs)`);
+        else changes.push(`✅ Contenu des sections amélioré`);
+        // Check for external links
+        const hasExt = JSON.stringify(imp.sections).includes('target="_blank"');
+        if (hasExt) changes.push(`✅ Lien(s) externe(s) ajouté(s)`);
+        // Check for internal links
+        const intLinks = (JSON.stringify(imp.sections).match(/href="\//g) || []).length;
+        if (intLinks > 0) changes.push(`✅ ${intLinks} lien(s) interne(s)`);
+      }
+      if (changes.length === 0) changes.push("ℹ️ Aucune modification détectée");
+      setMessage("Améliorations appliquées :\n" + changes.join("\n"));
     } catch {
       setMessage("Erreur réseau lors de l'amélioration.");
     } finally {
@@ -766,15 +791,15 @@ export default function ArticleEditor({ articleId, initialData }: ArticleEditorP
         {/* Save bar */}
         <div className="bg-white rounded-xl border border-gray-200/80 p-4 space-y-3">
           {message && (
-            <p
-              className={`text-xs font-medium px-3 py-2 rounded-lg ${
+            <div
+              className={`text-xs font-medium px-3 py-2 rounded-lg whitespace-pre-line ${
                 message.includes("Erreur")
                   ? "bg-red-50 text-red-600"
-                  : "bg-green-50 text-green-600"
+                  : "bg-green-50 text-green-600 border border-green-200"
               }`}
             >
               {message}
-            </p>
+            </div>
           )}
 
           {/* Mini SEO score */}
