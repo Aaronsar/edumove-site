@@ -1,6 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
+import { ChevronDown } from "lucide-react";
 import { SectionTitle, Callout } from "@/components/blog/ArticleLayout";
 import type { ArticleSection } from "@/types/sections";
 import * as LucideIcons from "lucide-react";
@@ -29,6 +31,46 @@ function RenderHTML({ html }: { html: string }) {
       className="text-[#334155] leading-relaxed prose-sm"
       dangerouslySetInnerHTML={{ __html: html }}
     />
+  );
+}
+
+function FAQAccordion({ items }: { items: { question: string; answer: string }[] }) {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  return (
+    <div className="my-8 space-y-3">
+      {items.map((item, i) => {
+        const isOpen = openIndex === i;
+        return (
+          <div
+            key={i}
+            className="border border-gray-200/80 rounded-xl overflow-hidden bg-white hover:border-[#615CA5]/30 transition-colors"
+          >
+            <button
+              onClick={() => setOpenIndex(isOpen ? null : i)}
+              className="w-full flex items-center justify-between px-5 py-4 text-left"
+            >
+              <span className="font-semibold text-[#1B1D3A] text-sm pr-4">
+                {item.question}
+              </span>
+              <ChevronDown
+                className={`w-4 h-4 text-[#64748b] shrink-0 transition-transform duration-200 ${
+                  isOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+            <div
+              className={`overflow-hidden transition-all duration-200 ${
+                isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+              }`}
+            >
+              <div className="px-5 pb-4 text-sm text-[#334155] leading-relaxed border-t border-gray-100 pt-3">
+                {item.answer}
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
   );
 }
 
@@ -180,18 +222,7 @@ function RenderSection({ section }: { section: ArticleSection }) {
       );
 
     case "faq":
-      return (
-        <div className="space-y-4 my-6">
-          {section.items.map((item, i) => (
-            <div key={i} className="bg-[#fafbff] rounded-xl p-5 border border-gray-200/80">
-              <p className="font-semibold text-[#1B1D3A] text-sm mb-2">
-                {item.question}
-              </p>
-              <p className="text-sm text-[#334155]">{item.answer}</p>
-            </div>
-          ))}
-        </div>
-      );
+      return <FAQAccordion items={section.items} />;
 
     default:
       return null;

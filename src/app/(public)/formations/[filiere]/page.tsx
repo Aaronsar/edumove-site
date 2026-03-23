@@ -182,8 +182,8 @@ export default async function FormationPage({
 
       {/* Editable content sections from backoffice */}
       {dbSections.length > 0 && (
-        <section className="py-12 px-6">
-          <div className="max-w-4xl mx-auto">
+        <section className="py-12 px-4">
+          <div className="max-w-6xl mx-auto">
             <SectionRenderer sections={dbSections} />
           </div>
         </section>
