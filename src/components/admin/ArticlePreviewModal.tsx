@@ -81,10 +81,18 @@ export default function ArticlePreviewModal({
         </button>
       </div>
 
-      {/* Preview content — block all link clicks to prevent navigation */}
+      {/* Preview content — block ALL navigation (clicks, target=_blank, router) */}
       <div
-        className="flex-1 overflow-y-auto"
+        className="flex-1 overflow-y-auto [&_a]:pointer-events-none [&_a]:cursor-default"
         onClick={(e) => {
+          const target = (e.target as HTMLElement).closest("a");
+          if (target) {
+            e.preventDefault();
+            e.stopPropagation();
+            e.nativeEvent.stopImmediatePropagation();
+          }
+        }}
+        onClickCapture={(e) => {
           const target = (e.target as HTMLElement).closest("a");
           if (target) {
             e.preventDefault();
