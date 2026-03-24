@@ -10,14 +10,60 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Edumove — Etudes de sante en Europe",
+  metadataBase: new URL("https://www.edumove.fr"),
+  title: "Edumove — Études de médecine, dentaire, kiné en Espagne et Italie",
   description:
-    "Edumove : orientation, candidature, financement et installation pour vos etudes de sante en Europe. Medecine, dentaire, kinesitherapie, pharmacie, veterinaire.",
+    "Edumove : orientation, candidature, financement et installation pour vos études de santé en Europe. Médecine, dentaire, kinésithérapie, pharmacie, vétérinaire.",
   icons: {
     icon: "/edumove-icon-orange.svg",
     shortcut: "/edumove-icon-orange.svg",
     apple: "/edumove-icon-orange.svg",
   },
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    siteName: "Edumove",
+    locale: "fr_FR",
+    type: "website",
+    images: [
+      {
+        url: "/edumove-og.png",
+        width: 1200,
+        height: 630,
+        alt: "Edumove — Études de médecine, dentaire, kiné en Espagne et Italie",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@edumove_fr",
+  },
+};
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Edumove",
+  url: "https://www.edumove.fr",
+  logo: "https://www.edumove.fr/edumove-logo-orange.svg",
+  description: "Accompagnement complet pour les études de santé en Europe. Médecine, dentaire, kinésithérapie, pharmacie, vétérinaire.",
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+33-1-89-74-42-57",
+    contactType: "customer service",
+    availableLanguage: "French",
+  },
+  sameAs: [
+    "https://www.instagram.com/edumove.fr",
+  ],
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Edumove",
+  url: "https://www.edumove.fr",
 };
 
 export default function RootLayout({
@@ -27,8 +73,24 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
+      <head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-S97PWZQKZ2" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-S97PWZQKZ2');`,
+          }}
+        />
+      </head>
       <body className={`${poppins.variable} antialiased`} style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
         {children}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
       </body>
     </html>
   );
