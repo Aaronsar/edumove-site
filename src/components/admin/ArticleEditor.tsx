@@ -716,7 +716,7 @@ export default function ArticleEditor({ articleId, initialData }: ArticleEditorP
     [state.title, state.metaTitle, state.metaDescription, state.slug, state.focusKeyword, state.sections]
   );
 
-  async function handleSave(publishStatus?: "draft" | "published") {
+  async function handleSave(publishStatus?: "draft" | "published" | "scheduled") {
     setSaving(true);
     setMessage("");
 
@@ -743,6 +743,7 @@ export default function ArticleEditor({ articleId, initialData }: ArticleEditorP
       focus_keyword: state.focusKeyword,
       seo_score: currentScore,
       published_at: status === "published" ? new Date().toISOString() : null,
+      scheduled_at: status === "scheduled" && state.scheduledAt ? new Date(state.scheduledAt).toISOString() : null,
     };
 
     let error;
@@ -901,14 +902,25 @@ export default function ArticleEditor({ articleId, initialData }: ArticleEditorP
               <Save className="w-3.5 h-3.5" />
               {saving ? "..." : "Brouillon"}
             </button>
-            <button
-              onClick={() => handleSave("published")}
-              disabled={saving || !state.title || !state.slug}
-              className="flex-1 flex items-center justify-center gap-1.5 bg-[#EC680A] hover:bg-[#D45E09] text-white text-sm font-semibold py-2.5 rounded-xl transition-colors disabled:opacity-40"
-            >
-              <Save className="w-3.5 h-3.5" />
-              {saving ? "..." : "Publier"}
-            </button>
+            {state.status === "scheduled" && state.scheduledAt ? (
+              <button
+                onClick={() => handleSave("scheduled")}
+                disabled={saving || !state.title || !state.slug}
+                className="flex-1 flex items-center justify-center gap-1.5 bg-[#615CA5] hover:bg-[#4e4a8a] text-white text-sm font-semibold py-2.5 rounded-xl transition-colors disabled:opacity-40"
+              >
+                <Calendar className="w-3.5 h-3.5" />
+                {saving ? "..." : "Programmer"}
+              </button>
+            ) : (
+              <button
+                onClick={() => handleSave("published")}
+                disabled={saving || !state.title || !state.slug}
+                className="flex-1 flex items-center justify-center gap-1.5 bg-[#EC680A] hover:bg-[#D45E09] text-white text-sm font-semibold py-2.5 rounded-xl transition-colors disabled:opacity-40"
+              >
+                <Save className="w-3.5 h-3.5" />
+                {saving ? "..." : "Publier"}
+              </button>
+            )}
           </div>
           <p className="text-[10px] text-[#94a3b8] text-center">
             {readTime} de lecture &middot; {state.sections.length} blocs
@@ -1050,10 +1062,32 @@ export default function ArticleEditor({ articleId, initialData }: ArticleEditorP
                     className="w-full px-3 py-1.5 rounded-lg border border-gray-200 bg-[#f8f9fb] text-sm text-[#334155] focus:outline-none focus:ring-2 focus:ring-[#615CA5]/20"
                   >
                     <option value="draft">Brouillon</option>
+                    <option value="scheduled">Programmé</option>
                     <option value="published">Publié</option>
                     <option value="archived">Archivé</option>
                   </select>
                 </div>
+
+                {/* Scheduled date */}
+                {state.status === "scheduled" && (
+                  <div>
+                    <label className="block text-xs font-semibold text-[#334155] mb-1">
+                      Date de publication
+                    </label>
+                    <input
+                      type="datetime-local"
+                      value={state.scheduledAt}
+                      onChange={(e) => setField("scheduledAt", e.target.value)}
+                      min={new Date().toISOString().slice(0, 16)}
+                      className="w-full px-3 py-1.5 rounded-lg border border-gray-200 bg-[#f8f9fb] text-sm text-[#334155] focus:outline-none focus:ring-2 focus:ring-[#615CA5]/20"
+                    />
+                    {state.scheduledAt && (
+                      <p className="text-[10px] text-[#615CA5] mt-1 font-medium">
+                        📅 Sera publié le {new Date(state.scheduledAt).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric", hour: "2-digit", minute: "2-digit" })}
+                      </p>
+                    )}
+                  </div>
+                )}
 
                 <div className="text-xs text-[#94a3b8] space-y-1">
                   <p>Temps de lecture : <strong>{readTime}</strong></p>

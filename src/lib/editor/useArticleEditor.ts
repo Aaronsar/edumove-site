@@ -18,7 +18,8 @@ export interface ArticleEditorState {
   relatedSlugs: string[];
   relatedFormations: string[];
   relatedUniversities: string[];
-  status: "draft" | "published" | "archived";
+  status: "draft" | "published" | "scheduled" | "archived";
+  scheduledAt: string;
 }
 
 type Action =
@@ -46,6 +47,7 @@ export const initialState: ArticleEditorState = {
   relatedFormations: [],
   relatedUniversities: [],
   status: "draft",
+  scheduledAt: "",
 };
 
 function reducer(state: ArticleEditorState, action: Action): ArticleEditorState {

@@ -22,6 +22,7 @@ interface ArticleRow {
 
 const statusLabels: Record<string, { label: string; color: string }> = {
   published: { label: "Publié", color: "bg-green-100 text-green-700" },
+  scheduled: { label: "Programmé", color: "bg-purple-100 text-purple-700" },
   draft: { label: "Brouillon", color: "bg-orange-100 text-orange-700" },
   archived: { label: "Archivé", color: "bg-gray-100 text-gray-500" },
 };

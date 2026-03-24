@@ -35,6 +35,7 @@ export default async function EditArticlePage({
     relatedFormations: article.related_formations ?? [],
     relatedUniversities: article.related_universities ?? [],
     status: article.status as ArticleEditorState["status"],
+    scheduledAt: article.scheduled_at ? new Date(article.scheduled_at).toISOString().slice(0, 16) : "",
   };
 
   return (
