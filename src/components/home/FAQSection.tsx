@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 
 const faqs = [
   {
@@ -41,10 +42,12 @@ const faqs = [
   {
     q: "Edumove finance-t-il les études ?",
     a: "Non, on n'est pas une banque. En revanche, on fait le lien avec des partenaires bancaires (notamment LCL) pour monter un prêt étudiant pouvant aller jusqu'à 75 000 €, remboursable une fois diplômé et en poste.",
+    link: { href: "/financement", label: "Découvrir nos solutions de financement" },
   },
   {
     q: "Comment fonctionnent les solutions de financement évoquées ?",
     a: "Chaque situation est différente : la solution dépend de la filière, du pays, de votre profil. On joue un rôle de facilitateur avec les banques, sans jamais imposer quoi que ce soit.",
+    link: { href: "/financement", label: "En savoir plus sur le financement" },
   },
   {
     q: "À qui s'adresse Edumove ?",
@@ -57,13 +60,14 @@ const faqs = [
   {
     q: "Combien coûtent les études de médecine en Europe ?",
     a: "Les frais de scolarité varient entre 5 000 € et 20 000 € par an selon l'université. C'est un budget conséquent, mais des solutions de financement permettent de démarrer sans avance immédiate et de ne rembourser qu'une fois en activité.",
+    link: { href: "/financement", label: "Voir les détails du financement" },
   },
 ];
 
 export default function FAQSection() {
   const [open, setOpen] = useState<number | null>(null);
 
-  const renderFaq = (faq: { q: string; a: string }, originalIndex: number) => (
+  const renderFaq = (faq: { q: string; a: string; link?: { href: string; label: string } }, originalIndex: number) => (
     <div
       key={originalIndex}
       className={`border rounded-xl overflow-hidden transition-all ${
@@ -84,6 +88,11 @@ export default function FAQSection() {
       {open === originalIndex && (
         <div className="px-5 pb-5">
           <p className="text-[#334155] text-sm leading-relaxed">{faq.a}</p>
+          {faq.link && (
+            <Link href={faq.link.href} className="inline-block mt-2 text-sm text-[#615CA5] hover:text-[#ec680a] underline underline-offset-2 font-medium transition-colors">
+              {faq.link.label} &rarr;
+            </Link>
+          )}
         </div>
       )}
     </div>

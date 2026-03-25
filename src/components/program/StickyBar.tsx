@@ -1,11 +1,24 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { ArrowRight, Phone, Clock, X } from "lucide-react";
 import ContactButton from "@/components/shared/ContactButton";
 
-export default function StickyBar() {
+interface StickyBarProps {
+  /** Custom headline text */
+  headline?: string;
+  /** Hide the "Réponse garantie" sub-text */
+  hideResponseTime?: boolean;
+  /** Show only the contact button (no candidature button) */
+  contactOnly?: boolean;
+}
+
+export default function StickyBar({
+  headline,
+  hideResponseTime = false,
+  contactOnly = false,
+}: StickyBarProps = {}) {
   const [visible, setVisible] = useState(false);
   const [ctaReached, setCtaReached] = useState(false);
   const [dismissed, setDismissed] = useState(false);
@@ -79,29 +92,36 @@ export default function StickyBar() {
 
             {/* Header */}
             <p className="text-[#1B1D3A] font-bold text-[15px] leading-snug mb-1 text-center">
-              Intéressé(e) par cette
-              <br />
-              formation&nbsp;?
+              {headline ?? (<>Intéressé(e) par cette<br />formation&nbsp;?</>)}
             </p>
 
             {/* Sub-text */}
-            <div className="flex items-center justify-center gap-1.5 mb-6">
-              <Clock className="w-3 h-3 text-[#615CA5]" />
-              <p className="text-[#64748B] text-xs">
-                Réponse garantie sous 2h (8h-20h)
+            {!hideResponseTime && (
+              <div className="flex items-center justify-center gap-1.5 mb-6">
+                <Clock className="w-3 h-3 text-[#615CA5]" />
+                <p className="text-[#64748B] text-xs">
+                  Réponse garantie sous 2h (8h-20h)
+                </p>
+              </div>
+            )}
+            {hideResponseTime && (
+              <p className="text-[#64748B] text-[11px] text-center mb-4 leading-snug">
+                Grâce au partenariat entre Edumove et LCL, financez jusqu'à 100% vos études en Europe.
               </p>
-            </div>
+            )}
 
             {/* Buttons */}
             <div className="flex flex-col gap-2.5">
-              <a
-                href="https://candidature.edumove.fr"
-                className="group flex items-center justify-center gap-2 bg-[#EC680A] hover:bg-[#D45E09] text-white text-sm font-semibold h-12 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-[#EC680A]/20"
-              >
-                Déposer ma candidature
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </a>
-              <ContactButton className="group flex items-center justify-center gap-2 bg-[#1B1D3A] hover:bg-[#2a2d52] text-white text-sm font-semibold h-12 rounded-xl transition-all duration-300">
+              {!contactOnly && (
+                <a
+                  href="https://candidature.edumove.fr"
+                  className="group flex items-center justify-center gap-2 bg-[#EC680A] hover:bg-[#D45E09] text-white text-sm font-semibold h-12 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-[#EC680A]/20"
+                >
+                  Déposer ma candidature
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </a>
+              )}
+              <ContactButton className={`group flex items-center justify-center gap-2 ${contactOnly ? "bg-[#EC680A] hover:bg-[#D45E09]" : "bg-[#1B1D3A] hover:bg-[#2a2d52]"} text-white text-sm font-semibold h-12 rounded-xl transition-all duration-300`}>
                 <span className="flex items-center gap-2">
                   <Phone className="w-4 h-4" />
                   Être recontacté
@@ -126,14 +146,16 @@ export default function StickyBar() {
         }`}
       >
         <div className="px-4 py-3 pb-2 flex items-center gap-2.5">
-          <a
-            href="https://candidature.edumove.fr"
-            className="group flex-1 flex items-center justify-center gap-1.5 bg-[#EC680A] hover:bg-[#D45E09] text-white text-xs font-semibold h-11 rounded-full border-2 border-white/80 shadow-lg transition-colors"
-          >
-            Candidater
-            <ArrowRight className="w-3.5 h-3.5" />
-          </a>
-          <ContactButton className="group flex-1 flex items-center justify-center gap-1.5 bg-[#1B1D3A] text-white text-xs font-semibold h-11 rounded-full border-2 border-white/80 shadow-lg hover:bg-[#2a2d52] transition-colors">
+          {!contactOnly && (
+            <a
+              href="https://candidature.edumove.fr"
+              className="group flex-1 flex items-center justify-center gap-1.5 bg-[#EC680A] hover:bg-[#D45E09] text-white text-xs font-semibold h-11 rounded-full border-2 border-white/80 shadow-lg transition-colors"
+            >
+              Candidater
+              <ArrowRight className="w-3.5 h-3.5" />
+            </a>
+          )}
+          <ContactButton className={`group flex-1 flex items-center justify-center gap-1.5 ${contactOnly ? "bg-[#EC680A] hover:bg-[#D45E09]" : "bg-[#1B1D3A] hover:bg-[#2a2d52]"} text-white text-xs font-semibold h-11 rounded-full border-2 border-white/80 shadow-lg transition-colors`}>
             <span className="flex items-center gap-1.5">
               <Phone className="w-3.5 h-3.5" />
               Être recontacté

@@ -15,6 +15,7 @@ import SessionsTable from "./SessionsTable";
 import DocumentsList from "./DocumentsList";
 import ProgramLinks from "./ProgramLinks";
 import StickyBar from "@/components/program/StickyBar";
+import FinancingBanner from "@/components/shared/FinancingBanner";
 import ContactButton from "@/components/shared/ContactButton";
 import TestimonialsCarousel from "@/components/shared/TestimonialsCarousel";
 import type { Testimonial } from "@/components/shared/TestimonialsCarousel";
@@ -156,6 +157,9 @@ export default function UEPage() {
         universityShort="UE"
         programs={programDetails.filter(p => p.universityShort === "UE")}
       />
+
+      {/* Financing */}
+      <FinancingBanner />
 
       {/* CTA */}
       <section id="contact" data-program-cta className="py-10 md:py-16 px-6 bg-[#1B1D3A]">

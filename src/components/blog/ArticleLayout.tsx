@@ -285,6 +285,47 @@ export default function ArticleLayout({ article, sommaire, children }: ArticleLa
           </div>
         </div>
       </section>
+
+      {/* Article + BreadcrumbList JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: article.title,
+            description: article.metaDescription ?? article.excerpt,
+            datePublished: article.dateISO,
+            author: {
+              "@type": "Organization",
+              name: "Edumove",
+              url: "https://www.edumove.fr",
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "Edumove",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://www.edumove.fr/edumove-logo-orange.svg",
+              },
+            },
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Accueil", item: "https://www.edumove.fr/" },
+              { "@type": "ListItem", position: 2, name: "Blog", item: "https://www.edumove.fr/blog" },
+              { "@type": "ListItem", position: 3, name: article.title },
+            ],
+          }),
+        }}
+      />
     </div>
   );
 }

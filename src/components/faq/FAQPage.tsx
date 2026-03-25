@@ -182,7 +182,7 @@ const categories: FAQCategory[] = [
         a: "Les frais de scolarité se situent entre 5 000 € et 20 000 € par an environ, selon le pays et l'université. C'est un investissement important, mais des solutions de financement existent pour démarrer sans avance immédiate.",
         content: (
           <>
-            Les frais de scolarité se situent entre 5 000 € et 20 000 € par an environ, selon le pays et l&apos;université. C&apos;est un investissement important, mais des solutions de financement existent pour démarrer sans avance immédiate. Tous les détails dans notre article <IL href="/blog/financer-etudes-sante-europe">Comment financer ses études de santé en Europe</IL>.
+            Les frais de scolarité se situent entre 5 000 € et 20 000 € par an environ, selon le pays et l&apos;université. C&apos;est un investissement important, mais des solutions de financement existent pour démarrer sans avance immédiate. Tous les détails dans notre article <IL href="/financement">Comment financer ses études de santé en Europe</IL>.
           </>
         ),
       },
@@ -191,7 +191,7 @@ const categories: FAQCategory[] = [
         a: "Non, on n'est pas une banque. Par contre on fait le lien avec des partenaires bancaires, notamment LCL, pour mettre en place un prêt étudiant pouvant aller jusqu'à 75 000 €. Le principe : vous ne commencez à rembourser qu'une fois diplômé et en poste.",
         content: (
           <>
-            Non, on n&apos;est pas une banque. Par contre on fait le lien avec des partenaires bancaires, notamment LCL, pour mettre en place un prêt étudiant pouvant aller jusqu&apos;à 75 000 €. Le principe : vous ne commencez à rembourser qu&apos;une fois diplômé et en poste. On explique tout dans notre article sur le <IL href="/blog/financer-etudes-sante-europe">financement des études</IL>.
+            Non, on n&apos;est pas une banque. Par contre on fait le lien avec des partenaires bancaires, notamment LCL, pour mettre en place un prêt étudiant pouvant aller jusqu&apos;à 75 000 €. Le principe : vous ne commencez à rembourser qu&apos;une fois diplômé et en poste. On explique tout dans notre article sur le <IL href="/financement">financement des études</IL>.
           </>
         ),
       },
@@ -200,7 +200,7 @@ const categories: FAQCategory[] = [
         a: "Grâce au partenariat avec LCL, les étudiants accompagnés par Edumove peuvent accéder à un prêt étudiant garanti par l'État allant jusqu'à 75 000 €. Le remboursement ne commence qu'une fois diplômé et en activité professionnelle. C'est la solution la plus utilisée par nos étudiants.",
         content: (
           <>
-            Grâce au partenariat avec LCL, les étudiants accompagnés par Edumove peuvent accéder à un prêt étudiant garanti par l&apos;État allant jusqu&apos;à 75 000 €. Le remboursement ne commence qu&apos;une fois diplômé et en activité professionnelle. C&apos;est la solution la plus utilisée par nos étudiants. Tous les détails dans notre <IL href="/blog/financer-etudes-sante-europe">guide financement</IL>.
+            Grâce au partenariat avec LCL, les étudiants accompagnés par Edumove peuvent accéder à un prêt étudiant garanti par l&apos;État allant jusqu&apos;à 75 000 €. Le remboursement ne commence qu&apos;une fois diplômé et en activité professionnelle. C&apos;est la solution la plus utilisée par nos étudiants. Tous les détails dans notre <IL href="/financement">guide financement</IL>.
           </>
         ),
       },
@@ -209,7 +209,7 @@ const categories: FAQCategory[] = [
         a: "Plusieurs pistes existent : la bourse du CROUS (elle est maintenue même pour des études en Europe), les bourses régionales, et certaines aides spécifiques des universités. Votre conseiller fait le point avec vous pour ne rien rater.",
         content: (
           <>
-            Plusieurs pistes existent : la bourse du CROUS (elle est maintenue même pour des études en Europe), les bourses régionales, et certaines aides spécifiques des <IL href="/universites/universidad-europea">universités</IL>. Votre conseiller fait le point avec vous pour ne rien rater. Détails dans notre <IL href="/blog/financer-etudes-sante-europe">guide financement</IL>.
+            Plusieurs pistes existent : la bourse du CROUS (elle est maintenue même pour des études en Europe), les bourses régionales, et certaines aides spécifiques des <IL href="/universites/universidad-europea">universités</IL>. Votre conseiller fait le point avec vous pour ne rien rater. Détails dans notre <IL href="/financement">guide financement</IL>.
           </>
         ),
       },
@@ -290,7 +290,7 @@ const categories: FAQCategory[] = [
         a: "Le budget mensuel moyen (loyer + alimentation + transports + loisirs) se situe entre 800 € et 1 200 € selon la ville et le mode de vie. Madrid et Rome offrent un coût de la vie inférieur à Paris.",
         content: (
           <>
-            Le budget mensuel moyen (loyer + alimentation + transports + loisirs) se situe entre 800 € et 1 200 € selon la ville et le mode de vie. Madrid et Rome offrent un coût de la vie inférieur à Paris. Consultez notre article sur le <IL href="/blog/financer-etudes-sante-europe">financement des études en Europe</IL> pour optimiser votre budget.
+            Le budget mensuel moyen (loyer + alimentation + transports + loisirs) se situe entre 800 € et 1 200 € selon la ville et le mode de vie. Madrid et Rome offrent un coût de la vie inférieur à Paris. Consultez notre article sur le <IL href="/financement">financement des études en Europe</IL> pour optimiser votre budget.
           </>
         ),
       },

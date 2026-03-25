@@ -2,11 +2,9 @@
 
 import { MapPin, Clock, Euro, GraduationCap, Globe } from "lucide-react";
 import type { Program, University } from "@/data/universities";
-import type { Filiere } from "@/data/filieres";
 
 interface StatsBarProps {
   programs: { university: University; program: Program }[];
-  filiere: Filiere;
 }
 
 export default function StatsBar({ programs }: StatsBarProps) {

@@ -8,6 +8,11 @@ const publicUrls: Record<string, string> = {
   accueil: "/",
   "a-propos": "/a-propos",
   faq: "/questions-frequentes",
+  financement: "/financement",
+  contact: "/contact",
+  temoignages: "/temoignages",
+  "mentions-legales": "/mentions-legales",
+  "politique-de-confidentialite": "/politique-de-confidentialite",
 
   // Formations — vues d'ensemble
   "formations/medecine": "/formations/medecine",
@@ -60,6 +65,12 @@ const publicUrls: Record<string, string> = {
   "guides/presenter-sa-candidature": "/guides/presenter-sa-candidature",
   "guides/test-pe-universidad-europea": "/guides/reussir-test-pe-universidad-europea",
   "guides/test-admission-link-campus": "/guides/reussir-test-admission-link-campus",
+
+  // Vie étudiante
+  "vie-etudiante/madrid": "/vie-etudiante/madrid",
+  "vie-etudiante/rome": "/vie-etudiante/rome",
+  "vie-etudiante/valence": "/vie-etudiante/valence",
+  "vie-etudiante/malaga": "/vie-etudiante/malaga",
 };
 
 /* ---------- Page ---------- */

@@ -1,7 +1,7 @@
 "use client";
 
 import FiliereIcon from "@/components/shared/FiliereIcon";
-import { Check, Globe } from "lucide-react";
+import { Check } from "lucide-react";
 
 const rows = [
   { filiere: "Médecine", filiereSlug: "medecine", link: "19 800 €/an", ucjc: "COMPLET", ueLow: "21 480 €/an", ueHigh: "21 480 €/an", cheapest: "link" },

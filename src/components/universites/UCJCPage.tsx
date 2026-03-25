@@ -13,6 +13,7 @@ import AdmissionStepper from "./AdmissionStepper";
 import DocumentsList from "./DocumentsList";
 import ProgramLinks from "./ProgramLinks";
 import StickyBar from "@/components/program/StickyBar";
+import FinancingBanner from "@/components/shared/FinancingBanner";
 import ContactButton from "@/components/shared/ContactButton";
 import TestimonialsCarousel from "@/components/shared/TestimonialsCarousel";
 import type { Testimonial } from "@/components/shared/TestimonialsCarousel";
@@ -179,6 +180,8 @@ export default function UCJCPage() {
       />
 
       {/* CTA */}
+      <FinancingBanner />
+
       <section id="contact" data-program-cta className="py-10 md:py-16 px-6 bg-[#1B1D3A]">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: "#ffffff" }}>

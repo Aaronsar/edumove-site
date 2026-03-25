@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import FAQPage from "@/components/faq/FAQPage";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/questions-frequentes" },
   title: "Questions fréquentes — FAQ | Edumove",
   description:
     "Retrouvez les réponses à toutes vos questions sur les études de santé en Europe, l'accompagnement Edumove, le financement et la reconnaissance des diplômes.",

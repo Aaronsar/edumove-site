@@ -23,9 +23,7 @@ interface UniversityProgramCardProps {
   program: Program;
   universityName: string;
   universitySlug: UniversitySlug;
-  universityColor: string;
   universityCountry: string;
-  universityCountryFlag: string;
   isCheapest?: boolean;
 }
 
@@ -34,7 +32,6 @@ export default function UniversityProgramCard({
   universityName,
   universitySlug,
   universityCountry,
-  universityCountryFlag,
   isCheapest,
 }: UniversityProgramCardProps) {
   const initials = universityInitials[universitySlug] ?? universitySlug.toUpperCase();

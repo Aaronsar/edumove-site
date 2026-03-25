@@ -13,6 +13,7 @@ interface ProgramItem {
 interface ProgramsListProps {
   programs: ProgramItem[];
   cheapestTotalCost: number | null;
+  hideCountryFilter?: boolean;
 }
 
 const countryMeta: Record<string, { flag: string; label: string }> = {
@@ -25,6 +26,7 @@ const countryMeta: Record<string, { flag: string; label: string }> = {
 export default function ProgramsList({
   programs,
   cheapestTotalCost,
+  hideCountryFilter = false,
 }: ProgramsListProps) {
   const countries = Array.from(new Set(programs.map((p) => p.university.country)));
   const [activeCountry, setActiveCountry] = useState<string | null>(null);
@@ -60,35 +62,37 @@ export default function ProgramsList({
         </p>
 
         {/* Country filter pills */}
-        <div className="flex flex-wrap gap-2 mb-10">
-          <button
-            onClick={() => setActiveCountry(null)}
-            className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 ${
-              activeCountry === null
-                ? "bg-[#1B1D3A] text-white shadow-lg shadow-[#1B1D3A]/20"
-                : "bg-white text-[#334155] border border-gray-200 hover:border-[#EC680A]/40 hover:text-[#EC680A]"
-            }`}
-          >
-            Tous ({programs.length})
-          </button>
-          {countries.map((country) => {
-            const meta = countryMeta[country] ?? { flag: "\u{1F30D}", label: country };
-            const count = programs.filter((p) => p.university.country === country).length;
-            return (
-              <button
-                key={country}
-                onClick={() => setActiveCountry(activeCountry === country ? null : country)}
-                className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 ${
-                  activeCountry === country
-                    ? "bg-[#EC680A] text-white shadow-lg shadow-[#EC680A]/20"
-                    : "bg-white text-[#334155] border border-gray-200 hover:border-[#EC680A]/40 hover:text-[#EC680A]"
-                }`}
-              >
-                {meta.flag} {meta.label} ({count})
-              </button>
-            );
-          })}
-        </div>
+        {!hideCountryFilter && (
+          <div className="flex flex-wrap gap-2 mb-10">
+            <button
+              onClick={() => setActiveCountry(null)}
+              className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 ${
+                activeCountry === null
+                  ? "bg-[#1B1D3A] text-white shadow-lg shadow-[#1B1D3A]/20"
+                  : "bg-white text-[#334155] border border-gray-200 hover:border-[#EC680A]/40 hover:text-[#EC680A]"
+              }`}
+            >
+              Tous ({programs.length})
+            </button>
+            {countries.map((country) => {
+              const meta = countryMeta[country] ?? { flag: "\u{1F30D}", label: country };
+              const count = programs.filter((p) => p.university.country === country).length;
+              return (
+                <button
+                  key={country}
+                  onClick={() => setActiveCountry(activeCountry === country ? null : country)}
+                  className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 ${
+                    activeCountry === country
+                      ? "bg-[#EC680A] text-white shadow-lg shadow-[#EC680A]/20"
+                      : "bg-white text-[#334155] border border-gray-200 hover:border-[#EC680A]/40 hover:text-[#EC680A]"
+                  }`}
+                >
+                  {meta.flag} {meta.label} ({count})
+                </button>
+              );
+            })}
+          </div>
+        )}
 
         {/* Cards grid */}
         <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -112,9 +116,7 @@ export default function ProgramsList({
                     program={item.program}
                     universityName={item.university.shortName}
                     universitySlug={item.university.slug}
-                    universityColor={item.university.slug}
                     universityCountry={item.university.country}
-                    universityCountryFlag={item.university.countryFlag}
                     isCheapest={isCheapest}
                   />
                 </motion.div>

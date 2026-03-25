@@ -114,15 +114,32 @@ export const articles: Article[] = [
     dateISO: "2026-03-20",
     tag: "Guide",
     tagColor: "bg-[#615ca5]",
-    readTime: "10 min",
+    readTime: "12 min",
     excerpt:
-      "Universités, admission, programme, retour en France : tout ce qu\u2019il faut savoir pour faire médecine en Espagne en tant que Français.",
+      "Universités, admission, programme, vie étudiante à Madrid, financement, retour en France : le guide le plus complet pour faire médecine en Espagne.",
     metaTitle: "Études de médecine en Espagne : guide complet pour les Français | Edumove",
     metaDescription:
-      "Comment faire médecine en Espagne ? Universités, test PE, programme de 6 ans, reconnaissance du diplôme et retour en France.",
-    relatedSlugs: ["echec-pass-alternatives", "cout-etudes-sante-europe", "reussir-test-pe-universidad-europea"],
-    relatedFormations: ["medecine"],
+      "Comment faire médecine en Espagne ? Universités (UCJC, UE), test PE, programme 6 ans, vie à Madrid, financement LCL, reconnaissance diplôme et retour en France.",
+    relatedSlugs: ["echec-pass-alternatives", "cout-etudes-sante-europe", "financer-etudes-sante-europe", "temoignage-medecine-espagne"],
+    relatedFormations: ["medecine", "dentaire", "kinesitherapie", "pharmacie", "veterinaire"],
     relatedUniversities: ["/universites/universidad-europea", "/universites/ucjc"],
+  },
+  {
+    slug: "etudes-dentaire-espagne",
+    title: "\u00c9tudes dentaires en Espagne : le guide complet pour les Fran\u00e7ais",
+    date: "22 mars 2026",
+    dateISO: "2026-03-22",
+    tag: "Guide",
+    tagColor: "bg-[#615ca5]",
+    readTime: "11 min",
+    excerpt:
+      "Universit\u00e9s, admission, programme 5 ans, vie \u00e9tudiante, financement et retour en France : le guide le plus complet pour faire dentaire en Espagne.",
+    metaTitle: "\u00c9tudes dentaires en Espagne : guide complet pour les Fran\u00e7ais | Edumove",
+    metaDescription:
+      "Comment faire dentaire en Espagne ? Universit\u00e9s (UCJC, UE, LINK Campus), admission, programme 5 ans, co\u00fbt, financement LCL et reconnaissance du dipl\u00f4me.",
+    relatedSlugs: ["etudes-medecine-espagne", "echec-pass-alternatives", "cout-etudes-sante-europe", "financer-etudes-sante-europe"],
+    relatedFormations: ["dentaire", "medecine", "kinesitherapie", "pharmacie", "veterinaire"],
+    relatedUniversities: ["/universites/universidad-europea", "/universites/ucjc", "/universites/link-campus"],
   },
   {
     slug: "financer-etudes-sante-europe",

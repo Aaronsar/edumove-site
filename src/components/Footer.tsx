@@ -7,11 +7,11 @@ import ContactButton from "@/components/shared/ContactButton";
 
 const formationLinks = [
   { name: "Dentaire", href: "/formations/dentaire" },
-  { name: "Medecine", href: "/formations/medecine" },
-  { name: "Kinesitherapie", href: "/formations/kinesitherapie" },
+  { name: "Médecine", href: "/formations/medecine" },
+  { name: "Kinésithérapie", href: "/formations/kinesitherapie" },
   { name: "Pharmacie", href: "/formations/pharmacie" },
-  { name: "Veterinaire", href: "/formations/veterinaire" },
-  { name: "Prepa Dentaire", href: "/formations/prepa-dentaire" },
+  { name: "Vétérinaire", href: "/formations/veterinaire" },
+  { name: "Prépa Dentaire", href: "/formations/prepa-dentaire" },
 ];
 
 const universiteLinks = [
@@ -30,7 +30,7 @@ export default function Footer() {
           <div>
             <Link href="/" className="inline-block">
               <Image
-                src="https://edumove.fr/wp-content/uploads/2025/12/EDUMOVE-LOGO-2-1.svg"
+                src="/edumove-logo.svg"
                 alt="Edumove"
                 width={150}
                 height={42}
@@ -38,12 +38,12 @@ export default function Footer() {
               />
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-gray-300">
-              Etudes de sante en Europe : orientation, candidature,
+              Études de santé en Europe : orientation, candidature,
               financement et installation.
             </p>
             <div className="mt-6">
               <ContactButton className="inline-block rounded-[5px] border border-[#EC680A] px-6 py-2 text-sm font-medium text-[#EC680A] transition-colors hover:bg-[#EC680A] hover:text-white">
-                Etre contacte
+                Être contacté
               </ContactButton>
             </div>
           </div>
@@ -70,7 +70,7 @@ export default function Footer() {
           {/* Column 3: Universites */}
           <div>
             <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-[#EC680A]">
-              Universites
+              Universités
             </h3>
             <ul className="space-y-3">
               {universiteLinks.map((link) => (
@@ -132,19 +132,19 @@ export default function Footer() {
       {/* Bottom Bar */}
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 py-6 text-sm text-gray-400 sm:flex-row">
-          <p>&copy; 2026 Edumove. Tous droits reserves.</p>
+          <p>&copy; 2026 Edumove. Tous droits réservés.</p>
           <div className="flex gap-6">
             <Link
               href="/mentions-legales"
               className="transition-colors hover:text-[#EC680A]"
             >
-              Mentions legales
+              Mentions légales
             </Link>
             <Link
               href="/politique-de-confidentialite"
               className="transition-colors hover:text-[#EC680A]"
             >
-              Politique de confidentialite
+              Politique de confidentialité
             </Link>
           </div>
         </div>

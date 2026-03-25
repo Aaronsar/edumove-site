@@ -22,6 +22,12 @@ import {
   Dog,
   FlaskConical,
   MapPin,
+  CreditCard,
+  Phone,
+  MessageSquare,
+  Scale,
+  Shield,
+  Globe,
 } from "lucide-react";
 
 interface NavItem {
@@ -55,7 +61,12 @@ const pagesConfig: NavGroup = {
   children: [
     { href: "/admin/pages/accueil", label: "Accueil", icon: Home },
     { href: "/admin/pages/a-propos", label: "À propos", icon: Users },
+    { href: "/admin/pages/financement", label: "Financement", icon: CreditCard },
+    { href: "/admin/pages/contact", label: "Contact", icon: Phone },
+    { href: "/admin/pages/temoignages", label: "Témoignages", icon: MessageSquare },
     { href: "/admin/pages/faq", label: "Questions fréquentes", icon: HelpCircle },
+    { href: "/admin/pages/mentions-legales", label: "Mentions légales", icon: Scale },
+    { href: "/admin/pages/politique-de-confidentialite", label: "Confidentialité", icon: Shield },
     {
       label: "Formations",
       icon: GraduationCap,
@@ -141,6 +152,17 @@ const pagesConfig: NavGroup = {
         { href: "/admin/pages/universites/universidad-europea", label: "Universidad Europea", icon: Building2 },
         { href: "/admin/pages/universites/ucjc", label: "UCJC", icon: Building2 },
         { href: "/admin/pages/universites/link-campus", label: "Link Campus", icon: Building2 },
+      ],
+    },
+    {
+      label: "Vie étudiante",
+      icon: Globe,
+      basePath: "/admin/pages/vie-etudiante",
+      children: [
+        { href: "/admin/pages/vie-etudiante/madrid", label: "Madrid", icon: MapPin },
+        { href: "/admin/pages/vie-etudiante/rome", label: "Rome", icon: MapPin },
+        { href: "/admin/pages/vie-etudiante/valence", label: "Valence", icon: MapPin },
+        { href: "/admin/pages/vie-etudiante/malaga", label: "Málaga", icon: MapPin },
       ],
     },
     {

@@ -4,6 +4,7 @@ import StatsSection from "@/components/home/StatsSection";
 import ServicesSection from "@/components/home/ServicesSection";
 import TestimonialsCarousel from "@/components/shared/TestimonialsCarousel";
 import FAQSection from "@/components/home/FAQSection";
+import CityGuidesSection from "@/components/home/CityGuidesSection";
 import ArticlesSection from "@/components/home/ArticlesSection";
 import CTASection from "@/components/home/CTASection";
 
@@ -15,6 +16,7 @@ export default function Home() {
       <StatsSection />
       <ServicesSection />
       <TestimonialsCarousel />
+      <CityGuidesSection />
       <FAQSection />
       <ArticlesSection />
       <CTASection />

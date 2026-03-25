@@ -28,6 +28,9 @@ import CoutEtudesSanteEurope, {
 import EtudesMedecineEspagne, {
   sommaire as medecineEspagneSommaire,
 } from "@/components/blog/articles/EtudesMedecineEspagne";
+import EtudesDentaireEspagne, {
+  sommaire as dentaireEspagneSommaire,
+} from "@/components/blog/articles/EtudesDentaireEspagne";
 
 const staticBlogSlugs = [
   "financer-etudes-sante-europe",
@@ -37,6 +40,7 @@ const staticBlogSlugs = [
   "echec-pass-alternatives",
   "cout-etudes-sante-europe",
   "etudes-medecine-espagne",
+  "etudes-dentaire-espagne",
 ];
 
 const contentMap: Record<
@@ -73,6 +77,10 @@ const contentMap: Record<
   "etudes-medecine-espagne": {
     Component: EtudesMedecineEspagne,
     sommaire: medecineEspagneSommaire,
+  },
+  "etudes-dentaire-espagne": {
+    Component: EtudesDentaireEspagne,
+    sommaire: dentaireEspagneSommaire,
   },
 };
 

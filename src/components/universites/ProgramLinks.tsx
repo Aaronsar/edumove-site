@@ -15,9 +15,6 @@ export default function ProgramLinks({ universityShort, programs }: ProgramLinks
   const [expanded, setExpanded] = useState(false);
   const PREVIEW_COUNT = 3;
 
-  // Flatten all programs
-  const allPrograms = programs;
-
   return (
     <section id="programmes" className="relative py-10 md:py-16 bg-[#fafbff] overflow-hidden">
       <div aria-hidden className="absolute inset-0">
@@ -34,7 +31,7 @@ export default function ProgramLinks({ universityShort, programs }: ProgramLinks
         </p>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {(expanded ? allPrograms : allPrograms.slice(0, PREVIEW_COUNT)).map((prog) => (
+          {(expanded ? programs : programs.slice(0, PREVIEW_COUNT)).map((prog) => (
               <Link
                 key={`${prog.filiereSlug}-${prog.slug}`}
                 href={`/formations/${prog.filiereSlug}/${prog.slug}`}
@@ -98,7 +95,7 @@ export default function ProgramLinks({ universityShort, programs }: ProgramLinks
           ))}
         </div>
 
-        {allPrograms.length > PREVIEW_COUNT && (
+        {programs.length > PREVIEW_COUNT && (
           <button
             onClick={() => setExpanded(!expanded)}
             className="mt-6 mx-auto flex items-center gap-2 text-sm font-semibold text-[#615CA5] hover:text-[#EC680A] transition-colors"
@@ -110,7 +107,7 @@ export default function ProgramLinks({ universityShort, programs }: ProgramLinks
               </>
             ) : (
               <>
-                Voir toutes les formations ({allPrograms.length})
+                Voir toutes les formations ({programs.length})
                 <ChevronDown className="w-4 h-4" />
               </>
             )}

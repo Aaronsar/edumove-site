@@ -8,6 +8,9 @@ import {
   BookOpen,
   Stethoscope,
   Calculator,
+  MapPin,
+  GraduationCap,
+  ArrowRight,
 } from "lucide-react";
 import { SectionTitle, Callout } from "@/components/blog/ArticleLayout";
 
@@ -20,6 +23,8 @@ export const sommaire = [
   { id: "programme", label: "Le programme : 6 ans de médecine" },
   { id: "exercer-france", label: "Revenir exercer en France" },
   { id: "budget", label: "Budget et financement" },
+  { id: "vie-etudiante", label: "La vie étudiante à Madrid" },
+  { id: "autres-filieres", label: "Les autres filières en Espagne" },
 ];
 
 /* ---------- CONTENT ---------- */
@@ -91,7 +96,15 @@ export default function EtudesMedecineEspagne() {
         s&apos;apprend vite quand on est immergé. La plupart de nos
         étudiants arrivent avec un niveau scolaire basique et suivent les
         cours confortablement au bout de 6 mois. La langue n&apos;est pas
-        un obstacle, c&apos;est un atout de plus sur le CV.
+        un obstacle, c&apos;est un atout de plus sur le CV. Pour en savoir
+        plus sur la vie quotidienne, consultez notre{" "}
+        <Link
+          href="/vie-etudiante/madrid"
+          className="text-[#EC680A] underline underline-offset-2 font-medium hover:text-[#D45E09] transition-colors"
+        >
+          guide de la vie étudiante à Madrid
+        </Link>
+        .
       </p>
 
       <Callout variant="info">
@@ -489,7 +502,14 @@ export default function EtudesMedecineEspagne() {
         <strong>finançable à 100&nbsp;%</strong> grâce au prêt étudiant. Le
         partenariat Edumove × LCL permet d&apos;emprunter jusqu&apos;à
         75&nbsp;000&nbsp;€ avec un différé total : vous ne remboursez
-        qu&apos;après votre diplôme.
+        qu&apos;après votre diplôme. Toutes les infos sur notre{" "}
+        <Link
+          href="/financement"
+          className="text-[#EC680A] underline underline-offset-2 font-medium hover:text-[#D45E09] transition-colors"
+        >
+          page dédiée au financement
+        </Link>
+        .
       </p>
 
       <p className="text-[#334155] leading-relaxed mb-4">
@@ -506,13 +526,6 @@ export default function EtudesMedecineEspagne() {
           className="text-[#EC680A] underline underline-offset-2 font-medium hover:text-[#D45E09] transition-colors"
         >
           notre article sur le coût des études en Europe
-        </Link>{" "}
-        et{" "}
-        <Link
-          href="/blog/financer-etudes-sante-europe"
-          className="text-[#EC680A] underline underline-offset-2 font-medium hover:text-[#D45E09] transition-colors"
-        >
-          celui sur le financement
         </Link>
         .
       </p>
@@ -526,6 +539,150 @@ export default function EtudesMedecineEspagne() {
         choisi.
       </Callout>
 
+      {/* Section 7 — Vie étudiante */}
+      <SectionTitle
+        id="vie-etudiante"
+        icon={<MapPin className="w-6 h-6 text-[#EC680A]" />}
+      >
+        La vie étudiante à Madrid
+      </SectionTitle>
+
+      <p className="text-[#334155] leading-relaxed mb-4">
+        Madrid n&apos;est pas juste une destination d&apos;études — c&apos;est
+        une ville où il fait bon vivre en tant qu&apos;étudiant. Le coût de la
+        vie est 15 à 20% inférieur à Paris, le soleil brille 300 jours par an,
+        et la vie culturelle et nocturne est parmi les plus dynamiques
+        d&apos;Europe.
+      </p>
+
+      <div className="grid sm:grid-cols-2 gap-4 mb-6">
+        <div className="bg-[#fafbff] border border-[#e2e8f0] rounded-xl p-5">
+          <h4 className="font-bold text-[#1B1D3A] mb-2">Se loger</h4>
+          <p className="text-sm text-[#334155] leading-relaxed">
+            Les quartiers étudiants comme <strong>Moncloa</strong>,{" "}
+            <strong>Argüelles</strong> ou <strong>Chamberí</strong> proposent
+            des colocations entre 400 et 600€/mois. À Villaviciosa (près du
+            campus UE), comptez 350-450€.
+          </p>
+        </div>
+        <div className="bg-[#fafbff] border border-[#e2e8f0] rounded-xl p-5">
+          <h4 className="font-bold text-[#1B1D3A] mb-2">Se déplacer</h4>
+          <p className="text-sm text-[#334155] leading-relaxed">
+            L&apos;<strong>Abono Joven</strong> (moins de 26 ans) coûte
+            seulement <strong>20€/mois</strong> pour un accès illimité au
+            métro, bus et Cercanías dans toute la région de Madrid.
+          </p>
+        </div>
+        <div className="bg-[#fafbff] border border-[#e2e8f0] rounded-xl p-5">
+          <h4 className="font-bold text-[#1B1D3A] mb-2">Manger</h4>
+          <p className="text-sm text-[#334155] leading-relaxed">
+            Le <strong>menú del día</strong> (entrée + plat + dessert + boisson)
+            à 10-14€ dans la plupart des restaurants. Les mercados comme{" "}
+            <strong>San Miguel</strong> ou <strong>San Antón</strong> sont des
+            incontournables.
+          </p>
+        </div>
+        <div className="bg-[#fafbff] border border-[#e2e8f0] rounded-xl p-5">
+          <h4 className="font-bold text-[#1B1D3A] mb-2">Sortir</h4>
+          <p className="text-sm text-[#334155] leading-relaxed">
+            Cañas à 2-3€ avec tapas offertes à <strong>Malasaña</strong>.
+            Musées gratuits certains soirs (Prado, Reina Sofía). Le{" "}
+            <strong>Retiro</strong> pour courir, lire, décompresser.
+          </p>
+        </div>
+      </div>
+
+      <div className="bg-gradient-to-br from-[#1B1D3A] to-[#2a2d52] rounded-xl p-5 mb-6">
+        <p className="text-sm leading-relaxed" style={{ color: "#ffffff" }}>
+          🇪🇸 Pour tout savoir sur la vie quotidienne, les bons plans, les
+          quartiers et les transports, consultez notre{" "}
+          <Link
+            href="/vie-etudiante/madrid"
+            className="text-[#EC680A] underline underline-offset-2 font-semibold hover:text-[#d45e09] transition-colors"
+          >
+            guide complet de la vie étudiante à Madrid
+          </Link>
+          .
+        </p>
+      </div>
+
+      {/* Section 8 — Autres filières */}
+      <SectionTitle
+        id="autres-filieres"
+        icon={<GraduationCap className="w-6 h-6 text-[#EC680A]" />}
+      >
+        Les autres filières de santé en Espagne
+      </SectionTitle>
+
+      <p className="text-[#334155] leading-relaxed mb-4">
+        La médecine n&apos;est pas la seule option en Espagne. Edumove
+        accompagne aussi les étudiants dans 4 autres filières de santé, toutes
+        accessibles sans concours PASS/LAS :
+      </p>
+
+      <div className="grid sm:grid-cols-2 gap-3 mb-6">
+        <Link
+          href="/formations/dentaire/espagne"
+          className="group flex items-center justify-between bg-[#fafbff] border border-[#e2e8f0] rounded-xl px-5 py-4 hover:border-[#615CA5]/30 transition-all"
+        >
+          <div>
+            <span className="font-bold text-[#1B1D3A] group-hover:text-[#615CA5] transition-colors">Études Dentaires en Espagne</span>
+            <p className="text-xs text-[#64748b]">5 ans · dès 9 420€/an</p>
+          </div>
+          <ArrowRight className="w-4 h-4 text-[#64748b] group-hover:text-[#EC680A] transition-colors" />
+        </Link>
+        <Link
+          href="/formations/kinesitherapie/espagne"
+          className="group flex items-center justify-between bg-[#fafbff] border border-[#e2e8f0] rounded-xl px-5 py-4 hover:border-[#615CA5]/30 transition-all"
+        >
+          <div>
+            <span className="font-bold text-[#1B1D3A] group-hover:text-[#615CA5] transition-colors">Faire Kiné en Espagne</span>
+            <p className="text-xs text-[#64748b]">4 ans · programme en français dispo</p>
+          </div>
+          <ArrowRight className="w-4 h-4 text-[#64748b] group-hover:text-[#EC680A] transition-colors" />
+        </Link>
+        <Link
+          href="/formations/pharmacie/espagne"
+          className="group flex items-center justify-between bg-[#fafbff] border border-[#e2e8f0] rounded-xl px-5 py-4 hover:border-[#615CA5]/30 transition-all"
+        >
+          <div>
+            <span className="font-bold text-[#1B1D3A] group-hover:text-[#615CA5] transition-colors">Pharmacie en Espagne</span>
+            <p className="text-xs text-[#64748b]">5 ans · admission sur dossier</p>
+          </div>
+          <ArrowRight className="w-4 h-4 text-[#64748b] group-hover:text-[#EC680A] transition-colors" />
+        </Link>
+        <Link
+          href="/formations/veterinaire/espagne"
+          className="group flex items-center justify-between bg-[#fafbff] border border-[#e2e8f0] rounded-xl px-5 py-4 hover:border-[#615CA5]/30 transition-all"
+        >
+          <div>
+            <span className="font-bold text-[#1B1D3A] group-hover:text-[#615CA5] transition-colors">Vétérinaire en Espagne</span>
+            <p className="text-xs text-[#64748b]">5 ans · alternative au concours véto</p>
+          </div>
+          <ArrowRight className="w-4 h-4 text-[#64748b] group-hover:text-[#EC680A] transition-colors" />
+        </Link>
+      </div>
+
+      <p className="text-[#334155] leading-relaxed mb-4">
+        Pour une vue d&apos;ensemble de toutes les formations disponibles en
+        Espagne, consultez notre{" "}
+        <Link
+          href="/formations/medecine/espagne"
+          className="text-[#EC680A] underline underline-offset-2 font-medium hover:text-[#D45E09] transition-colors"
+        >
+          page dédiée aux études de médecine en Espagne
+        </Link>
+        . Et pour découvrir ce que nos étudiants en pensent, lisez leurs{" "}
+        <Link
+          href="/temoignages"
+          className="text-[#EC680A] underline underline-offset-2 font-medium hover:text-[#D45E09] transition-colors"
+        >
+          témoignages et avis
+        </Link>
+        .
+      </p>
+
+      {/* Conclusion */}
       <p className="text-[#334155] leading-relaxed mb-4">
         Faire médecine en Espagne, c&apos;est un vrai projet. Ça demande
         de la motivation, du travail et un investissement financier. Mais

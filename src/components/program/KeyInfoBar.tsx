@@ -1,8 +1,6 @@
 import { Clock, Euro, Globe, FileText, BarChart2 } from "lucide-react";
 import type { ProgramDetail } from "@/data/program-details";
 
-const icons = [Clock, Euro, Globe, FileText, BarChart2];
-
 export default function KeyInfoBar({ detail }: { detail: ProgramDetail }) {
   const stats: { value: string; label: string; icon: typeof Clock }[] = [
     { value: detail.duration, label: "Durée", icon: Clock },

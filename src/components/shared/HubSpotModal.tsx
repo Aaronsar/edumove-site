@@ -25,11 +25,10 @@ const CLASSE_OPTIONS = [
   "LAS 1",
   "LAS 2",
   "LAS 3",
-  "Etudes médicales",
-  "Etudes Sup.",
+  "Études médicales",
+  "Études Sup.",
   "Autre",
 ];
-
 
 type FormState = "idle" | "submitting" | "success" | "error";
 
@@ -163,7 +162,7 @@ export default function HubSpotModal({ isOpen, onClose }: HubSpotModalProps) {
             Être contacté
           </h3>
           <p className="text-sm text-[#64748b] mt-1">
-            Un expert Edumove vous rappelle sous 2h (8h-20h).
+            Un expert Edumove vous rappelle très rapidement.
           </p>
         </div>
 
@@ -282,7 +281,6 @@ export default function HubSpotModal({ isOpen, onClose }: HubSpotModalProps) {
                 className={inputClass}
               />
             </div>
-
 
             {/* Financement */}
             <div>
