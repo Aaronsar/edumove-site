@@ -57,6 +57,16 @@ const nextConfig: NextConfig = {
       { source: "/partenaire-ucjc-madrid", destination: "/universites/ucjc", permanent: true },
       { source: "/page-formation-dentaire", destination: "/formations/dentaire", permanent: true },
       { source: "/page-facultes", destination: "/", permanent: true },
+      { source: "/dentaire-ceu-madrid", destination: "/formations/dentaire", permanent: true },
+      { source: "/medecine-euc-chypre", destination: "/formations/medecine", permanent: true },
+      { source: "/pharmacie-euc-chypre", destination: "/formations/pharmacie", permanent: true },
+
+      // ── WordPress Elementor / docs / misc ──
+      { source: "/docs", destination: "/", permanent: true },
+      { source: "/docs/:path*", destination: "/", permanent: true },
+      { source: "/docs-category/:path*", destination: "/", permanent: true },
+      { source: "/elementor-hf/:path*", destination: "/", permanent: true },
+      { source: "/barre-de-recherche", destination: "/", permanent: true },
 
       // ── Anciennes pages universités WordPress ──
       { source: "/universidad-europea", destination: "/universites/universidad-europea", permanent: true },
