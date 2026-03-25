@@ -47,7 +47,7 @@ export interface LinkCardSection {
 export interface GridSection {
   type: "grid";
   columns: 2 | 3;
-  items: { title: string; description: string }[];
+  items: { title: string; description: string; href?: string }[];
 }
 
 export interface StatsGridSection {

@@ -47,6 +47,16 @@ const nextConfig: NextConfig = {
       { source: "/medecine-link-campus-university-rome", destination: "/formations/medecine/link-rome", permanent: true },
       { source: "/dentaire-link-campus-university-rome", destination: "/formations/dentaire/link-rome", permanent: true },
       { source: "/kinesitherapie-link-campus-university-rome", destination: "/formations/kinesitherapie/link-rome", permanent: true },
+      { source: "/pharmacie-universidad-europea-malaga", destination: "/formations/pharmacie/ue-madrid", permanent: true },
+      { source: "/pharmacie-universidad-europea-madrid", destination: "/formations/pharmacie/ue-madrid", permanent: true },
+      { source: "/kinesitherapie-ufv-madrid", destination: "/formations/kinesitherapie/ue-madrid", permanent: true },
+      { source: "/medecine-umfst-targu-mures", destination: "/formations/medecine", permanent: true },
+      { source: "/dentaire-umf-iasi-copy", destination: "/formations/dentaire", permanent: true },
+      { source: "/dentaire-uax-madrid", destination: "/formations/dentaire/ue-madrid", permanent: true },
+      { source: "/dentaire-ceu-seville", destination: "/formations/dentaire", permanent: true },
+      { source: "/partenaire-ucjc-madrid", destination: "/universites/ucjc", permanent: true },
+      { source: "/page-formation-dentaire", destination: "/formations/dentaire", permanent: true },
+      { source: "/page-facultes", destination: "/", permanent: true },
 
       // ── Anciennes pages universités WordPress ──
       { source: "/universidad-europea", destination: "/universites/universidad-europea", permanent: true },
@@ -58,14 +68,28 @@ const nextConfig: NextConfig = {
       { source: "/nos-formations", destination: "/#formations", permanent: true },
       { source: "/nos-universites", destination: "/#formations", permanent: true },
       { source: "/faq", destination: "/questions-frequentes", permanent: true },
-      // /contact est maintenant une vraie page
-      // /financement est maintenant une vraie page
       { source: "/admission", destination: "/", permanent: true },
-      // /temoignages est maintenant une vraie page
+      { source: "/mass", destination: "/", permanent: true },
+      { source: "/hello-world", destination: "/", permanent: true },
+      { source: "/how-important-is-church", destination: "/", permanent: true },
+      { source: "/infirmier", destination: "/", permanent: true },
+      { source: "/orhophoniste", destination: "/", permanent: true },
+      { source: "/ortophoniste", destination: "/", permanent: true },
+      { source: "/medecine-europe-france", destination: "/formations/medecine", permanent: true },
+      { source: "/etudier-la-medecine-en-europe", destination: "/formations/medecine", permanent: true },
+
+      // ── WordPress categories, authors, feeds, search ──
+      { source: "/category/:path*", destination: "/blog", permanent: true },
+      { source: "/author/:path*", destination: "/", permanent: true },
+      { source: "/search/:path*", destination: "/", permanent: true },
+      { source: "/comments/feed", destination: "/", permanent: true },
+      { source: "/:path*/feed", destination: "/blog", permanent: true },
+      { source: "/2025/:path*", destination: "/blog", permanent: true },
 
       // ── WordPress techniques ──
       { source: "/wp-admin", destination: "/", permanent: true },
       { source: "/wp-login.php", destination: "/", permanent: true },
+      { source: "/wp-json/:path*", destination: "/", permanent: true },
       { source: "/feed", destination: "/blog", permanent: true },
       { source: "/page-sitemap.xml", destination: "/sitemap.xml", permanent: true },
       { source: "/post-sitemap.xml", destination: "/sitemap.xml", permanent: true },
