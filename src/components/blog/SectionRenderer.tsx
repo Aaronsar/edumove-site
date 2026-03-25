@@ -232,9 +232,9 @@ function RenderSection({ section }: { section: ArticleSection }) {
       return (
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 my-6">
           {section.items.map((item, i) => (
-            <div key={i} className="text-center bg-[#fafbff] rounded-xl p-4 border border-gray-200/80 min-w-0 overflow-hidden">
-              <p className="text-xl md:text-2xl font-bold text-[#EC680A] truncate">{item.value}</p>
-              <p className="text-xs text-[#64748b] mt-1 truncate">{item.label}</p>
+            <div key={i} className="text-center bg-[#fafbff] rounded-xl p-3 md:p-4 border border-gray-200/80 min-w-0">
+              <p className="text-base md:text-xl font-bold text-[#EC680A] break-words leading-tight">{item.value}</p>
+              <p className="text-[10px] md:text-xs text-[#64748b] mt-1">{item.label}</p>
             </div>
           ))}
         </div>
