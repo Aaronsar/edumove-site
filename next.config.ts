@@ -37,6 +37,17 @@ const nextConfig: NextConfig = {
       { source: "/etudier-la-medecine-en-espagne", destination: "/formations/medecine/espagne", permanent: true },
       { source: "/etudes-de-sante-en-europe", destination: "/", permanent: true },
 
+      // ── Anciennes pages programmes par université WordPress ──
+      { source: "/dentaire-universidad-camilo-jose-cela-madrid", destination: "/formations/dentaire/ucjc-madrid", permanent: true },
+      { source: "/medecine-universidad-europea-madrid", destination: "/formations/medecine/ue-madrid", permanent: true },
+      { source: "/dentaire-universidad-europea-madrid", destination: "/formations/dentaire/ue-madrid", permanent: true },
+      { source: "/kinesitherapie-universidad-europea-madrid", destination: "/formations/kinesitherapie/ue-madrid", permanent: true },
+      { source: "/pharmacie-universidad-europea-madrid", destination: "/formations/pharmacie/ue-madrid", permanent: true },
+      { source: "/veterinaire-universidad-europea-madrid", destination: "/formations/veterinaire/ue-madrid", permanent: true },
+      { source: "/medecine-link-campus-university-rome", destination: "/formations/medecine/link-rome", permanent: true },
+      { source: "/dentaire-link-campus-university-rome", destination: "/formations/dentaire/link-rome", permanent: true },
+      { source: "/kinesitherapie-link-campus-university-rome", destination: "/formations/kinesitherapie/link-rome", permanent: true },
+
       // ── Anciennes pages universités WordPress ──
       { source: "/universidad-europea", destination: "/universites/universidad-europea", permanent: true },
       { source: "/ucjc", destination: "/universites/ucjc", permanent: true },

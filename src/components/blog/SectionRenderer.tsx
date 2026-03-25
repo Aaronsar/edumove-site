@@ -28,7 +28,7 @@ function getIcon(name?: string) {
 function RenderHTML({ html }: { html: string }) {
   return (
     <div
-      className="text-[#334155] leading-relaxed prose-sm"
+      className="text-[#334155] leading-relaxed [&_a]:text-[#615CA5] [&_a]:font-medium [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-[#EC680A] [&_a]:transition-colors [&_strong]:font-semibold [&_strong]:text-[#1B1D3A]"
       dangerouslySetInnerHTML={{ __html: html }}
     />
   );
@@ -63,9 +63,10 @@ function FAQAccordion({ items }: { items: { question: string; answer: string }[]
                 isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
               }`}
             >
-              <div className="px-5 pb-4 text-sm text-[#334155] leading-relaxed border-t border-gray-100 pt-3">
-                {item.answer}
-              </div>
+              <div
+                className="px-5 pb-4 text-sm text-[#334155] leading-relaxed border-t border-gray-100 pt-3 [&_a]:text-[#615CA5] [&_a]:font-medium [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-[#EC680A] [&_a]:transition-colors"
+                dangerouslySetInnerHTML={{ __html: item.answer }}
+              />
             </div>
           </div>
         );
@@ -118,7 +119,7 @@ function RenderSection({ section }: { section: ArticleSection }) {
           {section.items.map((item, i) => (
             <li
               key={i}
-              className="text-sm text-[#334155]"
+              className="text-sm text-[#334155] [&_a]:text-[#615CA5] [&_a]:font-medium [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-[#EC680A] [&_a]:transition-colors"
               dangerouslySetInnerHTML={{ __html: item }}
             />
           ))}
@@ -151,7 +152,7 @@ function RenderSection({ section }: { section: ArticleSection }) {
                   {row.map((cell, ci) => (
                     <td
                       key={ci}
-                      className="px-4 py-3 text-[#334155] border-b border-gray-100"
+                      className="px-4 py-3 text-[#334155] border-b border-gray-100 [&_a]:text-[#615CA5] [&_a]:font-medium [&_a]:underline [&_a:hover]:text-[#EC680A]"
                       dangerouslySetInnerHTML={{ __html: cell }}
                     />
                   ))}
@@ -197,15 +198,33 @@ function RenderSection({ section }: { section: ArticleSection }) {
             section.columns === 3 ? "md:grid-cols-3" : "md:grid-cols-2"
           }`}
         >
-          {section.items.map((item, i) => (
-            <div
-              key={i}
-              className="bg-[#fafbff] border border-gray-200/80 rounded-xl p-4"
-            >
-              <p className="font-semibold text-[#1B1D3A] text-sm">{item.title}</p>
-              <p className="text-xs text-[#64748b] mt-1">{item.description}</p>
-            </div>
-          ))}
+          {section.items.map((item, i) => {
+            const content = (
+              <>
+                <p className="font-semibold text-[#1B1D3A] text-sm">{item.title}</p>
+                <p className="text-xs text-[#64748b] mt-1">{item.description}</p>
+              </>
+            );
+            if (item.href) {
+              return (
+                <Link
+                  key={i}
+                  href={item.href}
+                  className="bg-[#fafbff] border border-gray-200/80 rounded-xl p-4 hover:border-[#EC680A]/30 hover:shadow-md transition-all"
+                >
+                  {content}
+                </Link>
+              );
+            }
+            return (
+              <div
+                key={i}
+                className="bg-[#fafbff] border border-gray-200/80 rounded-xl p-4"
+              >
+                {content}
+              </div>
+            );
+          })}
         </div>
       );
 
