@@ -61,6 +61,9 @@ const nextConfig: NextConfig = {
       { source: "/medecine-euc-chypre", destination: "/formations/medecine", permanent: true },
       { source: "/pharmacie-euc-chypre", destination: "/formations/pharmacie", permanent: true },
 
+      // ── Articles statiques migrés vers Supabase ──
+      { source: "/blog/etudes-medecine-espagne", destination: "/guides/faire-medecine-en-espagne-le-guide-complet-pour-les-francais", permanent: true },
+
       // ── WordPress Elementor / docs / misc ──
       { source: "/docs", destination: "/", permanent: true },
       { source: "/docs/:path*", destination: "/", permanent: true },

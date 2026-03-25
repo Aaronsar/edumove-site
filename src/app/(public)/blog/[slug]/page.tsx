@@ -25,9 +25,6 @@ import EchecPassAlternatives, {
 import CoutEtudesSanteEurope, {
   sommaire as coutEtudesSommaire,
 } from "@/components/blog/articles/CoutEtudesSanteEurope";
-import EtudesMedecineEspagne, {
-  sommaire as medecineEspagneSommaire,
-} from "@/components/blog/articles/EtudesMedecineEspagne";
 import EtudesDentaireEspagne, {
   sommaire as dentaireEspagneSommaire,
 } from "@/components/blog/articles/EtudesDentaireEspagne";
@@ -39,7 +36,6 @@ const staticBlogSlugs = [
   "avantages-kinesitherapie-europe",
   "echec-pass-alternatives",
   "cout-etudes-sante-europe",
-  "etudes-medecine-espagne",
   "etudes-dentaire-espagne",
 ];
 
@@ -73,10 +69,6 @@ const contentMap: Record<
   "cout-etudes-sante-europe": {
     Component: CoutEtudesSanteEurope,
     sommaire: coutEtudesSommaire,
-  },
-  "etudes-medecine-espagne": {
-    Component: EtudesMedecineEspagne,
-    sommaire: medecineEspagneSommaire,
   },
   "etudes-dentaire-espagne": {
     Component: EtudesDentaireEspagne,
