@@ -311,7 +311,7 @@ export default function WebinarFinancementPage() {
                   &times;
                 </span>
                 <Image
-                  src="/lcl-logo.svg"
+                  src="/lcl-logo-officiel.svg"
                   alt="LCL"
                   width={60}
                   height={24}
@@ -442,7 +442,7 @@ export default function WebinarFinancementPage() {
             <div className="bg-white rounded-2xl border border-[#e2e2ef] p-8">
               <div className="flex items-center gap-3 mb-4">
                 <Image
-                  src="/lcl-logo.svg"
+                  src="/lcl-logo-officiel.svg"
                   alt="LCL"
                   width={80}
                   height={32}
