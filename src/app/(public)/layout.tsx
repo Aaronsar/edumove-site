@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import WebinarBanner from "@/components/shared/WebinarBanner";
 
 export default function PublicLayout({
   children,
@@ -11,6 +12,7 @@ export default function PublicLayout({
       <Header />
       {children}
       <Footer />
+      <WebinarBanner />
     </>
   );
 }
