@@ -46,10 +46,10 @@ const PROGRAMME = [
 ];
 
 const POUR_QUI = [
-  "Lycéens en Terminale qui envisagent des études de santé en Europe",
-  "Étudiants en PASS/L.AS souhaitant explorer d'autres voies",
-  "Parents qui veulent comprendre les options de financement",
-  "Étudiants déjà admis qui cherchent à financer leurs études",
+  "Vous êtes lycéen en Terminale et vous envisagez des études de santé en Europe",
+  "Vous êtes étudiant en PASS/L.AS et vous souhaitez explorer d'autres voies",
+  "Vous êtes parent et vous voulez comprendre les options de financement",
+  "Vous êtes étudiant déjà admis et vous cherchez à financer vos études",
 ];
 
 const FAQ = [
