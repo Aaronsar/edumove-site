@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ChevronRight, CheckCircle2, GraduationCap, Euro, Clock, Shield, Banknote, Users, FileText, Handshake, ArrowRight, Phone } from "lucide-react";
+import { ChevronRight, CheckCircle2, GraduationCap, Euro, Clock, Shield, Banknote, Users, FileText, Handshake, ArrowRight, Phone, Video, CalendarDays } from "lucide-react";
 import ContactButton from "@/components/shared/ContactButton";
 import StickyBar from "@/components/program/StickyBar";
 
@@ -516,6 +516,50 @@ export default function FinancingPage() {
               </details>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════════════════════
+          WEBINAIRE BANNER
+      ══════════════════════════════════════════════════════════════════════ */}
+      <section className="py-12 md:py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <Link
+            href="/evenements/webinaire-financement-sante"
+            className="group relative block bg-gradient-to-r from-[#1B1D3A] to-[#2a2d52] rounded-2xl p-8 md:p-10 overflow-hidden transition-all hover:shadow-xl"
+          >
+            <div className="absolute -top-10 -right-10 w-64 h-64 rounded-full bg-[#ec680a]/10 blur-3xl" />
+            <div className="relative z-10 flex flex-col md:flex-row md:items-center gap-6">
+              <div className="flex-1">
+                <div className="inline-flex items-center gap-2 bg-[#ec680a]/20 text-[#ec680a] text-xs font-semibold px-3 py-1.5 rounded-full mb-4">
+                  <Video className="w-3.5 h-3.5" />
+                  Webinaire gratuit
+                </div>
+                <h3 className="text-xl md:text-2xl font-bold text-white mb-2">
+                  Comment financer ses études de santé en Europe ?
+                </h3>
+                <p className="text-white/60 text-sm mb-4 max-w-lg">
+                  Avec la participation de LCL, découvrez toutes les solutions de financement lors de notre prochain webinaire en ligne.
+                </p>
+                <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-2 text-white/70 text-sm">
+                    <CalendarDays className="w-4 h-4 text-[#ec680a]" />
+                    Mercredi 15 avril 2026
+                  </div>
+                  <div className="flex items-center gap-2 text-white/70 text-sm">
+                    <Clock className="w-4 h-4 text-[#ec680a]" />
+                    18h30
+                  </div>
+                </div>
+              </div>
+              <div className="shrink-0">
+                <span className="inline-flex items-center gap-2 bg-[#ec680a] hover:bg-[#d45e09] text-white font-semibold px-6 py-3 rounded-[5px] transition-all group-hover:shadow-lg group-hover:shadow-[#ec680a]/20 group-hover:-translate-y-0.5">
+                  S&apos;inscrire gratuitement
+                  <ArrowRight className="w-4 h-4" />
+                </span>
+              </div>
+            </div>
+          </Link>
         </div>
       </section>
 

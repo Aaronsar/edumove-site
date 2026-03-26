@@ -9,12 +9,17 @@ import Link from "next/link";
 
 const STORAGE_KEY = "edumove_webinar_popup_dismissed";
 const DELAY_MS = 10_000; // 10 secondes
+// Désactiver le popup à partir du 15 avril 2026 à 18h (heure de Paris)
+const WEBINAR_DATE = new Date("2026-04-15T18:00:00+02:00");
 
 export default function WebinarBanner() {
   const [show, setShow] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
+    // Ne plus afficher après le début du webinaire
+    if (new Date() >= WEBINAR_DATE) return;
+
     // Ne pas afficher sur la page webinaire elle-même
     if (pathname?.startsWith("/evenements/webinaire")) return;
 
