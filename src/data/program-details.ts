@@ -44,7 +44,7 @@ const defaultAdmissionSteps = [
   "On étudie votre dossier ensemble et on évalue la faisabilité",
   "Votre conseiller monte le dossier d'admission avec vous et l'envoie à l'université",
   "Préparation au test d'entrée et à l'entretien : on vous coache jusqu'au jour J",
-  "Admission confirmée + mise en place du financement (prêt LCL jusqu'à 75 000 €)",
+  "Admission confirmée + mise en place du financement (prêt LCL à partir de 75 000 €)",
   "Rentrée : on vous aide aussi pour le logement, les papiers et l'installation sur place",
 ];
 

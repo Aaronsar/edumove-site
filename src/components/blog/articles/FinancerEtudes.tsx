@@ -150,7 +150,7 @@ export default function FinancerEtudes() {
       </p>
       <ul className="space-y-2 mb-6">
         {[
-          "Montant : jusqu\u2019à 75 000 \u20ac, couvrant scolarité + frais de vie",
+          "Montant : à partir de 75 000 \u20ac, couvrant scolarité + frais de vie",
           "Différé total : pas de remboursement du capital pendant les études",
           "Taux compétitifs négociés grâce au partenariat Edumove",
           "Déblocage progressif adapté au calendrier universitaire",

@@ -188,19 +188,19 @@ const categories: FAQCategory[] = [
       },
       {
         q: "Edumove finance-t-il les études ?",
-        a: "Non, on n'est pas une banque. Par contre on fait le lien avec des partenaires bancaires, notamment LCL, pour mettre en place un prêt étudiant pouvant aller jusqu'à 75 000 €. Le principe : vous ne commencez à rembourser qu'une fois diplômé et en poste.",
+        a: "Non, on n'est pas une banque. Par contre on fait le lien avec des partenaires bancaires, notamment LCL, pour mettre en place un prêt étudiant à partir de 75 000 €. Le principe : vous ne commencez à rembourser qu'une fois diplômé et en poste.",
         content: (
           <>
-            Non, on n&apos;est pas une banque. Par contre on fait le lien avec des partenaires bancaires, notamment LCL, pour mettre en place un prêt étudiant pouvant aller jusqu&apos;à 75 000 €. Le principe : vous ne commencez à rembourser qu&apos;une fois diplômé et en poste. On explique tout dans notre article sur le <IL href="/financement">financement des études</IL>.
+            Non, on n&apos;est pas une banque. Par contre on fait le lien avec des partenaires bancaires, notamment LCL, pour mettre en place un prêt étudiant à partir de 75 000 €. Le principe : vous ne commencez à rembourser qu&apos;une fois diplômé et en poste. On explique tout dans notre article sur le <IL href="/financement">financement des études</IL>.
           </>
         ),
       },
       {
         q: "Comment fonctionne le prêt étudiant ?",
-        a: "Grâce au partenariat avec LCL, les étudiants accompagnés par Edumove peuvent accéder à un prêt étudiant garanti par l'État allant jusqu'à 75 000 €. Le remboursement ne commence qu'une fois diplômé et en activité professionnelle. C'est la solution la plus utilisée par nos étudiants.",
+        a: "Grâce au partenariat avec LCL, les étudiants accompagnés par Edumove peuvent accéder à un prêt étudiant garanti par l'État à partir de 75 000 €. Le remboursement ne commence qu'une fois diplômé et en activité professionnelle. C'est la solution la plus utilisée par nos étudiants.",
         content: (
           <>
-            Grâce au partenariat avec LCL, les étudiants accompagnés par Edumove peuvent accéder à un prêt étudiant garanti par l&apos;État allant jusqu&apos;à 75 000 €. Le remboursement ne commence qu&apos;une fois diplômé et en activité professionnelle. C&apos;est la solution la plus utilisée par nos étudiants. Tous les détails dans notre <IL href="/financement">guide financement</IL>.
+            Grâce au partenariat avec LCL, les étudiants accompagnés par Edumove peuvent accéder à un prêt étudiant garanti par l&apos;État à partir de 75 000 €. Le remboursement ne commence qu&apos;une fois diplômé et en activité professionnelle. C&apos;est la solution la plus utilisée par nos étudiants. Tous les détails dans notre <IL href="/financement">guide financement</IL>.
           </>
         ),
       },

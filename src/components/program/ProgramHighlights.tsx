@@ -44,7 +44,7 @@ const highlights = [
   {
     icon: Sparkles,
     title: "Financement garanti",
-    description: "Prêt étudiant jusqu'à 75 000 € via notre partenariat bancaire.",
+    description: "Prêt étudiant à partir de 75 000 € via notre partenariat bancaire.",
     color: "#1B1D3A",
   },
 ];

@@ -41,7 +41,7 @@ const PROGRAMME = [
   {
     icon: HelpCircle,
     title: "Session questions / réponses",
-    desc: "Posez toutes vos questions en direct à notre équipe et aux représentants de LCL.",
+    desc: "Posez toutes vos questions en direct à notre équipe et aux représentants du LCL.",
   },
 ];
 
@@ -76,7 +76,7 @@ const FAQ = [
   {
     question: "Peut-on poser des questions pendant le webinaire ?",
     answer:
-      "Absolument ! Une session de questions/réponses est prévue à la fin du webinaire. Vous pourrez poser toutes vos questions en direct à notre équipe et aux représentants de LCL.",
+      "Absolument ! Une session de questions/réponses est prévue à la fin du webinaire. Vous pourrez poser toutes vos questions en direct à notre équipe et aux représentants du LCL.",
   },
   {
     question: "Je suis parent, puis-je assister au webinaire ?",
@@ -562,7 +562,7 @@ export default function WebinarFinancementPage() {
               </h3>
               <p className="text-sm text-[#64748b] leading-relaxed mb-4">
                 LCL accompagne les étudiants Edumove avec un prêt étudiant
-                pouvant aller jusqu&apos;à 75 000 euros, avec un remboursement
+                à partir de 75 000 euros (davantage selon les profils), avec un remboursement
                 différé après l&apos;obtention du diplôme. Un représentant LCL
                 sera présent lors du webinaire pour répondre à toutes vos
                 questions.
@@ -571,7 +571,7 @@ export default function WebinarFinancementPage() {
                 <div className="bg-[#fafbff] rounded-xl p-3 text-center border border-[#e2e2ef]">
                   <p className="text-lg font-bold text-[#ec680a]">75 000 &euro;</p>
                   <p className="text-[10px] text-[#64748b] mt-0.5">
-                    Montant max.
+                    Minimum garanti
                   </p>
                 </div>
                 <div className="bg-[#fafbff] rounded-xl p-3 text-center border border-[#e2e2ef]">
@@ -675,7 +675,7 @@ export default function WebinarFinancementPage() {
                 Tout savoir sur le financement Edumove &times; LCL
               </h3>
               <p className="text-sm text-[#64748b] mt-1">
-                Prêt jusqu&apos;à 75 000 &euro;, remboursement différé, bourses
+                Prêt à partir de 75 000 &euro;, remboursement différé, bourses
                 CROUS, aides régionales... Notre guide complet.
               </p>
             </div>
@@ -841,7 +841,7 @@ export default function WebinarFinancementPage() {
             "@type": "EducationEvent",
             name: "Comment financer ses études de Santé en Europe ? On vous explique tout !",
             description:
-              "Webinaire gratuit organisé par Edumove avec la participation de LCL pour comprendre comment financer ses études de santé en Europe.",
+              "Webinaire gratuit organisé par Edumove avec la participation du LCL pour comprendre comment financer ses études de santé en Europe.",
             startDate: "2026-04-15T18:30:00+02:00",
             endDate: "2026-04-15T19:15:00+02:00",
             eventAttendanceMode:

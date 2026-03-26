@@ -623,7 +623,7 @@ function generate() {
     { num: "01", title: "Premier \u00e9change gratuit", desc: "Un conseiller Edumove analyse votre profil, vos ambitions et vous oriente vers les formations adapt\u00e9es. Appel sans engagement." },
     { num: "02", title: "Constitution du dossier", desc: "On pr\u00e9pare un dossier solide : bulletins, lettre de motivation, documents administratifs. Tout est v\u00e9rifi\u00e9 et optimis\u00e9." },
     { num: "03", title: "Candidature & test d'admission", desc: "Envoi des candidatures et pr\u00e9paration compl\u00e8te aux tests (test PE, QCM LINK, entretien UCJC)." },
-    { num: "04", title: "Admission & financement", desc: "R\u00e9ponse de l'universit\u00e9, financement avec LCL (jusqu'\u00e0 75 000 \u20ac). Vous ne payez rien avant d'\u00eatre dipl\u00f4m\u00e9." },
+    { num: "04", title: "Admission & financement", desc: "R\u00e9ponse de l'universit\u00e9, financement avec LCL (\u00e0 partir de 75 000 \u20ac). Vous ne payez rien avant d'\u00eatre dipl\u00f4m\u00e9." },
     { num: "05", title: "Installation & suivi", desc: "Logement, d\u00e9marches administratives, assurance, accompagnement continu apr\u00e8s votre arriv\u00e9e." },
   ];
 
@@ -642,7 +642,7 @@ function generate() {
   // Financing banner
   y += 5 * 118 + 15;
   fillRounded(doc, MG, y, CW, 70, 12, ORANGE);
-  textCenter(doc, "Financement garanti jusqu'\u00e0 75 000 \u20ac avec LCL", y + 15, "PoppinsB", 16, WHITE);
+  textCenter(doc, "Financement garanti \u00e0 partir de 75 000 \u20ac avec LCL", y + 15, "PoppinsB", 16, WHITE);
   textCenter(doc, "Remboursement uniquement une fois dipl\u00f4m\u00e9 et en poste. 0 \u20ac \u00e0 avancer.", y + 42, "Poppins", 10, WHITE, 0.85);
 
   pageNumber(doc, 10);

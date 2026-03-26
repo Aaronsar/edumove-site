@@ -13,7 +13,7 @@ export default function OrangeBanner() {
             Chez Edumove, votre admission est notre priorité.
           </h2>
           <p className="text-lg md:text-xl text-white/90 font-medium">
-            Financement étudiant garanti jusqu&apos;à 75 000 € avec LCL
+            Financement étudiant garanti à partir de 75 000 € avec LCL
           </p>
           <span className="inline-block mt-4 text-white/80 text-sm underline underline-offset-4">
             Découvrir nos solutions de financement &rarr;

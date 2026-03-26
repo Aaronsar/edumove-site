@@ -25,7 +25,7 @@ export default function FinancingBanner() {
                     Besoin de financer vos études ?
                   </h3>
                   <p className="text-white/60 text-sm max-w-md">
-                    Jusqu'à 75 000 € avec notre partenaire LCL. Remboursement uniquement après l'obtention de votre diplôme.
+                    À partir de 75 000 € avec notre partenaire LCL. Remboursement uniquement après l'obtention de votre diplôme.
                   </p>
                 </div>
               </div>

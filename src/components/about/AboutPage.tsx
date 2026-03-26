@@ -70,7 +70,7 @@ const steps = [
   {
     num: "04",
     title: "Admission & financement",
-    desc: "Réponse de l'université, mise en place du financement avec notre partenaire LCL (prêt jusqu'à 75 000 €).",
+    desc: "Réponse de l'université, mise en place du financement avec notre partenaire LCL (prêt à partir de 75 000 €).",
   },
   {
     num: "05",

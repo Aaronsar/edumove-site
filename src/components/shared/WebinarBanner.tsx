@@ -107,7 +107,7 @@ export default function WebinarBanner() {
               <strong className="text-[#1B1D3A]">
                 participation exceptionnelle du LCL
               </strong>
-              , partenaire officiel d&apos;Edumove. Prêt étudiant jusqu&apos;à
+              , partenaire officiel d&apos;Edumove. Prêt étudiant à partir de
               75 000 &euro;, remboursement différé, bourses...
             </p>
           </div>

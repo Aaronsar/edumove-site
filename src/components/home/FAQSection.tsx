@@ -41,7 +41,7 @@ const faqs = [
   },
   {
     q: "Edumove finance-t-il les études ?",
-    a: "Non, on n'est pas une banque. En revanche, on fait le lien avec des partenaires bancaires (notamment LCL) pour monter un prêt étudiant pouvant aller jusqu'à 75 000 €, remboursable une fois diplômé et en poste.",
+    a: "Non, on n'est pas une banque. En revanche, on fait le lien avec des partenaires bancaires (notamment LCL) pour monter un prêt étudiant à partir de 75 000 €, remboursable une fois diplômé et en poste.",
     link: { href: "/financement", label: "Découvrir nos solutions de financement" },
   },
   {

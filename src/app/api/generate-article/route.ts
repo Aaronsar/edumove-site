@@ -33,7 +33,7 @@ VIE ÉTUDIANTE :
 - /vie-etudiante/malaga — Vie étudiante à Malaga
 
 AUTRES :
-- /financement — Financement études (prêt LCL jusqu'à 75 000€, remboursement après diplôme)
+- /financement — Financement études (prêt LCL à partir de 75 000€, remboursement après diplôme)
 - /temoignages — Avis et témoignages étudiants/parents
 - /questions-frequentes — FAQ
 - /blog/echec-pass-alternatives — Échec au PASS : les alternatives
@@ -60,7 +60,7 @@ export async function POST(req: NextRequest) {
 CONTEXTE EDUMOVE :
 - Universités partenaires : Universidad Europea (5 campus en Espagne), UCJC Madrid, LINK Campus (Rome)
 - Filières : médecine, dentaire, kinésithérapie, pharmacie, vétérinaire
-- Partenariat LCL pour financement jusqu'à 75 000€ avec remboursement différé après diplôme
+- Partenariat LCL pour financement à partir de 75 000€ avec remboursement différé après diplôme
 - Pas de concours PASS/LAS, admission sur test PE ou entretien
 - Diplômes reconnus dans toute l'UE (directive 2005/36/CE)
 

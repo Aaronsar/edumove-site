@@ -529,7 +529,7 @@ export default function GuideCandidature() {
                   {
                     icon: CreditCard,
                     title: "Financement",
-                    description: "Grâce au prêt étudiant garanti par l'État (jusqu'à 75 000 € avec LCL), vous pouvez financer la totalité de vos études sans avancer un centime.",
+                    description: "Grâce au prêt étudiant garanti par l'État (à partir de 75 000 € avec LCL), vous pouvez financer la totalité de vos études sans avancer un centime.",
                   },
                   {
                     icon: FileText,

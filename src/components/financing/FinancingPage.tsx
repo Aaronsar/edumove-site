@@ -36,7 +36,7 @@ const STEPS = [
 const HIGHLIGHTS = [
   "Remboursement différé jusqu'à la fin des études",
   "Taux préférentiel négocié par Edumove",
-  "Financement jusqu'à 75 000 €",
+  "Financement à partir de 75 000 €",
   "Couvre scolarité + logement + vie courante",
   "Accompagnement personnalisé pour le dossier",
   "Compatible avec les bourses CROUS et aides régionales",
@@ -74,7 +74,7 @@ const BUDGET_ROME = [
 const FAQ = [
   {
     question: "Qui peut bénéficier du prêt étudiant LCL ?",
-    answer: "Tout étudiant admis dans l'une de nos universités partenaires (UCJC, Universidad Europea ou LINK Campus) peut bénéficier du prêt étudiant LCL via Edumove. Il n'y a pas de condition de revenus des parents. Le prêt est accordé sur la base de votre admission et de votre projet d'études.",
+    answer: "Tout étudiant admis dans l'une de nos universités partenaires (UCJC, Universidad Europea ou LINK Campus) peut bénéficier du prêt étudiant LCL via Edumove. Il n'y a pas de condition de revenus des parents. Le montant minimum garanti est de 75 000 €, et peut être supérieur selon votre profil.",
   },
   {
     question: "Quand commence le remboursement du prêt ?",
@@ -145,7 +145,7 @@ export default function FinancingPage() {
               <div className="grid grid-cols-3 gap-4">
                 <div className="bg-white/[0.06] rounded-xl p-4 text-center">
                   <p className="text-2xl md:text-3xl font-bold text-[#ec680a]">75 000 €</p>
-                  <p className="text-white/50 text-[11px] mt-1">Montant maximum</p>
+                  <p className="text-white/50 text-[11px] mt-1">Minimum garanti</p>
                 </div>
                 <div className="bg-white/[0.06] rounded-xl p-4 text-center">
                   <p className="text-2xl md:text-3xl font-bold text-[#ec680a]">0 €</p>
@@ -539,7 +539,7 @@ export default function FinancingPage() {
                   Comment financer ses études de santé en Europe ?
                 </h3>
                 <p className="text-white/60 text-sm mb-4 max-w-lg">
-                  Avec la participation de LCL, découvrez toutes les solutions de financement lors de notre prochain webinaire en ligne.
+                  Avec la participation du LCL, découvrez toutes les solutions de financement lors de notre prochain webinaire en ligne.
                 </p>
                 <div className="flex items-center gap-4">
                   <div className="flex items-center gap-2 text-white/70 text-sm">

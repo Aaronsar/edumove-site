@@ -30,7 +30,7 @@ export const filieres: Filiere[] = [
     fullName: "Études de Médecine en Europe sans PASS ni LAS",
     icon: "medecine",
     description:
-      "Devenez médecin en Europe avec un diplôme reconnu en France. Formations de 6 ans en Espagne et en Italie, accessibles sans concours PASS/LAS. Financement jusqu'à 75 000 €.",
+      "Devenez médecin en Europe avec un diplôme reconnu en France. Formations de 6 ans en Espagne et en Italie, accessibles sans concours PASS/LAS. Financement à partir de 75 000 €.",
     durationRange: "6 ans",
     keywords: [
       "études médecine europe",
