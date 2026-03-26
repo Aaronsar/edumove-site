@@ -535,7 +535,7 @@ export default function FinancingPage() {
                   <Video className="w-3.5 h-3.5" />
                   Webinaire gratuit
                 </div>
-                <h3 className="text-xl md:text-2xl font-bold text-white mb-2">
+                <h3 className="text-xl md:text-2xl font-bold mb-2" style={{ color: "#ffffff" }}>
                   Comment financer ses études de santé en Europe ?
                 </h3>
                 <p className="text-white/60 text-sm mb-4 max-w-lg">
