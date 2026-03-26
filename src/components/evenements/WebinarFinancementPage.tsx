@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
+import { createPortal } from "react-dom";
 import {
   ChevronRight,
   CalendarDays,
@@ -17,6 +18,7 @@ import {
   ArrowRight,
   Loader2,
   ChevronDown,
+  X,
 } from "lucide-react";
 import ContactButton from "@/components/shared/ContactButton";
 
@@ -48,6 +50,47 @@ const POUR_QUI = [
   "Étudiants en PASS/L.AS souhaitant explorer d'autres voies",
   "Parents qui veulent comprendre les options de financement",
   "Étudiants déjà admis qui cherchent à financer leurs études",
+];
+
+const FAQ = [
+  {
+    question: "Le webinaire est-il gratuit ?",
+    answer:
+      "Oui, le webinaire est entièrement gratuit. Il vous suffit de vous inscrire via le formulaire pour recevoir le lien de connexion par email.",
+  },
+  {
+    question: "Est-ce que le webinaire sera enregistré ?",
+    answer:
+      "Oui, un replay sera disponible pour les inscrits qui ne pourraient pas assister en direct. Inscrivez-vous pour recevoir le lien automatiquement après le webinaire.",
+  },
+  {
+    question: "Qui peut bénéficier du prêt étudiant LCL ?",
+    answer:
+      "Tout étudiant admis dans l'une de nos universités partenaires (UCJC, Universidad Europea ou LINK Campus) peut bénéficier du prêt étudiant LCL via Edumove. Il n'y a pas de condition de revenus des parents.",
+  },
+  {
+    question: "Quand commence le remboursement du prêt ?",
+    answer:
+      "Le remboursement est entièrement différé. Vous ne commencez à rembourser qu'après l'obtention de votre diplôme, lorsque vous exercez en tant que professionnel de santé.",
+  },
+  {
+    question: "Peut-on poser des questions pendant le webinaire ?",
+    answer:
+      "Absolument ! Une session de questions/réponses est prévue à la fin du webinaire. Vous pourrez poser toutes vos questions en direct à notre équipe et aux représentants de LCL.",
+  },
+  {
+    question: "Je suis parent, puis-je assister au webinaire ?",
+    answer:
+      "Bien sûr ! Le webinaire s'adresse aussi aux parents. Le financement des études est souvent une décision familiale, et nous répondrons à toutes les questions liées au prêt, aux garanties et aux modalités de remboursement.",
+  },
+];
+
+const FORMATIONS_LINKS = [
+  { name: "Médecine", slug: "medecine" },
+  { name: "Dentaire", slug: "dentaire" },
+  { name: "Kinésithérapie", slug: "kinesitherapie" },
+  { name: "Pharmacie", slug: "pharmacie" },
+  { name: "Vétérinaire", slug: "veterinaire" },
 ];
 
 const PORTAL_ID = "26711031";
@@ -266,7 +309,69 @@ function WebinarForm() {
   );
 }
 
+function WebinarFormModal({
+  isOpen,
+  onClose,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+}) {
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", handleEsc);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", handleEsc);
+      document.body.style.overflow = "";
+    };
+  }, [isOpen, onClose]);
+
+  const handleBackdrop = useCallback(
+    (e: React.MouseEvent) => {
+      if (e.target === e.currentTarget) onClose();
+    },
+    [onClose]
+  );
+
+  if (!isOpen) return null;
+
+  return createPortal(
+    <div
+      className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#1B1D3A]/60 backdrop-blur-sm px-4"
+      onClick={handleBackdrop}
+    >
+      <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto p-8">
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors z-10"
+          aria-label="Fermer"
+        >
+          <X className="w-4 h-4 text-[#1B1D3A]" />
+        </button>
+        <div className="mb-6 text-center">
+          <p className="text-sm font-semibold uppercase tracking-widest text-[#EC680A] mb-2">
+            Webinaire gratuit
+          </p>
+          <h3 className="text-2xl font-bold text-[#1B1D3A]">
+            Inscrivez-vous au webinaire
+          </h3>
+          <p className="text-sm text-[#64748b] mt-1">
+            Mercredi 15 avril 2026 à 18h30
+          </p>
+        </div>
+        <WebinarForm />
+      </div>
+    </div>,
+    document.body
+  );
+}
+
 export default function WebinarFinancementPage() {
+  const [modalOpen, setModalOpen] = useState(false);
+
   return (
     <>
       {/* ══════════════════════════════════════════════════════════════════════
@@ -507,18 +612,168 @@ export default function WebinarFinancementPage() {
               Inscription gratuite. Places limitées. Recevez le lien de
               connexion directement dans votre boîte mail.
             </p>
-            <a
-              href="#webinar-form"
-              className="inline-block bg-[#ec680a] hover:bg-[#d45e09] text-white font-semibold px-8 py-3.5 rounded-[5px] transition-all hover:shadow-xl hover:shadow-[#ec680a]/20"
+            <button
+              onClick={() => setModalOpen(true)}
+              className="inline-block bg-[#ec680a] hover:bg-[#d45e09] text-white font-semibold px-8 py-3.5 rounded-[5px] transition-all hover:shadow-xl hover:shadow-[#ec680a]/20 cursor-pointer"
             >
               Je m&apos;inscris gratuitement
-            </a>
+            </button>
           </div>
         </div>
       </section>
 
       {/* ══════════════════════════════════════════════════════════════════════
-          5. CTA FINAL
+          5. FAQ
+      ══════════════════════════════════════════════════════════════════════ */}
+      <section className="py-12 md:py-16 bg-[#fafbff]">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-2xl md:text-3xl font-bold text-[#1B1D3A] mb-8">
+            Questions fréquentes sur le webinaire
+          </h2>
+          <div className="space-y-4">
+            {FAQ.map((item, i) => (
+              <details
+                key={i}
+                className="group bg-white rounded-xl border border-[#e2e2ef] overflow-hidden"
+              >
+                <summary className="px-6 py-4 cursor-pointer flex items-center justify-between font-semibold text-[#1B1D3A] hover:text-[#ec680a] transition-colors">
+                  {item.question}
+                  <ChevronRight className="w-4 h-4 transition-transform group-open:rotate-90 shrink-0 ml-4" />
+                </summary>
+                <div className="px-6 pb-4 text-[#334155] leading-relaxed text-sm">
+                  {item.answer}
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════════════════════
+          6. MAILLAGE INTERNE
+      ══════════════════════════════════════════════════════════════════════ */}
+      <section className="py-12 md:py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-2xl md:text-3xl font-bold text-[#1B1D3A] mb-2">
+            En savoir plus
+          </h2>
+          <p className="text-[#64748b] mb-8">
+            Explorez nos ressources pour préparer votre projet d&apos;études en
+            Europe.
+          </p>
+
+          {/* Page financement */}
+          <Link
+            href="/financement"
+            className="group flex items-center justify-between bg-gradient-to-r from-[#615CA5]/5 to-[#ec680a]/5 hover:from-[#615CA5]/10 hover:to-[#ec680a]/10 border border-[#615CA5]/20 hover:border-[#615CA5]/40 rounded-2xl p-6 mb-6 transition-all"
+          >
+            <div>
+              <span className="text-xs font-semibold text-[#EC680A] bg-[#EC680A]/10 px-2.5 py-0.5 rounded-full">
+                Financement
+              </span>
+              <h3 className="font-bold text-[#1B1D3A] text-lg mt-2 group-hover:text-[#615CA5] transition-colors">
+                Tout savoir sur le financement Edumove &times; LCL
+              </h3>
+              <p className="text-sm text-[#64748b] mt-1">
+                Prêt jusqu&apos;à 75 000 &euro;, remboursement différé, bourses
+                CROUS, aides régionales... Notre guide complet.
+              </p>
+            </div>
+            <ArrowRight className="w-5 h-5 text-[#64748b] group-hover:text-[#ec680a] transition-colors shrink-0 ml-4" />
+          </Link>
+
+          {/* Formations */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+            {FORMATIONS_LINKS.map((f) => (
+              <Link
+                key={f.slug}
+                href={`/formations/${f.slug}`}
+                className="group flex items-center justify-between bg-[#fafbff] hover:bg-[#615CA5]/5 border border-[#e2e2ef] hover:border-[#615CA5]/30 rounded-xl px-5 py-4 transition-all"
+              >
+                <span className="font-bold text-[#1B1D3A] group-hover:text-[#615CA5] transition-colors">
+                  {f.name}
+                </span>
+                <ArrowRight className="w-4 h-4 text-[#64748b] group-hover:text-[#ec680a] transition-colors shrink-0" />
+              </Link>
+            ))}
+            <Link
+              href="/questions-frequentes"
+              className="group flex items-center justify-between bg-[#fafbff] hover:bg-[#615CA5]/5 border border-[#e2e2ef] hover:border-[#615CA5]/30 rounded-xl px-5 py-4 transition-all"
+            >
+              <span className="font-bold text-[#1B1D3A] group-hover:text-[#615CA5] transition-colors">
+                Questions fréquentes
+              </span>
+              <ArrowRight className="w-4 h-4 text-[#64748b] group-hover:text-[#ec680a] transition-colors shrink-0" />
+            </Link>
+          </div>
+
+          {/* Articles liés */}
+          <p className="text-sm font-semibold text-[#615CA5] uppercase tracking-wider mb-4">
+            Articles liés
+          </p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <Link
+              href="/blog/cout-etudes-sante-europe"
+              className="group bg-[#fafbff] rounded-xl border border-[#e2e2ef] hover:border-[#615CA5]/30 p-5 transition-all hover:shadow-md"
+            >
+              <span className="text-xs font-semibold text-[#EC680A] bg-[#EC680A]/10 px-2 py-0.5 rounded-full">
+                Financement
+              </span>
+              <h4 className="font-bold text-[#1B1D3A] text-sm mt-2 group-hover:text-[#615CA5] transition-colors leading-snug">
+                Coût des études de santé en Europe
+              </h4>
+              <span className="inline-flex items-center gap-1 mt-2 text-xs text-[#64748b] group-hover:text-[#EC680A] transition-colors">
+                Lire <ArrowRight className="w-3 h-3" />
+              </span>
+            </Link>
+            <Link
+              href="/blog/financer-etudes-sante-europe"
+              className="group bg-[#fafbff] rounded-xl border border-[#e2e2ef] hover:border-[#615CA5]/30 p-5 transition-all hover:shadow-md"
+            >
+              <span className="text-xs font-semibold text-[#EC680A] bg-[#EC680A]/10 px-2 py-0.5 rounded-full">
+                Financement
+              </span>
+              <h4 className="font-bold text-[#1B1D3A] text-sm mt-2 group-hover:text-[#615CA5] transition-colors leading-snug">
+                Guide complet du financement
+              </h4>
+              <span className="inline-flex items-center gap-1 mt-2 text-xs text-[#64748b] group-hover:text-[#EC680A] transition-colors">
+                Lire <ArrowRight className="w-3 h-3" />
+              </span>
+            </Link>
+            <Link
+              href="/blog/reconnaissance-diplomes-europeens"
+              className="group bg-[#fafbff] rounded-xl border border-[#e2e2ef] hover:border-[#615CA5]/30 p-5 transition-all hover:shadow-md"
+            >
+              <span className="text-xs font-semibold text-[#615CA5] bg-[#615CA5]/10 px-2 py-0.5 rounded-full">
+                Guide
+              </span>
+              <h4 className="font-bold text-[#1B1D3A] text-sm mt-2 group-hover:text-[#615CA5] transition-colors leading-snug">
+                Reconnaissance des diplômes européens
+              </h4>
+              <span className="inline-flex items-center gap-1 mt-2 text-xs text-[#64748b] group-hover:text-[#EC680A] transition-colors">
+                Lire <ArrowRight className="w-3 h-3" />
+              </span>
+            </Link>
+            <Link
+              href="/blog/echec-pass-alternatives"
+              className="group bg-[#fafbff] rounded-xl border border-[#e2e2ef] hover:border-[#615CA5]/30 p-5 transition-all hover:shadow-md"
+            >
+              <span className="text-xs font-semibold text-[#615CA5] bg-[#615CA5]/10 px-2 py-0.5 rounded-full">
+                Actualités
+              </span>
+              <h4 className="font-bold text-[#1B1D3A] text-sm mt-2 group-hover:text-[#615CA5] transition-colors leading-snug">
+                Échec au PASS : les alternatives
+              </h4>
+              <span className="inline-flex items-center gap-1 mt-2 text-xs text-[#64748b] group-hover:text-[#EC680A] transition-colors">
+                Lire <ArrowRight className="w-3 h-3" />
+              </span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════════════════════
+          7. CTA FINAL
       ══════════════════════════════════════════════════════════════════════ */}
       <section className="relative py-10 md:py-16 bg-[#1B1D3A] overflow-hidden">
         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#ec680a] via-[#615ca5] to-[#ec680a]" />
@@ -552,6 +807,32 @@ export default function WebinarFinancementPage() {
       {/* ══════════════════════════════════════════════════════════════════════
           JSON-LD Event Schema
       ══════════════════════════════════════════════════════════════════════ */}
+      {/* JSON-LD FAQ Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: FAQ.map((item) => ({
+              "@type": "Question",
+              name: item.question,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: item.answer,
+              },
+            })),
+          }),
+        }}
+      />
+
+      {/* Modal d'inscription */}
+      <WebinarFormModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+      />
+
+      {/* JSON-LD Event Schema */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
