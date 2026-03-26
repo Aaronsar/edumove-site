@@ -289,7 +289,7 @@ export default function WebinarFinancementPage() {
             <span className="text-white font-medium">Webinaire</span>
           </nav>
 
-          <div className="grid md:grid-cols-2 gap-8 items-start">
+          <div className="grid md:grid-cols-[1fr_auto] gap-8 lg:gap-12 items-start">
             {/* Left — Info */}
             <div>
               {/* Badge */}
@@ -362,7 +362,7 @@ export default function WebinarFinancementPage() {
             </div>
 
             {/* Right — Formulaire */}
-            <div className="bg-white rounded-2xl p-6 md:p-8 shadow-2xl shadow-black/20">
+            <div className="bg-white rounded-2xl p-6 md:p-8 shadow-2xl shadow-black/20 w-full md:w-[420px] md:ml-auto">
               <h2 className="text-xl font-bold text-[#1B1D3A] mb-1">
                 Inscrivez-vous gratuitement
               </h2>
