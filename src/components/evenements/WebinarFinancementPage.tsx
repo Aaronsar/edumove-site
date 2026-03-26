@@ -408,19 +408,19 @@ export default function WebinarFinancementPage() {
                 <Image
                   src="/edumove-icon-orange.svg"
                   alt="Edumove"
-                  width={32}
-                  height={32}
-                  className="h-7 w-auto"
+                  width={64}
+                  height={64}
+                  className="h-[56px] w-auto"
                 />
-                <span className="text-white/40 text-lg font-light">
+                <span className="text-white/40 text-2xl font-light">
                   &times;
                 </span>
                 <Image
                   src="/lcl-logo-officiel.svg"
                   alt="LCL"
-                  width={60}
-                  height={24}
-                  className="h-6 w-auto rounded"
+                  width={120}
+                  height={48}
+                  className="h-[48px] w-auto rounded"
                 />
               </div>
 

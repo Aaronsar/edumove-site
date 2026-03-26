@@ -124,7 +124,7 @@ export default function FinancingPage() {
               <div className="flex items-center gap-3 mb-4">
                 <Image src="/edumove-icon-orange.svg" alt="Edumove" width={32} height={32} className="h-7 w-auto" />
                 <span className="text-white/40 text-lg font-light">&times;</span>
-                <Image src="/lcl-logo.svg" alt="LCL" width={60} height={24} className="h-6 w-auto rounded" />
+                <Image src="/lcl-logo-officiel.svg" alt="LCL" width={60} height={24} className="h-6 w-auto rounded" />
               </div>
               <h1 className="text-3xl md:text-4xl font-bold leading-tight mb-4" style={{ color: "#ffffff" }}>
                 Financez vos études de santé en Europe
