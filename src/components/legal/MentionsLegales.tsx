@@ -52,8 +52,8 @@ export default function MentionsLegales() {
               <li><strong>T&eacute;l&eacute;phone :</strong> 01 89 74 42 57</li>
               <li>
                 <strong>Email :</strong>{" "}
-                <a href="mailto:contact@edumove.fr" className="text-[#EC680A] hover:underline">
-                  contact@edumove.fr
+                <a href="mailto:admissions@edumove.fr" className="text-[#EC680A] hover:underline">
+                  admissions@edumove.fr
                 </a>
               </li>
               <li>
@@ -159,8 +159,8 @@ export default function MentionsLegales() {
             <ul className="list-disc pl-5 space-y-1.5 text-[#334155] leading-relaxed">
               <li>
                 <strong>Email :</strong>{" "}
-                <a href="mailto:contact@edumove.fr" className="text-[#EC680A] hover:underline">
-                  contact@edumove.fr
+                <a href="mailto:admissions@edumove.fr" className="text-[#EC680A] hover:underline">
+                  admissions@edumove.fr
                 </a>
               </li>
               <li>
