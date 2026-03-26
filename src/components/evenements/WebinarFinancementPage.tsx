@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useState } from "react";
 import {
   ChevronRight,
   CalendarDays,
@@ -15,6 +15,8 @@ import {
   HelpCircle,
   Phone,
   ArrowRight,
+  Loader2,
+  ChevronDown,
 } from "lucide-react";
 import ContactButton from "@/components/shared/ContactButton";
 
@@ -48,30 +50,219 @@ const POUR_QUI = [
   "Étudiants déjà admis qui cherchent à financer leurs études",
 ];
 
-function HubSpotWebinarForm() {
-  const containerRef = useRef<HTMLDivElement>(null);
+const PORTAL_ID = "26711031";
+const FORM_ID = "bcbeb911-e7e2-43bf-81b2-573b2ff9eabe";
+const SUBMIT_URL = `https://api-eu1.hsforms.com/submissions/v3/integration/submit/${PORTAL_ID}/${FORM_ID}`;
 
-  useEffect(() => {
-    // Load HubSpot embed script
-    const scriptId = "hs-forms-embed-26711031";
-    if (!document.getElementById(scriptId)) {
-      const script = document.createElement("script");
-      script.id = scriptId;
-      script.src = "https://js-eu1.hsforms.net/forms/embed/26711031.js";
-      script.defer = true;
-      document.head.appendChild(script);
+const CLASSE_OPTIONS = [
+  "Troisième",
+  "Seconde",
+  "Première",
+  "Terminale",
+  "PASS",
+  "LSPS 1",
+  "LSPS 2",
+  "LSPS 3",
+  "LAS 1",
+  "LAS 2",
+  "LAS 3",
+  "Études médicales",
+  "Études Sup.",
+  "Autre",
+];
+
+const inputClass =
+  "w-full px-3.5 py-2.5 border-[1.5px] border-[#E2E8F0] rounded-xl text-sm text-[#1B1D3A] bg-[#F8FAFC] placeholder:text-[#94A3B8] outline-none transition-all focus:border-[#EC680A] focus:ring-[3px] focus:ring-[#EC680A]/10 focus:bg-white";
+
+const labelClass = "block text-[13px] font-semibold text-[#1B1D3A] mb-1";
+
+type FormState = "idle" | "submitting" | "success" | "error";
+
+function WebinarForm() {
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [classe, setClasse] = useState("");
+  const [departement, setDepartement] = useState("");
+  const [formState, setFormState] = useState<FormState>("idle");
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormState("submitting");
+    setErrorMsg("");
+
+    try {
+      const res = await fetch(SUBMIT_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fields: [
+            { objectTypeId: "0-1", name: "firstname", value: firstname },
+            { objectTypeId: "0-1", name: "lastname", value: lastname },
+            { objectTypeId: "0-1", name: "email", value: email },
+            { objectTypeId: "0-1", name: "phone", value: phone },
+            { objectTypeId: "0-1", name: "classe_actuelle", value: classe },
+            { objectTypeId: "0-1", name: "dpartement_ex__75", value: departement },
+          ],
+          context: {
+            pageUri: window.location.href,
+            pageName: document.title,
+          },
+        }),
+      });
+
+      if (res.ok) {
+        setFormState("success");
+      } else {
+        const data = await res.json().catch(() => null);
+        setErrorMsg(data?.message || "Une erreur est survenue. Veuillez réessayer.");
+        setFormState("error");
+      }
+    } catch {
+      setErrorMsg("Erreur de connexion. Veuillez réessayer.");
+      setFormState("error");
     }
-  }, []);
+  };
+
+  if (formState === "success") {
+    return (
+      <div className="flex flex-col items-center gap-3 py-6">
+        <CheckCircle2 className="w-12 h-12 text-green-500" />
+        <p className="text-lg font-semibold text-[#1B1D3A]">Inscription confirmée !</p>
+        <p className="text-sm text-[#64748b] text-center">
+          Vous recevrez le lien de connexion par email avant le webinaire.
+        </p>
+      </div>
+    );
+  }
 
   return (
-    <div ref={containerRef}>
-      <div
-        className="hs-form-frame"
-        data-region="eu1"
-        data-form-id="bcbeb911-e7e2-43bf-81b2-573b2ff9eabe"
-        data-portal-id="26711031"
-      />
-    </div>
+    <form onSubmit={handleSubmit} className="space-y-3.5">
+      {/* Prénom + Nom */}
+      <div className="grid grid-cols-2 gap-3">
+        <div>
+          <label className={labelClass}>
+            Prénom <span className="text-[#EC680A]">*</span>
+          </label>
+          <input
+            type="text"
+            required
+            value={firstname}
+            onChange={(e) => setFirstname(e.target.value)}
+            placeholder="Votre prénom"
+            className={inputClass}
+          />
+        </div>
+        <div>
+          <label className={labelClass}>
+            Nom <span className="text-[#EC680A]">*</span>
+          </label>
+          <input
+            type="text"
+            required
+            value={lastname}
+            onChange={(e) => setLastname(e.target.value)}
+            placeholder="Votre nom"
+            className={inputClass}
+          />
+        </div>
+      </div>
+
+      {/* Email */}
+      <div>
+        <label className={labelClass}>
+          E-mail <span className="text-[#EC680A]">*</span>
+        </label>
+        <input
+          type="email"
+          required
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="votre@email.com"
+          className={inputClass}
+        />
+      </div>
+
+      {/* Téléphone */}
+      <div>
+        <label className={labelClass}>Téléphone</label>
+        <input
+          type="tel"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          placeholder="+33 6 12 34 56 78"
+          className={inputClass}
+        />
+      </div>
+
+      {/* Classe + Département on same row */}
+      <div className="grid grid-cols-2 gap-3">
+        <div>
+          <label className={labelClass}>
+            Classe actuelle <span className="text-[#EC680A]">*</span>
+          </label>
+          <div className="relative">
+            <select
+              required
+              value={classe}
+              onChange={(e) => setClasse(e.target.value)}
+              className={`${inputClass} appearance-none cursor-pointer ${!classe ? "text-[#94A3B8]" : ""}`}
+            >
+              <option value="" disabled>
+                Classe
+              </option>
+              {CLASSE_OPTIONS.map((opt) => (
+                <option key={opt} value={opt}>
+                  {opt}
+                </option>
+              ))}
+            </select>
+            <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#94A3B8] pointer-events-none" />
+          </div>
+        </div>
+        <div>
+          <label className={labelClass}>
+            Département <span className="text-[#EC680A]">*</span>
+          </label>
+          <input
+            type="text"
+            required
+            value={departement}
+            onChange={(e) => setDepartement(e.target.value)}
+            placeholder="Ex : 75"
+            maxLength={3}
+            className={inputClass}
+          />
+        </div>
+      </div>
+
+      {/* Error */}
+      {formState === "error" && (
+        <p className="text-[#EF4444] text-xs font-medium">{errorMsg}</p>
+      )}
+
+      {/* Submit */}
+      <button
+        type="submit"
+        disabled={formState === "submitting"}
+        className="w-full flex items-center justify-center gap-2 bg-[#EC680A] hover:bg-[#D45E09] disabled:opacity-70 disabled:cursor-not-allowed text-white text-sm font-semibold py-3 rounded-xl transition-all hover:shadow-lg hover:shadow-[#EC680A]/20 hover:-translate-y-0.5 active:translate-y-0"
+      >
+        {formState === "submitting" ? (
+          <>
+            <Loader2 className="w-4 h-4 animate-spin" />
+            Inscription en cours…
+          </>
+        ) : (
+          "Je m\u2019inscris au webinaire"
+        )}
+      </button>
+
+      <p className="text-[11px] text-[#94A3B8] text-center leading-relaxed">
+        En vous inscrivant, vous acceptez d&apos;être recontacté par Edumove.
+      </p>
+    </form>
   );
 }
 
@@ -179,9 +370,9 @@ export default function WebinarFinancementPage() {
                 Recevez le lien de connexion par email avant le webinaire.
               </p>
 
-              {/* Formulaire HubSpot */}
+              {/* Formulaire d'inscription */}
               <div id="webinar-form">
-                <HubSpotWebinarForm />
+                <WebinarForm />
               </div>
             </div>
           </div>
