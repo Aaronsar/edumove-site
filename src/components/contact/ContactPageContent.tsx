@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ChevronRight, Phone, Mail, MapPin, Clock } from "lucide-react";
+import { ChevronRight, Phone, Mail, Clock } from "lucide-react";
 import HubSpotModal from "@/components/shared/HubSpotModal";
 
 export default function ContactPageContent() {
@@ -32,8 +32,8 @@ export default function ContactPageContent() {
               Contactez Edumove
             </h1>
             <p className="text-white/60 text-sm md:text-base leading-relaxed">
-              Une question sur les etudes de sante en Europe ? Notre equipe est
-              la pour vous accompagner. Remplissez le formulaire ou
+              Une question sur les études de santé en Europe ? Notre équipe est
+              là pour vous accompagner. Remplissez le formulaire ou
               contactez-nous directement.
             </p>
           </div>
@@ -53,7 +53,7 @@ export default function ContactPageContent() {
                 Parlons de votre projet
               </h2>
               <p className="text-[#334155] text-sm leading-relaxed mb-8">
-                Un conseiller Edumove vous rappelle sous 24h pour repondre a
+                Un conseiller Edumove vous rappelle sous 24h pour répondre à
                 toutes vos questions : orientation, candidature, financement,
                 installation.
               </p>
@@ -63,7 +63,7 @@ export default function ContactPageContent() {
                 onClick={() => setModalOpen(true)}
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#ec680a] hover:bg-[#d45e09] text-white font-semibold px-8 py-3.5 rounded-[5px] transition-all hover:shadow-xl hover:shadow-[#ec680a]/20 mb-10"
               >
-                Etre contacte par un conseiller
+                Être contacté par un conseiller
               </button>
 
               {/* Contact details */}
@@ -74,7 +74,7 @@ export default function ContactPageContent() {
                   </div>
                   <div>
                     <p className="font-semibold text-[#1B1D3A] text-sm">
-                      Telephone
+                      Téléphone
                     </p>
                     <a
                       href="tel:+33189744257"
@@ -99,20 +99,6 @@ export default function ContactPageContent() {
                     >
                       contact@edumove.fr
                     </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-[#615CA5]/10 flex items-center justify-center shrink-0">
-                    <MapPin className="w-5 h-5 text-[#615CA5]" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-[#1B1D3A] text-sm">
-                      Adresse
-                    </p>
-                    <p className="text-[#334155] text-sm">
-                      Paris, France
-                    </p>
                   </div>
                 </div>
 
@@ -146,7 +132,7 @@ export default function ContactPageContent() {
                   className="group block bg-white rounded-xl border border-[#e2e2ef] p-5 hover:shadow-md transition-shadow"
                 >
                   <p className="font-bold text-[#1B1D3A] group-hover:text-[#ec680a] transition-colors">
-                    Deposer ma candidature
+                    Déposer ma candidature
                   </p>
                   <p className="text-xs text-[#64748b] mt-1">
                     Commencez votre dossier d&apos;inscription en ligne.
@@ -158,10 +144,10 @@ export default function ContactPageContent() {
                   className="group block bg-white rounded-xl border border-[#e2e2ef] p-5 hover:shadow-md transition-shadow"
                 >
                   <p className="font-bold text-[#1B1D3A] group-hover:text-[#ec680a] transition-colors">
-                    Questions frequentes
+                    Questions fréquentes
                   </p>
                   <p className="text-xs text-[#64748b] mt-1">
-                    Retrouvez les reponses aux questions les plus posees.
+                    Retrouvez les réponses aux questions les plus posées.
                   </p>
                 </Link>
 
@@ -173,7 +159,7 @@ export default function ContactPageContent() {
                     Financement
                   </p>
                   <p className="text-xs text-[#64748b] mt-1">
-                    Decouvrez les solutions de financement pour vos etudes.
+                    Découvrez les solutions de financement pour vos études.
                   </p>
                 </Link>
 
@@ -182,10 +168,10 @@ export default function ContactPageContent() {
                   className="group block bg-white rounded-xl border border-[#e2e2ef] p-5 hover:shadow-md transition-shadow"
                 >
                   <p className="font-bold text-[#1B1D3A] group-hover:text-[#ec680a] transition-colors">
-                    Temoignages
+                    Témoignages
                   </p>
                   <p className="text-xs text-[#64748b] mt-1">
-                    Lisez les avis des etudiants et parents accompagnes par
+                    Lisez les avis des étudiants et parents accompagnés par
                     Edumove.
                   </p>
                 </Link>
@@ -206,11 +192,6 @@ export default function ContactPageContent() {
             url: "https://www.edumove.fr",
             telephone: "+33-1-89-74-42-57",
             email: "contact@edumove.fr",
-            address: {
-              "@type": "PostalAddress",
-              addressLocality: "Paris",
-              addressCountry: "FR",
-            },
             contactPoint: {
               "@type": "ContactPoint",
               telephone: "+33-1-89-74-42-57",
