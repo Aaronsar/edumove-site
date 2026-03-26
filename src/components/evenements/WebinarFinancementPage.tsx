@@ -435,7 +435,7 @@ export default function WebinarFinancementPage() {
               </h1>
 
               <p className="text-white/60 text-sm md:text-base leading-relaxed mb-6 max-w-md">
-                Avec la participation exceptionnelle de la{" "}
+                Avec la participation exceptionnelle du{" "}
                 <strong className="text-white/80">LCL</strong>, partenaire
                 officiel d&apos;Edumove, découvrez toutes les solutions pour
                 financer vos études de santé en Europe.
