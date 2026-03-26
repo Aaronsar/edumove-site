@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect, useCallback } from "react";
+import { useRouter } from "next/navigation";
 import { createPortal } from "react-dom";
 import {
   ChevronRight,
@@ -122,6 +123,7 @@ const labelClass = "block text-[13px] font-semibold text-[#1B1D3A] mb-1";
 type FormState = "idle" | "submitting" | "success" | "error";
 
 function WebinarForm() {
+  const router = useRouter();
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
@@ -157,7 +159,8 @@ function WebinarForm() {
       });
 
       if (res.ok) {
-        setFormState("success");
+        router.push("/evenements/remerciement-webinaire-15-04");
+        return;
       } else {
         const data = await res.json().catch(() => null);
         setErrorMsg(data?.message || "Une erreur est survenue. Veuillez réessayer.");
