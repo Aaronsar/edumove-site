@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail } from "lucide-react";
 import ContactButton from "@/components/shared/ContactButton";
 
 const formationLinks = [
@@ -20,12 +20,23 @@ const universiteLinks = [
   { name: "Universidad Europea", href: "/universites/universidad-europea" },
 ];
 
+const planDuSite = [
+  { name: "Accueil", href: "/" },
+  { name: "Financement", href: "/financement" },
+  { name: "Questions fréquentes", href: "/questions-frequentes" },
+  { name: "Témoignages", href: "/temoignages" },
+  { name: "À propos", href: "/a-propos" },
+  { name: "Blog", href: "/blog" },
+  { name: "Contact", href: "/contact" },
+  { name: "Webinaire", href: "/evenements/webinaire-financement-sante" },
+];
+
 export default function Footer() {
   return (
     <footer className="relative bg-[#1B1D3A] text-white">
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#ec680a] via-[#615ca5] to-[#ec680a]" />
       <div className="mx-auto max-w-7xl px-6 py-16">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-5">
           {/* Column 1: Brand */}
           <div>
             <Link href="/" className="inline-block">
@@ -83,18 +94,29 @@ export default function Footer() {
                   </Link>
                 </li>
               ))}
-              <li>
-                <Link
-                  href="/blog"
-                  className="text-sm text-gray-300 transition-colors hover:text-[#EC680A]"
-                >
-                  Notre Blog
-                </Link>
-              </li>
             </ul>
           </div>
 
-          {/* Column 4: Contact */}
+          {/* Column 4: Plan du site */}
+          <div>
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-[#EC680A]">
+              Plan du site
+            </h3>
+            <ul className="space-y-3">
+              {planDuSite.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-gray-300 transition-colors hover:text-[#EC680A]"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 5: Contact */}
           <div>
             <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-[#EC680A]">
               Contact
@@ -111,18 +133,12 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="mailto:contact@edumove.fr"
+                  href="mailto:admissions@edumove.fr"
                   className="flex items-center gap-3 text-sm text-gray-300 transition-colors hover:text-[#EC680A]"
                 >
                   <Mail size={16} className="flex-shrink-0 text-[#EC680A]" />
-                  contact@edumove.fr
+                  admissions@edumove.fr
                 </a>
-              </li>
-              <li>
-                <span className="flex items-center gap-3 text-sm text-gray-300">
-                  <MapPin size={16} className="flex-shrink-0 text-[#EC680A]" />
-                  Paris, France
-                </span>
               </li>
             </ul>
           </div>
