@@ -151,6 +151,12 @@ export default function Footer() {
           <p>&copy; 2026 Edumove. Tous droits réservés.</p>
           <div className="flex gap-6">
             <Link
+              href="/plan-du-site"
+              className="transition-colors hover:text-[#EC680A]"
+            >
+              Plan du site
+            </Link>
+            <Link
               href="/mentions-legales"
               className="transition-colors hover:text-[#EC680A]"
             >
