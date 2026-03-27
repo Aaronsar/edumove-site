@@ -51,16 +51,26 @@ export default function NotFound() {
         </div>
 
         <div className="relative z-10 max-w-3xl mx-auto px-4 w-full py-16 md:py-24 text-center">
-          {/* Big 404 */}
-          <p className="text-[120px] md:text-[160px] font-bold leading-none mb-2" style={{ color: "#EC680A", opacity: 0.15 }}>
-            404
-          </p>
+          {/* Big 404 + Avion */}
+          <div className="relative inline-block mb-2">
+            <p className="text-[120px] md:text-[160px] font-bold leading-none" style={{ color: "#EC680A", opacity: 0.15 }}>
+              404
+            </p>
+            <svg
+              viewBox="0 0 512 512"
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[180px] md:w-[240px] h-auto -rotate-12"
+              style={{ opacity: 0.12 }}
+              fill="#EC680A"
+            >
+              <path d="M511.4 37.9c1.2-5.7-.8-11.6-5.2-15.2s-10.5-4.6-15.8-2.5L12.3 218.7C4.9 221.8 0 229.1 0 237.1c0 8 4.8 15.2 12.2 18.3l143.5 60.7 30.4 155.3c1.3 6.6 6.4 11.9 13 13.4 1.3.3 2.7.5 4 .5 5.3 0 10.3-2.7 13.2-7.2l59.6-92.7 106.6 45.1c2.1.9 4.3 1.3 6.5 1.3 2.7 0 5.4-.7 7.8-2 4.5-2.5 7.5-7 8.2-12l41.2-355.7c.2-1.6.2-3.2.1-4.8zM394.3 82.1L194.8 293.3l-124-52.5L394.3 82.1zM219 440.4l-22.5-115 98.4-104.9-75.9 219.9zm178-57.6l-120-50.8L432 116.5 397 382.8z" />
+            </svg>
+          </div>
 
           <h1
-            className="text-2xl md:text-4xl font-bold leading-tight mb-4 -mt-16 md:-mt-20"
+            className="text-2xl md:text-4xl font-bold leading-tight mb-4 -mt-10 md:-mt-14"
             style={{ color: "#ffffff" }}
           >
-            Cette page s&apos;est envolée vers l&apos;Europe ! ✈️
+            Cette page s&apos;est envolée vers l&apos;Europe !
           </h1>
 
           <p className="text-white/60 text-base md:text-lg leading-relaxed mb-8 max-w-lg mx-auto">
