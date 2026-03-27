@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, Phone, Home, GraduationCap, Euro, HelpCircle, MapPin } from "lucide-react";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const QUICK_LINKS = [
   {
@@ -43,6 +45,7 @@ const QUICK_LINKS = [
 export default function NotFound() {
   return (
     <>
+      <Header />
       {/* Hero 404 */}
       <section className="relative w-full bg-[#1b1d3a] overflow-hidden">
         <div className="absolute inset-0 overflow-hidden">
@@ -143,6 +146,7 @@ export default function NotFound() {
           </a>
         </div>
       </section>
+      <Footer />
     </>
   );
 }
