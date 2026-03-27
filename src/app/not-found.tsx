@@ -60,7 +60,7 @@ export default function NotFound() {
             className="text-2xl md:text-4xl font-bold leading-tight mb-4 -mt-16 md:-mt-20"
             style={{ color: "#ffffff" }}
           >
-            Cette page s&apos;est envolée vers l&apos;Europe !
+            Cette page s&apos;est envolée vers l&apos;Europe ! ✈️
           </h1>
 
           <p className="text-white/60 text-base md:text-lg leading-relaxed mb-8 max-w-lg mx-auto">
