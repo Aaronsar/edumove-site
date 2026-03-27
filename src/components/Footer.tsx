@@ -29,6 +29,7 @@ const planDuSite = [
   { name: "Blog", href: "/blog" },
   { name: "Contact", href: "/contact" },
   { name: "Webinaire", href: "/evenements/webinaire-financement-sante" },
+  { name: "Plan du site", href: "/plan-du-site" },
 ];
 
 export default function Footer() {

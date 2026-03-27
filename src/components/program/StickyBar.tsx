@@ -21,6 +21,7 @@ export default function StickyBar({
 }: StickyBarProps = {}) {
   const [visible, setVisible] = useState(false);
   const [ctaReached, setCtaReached] = useState(false);
+  const [footerReached, setFooterReached] = useState(false);
   const [dismissed, setDismissed] = useState(false);
 
   useEffect(() => {
@@ -45,7 +46,20 @@ export default function StickyBar({
     return () => observer.disconnect();
   }, []);
 
-  const show = visible && !ctaReached && !dismissed;
+  // Hide when the footer is in view
+  useEffect(() => {
+    const footer = document.querySelector("footer");
+    if (!footer) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setFooterReached(entry.isIntersecting),
+      { threshold: 0.05 }
+    );
+    observer.observe(footer);
+    return () => observer.disconnect();
+  }, []);
+
+  const show = visible && !ctaReached && !footerReached && !dismissed;
 
   return (
     <>

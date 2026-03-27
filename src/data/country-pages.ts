@@ -426,13 +426,13 @@ export const countryPages: CountryPageData[] = [
     countryFlag: "\u{1F1EE}\u{1F1F9}",
     filiereSlug: "dentaire",
     h1: "\u00C9tudes Dentaires en Italie",
-    metaTitle: "\u00C9tudes Dentaires en Italie \u00E0 7\u00A0900 \u20AC/an \u2014 LINK Campus Rome | Edumove",
+    metaTitle: "\u00C9tudes Dentaires en Italie \u00E0 19\u00A0800 \u20AC/an \u2014 LINK Campus Rome | Edumove",
     metaDescription:
-      "Faire dentaire en Italie : 5 ans \u00E0 Rome (LINK Campus), test en fran\u00E7ais, 7\u00A0900 \u20AC/an. Cours d\u2019italien inclus. Dipl\u00F4me reconnu UE. Admission QCM \u00E0 Paris.",
+      "Faire dentaire en Italie : 6 ans \u00E0 Rome (LINK Campus), test en fran\u00E7ais, 19\u00A0800 \u20AC/an. Cours d\u2019italien inclus. Dipl\u00F4me reconnu UE. Admission QCM \u00E0 Paris.",
     intro:
-      "Dentaire \u00E0 7\u00A0900 \u20AC par an, test d\u2019admission en fran\u00E7ais, \u00E0 Rome. LINK Campus University propose un cursus d\u2019odontologie de 5 ans avec un tarif parmi les plus comp\u00E9titifs d\u2019Europe pour une fili\u00E8re de sant\u00E9. Le QCM d\u2019entr\u00E9e est en fran\u00E7ais (passable \u00E0 Paris), et un cours d\u2019italien intensif est inclus d\u00E8s le d\u00E9but. Pas de PASS, pas de LAS \u2014 juste tes connaissances scientifiques.",
+      "Dentaire \u00E0 19\u00A0800 \u20AC par an, test d\u2019admission en fran\u00E7ais, \u00E0 Rome. LINK Campus University propose un cursus d\u2019odontologie de 6 ans avec un dipl\u00F4me reconnu dans toute l\u2019UE. Le QCM d\u2019entr\u00E9e est en fran\u00E7ais (passable \u00E0 Paris), et un cours d\u2019italien intensif est inclus d\u00E8s le d\u00E9but. Pas de PASS, pas de LAS \u2014 juste tes connaissances scientifiques.",
     highlights: [
-      "Frais de scolarit\u00E9 \u00E0 7\u00A0900 \u20AC/an \u2014 parmi les plus bas en Europe",
+      "Frais de scolarit\u00E9 \u00E0 19\u00A0800 \u20AC/an",
       "Test d\u2019admission QCM int\u00E9gralement en fran\u00E7ais",
       "Cours d\u2019italien intensif inclus en 1\u00E8re ann\u00E9e",
       "Possibilit\u00E9 de passer le test \u00E0 Paris",
@@ -440,11 +440,11 @@ export const countryPages: CountryPageData[] = [
       "Financement possible jusqu\u2019\u00E0 100% via nos partenaires bancaires",
     ],
     whyThisCountry:
-      "LINK Campus University \u00E0 Rome offre un cursus dentaire de 5 ans \u00E0 un tarif imbattable : 7\u00A0900 \u20AC par an. C\u2019est moins cher que la plupart des formations dentaires en Espagne ou au Portugal. L\u2019admission se fait via un QCM en fran\u00E7ais \u2014 m\u00EAme format que pour m\u00E9decine \u2014 ce qui \u00E9limine le stress de la barri\u00E8re linguistique \u00E0 l\u2019entr\u00E9e. L\u2019universit\u00E9 est \u00E0 taille humaine, avec un encadrement rapproch\u00E9 et des stages cliniques dans les structures hospitali\u00E8res romaines.",
+      "LINK Campus University \u00E0 Rome offre un cursus dentaire de 6 ans \u00E0 19\u00A0800 \u20AC par an. L\u2019admission se fait via un QCM en fran\u00E7ais \u2014 m\u00EAme format que pour m\u00E9decine \u2014 ce qui \u00E9limine le stress de la barri\u00E8re linguistique \u00E0 l\u2019entr\u00E9e. L\u2019universit\u00E9 est \u00E0 taille humaine, avec un encadrement rapproch\u00E9 et des stages cliniques dans les structures hospitali\u00E8res romaines.",
     sections: [
       {
         title: "Le cursus dentaire \u00E0 LINK Campus Rome",
-        content: "Le cursus d\u2019odontologie dure 5 ans. La premi\u00E8re ann\u00E9e combine sciences fondamentales (anatomie, physiologie, biochimie, biologie cellulaire) et cours d\u2019italien intensif. La 2\u00E8me ann\u00E9e approfondit les sciences pr\u00E9cliniques : mat\u00E9riaux dentaires, anatomie de la t\u00EAte et du cou, histologie buccale. \u00C0 partir de la 3\u00E8me ann\u00E9e, la formation devient clinique : soins conservateurs, endodontie, parodontologie. Les 4\u00E8me et 5\u00E8me ann\u00E9es sont consacr\u00E9es \u00E0 la pratique avanc\u00E9e sur patients r\u00E9els : proth\u00E8ses, chirurgie orale, p\u00E9dodontie. Le m\u00E9moire de fin d\u2019\u00E9tudes cl\u00F4ture la formation."
+        content: "Le cursus d\u2019odontologie dure 6 ans. La premi\u00E8re ann\u00E9e combine sciences fondamentales (anatomie, physiologie, biochimie, biologie cellulaire) et cours d\u2019italien intensif. La 2\u00E8me ann\u00E9e approfondit les sciences pr\u00E9cliniques : mat\u00E9riaux dentaires, anatomie de la t\u00EAte et du cou, histologie buccale. \u00C0 partir de la 3\u00E8me ann\u00E9e, la formation devient clinique : soins conservateurs, endodontie, parodontologie. Les 4\u00E8me et 5\u00E8me ann\u00E9es sont consacr\u00E9es \u00E0 la pratique avanc\u00E9e sur patients r\u00E9els : proth\u00E8ses, chirurgie orale, p\u00E9dodontie. La 6\u00E8me ann\u00E9e consolide les comp\u00E9tences cliniques et conclut avec la th\u00E8se de fin d\u2019\u00E9tudes."
       },
       {
         title: "Admission : QCM en fran\u00E7ais, passable \u00E0 Paris",
@@ -452,15 +452,15 @@ export const countryPages: CountryPageData[] = [
       },
       {
         title: "Budget : dentaire \u00E0 Rome, combien \u00E7a co\u00FBte ?",
-        content: "Les frais de scolarit\u00E9 sont de 7\u00A0900 \u20AC par an. Sur 5 ans, \u00E7a fait 39\u00A0500 \u20AC au total \u2014 c\u2019est l\u2019une des formations dentaires les moins ch\u00E8res d\u2019Europe. Le co\u00FBt de la vie \u00E0 Rome est comparable \u00E0 celui d\u2019une ville moyenne fran\u00E7aise : 400-650 \u20AC pour un logement en colocation, 200-300 \u20AC pour manger, 35 \u20AC de transports. Total mensuel hors scolarit\u00E9 : 700-1\u00A0000 \u20AC. Avec le financement Edumove, les frais de scolarit\u00E9 peuvent \u00EAtre couverts jusqu\u2019\u00E0 100%."
+        content: "Les frais de scolarit\u00E9 sont de 19\u00A0800 \u20AC par an. Sur 6 ans, \u00E7a fait 118\u00A0800 \u20AC au total. Le co\u00FBt de la vie \u00E0 Rome est comparable \u00E0 celui d\u2019une ville moyenne fran\u00E7aise : 400-650 \u20AC pour un logement en colocation, 200-300 \u20AC pour manger, 35 \u20AC de transports. Total mensuel hors scolarit\u00E9 : 700-1\u00A0000 \u20AC. Avec le financement Edumove, les frais de scolarit\u00E9 peuvent \u00EAtre couverts jusqu\u2019\u00E0 100%."
       },
     ],
     diplomaRecognition:
       "Le dipl\u00F4me d\u2019odontologie de LINK Campus (Laurea Magistrale in Odontoiatria e Protesi Dentaria) est automatiquement reconnu dans tous les pays de l\u2019Union europ\u00E9enne gr\u00E2ce \u00E0 la directive 2005/36/CE. Tu pourras exercer en France en tant que chirurgien-dentiste apr\u00E8s inscription au Conseil de l\u2019Ordre, sans aucune proc\u00E9dure d\u2019\u00E9quivalence.",
     faq: [
       {
-        question: "Pourquoi le dentaire \u00E0 LINK Campus est si peu cher ?",
-        answer: "LINK Campus est une universit\u00E9 priv\u00E9e \u00E0 taille humaine qui pratique des tarifs accessibles, notamment pour les fili\u00E8res hors m\u00E9decine. \u00C0 7\u00A0900 \u20AC/an, c\u2019est effectivement l\u2019une des formations dentaires les moins ch\u00E8res en Europe. La qualit\u00E9 de la formation n\u2019est pas en cause : le dipl\u00F4me est reconnu dans toute l\u2019UE.",
+        question: "Combien co\u00FBte le dentaire \u00E0 LINK Campus ?",
+        answer: "Les frais de scolarit\u00E9 sont de 19\u00A0800 \u20AC par an, soit 118\u00A0800 \u20AC sur 6 ans. LINK Campus est une universit\u00E9 priv\u00E9e \u00E0 taille humaine \u00E0 Rome. Le dipl\u00F4me est reconnu dans toute l\u2019UE. Edumove propose un financement couvrant jusqu\u2019\u00E0 100% des frais.",
       },
       {
         question: "Le test d\u2019entr\u00E9e pour dentaire est le m\u00EAme que pour m\u00E9decine ?",
@@ -468,7 +468,7 @@ export const countryPages: CountryPageData[] = [
       },
       {
         question: "Combien de temps durent les \u00E9tudes dentaires en Italie ?",
-        answer: "Le cursus dure 5 ans \u00E0 LINK Campus. Les stages cliniques avec patients r\u00E9els commencent en 3\u00E8me ann\u00E9e, ce qui te donne 3 ans de pratique avant le dipl\u00F4me. La premi\u00E8re ann\u00E9e inclut le cours d\u2019italien intensif.",
+        answer: "Le cursus dure 6 ans \u00E0 LINK Campus. Les stages cliniques avec patients r\u00E9els commencent en 3\u00E8me ann\u00E9e, ce qui te donne 4 ans de pratique avant le dipl\u00F4me. La premi\u00E8re ann\u00E9e inclut le cours d\u2019italien intensif.",
       },
       {
         question: "Peut-on exercer en France avec un dipl\u00F4me dentaire italien ?",
