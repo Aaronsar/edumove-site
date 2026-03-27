@@ -61,7 +61,7 @@ export default function Footer() {
 
           {/* Column 2: Formations */}
           <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider" style={{ color: "#ffffff" }}>
               Formations
             </h3>
             <ul className="space-y-3">
@@ -80,7 +80,7 @@ export default function Footer() {
 
           {/* Column 3: Universites */}
           <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider" style={{ color: "#ffffff" }}>
               Universités
             </h3>
             <ul className="space-y-3">
@@ -99,7 +99,7 @@ export default function Footer() {
 
           {/* Column 4: Plan du site */}
           <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider" style={{ color: "#ffffff" }}>
               Plan du site
             </h3>
             <ul className="space-y-3">
@@ -118,7 +118,7 @@ export default function Footer() {
 
           {/* Column 5: Contact */}
           <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider" style={{ color: "#ffffff" }}>
               Contact
             </h3>
             <ul className="space-y-4">
