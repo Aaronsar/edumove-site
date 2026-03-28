@@ -59,6 +59,7 @@ const nextConfig: NextConfig = {
       { source: "/page-facultes", destination: "/", permanent: true },
       { source: "/dentaire-ceu-madrid", destination: "/formations/dentaire", permanent: true },
       { source: "/dentaire-universidad-ufp-porto", destination: "/formations/dentaire", permanent: true },
+      { source: "/dentaire-universidad-europea-valence", destination: "/universites/universidad-europea", permanent: true },
       { source: "/medecine-euc-chypre", destination: "/formations/medecine", permanent: true },
       { source: "/pharmacie-euc-chypre", destination: "/formations/pharmacie", permanent: true },
 
