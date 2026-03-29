@@ -111,8 +111,8 @@ Génère un article complet au format JSON. Réponds UNIQUEMENT avec le JSON bru
         "content-type": "application/json",
       },
       body: JSON.stringify({
-        model: "claude-3-5-sonnet-20241022",
-        max_tokens: 8000,
+        model: "claude-sonnet-4-20250514",
+        max_tokens: 16000,
         messages: [{ role: "user", content: prompt }],
       }),
     });
