@@ -82,6 +82,7 @@ const nextConfig: NextConfig = {
 
       // ── Articles statiques migrés vers Supabase ──
       { source: "/blog/etudes-medecine-espagne", destination: "/guides/faire-medecine-en-espagne-le-guide-complet-pour-les-francais", permanent: true },
+      { source: "/blog/temoignage-medecine-espagne", destination: "/", permanent: true },
 
       // ── WordPress Elementor / docs / misc ──
       { source: "/docs", destination: "/", permanent: true },
