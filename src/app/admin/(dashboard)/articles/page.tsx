@@ -8,8 +8,8 @@ async function getArticles() {
     const supabase = await createClient();
     const { data, error } = await supabase
       .from("edumove_articles")
-      .select("id, title, slug, status, tag, tag_color, read_time, seo_score, source, updated_at, published_at")
-      .order("updated_at", { ascending: false });
+      .select("id, title, slug, status, tag, tag_color, read_time, seo_score, source, updated_at, published_at, scheduled_at")
+      .order("published_at", { ascending: false, nullsFirst: false });
 
     if (error) {
       console.error("Error fetching articles:", error);

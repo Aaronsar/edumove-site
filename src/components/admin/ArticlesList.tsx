@@ -18,6 +18,7 @@ interface ArticleRow {
   source: string;
   updated_at: string;
   published_at: string | null;
+  scheduled_at: string | null;
 }
 
 const statusLabels: Record<string, { label: string; color: string }> = {
@@ -66,11 +67,17 @@ export default function ArticlesListClient({ articles }: { articles: ArticleRow[
   }
 
   const filtered = useMemo(() => {
-    return articles.filter((a) => {
+    const list = articles.filter((a) => {
       if (search && !a.title.toLowerCase().includes(search.toLowerCase())) return false;
       if (tagFilter !== "Tous" && a.tag !== tagFilter) return false;
       if (statusFilter !== "Tous" && a.status !== statusFilter) return false;
       return true;
+    });
+    // Tri chronologique : plus récent en premier (published_at > scheduled_at > updated_at)
+    return list.sort((a, b) => {
+      const dateA = new Date(a.published_at ?? a.scheduled_at ?? a.updated_at).getTime();
+      const dateB = new Date(b.published_at ?? b.scheduled_at ?? b.updated_at).getTime();
+      return dateB - dateA;
     });
   }, [articles, search, tagFilter, statusFilter]);
 
@@ -135,7 +142,10 @@ export default function ArticlesListClient({ articles }: { articles: ArticleRow[
                   Statut
                 </th>
                 <th className="px-3 py-3 text-xs font-semibold text-[#94a3b8] uppercase tracking-wider hidden lg:table-cell">
-                  Modifié
+                  Publication
+                </th>
+                <th className="px-3 py-3 text-xs font-semibold text-[#94a3b8] uppercase tracking-wider hidden lg:table-cell">
+                  Programmé
                 </th>
                 <th className="px-3 py-3 text-xs font-semibold text-[#94a3b8] uppercase tracking-wider w-16">
                 </th>
@@ -178,9 +188,22 @@ export default function ArticlesListClient({ articles }: { articles: ArticleRow[
                       </span>
                     </td>
                     <td className="px-3 py-3 hidden lg:table-cell">
-                      <span className="text-xs text-[#94a3b8]">
-                        {new Date(article.updated_at).toLocaleDateString("fr-FR")}
-                      </span>
+                      {article.published_at ? (
+                        <span className="text-xs text-[#64748b]">
+                          {new Date(article.published_at).toLocaleDateString("fr-FR")}
+                        </span>
+                      ) : (
+                        <span className="text-xs text-[#cbd5e1]">—</span>
+                      )}
+                    </td>
+                    <td className="px-3 py-3 hidden lg:table-cell">
+                      {article.scheduled_at ? (
+                        <span className="text-xs text-purple-600 font-medium">
+                          {new Date(article.scheduled_at).toLocaleDateString("fr-FR")}
+                        </span>
+                      ) : (
+                        <span className="text-xs text-[#cbd5e1]">—</span>
+                      )}
                     </td>
                     <td className="px-3 py-3">
                       {article.status !== "published" && (
