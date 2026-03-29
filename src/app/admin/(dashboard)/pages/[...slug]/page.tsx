@@ -53,6 +53,17 @@ const publicUrls: Record<string, string> = {
   // Vétérinaire — par fac
   "formations/veterinaire/ue-madrid": "/formations/veterinaire/ue-madrid",
 
+  // Pays — pages par filière × pays
+  "formations/medecine/espagne": "/formations/medecine/espagne",
+  "formations/medecine/italie": "/formations/medecine/italie",
+  "formations/dentaire/espagne": "/formations/dentaire/espagne",
+  "formations/dentaire/italie": "/formations/dentaire/italie",
+  "formations/kinesitherapie/espagne": "/formations/kinesitherapie/espagne",
+  "formations/kinesitherapie/italie": "/formations/kinesitherapie/italie",
+  "formations/pharmacie/espagne": "/formations/pharmacie/espagne",
+  "formations/pharmacie/italie": "/formations/pharmacie/italie",
+  "formations/veterinaire/espagne": "/formations/veterinaire/espagne",
+
   // Prépa Dentaire — par fac
   "formations/prepa-dentaire/ue-alicante": "/formations/prepa-dentaire/ue-alicante",
 

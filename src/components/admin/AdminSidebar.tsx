@@ -142,6 +142,22 @@ const pagesConfig: NavGroup = {
             { href: "/admin/pages/formations/prepa-dentaire/ue-alicante", label: "UE Alicante", icon: MapPin },
           ],
         },
+        {
+          label: "Pays",
+          icon: Globe,
+          basePath: "/admin/pages/formations/pays",
+          children: [
+            { href: "/admin/pages/formations/medecine/espagne", label: "🇪🇸 Médecine Espagne", icon: Stethoscope },
+            { href: "/admin/pages/formations/medecine/italie", label: "🇮🇹 Médecine Italie", icon: Stethoscope },
+            { href: "/admin/pages/formations/dentaire/espagne", label: "🇪🇸 Dentaire Espagne", icon: Bone },
+            { href: "/admin/pages/formations/dentaire/italie", label: "🇮🇹 Dentaire Italie", icon: Bone },
+            { href: "/admin/pages/formations/kinesitherapie/espagne", label: "🇪🇸 Kiné Espagne", icon: Heart },
+            { href: "/admin/pages/formations/kinesitherapie/italie", label: "🇮🇹 Kiné Italie", icon: Heart },
+            { href: "/admin/pages/formations/pharmacie/espagne", label: "🇪🇸 Pharmacie Espagne", icon: Pill },
+            { href: "/admin/pages/formations/pharmacie/italie", label: "🇮🇹 Pharmacie Italie", icon: Pill },
+            { href: "/admin/pages/formations/veterinaire/espagne", label: "🇪🇸 Vétérinaire Espagne", icon: Dog },
+          ],
+        },
       ],
     },
     {
