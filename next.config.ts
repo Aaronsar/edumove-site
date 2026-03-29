@@ -62,6 +62,23 @@ const nextConfig: NextConfig = {
       { source: "/dentaire-universidad-europea-valence", destination: "/universites/universidad-europea", permanent: true },
       { source: "/medecine-euc-chypre", destination: "/formations/medecine", permanent: true },
       { source: "/pharmacie-euc-chypre", destination: "/formations/pharmacie", permanent: true },
+      { source: "/pharmacie-euc-chypre-copy", destination: "/formations/pharmacie", permanent: true },
+      { source: "/kinesitherapie-uic-barcelone", destination: "/formations/kinesitherapie", permanent: true },
+      { source: "/kinesitherapie-ceu-valence", destination: "/formations/kinesitherapie", permanent: true },
+      { source: "/kinesitherapie-ceu-elche", destination: "/formations/kinesitherapie", permanent: true },
+      { source: "/pharmacie-umf-cluj", destination: "/formations/pharmacie", permanent: true },
+      { source: "/pharmacie-umf-timisoara", destination: "/formations/pharmacie", permanent: true },
+      { source: "/pharmacie-umf-bucarest", destination: "/formations/pharmacie", permanent: true },
+      { source: "/pharmacie-umf-iasi", destination: "/formations/pharmacie", permanent: true },
+      { source: "/pharmacie-iuem-monte-de-caparica", destination: "/formations/pharmacie", permanent: true },
+      { source: "/pharmacie-uax-madrid", destination: "/formations/pharmacie", permanent: true },
+      { source: "/medecine-anglais-europe", destination: "/formations/medecine", permanent: true },
+      { source: "/medecine-universidad-europea-malaga", destination: "/formations/medecine", permanent: true },
+      { source: "/medecine-link-rome", destination: "/formations/medecine/link-rome", permanent: true },
+      { source: "/dentaire-ufv-madrid", destination: "/formations/dentaire", permanent: true },
+      { source: "/dentaire-link-citta-del-castello", destination: "/formations/dentaire/link-rome", permanent: true },
+      { source: "/universidad-europea-de-madrid", destination: "/universites/universidad-europea", permanent: true },
+      { source: "/integrer-medecine-europe", destination: "/formations/medecine", permanent: true },
 
       // ── Articles statiques migrés vers Supabase ──
       { source: "/blog/etudes-medecine-espagne", destination: "/guides/faire-medecine-en-espagne-le-guide-complet-pour-les-francais", permanent: true },
@@ -100,6 +117,7 @@ const nextConfig: NextConfig = {
       { source: "/comments/feed", destination: "/", permanent: true },
       { source: "/:path*/feed", destination: "/blog", permanent: true },
       { source: "/2025/:path*", destination: "/blog", permanent: true },
+      { source: "/2026/:path*", destination: "/blog", permanent: true },
 
       // ── WordPress techniques ──
       { source: "/wp-admin", destination: "/", permanent: true },
