@@ -174,7 +174,6 @@ function SlideProgramme() {
               </div>
               <item.icon className={`w-5 h-5 ${item.highlight ? "text-[#EC680A]" : "text-[#615CA5]"}`} />
               <span className={`flex-1 font-medium ${item.highlight ? "text-white" : "text-[#1B1D3A]"}`}>{item.label}</span>
-              <span className={`text-sm ${item.highlight ? "text-white/60" : "text-[#94a3b8]"}`}>{item.time}</span>
             </div>
           ))}
         </div>
