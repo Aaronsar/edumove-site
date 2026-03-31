@@ -678,6 +678,8 @@ const SLIDES = [
 export default function WebinarPresentation() {
   const [authed, setAuthed] = useState(false);
   const [current, setCurrent] = useState(0);
+  const [animating, setAnimating] = useState(false);
+  const [direction, setDirection] = useState<"left" | "right">("right");
 
   useEffect(() => {
     if (sessionStorage.getItem("pres-auth") === "1") setAuthed(true);
@@ -686,8 +688,6 @@ export default function WebinarPresentation() {
   if (!authed) return <PasswordGate onUnlock={() => setAuthed(true)} />;
 
   const SlideComponent = SLIDES[current];
-  const [animating, setAnimating] = useState(false);
-  const [direction, setDirection] = useState<"left" | "right">("right");
 
   const goTo = useCallback((idx: number) => {
     if (idx === current || animating) return;
