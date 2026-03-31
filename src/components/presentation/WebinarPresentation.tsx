@@ -209,11 +209,11 @@ function SlideConstat() {
           <div className="max-w-md">
             <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-3">Le constat</p>
             <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-3">Le PASS/LAS en France</h2>
-            <p className="text-[#64748b] text-sm leading-relaxed">Chaque année, des dizaines de milliers d'étudiants brillants sont éliminés par un concours unique, sans garantie de résultat.</p>
+            <p className="text-[#64748b] text-sm leading-relaxed">Un concours unique qui élimine des étudiants brillants. Aucune garantie d'accès au diplôme, quelle que soit la motivation.</p>
           </div>
           <div className="bg-[#1B1D3A] rounded-2xl px-8 py-5 text-center shrink-0">
             <p className="text-[#EC680A] text-5xl font-extrabold leading-none">80%</p>
-            <p className="text-white/60 text-sm mt-2">d'échec en 1ère année</p>
+            <p className="text-white/60 text-sm mt-2">n'accèdent pas au diplôme</p>
           </div>
         </div>
 
@@ -221,9 +221,9 @@ function SlideConstat() {
         <div className="grid grid-cols-4 gap-5 mb-8">
           {[
             { value: "60 000+", label: "Étudiants inscrits en PASS chaque année" },
+            { value: "80%", label: "Éliminés dès la première année" },
             { value: "2 ans", label: "Perdus en moyenne par les recalés" },
-            { value: "8 000 €", label: "Coût moyen d'une prépa privée" },
-            { value: "~20 000 €", label: "Coût réel par an (prépa + logement)" },
+            { value: "0%", label: "Garantie de résultat malgré l'investissement" },
           ].map((stat, i) => (
             <div key={i} className="bg-[#f5f5fb] rounded-2xl p-5 text-center border border-gray-100">
               <p className="text-[#EC680A] text-2xl font-bold mb-2">{stat.value}</p>
@@ -236,7 +236,7 @@ function SlideConstat() {
         <div className="bg-[#1B1D3A] rounded-2xl p-6 flex items-center justify-between">
           <div>
             <p className="text-white font-bold text-lg mb-1">Il existe une alternative.</p>
-            <p className="text-white/50 text-sm">Études de santé en Europe, diplôme reconnu, financement accessible.</p>
+            <p className="text-white/50 text-sm">Études de santé en Europe — admission sur dossier, diplôme reconnu en France.</p>
           </div>
           <div className="flex items-center gap-2 bg-[#EC680A] px-5 py-2.5 rounded-xl shrink-0">
             <span className="text-white font-semibold text-sm">Découvrir →</span>
@@ -250,9 +250,9 @@ function SlideConstat() {
 /* ── Slide 4: Alternative européenne ── */
 function SlideAlternative() {
   const unis = [
-    { name: "Universidad Europea", flag: "🇪🇸", location: "5 campus en Espagne", color: "#EC680A", desc: "Madrid, Malaga, Valence, Alicante, Canaries", since: "Depuis 2019" },
-    { name: "UCJC Madrid", flag: "🇪🇸", location: "Madrid", color: "#615CA5", desc: "Admission sur entretien, la plus accessible", since: "Depuis 2021" },
-    { name: "LINK Campus", flag: "🇮🇹", location: "Rome", color: "#1B1D3A", desc: "Test d'admission 100% en français", since: "Depuis 2020" },
+    { name: "Universidad Europea", flag: "🇪🇸", location: "5 campus en Espagne", desc: "Madrid, Malaga, Valence, Alicante, Canaries", since: "Depuis 2019", students: "+300" },
+    { name: "UCJC Madrid", flag: "🇪🇸", location: "Madrid", desc: "Admission sur entretien, la plus accessible", since: "Depuis 2021", students: "+100" },
+    { name: "LINK Campus", flag: "🇮🇹", location: "Rome", desc: "Test d'admission 100% en français", since: "Depuis 2020", students: "+150" },
   ];
   const filieres = [
     { icon: Stethoscope, name: "Médecine", duration: "6 ans" },
@@ -264,9 +264,14 @@ function SlideAlternative() {
   return (
     <div className="h-full bg-white flex items-center justify-center px-8">
       <div className="max-w-4xl w-full">
-        <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-3">L'alternative</p>
-        <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-8">Études de santé en Europe avec Edumove</h2>
-        <div className="grid md:grid-cols-3 gap-4 mb-8">
+        <div className="flex items-start justify-between mb-6">
+          <div>
+            <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-3">Les partenaires Edumove</p>
+            <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold">Nos universités partenaires</h2>
+          </div>
+          <p className="text-[#64748b] text-sm max-w-xs text-right">Admission sur dossier ou test. Diplôme reconnu en France (Directive 2005/36/CE).</p>
+        </div>
+        <div className="grid md:grid-cols-3 gap-4 mb-6">
           {unis.map((u, i) => (
             <div key={i} className="bg-[#f5f5fb] rounded-2xl p-5 border border-gray-100">
               <div className="flex items-center gap-2 mb-3">
@@ -277,11 +282,15 @@ function SlideAlternative() {
                 </div>
               </div>
               <p className="text-[#334155] text-xs mb-2"><MapPin className="w-3 h-3 inline mr-1" />{u.location}</p>
-              <p className="text-[#615CA5] text-xs font-medium">{u.desc}</p>
+              <p className="text-[#615CA5] text-xs font-medium mb-3">{u.desc}</p>
+              <div className="bg-white rounded-lg px-3 py-1.5 inline-flex items-center gap-1.5 border border-gray-100">
+                <Users className="w-3 h-3 text-[#EC680A]" />
+                <span className="text-[#1B1D3A] text-xs font-semibold">{u.students} étudiants</span>
+              </div>
             </div>
           ))}
         </div>
-        <div className="flex flex-wrap gap-3 justify-center">
+        <div className="flex flex-wrap gap-3 justify-center mb-6">
           {filieres.map((f, i) => (
             <div key={i} className="flex items-center gap-2 bg-[#1B1D3A] text-white px-4 py-2.5 rounded-full">
               <f.icon className="w-4 h-4 text-[#EC680A]" />
@@ -290,9 +299,25 @@ function SlideAlternative() {
             </div>
           ))}
         </div>
-        <p className="text-center text-[#615CA5] text-sm font-medium mt-6">
-          Tous les diplômes sont reconnus en France (Directive 2005/36/CE)
-        </p>
+        {/* Bottom banner */}
+        <div className="bg-[#f5f5fb] rounded-2xl p-5 flex items-center justify-between border border-gray-100">
+          <div className="flex items-center gap-8">
+            {[
+              { value: "3", label: "Universités" },
+              { value: "5", label: "Filières de santé" },
+              { value: "2", label: "Pays européens" },
+              { value: "+500", label: "Étudiants accompagnés" },
+            ].map((stat, i) => (
+              <div key={i} className="text-center">
+                <p className="text-[#EC680A] text-xl font-bold">{stat.value}</p>
+                <p className="text-[#64748b] text-[10px]">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+          <div className="flex items-center gap-2 bg-[#EC680A] px-4 py-2 rounded-xl shrink-0">
+            <span className="text-white font-semibold text-xs">100% finançable</span>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -818,7 +843,7 @@ export default function WebinarPresentation() {
   const SlideComponent = SLIDES[current];
 
   return (
-    <div className="h-screen w-screen overflow-hidden relative select-none bg-[#1B1D3A]" style={{ fontFamily: "var(--font-poppins), Poppins, sans-serif" }}>
+    <div className="h-screen w-screen overflow-hidden relative select-none bg-white" style={{ fontFamily: "var(--font-poppins), Poppins, sans-serif" }}>
       {/* Persistent header — logos only, no dark banner (hidden on cover) */}
       {current > 0 && (
         <div className="absolute top-0 left-0 right-0 z-50 flex items-center justify-center gap-4 pt-4 pb-2 pointer-events-none">
