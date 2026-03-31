@@ -109,9 +109,7 @@ function SlideCover() {
         {/* Logos Edumove x LCL */}
         <div className="flex items-center justify-center gap-6 mb-12">
           <div className="flex items-center gap-3">
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#EC680A] to-[#d45e09] flex items-center justify-center shadow-lg shadow-[#EC680A]/30">
-              <span className="text-white font-bold text-2xl">E</span>
-            </div>
+            <img src="/edumove-icon-orange.svg" alt="Edumove" className="h-14 w-14" />
             <span className="text-white font-bold text-2xl tracking-tight">Edumove</span>
           </div>
           <span className="text-white/20 text-xl">×</span>
