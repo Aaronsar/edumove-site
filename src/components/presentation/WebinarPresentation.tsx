@@ -121,9 +121,9 @@ function SlideCover() {
         </div>
 
         {/* Title */}
-        <h1 className="text-white text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] mb-8">
+        <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] mb-8" style={{ color: "#FFFFFF" }}>
           Financer ses études<br />
-          <span className="text-[#EC680A]">de santé en Europe</span>
+          <span className="text-[#EC680A]" style={{ color: "#EC680A" }}>de santé en Europe</span>
         </h1>
 
         {/* Gradient line */}
