@@ -123,7 +123,7 @@ function SlideCover() {
         {/* Title */}
         <h1 className="text-white text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] mb-8">
           Financer ses études<br />
-          <span className="bg-gradient-to-r from-[#EC680A] via-[#e8864a] to-[#615CA5] bg-clip-text text-transparent">de santé en Europe</span>
+          <span className="text-[#EC680A]">de santé en Europe</span>
         </h1>
 
         {/* Gradient line */}
@@ -685,10 +685,6 @@ export default function WebinarPresentation() {
     if (sessionStorage.getItem("pres-auth") === "1") setAuthed(true);
   }, []);
 
-  if (!authed) return <PasswordGate onUnlock={() => setAuthed(true)} />;
-
-  const SlideComponent = SLIDES[current];
-
   const goTo = useCallback((idx: number) => {
     if (idx === current || animating) return;
     setDirection(idx > current ? "right" : "left");
@@ -699,11 +695,11 @@ export default function WebinarPresentation() {
     }, 200);
   }, [current, animating]);
 
-  // Override next/prev to use animated goTo
   const animNext = useCallback(() => goTo(Math.min(current + 1, SLIDES.length - 1)), [current, goTo]);
   const animPrev = useCallback(() => goTo(Math.max(current - 1, 0)), [current, goTo]);
 
   useEffect(() => {
+    if (!authed) return;
     function handleKey(e: KeyboardEvent) {
       if (e.key === "ArrowRight" || e.key === " ") { e.preventDefault(); animNext(); }
       if (e.key === "ArrowLeft") { e.preventDefault(); animPrev(); }
@@ -714,7 +710,11 @@ export default function WebinarPresentation() {
     }
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
-  }, [animNext, animPrev]);
+  }, [authed, animNext, animPrev]);
+
+  if (!authed) return <PasswordGate onUnlock={() => setAuthed(true)} />;
+
+  const SlideComponent = SLIDES[current];
 
   return (
     <div className="h-screen w-screen overflow-hidden relative select-none bg-[#1B1D3A]" style={{ fontFamily: "var(--font-poppins), Poppins, sans-serif" }}>
