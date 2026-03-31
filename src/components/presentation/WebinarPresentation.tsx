@@ -166,16 +166,14 @@ function SlideCover() {
 /* ── Slide 2: Programme ── */
 function SlideProgramme() {
   const items = [
-    { icon: Star, label: "Qui est Edumove ?", time: "5 min" },
-    { icon: TrendingUp, label: "Le constat PASS/LAS en France", time: "5 min" },
-    { icon: GraduationCap, label: "L'alternative europeenne", time: "8 min" },
-    { icon: BookOpen, label: "Les filieres de sante", time: "5 min" },
-    { icon: Euro, label: "Combien ca coute vraiment ?", time: "7 min" },
-    { icon: Building2, label: "Le pret etudiant du LCL", time: "15 min", highlight: true },
-    { icon: HandCoins, label: "Les aides cumulables", time: "3 min" },
-    { icon: Users, label: "Temoignage etudiant", time: "5 min" },
-    { icon: Heart, label: "L'accompagnement Edumove", time: "5 min" },
-    { icon: HelpCircle, label: "Questions / Reponses", time: "~15 min" },
+    { icon: Star, label: "Qui est Edumove ?" },
+    { icon: TrendingUp, label: "Le constat PASS/LAS en France" },
+    { icon: GraduationCap, label: "L'alternative europeenne" },
+    { icon: Euro, label: "Combien ca coute ?" },
+    { icon: Building2, label: "Le pret etudiant du LCL", highlight: true },
+    { icon: HandCoins, label: "Les aides cumulables" },
+    { icon: Heart, label: "L'accompagnement Edumove" },
+    { icon: HelpCircle, label: "Questions / Reponses" },
   ];
   return (
     <div className="h-full bg-white flex items-center justify-center px-8">
@@ -203,9 +201,9 @@ function SlideProgramme() {
               <span className={`flex-1 font-medium text-sm ${item.highlight ? "text-white" : "text-[#1B1D3A]"}`}>
                 {item.label}
               </span>
-              <span className={`text-xs font-medium ${item.highlight ? "text-white/50" : "text-[#94a3b8]"}`}>
-                {item.time}
-              </span>
+              {item.highlight && (
+                <span className="text-xs font-medium text-[#EC680A] bg-[#EC680A]/10 px-2 py-0.5 rounded-full">LCL</span>
+              )}
             </div>
           ))}
         </div>
