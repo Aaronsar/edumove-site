@@ -1207,10 +1207,10 @@ export default function WebinarPresentation() {
     <div className="h-screen w-screen overflow-hidden relative select-none bg-white" style={{ fontFamily: "var(--font-poppins), Poppins, sans-serif" }}>
       {/* Persistent header — logos only (hidden on cover) */}
       {current > 0 && (
-        <div className="absolute top-0 left-0 right-0 z-50 flex items-center justify-center gap-4 pt-4 pb-2 pointer-events-none">
-          <img src="/edumove-icon-orange.svg" alt="Edumove" className="h-9 w-9" />
-          <span className="text-[#1B1D3A]/20 text-sm font-light mix-blend-multiply">&times;</span>
-          <img src="/lcl-logo-officiel.svg" alt="LCL" className="h-8" />
+        <div className="absolute top-0 left-0 right-0 z-50 flex items-center justify-center gap-3 pt-3 pb-2 pointer-events-none">
+          <img src="/edumove-logo-orange.svg" alt="Edumove" className="h-7" />
+          <span className="text-[#1B1D3A]/15 text-xs font-light">×</span>
+          <img src="/lcl-logo-officiel.svg" alt="LCL" className="h-7" />
         </div>
       )}
 
