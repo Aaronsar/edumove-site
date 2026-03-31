@@ -179,23 +179,38 @@ function SlideProgramme() {
 function SlideConstat() {
   return (
     <div className="h-full bg-[#1B1D3A] flex items-center justify-center px-8 relative overflow-hidden">
+      {/* Background decorations */}
       <div className="absolute top-1/4 -right-20 w-80 h-80 bg-red-500/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 -left-20 w-64 h-64 bg-[#615ca5]/15 rounded-full blur-3xl" />
+      <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: "radial-gradient(circle, #ffffff 1px, transparent 1px)", backgroundSize: "30px 30px" }} />
+
       <div className="max-w-4xl w-full relative z-10">
         <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-3">Le constat</p>
-        <h2 className="text-white text-3xl md:text-4xl font-bold mb-10">Le PASS/LAS en France : un système qui élimine</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+        <h2 className="text-white text-3xl md:text-4xl font-bold mb-3">Le PASS/LAS en France</h2>
+        <p className="text-white/50 text-base mb-8">Un système qui élimine plus qu'il ne sélectionne</p>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           {[
-            { value: "60 000+", label: "Étudiants inscrits en PASS chaque année" },
-            { value: "80%", label: "Taux d'échec en première année" },
-            { value: "2 ans", label: "Perdus en moyenne par les recalés" },
-            { value: "8 000€", label: "Coût moyen d'une prépa privée" },
+            { value: "60 000+", label: "Étudiants inscrits en PASS chaque année", icon: "🎓" },
+            { value: "80%", label: "Taux d'échec en première année", icon: "📉" },
+            { value: "2 ans", label: "Perdus en moyenne par les recalés", icon: "⏳" },
+            { value: "8 000€", label: "Coût moyen d'une prépa privée", icon: "💸" },
           ].map((stat, i) => (
-            <div key={i} className="bg-white/[0.06] backdrop-blur-sm border border-white/10 rounded-xl p-5 text-center">
-              <p className="text-[#EC680A] text-3xl font-bold mb-1">{stat.value}</p>
+            <div key={i} className="bg-white/[0.06] backdrop-blur-sm border border-white/10 rounded-xl p-6 text-center hover:bg-white/[0.1] transition-colors">
+              <span className="text-2xl mb-2 block">{stat.icon}</span>
+              <p className="text-[#EC680A] text-3xl md:text-4xl font-bold mb-2">{stat.value}</p>
               <p className="text-white/60 text-xs leading-relaxed">{stat.label}</p>
             </div>
           ))}
         </div>
+
+        {/* Visual separator */}
+        <div className="flex items-center gap-4 mb-6">
+          <div className="flex-1 h-px bg-gradient-to-r from-transparent via-red-500/30 to-transparent" />
+          <span className="text-red-400/60 text-xs uppercase tracking-widest">Résultat</span>
+          <div className="flex-1 h-px bg-gradient-to-r from-transparent via-red-500/30 to-transparent" />
+        </div>
+
         <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-5 flex items-start gap-3">
           <div className="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center shrink-0 mt-0.5">
             <span className="text-red-400 text-lg">!</span>
@@ -270,10 +285,15 @@ function SlideTarifs() {
     { filiere: "Vétérinaire", ucjc: "—", ue: "17 340", link: "—", duree: "5 ans" },
   ];
   return (
-    <div className="h-full bg-[#f5f5fb] flex items-center justify-center px-8">
-      <div className="max-w-4xl w-full">
+    <div className="h-full bg-[#f5f5fb] flex items-center justify-center px-8 relative overflow-hidden">
+      {/* Decorative background */}
+      <div className="absolute top-0 right-0 w-64 h-64 bg-[#EC680A]/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#615CA5]/5 rounded-full blur-3xl" />
+
+      <div className="max-w-4xl w-full relative z-10">
         <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-3">Les frais</p>
-        <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-8">Combien coûtent les études ?</h2>
+        <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-2">Combien coûtent les études ?</h2>
+        <p className="text-[#64748b] text-sm mb-8">Frais de scolarité annuels par université et par filière</p>
         <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
           <table className="w-full">
             <thead>
@@ -298,7 +318,22 @@ function SlideTarifs() {
             </tbody>
           </table>
         </div>
-        <p className="text-center text-[#94a3b8] text-xs mt-4">Frais de scolarité annuels — Tarifs 2026</p>
+        {/* Info cards below table */}
+        <div className="grid grid-cols-3 gap-4 mt-6">
+          <div className="bg-white rounded-xl p-4 border border-gray-100 text-center">
+            <p className="text-[#EC680A] text-xl font-bold">dès 7 900 €</p>
+            <p className="text-[#64748b] text-xs mt-1">Tarif le plus bas / an</p>
+          </div>
+          <div className="bg-white rounded-xl p-4 border border-gray-100 text-center">
+            <p className="text-[#615CA5] text-xl font-bold">100%</p>
+            <p className="text-[#64748b] text-xs mt-1">Finançable via le prêt LCL</p>
+          </div>
+          <div className="bg-white rounded-xl p-4 border border-gray-100 text-center">
+            <p className="text-[#1B1D3A] text-xl font-bold">0 € d'acompte</p>
+            <p className="text-[#64748b] text-xs mt-1">Remboursement après le diplôme</p>
+          </div>
+        </div>
+        <p className="text-center text-[#94a3b8] text-xs mt-4">Tarifs 2026 — Tous les frais sont éligibles au prêt étudiant du LCL</p>
       </div>
     </div>
   );
@@ -378,8 +413,14 @@ function SlideLCLIntro() {
     { name: "Laura Munoz", role: "Conseillère en Patrimoine", initials: "LM" },
   ];
   return (
-    <div className="h-full bg-gradient-to-br from-[#f8f9fb] to-white flex items-center justify-center px-8">
-      <div className="max-w-4xl w-full text-center">
+    <div className="h-full bg-gradient-to-br from-[#f8f9fb] to-white flex items-center justify-center px-8 relative overflow-hidden">
+      {/* Decorative background */}
+      <div className="absolute top-0 left-0 w-96 h-96 bg-[#615CA5]/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-0 w-80 h-80 bg-[#EC680A]/5 rounded-full blur-3xl" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-[#1B1D3A]/5 rounded-full" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-[#1B1D3A]/5 rounded-full" />
+
+      <div className="max-w-4xl w-full text-center relative z-10">
         <div className="flex items-center justify-center gap-4 mb-6">
           <img src="/lcl-logo-officiel.svg" alt="LCL" className="h-12" />
           <span className="text-[#334155] text-lg">×</span>
@@ -392,9 +433,25 @@ function SlideLCLIntro() {
         </div>
         <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-3">Partenariat exclusif</p>
         <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-4">Financer vos études de santé en Europe</h2>
-        <p className="text-[#64748b] text-sm max-w-xl mx-auto mb-10">
+        <p className="text-[#64748b] text-sm max-w-xl mx-auto mb-8">
           Le LCL accompagne les étudiants Edumove avec une offre de prêt étudiant spécialement conçue pour les études de santé à l'étranger. Un partenariat unique en France.
         </p>
+
+        {/* Key partnership stats */}
+        <div className="flex justify-center gap-6 mb-8">
+          {[
+            { value: "75 000 €", label: "Minimum garanti" },
+            { value: "0 €", label: "Pendant les études" },
+            { value: "Préférentiel", label: "Taux exclusif" },
+          ].map((stat, i) => (
+            <div key={i} className="bg-[#1B1D3A] rounded-xl px-5 py-3 text-center">
+              <p className="text-[#EC680A] font-bold text-lg">{stat.value}</p>
+              <p className="text-white/60 text-[11px]">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+
+        <p className="text-[#64748b] text-xs uppercase tracking-widest mb-4">Votre équipe dédiée</p>
         <div className="flex justify-center gap-8">
           {team.map((person, i) => (
             <div key={i} className="text-center">
@@ -464,6 +521,7 @@ function SlideLCLSimulation() {
   const cases = [
     {
       name: "Lucas",
+      emoji: "👨‍⚕️",
       filiere: "Dentaire — UCJC Madrid",
       frais: "9 420",
       duree: "5 ans",
@@ -474,6 +532,7 @@ function SlideLCLSimulation() {
     },
     {
       name: "Sarah",
+      emoji: "👩‍⚕️",
       filiere: "Médecine — UE Madrid",
       frais: "21 500",
       duree: "6 ans",
@@ -484,22 +543,27 @@ function SlideLCLSimulation() {
     },
   ];
   return (
-    <div className="h-full bg-white flex items-center justify-center px-8">
-      <div className="max-w-4xl w-full">
+    <div className="h-full bg-white flex items-center justify-center px-8 relative overflow-hidden">
+      {/* Decorative background */}
+      <div className="absolute top-0 left-0 w-72 h-72 bg-green-500/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-0 w-64 h-64 bg-[#615CA5]/5 rounded-full blur-3xl" />
+
+      <div className="max-w-4xl w-full relative z-10">
         <div className="flex items-center gap-3 mb-3">
           <img src="/lcl-logo-officiel.svg" alt="LCL" className="h-5" />
           <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em]">Simulations concrètes</p>
         </div>
-        <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-8">Combien ça coûte vraiment ?</h2>
+        <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-2">Combien ça coûte vraiment ?</h2>
+        <p className="text-[#64748b] text-sm mb-8">Deux profils réels, deux situations différentes</p>
         <div className="grid md:grid-cols-2 gap-6">
           {cases.map((c, i) => (
             <div key={i} className="bg-[#f5f5fb] rounded-2xl p-6 border border-gray-100">
               <div className="flex items-center gap-3 mb-5">
-                <div className="w-10 h-10 rounded-full bg-[#1B1D3A] flex items-center justify-center">
-                  <span className="text-white font-bold">{c.name[0]}</span>
+                <div className="w-12 h-12 rounded-full bg-[#1B1D3A] flex items-center justify-center">
+                  <span className="text-xl">{c.emoji}</span>
                 </div>
                 <div>
-                  <p className="text-[#1B1D3A] font-bold text-sm">{c.name}</p>
+                  <p className="text-[#1B1D3A] font-bold">{c.name}</p>
                   <p className="text-[#615CA5] text-xs font-medium">{c.filiere}</p>
                 </div>
               </div>
@@ -518,7 +582,16 @@ function SlideLCLSimulation() {
             </div>
           ))}
         </div>
-        <p className="text-center text-[#94a3b8] text-xs mt-4">Simulations indicatives — le taux exact dépend du profil</p>
+        {/* Bottom callout */}
+        <div className="mt-6 bg-[#1B1D3A] rounded-xl p-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center">
+              <CheckCircle2 className="w-4 h-4 text-green-400" />
+            </div>
+            <p className="text-white text-sm font-medium">Un investissement rentable — remboursé en quelques années d'exercice</p>
+          </div>
+          <p className="text-white/40 text-xs">Simulations indicatives</p>
+        </div>
       </div>
     </div>
   );
@@ -567,30 +640,53 @@ function SlideAides() {
 function SlideTemoignage() {
   return (
     <div className="h-full bg-[#1B1D3A] flex items-center justify-center px-8 relative overflow-hidden">
+      {/* Rich background decorations */}
       <div className="absolute top-1/3 -left-32 w-80 h-80 bg-[#615ca5]/20 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 -right-20 w-64 h-64 bg-[#ec680a]/10 rounded-full blur-3xl" />
+      <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: "radial-gradient(circle, #ffffff 1px, transparent 1px)", backgroundSize: "30px 30px" }} />
+
       <div className="max-w-3xl w-full relative z-10 text-center">
         <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-6">Témoignage</p>
-        <div className="w-16 h-16 rounded-full bg-[#EC680A] flex items-center justify-center mx-auto mb-6">
-          <span className="text-white font-bold text-2xl">L</span>
+
+        {/* Large decorative quote */}
+        <div className="relative">
+          <span className="absolute -top-8 -left-4 text-[#EC680A]/15 text-[120px] font-serif leading-none select-none">&ldquo;</span>
+          <div className="w-16 h-16 rounded-full bg-[#EC680A] flex items-center justify-center mx-auto mb-6 ring-4 ring-[#EC680A]/20">
+            <span className="text-white font-bold text-2xl">L</span>
+          </div>
+          <blockquote className="text-white text-xl md:text-2xl font-medium leading-relaxed mb-6 italic relative z-10">
+            &laquo; Le jour où j'ai dit oui à Edumove, c'est le jour où tout a changé. Aujourd'hui je suis en 3ème année de dentaire à Madrid, je pratique sur de vrais patients, et je ne regrette absolument rien. &raquo;
+          </blockquote>
+          <span className="absolute -bottom-12 -right-4 text-[#EC680A]/15 text-[120px] font-serif leading-none select-none rotate-180">&ldquo;</span>
         </div>
-        <blockquote className="text-white text-xl md:text-2xl font-medium leading-relaxed mb-6 italic">
-          &laquo; Le jour où j'ai dit oui à Edumove, c'est le jour où tout a changé. Aujourd'hui je suis en 3ème année de dentaire à Madrid, je pratique sur de vrais patients, et je ne regrette absolument rien. &raquo;
-        </blockquote>
-        <p className="text-white font-semibold">Lola</p>
-        <p className="text-white/50 text-sm">3ème année de Dentaire — Universidad Europea de Madrid</p>
-        <div className="flex items-center justify-center gap-6 mt-8">
-          {[
-            { label: "Bac S mention Bien", icon: "🎓" },
-            { label: "PASS recalée", icon: "❌" },
-            { label: "Test PE réussi", icon: "✅" },
-            { label: "Dentaire à Madrid", icon: "🦷" },
-          ].map((step, i) => (
-            <div key={i} className="flex items-center gap-2">
-              <span>{step.icon}</span>
-              <span className="text-white/60 text-xs">{step.label}</span>
-              {i < 3 && <ArrowRight className="w-3 h-3 text-white/20 ml-2" />}
-            </div>
-          ))}
+
+        <p className="text-white font-semibold text-lg">Lola</p>
+        <p className="text-white/50 text-sm mb-8">3ème année de Dentaire — Universidad Europea de Madrid</p>
+
+        {/* Timeline journey - more visual */}
+        <div className="bg-white/[0.05] backdrop-blur-sm border border-white/10 rounded-2xl p-5">
+          <p className="text-white/40 text-[10px] uppercase tracking-widest mb-4">Son parcours</p>
+          <div className="flex items-center justify-center gap-3">
+            {[
+              { label: "Bac S mention Bien", icon: "🎓" },
+              { label: "PASS recalée", icon: "❌" },
+              { label: "Test PE réussi", icon: "✅" },
+              { label: "Dentaire à Madrid", icon: "🦷" },
+            ].map((step, i) => (
+              <div key={i} className="flex items-center gap-3">
+                <div className="flex flex-col items-center gap-1.5">
+                  <span className="text-xl">{step.icon}</span>
+                  <span className="text-white/70 text-xs font-medium">{step.label}</span>
+                </div>
+                {i < 3 && (
+                  <div className="flex items-center">
+                    <div className="w-8 h-px bg-gradient-to-r from-[#EC680A]/50 to-[#EC680A]/20" />
+                    <ArrowRight className="w-3 h-3 text-[#EC680A]/40" />
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
