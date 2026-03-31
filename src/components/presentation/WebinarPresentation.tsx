@@ -456,9 +456,9 @@ function SlideComparaison() {
 /* ── Slide 7: LCL Présentation ── */
 function SlideLCLIntro() {
   const team = [
-    { name: "Jean-Christophe Thomas", role: "Directeur d'Agence", initials: "JC" },
-    { name: "Meriem Guendouz", role: "Conseillère Particuliers", initials: "MG" },
-    { name: "Laura Munoz", role: "Conseillère en Patrimoine", initials: "LM" },
+    { name: "Jean-Christophe Thomas", role: "Directeur d'Agence", photo: "/lcl-jc.jpg" },
+    { name: "Meriem Guendouz", role: "Conseillère Particuliers", photo: "/lcl-meriem.jpg" },
+    { name: "Laura Munoz", role: "Conseillère en Patrimoine", photo: "/lcl-laura.jpg" },
   ];
   return (
     <div className="h-full bg-gradient-to-br from-[#f8f9fb] to-white flex items-center justify-center px-8 relative overflow-hidden">
@@ -503,9 +503,7 @@ function SlideLCLIntro() {
         <div className="flex justify-center gap-8">
           {team.map((person, i) => (
             <div key={i} className="text-center">
-              <div className="w-20 h-20 rounded-full bg-[#1B1D3A] flex items-center justify-center mx-auto mb-3 border-2 border-[#EC680A]/30">
-                <span className="text-white font-bold text-xl">{person.initials}</span>
-              </div>
+              <img src={person.photo} alt={person.name} className="w-20 h-20 rounded-full object-cover mx-auto mb-3 border-2 border-[#EC680A]/30" />
               <p className="text-[#1B1D3A] font-semibold text-sm">{person.name}</p>
               <p className="text-[#94a3b8] text-xs">{person.role}</p>
             </div>
