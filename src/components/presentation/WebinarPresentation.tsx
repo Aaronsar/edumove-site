@@ -94,16 +94,23 @@ function PasswordGate({ onUnlock }: { onUnlock: () => void }) {
 /* ── Slide 1: Cover ── */
 function SlideCover() {
   return (
-    <div className="h-full bg-white flex flex-col items-center justify-center relative overflow-hidden px-8">
-      {/* Subtle background */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-[#EC680A]/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#615CA5]/5 rounded-full blur-3xl" />
+    <div className="h-full bg-gradient-to-br from-[#f5f5fb] via-white to-[#fef3eb] flex flex-col items-center justify-center relative overflow-hidden px-8">
+      {/* Subtle background blobs */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#EC680A]/8 rounded-full blur-[120px]" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#615CA5]/8 rounded-full blur-[120px]" />
       {/* Dot grid like site */}
-      <div className="absolute bottom-[10%] right-[5%] grid grid-cols-4 gap-2 opacity-20">
+      <div className="absolute top-[15%] left-[5%] grid grid-cols-4 gap-2 opacity-15">
+        {Array.from({ length: 16 }).map((_, i) => (
+          <div key={`tl-${i}`} className="w-1.5 h-1.5 rounded-full bg-[#EC680A]" />
+        ))}
+      </div>
+      <div className="absolute bottom-[15%] right-[5%] grid grid-cols-4 gap-2 opacity-15">
         {Array.from({ length: 16 }).map((_, i) => (
           <div key={`br-${i}`} className="w-1.5 h-1.5 rounded-full bg-[#1B1D3A]" />
         ))}
       </div>
+      {/* Orange top accent line */}
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#EC680A] via-[#EC680A] to-[#615CA5]" />
 
       <div className="relative z-10 text-center max-w-3xl">
         {/* Logos */}
@@ -811,16 +818,18 @@ export default function WebinarPresentation() {
 
   return (
     <div className="h-screen w-screen overflow-hidden relative select-none bg-[#1B1D3A]" style={{ fontFamily: "var(--font-poppins), Poppins, sans-serif" }}>
-      {/* Persistent header — logos + badge */}
-      <div className="absolute top-0 left-0 right-0 z-50 flex items-center justify-center gap-5 pt-5 pb-3 pointer-events-none">
-        <img src="/edumove-icon-orange.svg" alt="Edumove" className="h-10 w-10" />
-        <span className="text-white/30 text-base mix-blend-difference font-light">×</span>
-        <img src="/lcl-logo-officiel.svg" alt="LCL" className="h-9" />
-      </div>
+      {/* Persistent header — logos + badge (hidden on cover slide) */}
+      {current > 0 && (
+        <div className="absolute top-0 left-0 right-0 z-50 flex items-center justify-center gap-5 pt-5 pb-3 pointer-events-none">
+          <img src="/edumove-icon-orange.svg" alt="Edumove" className="h-10 w-10" />
+          <span className="text-white/30 text-base mix-blend-difference font-light">×</span>
+          <img src="/lcl-logo-officiel.svg" alt="LCL" className="h-9" />
+        </div>
+      )}
 
       {/* Slide with animation */}
       <div
-        className="h-full w-full pt-16 transition-all duration-300 ease-out"
+        className={`h-full w-full ${current > 0 ? "pt-16" : ""} transition-all duration-300 ease-out`}
         style={{
           opacity: animating ? 0 : 1,
           transform: animating
