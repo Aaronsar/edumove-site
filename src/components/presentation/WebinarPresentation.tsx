@@ -106,18 +106,8 @@ function SlideCover() {
       </div>
 
       <div className="relative z-10 text-center max-w-4xl px-8">
-        {/* Logos Edumove x LCL */}
-        <div className="flex items-center justify-center gap-6 mb-12">
-          <img src="/edumove-icon-orange.svg" alt="Edumove" className="h-14 w-14" />
-          <span className="text-white/20 text-xl">×</span>
-          <img src="/lcl-logo-officiel.svg" alt="LCL" className="h-12" />
-        </div>
-
-        {/* Badge */}
-        <div className="inline-flex items-center gap-2 bg-[#EC680A]/10 border border-[#EC680A]/30 px-5 py-2 rounded-full mb-8">
-          <div className="w-2 h-2 rounded-full bg-[#EC680A] animate-pulse" />
-          <span className="text-[#EC680A] font-semibold text-xs uppercase tracking-[0.25em]">Webinaire en direct</span>
-        </div>
+        {/* Spacer for persistent header */}
+        <div className="h-24" />
 
         {/* Title */}
         <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] mb-8" style={{ color: "#FFFFFF" }}>
@@ -167,15 +157,18 @@ function SlideProgramme() {
         <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-3">Au programme</p>
         <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-10">60 minutes pour tout comprendre</h2>
         <div className="space-y-3">
-          {items.map((item, i) => (
-            <div key={i} className={`flex items-center gap-4 p-4 rounded-xl transition-all ${item.highlight ? "bg-[#1B1D3A] text-white" : "bg-[#f5f5fb]"}`}>
-              <div className={`w-10 h-10 rounded-lg flex items-center justify-center text-lg font-bold ${item.highlight ? "bg-[#EC680A] text-white" : "bg-white text-[#1B1D3A]"}`}>
-                {i + 1}
+          {items.map((item, i) => {
+            const isBlue = i % 2 === 1;
+            return (
+              <div key={i} className={`flex items-center gap-4 p-4 rounded-xl transition-all ${isBlue ? "bg-[#1B1D3A] text-white" : "bg-[#f5f5fb]"}`}>
+                <div className={`w-10 h-10 rounded-lg flex items-center justify-center text-lg font-bold ${isBlue ? "bg-[#EC680A] text-white" : "bg-white text-[#1B1D3A]"}`}>
+                  {i + 1}
+                </div>
+                <item.icon className={`w-5 h-5 ${isBlue ? "text-[#EC680A]" : "text-[#615CA5]"}`} />
+                <span className={`flex-1 font-medium ${isBlue ? "text-white" : "text-[#1B1D3A]"}`}>{item.label}</span>
               </div>
-              <item.icon className={`w-5 h-5 ${item.highlight ? "text-[#EC680A]" : "text-[#615CA5]"}`} />
-              <span className={`flex-1 font-medium ${item.highlight ? "text-white" : "text-[#1B1D3A]"}`}>{item.label}</span>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>
@@ -707,9 +700,16 @@ export default function WebinarPresentation() {
 
   return (
     <div className="h-screen w-screen overflow-hidden relative select-none bg-[#1B1D3A]" style={{ fontFamily: "var(--font-poppins), Poppins, sans-serif" }}>
+      {/* Persistent header — logos + badge */}
+      <div className="absolute top-0 left-0 right-0 z-50 flex items-center justify-center gap-4 pt-4 pb-2 pointer-events-none">
+        <img src="/edumove-icon-orange.svg" alt="Edumove" className="h-8 w-8" />
+        <span className="text-white/20 text-sm mix-blend-difference">×</span>
+        <img src="/lcl-logo-officiel.svg" alt="LCL" className="h-7" />
+      </div>
+
       {/* Slide with animation */}
       <div
-        className="h-full w-full transition-all duration-300 ease-out"
+        className="h-full w-full pt-14 transition-all duration-300 ease-out"
         style={{
           opacity: animating ? 0 : 1,
           transform: animating
