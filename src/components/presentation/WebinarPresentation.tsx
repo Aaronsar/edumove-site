@@ -210,63 +210,63 @@ function SlideProgramme() {
 /* ── Slide 3: Constat PASS ── */
 function SlideConstat() {
   return (
-    <div className="h-full bg-[#1B1D3A] flex flex-col px-8 pt-20 pb-16 relative overflow-hidden">
-      {/* Background decorations */}
-      <div className="absolute top-1/4 -right-20 w-80 h-80 bg-red-500/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 -left-20 w-64 h-64 bg-[#615ca5]/15 rounded-full blur-3xl" />
-      <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: "radial-gradient(circle, #ffffff 1px, transparent 1px)", backgroundSize: "30px 30px" }} />
+    <div className="h-full bg-white flex flex-col px-8 pt-20 pb-14 relative overflow-hidden">
+      {/* Decorative elements */}
+      <div className="absolute top-0 right-0 w-72 h-72 bg-[#EC680A]/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-56 h-56 bg-[#615CA5]/5 rounded-full blur-3xl" />
 
       <div className="max-w-5xl w-full mx-auto relative z-10 flex flex-col flex-1">
-        {/* Header area with big central stat */}
+        {/* Header */}
         <div className="flex items-start justify-between mb-6">
           <div>
             <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-2">Le constat</p>
-            <h2 className="text-white text-3xl md:text-4xl font-bold">Le PASS/LAS en France</h2>
+            <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold">Le PASS/LAS en France</h2>
           </div>
-          <div className="text-right">
-            <p className="text-[#EC680A] text-6xl md:text-7xl font-extrabold leading-none">80%</p>
-            <p className="text-white/50 text-sm mt-1">d'échec en 1ère année</p>
+          <div className="bg-[#1B1D3A] rounded-2xl px-8 py-4 text-center">
+            <p className="text-[#EC680A] text-5xl md:text-6xl font-extrabold leading-none">80%</p>
+            <p className="text-white/60 text-sm mt-1">d'échec en 1ère année</p>
           </div>
         </div>
 
-        {/* Stats grid - takes more space */}
-        <div className="grid grid-cols-3 gap-4 mb-6 flex-1">
+        {/* Stats grid */}
+        <div className="grid grid-cols-4 gap-4 mb-6 flex-1">
           {[
-            { value: "60 000+", label: "Étudiants inscrits en PASS chaque année", icon: "🎓" },
-            { value: "2 ans", label: "Perdus en moyenne par les recalés", icon: "⏳" },
-            { value: "8 000€", label: "Coût moyen d'une prépa privée", icon: "💸" },
+            { value: "60 000+", label: "Inscrits en PASS / an", icon: "🎓", color: "bg-[#1B1D3A]" },
+            { value: "2 ans", label: "Perdus en moyenne", icon: "⏳", color: "bg-[#615CA5]" },
+            { value: "8 000€", label: "Coût moyen prépa privée", icon: "💸", color: "bg-[#1B1D3A]" },
+            { value: "~20 000€", label: "Coût réel / an", icon: "🏠", color: "bg-[#615CA5]" },
           ].map((stat, i) => (
-            <div key={i} className="bg-white/[0.06] backdrop-blur-sm border border-white/10 rounded-xl p-6 flex flex-col items-center justify-center text-center">
+            <div key={i} className={`${stat.color} rounded-2xl p-5 flex flex-col items-center justify-center text-center`}>
               <span className="text-3xl mb-3">{stat.icon}</span>
-              <p className="text-[#EC680A] text-3xl font-bold mb-2">{stat.value}</p>
-              <p className="text-white/60 text-sm leading-relaxed">{stat.label}</p>
+              <p className="text-[#EC680A] text-2xl md:text-3xl font-bold mb-1">{stat.value}</p>
+              <p className="text-white/60 text-xs leading-relaxed">{stat.label}</p>
             </div>
           ))}
         </div>
 
-        {/* Bottom impact stats bar */}
-        <div className="grid grid-cols-3 gap-4 mb-6">
-          <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-4 text-center">
-            <p className="text-red-400 text-2xl font-bold">48 000</p>
-            <p className="text-white/50 text-xs">étudiants recalés / an</p>
+        {/* Impact row */}
+        <div className="grid grid-cols-3 gap-4 mb-5">
+          <div className="bg-red-50 border border-red-200 rounded-xl p-4 text-center">
+            <p className="text-red-600 text-xl font-bold">48 000</p>
+            <p className="text-red-400 text-xs">étudiants recalés / an</p>
           </div>
-          <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-4 text-center">
-            <p className="text-red-400 text-2xl font-bold">~20 000 €</p>
-            <p className="text-white/50 text-xs">coût réel / an (prépa + logement)</p>
+          <div className="bg-red-50 border border-red-200 rounded-xl p-4 text-center">
+            <p className="text-red-600 text-xl font-bold">0 garantie</p>
+            <p className="text-red-400 text-xs">de résultat malgré l'investissement</p>
           </div>
-          <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-4 text-center">
-            <p className="text-red-400 text-2xl font-bold">0 garantie</p>
-            <p className="text-white/50 text-xs">de résultat malgré l'investissement</p>
+          <div className="bg-red-50 border border-red-200 rounded-xl p-4 text-center">
+            <p className="text-red-600 text-xl font-bold">Stress intense</p>
+            <p className="text-red-400 text-xs">Impact sur la santé mentale</p>
           </div>
         </div>
 
         {/* Bottom callout */}
-        <div className="bg-[#EC680A]/10 border border-[#EC680A]/30 rounded-xl p-4 flex items-center gap-3">
-          <div className="w-8 h-8 rounded-full bg-[#EC680A]/20 flex items-center justify-center shrink-0">
-            <span className="text-[#EC680A] text-lg">!</span>
+        <div className="bg-[#EC680A] rounded-xl p-4 flex items-center gap-3">
+          <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center shrink-0">
+            <span className="text-white text-lg font-bold">!</span>
           </div>
-          <p className="text-white/80 text-sm leading-relaxed">
-            Le numerus clausus ne juge pas votre talent ni votre motivation. <strong className="text-white">Il existe une alternative.</strong>
+          <p className="text-white text-sm leading-relaxed">
+            Le numerus clausus ne juge pas votre talent ni votre motivation. <strong className="text-white font-bold">Il existe une alternative.</strong>
           </p>
         </div>
       </div>
