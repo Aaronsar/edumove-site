@@ -128,17 +128,8 @@ function SlideCover() {
         {/* Gradient line */}
         <div className="h-1 w-32 bg-gradient-to-r from-[#ec680a] via-[#615ca5] to-[#ec680a] rounded-full mx-auto mb-10" />
 
-        {/* Date & time pills */}
-        <div className="flex items-center justify-center gap-4 mb-12">
-          <div className="flex items-center gap-2.5 bg-white/[0.06] backdrop-blur-sm border border-white/10 px-5 py-3 rounded-xl">
-            <Calendar className="w-4.5 h-4.5 text-[#EC680A]" />
-            <span className="text-white/80 text-sm font-medium">Mercredi 15 avril 2026</span>
-          </div>
-          <div className="flex items-center gap-2.5 bg-white/[0.06] backdrop-blur-sm border border-white/10 px-5 py-3 rounded-xl">
-            <Clock className="w-4.5 h-4.5 text-[#615CA5]" />
-            <span className="text-white/80 text-sm font-medium">18h30 — 1 heure</span>
-          </div>
-        </div>
+        {/* Tagline */}
+        <p className="text-white/70 text-lg md:text-xl font-medium mb-12">On vous explique tout !</p>
 
         {/* Partners */}
         <div className="flex items-center justify-center gap-6">
