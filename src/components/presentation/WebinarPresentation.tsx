@@ -94,47 +94,79 @@ function PasswordGate({ onUnlock }: { onUnlock: () => void }) {
 /* ── Slide 1: Cover ── */
 function SlideCover() {
   return (
-    <div className="h-full bg-[#0d0e1f] flex flex-col items-center justify-center relative overflow-hidden">
-      {/* Animated background orbs */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#ec680a] to-transparent" />
-        <div className="absolute top-[10%] left-[5%] w-[600px] h-[600px] bg-[#615ca5]/20 rounded-full blur-[120px] animate-pulse" style={{ animationDuration: "4s" }} />
-        <div className="absolute bottom-[10%] right-[5%] w-[700px] h-[700px] bg-[#ec680a]/15 rounded-full blur-[120px] animate-pulse" style={{ animationDuration: "5s", animationDelay: "1s" }} />
-        <div className="absolute top-[60%] left-[40%] w-[300px] h-[300px] bg-[#615ca5]/10 rounded-full blur-[80px] animate-pulse" style={{ animationDuration: "6s", animationDelay: "2s" }} />
-        {/* Grid pattern */}
-        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "radial-gradient(circle, #ffffff 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
+    <div className="h-full bg-[#1B1D3A] flex flex-col items-center justify-center relative overflow-hidden">
+      {/* Dot grid decorations like the main site */}
+      <div className="absolute top-[8%] left-[3%] grid grid-cols-6 gap-2.5 opacity-40">
+        {Array.from({ length: 36 }).map((_, i) => (
+          <div key={`tl-${i}`} className="w-2 h-2 rounded-full bg-[#EC680A]" />
+        ))}
+      </div>
+      <div className="absolute bottom-[8%] right-[3%] grid grid-cols-6 gap-2.5 opacity-40">
+        {Array.from({ length: 36 }).map((_, i) => (
+          <div key={`br-${i}`} className="w-2 h-2 rounded-full bg-[#EC680A]" />
+        ))}
+      </div>
+      <div className="absolute top-[50%] right-[8%] grid grid-cols-4 gap-2 opacity-20">
+        {Array.from({ length: 16 }).map((_, i) => (
+          <div key={`mr-${i}`} className="w-1.5 h-1.5 rounded-full bg-[#615CA5]" />
+        ))}
       </div>
 
+      {/* Background orbs */}
+      <div className="absolute top-[15%] left-[10%] w-[400px] h-[400px] bg-[#615ca5]/15 rounded-full blur-[100px]" />
+      <div className="absolute bottom-[15%] right-[10%] w-[500px] h-[500px] bg-[#ec680a]/10 rounded-full blur-[100px]" />
+
+      {/* Orange top line like main site */}
+      <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-[#ec680a] to-transparent" />
+
       <div className="relative z-10 text-center max-w-4xl px-8">
-        {/* Spacer for persistent header */}
-        <div className="h-24" />
+        {/* Big logos */}
+        <div className="flex items-center justify-center gap-6 mb-10">
+          <img src="/edumove-icon-orange.svg" alt="Edumove" className="h-16 w-16" />
+          <span className="text-white/30 text-2xl font-light">×</span>
+          <img src="/lcl-logo-officiel.svg" alt="LCL" className="h-14 brightness-200" />
+        </div>
 
         {/* Title */}
-        <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] mb-8" style={{ color: "#FFFFFF" }}>
-          Financer ses études<br />
-          <span className="text-[#EC680A]" style={{ color: "#EC680A" }}>de santé en Europe</span>
+        <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] mb-6">
+          <span className="text-[#EC680A]">Financer</span>{" "}
+          <span className="text-white">ses études</span><br />
+          <span className="text-white">de santé en </span>
+          <span className="text-[#EC680A]">Europe</span>
         </h1>
 
         {/* Gradient line */}
-        <div className="h-1 w-32 bg-gradient-to-r from-[#ec680a] via-[#615ca5] to-[#ec680a] rounded-full mx-auto mb-10" />
+        <div className="h-1 w-32 bg-gradient-to-r from-[#ec680a] via-[#615ca5] to-[#ec680a] rounded-full mx-auto mb-8" />
 
         {/* Tagline */}
-        <p className="text-white/70 text-lg md:text-xl font-medium mb-12">On vous explique tout !</p>
+        <p className="text-white/70 text-lg md:text-xl font-medium mb-10">On vous explique tout !</p>
 
-        {/* Partners */}
-        <div className="flex items-center justify-center gap-6">
-          <div className="flex items-center gap-3 bg-white/[0.04] backdrop-blur-sm border border-white/10 px-6 py-3 rounded-xl">
-            <img src="/lcl-logo-officiel.svg" alt="LCL" className="h-6 brightness-200" />
-            <div className="h-6 w-px bg-white/15" />
-            <span className="text-white/50 text-xs font-medium">Partenaire financier officiel</span>
-          </div>
+        {/* Stats like the main site hero */}
+        <div className="flex items-center justify-center gap-10 mb-8">
+          {[
+            { value: "3", label: "Universités" },
+            { value: "5", label: "Filières" },
+            { value: "100%", label: "Finançable" },
+          ].map((stat, i) => (
+            <div key={i} className="text-center">
+              <p className="text-[#EC680A] text-3xl md:text-4xl font-extrabold">{stat.value}</p>
+              <p className="text-white/40 text-xs mt-1">{stat.label}</p>
+            </div>
+          ))}
         </div>
 
-        {/* Bottom instruction */}
-        <div className="absolute bottom-8 left-0 right-0 flex items-center justify-center gap-2 animate-bounce" style={{ animationDuration: "2s" }}>
-          <ChevronRight className="w-4 h-4 text-white/20" />
-          <span className="text-white/20 text-xs">Appuyez sur une touche pour commencer</span>
+        {/* Partner badge */}
+        <div className="inline-flex items-center gap-3 bg-white/[0.06] backdrop-blur-sm border border-white/10 px-6 py-3 rounded-full">
+          <img src="/lcl-logo-officiel.svg" alt="LCL" className="h-5 brightness-200" />
+          <div className="h-4 w-px bg-white/15" />
+          <span className="text-white/50 text-xs font-medium">Partenaire financier officiel</span>
         </div>
+      </div>
+
+      {/* Bottom instruction */}
+      <div className="absolute bottom-6 left-0 right-0 flex items-center justify-center gap-2 animate-bounce z-10" style={{ animationDuration: "2s" }}>
+        <ChevronRight className="w-4 h-4 text-white/20" />
+        <span className="text-white/20 text-xs">Appuyez sur une touche pour commencer</span>
       </div>
     </div>
   );
@@ -815,15 +847,15 @@ export default function WebinarPresentation() {
   return (
     <div className="h-screen w-screen overflow-hidden relative select-none bg-[#1B1D3A]" style={{ fontFamily: "var(--font-poppins), Poppins, sans-serif" }}>
       {/* Persistent header — logos + badge */}
-      <div className="absolute top-0 left-0 right-0 z-50 flex items-center justify-center gap-4 pt-4 pb-2 pointer-events-none">
-        <img src="/edumove-icon-orange.svg" alt="Edumove" className="h-8 w-8" />
-        <span className="text-white/20 text-sm mix-blend-difference">×</span>
-        <img src="/lcl-logo-officiel.svg" alt="LCL" className="h-7" />
+      <div className="absolute top-0 left-0 right-0 z-50 flex items-center justify-center gap-5 pt-5 pb-3 pointer-events-none">
+        <img src="/edumove-icon-orange.svg" alt="Edumove" className="h-10 w-10" />
+        <span className="text-white/30 text-base mix-blend-difference font-light">×</span>
+        <img src="/lcl-logo-officiel.svg" alt="LCL" className="h-9" />
       </div>
 
       {/* Slide with animation */}
       <div
-        className="h-full w-full pt-14 transition-all duration-300 ease-out"
+        className="h-full w-full pt-16 transition-all duration-300 ease-out"
         style={{
           opacity: animating ? 0 : 1,
           transform: animating
