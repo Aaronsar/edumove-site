@@ -98,7 +98,7 @@ function PasswordGate({ onUnlock }: { onUnlock: () => void }) {
 /* ── Slide 1: Cover ── */
 function SlideCover() {
   return (
-    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex flex-col items-center justify-center relative overflow-hidden px-8 pt-8">
+    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex flex-col items-center justify-center relative overflow-hidden px-8">
       {/* Colorful background blobs */}
       <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-[#EC680A]/12 rounded-full blur-[120px]" />
       <div className="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-[#615CA5]/12 rounded-full blur-[120px]" />
@@ -174,11 +174,11 @@ function SlideProgramme() {
     { icon: HelpCircle, label: "Questions / Reponses" },
   ];
   return (
-    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-8">
-      <div className="max-w-3xl w-full">
+    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-16">
+      <div className="max-w-4xl w-full">
         <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-3">AU PROGRAMME</p>
         <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-8">1 heure pour tout comprendre</h2>
-        <div className="space-y-2.5">
+        <div className="grid grid-cols-2 gap-2.5">
           {items.map((item, i) => (
             <div
               key={i}
@@ -189,18 +189,18 @@ function SlideProgramme() {
               }`}
             >
               <div
-                className={`w-9 h-9 rounded-lg flex items-center justify-center text-sm font-bold ${
+                className={`w-9 h-9 rounded-lg flex items-center justify-center text-sm font-bold shrink-0 ${
                   item.highlight ? "bg-[#EC680A] text-white" : "bg-white text-[#1B1D3A] border border-gray-100"
                 }`}
               >
                 {i + 1}
               </div>
-              <item.icon className={`w-4.5 h-4.5 ${item.highlight ? "text-[#EC680A]" : "text-[#615CA5]"}`} />
+              <item.icon className={`w-4.5 h-4.5 shrink-0 ${item.highlight ? "text-[#EC680A]" : "text-[#615CA5]"}`} />
               <span className={`flex-1 font-medium text-sm ${item.highlight ? "text-white" : "text-[#1B1D3A]"}`}>
                 {item.label}
               </span>
               {item.highlight && (
-                <span className="text-xs font-medium text-[#EC680A] bg-[#EC680A]/10 px-2 py-0.5 rounded-full">LCL</span>
+                <span className="text-xs font-medium text-[#EC680A] bg-[#EC680A]/10 px-2 py-0.5 rounded-full shrink-0">LCL</span>
               )}
             </div>
           ))}
@@ -213,7 +213,7 @@ function SlideProgramme() {
 /* ── Slide 3: Qui sommes-nous ── */
 function SlideQuiSommesNous() {
   return (
-    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-8 relative overflow-hidden">
+    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-16 relative overflow-hidden">
       <div className="absolute bottom-[8%] left-[3%] grid grid-cols-4 gap-2 opacity-25">
         {Array.from({ length: 16 }).map((_, i) => (
           <div key={`d-${i}`} className="w-1.5 h-1.5 rounded-full bg-[#EC680A]" />
@@ -221,51 +221,51 @@ function SlideQuiSommesNous() {
       </div>
 
       <div className="max-w-4xl w-full">
-        <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-3">QUI SOMMES-NOUS</p>
-        <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-3">
-          Edumove, N&deg;1 de l&apos;accompagnement<br />en etudes de sante en Europe
+        <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-2">QUI SOMMES-NOUS</p>
+        <h2 className="text-[#1B1D3A] text-2xl md:text-3xl font-bold mb-2">
+          Edumove, N&deg;1 de l&apos;accompagnement en etudes de sante en Europe
         </h2>
-        <p className="text-[#64748b] text-sm mb-8 max-w-2xl">
+        <p className="text-[#64748b] text-sm mb-4 max-w-2xl">
           Depuis 2019, Edumove accompagne les etudiants francais vers des etudes de sante en Espagne et en Italie.
           Notre mission : rendre accessible le diplome de sante a tous les etudiants motives, quel que soit leur resultat au PASS.
         </p>
 
         {/* Stats row */}
-        <div className="grid grid-cols-4 gap-4 mb-8">
+        <div className="grid grid-cols-4 gap-3 mb-4">
           {[
             { value: "+500", label: "Etudiants accompagnes" },
             { value: "3", label: "Universites partenaires" },
             { value: "5", label: "Filieres de sante" },
             { value: "2019", label: "Annee de creation" },
           ].map((stat, i) => (
-            <div key={i} className="bg-[#f5f5fb] rounded-2xl p-5 text-center border border-gray-100">
-              <p className="text-[#EC680A] text-2xl font-bold mb-1">{stat.value}</p>
+            <div key={i} className="bg-[#f5f5fb] rounded-2xl p-4 text-center border border-gray-100">
+              <p className="text-[#EC680A] text-xl font-bold mb-0.5">{stat.value}</p>
               <p className="text-[#334155] text-xs">{stat.label}</p>
             </div>
           ))}
         </div>
 
         {/* What we do */}
-        <div className="grid md:grid-cols-3 gap-4 mb-6">
+        <div className="grid md:grid-cols-3 gap-3 mb-4">
           {[
             { icon: GraduationCap, title: "Orientation", desc: "Analyse du profil, choix de la filiere et de l'universite adaptee a chaque etudiant" },
             { icon: BookOpen, title: "Preparation", desc: "Cours de preparation aux tests d'admission, annales, simulations d'entretien" },
             { icon: Globe, title: "Installation", desc: "Aide au logement, demarches administratives, integration sur place" },
           ].map((item, i) => (
-            <div key={i} className="bg-[#f5f5fb] rounded-2xl p-5 border border-gray-100">
-              <div className="w-10 h-10 rounded-xl bg-[#615CA5]/10 flex items-center justify-center mb-3">
-                <item.icon className="w-5 h-5 text-[#615CA5]" />
+            <div key={i} className="bg-[#f5f5fb] rounded-2xl p-4 border border-gray-100">
+              <div className="w-8 h-8 rounded-lg bg-[#615CA5]/10 flex items-center justify-center mb-2">
+                <item.icon className="w-4 h-4 text-[#615CA5]" />
               </div>
-              <p className="text-[#1B1D3A] font-semibold text-sm mb-1">{item.title}</p>
+              <p className="text-[#1B1D3A] font-semibold text-sm mb-0.5">{item.title}</p>
               <p className="text-[#64748b] text-xs leading-relaxed">{item.desc}</p>
             </div>
           ))}
         </div>
 
         {/* Bottom banner */}
-        <div className="bg-[#1B1D3A] rounded-2xl p-5 flex items-center justify-between">
+        <div className="bg-[#1B1D3A] rounded-2xl p-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <img src="/edumove-icon-orange.svg" alt="Edumove" className="w-10 h-10 rounded-xl" />
+            <img src="/edumove-icon-orange.svg" alt="Edumove" className="w-9 h-9 rounded-lg" />
             <div>
               <p className="text-white font-bold text-sm">Accompagnement 100% gratuit</p>
               <p className="text-white/50 text-xs">De l&apos;orientation a l&apos;installation, sans frais supplementaires</p>
@@ -283,7 +283,7 @@ function SlideQuiSommesNous() {
 /* ── Slide 4: Constat PASS ── */
 function SlideConstat() {
   return (
-    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-8 relative overflow-hidden">
+    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-16 relative overflow-hidden">
       <div className="absolute bottom-[10%] left-[3%] grid grid-cols-4 gap-2 opacity-30">
         {Array.from({ length: 16 }).map((_, i) => (
           <div key={`bl-${i}`} className="w-1.5 h-1.5 rounded-full bg-[#1B1D3A]" />
@@ -341,7 +341,7 @@ function SlideAlternative() {
     { name: "LINK Campus", flag: "\uD83C\uDDEE\uD83C\uDDF9", location: "Rome", desc: "Test d'admission 100% en francais", since: "Depuis 2020", students: "+150" },
   ];
   return (
-    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-8">
+    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-16">
       <div className="max-w-4xl w-full">
         <div className="flex items-start justify-between mb-6">
           <div>
@@ -438,7 +438,7 @@ function SlideFilieres() {
     },
   ];
   return (
-    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-8">
+    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-16">
       <div className="max-w-4xl w-full">
         <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-3">LES FILIERES</p>
         <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-2">5 filieres de sante accessibles</h2>
@@ -492,7 +492,7 @@ function SlideTarifs() {
     { filiere: "Veterinaire", ucjc: "\u2014", ue: "17 340", link: "\u2014", duree: "5 ans" },
   ];
   return (
-    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-8 relative overflow-hidden">
+    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-16 relative overflow-hidden">
       <div className="absolute top-0 right-0 w-64 h-64 bg-[#EC680A]/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#615CA5]/5 rounded-full blur-3xl" />
 
@@ -547,7 +547,7 @@ function SlideTarifs() {
 /* ── Slide 8: Comparaison (ACCESSIBILITE) ── */
 function SlideComparaison() {
   return (
-    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-8">
+    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-16">
       <div className="max-w-4xl w-full">
         <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-3">COMPARATIF</p>
         <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-2">Acceder au diplome de sante</h2>
@@ -619,7 +619,7 @@ function SlideLCLIntro() {
     { name: "Laura Munoz", role: "Conseillere en Patrimoine", photo: "/lcl-laura.jpg" },
   ];
   return (
-    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-8 relative overflow-hidden">
+    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-16 relative overflow-hidden">
       <div className="absolute top-0 left-0 w-96 h-96 bg-[#615CA5]/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 right-0 w-80 h-80 bg-[#EC680A]/5 rounded-full blur-3xl" />
 
@@ -674,7 +674,7 @@ function SlideLCLIntro() {
 /* ── Slide 10: Le pret LCL (WHITE BG) ── */
 function SlideLCLPret() {
   return (
-    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-8 relative overflow-hidden">
+    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-16 relative overflow-hidden">
       <div className="absolute top-0 right-0 w-72 h-72 bg-[#EC680A]/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#615CA5]/5 rounded-full blur-3xl" />
 
@@ -724,7 +724,7 @@ function SlideLCLPret() {
 /* ── Slide 11: Conditions du pret ── */
 function SlideConditions() {
   return (
-    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-8 relative overflow-hidden">
+    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-16 relative overflow-hidden">
       <div className="absolute top-[5%] right-[3%] grid grid-cols-4 gap-2 opacity-20">
         {Array.from({ length: 16 }).map((_, i) => (
           <div key={`d-${i}`} className="w-1.5 h-1.5 rounded-full bg-[#615CA5]" />
@@ -841,7 +841,7 @@ function SlideLCLSimulation() {
     },
   ];
   return (
-    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-8 relative overflow-hidden">
+    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-16 relative overflow-hidden">
       <div className="absolute top-0 left-0 w-72 h-72 bg-green-500/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 right-0 w-64 h-64 bg-[#615CA5]/5 rounded-full blur-3xl" />
 
@@ -904,7 +904,7 @@ function SlideAides() {
     { name: "CAF / APL", amount: "Variable", desc: "Aides au logement possibles selon le pays et la convention du logement", icon: Building2 },
   ];
   return (
-    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-8">
+    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-16">
       <div className="max-w-4xl w-full">
         <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-3">CUMULABLE AVEC LE PRET DU LCL</p>
         <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-8">Les autres aides disponibles</h2>
@@ -936,7 +936,7 @@ function SlideAides() {
 /* ── Slide 14: Temoignage (WHITE bg) ── */
 function SlideTemoignage() {
   return (
-    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-8 relative overflow-hidden">
+    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-16 relative overflow-hidden">
       <div className="absolute top-[10%] right-[5%] grid grid-cols-4 gap-2 opacity-20">
         {Array.from({ length: 16 }).map((_, i) => (
           <div key={`d-${i}`} className="w-1.5 h-1.5 rounded-full bg-[#615CA5]" />
@@ -1020,7 +1020,7 @@ function SlideAccompagnement() {
     { num: "6", title: "Suivi continu", desc: "Accompagnement tout au long du cursus, support en cas de difficulte, communaute etudiante", icon: Heart },
   ];
   return (
-    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-8">
+    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-16">
       <div className="max-w-4xl w-full">
         <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-3">DE A A Z</p>
         <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-3">L&apos;accompagnement Edumove</h2>
@@ -1056,7 +1056,7 @@ function SlideAccompagnement() {
 /* ── Slide 16: Merci / Contact ── */
 function SlideMerci() {
   return (
-    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-8 relative overflow-hidden">
+    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-16 relative overflow-hidden">
       {/* Decorative background */}
       <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-[#EC680A]/8 rounded-full blur-[120px]" />
       <div className="absolute bottom-[-10%] left-[-5%] w-[400px] h-[400px] bg-[#615CA5]/8 rounded-full blur-[120px]" />
@@ -1197,18 +1197,9 @@ export default function WebinarPresentation() {
 
   return (
     <div className="h-screen w-screen overflow-hidden relative select-none bg-white" style={{ fontFamily: "var(--font-poppins), Poppins, sans-serif" }}>
-      {/* Persistent header — logos only (hidden on cover) */}
-      {current > 0 && (
-        <div className="absolute top-0 left-0 right-0 z-50 flex items-center justify-center gap-3 pt-3 pb-2 pointer-events-none">
-          <img src="/edumove-icon-orange.svg" alt="Edumove" className="h-9 w-9" />
-          <span className="text-[#1B1D3A]/15 text-xs font-light">×</span>
-          <img src="/lcl-logo-officiel.svg" alt="LCL" className="h-7" />
-        </div>
-      )}
-
       {/* Slide with animation */}
       <div
-        className={`h-full w-full ${current > 0 ? "pt-16" : ""} transition-all duration-300 ease-out`}
+        className="h-full w-full transition-all duration-300 ease-out relative"
         style={{
           opacity: animating ? 0 : 1,
           transform: animating
@@ -1217,6 +1208,14 @@ export default function WebinarPresentation() {
         }}
       >
         <SlideComponent />
+        {/* Logos overlay on slide background (hidden on cover) */}
+        {current > 0 && (
+          <div className="absolute top-0 left-0 right-0 z-20 flex items-center justify-center gap-4 pt-4 pb-2 pointer-events-none bg-gradient-to-b from-[#eeedf5]/90 to-transparent">
+            <img src="/edumove-icon-orange.svg" alt="Edumove" className="h-10 w-10" />
+            <span className="text-[#1B1D3A]/15 text-sm font-light">×</span>
+            <img src="/lcl-logo-officiel.svg" alt="LCL" className="h-8" />
+          </div>
+        )}
       </div>
 
       {/* Click zones */}
