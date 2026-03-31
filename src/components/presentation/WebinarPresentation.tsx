@@ -108,10 +108,7 @@ function SlideCover() {
       <div className="relative z-10 text-center max-w-4xl px-8">
         {/* Logos Edumove x LCL */}
         <div className="flex items-center justify-center gap-6 mb-12">
-          <div className="flex items-center gap-3">
-            <img src="/edumove-icon-orange.svg" alt="Edumove" className="h-14 w-14" />
-            <span className="text-white font-bold text-2xl tracking-tight">Edumove</span>
-          </div>
+          <img src="/edumove-icon-orange.svg" alt="Edumove" className="h-14 w-14" />
           <span className="text-white/20 text-xl">×</span>
           <img src="/lcl-logo-officiel.svg" alt="LCL" className="h-12" />
         </div>
