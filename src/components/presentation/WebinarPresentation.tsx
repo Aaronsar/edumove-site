@@ -94,21 +94,16 @@ function PasswordGate({ onUnlock }: { onUnlock: () => void }) {
 /* ── Slide 1: Cover ── */
 function SlideCover() {
   return (
-    <div className="h-full bg-[#1B1D3A] flex flex-col items-center justify-center relative overflow-hidden">
-      {/* Dot grid decorations like the main site */}
-      <div className="absolute top-[8%] left-[3%] grid grid-cols-6 gap-2.5 opacity-40">
-        {Array.from({ length: 36 }).map((_, i) => (
+    <div className="h-full bg-[#1B1D3A] flex items-center relative overflow-hidden px-12">
+      {/* Dot grids like the site */}
+      <div className="absolute top-[12%] left-[4%] grid grid-cols-5 gap-2.5 opacity-40">
+        {Array.from({ length: 25 }).map((_, i) => (
           <div key={`tl-${i}`} className="w-2 h-2 rounded-full bg-[#EC680A]" />
         ))}
       </div>
-      <div className="absolute bottom-[8%] right-[3%] grid grid-cols-6 gap-2.5 opacity-40">
-        {Array.from({ length: 36 }).map((_, i) => (
+      <div className="absolute bottom-[12%] right-[4%] grid grid-cols-5 gap-2.5 opacity-40">
+        {Array.from({ length: 25 }).map((_, i) => (
           <div key={`br-${i}`} className="w-2 h-2 rounded-full bg-[#EC680A]" />
-        ))}
-      </div>
-      <div className="absolute top-[50%] right-[8%] grid grid-cols-4 gap-2 opacity-20">
-        {Array.from({ length: 16 }).map((_, i) => (
-          <div key={`mr-${i}`} className="w-1.5 h-1.5 rounded-full bg-[#615CA5]" />
         ))}
       </div>
 
@@ -116,50 +111,80 @@ function SlideCover() {
       <div className="absolute top-[15%] left-[10%] w-[400px] h-[400px] bg-[#615ca5]/15 rounded-full blur-[100px]" />
       <div className="absolute bottom-[15%] right-[10%] w-[500px] h-[500px] bg-[#ec680a]/10 rounded-full blur-[100px]" />
 
-      {/* Orange top line like main site */}
-      <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-[#ec680a] to-transparent" />
+      {/* Content — 2 columns like the site hero */}
+      <div className="relative z-10 max-w-5xl w-full mx-auto grid grid-cols-2 gap-12 items-center">
+        {/* Left — text content */}
+        <div>
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 bg-white/[0.06] border border-white/10 px-4 py-2 rounded-full mb-6">
+            <span className="text-[#EC680A] text-xs">🎓</span>
+            <span className="text-white/50 text-xs font-medium">Webinaire exclusif Edumove × LCL</span>
+          </div>
 
-      <div className="relative z-10 text-center max-w-4xl px-8">
-        {/* Big logos */}
-        <div className="flex items-center justify-center gap-6 mb-10">
-          <img src="/edumove-icon-orange.svg" alt="Edumove" className="h-16 w-16" />
-          <span className="text-white/30 text-2xl font-light">×</span>
-          <img src="/lcl-logo-officiel.svg" alt="LCL" className="h-14 brightness-200" />
+          {/* Title like the site: left-aligned, big, orange keywords */}
+          <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.15] mb-6">
+            <span className="text-[#EC680A]">Financer</span>{" "}
+            <span className="text-white">ses études</span><br />
+            <span className="text-white">de </span>
+            <span className="text-[#EC680A]">santé</span>
+            <span className="text-white"> en Europe</span>
+          </h1>
+
+          {/* Subtitle */}
+          <p className="text-white/60 text-base mb-8 leading-relaxed">
+            Accompagnement complet. Financement jusqu'à 100%.<br />
+            Vous ne payez rien avant d'être praticien.
+          </p>
+
+          {/* Stats row like the site */}
+          <div className="flex items-center gap-8">
+            {[
+              { value: "3", label: "Universités" },
+              { value: "5", label: "Filières" },
+              { value: "100%", label: "Finançable" },
+            ].map((stat, i) => (
+              <div key={i}>
+                <p className="text-[#EC680A] text-3xl font-extrabold">{stat.value}</p>
+                <p className="text-white/40 text-xs mt-0.5">{stat.label}</p>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Title */}
-        <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] mb-6">
-          <span className="text-[#EC680A]">Financer</span>{" "}
-          <span className="text-white">ses études</span><br />
-          <span className="text-white">de santé en </span>
-          <span className="text-[#EC680A]">Europe</span>
-        </h1>
-
-        {/* Gradient line */}
-        <div className="h-1 w-32 bg-gradient-to-r from-[#ec680a] via-[#615ca5] to-[#ec680a] rounded-full mx-auto mb-8" />
-
-        {/* Tagline */}
-        <p className="text-white/70 text-lg md:text-xl font-medium mb-10">On vous explique tout !</p>
-
-        {/* Stats like the main site hero */}
-        <div className="flex items-center justify-center gap-10 mb-8">
-          {[
-            { value: "3", label: "Universités" },
-            { value: "5", label: "Filières" },
-            { value: "100%", label: "Finançable" },
-          ].map((stat, i) => (
-            <div key={i} className="text-center">
-              <p className="text-[#EC680A] text-3xl md:text-4xl font-extrabold">{stat.value}</p>
-              <p className="text-white/40 text-xs mt-1">{stat.label}</p>
+        {/* Right — logos & partnership card */}
+        <div className="flex flex-col items-center">
+          <div className="bg-white/[0.05] backdrop-blur-sm border border-white/10 rounded-3xl p-10 text-center w-full">
+            {/* Logos */}
+            <div className="flex items-center justify-center gap-6 mb-8">
+              <img src="/edumove-icon-orange.svg" alt="Edumove" className="h-16 w-16" />
+              <span className="text-white/20 text-2xl font-light">×</span>
+              <img src="/lcl-logo-officiel.svg" alt="LCL" className="h-14 brightness-200" />
             </div>
-          ))}
-        </div>
+            <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-2">Partenariat exclusif</p>
+            <p className="text-white/50 text-sm mb-6">Prêt étudiant santé à partir de 75 000 €</p>
 
-        {/* Partner badge */}
-        <div className="inline-flex items-center gap-3 bg-white/[0.06] backdrop-blur-sm border border-white/10 px-6 py-3 rounded-full">
-          <img src="/lcl-logo-officiel.svg" alt="LCL" className="h-5 brightness-200" />
-          <div className="h-4 w-px bg-white/15" />
-          <span className="text-white/50 text-xs font-medium">Partenaire financier officiel</span>
+            {/* Key figures */}
+            <div className="grid grid-cols-3 gap-3">
+              {[
+                { value: "75 000 €", label: "Minimum" },
+                { value: "0 €", label: "Pendant les études" },
+                { value: "Taux préf.", label: "Exclusif" },
+              ].map((stat, i) => (
+                <div key={i} className="bg-white/[0.06] rounded-xl py-3 px-2 text-center">
+                  <p className="text-[#EC680A] font-bold text-sm">{stat.value}</p>
+                  <p className="text-white/40 text-[10px]">{stat.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Press mention */}
+          <div className="flex items-center gap-4 mt-5 opacity-40">
+            <span className="text-white/50 text-[10px]">Ils parlent de nous</span>
+            {["BFMTV", "Forbes", "LCL", "Le Figaro"].map((name, i) => (
+              <span key={i} className="text-white/60 text-xs font-medium">{name}</span>
+            ))}
+          </div>
         </div>
       </div>
 
