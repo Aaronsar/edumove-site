@@ -176,7 +176,7 @@ function SlideProgramme() {
     { icon: HelpCircle, label: "Questions / Reponses" },
   ];
   return (
-    <div className="h-full bg-white flex items-center justify-center px-8">
+    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8">
       <div className="max-w-3xl w-full">
         <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-3">AU PROGRAMME</p>
         <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-8">1 heure pour tout comprendre</h2>
@@ -215,7 +215,7 @@ function SlideProgramme() {
 /* ── Slide 3: Qui sommes-nous ── */
 function SlideQuiSommesNous() {
   return (
-    <div className="h-full bg-white flex items-center justify-center px-8 relative overflow-hidden">
+    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 relative overflow-hidden">
       <div className="absolute bottom-[8%] left-[3%] grid grid-cols-4 gap-2 opacity-25">
         {Array.from({ length: 16 }).map((_, i) => (
           <div key={`d-${i}`} className="w-1.5 h-1.5 rounded-full bg-[#EC680A]" />
@@ -287,7 +287,7 @@ function SlideQuiSommesNous() {
 /* ── Slide 4: Constat PASS ── */
 function SlideConstat() {
   return (
-    <div className="h-full bg-white flex items-center justify-center px-8 relative overflow-hidden">
+    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 relative overflow-hidden">
       <div className="absolute bottom-[10%] left-[3%] grid grid-cols-4 gap-2 opacity-30">
         {Array.from({ length: 16 }).map((_, i) => (
           <div key={`bl-${i}`} className="w-1.5 h-1.5 rounded-full bg-[#1B1D3A]" />
@@ -345,7 +345,7 @@ function SlideAlternative() {
     { name: "LINK Campus", flag: "\uD83C\uDDEE\uD83C\uDDF9", location: "Rome", desc: "Test d'admission 100% en francais", since: "Depuis 2020", students: "+150" },
   ];
   return (
-    <div className="h-full bg-white flex items-center justify-center px-8">
+    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8">
       <div className="max-w-4xl w-full">
         <div className="flex items-start justify-between mb-6">
           <div>
@@ -442,7 +442,7 @@ function SlideFilieres() {
     },
   ];
   return (
-    <div className="h-full bg-white flex items-center justify-center px-8">
+    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8">
       <div className="max-w-4xl w-full">
         <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-3">LES FILIERES</p>
         <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-2">5 filieres de sante accessibles</h2>
@@ -496,7 +496,7 @@ function SlideTarifs() {
     { filiere: "Veterinaire", ucjc: "\u2014", ue: "17 340", link: "\u2014", duree: "5 ans" },
   ];
   return (
-    <div className="h-full bg-[#f5f5fb] flex items-center justify-center px-8 relative overflow-hidden">
+    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 relative overflow-hidden">
       <div className="absolute top-0 right-0 w-64 h-64 bg-[#EC680A]/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#615CA5]/5 rounded-full blur-3xl" />
 
@@ -551,7 +551,7 @@ function SlideTarifs() {
 /* ── Slide 8: Comparaison (ACCESSIBILITE) ── */
 function SlideComparaison() {
   return (
-    <div className="h-full bg-white flex items-center justify-center px-8">
+    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8">
       <div className="max-w-4xl w-full">
         <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-3">COMPARATIF</p>
         <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-2">Acceder au diplome de sante</h2>
@@ -623,7 +623,7 @@ function SlideLCLIntro() {
     { name: "Laura Munoz", role: "Conseillere en Patrimoine", photo: "/lcl-laura.jpg" },
   ];
   return (
-    <div className="h-full bg-white flex items-center justify-center px-8 relative overflow-hidden">
+    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 relative overflow-hidden">
       <div className="absolute top-0 left-0 w-96 h-96 bg-[#615CA5]/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 right-0 w-80 h-80 bg-[#EC680A]/5 rounded-full blur-3xl" />
 
@@ -680,7 +680,7 @@ function SlideLCLIntro() {
 /* ── Slide 10: Le pret LCL (WHITE BG) ── */
 function SlideLCLPret() {
   return (
-    <div className="h-full bg-white flex items-center justify-center px-8 relative overflow-hidden">
+    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 relative overflow-hidden">
       <div className="absolute top-0 right-0 w-72 h-72 bg-[#EC680A]/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#615CA5]/5 rounded-full blur-3xl" />
 
@@ -730,7 +730,7 @@ function SlideLCLPret() {
 /* ── Slide 11: Conditions du pret ── */
 function SlideConditions() {
   return (
-    <div className="h-full bg-white flex items-center justify-center px-8 relative overflow-hidden">
+    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 relative overflow-hidden">
       <div className="absolute top-[5%] right-[3%] grid grid-cols-4 gap-2 opacity-20">
         {Array.from({ length: 16 }).map((_, i) => (
           <div key={`d-${i}`} className="w-1.5 h-1.5 rounded-full bg-[#615CA5]" />
@@ -847,7 +847,7 @@ function SlideLCLSimulation() {
     },
   ];
   return (
-    <div className="h-full bg-white flex items-center justify-center px-8 relative overflow-hidden">
+    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 relative overflow-hidden">
       <div className="absolute top-0 left-0 w-72 h-72 bg-green-500/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 right-0 w-64 h-64 bg-[#615CA5]/5 rounded-full blur-3xl" />
 
@@ -910,7 +910,7 @@ function SlideAides() {
     { name: "CAF / APL", amount: "Variable", desc: "Aides au logement possibles selon le pays et la convention du logement", icon: Building2 },
   ];
   return (
-    <div className="h-full bg-white flex items-center justify-center px-8">
+    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8">
       <div className="max-w-4xl w-full">
         <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-3">CUMULABLE AVEC LE PRET DU LCL</p>
         <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-8">Les autres aides disponibles</h2>
@@ -942,7 +942,7 @@ function SlideAides() {
 /* ── Slide 14: Temoignage (WHITE bg) ── */
 function SlideTemoignage() {
   return (
-    <div className="h-full bg-white flex items-center justify-center px-8 relative overflow-hidden">
+    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 relative overflow-hidden">
       <div className="absolute top-[10%] right-[5%] grid grid-cols-4 gap-2 opacity-20">
         {Array.from({ length: 16 }).map((_, i) => (
           <div key={`d-${i}`} className="w-1.5 h-1.5 rounded-full bg-[#615CA5]" />
@@ -1026,7 +1026,7 @@ function SlideAccompagnement() {
     { num: "6", title: "Suivi continu", desc: "Accompagnement tout au long du cursus, support en cas de difficulte, communaute etudiante", icon: Heart },
   ];
   return (
-    <div className="h-full bg-white flex items-center justify-center px-8">
+    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8">
       <div className="max-w-4xl w-full">
         <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-3">DE A A Z</p>
         <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-3">L&apos;accompagnement Edumove</h2>
@@ -1064,7 +1064,7 @@ function SlideAccompagnement() {
 /* ── Slide 16: Merci / Contact ── */
 function SlideMerci() {
   return (
-    <div className="h-full bg-white flex items-center justify-center px-8 relative overflow-hidden">
+    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 relative overflow-hidden">
       {/* Decorative background */}
       <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-[#EC680A]/8 rounded-full blur-[120px]" />
       <div className="absolute bottom-[-10%] left-[-5%] w-[400px] h-[400px] bg-[#615CA5]/8 rounded-full blur-[120px]" />
