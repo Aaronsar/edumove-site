@@ -650,13 +650,30 @@ export default function WebinarPresentation() {
     if (sessionStorage.getItem("pres-auth") === "1") setAuthed(true);
   }, []);
 
-  const next = useCallback(() => setCurrent((c) => Math.min(c + 1, SLIDES.length - 1)), []);
-  const prev = useCallback(() => setCurrent((c) => Math.max(c - 1, 0)), []);
+  if (!authed) return <PasswordGate onUnlock={() => setAuthed(true)} />;
+
+  const SlideComponent = SLIDES[current];
+  const [animating, setAnimating] = useState(false);
+  const [direction, setDirection] = useState<"left" | "right">("right");
+
+  const goTo = useCallback((idx: number) => {
+    if (idx === current || animating) return;
+    setDirection(idx > current ? "right" : "left");
+    setAnimating(true);
+    setTimeout(() => {
+      setCurrent(idx);
+      setTimeout(() => setAnimating(false), 50);
+    }, 200);
+  }, [current, animating]);
+
+  // Override next/prev to use animated goTo
+  const animNext = useCallback(() => goTo(Math.min(current + 1, SLIDES.length - 1)), [current, goTo]);
+  const animPrev = useCallback(() => goTo(Math.max(current - 1, 0)), [current, goTo]);
 
   useEffect(() => {
     function handleKey(e: KeyboardEvent) {
-      if (e.key === "ArrowRight" || e.key === " ") { e.preventDefault(); next(); }
-      if (e.key === "ArrowLeft") { e.preventDefault(); prev(); }
+      if (e.key === "ArrowRight" || e.key === " ") { e.preventDefault(); animNext(); }
+      if (e.key === "ArrowLeft") { e.preventDefault(); animPrev(); }
       if (e.key === "f" || e.key === "F") {
         if (document.fullscreenElement) document.exitFullscreen();
         else document.documentElement.requestFullscreen();
@@ -664,54 +681,67 @@ export default function WebinarPresentation() {
     }
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
-  }, [next, prev]);
-
-  if (!authed) return <PasswordGate onUnlock={() => setAuthed(true)} />;
-
-  const SlideComponent = SLIDES[current];
+  }, [animNext, animPrev]);
 
   return (
-    <div className="h-screen w-screen overflow-hidden relative select-none" style={{ fontFamily: "var(--font-poppins), Poppins, sans-serif" }}>
-      {/* Slide */}
-      <div className="h-full w-full">
+    <div className="h-screen w-screen overflow-hidden relative select-none bg-[#1B1D3A]" style={{ fontFamily: "var(--font-poppins), Poppins, sans-serif" }}>
+      {/* Slide with animation */}
+      <div
+        className="h-full w-full transition-all duration-300 ease-out"
+        style={{
+          opacity: animating ? 0 : 1,
+          transform: animating
+            ? `translateX(${direction === "right" ? "40px" : "-40px"})`
+            : "translateX(0)",
+        }}
+      >
         <SlideComponent />
       </div>
 
       {/* Click zones */}
-      <div className="absolute inset-y-0 left-0 w-1/5 cursor-pointer z-30" onClick={prev} />
-      <div className="absolute inset-y-0 right-0 w-1/5 cursor-pointer z-30" onClick={next} />
+      <div className="absolute inset-y-0 left-0 w-1/5 cursor-pointer z-30" onClick={animPrev} />
+      <div className="absolute inset-y-0 right-0 w-1/5 cursor-pointer z-30" onClick={animNext} />
 
-      {/* Navigation arrows */}
+      {/* Navigation arrows — always visible, subtle */}
       {current > 0 && (
-        <button onClick={prev} className="absolute left-4 top-1/2 -translate-y-1/2 z-40 w-10 h-10 rounded-full bg-black/20 backdrop-blur-sm flex items-center justify-center hover:bg-black/40 transition-all opacity-0 hover:opacity-100">
-          <ChevronLeft className="w-5 h-5 text-white" />
+        <button onClick={animPrev} className="absolute left-5 top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-full bg-black/10 backdrop-blur-md border border-white/10 flex items-center justify-center hover:bg-black/30 transition-all group">
+          <ChevronLeft className="w-5 h-5 text-white/50 group-hover:text-white transition-colors" />
         </button>
       )}
       {current < SLIDES.length - 1 && (
-        <button onClick={next} className="absolute right-4 top-1/2 -translate-y-1/2 z-40 w-10 h-10 rounded-full bg-black/20 backdrop-blur-sm flex items-center justify-center hover:bg-black/40 transition-all opacity-0 hover:opacity-100">
-          <ChevronRight className="w-5 h-5 text-white" />
+        <button onClick={animNext} className="absolute right-5 top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-full bg-black/10 backdrop-blur-md border border-white/10 flex items-center justify-center hover:bg-black/30 transition-all group">
+          <ChevronRight className="w-5 h-5 text-white/50 group-hover:text-white transition-colors" />
         </button>
       )}
 
-      {/* Bottom bar */}
-      <div className="absolute bottom-0 left-0 right-0 z-40 flex items-center justify-between px-6 py-3 bg-gradient-to-t from-black/30 to-transparent">
-        <span className="text-white/60 text-xs font-medium">{current + 1} / {SLIDES.length}</span>
-        <div className="flex-1 mx-8 h-1 bg-white/10 rounded-full overflow-hidden">
-          <div
-            className="h-full bg-[#EC680A] rounded-full transition-all duration-300"
-            style={{ width: `${((current + 1) / SLIDES.length) * 100}%` }}
-          />
+      {/* Bottom bar — glassmorphism */}
+      <div className="absolute bottom-0 left-0 right-0 z-40">
+        <div className="flex items-center gap-4 px-8 py-4 bg-black/20 backdrop-blur-md border-t border-white/5">
+          {/* Slide dots */}
+          <div className="flex items-center gap-1.5">
+            {SLIDES.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => goTo(i)}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  i === current ? "w-8 bg-[#EC680A]" : "w-2 bg-white/20 hover:bg-white/40"
+                }`}
+              />
+            ))}
+          </div>
+          <div className="flex-1" />
+          <span className="text-white/40 text-xs font-medium tabular-nums">{current + 1} / {SLIDES.length}</span>
+          <button
+            onClick={() => {
+              if (document.fullscreenElement) document.exitFullscreen();
+              else document.documentElement.requestFullscreen();
+            }}
+            className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/15 transition-all"
+            title="Plein écran (F)"
+          >
+            <Maximize className="w-3.5 h-3.5 text-white/50" />
+          </button>
         </div>
-        <button
-          onClick={() => {
-            if (document.fullscreenElement) document.exitFullscreen();
-            else document.documentElement.requestFullscreen();
-          }}
-          className="text-white/40 hover:text-white/80 transition-colors"
-          title="Plein écran (F)"
-        >
-          <Maximize className="w-4 h-4" />
-        </button>
       </div>
     </div>
   );
