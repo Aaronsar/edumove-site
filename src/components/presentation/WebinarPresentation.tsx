@@ -210,64 +210,52 @@ function SlideProgramme() {
 /* ── Slide 3: Constat PASS ── */
 function SlideConstat() {
   return (
-    <div className="h-full bg-white flex flex-col px-8 pt-20 pb-14 relative overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute top-0 right-0 w-72 h-72 bg-[#EC680A]/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-56 h-56 bg-[#615CA5]/5 rounded-full blur-3xl" />
+    <div className="h-full bg-white flex items-center justify-center px-8 relative overflow-hidden">
+      {/* Dot grid decoration like main site */}
+      <div className="absolute bottom-[10%] left-[3%] grid grid-cols-4 gap-2 opacity-30">
+        {Array.from({ length: 16 }).map((_, i) => (
+          <div key={`bl-${i}`} className="w-1.5 h-1.5 rounded-full bg-[#1B1D3A]" />
+        ))}
+      </div>
 
-      <div className="max-w-5xl w-full mx-auto relative z-10 flex flex-col flex-1">
-        {/* Header */}
-        <div className="flex items-start justify-between mb-6">
-          <div>
-            <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-2">Le constat</p>
-            <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold">Le PASS/LAS en France</h2>
+      <div className="max-w-4xl w-full">
+        {/* Header like site sections: label + title + description */}
+        <div className="flex items-start justify-between mb-10">
+          <div className="max-w-md">
+            <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-3">Le constat</p>
+            <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-3">Le PASS/LAS en France</h2>
+            <p className="text-[#64748b] text-sm leading-relaxed">Chaque année, des dizaines de milliers d'étudiants brillants sont éliminés par un concours unique, sans garantie de résultat.</p>
           </div>
-          <div className="bg-[#1B1D3A] rounded-2xl px-8 py-4 text-center">
-            <p className="text-[#EC680A] text-5xl md:text-6xl font-extrabold leading-none">80%</p>
-            <p className="text-white/60 text-sm mt-1">d'échec en 1ère année</p>
+          <div className="bg-[#1B1D3A] rounded-2xl px-8 py-5 text-center shrink-0">
+            <p className="text-[#EC680A] text-5xl font-extrabold leading-none">80%</p>
+            <p className="text-white/60 text-sm mt-2">d'échec en 1ère année</p>
           </div>
         </div>
 
-        {/* Stats grid */}
-        <div className="grid grid-cols-4 gap-4 mb-6 flex-1">
+        {/* Stats in clean row — like site cards */}
+        <div className="grid grid-cols-4 gap-5 mb-8">
           {[
-            { value: "60 000+", label: "Inscrits en PASS / an", icon: "🎓", color: "bg-[#1B1D3A]" },
-            { value: "2 ans", label: "Perdus en moyenne", icon: "⏳", color: "bg-[#615CA5]" },
-            { value: "8 000€", label: "Coût moyen prépa privée", icon: "💸", color: "bg-[#1B1D3A]" },
-            { value: "~20 000€", label: "Coût réel / an", icon: "🏠", color: "bg-[#615CA5]" },
+            { value: "60 000+", label: "Étudiants inscrits en PASS chaque année" },
+            { value: "2 ans", label: "Perdus en moyenne par les recalés" },
+            { value: "8 000 €", label: "Coût moyen d'une prépa privée" },
+            { value: "~20 000 €", label: "Coût réel par an (prépa + logement)" },
           ].map((stat, i) => (
-            <div key={i} className={`${stat.color} rounded-2xl p-5 flex flex-col items-center justify-center text-center`}>
-              <span className="text-3xl mb-3">{stat.icon}</span>
-              <p className="text-[#EC680A] text-2xl md:text-3xl font-bold mb-1">{stat.value}</p>
-              <p className="text-white/60 text-xs leading-relaxed">{stat.label}</p>
+            <div key={i} className="bg-[#f5f5fb] rounded-2xl p-5 text-center border border-gray-100">
+              <p className="text-[#EC680A] text-2xl font-bold mb-2">{stat.value}</p>
+              <p className="text-[#334155] text-xs leading-relaxed">{stat.label}</p>
             </div>
           ))}
         </div>
 
-        {/* Impact row */}
-        <div className="grid grid-cols-3 gap-4 mb-5">
-          <div className="bg-red-50 border border-red-200 rounded-xl p-4 text-center">
-            <p className="text-red-600 text-xl font-bold">48 000</p>
-            <p className="text-red-400 text-xs">étudiants recalés / an</p>
+        {/* CTA banner */}
+        <div className="bg-[#1B1D3A] rounded-2xl p-6 flex items-center justify-between">
+          <div>
+            <p className="text-white font-bold text-lg mb-1">Il existe une alternative.</p>
+            <p className="text-white/50 text-sm">Études de santé en Europe, diplôme reconnu, financement accessible.</p>
           </div>
-          <div className="bg-red-50 border border-red-200 rounded-xl p-4 text-center">
-            <p className="text-red-600 text-xl font-bold">0 garantie</p>
-            <p className="text-red-400 text-xs">de résultat malgré l'investissement</p>
+          <div className="flex items-center gap-2 bg-[#EC680A] px-5 py-2.5 rounded-xl shrink-0">
+            <span className="text-white font-semibold text-sm">Découvrir →</span>
           </div>
-          <div className="bg-red-50 border border-red-200 rounded-xl p-4 text-center">
-            <p className="text-red-600 text-xl font-bold">Stress intense</p>
-            <p className="text-red-400 text-xs">Impact sur la santé mentale</p>
-          </div>
-        </div>
-
-        {/* Bottom callout */}
-        <div className="bg-[#EC680A] rounded-xl p-4 flex items-center gap-3">
-          <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center shrink-0">
-            <span className="text-white text-lg font-bold">!</span>
-          </div>
-          <p className="text-white text-sm leading-relaxed">
-            Le numerus clausus ne juge pas votre talent ni votre motivation. <strong className="text-white font-bold">Il existe une alternative.</strong>
-          </p>
         </div>
       </div>
     </div>
