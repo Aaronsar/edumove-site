@@ -121,10 +121,10 @@ export default function RootLayout({
           />
         </noscript>
         {children}
-        {/* Tracking — Candidature click (Meta + Google Ads) */}
+        {/* Tracking — Candidature click (event custom, pas une conversion) */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `document.addEventListener('click',function(e){var a=e.target.closest('a[href*="candidature.edumove.fr"]');if(a){if(typeof fbq==='function')fbq('track','Lead');if(typeof gtag==='function')gtag('event','conversion',{send_to:'AW-18042868884/7Wd0CIKq15IcEJSpwZtD'});}});`,
+            __html: `document.addEventListener('click',function(e){var a=e.target.closest('a[href*="candidature.edumove.fr"]');if(a){if(typeof fbq==='function')fbq('trackCustom','ClickCandidature');if(typeof gtag==='function')gtag('event','click_candidature',{event_category:'engagement',event_label:'candidature_link'});}});`,
           }}
         />
         <script
