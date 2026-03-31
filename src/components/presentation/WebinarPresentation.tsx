@@ -1210,10 +1210,10 @@ export default function WebinarPresentation() {
         <SlideComponent />
         {/* Logos overlay on slide background (hidden on cover) */}
         {current > 0 && (
-          <div className="absolute top-0 left-0 right-0 z-20 flex items-center justify-center gap-5 pt-6 pb-3 pointer-events-none bg-gradient-to-b from-[#eeedf5]/90 to-transparent">
-            <img src="/edumove-icon-orange.svg" alt="Edumove" className="h-12 w-12" />
-            <span className="text-[#1B1D3A]/15 text-base font-light">×</span>
-            <img src="/lcl-logo-officiel.svg" alt="LCL" className="h-10" />
+          <div className="absolute top-0 left-0 right-0 z-20 flex items-center justify-center gap-6 pt-8 pb-4 pointer-events-none bg-gradient-to-b from-[#eeedf5]/90 to-transparent">
+            <img src="/edumove-icon-orange.svg" alt="Edumove" className="h-14 w-14" />
+            <span className="text-[#1B1D3A]/15 text-lg font-light">×</span>
+            <img src="/lcl-logo-officiel.svg" alt="LCL" className="h-12" />
           </div>
         )}
       </div>
