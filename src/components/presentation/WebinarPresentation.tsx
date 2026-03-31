@@ -178,45 +178,63 @@ function SlideProgramme() {
 /* ── Slide 3: Constat PASS ── */
 function SlideConstat() {
   return (
-    <div className="h-full bg-[#1B1D3A] flex items-center justify-center px-8 relative overflow-hidden">
+    <div className="h-full bg-[#1B1D3A] flex flex-col px-8 pt-20 pb-16 relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute top-1/4 -right-20 w-80 h-80 bg-red-500/10 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 -left-20 w-64 h-64 bg-[#615ca5]/15 rounded-full blur-3xl" />
       <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: "radial-gradient(circle, #ffffff 1px, transparent 1px)", backgroundSize: "30px 30px" }} />
 
-      <div className="max-w-4xl w-full relative z-10">
-        <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-3">Le constat</p>
-        <h2 className="text-white text-3xl md:text-4xl font-bold mb-3">Le PASS/LAS en France</h2>
-        <p className="text-white/50 text-base mb-8">Un système qui élimine plus qu'il ne sélectionne</p>
+      <div className="max-w-5xl w-full mx-auto relative z-10 flex flex-col flex-1">
+        {/* Header area with big central stat */}
+        <div className="flex items-start justify-between mb-6">
+          <div>
+            <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-2">Le constat</p>
+            <h2 className="text-white text-3xl md:text-4xl font-bold">Le PASS/LAS en France</h2>
+          </div>
+          <div className="text-right">
+            <p className="text-[#EC680A] text-6xl md:text-7xl font-extrabold leading-none">80%</p>
+            <p className="text-white/50 text-sm mt-1">d'échec en 1ère année</p>
+          </div>
+        </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        {/* Stats grid - takes more space */}
+        <div className="grid grid-cols-3 gap-4 mb-6 flex-1">
           {[
             { value: "60 000+", label: "Étudiants inscrits en PASS chaque année", icon: "🎓" },
-            { value: "80%", label: "Taux d'échec en première année", icon: "📉" },
             { value: "2 ans", label: "Perdus en moyenne par les recalés", icon: "⏳" },
             { value: "8 000€", label: "Coût moyen d'une prépa privée", icon: "💸" },
           ].map((stat, i) => (
-            <div key={i} className="bg-white/[0.06] backdrop-blur-sm border border-white/10 rounded-xl p-6 text-center hover:bg-white/[0.1] transition-colors">
-              <span className="text-2xl mb-2 block">{stat.icon}</span>
-              <p className="text-[#EC680A] text-3xl md:text-4xl font-bold mb-2">{stat.value}</p>
-              <p className="text-white/60 text-xs leading-relaxed">{stat.label}</p>
+            <div key={i} className="bg-white/[0.06] backdrop-blur-sm border border-white/10 rounded-xl p-6 flex flex-col items-center justify-center text-center">
+              <span className="text-3xl mb-3">{stat.icon}</span>
+              <p className="text-[#EC680A] text-3xl font-bold mb-2">{stat.value}</p>
+              <p className="text-white/60 text-sm leading-relaxed">{stat.label}</p>
             </div>
           ))}
         </div>
 
-        {/* Visual separator */}
-        <div className="flex items-center gap-4 mb-6">
-          <div className="flex-1 h-px bg-gradient-to-r from-transparent via-red-500/30 to-transparent" />
-          <span className="text-red-400/60 text-xs uppercase tracking-widest">Résultat</span>
-          <div className="flex-1 h-px bg-gradient-to-r from-transparent via-red-500/30 to-transparent" />
+        {/* Bottom impact stats bar */}
+        <div className="grid grid-cols-3 gap-4 mb-6">
+          <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-4 text-center">
+            <p className="text-red-400 text-2xl font-bold">48 000</p>
+            <p className="text-white/50 text-xs">étudiants recalés / an</p>
+          </div>
+          <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-4 text-center">
+            <p className="text-red-400 text-2xl font-bold">~20 000 €</p>
+            <p className="text-white/50 text-xs">coût réel / an (prépa + logement)</p>
+          </div>
+          <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-4 text-center">
+            <p className="text-red-400 text-2xl font-bold">0 garantie</p>
+            <p className="text-white/50 text-xs">de résultat malgré l'investissement</p>
+          </div>
         </div>
 
-        <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-5 flex items-start gap-3">
-          <div className="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center shrink-0 mt-0.5">
-            <span className="text-red-400 text-lg">!</span>
+        {/* Bottom callout */}
+        <div className="bg-[#EC680A]/10 border border-[#EC680A]/30 rounded-xl p-4 flex items-center gap-3">
+          <div className="w-8 h-8 rounded-full bg-[#EC680A]/20 flex items-center justify-center shrink-0">
+            <span className="text-[#EC680A] text-lg">!</span>
           </div>
           <p className="text-white/80 text-sm leading-relaxed">
-            Le numerus clausus ne juge pas votre talent ni votre motivation. C'est un filtre qui élimine des étudiants brillants sur un concours unique. <strong className="text-white">Il existe une alternative.</strong>
+            Le numerus clausus ne juge pas votre talent ni votre motivation. <strong className="text-white">Il existe une alternative.</strong>
           </p>
         </div>
       </div>
