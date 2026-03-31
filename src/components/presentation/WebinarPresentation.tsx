@@ -94,33 +94,66 @@ function PasswordGate({ onUnlock }: { onUnlock: () => void }) {
 /* ── Slide 1: Cover ── */
 function SlideCover() {
   return (
-    <div className="h-full bg-[#1B1D3A] flex flex-col items-center justify-center relative overflow-hidden">
+    <div className="h-full bg-[#0d0e1f] flex flex-col items-center justify-center relative overflow-hidden">
+      {/* Animated background orbs */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#ec680a] via-[#615ca5] to-[#ec680a]" />
-        <div className="absolute top-1/3 -left-40 w-[500px] h-[500px] bg-[#615ca5]/15 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/3 -right-40 w-[500px] h-[500px] bg-[#ec680a]/10 rounded-full blur-3xl" />
+        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#ec680a] to-transparent" />
+        <div className="absolute top-[10%] left-[5%] w-[600px] h-[600px] bg-[#615ca5]/20 rounded-full blur-[120px] animate-pulse" style={{ animationDuration: "4s" }} />
+        <div className="absolute bottom-[10%] right-[5%] w-[700px] h-[700px] bg-[#ec680a]/15 rounded-full blur-[120px] animate-pulse" style={{ animationDuration: "5s", animationDelay: "1s" }} />
+        <div className="absolute top-[60%] left-[40%] w-[300px] h-[300px] bg-[#615ca5]/10 rounded-full blur-[80px] animate-pulse" style={{ animationDuration: "6s", animationDelay: "2s" }} />
+        {/* Grid pattern */}
+        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "radial-gradient(circle, #ffffff 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
       </div>
-      <div className="relative z-10 text-center max-w-3xl px-8">
-        <div className="flex items-center justify-center gap-4 mb-8">
-          <div className="w-14 h-14 rounded-2xl bg-[#EC680A] flex items-center justify-center">
-            <span className="text-white font-bold text-2xl">E</span>
+
+      <div className="relative z-10 text-center max-w-4xl px-8">
+        {/* Logo */}
+        <div className="flex items-center justify-center gap-5 mb-12">
+          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#EC680A] to-[#d45e09] flex items-center justify-center shadow-lg shadow-[#EC680A]/30">
+            <span className="text-white font-bold text-3xl">E</span>
           </div>
-          <span className="text-white font-bold text-3xl">Edumove</span>
+          <span className="text-white font-bold text-4xl tracking-tight">Edumove</span>
         </div>
-        <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.2em] mb-4">Webinaire exclusif</p>
-        <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-          Financer ses études<br />de santé en Europe
+
+        {/* Badge */}
+        <div className="inline-flex items-center gap-2 bg-[#EC680A]/10 border border-[#EC680A]/30 px-5 py-2 rounded-full mb-8">
+          <div className="w-2 h-2 rounded-full bg-[#EC680A] animate-pulse" />
+          <span className="text-[#EC680A] font-semibold text-xs uppercase tracking-[0.25em]">Webinaire en direct</span>
+        </div>
+
+        {/* Title */}
+        <h1 className="text-white text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] mb-8">
+          Financer ses études<br />
+          <span className="bg-gradient-to-r from-[#EC680A] via-[#e8864a] to-[#615CA5] bg-clip-text text-transparent">de santé en Europe</span>
         </h1>
-        <div className="h-1 w-24 bg-gradient-to-r from-[#ec680a] to-[#615ca5] rounded-full mx-auto mb-8" />
-        <div className="flex items-center justify-center gap-8 text-white/60 text-sm">
-          <span className="flex items-center gap-2"><Calendar className="w-4 h-4" /> Mercredi 15 avril 2026</span>
-          <span className="flex items-center gap-2"><Clock className="w-4 h-4" /> 18h30 — 45 min</span>
-        </div>
-        <div className="mt-10 flex items-center justify-center gap-4">
-          <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
-            <img src="/lcl-logo-officiel.svg" alt="LCL" className="h-5" />
-            <span className="text-white/70 text-xs">Partenaire financier</span>
+
+        {/* Gradient line */}
+        <div className="h-1 w-32 bg-gradient-to-r from-[#ec680a] via-[#615ca5] to-[#ec680a] rounded-full mx-auto mb-10" />
+
+        {/* Date & time pills */}
+        <div className="flex items-center justify-center gap-4 mb-12">
+          <div className="flex items-center gap-2.5 bg-white/[0.06] backdrop-blur-sm border border-white/10 px-5 py-3 rounded-xl">
+            <Calendar className="w-4.5 h-4.5 text-[#EC680A]" />
+            <span className="text-white/80 text-sm font-medium">Mercredi 15 avril 2026</span>
           </div>
+          <div className="flex items-center gap-2.5 bg-white/[0.06] backdrop-blur-sm border border-white/10 px-5 py-3 rounded-xl">
+            <Clock className="w-4.5 h-4.5 text-[#615CA5]" />
+            <span className="text-white/80 text-sm font-medium">18h30 — 1 heure</span>
+          </div>
+        </div>
+
+        {/* Partners */}
+        <div className="flex items-center justify-center gap-6">
+          <div className="flex items-center gap-3 bg-white/[0.04] backdrop-blur-sm border border-white/10 px-6 py-3 rounded-xl">
+            <img src="/lcl-logo-officiel.svg" alt="LCL" className="h-6 brightness-200" />
+            <div className="h-6 w-px bg-white/15" />
+            <span className="text-white/50 text-xs font-medium">Partenaire financier officiel</span>
+          </div>
+        </div>
+
+        {/* Bottom instruction */}
+        <div className="absolute bottom-8 left-0 right-0 flex items-center justify-center gap-2 animate-bounce" style={{ animationDuration: "2s" }}>
+          <ChevronRight className="w-4 h-4 text-white/20" />
+          <span className="text-white/20 text-xs">Appuyez sur une touche pour commencer</span>
         </div>
       </div>
     </div>
