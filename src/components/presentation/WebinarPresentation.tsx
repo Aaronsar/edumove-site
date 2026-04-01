@@ -1343,7 +1343,113 @@ function SlideAccompagnement() {
   );
 }
 
-/* ── Slide 16: Merci / Contact ── */
+/* ── Slide 16: Questions & Réponses live ── */
+function SlideQA() {
+  const [questions, setQuestions] = useState<{ id: string; prenom: string; question: string; created_at: string }[]>([]);
+
+  useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const { createClient } = require("@/lib/supabase/client");
+    const supabase = createClient();
+
+    // Initial fetch
+    supabase
+      .from("webinar_questions")
+      .select("id, prenom, question, created_at")
+      .eq("event_slug", "webinaire-15-04")
+      .eq("is_visible", true)
+      .order("created_at", { ascending: false })
+      .limit(8)
+      .then(({ data }: { data: { id: string; prenom: string; question: string; created_at: string }[] | null }) => {
+        if (data) setQuestions(data);
+      });
+
+    // Real-time subscription
+    const channel = supabase
+      .channel("webinar-questions-live")
+      .on(
+        "postgres_changes",
+        { event: "INSERT", schema: "public", table: "webinar_questions" },
+        (payload: { new: { id: string; prenom: string; question: string; created_at: string; is_visible: boolean } }) => {
+          if (payload.new.is_visible) {
+            setQuestions((prev: { id: string; prenom: string; question: string; created_at: string }[]) => [payload.new, ...prev].slice(0, 8));
+          }
+        }
+      )
+      .subscribe();
+
+    return () => { supabase.removeChannel(channel); };
+  }, []);
+
+  const QR_URL = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent("https://www.edumove.fr/questions-webinaire")}&color=1B1D3A&bgcolor=f5f5fb`;
+
+  return (
+    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-16 relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-80 h-80 bg-[#EC680A]/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#615CA5]/5 rounded-full blur-3xl" />
+
+      <div className="max-w-5xl w-full relative z-10">
+        <div className="text-center mb-6">
+          <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-2 anim-fade-up" style={{ animationDelay: '0.1s' }}>QUESTIONS &amp; RÉPONSES</p>
+          <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-2 anim-fade-up" style={{ animationDelay: '0.2s' }}>Posez vos questions en direct</h2>
+          <p className="text-[#64748b] text-sm anim-fade-up" style={{ animationDelay: '0.3s' }}>Scannez le QR code avec votre téléphone</p>
+        </div>
+
+        <div className="grid grid-cols-[280px_1fr] gap-6">
+          {/* QR Code side */}
+          <div className="anim-scale-in" style={{ animationDelay: '0.35s' }}>
+            <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-lg text-center">
+              <img
+                src={QR_URL}
+                alt="QR Code — Posez votre question"
+                className="w-48 h-48 mx-auto mb-4 rounded-xl"
+              />
+              <p className="text-[#1B1D3A] font-bold text-sm mb-1">Scannez-moi !</p>
+              <p className="text-[#64748b] text-[10px]">edumove.fr/questions-webinaire</p>
+            </div>
+            <div className="mt-3 flex items-center justify-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+              <span className="text-[#64748b] text-xs">En direct</span>
+            </div>
+          </div>
+
+          {/* Questions feed */}
+          <div className="anim-fade-up" style={{ animationDelay: '0.4s' }}>
+            {questions.length === 0 ? (
+              <div className="h-full flex flex-col items-center justify-center text-center bg-[#f5f5fb] rounded-2xl border border-gray-100 p-8">
+                <HelpCircle className="w-12 h-12 text-[#EC680A]/30 mb-4" />
+                <p className="text-[#1B1D3A] font-bold text-lg mb-1">En attente de vos questions...</p>
+                <p className="text-[#64748b] text-sm">Scannez le QR code pour poser votre première question !</p>
+              </div>
+            ) : (
+              <div className="space-y-2.5 max-h-[420px] overflow-y-auto pr-2">
+                {questions.map((q, i) => (
+                  <div
+                    key={q.id}
+                    className="bg-white rounded-xl p-4 border border-gray-100 shadow-sm anim-scale-in"
+                    style={{ animationDelay: `${i * 0.05}s` }}
+                  >
+                    <div className="flex items-start gap-3">
+                      <div className="w-9 h-9 rounded-full bg-[#EC680A] flex items-center justify-center shrink-0">
+                        <span className="text-white font-bold text-sm">{q.prenom.charAt(0).toUpperCase()}</span>
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-[#1B1D3A] font-semibold text-sm">{q.prenom}</p>
+                        <p className="text-[#334155] text-sm leading-relaxed">{q.question}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ── Slide 17: Merci / Contact ── */
 function SlideMerci() {
   return (
     <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-16 relative overflow-hidden">
@@ -1442,6 +1548,7 @@ const SLIDES = [
   SlideTemoignage,      // 13
   SlideAccompagnement,  // 14
   SlideMerci,           // 15
+  SlideQA,              // 16
 ];
 
 export default function WebinarPresentation() {
