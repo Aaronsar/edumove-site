@@ -64,8 +64,8 @@ function PasswordGate({ onUnlock }: { onUnlock: () => void }) {
       </div>
       <form onSubmit={handleSubmit} className="relative z-10 text-center max-w-sm w-full">
         <img src="/edumove-icon-orange.svg" alt="Edumove" className="w-16 h-16 mx-auto mb-6" />
-        <h1 className="text-white text-2xl font-bold mb-2">Presentation protegee</h1>
-        <p className="text-white/50 text-sm mb-8">Entrez le mot de passe pour acceder aux slides</p>
+        <h1 className="text-white text-2xl font-bold mb-2">Présentation protégée</h1>
+        <p className="text-white/50 text-sm mb-8">Entrez le mot de passe pour accéder aux slides</p>
         <div className="flex gap-3">
           <div className="relative flex-1">
             <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30" />
@@ -130,21 +130,21 @@ function SlideCover() {
 
         {/* Title */}
         <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] mb-6 text-[#1B1D3A]">
-          Financer ses etudes<br />
-          <span className="text-[#EC680A]">de sante en Europe</span>
+          Financer ses études<br />
+          <span className="text-[#EC680A]">de santé en Europe</span>
         </h1>
 
         {/* Subtitle */}
         <p className="text-[#64748b] text-lg mb-10">
-          Accompagnement complet. Financement jusqu&apos;a 100%.
+          Accompagnement complet. Financement jusqu&apos;à 100%.
         </p>
 
         {/* Stats */}
         <div className="flex items-center justify-center gap-10 mb-10">
           {[
-            { value: "3", label: "Universites" },
-            { value: "5", label: "Filieres" },
-            { value: "100%", label: "Financable" },
+            { value: "3", label: "Universités" },
+            { value: "5", label: "Filières" },
+            { value: "100%", label: "Finançable" },
           ].map((stat, i) => (
             <div key={i} className="text-center">
               <p className="text-[#EC680A] text-3xl md:text-4xl font-extrabold">{stat.value}</p>
@@ -169,12 +169,12 @@ function SlideProgramme() {
   const items = [
     { icon: Star, label: "Qui est Edumove ?" },
     { icon: TrendingUp, label: "Le constat PASS/LAS en France" },
-    { icon: GraduationCap, label: "L'alternative europeenne" },
-    { icon: Euro, label: "Combien ca coute ?" },
-    { icon: Building2, label: "Le pret etudiant du LCL", highlight: true },
+    { icon: GraduationCap, label: "L'alternative européenne" },
+    { icon: Euro, label: "Combien ça coûte ?" },
+    { icon: Building2, label: "Le prêt étudiant du LCL", highlight: true },
     { icon: HandCoins, label: "Les aides cumulables" },
     { icon: Heart, label: "L'accompagnement Edumove" },
-    { icon: HelpCircle, label: "Questions / Reponses" },
+    { icon: HelpCircle, label: "Questions / Réponses" },
   ];
   return (
     <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-16">
@@ -226,20 +226,20 @@ function SlideQuiSommesNous() {
       <div className="max-w-4xl w-full">
         <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-2">QUI SOMMES-NOUS</p>
         <h2 className="text-[#1B1D3A] text-2xl md:text-3xl font-bold mb-2">
-          Edumove, N&deg;1 de l&apos;accompagnement en etudes de sante en Europe
+          Edumove, N&deg;1 de l&apos;accompagnement en études de santé en Europe
         </h2>
         <p className="text-[#64748b] text-sm mb-4 max-w-2xl">
-          Depuis 2019, Edumove accompagne les etudiants francais vers des etudes de sante en Espagne et en Italie.
-          Notre mission : rendre accessible le diplome de sante a tous les etudiants motives, quel que soit leur resultat au PASS.
+          Depuis 2019, Edumove accompagne les étudiants français vers des études de santé en Espagne et en Italie.
+          Notre mission : rendre accessible le diplôme de santé à tous les étudiants motivés, quel que soit leur résultat au PASS.
         </p>
 
         {/* Stats row */}
         <div className="grid grid-cols-4 gap-3 mb-4">
           {[
-            { value: "+500", label: "Etudiants accompagnes" },
-            { value: "3", label: "Universites partenaires" },
-            { value: "5", label: "Filieres de sante" },
-            { value: "2019", label: "Annee de creation" },
+            { value: "+500", label: "Étudiants accompagnés" },
+            { value: "3", label: "Universités partenaires" },
+            { value: "5", label: "Filières de santé" },
+            { value: "2019", label: "Année de création" },
           ].map((stat, i) => (
             <div key={i} className="bg-[#f5f5fb] rounded-2xl p-4 text-center border border-gray-100">
               <p className="text-[#EC680A] text-xl font-bold mb-0.5">{stat.value}</p>
@@ -251,9 +251,9 @@ function SlideQuiSommesNous() {
         {/* What we do */}
         <div className="grid md:grid-cols-3 gap-3 mb-4">
           {[
-            { icon: GraduationCap, title: "Orientation", desc: "Analyse du profil, choix de la filiere et de l'universite adaptee a chaque etudiant" },
-            { icon: BookOpen, title: "Preparation", desc: "Cours de preparation aux tests d'admission, annales, simulations d'entretien" },
-            { icon: Globe, title: "Installation", desc: "Aide au logement, demarches administratives, integration sur place" },
+            { icon: GraduationCap, title: "Orientation", desc: "Analyse du profil, choix de la filière et de l'université adaptée à chaque étudiant" },
+            { icon: BookOpen, title: "Préparation", desc: "Cours de préparation aux tests d'admission, annales, simulations d'entretien" },
+            { icon: Globe, title: "Installation", desc: "Aide au logement, démarches administratives, intégration sur place" },
           ].map((item, i) => (
             <div key={i} className="bg-[#f5f5fb] rounded-2xl p-4 border border-gray-100">
               <div className="w-8 h-8 rounded-lg bg-[#615CA5]/10 flex items-center justify-center mb-2">
@@ -271,7 +271,7 @@ function SlideQuiSommesNous() {
             <img src="/edumove-icon-orange.svg" alt="Edumove" className="w-9 h-9 rounded-lg" />
             <div>
               <p className="text-white font-bold text-sm">Accompagnement 100% gratuit</p>
-              <p className="text-white/50 text-xs">De l&apos;orientation a l&apos;installation, sans frais supplementaires</p>
+              <p className="text-white/50 text-xs">De l&apos;orientation à l&apos;installation, sans frais supplémentaires</p>
             </div>
           </div>
           <div className="flex items-center gap-2 bg-[#EC680A] px-4 py-2 rounded-xl shrink-0">
@@ -299,21 +299,21 @@ function SlideConstat() {
             <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-3">LE CONSTAT</p>
             <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-3">Le PASS/LAS en France</h2>
             <p className="text-[#64748b] text-sm leading-relaxed">
-              Un concours unique qui elimine des etudiants brillants. Aucune garantie d&apos;acces au diplome, quelle que soit la motivation.
+              Un concours unique qui élimine des étudiants brillants. Aucune garantie d&apos;accès au diplôme, quelle que soit la motivation.
             </p>
           </div>
           <div className="bg-[#1B1D3A] rounded-2xl px-8 py-5 text-center shrink-0">
             <p className="text-[#EC680A] text-5xl font-extrabold leading-none">80%</p>
-            <p className="text-white/60 text-sm mt-2">n&apos;accedent pas au diplome</p>
+            <p className="text-white/60 text-sm mt-2">n&apos;accèdent pas au diplôme</p>
           </div>
         </div>
 
         <div className="grid grid-cols-4 gap-5 mb-8">
           {[
-            { value: "60 000+", label: "Etudiants inscrits en PASS chaque annee" },
-            { value: "80%", label: "Elimines des la premiere annee" },
-            { value: "2 ans", label: "Perdus en moyenne par les recales" },
-            { value: "0%", label: "Garantie de resultat malgre l'investissement" },
+            { value: "60 000+", label: "Étudiants inscrits en PASS chaque année" },
+            { value: "80%", label: "Éliminés dès la première année" },
+            { value: "2 ans", label: "Perdus en moyenne par les recalés" },
+            { value: "0%", label: "Garantie de résultat malgré l'investissement" },
           ].map((stat, i) => (
             <div key={i} className="bg-[#f5f5fb] rounded-2xl p-5 text-center border border-gray-100">
               <p className="text-[#EC680A] text-2xl font-bold mb-2">{stat.value}</p>
@@ -325,10 +325,10 @@ function SlideConstat() {
         <div className="bg-[#1B1D3A] rounded-2xl p-6 flex items-center justify-between">
           <div>
             <p className="text-white font-bold text-lg mb-1">Il existe une alternative.</p>
-            <p className="text-white/50 text-sm">Etudes de sante en Europe — admission sur dossier, diplome reconnu en France.</p>
+            <p className="text-white/50 text-sm">Études de santé en Europe — admission sur dossier, diplôme reconnu en France.</p>
           </div>
           <div className="flex items-center gap-2 bg-[#EC680A] px-5 py-2.5 rounded-xl shrink-0">
-            <span className="text-white font-semibold text-sm">Decouvrir &rarr;</span>
+            <span className="text-white font-semibold text-sm">Découvrir &rarr;</span>
           </div>
         </div>
       </div>
@@ -336,12 +336,12 @@ function SlideConstat() {
   );
 }
 
-/* ── Slide 5: L'alternative europeenne ── */
+/* ── Slide 5: L'alternative européenne ── */
 function SlideAlternative() {
   const unis = [
     { name: "Universidad Europea", flag: "\uD83C\uDDEA\uD83C\uDDF8", location: "5 campus en Espagne", desc: "Madrid, Malaga, Valence, Alicante, Canaries", since: "Depuis 2019", students: "+300" },
     { name: "UCJC Madrid", flag: "\uD83C\uDDEA\uD83C\uDDF8", location: "Madrid", desc: "Admission sur entretien, la plus accessible", since: "Depuis 2021", students: "+100" },
-    { name: "LINK Campus", flag: "\uD83C\uDDEE\uD83C\uDDF9", location: "Rome", desc: "Test d'admission 100% en francais", since: "Depuis 2020", students: "+150" },
+    { name: "LINK Campus", flag: "\uD83C\uDDEE\uD83C\uDDF9", location: "Rome", desc: "Test d'admission 100% en français", since: "Depuis 2020", students: "+150" },
   ];
   return (
     <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-16">
@@ -349,10 +349,10 @@ function SlideAlternative() {
         <div className="flex items-start justify-between mb-6">
           <div>
             <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-3">L&apos;ALTERNATIVE</p>
-            <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold">Nos universites partenaires</h2>
+            <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold">Nos universités partenaires</h2>
           </div>
           <p className="text-[#64748b] text-sm max-w-xs text-right">
-            Admission sur dossier ou test. Diplome reconnu en France (Directive 2005/36/CE).
+            Admission sur dossier ou test. Diplôme reconnu en France (Directive 2005/36/CE).
           </p>
         </div>
         <div className="grid md:grid-cols-3 gap-4 mb-6">
@@ -371,7 +371,7 @@ function SlideAlternative() {
               <p className="text-[#615CA5] text-xs font-medium mb-3">{u.desc}</p>
               <div className="bg-white rounded-lg px-3 py-1.5 inline-flex items-center gap-1.5 border border-gray-100">
                 <Users className="w-3 h-3 text-[#EC680A]" />
-                <span className="text-[#1B1D3A] text-xs font-semibold">{u.students} etudiants</span>
+                <span className="text-[#1B1D3A] text-xs font-semibold">{u.students} étudiants</span>
               </div>
             </div>
           ))}
@@ -381,10 +381,10 @@ function SlideAlternative() {
         <div className="bg-[#f5f5fb] rounded-2xl p-5 flex items-center justify-between border border-gray-100">
           <div className="flex items-center gap-8">
             {[
-              { value: "3", label: "Universites" },
-              { value: "5", label: "Filieres de sante" },
-              { value: "2", label: "Pays europeens" },
-              { value: "+500", label: "Etudiants accompagnes" },
+              { value: "3", label: "Universités" },
+              { value: "5", label: "Filières de santé" },
+              { value: "2", label: "Pays européens" },
+              { value: "+500", label: "Étudiants accompagnés" },
             ].map((stat, i) => (
               <div key={i} className="text-center">
                 <p className="text-[#EC680A] text-xl font-bold">{stat.value}</p>
@@ -393,7 +393,7 @@ function SlideAlternative() {
             ))}
           </div>
           <div className="flex items-center gap-2 bg-[#EC680A] px-4 py-2 rounded-xl shrink-0">
-            <span className="text-white font-semibold text-xs">100% financable</span>
+            <span className="text-white font-semibold text-xs">100% finançable</span>
           </div>
         </div>
       </div>
@@ -401,51 +401,51 @@ function SlideAlternative() {
   );
 }
 
-/* ── Slide 6: Les filieres ── */
+/* ── Slide 6: Les filières ── */
 function SlideFilieres() {
   const filieres = [
     {
       icon: Stethoscope,
-      name: "Medecine",
+      name: "Médecine",
       duree: "6 ans",
-      desc: "Formation complete en medecine generale. Possibilite de se specialiser ensuite en France via les ECN.",
-      debouches: "Generaliste, specialiste, chirurgien",
+      desc: "Formation complète en médecine générale. Possibilité de se spécialiser ensuite en France via les ECN.",
+      debouches: "Généraliste, spécialiste, chirurgien",
     },
     {
       icon: Bone,
       name: "Dentaire",
       duree: "5-6 ans",
-      desc: "Pratique clinique des la 3eme annee sur de vrais patients. Diplome reconnu dans toute l'UE.",
+      desc: "Pratique clinique dès la 3ème année sur de vrais patients. Diplôme reconnu dans toute l'UE.",
       debouches: "Chirurgien-dentiste, orthodontiste",
     },
     {
       icon: Heart,
-      name: "Kinesitherapie",
+      name: "Kinésithérapie",
       duree: "3-4 ans",
-      desc: "Formation axee sur la pratique. Stages cliniques integres et equipements de pointe.",
-      debouches: "Kine liberal, sport, reeducation",
+      desc: "Formation axée sur la pratique. Stages cliniques intégrés et équipements de pointe.",
+      debouches: "Kiné libéral, sport, rééducation",
     },
     {
       icon: Pill,
       name: "Pharmacie",
       duree: "5 ans",
-      desc: "Sciences pharmaceutiques, chimie medicale et stages en officine. Diplome europeen reconnu.",
-      debouches: "Officine, industrie, hopital",
+      desc: "Sciences pharmaceutiques, chimie médicale et stages en officine. Diplôme européen reconnu.",
+      debouches: "Officine, industrie, hôpital",
     },
     {
       icon: Dog,
-      name: "Veterinaire",
+      name: "Vétérinaire",
       duree: "5 ans",
-      desc: "Medecine veterinaire complete avec acces a des cliniques universitaires modernes.",
+      desc: "Médecine vétérinaire complète avec accès à des cliniques universitaires modernes.",
       debouches: "Cabinet, industrie, recherche",
     },
   ];
   return (
     <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-16">
       <div className="max-w-4xl w-full">
-        <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-3">LES FILIERES</p>
-        <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-2">5 filieres de sante accessibles</h2>
-        <p className="text-[#64748b] text-sm mb-8">Toutes reconnues en France via la Directive europeenne 2005/36/CE</p>
+        <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-3">LES FILIÈRES</p>
+        <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-2">5 filières de santé accessibles</h2>
+        <p className="text-[#64748b] text-sm mb-8">Toutes reconnues en France via la Directive européenne 2005/36/CE</p>
 
         <div className="grid grid-cols-5 gap-3 mb-6">
           {filieres.map((f, i) => (
@@ -457,7 +457,7 @@ function SlideFilieres() {
               <p className="text-[#EC680A] text-xs font-semibold mb-2">{f.duree}</p>
               <p className="text-[#64748b] text-[10px] leading-relaxed mb-3 flex-1">{f.desc}</p>
               <div className="bg-white rounded-lg px-2 py-1.5 border border-gray-100">
-                <p className="text-[#334155] text-[10px]"><span className="font-semibold">Debouches :</span> {f.debouches}</p>
+                <p className="text-[#334155] text-[10px]"><span className="font-semibold">Débouchés :</span> {f.debouches}</p>
               </div>
             </div>
           ))}
@@ -466,13 +466,13 @@ function SlideFilieres() {
         {/* Bottom banner */}
         <div className="bg-[#1B1D3A] rounded-2xl p-5 flex items-center justify-between">
           <div>
-            <p className="text-white font-bold text-sm">Toutes les filieres sont 100% financables</p>
-            <p className="text-white/50 text-xs">Pret etudiant du LCL + aides cumulables</p>
+            <p className="text-white font-bold text-sm">Toutes les filières sont 100% finançables</p>
+            <p className="text-white/50 text-xs">Prêt étudiant du LCL + aides cumulables</p>
           </div>
           <div className="flex items-center gap-4">
             <div className="text-center">
               <p className="text-[#EC680A] font-bold text-lg">100%</p>
-              <p className="text-white/40 text-[10px]">Financable</p>
+              <p className="text-white/40 text-[10px]">Finançable</p>
             </div>
             <div className="text-center">
               <p className="text-[#EC680A] font-bold text-lg">UE</p>
@@ -488,11 +488,11 @@ function SlideFilieres() {
 /* ── Slide 7: Tarifs ── */
 function SlideTarifs() {
   const data = [
-    { filiere: "Medecine", ucjc: "15 000", ue: "21 500", link: "19 800", duree: "6 ans" },
+    { filiere: "Médecine", ucjc: "15 000", ue: "21 500", link: "19 800", duree: "6 ans" },
     { filiere: "Dentaire", ucjc: "9 420", ue: "18 900", link: "19 800", duree: "5-6 ans" },
-    { filiere: "Kine", ucjc: "9 420", ue: "14 580", link: "7 900", duree: "3-4 ans" },
+    { filiere: "Kiné", ucjc: "9 420", ue: "14 580", link: "7 900", duree: "3-4 ans" },
     { filiere: "Pharmacie", ucjc: "9 420", ue: "15 000", link: "7 900", duree: "5 ans" },
-    { filiere: "Veterinaire", ucjc: "\u2014", ue: "17 340", link: "\u2014", duree: "5 ans" },
+    { filiere: "Vétérinaire", ucjc: "\u2014", ue: "17 340", link: "\u2014", duree: "5 ans" },
   ];
   return (
     <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-16 relative overflow-hidden">
@@ -501,17 +501,17 @@ function SlideTarifs() {
 
       <div className="max-w-4xl w-full relative z-10">
         <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-3">LES FRAIS</p>
-        <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-2">Combien coutent les etudes ?</h2>
-        <p className="text-[#64748b] text-sm mb-8">Frais de scolarite annuels par universite et par filiere</p>
+        <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-2">Combien coûtent les études ?</h2>
+        <p className="text-[#64748b] text-sm mb-8">Frais de scolarité annuels par université et par filière</p>
         <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
           <table className="w-full">
             <thead>
               <tr className="bg-[#1B1D3A] text-white">
-                <th className="px-5 py-4 text-left text-sm font-semibold">Filiere</th>
+                <th className="px-5 py-4 text-left text-sm font-semibold">Filière</th>
                 <th className="px-5 py-4 text-center text-sm font-semibold">{"\uD83C\uDDEA\uD83C\uDDF8"} UCJC</th>
                 <th className="px-5 py-4 text-center text-sm font-semibold">{"\uD83C\uDDEA\uD83C\uDDF8"} UE</th>
                 <th className="px-5 py-4 text-center text-sm font-semibold">{"\uD83C\uDDEE\uD83C\uDDF9"} LINK</th>
-                <th className="px-5 py-4 text-center text-sm font-semibold">Duree</th>
+                <th className="px-5 py-4 text-center text-sm font-semibold">Durée</th>
               </tr>
             </thead>
             <tbody>
@@ -529,32 +529,32 @@ function SlideTarifs() {
         </div>
         <div className="grid grid-cols-3 gap-4 mt-6">
           <div className="bg-white rounded-xl p-4 border border-gray-100 text-center">
-            <p className="text-[#EC680A] text-xl font-bold">des 7 900 {"\u20AC"}</p>
+            <p className="text-[#EC680A] text-xl font-bold">dès 7 900 {"\u20AC"}</p>
             <p className="text-[#64748b] text-xs mt-1">Tarif le plus bas / an</p>
           </div>
           <div className="bg-white rounded-xl p-4 border border-gray-100 text-center">
             <p className="text-[#615CA5] text-xl font-bold">100%</p>
-            <p className="text-[#64748b] text-xs mt-1">Financable via le pret du LCL</p>
+            <p className="text-[#64748b] text-xs mt-1">Finançable via le prêt du LCL</p>
           </div>
           <div className="bg-white rounded-xl p-4 border border-gray-100 text-center">
             <p className="text-[#1B1D3A] text-xl font-bold">0 {"\u20AC"} d&apos;acompte</p>
-            <p className="text-[#64748b] text-xs mt-1">Remboursement apres le diplome</p>
+            <p className="text-[#64748b] text-xs mt-1">Remboursement après le diplôme</p>
           </div>
         </div>
-        <p className="text-center text-[#94a3b8] text-xs mt-4">Tarifs 2026 — Tous les frais sont eligibles au pret etudiant du LCL</p>
+        <p className="text-center text-[#94a3b8] text-xs mt-4">Tarifs 2026 — Tous les frais sont éligibles au prêt étudiant du LCL</p>
       </div>
     </div>
   );
 }
 
-/* ── Slide 8: Comparaison (ACCESSIBILITE) ── */
+/* ── Slide 8: Comparaison (ACCESSIBILITÉ) ── */
 function SlideComparaison() {
   return (
     <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-16">
       <div className="max-w-4xl w-full">
         <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-3">COMPARATIF</p>
-        <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-2">Acceder au diplome de sante</h2>
-        <p className="text-[#64748b] text-sm mb-8">PASS en France vs Etudes en Europe : la question n&apos;est pas le prix, c&apos;est l&apos;acces</p>
+        <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-2">Accéder au diplôme de santé</h2>
+        <p className="text-[#64748b] text-sm mb-8">PASS en France vs Études en Europe : la question n&apos;est pas le prix, c&apos;est l&apos;accès</p>
         <div className="grid md:grid-cols-2 gap-6">
           {/* France */}
           <div className="bg-[#f5f5fb] border border-gray-200 rounded-2xl p-6">
@@ -564,12 +564,12 @@ function SlideComparaison() {
             </div>
             <ul className="space-y-3">
               {[
-                "Concours ultra-selectif (80% d'echec)",
-                "Aucune garantie d'obtenir le diplome",
-                "2 annees perdues en cas d'echec",
-                "Stress intense, impact sur la sante mentale",
-                "Nombre de places tres limite (numerus apertus)",
-                "Redoublement interdit depuis la reforme",
+                "Concours ultra-sélectif (80% d'échec)",
+                "Aucune garantie d'obtenir le diplôme",
+                "2 années perdues en cas d'échec",
+                "Stress intense, impact sur la santé mentale",
+                "Nombre de places très limité (numerus apertus)",
+                "Redoublement interdit depuis la réforme",
               ].map((item, i) => (
                 <li key={i} className="flex items-start gap-2 text-sm text-[#334155]">
                   <XCircle className="w-4 h-4 text-red-400 mt-0.5 shrink-0" />
@@ -578,8 +578,8 @@ function SlideComparaison() {
               ))}
             </ul>
             <div className="mt-5 bg-red-50 border border-red-200 rounded-xl p-3 text-center">
-              <p className="text-red-700 font-bold text-lg">Acces non garanti</p>
-              <p className="text-red-500 text-xs">Meme avec d&apos;excellentes notes au bac</p>
+              <p className="text-red-700 font-bold text-lg">Accès non garanti</p>
+              <p className="text-red-500 text-xs">Même avec d&apos;excellentes notes au bac</p>
             </div>
           </div>
           {/* Europe */}
@@ -591,10 +591,10 @@ function SlideComparaison() {
             <ul className="space-y-3">
               {[
                 "Admission sur dossier ou test (pas de concours)",
-                "Diplome garanti si l'etudiant travaille",
-                "Pas de temps perdu \u2014 progression chaque annee",
-                "Diplome reconnu en France (Directive UE)",
-                "Pratique clinique des les premieres annees",
+                "Diplôme garanti si l'étudiant travaille",
+                "Pas de temps perdu \u2014 progression chaque année",
+                "Diplôme reconnu en France (Directive UE)",
+                "Pratique clinique dès les premières années",
                 "Financement 100% possible avec le LCL",
               ].map((item, i) => (
                 <li key={i} className="flex items-start gap-2 text-sm text-[#334155]">
@@ -604,8 +604,8 @@ function SlideComparaison() {
               ))}
             </ul>
             <div className="mt-5 bg-green-50 border border-green-200 rounded-xl p-3 text-center">
-              <p className="text-green-700 font-bold text-lg">Acces garanti</p>
-              <p className="text-green-600 text-xs">Admission sur dossier, diplome accessible a tous</p>
+              <p className="text-green-700 font-bold text-lg">Accès garanti</p>
+              <p className="text-green-600 text-xs">Admission sur dossier, diplôme accessible à tous</p>
             </div>
           </div>
         </div>
@@ -614,12 +614,12 @@ function SlideComparaison() {
   );
 }
 
-/* ── Slide 9: LCL Intro avec photos equipe ── */
+/* ── Slide 9: LCL Intro avec photos équipe ── */
 function SlideLCLIntro() {
   const team = [
     { name: "Jean-Christophe Thomas", role: "Directeur d'Agence", photo: "/lcl-jc.jpg" },
-    { name: "Meriem Guendouz", role: "Conseillere Particuliers", photo: "/lcl-meriem.jpg" },
-    { name: "Laura Munoz", role: "Conseillere en Patrimoine", photo: "/lcl-laura.jpg" },
+    { name: "Meriem Guendouz", role: "Conseillère Particuliers", photo: "/lcl-meriem.jpg" },
+    { name: "Laura Munoz", role: "Conseillère en Patrimoine", photo: "/lcl-laura.jpg" },
   ];
   return (
     <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-16 relative overflow-hidden">
@@ -636,16 +636,16 @@ function SlideLCLIntro() {
           </div>
         </div>
         <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-3">PARTENARIAT EXCLUSIF</p>
-        <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-4">Financer vos etudes de sante en Europe</h2>
+        <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-4">Financer vos études de santé en Europe</h2>
         <p className="text-[#64748b] text-sm max-w-xl mx-auto mb-8">
-          Le LCL accompagne les etudiants Edumove avec une offre de pret etudiant specialement concue pour les etudes de sante a l&apos;etranger. Un partenariat unique en France.
+          Le LCL accompagne les étudiants Edumove avec une offre de prêt étudiant spécialement conçue pour les études de santé à l&apos;étranger. Un partenariat unique en France.
         </p>
 
         {/* Key partnership stats */}
         <div className="flex justify-center gap-5 mb-8">
           {[
             { value: "75 000 \u20AC", label: "Montant financ\u00e9" },
-            { value: "0 \u20AC", label: "Pendant les etudes" },
+            { value: "0 \u20AC", label: "Pendant les études" },
             { value: "2,01%", label: "TAEG" },
           ].map((stat, i) => (
             <div key={i} className="bg-[#f5f5fb] rounded-xl px-6 py-4 text-center border border-gray-100">
@@ -655,7 +655,7 @@ function SlideLCLIntro() {
           ))}
         </div>
 
-        <p className="text-[#64748b] text-xs uppercase tracking-widest mb-5">Votre equipe dediee</p>
+        <p className="text-[#64748b] text-xs uppercase tracking-widest mb-5">Votre équipe dédiée</p>
         <div className="flex justify-center gap-8">
           {team.map((person, i) => (
             <div key={i} className="text-center">
@@ -674,7 +674,7 @@ function SlideLCLIntro() {
   );
 }
 
-/* ── Slide 10: Le pret LCL (WHITE BG) ── */
+/* ── Slide 10: Le prêt LCL (WHITE BG) ── */
 function SlideLCLPret() {
   return (
     <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-16 relative overflow-hidden">
@@ -684,9 +684,9 @@ function SlideLCLPret() {
       <div className="max-w-4xl w-full relative z-10">
         <div className="flex items-center gap-3 mb-3">
           <img src="/lcl-logo-officiel.svg" alt="LCL" className="h-6" />
-          <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em]">LE PRET ETUDIANT SANTE</p>
+          <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em]">LE PRÊT ÉTUDIANT SANTÉ</p>
         </div>
-        <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-8">Un pret pense pour vous</h2>
+        <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-8">Un prêt pensé pour vous</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           {[
             { value: "75 000 \u20AC", label: "Montant financ\u00e9", sub: "jusqu'\u00e0" },
@@ -703,9 +703,9 @@ function SlideLCLPret() {
         </div>
         <div className="grid md:grid-cols-2 gap-4">
           {[
-            { icon: CheckCircle2, title: "Scolarite 100% financee", desc: "Le pret couvre l'integralite des frais de scolarite, quelle que soit la filiere ou l'universite." },
-            { icon: Home, title: "Vie courante incluse", desc: "Logement, alimentation, transports, assurance : tout est integre dans le montant du pret." },
-            { icon: Calendar, title: "0 \u20AC a payer pendant les etudes", desc: "Differe total : vous ne commencez a rembourser qu'apres l'obtention de votre diplome." },
+            { icon: CheckCircle2, title: "Scolarité 100% financée", desc: "Le prêt couvre l'intégralité des frais de scolarité, quelle que soit la filière ou l'université." },
+            { icon: Home, title: "Vie courante incluse", desc: "Logement, alimentation, transports, assurance : tout est intégré dans le montant du prêt." },
+            { icon: Calendar, title: "0 \u20AC à payer pendant les études", desc: "Différé total : vous ne commencez à rembourser qu'après l'obtention de votre diplôme." },
             { icon: TrendingUp, title: "Taux \u00e0 2,01% TAEG", desc: "Taux pr\u00e9f\u00e9rentiel n\u00e9goci\u00e9 par Edumove. Remboursement jusqu'\u00e0 120 mois." },
           ].map((item, i) => (
             <div key={i} className="flex items-start gap-3 bg-[#f5f5fb] border border-gray-100 rounded-2xl p-4">
@@ -724,7 +724,7 @@ function SlideLCLPret() {
   );
 }
 
-/* ── Slide 11: Conditions du pret ── */
+/* ── Slide 11: Conditions du prêt ── */
 function SlideConditions() {
   return (
     <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-16 relative overflow-hidden">
@@ -737,36 +737,36 @@ function SlideConditions() {
       <div className="max-w-4xl w-full">
         <div className="flex items-center gap-3 mb-3">
           <img src="/lcl-logo-officiel.svg" alt="LCL" className="h-6" />
-          <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em]">CONDITIONS DU PRET</p>
+          <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em]">CONDITIONS DU PRÊT</p>
         </div>
-        <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-3">Un pret accessible a tous</h2>
-        <p className="text-[#64748b] text-sm mb-8">Des conditions pensees pour les familles, sans barriere financiere</p>
+        <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-3">Un prêt accessible à tous</h2>
+        <p className="text-[#64748b] text-sm mb-8">Des conditions pensées pour les familles, sans barrière financière</p>
 
         <div className="grid md:grid-cols-2 gap-5 mb-6">
           {[
             {
               icon: Shield,
               title: "Aucune condition de revenus",
-              desc: "Pas de condition sur les revenus parentaux pour l'obtention du pret. Tous les profils sont eligibles.",
-              highlight: "Tous eligibles",
+              desc: "Pas de condition sur les revenus parentaux pour l'obtention du prêt. Tous les profils sont éligibles.",
+              highlight: "Tous éligibles",
             },
             {
               icon: Clock,
-              title: "Remboursement differe total",
-              desc: "Vous ne remboursez qu'apres votre diplome, une fois en activite professionnelle. 0 \u20AC a payer pendant les etudes.",
-              highlight: "0 \u20AC pendant les etudes",
+              title: "Remboursement différé total",
+              desc: "Vous ne remboursez qu'après votre diplôme, une fois en activité professionnelle. 0 \u20AC à payer pendant les études.",
+              highlight: "0 \u20AC pendant les études",
             },
             {
               icon: HandCoins,
               title: "Couverture totale",
-              desc: "Le pret couvre les frais de scolarite ET le cout de la vie : logement, alimentation, transports, assurance.",
-              highlight: "Scolarite + vie courante",
+              desc: "Le prêt couvre les frais de scolarité ET le coût de la vie : logement, alimentation, transports, assurance.",
+              highlight: "Scolarité + vie courante",
             },
             {
               icon: Award,
-              title: "Flexibilite du pret",
-              desc: "En cas de changement de filiere au sein des universites partenaires, le pret reste valide. Pas de penalite.",
-              highlight: "Changement de filiere OK",
+              title: "Flexibilité du prêt",
+              desc: "En cas de changement de filière au sein des universités partenaires, le prêt reste valide. Pas de pénalité.",
+              highlight: "Changement de filière OK",
             },
           ].map((item, i) => (
             <div key={i} className="bg-[#f5f5fb] rounded-2xl p-6 border border-gray-100">
@@ -786,14 +786,14 @@ function SlideConditions() {
 
         {/* Process */}
         <div className="bg-[#1B1D3A] rounded-2xl p-5">
-          <p className="text-white/40 text-[10px] uppercase tracking-widest mb-4 text-center">Comment ca marche ?</p>
+          <p className="text-white/40 text-[10px] uppercase tracking-widest mb-4 text-center">Comment ça marche ?</p>
           <div className="flex items-center justify-between gap-2">
             {[
-              { step: "1", label: "Admission confirmee" },
-              { step: "2", label: "Dossier de pret avec Edumove" },
+              { step: "1", label: "Admission confirmée" },
+              { step: "2", label: "Dossier de prêt avec Edumove" },
               { step: "3", label: "Rendez-vous avec le LCL" },
-              { step: "4", label: "Pret accorde" },
-              { step: "5", label: "Fonds debloques" },
+              { step: "4", label: "Prêt accordé" },
+              { step: "5", label: "Fonds débloqués" },
             ].map((s, i) => (
               <div key={i} className="flex items-center gap-2">
                 <div className="flex flex-col items-center gap-1.5">
@@ -823,7 +823,7 @@ function SlideLCLSimulation() {
     {
       name: "Lucas",
       emoji: "\uD83D\uDC68\u200D\u2695\uFE0F",
-      filiere: "Dentaire \u2014 UCJC Madrid",
+      filiere: "Dentaire \u2014 UCJC à Madrid",
       frais: "9 420",
       duree: "5 ans",
       total: "47 100",
@@ -834,7 +834,7 @@ function SlideLCLSimulation() {
     {
       name: "Sarah",
       emoji: "\uD83D\uDC69\u200D\u2695\uFE0F",
-      filiere: "Medecine \u2014 UE Madrid",
+      filiere: "Médecine \u2014 UE Madrid",
       frais: "21 500",
       duree: "6 ans",
       total: "129 000",
@@ -851,10 +851,10 @@ function SlideLCLSimulation() {
       <div className="max-w-4xl w-full relative z-10">
         <div className="flex items-center gap-3 mb-3">
           <img src="/lcl-logo-officiel.svg" alt="LCL" className="h-5" />
-          <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em]">SIMULATIONS CONCRETES</p>
+          <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em]">SIMULATIONS CONCRÈTES</p>
         </div>
-        <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-2">Combien ca coute vraiment ?</h2>
-        <p className="text-[#64748b] text-sm mb-8">Deux profils reels, deux situations differentes</p>
+        <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-2">Combien ça coûte vraiment ?</h2>
+        <p className="text-[#64748b] text-sm mb-8">Deux profils réels, deux situations différentes</p>
         <div className="grid md:grid-cols-2 gap-6">
           {cases.map((c, i) => (
             <div key={i} className="bg-[#f5f5fb] rounded-2xl p-6 border border-gray-100">
@@ -869,11 +869,11 @@ function SlideLCLSimulation() {
               </div>
               <div className="space-y-2.5 mb-5">
                 <div className="flex justify-between text-sm"><span className="text-[#64748b]">Frais / an</span><span className="text-[#1B1D3A] font-semibold">{c.frais} {"\u20AC"}</span></div>
-                <div className="flex justify-between text-sm"><span className="text-[#64748b]">Duree</span><span className="text-[#1B1D3A] font-semibold">{c.duree}</span></div>
-                <div className="flex justify-between text-sm"><span className="text-[#64748b]">Cout total scolarite</span><span className="text-[#EC680A] font-bold">{c.total} {"\u20AC"}</span></div>
+                <div className="flex justify-between text-sm"><span className="text-[#64748b]">Durée</span><span className="text-[#1B1D3A] font-semibold">{c.duree}</span></div>
+                <div className="flex justify-between text-sm"><span className="text-[#64748b]">Coût total scolarité</span><span className="text-[#EC680A] font-bold">{c.total} {"\u20AC"}</span></div>
                 <div className="h-px bg-gray-200 my-1" />
-                <div className="flex justify-between text-sm"><span className="text-[#64748b]">Salaire apres diplome</span><span className="text-[#1B1D3A] font-semibold">{c.salaire}</span></div>
-                <div className="flex justify-between text-sm"><span className="text-[#64748b]">Mensualite estimee</span><span className="text-[#1B1D3A] font-semibold">{c.mensualite}</span></div>
+                <div className="flex justify-between text-sm"><span className="text-[#64748b]">Salaire après diplôme</span><span className="text-[#1B1D3A] font-semibold">{c.salaire}</span></div>
+                <div className="flex justify-between text-sm"><span className="text-[#64748b]">Mensualité estimée</span><span className="text-[#1B1D3A] font-semibold">{c.mensualite}</span></div>
               </div>
               <div className="bg-green-50 border border-green-200 rounded-xl p-3 text-center">
                 <p className="text-green-700 font-bold text-sm">{c.ratio}</p>
@@ -888,7 +888,7 @@ function SlideLCLSimulation() {
             <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center">
               <CheckCircle2 className="w-4 h-4 text-green-400" />
             </div>
-            <p className="text-white text-sm font-medium">Un investissement rentable — rembourse en quelques annees d&apos;exercice</p>
+            <p className="text-white text-sm font-medium">Un investissement rentable — remboursé en quelques années d&apos;exercice</p>
           </div>
           <p className="text-white/40 text-xs">Simulations indicatives</p>
         </div>
@@ -900,16 +900,16 @@ function SlideLCLSimulation() {
 /* ── Slide 13: Aides cumulables (WHITE bg) ── */
 function SlideAides() {
   const aides = [
-    { name: "Bourse CROUS", amount: "1 000 - 5 000 \u20AC/an", desc: "Selon les revenus de la famille, compatible avec les etudes en Europe", icon: GraduationCap },
-    { name: "Aide a la mobilite internationale", amount: "~400 \u20AC/mois", desc: "Pour les boursiers partant etudier a l'etranger (4 mois max)", icon: MapPin },
-    { name: "Aide au merite", amount: "~900 \u20AC/an", desc: "Pour les bacheliers mention Tres Bien, cumulable avec la bourse CROUS", icon: Award },
-    { name: "Aides regionales", amount: "Variable", desc: "Certaines regions proposent des aides specifiques pour les etudes a l'etranger", icon: Home },
+    { name: "Bourse CROUS", amount: "1 000 - 5 000 \u20AC/an", desc: "Selon les revenus de la famille, compatible avec les études en Europe", icon: GraduationCap },
+    { name: "Aide à la mobilité internationale", amount: "~400 \u20AC/mois", desc: "Pour les boursiers partant étudier à l'étranger (4 mois max)", icon: MapPin },
+    { name: "Aide au mérite", amount: "~900 \u20AC/an", desc: "Pour les bacheliers mention Très Bien, cumulable avec la bourse CROUS", icon: Award },
+    { name: "Aides régionales", amount: "Variable", desc: "Certaines régions proposent des aides spécifiques pour les études à l'étranger", icon: Home },
     { name: "CAF / APL", amount: "Variable", desc: "Aides au logement possibles selon le pays et la convention du logement", icon: Building2 },
   ];
   return (
     <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-16">
       <div className="max-w-4xl w-full">
-        <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-3">CUMULABLE AVEC LE PRET DU LCL</p>
+        <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-3">CUMULABLE AVEC LE PRÊT DU LCL</p>
         <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-8">Les autres aides disponibles</h2>
         <div className="grid md:grid-cols-2 gap-4">
           {aides.map((aide, i) => (
@@ -928,15 +928,15 @@ function SlideAides() {
           ))}
         </div>
         <div className="bg-[#1B1D3A] rounded-2xl p-5 mt-6 text-center">
-          <p className="text-white font-semibold text-sm">Toutes ces aides sont cumulables avec le pret du LCL</p>
-          <p className="text-white/50 text-xs mt-1">Edumove vous aide a identifier les aides auxquelles vous avez droit</p>
+          <p className="text-white font-semibold text-sm">Toutes ces aides sont cumulables avec le prêt du LCL</p>
+          <p className="text-white/50 text-xs mt-1">Edumove vous aide à identifier les aides auxquelles vous avez droit</p>
         </div>
       </div>
     </div>
   );
 }
 
-/* ── Slide 14: Temoignage (WHITE bg) ── */
+/* ── Slide 14: Témoignage (WHITE bg) ── */
 function SlideTemoignage() {
   return (
     <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-16 relative overflow-hidden">
@@ -952,7 +952,7 @@ function SlideTemoignage() {
       </div>
 
       <div className="max-w-3xl w-full relative z-10 text-center">
-        <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-6">TEMOIGNAGE</p>
+        <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-6">TÉMOIGNAGE</p>
 
         {/* Quote */}
         <div className="relative mb-6">
@@ -961,12 +961,12 @@ function SlideTemoignage() {
             <span className="text-white font-bold text-2xl">L</span>
           </div>
           <blockquote className="text-[#1B1D3A] text-xl md:text-2xl font-medium leading-relaxed mb-6 italic relative z-10">
-            &laquo; Le jour ou j&apos;ai dit oui a Edumove, c&apos;est le jour ou tout a change. Aujourd&apos;hui je suis en 3eme annee de dentaire a Madrid, je pratique sur de vrais patients, et je ne regrette absolument rien. &raquo;
+            &laquo; Le jour où j&apos;ai dit oui à Edumove, c&apos;est le jour où tout a changé. Aujourd&apos;hui je suis en 3ème année de dentaire à Madrid, je pratique sur de vrais patients, et je ne regrette absolument rien. &raquo;
           </blockquote>
         </div>
 
         <p className="text-[#1B1D3A] font-semibold text-lg">Lola</p>
-        <p className="text-[#64748b] text-sm mb-8">3eme annee de Dentaire — Universidad Europea de Madrid</p>
+        <p className="text-[#64748b] text-sm mb-8">3ème année de Dentaire — Universidad Europea de Madrid</p>
 
         {/* Timeline journey */}
         <div className="bg-[#f5f5fb] border border-gray-100 rounded-2xl p-5">
@@ -974,9 +974,9 @@ function SlideTemoignage() {
           <div className="flex items-center justify-center gap-3">
             {[
               { label: "Bac S mention Bien", icon: "\uD83C\uDF93" },
-              { label: "PASS recalee", icon: "\u274C" },
-              { label: "Test PE reussi", icon: "\u2705" },
-              { label: "Dentaire a Madrid", icon: "\uD83E\uDDB7" },
+              { label: "PASS recalée", icon: "\u274C" },
+              { label: "Test PE réussi", icon: "\u2705" },
+              { label: "Dentaire à Madrid", icon: "\uD83E\uDDB7" },
             ].map((step, i) => (
               <div key={i} className="flex items-center gap-3">
                 <div className="flex flex-col items-center gap-1.5">
@@ -997,8 +997,8 @@ function SlideTemoignage() {
         {/* Additional info */}
         <div className="grid grid-cols-3 gap-3 mt-5">
           {[
-            { value: "0 \u20AC", label: "Paye pendant ses etudes" },
-            { value: "100%", label: "Finance par le LCL" },
+            { value: "0 \u20AC", label: "Payé pendant ses études" },
+            { value: "100%", label: "Financé par le LCL" },
             { value: "6 500 \u20AC", label: "Salaire attendu/mois" },
           ].map((stat, i) => (
             <div key={i} className="bg-[#f5f5fb] rounded-xl p-3 border border-gray-100 text-center">
@@ -1015,19 +1015,19 @@ function SlideTemoignage() {
 /* ── Slide 15: Accompagnement Edumove ── */
 function SlideAccompagnement() {
   const steps = [
-    { num: "1", title: "Premier echange gratuit", desc: "Un conseiller analyse votre profil et votre projet d'etudes de sante", icon: Phone },
-    { num: "2", title: "Preparation aux tests", desc: "Cours illimites, annales, simulations (PE ou QCM LINK) avec suivi personnalise", icon: BookOpen },
-    { num: "3", title: "Dossier de candidature", desc: "Constitution complete du dossier, suivi jusqu'a l'admission confirmee", icon: FileText },
-    { num: "4", title: "Financement", desc: "Montage du dossier de pret avec le LCL, aide aux bourses et identification des aides", icon: Euro },
-    { num: "5", title: "Installation sur place", desc: "Aide au logement, traduction de documents, demarches administratives, conseils pratiques", icon: Home },
-    { num: "6", title: "Suivi continu", desc: "Accompagnement tout au long du cursus, support en cas de difficulte, communaute etudiante", icon: Heart },
+    { num: "1", title: "Premier échange gratuit", desc: "Un conseiller analyse votre profil et votre projet d'études de santé", icon: Phone },
+    { num: "2", title: "Préparation aux tests", desc: "Cours illimités, annales, simulations (PE ou QCM LINK) avec suivi personnalisé", icon: BookOpen },
+    { num: "3", title: "Dossier de candidature", desc: "Constitution complète du dossier, suivi jusqu'à l'admission confirmée", icon: FileText },
+    { num: "4", title: "Financement", desc: "Montage du dossier de prêt avec le LCL, aide aux bourses et identification des aides", icon: Euro },
+    { num: "5", title: "Installation sur place", desc: "Aide au logement, traduction de documents, démarches administratives, conseils pratiques", icon: Home },
+    { num: "6", title: "Suivi continu", desc: "Accompagnement tout au long du cursus, support en cas de difficulté, communauté étudiante", icon: Heart },
   ];
   return (
     <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-16">
       <div className="max-w-4xl w-full">
-        <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-3">DE A A Z</p>
+        <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-3">DE A À Z</p>
         <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-3">L&apos;accompagnement Edumove</h2>
-        <p className="text-[#64748b] text-sm mb-8">100% gratuit — de l&apos;orientation a l&apos;installation</p>
+        <p className="text-[#64748b] text-sm mb-8">100% gratuit — de l&apos;orientation à l&apos;installation</p>
         <div className="grid md:grid-cols-3 gap-4 mb-6">
           {steps.map((step, i) => (
             <div key={i} className="bg-[#f5f5fb] rounded-2xl p-5 border border-gray-100 relative">
@@ -1045,7 +1045,7 @@ function SlideAccompagnement() {
         <div className="bg-[#1B1D3A] rounded-2xl p-6 flex items-center justify-between">
           <div>
             <p className="text-white font-bold text-lg mb-1">Un accompagnement complet, 100% gratuit</p>
-            <p className="text-white/50 text-sm">Edumove ne facture aucun frais supplementaire aux etudiants</p>
+            <p className="text-white/50 text-sm">Edumove ne facture aucun frais supplémentaire aux étudiants</p>
           </div>
           <div className="flex items-center gap-3 shrink-0">
             <img src="/edumove-icon-orange.svg" alt="Edumove" className="w-10 h-10 rounded-xl" />
@@ -1085,7 +1085,7 @@ function SlideMerci() {
         <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-4">MERCI</p>
         <h2 className="text-[#1B1D3A] text-4xl md:text-5xl font-extrabold mb-3">Merci pour votre attention !</h2>
         <p className="text-[#64748b] text-base mb-10 max-w-lg mx-auto">
-          Vous avez des questions ? C&apos;est le moment ! Notre equipe est la pour y repondre.
+          Vous avez des questions ? C&apos;est le moment ! Notre équipe est là pour y répondre.
         </p>
 
         {/* Contact cards */}
@@ -1094,7 +1094,7 @@ function SlideMerci() {
             <div className="w-10 h-10 rounded-xl bg-[#EC680A]/10 flex items-center justify-center mx-auto mb-3">
               <Phone className="w-5 h-5 text-[#EC680A]" />
             </div>
-            <p className="text-[#1B1D3A] font-bold text-sm mb-1">Telephone</p>
+            <p className="text-[#1B1D3A] font-bold text-sm mb-1">Téléphone</p>
             <p className="text-[#EC680A] font-semibold text-lg">01 89 74 42 57</p>
           </div>
           <div className="bg-[#f5f5fb] rounded-2xl p-5 border border-gray-100">
@@ -1117,16 +1117,16 @@ function SlideMerci() {
         <div className="bg-[#1B1D3A] rounded-2xl p-6">
           <div className="flex items-center justify-center gap-3 mb-3">
             <MessageCircle className="w-6 h-6 text-[#EC680A]" />
-            <p className="text-white font-bold text-xl">Questions &amp; Reponses</p>
+            <p className="text-white font-bold text-xl">Questions &amp; Réponses</p>
           </div>
-          <p className="text-white/60 text-sm mb-4">N&apos;hesitez pas a poser vos questions dans le chat ou a lever la main</p>
+          <p className="text-white/60 text-sm mb-4">N&apos;hésitez pas à poser vos questions dans le chat ou à lever la main</p>
           <div className="flex items-center justify-center gap-6">
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
               <span className="text-white/70 text-xs">En direct</span>
             </div>
             <div className="h-4 w-px bg-white/10" />
-            <span className="text-white/40 text-xs">Edumove &amp; LCL a votre ecoute</span>
+            <span className="text-white/40 text-xs">Edumove &amp; LCL à votre écoute</span>
           </div>
         </div>
       </div>
@@ -1266,7 +1266,7 @@ export default function WebinarPresentation() {
               else document.documentElement.requestFullscreen();
             }}
             className="w-8 h-8 rounded-lg bg-[#1B1D3A]/5 border border-gray-100 flex items-center justify-center hover:bg-[#1B1D3A]/10 transition-all"
-            title="Plein ecran (F)"
+            title="Plein écran (F)"
           >
             <Maximize className="w-3.5 h-3.5 text-[#1B1D3A]/40" />
           </button>
