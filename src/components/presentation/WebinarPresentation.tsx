@@ -735,7 +735,91 @@ function SlideLCLIntro({ focusMember = -1 }: { focusMember?: number }) {
   );
 }
 
-/* ── Slide 10: Le prêt LCL (WHITE BG) ── */
+/* ── Slide 10: Présentation du LCL ── */
+function SlideLCLPresentation() {
+  return (
+    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-16 relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-80 h-80 bg-[#615CA5]/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#EC680A]/5 rounded-full blur-3xl" />
+
+      <div className="max-w-4xl w-full relative z-10">
+        <div className="flex items-center gap-4 mb-6 anim-fade-in" style={{ animationDelay: '0.1s' }}>
+          <img src="/lcl-logo-officiel.svg" alt="LCL" className="h-12" />
+          <div>
+            <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em]">QUI EST LE LCL ?</p>
+            <p className="text-[#64748b] text-xs">Pour aller de l&apos;avant</p>
+          </div>
+        </div>
+
+        <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-3 anim-fade-up" style={{ animationDelay: '0.2s' }}>
+          Une banque historique au service de vos projets
+        </h2>
+        <p className="text-[#64748b] text-sm mb-6 max-w-2xl anim-fade-up" style={{ animationDelay: '0.3s' }}>
+          Fondé en 1863 à Lyon sous le nom de Crédit Lyonnais, le LCL est l&apos;une des plus anciennes banques françaises. Devenu LCL en 2005, il fait partie du groupe Crédit Agricole, premier groupe bancaire européen.
+        </p>
+
+        {/* Stats */}
+        <div className="grid grid-cols-4 gap-3 mb-6 anim-fade-up" style={{ animationDelay: '0.35s' }}>
+          {[
+            { value: "1863", label: "Année de fondation" },
+            { value: "6M+", label: "Clients particuliers" },
+            { value: "1 900", label: "Agences en France" },
+            { value: "160+", label: "Ans d'expérience" },
+          ].map((stat, i) => (
+            <div key={i} className="bg-[#f5f5fb] rounded-2xl p-4 text-center border border-gray-100 anim-scale-in" style={{ animationDelay: `${0.35 + i * 0.08}s` }}>
+              <p className="text-[#1B1D3A] text-xl font-bold mb-0.5">{stat.value}</p>
+              <p className="text-[#64748b] text-[10px]">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Agence Rue du Bac */}
+        <div className="bg-[#1B1D3A] rounded-2xl p-5 mb-5 anim-fade-up" style={{ animationDelay: '0.5s' }}>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-xl bg-[#EC680A]/20 flex items-center justify-center">
+                <MapPin className="w-6 h-6 text-[#EC680A]" />
+              </div>
+              <div>
+                <p className="text-white font-bold text-base">Agence LCL Paris Rue du Bac</p>
+                <p className="text-white/50 text-xs">205 Boulevard Saint-Germain, 75007 Paris</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-6">
+              <div className="text-center">
+                <p className="text-[#EC680A] font-bold text-sm">7ème arr.</p>
+                <p className="text-white/40 text-[10px]">Paris</p>
+              </div>
+              <div className="text-center">
+                <p className="text-[#EC680A] font-bold text-sm">3 experts</p>
+                <p className="text-white/40 text-[10px]">Dédiés Edumove</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Key values */}
+        <div className="grid md:grid-cols-3 gap-3 anim-fade-up" style={{ animationDelay: '0.6s' }}>
+          {[
+            { icon: Shield, title: "Groupe Crédit Agricole", desc: "1er groupe bancaire en Europe, solidité et confiance depuis plus d'un siècle" },
+            { icon: Users, title: "Équipe dédiée Edumove", desc: "Des conseillers formés aux spécificités du financement des études de santé en Europe" },
+            { icon: Star, title: "Pour aller de l'avant", desc: "Le LCL croit dans les projets de ses clients et libère l'énergie d'entreprendre" },
+          ].map((item, i) => (
+            <div key={i} className="bg-[#f5f5fb] rounded-2xl p-4 border border-gray-100 anim-scale-in" style={{ animationDelay: `${0.6 + i * 0.08}s` }}>
+              <div className="w-9 h-9 rounded-lg bg-[#615CA5]/10 flex items-center justify-center mb-2">
+                <item.icon className="w-4 h-4 text-[#615CA5]" />
+              </div>
+              <p className="text-[#1B1D3A] font-semibold text-sm mb-0.5">{item.title}</p>
+              <p className="text-[#64748b] text-xs leading-relaxed">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ── Slide 11: Le prêt LCL (WHITE BG) ── */
 function SlideLCLPret() {
   return (
     <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-16 relative overflow-hidden">
@@ -1260,7 +1344,8 @@ const SLIDES = [
   SlideTarifs,          // 7
   SlideComparaison,     // 8
   SlideLCLIntro,        // 9
-  SlideLCLPret,         // 10
+  SlideLCLPresentation, // 10
+  SlideLCLPret,         // 11
   SlideConditions,      // 11
   SlideLCLSimulation,   // 12
   SlideTemoignage,      // 13
