@@ -660,8 +660,8 @@ function SlideLCLIntro({ focusMember = -1 }: { focusMember?: number }) {
       <div className="absolute bottom-0 right-0 w-80 h-80 bg-[#EC680A]/5 rounded-full blur-3xl" />
 
       <div className="max-w-4xl w-full text-center relative z-10">
-        {/* Content fades when a member is focused */}
-        <div className={`transition-all duration-500 ${hasFocus ? "opacity-0 scale-95 absolute inset-0 pointer-events-none" : "opacity-100"}`}>
+        {/* Content dims when a member is focused */}
+        <div className={`transition-all duration-500 ${hasFocus ? "opacity-15 blur-[2px] pointer-events-none" : "opacity-100"}`}>
           <div className="flex items-center justify-center gap-6 mb-6 anim-fade-in" style={{ animationDelay: '0.1s' }}>
             <img src="/lcl-logo-officiel.svg" alt="LCL" className="h-16" />
             <span className="text-[#334155] text-2xl">&times;</span>
@@ -693,26 +693,24 @@ function SlideLCLIntro({ focusMember = -1 }: { focusMember?: number }) {
           <p className="text-[#64748b] text-xs uppercase tracking-widest mb-5 anim-fade-up" style={{ animationDelay: '0.55s' }}>Votre équipe dédiée</p>
         </div>
 
-        {/* Team members — always visible, grow when focused */}
-        {!hasFocus && (
-          <div className="flex justify-center gap-8">
-            {LCL_TEAM.map((person, i) => (
-              <div key={i} className="text-center anim-scale-in" style={{ animationDelay: `${0.6 + i * 0.1}s` }}>
-                <img
-                  src={person.photo}
-                  alt={person.name}
-                  className="w-20 h-20 rounded-full object-cover mx-auto mb-3 border-3 border-[#EC680A]/30 shadow-lg"
-                />
-                <p className="text-[#1B1D3A] font-semibold text-sm">{person.name}</p>
-                <p className="text-[#94a3b8] text-xs">{person.role}</p>
-              </div>
-            ))}
-          </div>
-        )}
+        {/* Team members — dim when focused */}
+        <div className={`flex justify-center gap-8 transition-all duration-500 ${hasFocus ? "opacity-15 blur-[2px]" : ""}`}>
+          {LCL_TEAM.map((person, i) => (
+            <div key={i} className={`text-center ${!hasFocus ? "anim-scale-in" : ""}`} style={!hasFocus ? { animationDelay: `${0.6 + i * 0.1}s` } : {}}>
+              <img
+                src={person.photo}
+                alt={person.name}
+                className="w-20 h-20 rounded-full object-cover mx-auto mb-3 border-3 border-[#EC680A]/30 shadow-lg"
+              />
+              <p className="text-[#1B1D3A] font-semibold text-sm">{person.name}</p>
+              <p className="text-[#94a3b8] text-xs">{person.role}</p>
+            </div>
+          ))}
+        </div>
 
-        {/* Focused member — large centered view */}
+        {/* Focused member — large centered overlay */}
         {hasFocus && focused && (
-          <div className="flex flex-col items-center justify-center pt-8 anim-scale-in">
+          <div className="absolute inset-0 flex flex-col items-center justify-center z-30 anim-scale-in">
             <img
               src={focused.photo}
               alt={focused.name}
