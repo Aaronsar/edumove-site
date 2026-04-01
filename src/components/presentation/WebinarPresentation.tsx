@@ -1202,10 +1202,9 @@ const SLIDES = [
   SlideLCLPret,         // 10
   SlideConditions,      // 11
   SlideLCLSimulation,   // 12
-  SlideAides,           // 13
-  SlideTemoignage,      // 14
-  SlideAccompagnement,  // 15
-  SlideMerci,           // 16
+  SlideTemoignage,      // 13
+  SlideAccompagnement,  // 14
+  SlideMerci,           // 15
 ];
 
 export default function WebinarPresentation() {
