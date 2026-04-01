@@ -1437,6 +1437,19 @@ function SlideQA() {
                         <p className="text-[#1B1D3A] font-semibold text-sm">{q.prenom}</p>
                         <p className="text-[#334155] text-sm leading-relaxed">{q.question}</p>
                       </div>
+                      <button
+                        onClick={async () => {
+                          // eslint-disable-next-line @typescript-eslint/no-require-imports
+                          const { createClient } = require("@/lib/supabase/client");
+                          const supabase = createClient();
+                          await supabase.from("webinar_questions").update({ is_visible: false }).eq("id", q.id);
+                          setQuestions((prev: { id: string; prenom: string; question: string; created_at: string }[]) => prev.filter((p) => p.id !== q.id));
+                        }}
+                        className="shrink-0 px-2.5 py-1 rounded-lg bg-green-50 border border-green-200 text-green-700 text-[10px] font-semibold hover:bg-green-100 transition-all cursor-pointer"
+                        title="Marquer comme répondu"
+                      >
+                        ✓ Répondu
+                      </button>
                     </div>
                   </div>
                 ))}
