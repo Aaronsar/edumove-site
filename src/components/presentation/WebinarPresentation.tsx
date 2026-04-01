@@ -517,11 +517,11 @@ function SlideFilieres() {
 /* ── Slide 7: Tarifs ── */
 function SlideTarifs() {
   const data = [
-    { filiere: "Médecine", ucjc: "\u2014", ue: "21 500", link: "19 800", duree: "6 ans" },
-    { filiere: "Dentaire", ucjc: "18 420", ue: "18 900", link: "19 800", duree: "5-6 ans" },
-    { filiere: "Kiné", ucjc: "9 420", ue: "14 580", link: "7 900", duree: "3-4 ans" },
-    { filiere: "Pharmacie", ucjc: "9 420", ue: "15 000", link: "7 900", duree: "5 ans" },
-    { filiere: "Vétérinaire", ucjc: "\u2014", ue: "17 340", link: "\u2014", duree: "5 ans" },
+    { filiere: "Médecine", ucjc: "\u2014", ue: "21 480", link: "19 800", duree: "6 ans" },
+    { filiere: "Dentaire", ucjc: "18 420", ue: "19 200", link: "19 800", duree: "5-6 ans" },
+    { filiere: "Kiné", ucjc: "9 420", ue: "10 020", link: "11 900", duree: "3-4 ans" },
+    { filiere: "Pharmacie", ucjc: "10 140", ue: "12 120", link: "7 900", duree: "5 ans" },
+    { filiere: "Vétérinaire", ucjc: "\u2014", ue: "19 500", link: "\u2014", duree: "5 ans" },
   ];
   return (
     <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-16 relative overflow-hidden">
