@@ -963,8 +963,7 @@ function SlideConditions() {
 }
 
 /* ── Slide 12: Simulations ── */
-function SlideLCLSimulation() {
-  const cases = [
+const SIM_CASES = [
     {
       name: "Lucas",
       emoji: "\uD83D\uDC68\u200D\u2695\uFE0F",
@@ -999,95 +998,187 @@ function SlideLCLSimulation() {
       ratio: "12-17%",
       retour: "~8 ans",
     },
-  ];
+];
+
+function SlideLCLSimulation() {
+  const [focusCase, setFocusCase] = useState(-1);
+  const hasFocus = focusCase >= 0;
+  const focused = hasFocus ? SIM_CASES[focusCase] : null;
+
   return (
     <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-16 relative overflow-hidden">
       <div className="absolute top-0 left-0 w-72 h-72 bg-green-500/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 right-0 w-64 h-64 bg-[#615CA5]/5 rounded-full blur-3xl" />
 
       <div className="max-w-4xl w-full relative z-10">
-        <div className="flex items-center gap-3 mb-3 anim-fade-in" style={{ animationDelay: '0.1s' }}>
-          <img src="/lcl-logo-officiel.svg" alt="LCL" className="h-5" />
-          <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em]">SIMULATIONS CONCRÈTES</p>
+        {/* Background content — dims when focused */}
+        <div className={`transition-all duration-500 ${hasFocus ? "opacity-10 blur-[2px] pointer-events-none" : ""}`}>
+          <div className="flex items-center gap-3 mb-3 anim-fade-in" style={{ animationDelay: '0.1s' }}>
+            <img src="/lcl-logo-officiel.svg" alt="LCL" className="h-5" />
+            <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em]">SIMULATIONS CONCRÈTES</p>
+          </div>
+          <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-2 anim-fade-up" style={{ animationDelay: '0.2s' }}>Combien ça coûte vraiment ?</h2>
+          <p className="text-[#64748b] text-sm mb-6 anim-fade-up" style={{ animationDelay: '0.3s' }}>Deux profils réels avec le prêt du LCL à 2,01% TAEG</p>
+          <div className="grid md:grid-cols-2 gap-5">
+            {SIM_CASES.map((c, i) => (
+              <div key={i} className="bg-[#f5f5fb] rounded-2xl p-5 border border-gray-100 anim-scale-in" style={{ animationDelay: `${0.35 + i * 0.1}s` }}>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-11 h-11 rounded-full bg-[#1B1D3A] flex items-center justify-center">
+                    <span className="text-lg">{c.emoji}</span>
+                  </div>
+                  <div>
+                    <p className="text-[#1B1D3A] font-bold text-sm">{c.name}</p>
+                    <p className="text-[#615CA5] text-xs font-medium">{c.filiere}</p>
+                  </div>
+                </div>
+
+                {/* Coûts */}
+                <p className="text-[#94a3b8] text-[10px] uppercase tracking-wider mb-2">Coût des études</p>
+                <div className="space-y-1.5 mb-3">
+                  <div className="flex justify-between text-xs"><span className="text-[#64748b]">Scolarité ({c.frais} {"\u20AC"}/an × {c.duree})</span><span className="text-[#1B1D3A] font-semibold">{c.totalScolarite} {"\u20AC"}</span></div>
+                  <div className="flex justify-between text-xs"><span className="text-[#64748b]">Vie courante estimée</span><span className="text-[#1B1D3A] font-semibold">{c.vieCourante} {"\u20AC"}</span></div>
+                </div>
+
+                {/* Prêt LCL */}
+                <div className="bg-[#1B1D3A] rounded-xl p-3 mb-3">
+                  <div className="flex justify-between items-center mb-1.5">
+                    <span className="text-white/60 text-xs">Prêt du LCL</span>
+                    <span className="text-[#EC680A] font-bold text-sm">à partir de {c.pretLCL} {"\u20AC"}</span>
+                  </div>
+                  <div className="flex gap-3">
+                    <div className="flex items-center gap-1">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#EC680A]" />
+                      <span className="text-white/50 text-[10px]">Différé {c.differe}</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#EC680A]" />
+                      <span className="text-white/50 text-[10px]">2,01% TAEG</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#EC680A]" />
+                      <span className="text-white/50 text-[10px]">0 {"\u20AC"} pendant les études</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Après diplôme */}
+                <p className="text-[#94a3b8] text-[10px] uppercase tracking-wider mb-2">Après le diplôme</p>
+                <div className="space-y-1.5 mb-3">
+                  <div className="flex justify-between text-xs"><span className="text-[#64748b]">Salaire net estimé</span><span className="text-[#1B1D3A] font-semibold">{c.salaire} {"\u20AC"}/mois</span></div>
+                  <div className="flex justify-between text-xs"><span className="text-[#64748b]">Mensualité de remboursement</span><span className="text-[#1B1D3A] font-semibold">{c.mensualite} {"\u20AC"}/mois</span></div>
+                </div>
+
+                {/* Résultat */}
+                <div className="bg-green-50 border border-green-200 rounded-xl p-2.5 flex items-center justify-between mb-3">
+                  <div>
+                    <p className="text-green-700 font-bold text-xs">{c.ratio} du salaire</p>
+                    <p className="text-green-600 text-[10px]">pour rembourser</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-green-700 font-bold text-xs">Rentabilisé en {c.retour}</p>
+                    <p className="text-green-600 text-[10px]">d&apos;exercice</p>
+                  </div>
+                </div>
+
+                {/* Focus button */}
+                <button
+                  onClick={() => setFocusCase(i)}
+                  className="w-full py-2 rounded-xl bg-[#1B1D3A]/5 border border-[#1B1D3A]/10 text-[#1B1D3A]/60 text-xs font-medium hover:bg-[#EC680A]/10 hover:border-[#EC680A]/20 hover:text-[#EC680A] transition-all cursor-pointer"
+                >
+                  <Maximize className="w-3.5 h-3.5 inline mr-1.5 -mt-0.5" />
+                  Voir en détail
+                </button>
+              </div>
+            ))}
+          </div>
+          {/* Bottom callout */}
+          <div className="mt-4 bg-[#1B1D3A] rounded-xl p-3.5 flex items-center justify-between anim-fade-up" style={{ animationDelay: '0.55s' }}>
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center">
+                <CheckCircle2 className="w-4 h-4 text-green-400" />
+              </div>
+              <div>
+                <p className="text-white text-sm font-medium">Un investissement rentable</p>
+                <p className="text-white/40 text-xs">Le prêt se rembourse facilement une fois en activité</p>
+              </div>
+            </div>
+            <p className="text-white/30 text-[10px]">*Simulations indicatives basées sur le taux de 2,01% TAEG</p>
+          </div>
         </div>
-        <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-2 anim-fade-up" style={{ animationDelay: '0.2s' }}>Combien ça coûte vraiment ?</h2>
-        <p className="text-[#64748b] text-sm mb-6 anim-fade-up" style={{ animationDelay: '0.3s' }}>Deux profils réels avec le prêt du LCL à 2,01% TAEG</p>
-        <div className="grid md:grid-cols-2 gap-5">
-          {cases.map((c, i) => (
-            <div key={i} className="bg-[#f5f5fb] rounded-2xl p-5 border border-gray-100 anim-scale-in" style={{ animationDelay: `${0.35 + i * 0.1}s` }}>
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-11 h-11 rounded-full bg-[#1B1D3A] flex items-center justify-center">
-                  <span className="text-lg">{c.emoji}</span>
+
+        {/* Focused case — overlay */}
+        {hasFocus && focused && (
+          <div className="absolute inset-0 flex items-center justify-center z-30 anim-scale-in">
+            <div className="bg-white rounded-3xl shadow-2xl p-8 max-w-lg w-full border border-gray-100 relative">
+              {/* Close button */}
+              <button
+                onClick={() => setFocusCase(-1)}
+                className="absolute top-4 right-4 w-8 h-8 rounded-full bg-[#1B1D3A]/5 flex items-center justify-center hover:bg-[#1B1D3A]/10 transition-all cursor-pointer"
+              >
+                <XCircle className="w-4 h-4 text-[#1B1D3A]/40" />
+              </button>
+
+              {/* Header */}
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-14 h-14 rounded-full bg-[#1B1D3A] flex items-center justify-center">
+                  <span className="text-2xl">{focused.emoji}</span>
                 </div>
                 <div>
-                  <p className="text-[#1B1D3A] font-bold text-sm">{c.name}</p>
-                  <p className="text-[#615CA5] text-xs font-medium">{c.filiere}</p>
+                  <p className="text-[#1B1D3A] font-bold text-xl">{focused.name}</p>
+                  <p className="text-[#615CA5] text-sm font-medium">{focused.filiere}</p>
                 </div>
               </div>
 
               {/* Coûts */}
-              <p className="text-[#94a3b8] text-[10px] uppercase tracking-wider mb-2">Coût des études</p>
-              <div className="space-y-1.5 mb-3">
-                <div className="flex justify-between text-xs"><span className="text-[#64748b]">Scolarité ({c.frais} {"\u20AC"}/an × {c.duree})</span><span className="text-[#1B1D3A] font-semibold">{c.totalScolarite} {"\u20AC"}</span></div>
-                <div className="flex justify-between text-xs"><span className="text-[#64748b]">Vie courante estimée</span><span className="text-[#1B1D3A] font-semibold">{c.vieCourante} {"\u20AC"}</span></div>
+              <p className="text-[#94a3b8] text-xs uppercase tracking-wider mb-3">Coût des études</p>
+              <div className="space-y-2 mb-4">
+                <div className="flex justify-between text-sm"><span className="text-[#64748b]">Scolarité ({focused.frais} {"\u20AC"}/an × {focused.duree})</span><span className="text-[#1B1D3A] font-bold">{focused.totalScolarite} {"\u20AC"}</span></div>
+                <div className="flex justify-between text-sm"><span className="text-[#64748b]">Vie courante estimée</span><span className="text-[#1B1D3A] font-bold">{focused.vieCourante} {"\u20AC"}</span></div>
               </div>
 
               {/* Prêt LCL */}
-              <div className="bg-[#1B1D3A] rounded-xl p-3 mb-3">
-                <div className="flex justify-between items-center mb-1.5">
-                  <span className="text-white/60 text-xs">Prêt du LCL</span>
-                  <span className="text-[#EC680A] font-bold text-sm">à partir de {c.pretLCL} {"\u20AC"}</span>
+              <div className="bg-[#1B1D3A] rounded-xl p-4 mb-4">
+                <div className="flex justify-between items-center mb-2">
+                  <span className="text-white/70 text-sm font-medium">Prêt du LCL</span>
+                  <span className="text-[#EC680A] font-bold text-lg">à partir de {focused.pretLCL} {"\u20AC"}</span>
                 </div>
-                <div className="flex gap-3">
-                  <div className="flex items-center gap-1">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#EC680A]" />
-                    <span className="text-white/50 text-[10px]">Différé {c.differe}</span>
+                <div className="flex gap-4">
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-2 h-2 rounded-full bg-[#EC680A]" />
+                    <span className="text-white/50 text-xs">Différé {focused.differe}</span>
                   </div>
-                  <div className="flex items-center gap-1">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#EC680A]" />
-                    <span className="text-white/50 text-[10px]">2,01% TAEG</span>
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-2 h-2 rounded-full bg-[#EC680A]" />
+                    <span className="text-white/50 text-xs">2,01% TAEG</span>
                   </div>
-                  <div className="flex items-center gap-1">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#EC680A]" />
-                    <span className="text-white/50 text-[10px]">0 {"\u20AC"} pendant les études</span>
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-2 h-2 rounded-full bg-[#EC680A]" />
+                    <span className="text-white/50 text-xs">0 {"\u20AC"} pendant les études</span>
                   </div>
                 </div>
               </div>
 
               {/* Après diplôme */}
-              <p className="text-[#94a3b8] text-[10px] uppercase tracking-wider mb-2">Après le diplôme</p>
-              <div className="space-y-1.5 mb-3">
-                <div className="flex justify-between text-xs"><span className="text-[#64748b]">Salaire net estimé</span><span className="text-[#1B1D3A] font-semibold">{c.salaire} {"\u20AC"}/mois</span></div>
-                <div className="flex justify-between text-xs"><span className="text-[#64748b]">Mensualité de remboursement</span><span className="text-[#1B1D3A] font-semibold">{c.mensualite} {"\u20AC"}/mois</span></div>
+              <p className="text-[#94a3b8] text-xs uppercase tracking-wider mb-3">Après le diplôme</p>
+              <div className="space-y-2 mb-4">
+                <div className="flex justify-between text-sm"><span className="text-[#64748b]">Salaire net estimé</span><span className="text-[#1B1D3A] font-bold">{focused.salaire} {"\u20AC"}/mois</span></div>
+                <div className="flex justify-between text-sm"><span className="text-[#64748b]">Mensualité de remboursement</span><span className="text-[#1B1D3A] font-bold">{focused.mensualite} {"\u20AC"}/mois</span></div>
               </div>
 
               {/* Résultat */}
-              <div className="bg-green-50 border border-green-200 rounded-xl p-2.5 flex items-center justify-between">
+              <div className="bg-green-50 border border-green-200 rounded-xl p-4 flex items-center justify-between">
                 <div>
-                  <p className="text-green-700 font-bold text-xs">{c.ratio} du salaire</p>
-                  <p className="text-green-600 text-[10px]">pour rembourser</p>
+                  <p className="text-green-700 font-bold text-sm">{focused.ratio} du salaire</p>
+                  <p className="text-green-600 text-xs">pour rembourser</p>
                 </div>
                 <div className="text-right">
-                  <p className="text-green-700 font-bold text-xs">Rentabilisé en {c.retour}</p>
-                  <p className="text-green-600 text-[10px]">d&apos;exercice</p>
+                  <p className="text-green-700 font-bold text-sm">Rentabilisé en {focused.retour}</p>
+                  <p className="text-green-600 text-xs">d&apos;exercice</p>
                 </div>
               </div>
             </div>
-          ))}
-        </div>
-        {/* Bottom callout */}
-        <div className="mt-4 bg-[#1B1D3A] rounded-xl p-3.5 flex items-center justify-between anim-fade-up" style={{ animationDelay: '0.55s' }}>
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center">
-              <CheckCircle2 className="w-4 h-4 text-green-400" />
-            </div>
-            <div>
-              <p className="text-white text-sm font-medium">Un investissement rentable</p>
-              <p className="text-white/40 text-xs">Le prêt se rembourse facilement une fois en activité</p>
-            </div>
           </div>
-          <p className="text-white/30 text-[10px]">*Simulations indicatives basées sur le taux de 2,01% TAEG</p>
-        </div>
+        )}
       </div>
     </div>
   );
