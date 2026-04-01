@@ -618,8 +618,8 @@ function SlideComparaison() {
 function SlideLCLIntro() {
   const team = [
     { name: "Jean-Christophe Thomas", role: "Directeur d'Agence", photo: "/lcl-jc.jpg" },
-    { name: "Meriem Guendouz", role: "Conseillère Particuliers", photo: "/lcl-meriem.jpg" },
-    { name: "Laura Munoz", role: "Conseillère en Patrimoine", photo: "/lcl-laura.jpg" },
+    { name: "Meriem Guendouz", role: "Conseillère Particuliers", photo: "/lcl-laura.jpg" },
+    { name: "Laura Munoz", role: "Conseillère en Patrimoine", photo: "/lcl-meriem.jpg" },
   ];
   return (
     <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-16 relative overflow-hidden">
