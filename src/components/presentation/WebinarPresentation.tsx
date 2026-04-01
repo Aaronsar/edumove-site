@@ -517,7 +517,7 @@ function SlideFilieres() {
 /* ── Slide 7: Tarifs ── */
 function SlideTarifs() {
   const data = [
-    { filiere: "Médecine", ucjc: "15 000", ue: "21 500", link: "19 800", duree: "6 ans" },
+    { filiere: "Médecine", ucjc: "\u2014", ue: "21 500", link: "19 800", duree: "6 ans" },
     { filiere: "Dentaire", ucjc: "18 420", ue: "18 900", link: "19 800", duree: "5-6 ans" },
     { filiere: "Kiné", ucjc: "9 420", ue: "14 580", link: "7 900", duree: "3-4 ans" },
     { filiere: "Pharmacie", ucjc: "9 420", ue: "15 000", link: "7 900", duree: "5 ans" },
