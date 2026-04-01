@@ -518,7 +518,7 @@ function SlideFilieres() {
 function SlideTarifs() {
   const data = [
     { filiere: "Médecine", ucjc: "15 000", ue: "21 500", link: "19 800", duree: "6 ans" },
-    { filiere: "Dentaire", ucjc: "9 420", ue: "18 900", link: "19 800", duree: "5-6 ans" },
+    { filiere: "Dentaire", ucjc: "18 420", ue: "18 900", link: "19 800", duree: "5-6 ans" },
     { filiere: "Kiné", ucjc: "9 420", ue: "14 580", link: "7 900", duree: "3-4 ans" },
     { filiere: "Pharmacie", ucjc: "9 420", ue: "15 000", link: "7 900", duree: "5 ans" },
     { filiere: "Vétérinaire", ucjc: "\u2014", ue: "17 340", link: "\u2014", duree: "5 ans" },
@@ -968,11 +968,11 @@ const SIM_CASES = [
       name: "Lucas",
       emoji: "\uD83D\uDC68\u200D\u2695\uFE0F",
       filiere: "Dentaire \u2014 UCJC à Madrid",
-      frais: "9 420",
+      frais: "18 420",
       duree: "5 ans",
-      totalScolarite: "47 100",
+      totalScolarite: "92 100",
       vieCourante: "~25 000",
-      totalFinance: "~72 000",
+      totalFinance: "~117 000",
       pretLCL: "75 000",
       differe: "5 ans",
       salaire: "6 000 - 7 000",
