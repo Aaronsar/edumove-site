@@ -679,8 +679,8 @@ function SlideLCLIntro({ focusMember = -1 }: { focusMember?: number }) {
           {/* Key partnership stats */}
           <div className="flex justify-center gap-5 mb-8 anim-fade-up" style={{ animationDelay: '0.45s' }}>
             {[
-              { value: "75 000 \u20AC", label: "Minimum garanti" },
-              { value: "0 \u20AC", label: "Pendant les études" },
+              { value: "75 000 \u20AC", label: "Jusqu'à" },
+              { value: "0 \u20AC", label: "De capital pendant les études" },
               { value: "2,01%", label: "TAEG" },
             ].map((stat, i) => (
               <div key={i} className="bg-[#f5f5fb] rounded-xl px-6 py-4 text-center border border-gray-100 anim-scale-in" style={{ animationDelay: `${0.45 + i * 0.08}s` }}>
@@ -834,10 +834,10 @@ function SlideLCLPret() {
         <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-8 anim-fade-up" style={{ animationDelay: '0.2s' }}>Un prêt pensé pour vous</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           {[
-            { value: "75 000 \u20AC", label: "Minimum garanti", sub: "\u00e0 partir de" },
+            { value: "75 000 \u20AC", label: "Montant maximum", sub: "jusqu'\u00e0" },
             { value: "2,01%", label: "TAEG", sub: "Taux pr\u00e9f\u00e9rentiel" },
-            { value: "0 \u20AC", label: "\u00C0 rembourser pendant les \u00e9tudes", sub: "Diff\u00e9r\u00e9 total" },
-            { value: "120 mois", label: "Dur\u00e9e de remboursement", sub: "jusqu'\u00e0 10 ans" },
+            { value: "0 \u20AC", label: "De capital pendant les \u00e9tudes", sub: "Assurance seule (5-15\u20AC/mois)" },
+            { value: "120 mois", label: "Dur\u00e9e de remboursement", sub: "Sans frais de dossier" },
           ].map((stat, i) => (
             <div key={i} className="bg-[#f5f5fb] border border-gray-100 rounded-2xl p-5 text-center anim-scale-in" style={{ animationDelay: `${0.3 + i * 0.08}s` }}>
               <p className="text-[#EC680A] text-2xl font-bold mb-1">{stat.value}</p>
@@ -850,8 +850,8 @@ function SlideLCLPret() {
           {[
             { icon: CheckCircle2, title: "Scolarité 100% financée", desc: "Le prêt couvre l'intégralité des frais de scolarité, quelle que soit la filière ou l'université." },
             { icon: Home, title: "Vie courante incluse", desc: "Logement, alimentation, transports, assurance : tout est intégré dans le montant du prêt." },
-            { icon: Calendar, title: "0 \u20AC à payer pendant les études", desc: "Différé total : vous ne commencez à rembourser qu'après l'obtention de votre diplôme." },
-            { icon: TrendingUp, title: "Taux \u00e0 2,01% TAEG", desc: "Taux pr\u00e9f\u00e9rentiel n\u00e9goci\u00e9 par Edumove. Remboursement jusqu'\u00e0 120 mois." },
+            { icon: Calendar, title: "Pas de capital \u00e0 rembourser pendant les \u00e9tudes", desc: "Seule l'assurance du pr\u00eat reste \u00e0 r\u00e9gler (5 \u00e0 15\u20AC/mois selon le montant emprunt\u00e9)." },
+            { icon: TrendingUp, title: "Sans frais de dossier", desc: "Taux pr\u00e9f\u00e9rentiel \u00e0 2,01% TAEG n\u00e9goci\u00e9 par Edumove. Remboursement jusqu'\u00e0 120 mois." },
           ].map((item, i) => (
             <div key={i} className="flex items-start gap-3 bg-[#f5f5fb] border border-gray-100 rounded-2xl p-4 anim-scale-in" style={{ animationDelay: `${0.5 + i * 0.08}s` }}>
               <div className="w-9 h-9 rounded-lg bg-[#EC680A]/10 flex items-center justify-center shrink-0">
@@ -891,27 +891,27 @@ function SlideConditions() {
           {[
             {
               icon: Shield,
-              title: "Aucune condition de revenus",
-              desc: "Pas de condition sur les revenus parentaux pour l'obtention du prêt. Tous les profils sont éligibles.",
-              highlight: "Tous éligibles",
+              title: "Accessible à tous les profils",
+              desc: "Pas de condition de revenus parentaux. Chaque dossier est étudié individuellement. La banque se réserve le droit de refuser un dossier en fonction de son analyse.*",
+              highlight: "Étude au cas par cas",
             },
             {
               icon: Clock,
-              title: "Remboursement différé total",
-              desc: "Vous ne remboursez qu'après votre diplôme, une fois en activité professionnelle. 0 \u20AC à payer pendant les études.",
-              highlight: "0 \u20AC pendant les études",
+              title: "Pas de capital à rembourser pendant les études",
+              desc: "Seule l'assurance du prêt reste à régler pendant la période d'études (5 à 15\u20AC/mois selon le montant). Le remboursement du capital commence après le diplôme.",
+              highlight: "Assurance seule : 5-15\u20AC/mois",
             },
             {
               icon: HandCoins,
-              title: "Couverture totale",
-              desc: "Le prêt couvre les frais de scolarité ET le coût de la vie : logement, alimentation, transports, assurance.",
-              highlight: "Scolarité + vie courante",
+              title: "Couverture totale + sans frais de dossier",
+              desc: "Le prêt couvre les frais de scolarité ET le coût de la vie. Aucun frais de dossier à régler.",
+              highlight: "0\u20AC de frais de dossier",
             },
             {
               icon: Award,
               title: "Flexibilité du prêt",
-              desc: "En cas de changement de filière au sein des universités partenaires, le prêt reste valide. Pas de pénalité.",
-              highlight: "Changement de filière OK",
+              desc: "Montant adaptable selon vos besoins, jusqu'à 75 000\u20AC. En cas de changement de filière, le prêt reste valide.",
+              highlight: "Jusqu'à 75 000\u20AC",
             },
           ].map((item, i) => (
             <div key={i} className="bg-[#f5f5fb] rounded-2xl p-6 border border-gray-100 anim-scale-in" style={{ animationDelay: `${0.35 + i * 0.08}s` }}>
@@ -1043,7 +1043,7 @@ function SlideLCLSimulation() {
                 <div className="bg-[#1B1D3A] rounded-xl p-3 mb-3">
                   <div className="flex justify-between items-center mb-1.5">
                     <span className="text-white/60 text-xs">Prêt du LCL</span>
-                    <span className="text-[#EC680A] font-bold text-sm">à partir de {c.pretLCL} {"\u20AC"}</span>
+                    <span className="text-[#EC680A] font-bold text-sm">jusqu'à {c.pretLCL} {"\u20AC"}</span>
                   </div>
                   <div className="flex gap-3">
                     <div className="flex items-center gap-1">
@@ -1056,7 +1056,7 @@ function SlideLCLSimulation() {
                     </div>
                     <div className="flex items-center gap-1">
                       <div className="w-1.5 h-1.5 rounded-full bg-[#EC680A]" />
-                      <span className="text-white/50 text-[10px]">0 {"\u20AC"} pendant les études</span>
+                      <span className="text-white/50 text-[10px]">Pas de capital pendant les études</span>
                     </div>
                   </div>
                 </div>
@@ -1140,7 +1140,7 @@ function SlideLCLSimulation() {
               <div className="bg-[#1B1D3A] rounded-xl p-4 mb-4">
                 <div className="flex justify-between items-center mb-2">
                   <span className="text-white/70 text-sm font-medium">Prêt du LCL</span>
-                  <span className="text-[#EC680A] font-bold text-lg">à partir de {focused.pretLCL} {"\u20AC"}</span>
+                  <span className="text-[#EC680A] font-bold text-lg">jusqu'à {focused.pretLCL} {"\u20AC"}</span>
                 </div>
                 <div className="flex gap-4">
                   <div className="flex items-center gap-1.5">
@@ -1153,7 +1153,7 @@ function SlideLCLSimulation() {
                   </div>
                   <div className="flex items-center gap-1.5">
                     <div className="w-2 h-2 rounded-full bg-[#EC680A]" />
-                    <span className="text-white/50 text-xs">0 {"\u20AC"} pendant les études</span>
+                    <span className="text-white/50 text-xs">Pas de capital pendant les études</span>
                   </div>
                 </div>
               </div>
