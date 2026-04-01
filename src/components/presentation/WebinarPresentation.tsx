@@ -644,7 +644,7 @@ function SlideLCLIntro() {
         {/* Key partnership stats */}
         <div className="flex justify-center gap-5 mb-8">
           {[
-            { value: "75 000 \u20AC", label: "Montant financ\u00e9" },
+            { value: "75 000 \u20AC", label: "Minimum garanti" },
             { value: "0 \u20AC", label: "Pendant les études" },
             { value: "2,01%", label: "TAEG" },
           ].map((stat, i) => (
@@ -689,7 +689,7 @@ function SlideLCLPret() {
         <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-8">Un prêt pensé pour vous</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           {[
-            { value: "75 000 \u20AC", label: "Montant financ\u00e9", sub: "jusqu'\u00e0" },
+            { value: "75 000 \u20AC", label: "Minimum garanti", sub: "\u00e0 partir de" },
             { value: "2,01%", label: "TAEG", sub: "Taux pr\u00e9f\u00e9rentiel" },
             { value: "0 \u20AC", label: "\u00C0 rembourser pendant les \u00e9tudes", sub: "Diff\u00e9r\u00e9 total" },
             { value: "120 mois", label: "Dur\u00e9e de remboursement", sub: "jusqu'\u00e0 10 ans" },
