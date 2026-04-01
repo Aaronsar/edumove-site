@@ -644,60 +644,94 @@ function SlideComparaison() {
 }
 
 /* ── Slide 9: LCL Intro avec photos équipe ── */
-function SlideLCLIntro() {
-  const team = [
-    { name: "Jean-Christophe Thomas", role: "Directeur d'Agence", photo: "/lcl-jc.jpg" },
-    { name: "Meriem Guendouz", role: "Conseillère Particuliers", photo: "/lcl-laura.jpg" },
-    { name: "Laura Munoz", role: "Conseillère en Patrimoine", photo: "/lcl-meriem.jpg" },
-  ];
+const LCL_TEAM = [
+  { name: "Jean-Christophe Thomas", role: "Directeur d'Agence", photo: "/lcl-jc.jpg" },
+  { name: "Meriem Guendouz", role: "Conseillère Particuliers", photo: "/lcl-laura.jpg" },
+  { name: "Laura Munoz", role: "Conseillère en Patrimoine", photo: "/lcl-meriem.jpg" },
+];
+
+function SlideLCLIntro({ focusMember = -1 }: { focusMember?: number }) {
+  const hasFocus = focusMember >= 0 && focusMember < LCL_TEAM.length;
+  const focused = hasFocus ? LCL_TEAM[focusMember] : null;
+
   return (
     <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-16 relative overflow-hidden">
       <div className="absolute top-0 left-0 w-96 h-96 bg-[#615CA5]/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 right-0 w-80 h-80 bg-[#EC680A]/5 rounded-full blur-3xl" />
 
       <div className="max-w-4xl w-full text-center relative z-10">
-        <div className="flex items-center justify-center gap-6 mb-6 anim-fade-in" style={{ animationDelay: '0.1s' }}>
-          <img src="/lcl-logo-officiel.svg" alt="LCL" className="h-16" />
-          <span className="text-[#334155] text-2xl">&times;</span>
-          <div className="flex items-center gap-3">
-            <img src="/edumove-icon-orange.svg" alt="Edumove" className="w-14 h-14 rounded-xl" />
-            <span className="text-[#1B1D3A] font-bold text-2xl">Edumove</span>
+        {/* Content fades when a member is focused */}
+        <div className={`transition-all duration-500 ${hasFocus ? "opacity-0 scale-95 absolute inset-0 pointer-events-none" : "opacity-100"}`}>
+          <div className="flex items-center justify-center gap-6 mb-6 anim-fade-in" style={{ animationDelay: '0.1s' }}>
+            <img src="/lcl-logo-officiel.svg" alt="LCL" className="h-16" />
+            <span className="text-[#334155] text-2xl">&times;</span>
+            <div className="flex items-center gap-3">
+              <img src="/edumove-icon-orange.svg" alt="Edumove" className="w-14 h-14 rounded-xl" />
+              <span className="text-[#1B1D3A] font-bold text-2xl">Edumove</span>
+            </div>
           </div>
-        </div>
-        <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-3 anim-fade-up" style={{ animationDelay: '0.2s' }}>PARTENARIAT EXCLUSIF</p>
-        <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-4 anim-fade-up" style={{ animationDelay: '0.3s' }}>Financer vos études de santé en Europe</h2>
-        <p className="text-[#64748b] text-sm max-w-xl mx-auto mb-8 anim-fade-up" style={{ animationDelay: '0.4s' }}>
-          Le LCL accompagne les étudiants Edumove avec une offre de prêt étudiant spécialement conçue pour les études de santé à l&apos;étranger. Un partenariat unique en France.
-        </p>
+          <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-3 anim-fade-up" style={{ animationDelay: '0.2s' }}>PARTENARIAT EXCLUSIF</p>
+          <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-4 anim-fade-up" style={{ animationDelay: '0.3s' }}>Financer vos études de santé en Europe</h2>
+          <p className="text-[#64748b] text-sm max-w-xl mx-auto mb-8 anim-fade-up" style={{ animationDelay: '0.4s' }}>
+            Le LCL accompagne les étudiants Edumove avec une offre de prêt étudiant spécialement conçue pour les études de santé à l&apos;étranger. Un partenariat unique en France.
+          </p>
 
-        {/* Key partnership stats */}
-        <div className="flex justify-center gap-5 mb-8 anim-fade-up" style={{ animationDelay: '0.45s' }}>
-          {[
-            { value: "75 000 \u20AC", label: "Minimum garanti" },
-            { value: "0 \u20AC", label: "Pendant les études" },
-            { value: "2,01%", label: "TAEG" },
-          ].map((stat, i) => (
-            <div key={i} className="bg-[#f5f5fb] rounded-xl px-6 py-4 text-center border border-gray-100 anim-scale-in" style={{ animationDelay: `${0.45 + i * 0.08}s` }}>
-              <p className="text-[#EC680A] font-bold text-lg">{stat.value}</p>
-              <p className="text-[#64748b] text-[11px]">{stat.label}</p>
-            </div>
-          ))}
+          {/* Key partnership stats */}
+          <div className="flex justify-center gap-5 mb-8 anim-fade-up" style={{ animationDelay: '0.45s' }}>
+            {[
+              { value: "75 000 \u20AC", label: "Minimum garanti" },
+              { value: "0 \u20AC", label: "Pendant les études" },
+              { value: "2,01%", label: "TAEG" },
+            ].map((stat, i) => (
+              <div key={i} className="bg-[#f5f5fb] rounded-xl px-6 py-4 text-center border border-gray-100 anim-scale-in" style={{ animationDelay: `${0.45 + i * 0.08}s` }}>
+                <p className="text-[#EC680A] font-bold text-lg">{stat.value}</p>
+                <p className="text-[#64748b] text-[11px]">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-[#64748b] text-xs uppercase tracking-widest mb-5 anim-fade-up" style={{ animationDelay: '0.55s' }}>Votre équipe dédiée</p>
         </div>
 
-        <p className="text-[#64748b] text-xs uppercase tracking-widest mb-5 anim-fade-up" style={{ animationDelay: '0.55s' }}>Votre équipe dédiée</p>
-        <div className="flex justify-center gap-8">
-          {team.map((person, i) => (
-            <div key={i} className="text-center anim-scale-in" style={{ animationDelay: `${0.6 + i * 0.1}s` }}>
-              <img
-                src={person.photo}
-                alt={person.name}
-                className="w-20 h-20 rounded-full object-cover mx-auto mb-3 border-3 border-[#EC680A]/30 shadow-lg"
-              />
-              <p className="text-[#1B1D3A] font-semibold text-sm">{person.name}</p>
-              <p className="text-[#94a3b8] text-xs">{person.role}</p>
+        {/* Team members — always visible, grow when focused */}
+        {!hasFocus && (
+          <div className="flex justify-center gap-8">
+            {LCL_TEAM.map((person, i) => (
+              <div key={i} className="text-center anim-scale-in" style={{ animationDelay: `${0.6 + i * 0.1}s` }}>
+                <img
+                  src={person.photo}
+                  alt={person.name}
+                  className="w-20 h-20 rounded-full object-cover mx-auto mb-3 border-3 border-[#EC680A]/30 shadow-lg"
+                />
+                <p className="text-[#1B1D3A] font-semibold text-sm">{person.name}</p>
+                <p className="text-[#94a3b8] text-xs">{person.role}</p>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* Focused member — large centered view */}
+        {hasFocus && focused && (
+          <div className="flex flex-col items-center justify-center pt-8 anim-scale-in">
+            <img
+              src={focused.photo}
+              alt={focused.name}
+              className="w-40 h-40 rounded-full object-cover mb-6 border-4 border-[#EC680A]/40 shadow-2xl"
+            />
+            <p className="text-[#1B1D3A] font-bold text-2xl mb-1">{focused.name}</p>
+            <p className="text-[#615CA5] text-base font-medium mb-6">{focused.role}</p>
+            <div className="flex items-center gap-3 mb-8">
+              <img src="/lcl-logo-officiel.svg" alt="LCL" className="h-8" />
+              <span className="text-[#64748b] text-sm">Agence LCL — Partenaire Edumove</span>
             </div>
-          ))}
-        </div>
+            {/* Dots indicator */}
+            <div className="flex items-center gap-2">
+              {LCL_TEAM.map((_, i) => (
+                <div key={i} className={`h-2 rounded-full transition-all duration-300 ${i === focusMember ? "w-6 bg-[#EC680A]" : "w-2 bg-[#1B1D3A]/15"}`} />
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -1241,6 +1275,9 @@ export default function WebinarPresentation() {
   const [current, setCurrent] = useState(0);
   const [animating, setAnimating] = useState(false);
   const [direction, setDirection] = useState<"left" | "right">("right");
+  const [lclFocus, setLclFocus] = useState(-1); // -1 = no focus, 0/1/2 = team member index
+
+  const LCL_SLIDE_INDEX = 8; // SlideLCLIntro is at index 8
 
   useEffect(() => {
     if (sessionStorage.getItem("pres-auth") === "1") setAuthed(true);
@@ -1249,6 +1286,7 @@ export default function WebinarPresentation() {
   const goTo = useCallback((idx: number) => {
     if (idx === current || animating) return;
     setDirection(idx > current ? "right" : "left");
+    setLclFocus(-1); // reset focus when changing slides
     setAnimating(true);
     setTimeout(() => {
       setCurrent(idx);
@@ -1256,8 +1294,30 @@ export default function WebinarPresentation() {
     }, 200);
   }, [current, animating]);
 
-  const animNext = useCallback(() => goTo(Math.min(current + 1, SLIDES.length - 1)), [current, goTo]);
-  const animPrev = useCallback(() => goTo(Math.max(current - 1, 0)), [current, goTo]);
+  const animNext = useCallback(() => {
+    // Sub-steps on LCL Intro slide
+    if (current === LCL_SLIDE_INDEX && lclFocus < LCL_TEAM.length - 1) {
+      setLclFocus(prev => prev + 1);
+      return;
+    }
+    if (current === LCL_SLIDE_INDEX && lclFocus === LCL_TEAM.length - 1) {
+      setLclFocus(-1);
+    }
+    goTo(Math.min(current + 1, SLIDES.length - 1));
+  }, [current, lclFocus, goTo]);
+
+  const animPrev = useCallback(() => {
+    // Sub-steps on LCL Intro slide (go back through focuses)
+    if (current === LCL_SLIDE_INDEX && lclFocus > 0) {
+      setLclFocus(prev => prev - 1);
+      return;
+    }
+    if (current === LCL_SLIDE_INDEX && lclFocus === 0) {
+      setLclFocus(-1);
+      return;
+    }
+    goTo(Math.max(current - 1, 0));
+  }, [current, lclFocus, goTo]);
 
   useEffect(() => {
     if (!authed) return;
@@ -1282,7 +1342,7 @@ export default function WebinarPresentation() {
       <style>{ANIM_STYLES}</style>
       {/* Slide with animation */}
       <div
-        key={current}
+        key={`${current}-${lclFocus}`}
         className="h-full w-full transition-all duration-300 ease-out relative"
         style={{
           opacity: animating ? 0 : 1,
@@ -1291,7 +1351,7 @@ export default function WebinarPresentation() {
             : "translateX(0)",
         }}
       >
-        <SlideComponent />
+        {current === LCL_SLIDE_INDEX ? <SlideLCLIntro focusMember={lclFocus} /> : <SlideComponent />}
         {/* Logos overlay on slide background (hidden on cover) */}
         {current > 0 && (
           <div className="absolute top-0 left-0 right-0 z-20 flex flex-col items-center pointer-events-none bg-gradient-to-b from-[#eeedf5]/90 via-[#eeedf5]/50 to-transparent">
