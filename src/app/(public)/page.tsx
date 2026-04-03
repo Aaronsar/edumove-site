@@ -1,12 +1,15 @@
+import dynamic from "next/dynamic";
 import HeroSection from "@/components/home/HeroSection";
 import UniversitesSection from "@/components/home/UniversitesSection";
 import StatsSection from "@/components/home/StatsSection";
-import ServicesSection from "@/components/home/ServicesSection";
-import TestimonialsCarousel from "@/components/shared/TestimonialsCarousel";
-import FAQSection from "@/components/home/FAQSection";
-import CityGuidesSection from "@/components/home/CityGuidesSection";
-import ArticlesSection from "@/components/home/ArticlesSection";
-import CTASection from "@/components/home/CTASection";
+
+// Lazy load below-fold components
+const ServicesSection = dynamic(() => import("@/components/home/ServicesSection"));
+const TestimonialsCarousel = dynamic(() => import("@/components/shared/TestimonialsCarousel"));
+const CityGuidesSection = dynamic(() => import("@/components/home/CityGuidesSection"));
+const FAQSection = dynamic(() => import("@/components/home/FAQSection"));
+const ArticlesSection = dynamic(() => import("@/components/home/ArticlesSection"));
+const CTASection = dynamic(() => import("@/components/home/CTASection"));
 
 export default function Home() {
   return (
