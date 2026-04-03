@@ -138,26 +138,7 @@ export default function CostSimulator() {
           </p>
         </div>
 
-        {/* HubSpot form gate */}
-        {!unlocked && (
-          <div className="max-w-lg mx-auto mb-12">
-            <div className="bg-white rounded-2xl border border-gray-100 shadow-xl p-8 text-center">
-              <div className="w-14 h-14 rounded-2xl bg-[#EC680A]/10 flex items-center justify-center mx-auto mb-4">
-                <Lock className="w-6 h-6 text-[#EC680A]" />
-              </div>
-              <h3 className="text-[#1B1D3A] font-bold text-xl mb-2">Accédez au simulateur gratuitement</h3>
-              <p className="text-[#64748b] text-sm mb-6">Remplissez le formulaire ci-dessous pour débloquer la simulation personnalisée de vos études.</p>
-              <div
-                className="hs-form-frame"
-                data-region="eu1"
-                data-form-id="ccb38b22-168d-4340-ab90-c9b27a40212b"
-                data-portal-id="26711031"
-              />
-            </div>
-          </div>
-        )}
-
-        {unlocked && <div className="grid md:grid-cols-[1fr_1.2fr] gap-8">
+        <div className="grid md:grid-cols-[1fr_1.2fr] gap-8">
           {/* LEFT — Selection */}
           <div className="space-y-6">
             {/* Step 1: Filière */}
@@ -248,6 +229,36 @@ export default function CostSimulator() {
                   <Euro className="w-12 h-12 text-[#EC680A]/20 mx-auto mb-4" />
                   <p className="text-[#1B1D3A] font-bold text-lg mb-1">Votre simulation</p>
                   <p className="text-[#64748b] text-sm">Sélectionnez une filière et une université pour voir le résultat</p>
+                </div>
+              </div>
+            ) : !unlocked ? (
+              /* Gate: form to unlock results */
+              <div className="bg-white rounded-2xl border border-gray-100 shadow-xl overflow-hidden animate-[fadeUp_0.4s_ease-out]">
+                {/* Teaser header */}
+                <div className="bg-[#1B1D3A] px-6 py-5">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-white font-bold text-lg">{selectedProgram.filiere}</p>
+                      <p className="text-white/60 text-sm">{selectedProgram.university} — {selectedProgram.city}</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-white/30 text-2xl font-bold">? ? ? €</p>
+                      <p className="text-white/40 text-xs">Coût total estimé</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-6 text-center">
+                  <div className="w-14 h-14 rounded-2xl bg-[#EC680A]/10 flex items-center justify-center mx-auto mb-4">
+                    <Lock className="w-6 h-6 text-[#EC680A]" />
+                  </div>
+                  <h3 className="text-[#1B1D3A] font-bold text-xl mb-2">Découvrez vos résultats</h3>
+                  <p className="text-[#64748b] text-sm mb-6">Remplissez le formulaire pour obtenir votre simulation personnalisée : coût total, mensualité, prêt LCL et retour sur investissement.</p>
+                  <div
+                    className="hs-form-frame text-left"
+                    data-region="eu1"
+                    data-form-id="ccb38b22-168d-4340-ab90-c9b27a40212b"
+                    data-portal-id="26711031"
+                  />
                 </div>
               </div>
             ) : result && (
@@ -373,7 +384,7 @@ export default function CostSimulator() {
               </div>
             )}
           </div>
-        </div>}
+        </div>
       </div>
     </section>
   );
