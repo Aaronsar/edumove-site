@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo, useEffect, useCallback } from "react";
-import { Euro, GraduationCap, Building2, TrendingUp, Calculator, ChevronRight, Lock } from "lucide-react";
+import { Euro, GraduationCap, Building2, TrendingUp, Calculator, ChevronRight, Lock, X } from "lucide-react";
 import Script from "next/script";
 
 /* ═══════════════════════════════════════════════════════════════════════
@@ -63,6 +63,7 @@ function monthlyPayment(principal: number, annualRate: number, months: number): 
 
 export default function CostSimulator() {
   const [unlocked, setUnlocked] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [selectedFiliere, setSelectedFiliere] = useState<string>("");
   const [selectedProgram, setSelectedProgram] = useState<Program | null>(null);
   const [loanMonths, setLoanMonths] = useState(120);
@@ -77,6 +78,7 @@ export default function CostSimulator() {
     if (event.data?.type === "hsFormCallback" && event.data?.eventName === "onFormSubmitted") {
       localStorage.setItem("sim-unlocked", "1");
       setUnlocked(true);
+      setShowModal(false);
     }
   }, []);
 
@@ -232,9 +234,8 @@ export default function CostSimulator() {
                 </div>
               </div>
             ) : !unlocked ? (
-              /* Gate: form to unlock results */
+              /* Gate: CTA to open popup */
               <div className="bg-white rounded-2xl border border-gray-100 shadow-xl overflow-hidden animate-[fadeUp_0.4s_ease-out]">
-                {/* Teaser header */}
                 <div className="bg-[#1B1D3A] px-6 py-5">
                   <div className="flex items-center justify-between">
                     <div>
@@ -247,18 +248,20 @@ export default function CostSimulator() {
                     </div>
                   </div>
                 </div>
-                <div className="p-6 text-center">
-                  <div className="w-14 h-14 rounded-2xl bg-[#EC680A]/10 flex items-center justify-center mx-auto mb-4">
-                    <Lock className="w-6 h-6 text-[#EC680A]" />
+                <div className="p-8 text-center">
+                  <div className="w-16 h-16 rounded-2xl bg-[#EC680A]/10 flex items-center justify-center mx-auto mb-5">
+                    <Lock className="w-7 h-7 text-[#EC680A]" />
                   </div>
-                  <h3 className="text-[#1B1D3A] font-bold text-xl mb-2">Découvrez vos résultats</h3>
-                  <p className="text-[#64748b] text-sm mb-6">Remplissez le formulaire pour obtenir votre simulation personnalisée : coût total, mensualité, prêt LCL et retour sur investissement.</p>
-                  <div
-                    className="hs-form-frame text-left"
-                    data-region="eu1"
-                    data-form-id="ccb38b22-168d-4340-ab90-c9b27a40212b"
-                    data-portal-id="26711031"
-                  />
+                  <h3 className="text-[#1B1D3A] font-bold text-xl mb-2">Votre simulation est prête !</h3>
+                  <p className="text-[#64748b] text-sm mb-6">Coût total, prêt du LCL, mensualité après diplôme et retour sur investissement.</p>
+                  <button
+                    onClick={() => setShowModal(true)}
+                    className="inline-flex items-center gap-2 px-8 py-4 bg-[#EC680A] hover:bg-[#D45E09] text-white font-bold rounded-xl transition-all text-base shadow-lg shadow-[#EC680A]/20 cursor-pointer"
+                  >
+                    <Calculator className="w-5 h-5" />
+                    Découvrir ma simulation
+                  </button>
+                  <p className="text-[#94a3b8] text-xs mt-4">Gratuit — 30 secondes</p>
                 </div>
               </div>
             ) : result && (
@@ -386,6 +389,36 @@ export default function CostSimulator() {
           </div>
         </div>
       </div>
+
+      {/* Modal popup */}
+      {showModal && (
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
+          {/* Backdrop */}
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setShowModal(false)} />
+          {/* Modal */}
+          <div className="relative bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 animate-[fadeUp_0.3s_ease-out]">
+            <button
+              onClick={() => setShowModal(false)}
+              className="absolute top-4 right-4 w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-all cursor-pointer"
+            >
+              <X className="w-4 h-4 text-[#1B1D3A]" />
+            </button>
+            <div className="text-center mb-6">
+              <div className="w-12 h-12 rounded-xl bg-[#EC680A]/10 flex items-center justify-center mx-auto mb-3">
+                <Calculator className="w-5 h-5 text-[#EC680A]" />
+              </div>
+              <h3 className="text-[#1B1D3A] font-bold text-xl mb-1">Découvrez votre simulation</h3>
+              <p className="text-[#64748b] text-sm">Remplissez pour recevoir vos résultats personnalisés</p>
+            </div>
+            <div
+              className="hs-form-frame"
+              data-region="eu1"
+              data-form-id="ccb38b22-168d-4340-ab90-c9b27a40212b"
+              data-portal-id="26711031"
+            />
+          </div>
+        </div>
+      )}
     </section>
   );
 }
