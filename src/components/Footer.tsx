@@ -25,6 +25,7 @@ const planDuSite = [
   { name: "Financement", href: "/financement" },
   { name: "Questions fréquentes", href: "/questions-frequentes" },
   { name: "Témoignages", href: "/temoignages" },
+  { name: "Nos résultats", href: "/nos-resultats" },
   { name: "À propos", href: "/a-propos" },
   { name: "Blog", href: "/blog" },
   { name: "Contact", href: "/contact" },

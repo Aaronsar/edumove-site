@@ -200,7 +200,6 @@ function SlideProgramme() {
     { icon: GraduationCap, label: "L'alternative européenne" },
     { icon: Euro, label: "Combien ça coûte ?" },
     { icon: Building2, label: "Le prêt étudiant du LCL", highlight: true },
-    { icon: HandCoins, label: "Les aides cumulables" },
     { icon: Heart, label: "L'accompagnement Edumove" },
     { icon: HelpCircle, label: "Questions / Réponses" },
   ];
@@ -1184,44 +1183,6 @@ function SlideLCLSimulation() {
   );
 }
 
-/* ── Slide 13: Aides cumulables (WHITE bg) ── */
-function SlideAides() {
-  const aides = [
-    { name: "Bourse CROUS", amount: "1 000 - 5 000 \u20AC/an", desc: "Selon les revenus de la famille, compatible avec les études en Europe", icon: GraduationCap },
-    { name: "Aide à la mobilité internationale", amount: "~400 \u20AC/mois", desc: "Pour les boursiers partant étudier à l'étranger (4 mois max)", icon: MapPin },
-    { name: "Aide au mérite", amount: "~900 \u20AC/an", desc: "Pour les bacheliers mention Très Bien, cumulable avec la bourse CROUS", icon: Award },
-    { name: "Aides régionales", amount: "Variable", desc: "Certaines régions proposent des aides spécifiques pour les études à l'étranger", icon: Home },
-    { name: "CAF / APL", amount: "Variable", desc: "Aides au logement possibles selon le pays et la convention du logement", icon: Building2 },
-  ];
-  return (
-    <div className="h-full bg-gradient-to-br from-[#eeedf5] via-[#f9f5f0] to-[#fdecd8] flex items-center justify-center px-8 pt-16">
-      <div className="max-w-4xl w-full">
-        <p className="text-[#EC680A] font-semibold text-sm uppercase tracking-[0.15em] mb-3 anim-fade-up" style={{ animationDelay: '0.1s' }}>CUMULABLE AVEC LE PRÊT DU LCL</p>
-        <h2 className="text-[#1B1D3A] text-3xl md:text-4xl font-bold mb-8 anim-fade-up" style={{ animationDelay: '0.2s' }}>Les autres aides disponibles</h2>
-        <div className="grid md:grid-cols-2 gap-4">
-          {aides.map((aide, i) => (
-            <div key={i} className="bg-[#f5f5fb] rounded-2xl p-5 border border-gray-100 flex items-start gap-4 anim-scale-in" style={{ animationDelay: `${0.3 + i * 0.08}s` }}>
-              <div className="w-10 h-10 rounded-lg bg-[#615CA5]/10 flex items-center justify-center shrink-0">
-                <aide.icon className="w-5 h-5 text-[#615CA5]" />
-              </div>
-              <div>
-                <div className="flex items-center gap-2 mb-1">
-                  <p className="text-[#1B1D3A] font-semibold text-sm">{aide.name}</p>
-                  <span className="text-[#EC680A] text-xs font-bold bg-[#EC680A]/10 px-2 py-0.5 rounded-full">{aide.amount}</span>
-                </div>
-                <p className="text-[#64748b] text-xs leading-relaxed">{aide.desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="bg-[#1B1D3A] rounded-2xl p-5 mt-6 text-center anim-fade-up" style={{ animationDelay: '0.6s' }}>
-          <p className="text-white font-semibold text-sm">Toutes ces aides sont cumulables avec le prêt du LCL</p>
-          <p className="text-white/50 text-xs mt-1">Edumove vous aide à identifier les aides auxquelles vous avez droit</p>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 /* ── Slide 14: Témoignage (WHITE bg) ── */
 function SlideTemoignage() {

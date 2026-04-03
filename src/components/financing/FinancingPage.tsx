@@ -51,12 +51,6 @@ const FORMATIONS = [
   { name: "Vétérinaire", slug: "veterinaire", range: "~17 340 €/an", duration: "5 ans", total: "~86 700 €" },
 ];
 
-const AIDES = [
-  { title: "Bourse CROUS", desc: "Maintenue pour les études dans l'UE. De 1 000 à 5 000 € par an selon l'échelon.", amount: "1 000 — 5 000 €/an" },
-  { title: "Aide à la mobilité internationale", desc: "Versée par le CROUS pour les étudiants boursiers effectuant un séjour à l'étranger.", amount: "~400 €/mois" },
-  { title: "Aide au mérite", desc: "Pour les bacheliers ayant obtenu une mention Très Bien au baccalauréat.", amount: "~900 €/an" },
-  { title: "Aides régionales", desc: "De nombreuses régions et départements proposent des aides à la mobilité ou des bourses complémentaires.", amount: "Variable" },
-];
 
 const BUDGET_MADRID = [
   { label: "Logement (colocation)", range: "400 — 600 €" },
@@ -288,33 +282,6 @@ export default function FinancingPage() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════════════════════
-          5. AUTRES AIDES DISPONIBLES
-      ══════════════════════════════════════════════════════════════════════ */}
-      <section className="py-12 md:py-16 bg-[#fafbff]">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#1B1D3A] mb-2">
-            Autres aides disponibles
-          </h2>
-          <p className="text-[#64748b] mb-8">
-            Ces aides sont cumulables avec le prêt étudiant LCL.
-          </p>
-
-          <div className="grid sm:grid-cols-2 gap-4">
-            {AIDES.map((aide, i) => (
-              <div key={i} className="bg-white rounded-xl border border-[#e2e2ef] p-5">
-                <div className="flex items-center justify-between mb-2">
-                  <h3 className="font-bold text-[#1B1D3A]">{aide.title}</h3>
-                  <span className="text-xs font-semibold text-[#ec680a] bg-[#ec680a]/10 px-3 py-1 rounded-full">
-                    {aide.amount}
-                  </span>
-                </div>
-                <p className="text-sm text-[#64748b] leading-relaxed">{aide.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ══════════════════════════════════════════════════════════════════════
           6. BUDGET ÉTUDIANT MENSUEL

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Euro, Building2, GraduationCap, PiggyBank, Calculator } from "lucide-react";
+import { Euro, Building2, PiggyBank, Calculator } from "lucide-react";
 import { SectionTitle, Callout } from "@/components/blog/ArticleLayout";
 
 /* ---------- SOMMAIRE ---------- */
@@ -9,7 +9,6 @@ import { SectionTitle, Callout } from "@/components/blog/ArticleLayout";
 export const sommaire = [
   { id: "cout-reel", label: "Le coût réel des études en Europe" },
   { id: "pret-etudiant", label: "Le prêt étudiant : la solution principale" },
-  { id: "bourses-aides", label: "Bourses et aides disponibles" },
   { id: "accompagnement", label: "L\u2019accompagnement Edumove" },
   { id: "budget-mensuel", label: "Gérer son budget étudiant" },
 ];
@@ -177,79 +176,6 @@ export default function FinancerEtudes() {
         est rentabilisé rapidement.
       </p>
 
-      {/* Section 3 : bourses-aides */}
-      <SectionTitle id="bourses-aides" icon={<GraduationCap className="w-6 h-6 text-[#EC680A]" />}>
-        Bourses et aides disponibles
-      </SectionTitle>
-
-      <p className="text-[#334155] leading-relaxed mb-4">
-        Ce que beaucoup d&apos;étudiants ignorent, c&apos;est que{" "}
-        <strong>la plupart des aides françaises restent accessibles</strong> même
-        lorsque vous étudiez dans un autre pays de l&apos;Union européenne. Voici
-        les principales aides à connaître :
-      </p>
-
-      <div className="space-y-4 mb-6">
-        <div className="bg-[#fafbff] border border-gray-200/80 rounded-xl p-5">
-          <h4 className="font-bold text-sm text-[#1B1D3A] mb-2">Bourse CROUS sur critères sociaux</h4>
-          <p className="text-sm text-[#334155] leading-relaxed">
-            Bonne nouvelle : votre bourse CROUS est <strong>maintenue</strong> si
-            vous étudiez dans un pays de l&apos;UE. Les échelons vont de
-            ~1&nbsp;000&nbsp;&euro; à ~5&nbsp;000&nbsp;&euro; par an selon votre
-            situation. Il suffit de fournir un certificat de scolarité de votre
-            université européenne au CROUS de votre académie d&apos;origine.
-          </p>
-        </div>
-        <div className="bg-[#fafbff] border border-gray-200/80 rounded-xl p-5">
-          <h4 className="font-bold text-sm text-[#1B1D3A] mb-2">Bourse de mobilité internationale</h4>
-          <p className="text-sm text-[#334155] leading-relaxed">
-            Destinée aux étudiants boursiers qui partent étudier à l&apos;étranger.
-            Elle peut atteindre <strong>400&nbsp;&euro;/mois</strong> pendant une
-            durée de 2 à 9 mois, en complément de la bourse CROUS. Renseignez-vous
-            auprès de votre CROUS ou du service des relations internationales.
-          </p>
-        </div>
-        <div className="bg-[#fafbff] border border-gray-200/80 rounded-xl p-5">
-          <h4 className="font-bold text-sm text-[#1B1D3A] mb-2">Aide au mérite</h4>
-          <p className="text-sm text-[#334155] leading-relaxed">
-            Si vous avez obtenu une <strong>mention Très Bien au bac</strong>, vous
-            pouvez bénéficier d&apos;un complément annuel de 900&nbsp;&euro;. Cette
-            aide est cumulable avec la bourse CROUS et la bourse de mobilité.
-          </p>
-        </div>
-        <div className="bg-[#fafbff] border border-gray-200/80 rounded-xl p-5">
-          <h4 className="font-bold text-sm text-[#1B1D3A] mb-2">Aides régionales et départementales</h4>
-          <p className="text-sm text-[#334155] leading-relaxed">
-            Beaucoup de régions et de départements proposent des{" "}
-            <strong>aides à la mobilité</strong> pour les étudiants qui partent à
-            l&apos;étranger. Les montants et les conditions varient, mais ça vaut
-            toujours le coup de se renseigner auprès de votre conseil régional.
-          </p>
-        </div>
-      </div>
-
-      <Callout variant="warning">
-        <strong>Attention aux délais :</strong> les demandes de bourse CROUS
-        doivent être déposées entre <strong>janvier et mai</strong> pour la rentrée
-        suivante. Ne tardez pas, car les dossiers incomplets ou hors délai sont
-        systématiquement refusés. Pensez aussi à renouveler votre demande chaque
-        année.
-      </Callout>
-
-      <p className="text-[#334155] leading-relaxed mb-4">
-        En cumulant bourse CROUS, aide à la mobilité et aide au mérite, certains
-        de nos étudiants couvrent une part significative de leurs frais de vie
-        mensuels. Le prêt étudiant vient alors uniquement compléter pour les frais
-        de scolarité. Découvrez les{" "}
-        <Link href="/formations/medecine" className="text-[#EC680A] underline underline-offset-2 font-medium hover:text-[#D45E09] transition-colors">
-          formations en médecine
-        </Link>{" "}
-        et en{" "}
-        <Link href="/formations/kinesitherapie" className="text-[#EC680A] underline underline-offset-2 font-medium hover:text-[#D45E09] transition-colors">
-          kinésithérapie
-        </Link>{" "}
-        éligibles à ces dispositifs.
-      </p>
 
       {/* Section 4 : accompagnement */}
       <SectionTitle id="accompagnement" icon={<Building2 className="w-6 h-6 text-[#EC680A]" />}>
