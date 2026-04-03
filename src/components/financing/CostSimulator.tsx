@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useMemo } from "react";
-import { Euro, GraduationCap, Building2, TrendingUp, Calculator, ChevronRight } from "lucide-react";
+import { useState, useMemo, useEffect, useCallback } from "react";
+import { Euro, GraduationCap, Building2, TrendingUp, Calculator, ChevronRight, Lock } from "lucide-react";
+import Script from "next/script";
 
 /* ═══════════════════════════════════════════════════════════════════════
    DATA
@@ -61,9 +62,28 @@ function monthlyPayment(principal: number, annualRate: number, months: number): 
    ═══════════════════════════════════════════════════════════════════════ */
 
 export default function CostSimulator() {
+  const [unlocked, setUnlocked] = useState(false);
   const [selectedFiliere, setSelectedFiliere] = useState<string>("");
   const [selectedProgram, setSelectedProgram] = useState<Program | null>(null);
   const [loanMonths, setLoanMonths] = useState(120);
+
+  // Check if already unlocked (localStorage)
+  useEffect(() => {
+    if (localStorage.getItem("sim-unlocked") === "1") setUnlocked(true);
+  }, []);
+
+  // Listen for HubSpot form submission
+  const handleMessage = useCallback((event: MessageEvent) => {
+    if (event.data?.type === "hsFormCallback" && event.data?.eventName === "onFormSubmitted") {
+      localStorage.setItem("sim-unlocked", "1");
+      setUnlocked(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("message", handleMessage);
+    return () => window.removeEventListener("message", handleMessage);
+  }, [handleMessage]);
 
   const universities = useMemo(
     () => PROGRAMS.filter((p) => p.filiere === selectedFiliere),
@@ -102,6 +122,7 @@ export default function CostSimulator() {
 
   return (
     <section className="py-16 px-6">
+      <Script src="https://js-eu1.hsforms.net/forms/embed/26711031.js" strategy="lazyOnload" />
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <div className="text-center mb-10">
@@ -117,7 +138,26 @@ export default function CostSimulator() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-[1fr_1.2fr] gap-8">
+        {/* HubSpot form gate */}
+        {!unlocked && (
+          <div className="max-w-lg mx-auto mb-12">
+            <div className="bg-white rounded-2xl border border-gray-100 shadow-xl p-8 text-center">
+              <div className="w-14 h-14 rounded-2xl bg-[#EC680A]/10 flex items-center justify-center mx-auto mb-4">
+                <Lock className="w-6 h-6 text-[#EC680A]" />
+              </div>
+              <h3 className="text-[#1B1D3A] font-bold text-xl mb-2">Accédez au simulateur gratuitement</h3>
+              <p className="text-[#64748b] text-sm mb-6">Remplissez le formulaire ci-dessous pour débloquer la simulation personnalisée de vos études.</p>
+              <div
+                className="hs-form-frame"
+                data-region="eu1"
+                data-form-id="ccb38b22-168d-4340-ab90-c9b27a40212b"
+                data-portal-id="26711031"
+              />
+            </div>
+          </div>
+        )}
+
+        {unlocked && <div className="grid md:grid-cols-[1fr_1.2fr] gap-8">
           {/* LEFT — Selection */}
           <div className="space-y-6">
             {/* Step 1: Filière */}
@@ -333,7 +373,7 @@ export default function CostSimulator() {
               </div>
             )}
           </div>
-        </div>
+        </div>}
       </div>
     </section>
   );
