@@ -14,6 +14,7 @@ import {
   Stethoscope,
   Shield,
   Briefcase,
+  MapPin,
 } from "lucide-react";
 import ContactButton from "@/components/shared/ContactButton";
 import StickyBar from "@/components/program/StickyBar";
@@ -126,12 +127,134 @@ const DIPLOMES = [
   },
 ];
 
+const DESTINATIONS = [
+  {
+    city: "Madrid",
+    country: "Espagne",
+    universities: "Universidad Europea, UCJC",
+    filieres: "Médecine, dentaire, kinésithérapie, pharmacie, vétérinaire",
+    href: "/vie-etudiante/madrid",
+  },
+  {
+    city: "Valence",
+    country: "Espagne",
+    universities: "Universidad Europea",
+    filieres: "Dentaire, vétérinaire",
+    href: "/vie-etudiante/valence",
+  },
+  {
+    city: "Malaga",
+    country: "Espagne",
+    universities: "Universidad Europea",
+    filieres: "Dentaire",
+    href: "/vie-etudiante/malaga",
+  },
+  {
+    city: "Rome",
+    country: "Italie",
+    universities: "LINK Campus University",
+    filieres: "Médecine, kinésithérapie, pharmacie",
+    href: "/vie-etudiante/rome",
+  },
+];
+
+const FAQ_RESULTATS = [
+  {
+    q: "Quel est le taux de réussite des étudiants Edumove ?",
+    a: "Le taux de passage en année supérieure de nos étudiants se situe entre 97% et 99% selon les filières. Ce résultat s'explique par un accompagnement personnalisé en amont (orientation, préparation aux tests) et un suivi tout au long du parcours.",
+  },
+  {
+    q: "Les diplômes obtenus en Espagne ou en Italie sont-ils reconnus en France ?",
+    a: "Oui. Nos universités partenaires délivrent des diplômes conformes au processus de Bologne, reconnus dans les 49 pays signataires. Pour les professions de santé réglementées (médecin, dentiste, kinésithérapeute, pharmacien, vétérinaire), la reconnaissance est encadrée par la directive européenne 2005/36/CE. Les diplômés peuvent exercer en France après inscription auprès de l'Ordre professionnel correspondant.",
+  },
+  {
+    q: "Combien d'étudiants Edumove a-t-il accompagnés ?",
+    a: "Depuis sa création, Edumove a accompagné plus de 500 étudiants vers des études de santé en Espagne et en Italie, dans 5 filières : médecine, dentaire, kinésithérapie, pharmacie et vétérinaire.",
+  },
+  {
+    q: "Quel est le taux d'admission des candidats accompagnés par Edumove ?",
+    a: "98% des étudiants accompagnés par Edumove obtiennent leur admission dans l'une de nos universités partenaires. Ce taux élevé est le résultat d'une sélection en amont et d'une préparation rigoureuse aux tests et entretiens d'admission.",
+  },
+  {
+    q: "Dans quelles villes peut-on étudier avec Edumove ?",
+    a: "Edumove propose des formations dans 4 villes européennes : Madrid, Valence et Malaga en Espagne, et Rome en Italie. Chaque destination offre des filières et des universités différentes pour s'adapter à votre projet.",
+    link: { href: "/formations/medecine", label: "Voir toutes les formations" },
+  },
+  {
+    q: "Peut-on exercer en tant que médecin en France avec un diplôme espagnol ou italien ?",
+    a: "Oui. Un diplôme de médecine obtenu dans une université européenne reconnue permet d'exercer en France. Il faut s'inscrire au Conseil National de l'Ordre des Médecins et, dans certains cas, réaliser des démarches de reconnaissance. Edumove accompagne ses étudiants dans ces démarches.",
+  },
+  {
+    q: "Quelles sont les universités partenaires d'Edumove ?",
+    a: "Edumove travaille avec 3 universités partenaires : l'Universidad Europea (Madrid, Valence, Malaga), l'UCJC — Universidad Camilo José Cela (Madrid) et LINK Campus University (Rome). Toutes sont accréditées et reconnues par les autorités de leur pays.",
+    link: { href: "/universites/universidad-europea", label: "Découvrir les universités" },
+  },
+  {
+    q: "Quel est le taux d'employabilité des diplômés ?",
+    a: "Les professionnels de santé formés dans nos universités partenaires affichent un taux d'insertion professionnelle supérieur à 95% dans les 6 mois suivant l'obtention du diplôme. Les métiers de santé restent parmi les plus demandés en France et en Europe.",
+  },
+];
+
+/* ── FAQ Accordion ── */
+function FAQItem({
+  faq,
+  index,
+  open,
+  setOpen,
+}: {
+  faq: { q: string; a: string; link?: { href: string; label: string } };
+  index: number;
+  open: number | null;
+  setOpen: (i: number | null) => void;
+}) {
+  return (
+    <div
+      className={`border rounded-xl overflow-hidden transition-all ${
+        open === index ? "border-[#ec680a]/60 shadow-sm" : "border-gray-200"
+      }`}
+    >
+      <button
+        onClick={() => setOpen(open === index ? null : index)}
+        className="w-full flex items-center justify-between p-5 h-[68px] text-left hover:bg-gray-50/50 transition-colors"
+      >
+        <span className="font-semibold text-[#1b1d3a] text-sm pr-4 line-clamp-1">
+          {faq.q}
+        </span>
+        <span
+          className={`shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-sm transition-all ${
+            open === index
+              ? "bg-[#ec680a] text-white"
+              : "bg-gray-100 text-[#334155]"
+          }`}
+        >
+          {open === index ? "\u2212" : "+"}
+        </span>
+      </button>
+      {open === index && (
+        <div className="px-5 pb-5">
+          <p className="text-[#334155] text-sm leading-relaxed">{faq.a}</p>
+          {faq.link && (
+            <Link
+              href={faq.link.href}
+              className="inline-block mt-2 text-sm text-[#615CA5] hover:text-[#ec680a] underline underline-offset-2 font-medium transition-colors"
+            >
+              {faq.link.label} &rarr;
+            </Link>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function ResultatsPage() {
   const statsRef = useRef(null);
   const statsInView = useInView(statsRef, { once: true, margin: "-80px" });
 
   const barRef = useRef(null);
   const barInView = useInView(barRef, { once: true, margin: "-80px" });
+
+  const [faqOpen, setFaqOpen] = useState<number | null>(null);
 
   return (
     <>
@@ -281,6 +404,136 @@ export default function ResultatsPage() {
         </div>
       </section>
 
+      {/* ── SEO: POURQUOI CHOISIR EDUMOVE ── */}
+      <section className="py-12 md:py-16 bg-[#fafbff]">
+        <div className="max-w-4xl mx-auto px-6">
+          <h2 className="text-2xl md:text-3xl font-bold text-[#1B1D3A] mb-6">
+            Pourquoi choisir Edumove pour ses études de santé en Europe ?
+          </h2>
+          <div className="space-y-4 text-[#334155] text-sm leading-relaxed">
+            <p>
+              Chaque année, des milliers d&apos;étudiants français se heurtent à la
+              sélection du PASS et de la LAS. Le numerus apertus limite
+              drastiquement l&apos;accès aux filières de santé en France, poussant de
+              nombreux bacheliers motivés à chercher des alternatives. Edumove
+              propose une solution concrète : étudier la médecine, le dentaire, la
+              kinésithérapie, la pharmacie ou le vétérinaire dans des universités
+              européennes reconnues, en Espagne et en Italie.
+            </p>
+            <p>
+              Nos résultats témoignent de la qualité de notre accompagnement. Avec
+              un taux d&apos;admission de 98% et un taux de passage en année supérieure
+              compris entre 97% et 99%, les étudiants accompagnés par Edumove
+              réussissent leurs études dans des conditions optimales. Les diplômes
+              délivrés par nos universités partenaires sont conformes au processus
+              de Bologne et permettent d&apos;exercer en France comme dans toute
+              l&apos;Union européenne.
+            </p>
+            <p>
+              L&apos;accompagnement Edumove couvre toutes les étapes du parcours :
+              orientation personnalisée, constitution du dossier de candidature,
+              préparation aux tests d&apos;admission, montage du financement avec notre
+              partenaire bancaire{" "}
+              <Link href="/financement" className="text-[#EC680A] underline underline-offset-2 font-medium hover:text-[#D45E09] transition-colors">
+                LCL
+              </Link>
+              , et aide à l&apos;installation sur place. Nos étudiants ne sont
+              jamais seuls.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── DESTINATIONS ── */}
+      <section className="py-12 md:py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-10"
+          >
+            <p className="text-[#ec680a] text-xs uppercase tracking-widest font-semibold mb-2">
+              Nos destinations
+            </p>
+            <h2 className="text-2xl md:text-3xl font-bold text-[#1B1D3A]">
+              Où étudient nos étudiants ?
+            </h2>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {DESTINATIONS.map((d, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+              >
+                <Link
+                  href={d.href}
+                  className="block bg-[#fafbff] border border-[#e2e2ef] rounded-xl p-5 hover:border-[#ec680a]/40 hover:shadow-md transition-all h-full"
+                >
+                  <div className="flex items-center gap-2 mb-3">
+                    <MapPin className="w-4 h-4 text-[#EC680A]" />
+                    <h3 className="font-bold text-[#1B1D3A]">
+                      {d.city}
+                    </h3>
+                    <span className="text-xs text-[#64748b]">{d.country}</span>
+                  </div>
+                  <p className="text-xs text-[#615CA5] font-semibold mb-1">
+                    {d.universities}
+                  </p>
+                  <p className="text-xs text-[#64748b] leading-relaxed">
+                    {d.filieres}
+                  </p>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── FAQ ── */}
+      <section className="relative py-12 md:py-16 bg-[#fafbff]">
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#ec680a] via-[#615ca5] to-[#ec680a]" />
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-10">
+            <p className="text-[#ec680a] text-xs uppercase tracking-widest font-semibold mb-2">
+              FAQ
+            </p>
+            <h2 className="text-2xl md:text-3xl font-bold text-[#1B1D3A]">
+              Questions sur nos résultats
+            </h2>
+          </div>
+
+          <div className="flex flex-col md:flex-row gap-3">
+            <div className="flex-1 space-y-3">
+              {FAQ_RESULTATS.filter((_, i) => i % 2 === 0).map((faq, i) => (
+                <FAQItem
+                  key={i * 2}
+                  faq={faq}
+                  index={i * 2}
+                  open={faqOpen}
+                  setOpen={setFaqOpen}
+                />
+              ))}
+            </div>
+            <div className="flex-1 space-y-3">
+              {FAQ_RESULTATS.filter((_, i) => i % 2 === 1).map((faq, i) => (
+                <FAQItem
+                  key={i * 2 + 1}
+                  faq={faq}
+                  index={i * 2 + 1}
+                  open={faqOpen}
+                  setOpen={setFaqOpen}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── FINANCING ── */}
       <FinancingBanner />
 
@@ -313,6 +566,25 @@ export default function ResultatsPage() {
       </section>
 
       <StickyBar />
+
+      {/* FAQ JSON-LD for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: FAQ_RESULTATS.map((faq) => ({
+              "@type": "Question",
+              name: faq.q,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: faq.a,
+              },
+            })),
+          }),
+        }}
+      />
     </>
   );
 }
