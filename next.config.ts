@@ -88,6 +88,15 @@ const nextConfig: NextConfig = {
       { source: "/dentaire-link-citta-del-castello", destination: "/formations/dentaire/link-rome", permanent: true },
       { source: "/universidad-europea-de-madrid", destination: "/universites/universidad-europea", permanent: true },
       { source: "/integrer-medecine-europe", destination: "/formations/medecine", permanent: true },
+      { source: "/medecine-umf-bucarest", destination: "/formations/medecine", permanent: true },
+      { source: "/pharmacie-ufv-madrid", destination: "/formations/pharmacie", permanent: true },
+      { source: "/dentaire-universidad-europea-alicante", destination: "/formations/dentaire/ue-madrid", permanent: true },
+      { source: "/medecine-orleans-x-croatie", destination: "/formations/medecine", permanent: true },
+      { source: "/kinesitherapie-ufp-porto", destination: "/formations/kinesitherapie", permanent: true },
+      { source: "/kinesitherapie-ceu-madrid", destination: "/formations/kinesitherapie", permanent: true },
+      { source: "/kinesitherapie-ceu-seville", destination: "/formations/kinesitherapie", permanent: true },
+      { source: "/dentaire-belgique-2", destination: "/formations/dentaire", permanent: true },
+      { source: "/dentaire-universidad-ceu-cardenal-herrera-valence", destination: "/formations/dentaire", permanent: true },
 
       // ── Articles statiques migrés vers Supabase ──
       { source: "/blog/etudes-medecine-espagne", destination: "/guides/faire-medecine-en-espagne-le-guide-complet-pour-les-francais", permanent: true },
