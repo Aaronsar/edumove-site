@@ -5,6 +5,7 @@ import Image from "next/image";
 import { ChevronRight, CheckCircle2, GraduationCap, Euro, Clock, Shield, Banknote, Users, FileText, Handshake, ArrowRight, Phone, Video, CalendarDays } from "lucide-react";
 import ContactButton from "@/components/shared/ContactButton";
 import StickyBar from "@/components/program/StickyBar";
+import CostSimulator from "@/components/financing/CostSimulator";
 
 const STEPS = [
   {
@@ -180,6 +181,11 @@ export default function FinancingPage() {
           </div>
         </div>
       </section>
+
+      {/* ══════════════════════════════════════════════════════════════════════
+          1.5. SIMULATEUR DE COÛT INTERACTIF
+      ══════════════════════════════════════════════════════════════════════ */}
+      <CostSimulator />
 
       {/* ══════════════════════════════════════════════════════════════════════
           2. COMMENT ÇA MARCHE
