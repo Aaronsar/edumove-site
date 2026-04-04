@@ -26,6 +26,7 @@ const planDuSite = [
   { name: "Questions fréquentes", href: "/questions-frequentes" },
   { name: "Témoignages", href: "/temoignages" },
   { name: "Nos résultats", href: "/nos-resultats" },
+  { name: "Quiz orientation", href: "/quiz" },
   { name: "À propos", href: "/a-propos" },
   { name: "Blog", href: "/blog" },
   { name: "Contact", href: "/contact" },
