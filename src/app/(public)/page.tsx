@@ -2,7 +2,6 @@ import dynamic from "next/dynamic";
 import HeroSection from "@/components/home/HeroSection";
 import UniversitesSection from "@/components/home/UniversitesSection";
 import StatsSection from "@/components/home/StatsSection";
-import QuizBanner from "@/components/home/QuizBanner";
 
 // Lazy load below-fold components
 const ServicesSection = dynamic(() => import("@/components/home/ServicesSection"));
@@ -18,7 +17,6 @@ export default function Home() {
       <HeroSection />
       <UniversitesSection />
       <StatsSection />
-      <QuizBanner />
       <ServicesSection />
       <TestimonialsCarousel />
       <CityGuidesSection />

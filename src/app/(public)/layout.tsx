@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WebinarBanner from "@/components/shared/WebinarBanner";
+import QuizBannerGlobal from "@/components/shared/QuizBannerGlobal";
 
 export default function PublicLayout({
   children,
@@ -11,6 +12,7 @@ export default function PublicLayout({
     <>
       <Header />
       {children}
+      <QuizBannerGlobal />
       <Footer />
       <WebinarBanner />
     </>

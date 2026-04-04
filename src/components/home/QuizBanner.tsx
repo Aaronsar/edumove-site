@@ -16,10 +16,10 @@ export default function QuizBanner() {
                 <Sparkles className="w-7 h-7 text-[#EC680A]" />
               </div>
               <div className="flex-1 text-center md:text-left">
-                <h3 className="text-lg md:text-xl font-bold text-white mb-1">
+                <h3 className="text-lg md:text-xl font-bold mb-1" style={{ color: "#ffffff" }}>
                   Quelle faculté en Europe est faite pour vous ?
                 </h3>
-                <p className="text-white/60 text-sm">
+                <p className="text-sm" style={{ color: "rgba(255,255,255,0.6)" }}>
                   6 questions, 1 minute — trouvez l&apos;université qui correspond à votre profil.
                 </p>
               </div>
