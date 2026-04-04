@@ -108,7 +108,7 @@ export default function UniHero({
                 >
                   <Link
                     href={`/formations/${f.filiereSlug}/${f.programSlug}`}
-                    className="group flex flex-col items-center justify-center bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-5 hover:bg-white/10 hover:border-[#EC680A]/40 transition-all duration-200"
+                    className="group flex flex-col items-center justify-center bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-5 h-full min-h-[100px] hover:bg-white/10 hover:border-[#EC680A]/40 transition-all duration-200"
                   >
                     <div className="mb-2 group-hover:scale-110 transition-transform text-white">
                       <FiliereIcon slug={f.filiereSlug} className="w-7 h-7" stroke="#ec680a" />
