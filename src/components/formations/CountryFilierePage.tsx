@@ -280,6 +280,22 @@ export default function CountryFilierePage({
       {/* ── STICKY BAR ── */}
       <StickyBar />
 
+      {/* ── JSON-LD Breadcrumb ── */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Accueil", item: "https://edumove.fr/" },
+              { "@type": "ListItem", position: 2, name: filiere.name, item: `https://edumove.fr/formations/${filiere.slug}` },
+              { "@type": "ListItem", position: 3, name: `${filiere.name} en ${data.countryName}`, item: `https://edumove.fr/formations/${filiere.slug}/${data.countrySlug}` },
+            ],
+          }),
+        }}
+      />
+
       {/* ── JSON-LD FAQ ── */}
       {data.faq.length > 0 && (
         <script

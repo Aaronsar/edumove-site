@@ -115,7 +115,7 @@ export const countryPages: CountryPageData[] = [
     metaDescription:
       "Faire dentaire en Espagne : cursus de 5 ans sans PASS/LAS, stages cliniques d\u00E8s la 3e ann\u00E9e. UCJC et Universidad Europea sur 5 campus. Admission, frais et financement.",
     intro:
-      "L\u2019Espagne est l\u2019une des destinations les plus pris\u00E9es par les \u00E9tudiants fran\u00E7ais pour \u00E9tudier l\u2019odontologie. Avec un cursus de 5 ans alliant th\u00E9orie et pratique clinique intensive sur patients r\u00E9els, les universit\u00E9s espagnoles forment des chirurgiens-dentistes comp\u00E9tents et reconnus dans toute l\u2019Union europ\u00E9enne. L\u2019admission se fait sans le concours PASS/LAS fran\u00E7ais, sur la base d\u2019un test d\u2019entr\u00E9e (Prueba Espec\u00EDfica) ou d\u2019un entretien de motivation.",
+      "L\u2019Espagne est l\u2019une des destinations les plus pris\u00E9es par les \u00E9tudiants fran\u00E7ais pour \u00E9tudier l\u2019odontologie. Avec un cursus de 5 ans (300 cr\u00E9dits ECTS) alliant th\u00E9orie et pratique clinique intensive sur patients r\u00E9els, les universit\u00E9s espagnoles forment des chirurgiens-dentistes comp\u00E9tents et reconnus dans toute l\u2019Union europ\u00E9enne gr\u00E2ce au processus de Bologne. L\u2019admission se fait sans le concours PASS/LAS fran\u00E7ais, sur la base d\u2019un test d\u2019entr\u00E9e (Prueba Espec\u00EDfica) ou d\u2019un entretien de motivation.",
     highlights: [
       "Admission sans concours PASS/LAS : test PE ou entretien",
       "Pratique clinique sur patients r\u00E9els d\u00E8s la 3\u00E8me ann\u00E9e",
@@ -125,11 +125,11 @@ export const countryPages: CountryPageData[] = [
       "Financement possible jusqu\u2019\u00E0 100% via nos partenaires bancaires",
     ],
     whyThisCountry:
-      "Les \u00E9tudes dentaires en Espagne se d\u00E9roulent sur 5 ans (10 semestres) et sont r\u00E9put\u00E9es pour l\u2019intensit\u00E9 de la formation clinique. D\u00E8s la 3\u00E8me ann\u00E9e, les \u00E9tudiants pratiquent des soins dentaires sur patients r\u00E9els dans les cliniques universitaires, encadr\u00E9s par des praticiens exp\u00E9riment\u00E9s. L\u2019Universidad Europea dispose de cliniques dentaires \u00E9quip\u00E9es de fauteuils num\u00E9riques, de scanners intraoraux et de technologies CFAO. Cette formation pratique intensive est un atout majeur par rapport au cursus fran\u00E7ais. Avec 5 campus r\u00E9partis dans toute l\u2019Espagne, vous avez le choix entre Madrid, Malaga, Valence, Alicante et les Canaries, chacun offrant un cadre de vie unique.",
+      "Les \u00E9tudes dentaires en Espagne se d\u00E9roulent sur 5 ans (10 semestres, 300 cr\u00E9dits ECTS) et sont r\u00E9put\u00E9es pour l\u2019intensit\u00E9 de la formation clinique. D\u00E8s la 3\u00E8me ann\u00E9e, les \u00E9tudiants pratiquent des soins dentaires sur patients r\u00E9els dans les cliniques universitaires, encadr\u00E9s par des praticiens exp\u00E9riment\u00E9s. L\u2019Universidad Europea dispose de cliniques dentaires \u00E9quip\u00E9es de fauteuils num\u00E9riques, de scanners intraoraux et de technologies CFAO. Cette formation pratique intensive est un atout majeur par rapport au cursus fran\u00E7ais o\u00F9 l\u2019acc\u00E8s est limit\u00E9 par le PASS/LAS. Avec 5 campus r\u00E9partis dans toute l\u2019Espagne, vous avez le choix entre Madrid, Malaga, Valence, Alicante et les Canaries, chacun offrant un cadre de vie unique.",
     sections: [
       {
         title: "Le cursus dentaire espagnol en d\u00E9tail",
-        content: "Le Grado en Odontolog\u00EDa s\u2019\u00E9tale sur 5 ann\u00E9es. Les deux premi\u00E8res ann\u00E9es couvrent les sciences fondamentales et pr\u00E9cliniques : anatomie de la t\u00EAte et du cou, histologie buccale, mat\u00E9riaux dentaires, parodontologie de base et proth\u00E8se. \u00C0 partir de la 3\u00E8me ann\u00E9e, la formation devient majoritairement clinique. Les \u00E9tudiants r\u00E9alisent des actes sur patients r\u00E9els : d\u00E9tartrages, soins conservateurs, extractions simples, puis \u00E9voluent vers des actes plus complexes en 4\u00E8me et 5\u00E8me ann\u00E9e (endodontie, proth\u00E8ses fixes et amovibles, implantologie, orthodontie). Cette approche progressive garantit une formation compl\u00E8te et op\u00E9rationnelle d\u00E8s l\u2019obtention du dipl\u00F4me."
+        content: "Le Grado en Odontolog\u00EDa s\u2019\u00E9tale sur 5 ann\u00E9es et totalise 300 cr\u00E9dits ECTS, conform\u00E9ment aux standards du processus de Bologne. Les deux premi\u00E8res ann\u00E9es couvrent les sciences fondamentales et pr\u00E9cliniques : anatomie de la t\u00EAte et du cou, histologie buccale, mat\u00E9riaux dentaires, parodontologie de base et proth\u00E8se. \u00C0 partir de la 3\u00E8me ann\u00E9e, la formation devient majoritairement clinique. Les \u00E9tudiants r\u00E9alisent des actes sur patients r\u00E9els : d\u00E9tartrages, soins conservateurs, extractions simples, puis \u00E9voluent vers des actes plus complexes en 4\u00E8me et 5\u00E8me ann\u00E9e (endodontie, proth\u00E8ses fixes et amovibles, implantologie, orthodontie). Cette approche progressive garantit une formation compl\u00E8te et op\u00E9rationnelle d\u00E8s l\u2019obtention du dipl\u00F4me."
       },
       {
         title: "Admission et pr\u00E9requis",
@@ -141,7 +141,7 @@ export const countryPages: CountryPageData[] = [
       },
     ],
     diplomaRecognition:
-      "Le Grado en Odontolog\u00EDa est un dipl\u00F4me europ\u00E9en automatiquement reconnu dans tous les pays de l\u2019UE. En France, vous pourrez exercer en tant que chirurgien-dentiste apr\u00E8s inscription au Conseil National de l\u2019Ordre des Chirurgiens-Dentistes, sans proc\u00E9dure d\u2019\u00E9quivalence. La directive 2005/36/CE garantit cette reconnaissance mutuelle des qualifications professionnelles au sein de l\u2019espace europ\u00E9en.",
+      "Le Grado en Odontolog\u00EDa est un dipl\u00F4me europ\u00E9en conforme au processus de Bologne et automatiquement reconnu dans les 49 pays signataires. En France, vous pourrez exercer en tant que chirurgien-dentiste apr\u00E8s inscription au Conseil National de l\u2019Ordre des Chirurgiens-Dentistes, sans proc\u00E9dure d\u2019\u00E9quivalence. La directive 2005/36/CE garantit cette reconnaissance mutuelle des qualifications professionnelles au sein de l\u2019espace europ\u00E9en. Les perspectives professionnelles sont excellentes : exercice lib\u00E9ral en cabinet, salariat en clinique dentaire, postes hospitaliers, ou poursuite en Master de sp\u00E9cialisation (orthodontie, implantologie, parodontologie, chirurgie orale). Le taux d\u2019insertion professionnelle des chirurgiens-dentistes d\u00E9passe 95% dans les 6 mois suivant l\u2019obtention du dipl\u00F4me.",
     faq: [
       {
         question: "Combien de temps durent les \u00E9tudes dentaires en Espagne ?",
@@ -162,6 +162,26 @@ export const countryPages: CountryPageData[] = [
       {
         question: "Peut-on se sp\u00E9cialiser en orthodontie ou implantologie apr\u00E8s ?",
         answer: "Oui, apr\u00E8s le Grado en Odontolog\u00EDa, vous pouvez suivre un Master de sp\u00E9cialisation en Espagne (orthodontie, implantologie, parodontologie, etc.) ou revenir en France pour une sp\u00E9cialisation. Votre dipl\u00F4me de base est reconnu dans toute l\u2019UE, ce qui vous donne une flexibilit\u00E9 totale.",
+      },
+      {
+        question: "Le dipl\u00F4me dentaire espagnol est-il reconnu en France ?",
+        answer: "Oui. Le Grado en Odontolog\u00EDa est un dipl\u00F4me conforme au processus de Bologne (300 cr\u00E9dits ECTS), automatiquement reconnu dans les 49 pays signataires. La directive europ\u00E9enne 2005/36/CE garantit la reconnaissance mutuelle : vous pouvez exercer en France en tant que chirurgien-dentiste apr\u00E8s inscription au Conseil de l\u2019Ordre, sans proc\u00E9dure d\u2019\u00E9quivalence.",
+      },
+      {
+        question: "Quelles sont les conditions d\u2019admission en dentaire en Espagne ?",
+        answer: "L\u2019admission se fait apr\u00E8s le baccalaur\u00E9at, sans passer par le concours PASS/LAS. \u00C0 l\u2019Universidad Europea, vous passez la Prueba Espec\u00EDfica (4 \u00E9preuves scientifiques). \u00C0 l\u2019UCJC, un entretien de motivation suffit. Votre dossier scolaire, votre motivation et votre projet professionnel sont \u00E9valu\u00E9s. Edumove vous accompagne dans la pr\u00E9paration.",
+      },
+      {
+        question: "Comment financer ses \u00E9tudes dentaires en Espagne ?",
+        answer: "Edumove a n\u00E9goci\u00E9 un partenariat avec le LCL pour un pr\u00EAt \u00E9tudiant \u00E0 partir de 75\u00A0000\u00A0\u20AC, couvrant scolarit\u00E9, logement et vie courante. Le remboursement est diff\u00E9r\u00E9 : vous ne remboursez qu\u2019une fois dipl\u00F4m\u00E9 et en exercice. Pendant les \u00E9tudes, seule l\u2019assurance est \u00E0 payer (5 \u00E0 15\u00A0\u20AC/mois).",
+      },
+      {
+        question: "Quelle est la diff\u00E9rence entre le cursus dentaire en France et en Espagne ?",
+        answer: "En France, l\u2019acc\u00E8s est conditionn\u00E9 par le PASS/LAS avec un taux d\u2019\u00E9chec tr\u00E8s \u00E9lev\u00E9. En Espagne, l\u2019admission se fait sur dossier et test ou entretien. La formation clinique d\u00E9marre d\u00E8s la 3\u00E8me ann\u00E9e en Espagne (contre plus tard en France), et le dipl\u00F4me est identiquement reconnu dans toute l\u2019UE gr\u00E2ce au processus de Bologne.",
+      },
+      {
+        question: "Quelles universit\u00E9s proposent le dentaire en Espagne avec Edumove ?",
+        answer: "Edumove travaille avec deux universit\u00E9s pour le dentaire en Espagne : l\u2019Universidad Europea (5 campus : Madrid, Malaga, Valence, Alicante et Canaries) et l\u2019UCJC \u2014 Universidad Camilo Jos\u00E9 Cela \u00E0 Madrid. Chaque campus a ses sp\u00E9cificit\u00E9s en termes de frais, taille des promos et cadre de vie.",
       },
     ],
   },
