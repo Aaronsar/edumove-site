@@ -340,7 +340,7 @@ function SlideConstat() {
           {[
             { value: "60 000+", label: "Étudiants inscrits en PASS chaque année" },
             { value: "80%", label: "Éliminés dès la première année" },
-            { value: "2 ans", label: "Perdus en moyenne par les recalés" },
+            { value: "1 an", label: "Perdu en moyenne par les recalés" },
             { value: "0%", label: "Garantie de résultat malgré l'investissement" },
           ].map((stat, i) => (
             <div key={i} className="bg-[#f5f5fb] rounded-2xl p-5 text-center border border-gray-100 anim-scale-in" style={{ animationDelay: `${0.4 + i * 0.08}s` }}>
@@ -594,7 +594,7 @@ function SlideComparaison() {
               {[
                 "Concours ultra-sélectif (80% d'échec)",
                 "Aucune garantie d'obtenir le diplôme",
-                "2 années perdues en cas d'échec",
+                "1 année perdue en cas d'échec",
                 "Stress intense, impact sur la santé mentale",
                 "Nombre de places très limité (numerus apertus)",
                 "Redoublement interdit depuis la réforme",
