@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/edumove-og.png",
+        url: "/api/og?title=Études+de+santé+en+Europe&subtitle=Médecine%2C+dentaire%2C+kiné%2C+pharmacie%2C+vétérinaire+en+Espagne+et+Italie&tag=100%25+gratuit",
         width: 1200,
         height: 630,
         alt: "Edumove — Études de médecine, dentaire, kiné en Espagne et Italie",
@@ -100,19 +100,11 @@ export default function RootLayout({
         {/* Google Tag Manager — deferred */}
         <Script id="gtm" strategy="afterInteractive">{`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-WJVXHBMT');`}</Script>
 
-        {/* Google Analytics — deferred */}
-        <Script src="https://www.googletagmanager.com/gtag/js?id=G-S97PWZQKZ2" strategy="afterInteractive" />
-        <Script id="ga" strategy="afterInteractive">{`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S97PWZQKZ2');`}</Script>
-
         {/* Meta Pixel — deferred */}
         <Script id="fbpixel" strategy="afterInteractive">{`!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1606959157087476');fbq('track','PageView');`}</Script>
 
-        {/* Google Ads — deferred */}
-        <Script src="https://www.googletagmanager.com/gtag/js?id=AW-18042868884" strategy="afterInteractive" />
-        <Script id="gads" strategy="afterInteractive">{`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-18042868884');`}</Script>
-
-        {/* Tracking — Candidature click */}
-        <Script id="click-track" strategy="afterInteractive">{`document.addEventListener('click',function(e){var a=e.target.closest('a[href*="candidature.edumove.fr"]');if(a){if(typeof fbq==='function')fbq('trackCustom','ClickCandidature');if(typeof gtag==='function')gtag('event','click_candidature',{event_category:'engagement',event_label:'candidature_link'});}});`}</Script>
+        {/* Tracking — Candidature click (via dataLayer pour GTM) */}
+        <Script id="click-track" strategy="afterInteractive">{`document.addEventListener('click',function(e){var a=e.target.closest('a[href*="candidature.edumove.fr"]');if(a){window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'click_candidature',event_category:'engagement',event_label:'candidature_link'});if(typeof fbq==='function')fbq('trackCustom','ClickCandidature');}});`}</Script>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
