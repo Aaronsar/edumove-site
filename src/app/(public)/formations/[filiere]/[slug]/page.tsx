@@ -19,6 +19,7 @@ import CostCard from "@/components/program/CostCard";
 import StudentLifeSection from "@/components/program/StudentLifeSection";
 import ProgramCTA from "@/components/program/ProgramCTA";
 import RelatedPrograms from "@/components/program/RelatedPrograms";
+import CourseJsonLd from "@/components/program/CourseJsonLd";
 import GuideTestPEBanner from "@/components/program/GuideTestPEBanner";
 import GuideTestLINKBanner from "@/components/program/GuideTestLINKBanner";
 import StickyBar from "@/components/program/StickyBar";
@@ -142,6 +143,7 @@ export default async function SlugPage({
 
   return (
     <main>
+      <CourseJsonLd detail={detail} />
       <ProgramHero detail={detail} />
       <KeyInfoBar detail={detail} />
 
