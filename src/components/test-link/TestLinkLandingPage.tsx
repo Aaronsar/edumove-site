@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -13,6 +16,7 @@ import {
   Star,
 } from "lucide-react";
 import TestDetails from "@/components/universites/TestDetails";
+import HubSpotEmbedModal from "@/components/shared/HubSpotEmbedModal";
 
 const TEST_DATE_LABEL = "25 juin 2026";
 const TEST_DATE_ISO = "2026-06-25";
@@ -156,6 +160,10 @@ const eventJsonLd = {
 };
 
 export default function TestLinkLandingPage() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   return (
     <main>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(eventJsonLd) }} />
@@ -190,19 +198,21 @@ export default function TestLinkLandingPage() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
-            <a
-              href="https://candidature.edumove.fr"
-              className="group inline-flex items-center justify-center gap-2 bg-[#EC680A] hover:bg-[#D45E09] text-white text-base font-semibold px-7 py-4 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#EC680A]/30 hover:gap-3"
+            <button
+              type="button"
+              onClick={openModal}
+              className="group inline-flex items-center justify-center gap-2 bg-[#EC680A] hover:bg-[#D45E09] text-white text-base font-semibold px-7 py-4 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#EC680A]/30 hover:gap-3 cursor-pointer"
             >
               Obtenir plus d&apos;informations
               <ArrowRight className="w-5 h-5" />
-            </a>
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 border border-white/30 text-white text-base font-semibold px-7 py-4 rounded-full transition-all duration-300"
+            </button>
+            <button
+              type="button"
+              onClick={openModal}
+              className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 border border-white/30 text-white text-base font-semibold px-7 py-4 rounded-full transition-all duration-300 cursor-pointer"
             >
               Parler à un conseiller
-            </Link>
+            </button>
           </div>
 
           {/* Infos clés en hero */}
@@ -309,13 +319,14 @@ export default function TestLinkLandingPage() {
           </div>
 
           <div className="mt-10 text-center">
-            <a
-              href="https://candidature.edumove.fr"
-              className="group inline-flex items-center gap-2 bg-[#EC680A] hover:bg-[#D45E09] text-white text-base font-semibold px-7 py-4 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#EC680A]/30 hover:gap-3"
+            <button
+              type="button"
+              onClick={openModal}
+              className="group inline-flex items-center gap-2 bg-[#EC680A] hover:bg-[#D45E09] text-white text-base font-semibold px-7 py-4 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#EC680A]/30 hover:gap-3 cursor-pointer"
             >
               Démarrer ma candidature gratuitement
               <ArrowRight className="w-5 h-5" />
-            </a>
+            </button>
             <p className="text-xs text-[#94a3b8] mt-3">
               Réponse d&apos;un conseiller Edumove sous 24h ouvrées
             </p>
@@ -372,13 +383,14 @@ export default function TestLinkLandingPage() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="https://candidature.edumove.fr"
-              className="group inline-flex items-center justify-center gap-2 bg-[#EC680A] hover:bg-[#D45E09] text-white text-base font-semibold px-7 py-4 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#EC680A]/30 hover:gap-3"
+            <button
+              type="button"
+              onClick={openModal}
+              className="group inline-flex items-center justify-center gap-2 bg-[#EC680A] hover:bg-[#D45E09] text-white text-base font-semibold px-7 py-4 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#EC680A]/30 hover:gap-3 cursor-pointer"
             >
               Je candidate maintenant
               <ArrowRight className="w-5 h-5" />
-            </a>
+            </button>
             <Link
               href="/guides/reussir-test-admission-link-campus"
               className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 border border-white/30 text-white text-base font-semibold px-7 py-4 rounded-full transition-all duration-300"
@@ -407,6 +419,14 @@ export default function TestLinkLandingPage() {
           </div>
         </div>
       </section>
+
+      {/* ─── MODALE HUBSPOT ─── */}
+      <HubSpotEmbedModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        title="Obtenir plus d'informations"
+        subtitle="Test LINK Campus du 25 juin 2026 — un conseiller Edumove vous rappelle sous 24h pour préparer votre candidature. 100% gratuit, sans engagement."
+      />
     </main>
   );
 }
