@@ -44,6 +44,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   add("/politique-de-confidentialite", now);
   add("/plan-du-site", now);
   add("/evenements/webinaire-financement-sante", now);
+  add("/test-link-campus", now);
 
   // Vie étudiante par ville
   for (const slug of getAllCitySlugs()) {
