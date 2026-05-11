@@ -402,7 +402,7 @@ export default function GuideTestLINK() {
                 </div>
                 <div className="grid sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-gray-100">
                   {[
-                    { icon: Clock, label: "Date", value: "15 avril 2026" },
+                    { icon: Clock, label: "Date", value: "25 juin 2026" },
                     { icon: MapPin, label: "Lieu", value: "Paris" },
                     { icon: Euro, label: "Frais d\u2019inscription", value: "200\u00a0\u20ac" },
                     { icon: Clock, label: "Dur\u00e9e", value: "~2h30" },

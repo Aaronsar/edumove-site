@@ -208,7 +208,7 @@ const linkCampusUniversity: University = {
         step: 3,
         label: "Test \u00E0 Paris",
         description:
-          "Passer le test QCM portant sur 5 mati\u00E8res \u00E0 Paris (15/04/2026).",
+          "Passer le test QCM portant sur 5 mati\u00E8res \u00E0 Paris (25/06/2026).",
       },
       {
         step: 4,

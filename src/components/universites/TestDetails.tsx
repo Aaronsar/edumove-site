@@ -19,7 +19,7 @@ function LinkTestDetails() {
   ];
 
   const infoPratiques = [
-    { icon: Clock, label: "Date", value: "15 avril 2026" },
+    { icon: Clock, label: "Date", value: "25 juin 2026" },
     { icon: MapPin, label: "Lieu", value: "Paris" },
     { icon: Euro, label: "Frais", value: "200\u00a0\u20ac" },
     { icon: FileText, label: "Format", value: "QCM en fran\u00e7ais" },
