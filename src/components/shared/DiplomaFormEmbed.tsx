@@ -65,9 +65,9 @@ interface DiplomaFormEmbedProps {
 type FormState = "idle" | "submitting" | "success" | "error";
 
 // Champs qu'on affiche en grille 2 colonnes côte à côte
+// (uniquement les paires avec labels courts pour éviter les wraps moches)
 const TWO_COL_PAIRS: Array<[string, string]> = [
   ["firstname", "lastname"],
-  ["classe_actuelle", "dpartement_ex__75"],
 ];
 
 const inputClass =
