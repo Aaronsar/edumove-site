@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { ChevronRight, Phone, Mail, Clock } from "lucide-react";
-import HubSpotModal from "@/components/shared/HubSpotModal";
+import HubSpotEmbedModal from "@/components/shared/HubSpotEmbedModal";
 
 export default function ContactPageContent() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -202,7 +202,13 @@ export default function ContactPageContent() {
         }}
       />
 
-      <HubSpotModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
+      <HubSpotEmbedModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        form="contact"
+        title="Contactez Edumove"
+        subtitle="Un conseiller vous rappelle sous 24h pour répondre à toutes vos questions. 100% gratuit, sans engagement."
+      />
     </>
   );
 }
