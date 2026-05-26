@@ -424,7 +424,6 @@ export default function TestLinkLandingPage() {
       <HubSpotEmbedModal
         isOpen={isModalOpen}
         onClose={closeModal}
-        form="testLink"
         title="Obtenir plus d'informations"
         subtitle="Test LINK Campus du 25 juin 2026 — un conseiller Edumove vous rappelle sous 24h pour préparer votre candidature. 100% gratuit, sans engagement."
       />

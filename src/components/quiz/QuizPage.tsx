@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
+import Script from "next/script";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ChevronRight,
@@ -18,7 +19,6 @@ import {
 } from "lucide-react";
 import ContactButton from "@/components/shared/ContactButton";
 import StickyBar from "@/components/program/StickyBar";
-import EdumoveFormIframe from "@/components/shared/EdumoveFormIframe";
 
 /* ═══════════════════════════════════════════════════════
    TYPES
@@ -274,6 +274,7 @@ export default function QuizPage() {
   const [answers, setAnswers] = useState<number[]>([]);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [showModal, setShowModal] = useState(false);
+  const [hsReady, setHsReady] = useState(false);
 
   const totalQuestions = QUESTIONS.length;
   const isIntro = step === 0;
@@ -302,8 +303,24 @@ export default function QuizPage() {
     return () => window.removeEventListener("message", onHsMessage);
   }, [onHsMessage]);
 
-  // Quiz form is now an iframe (EdumoveFormIframe component) — no HubSpot
-  // SDK init needed.
+  /* ── Create HubSpot form when modal opens ── */
+  useEffect(() => {
+    if (!showModal || !hsReady) return;
+
+    const target = document.getElementById("hs-quiz-form");
+    if (target) target.innerHTML = "";
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const hbspt = (window as any).hbspt;
+    if (hbspt?.forms?.create) {
+      hbspt.forms.create({
+        region: "eu1",
+        portalId: "26711031",
+        formId: "8b744f4d-2684-4277-9814-1690fe263712",
+        target: "#hs-quiz-form",
+      });
+    }
+  }, [showModal, hsReady]);
 
   /* ── Scoring ── */
   function computeResult(): UniResult {
@@ -658,7 +675,14 @@ export default function QuizPage() {
 
       <StickyBar />
 
-      {/* ── Form Modal (Edumove iframe) ── */}
+      {/* ── HubSpot Script ── */}
+      <Script
+        src="https://js-eu1.hsforms.net/forms/embed/26711031.js"
+        strategy="lazyOnload"
+        onLoad={() => setHsReady(true)}
+      />
+
+      {/* ── HubSpot Modal ── */}
       <AnimatePresence>
         {showModal && (
           <motion.div
@@ -701,12 +725,8 @@ export default function QuizPage() {
                   </p>
                 </div>
 
-                {/* Quiz form iframe (Edumove) */}
-                <EdumoveFormIframe
-                  form="quizzFac"
-                  height={780}
-                  title="Quiz Edumove — quelle faculté pour vous ?"
-                />
+                {/* HubSpot form container */}
+                <div id="hs-quiz-form" className="min-h-[200px]" />
               </div>
             </motion.div>
           </motion.div>
