@@ -6,6 +6,7 @@ import { ChevronRight, CheckCircle2, GraduationCap, Euro, Clock, Shield, Banknot
 import ContactButton from "@/components/shared/ContactButton";
 import StickyBar from "@/components/program/StickyBar";
 import CostSimulator from "@/components/financing/CostSimulator";
+import DiplomaFormEmbed from "@/components/shared/DiplomaFormEmbed";
 
 const STEPS = [
   {
@@ -180,6 +181,26 @@ export default function FinancingPage() {
           1.5. SIMULATEUR DE COÛT INTERACTIF
       ══════════════════════════════════════════════════════════════════════ */}
       <CostSimulator />
+
+      {/* ══════════════════════════════════════════════════════════════════════
+          1.6. SIMULATEUR FINANCEMENT — FORM EDUMOVE
+      ══════════════════════════════════════════════════════════════════════ */}
+      <section id="simulateur-financement" className="py-12 md:py-20 bg-[#fafbff]">
+        <div className="max-w-2xl mx-auto px-6">
+          <p className="text-sm font-semibold uppercase tracking-widest text-[#EC680A] mb-3 text-center">
+            Simulateur de financement
+          </p>
+          <h2 className="text-2xl md:text-3xl font-bold text-[#1B1D3A] mb-3 text-center">
+            Obtenez votre simulation personnalisée
+          </h2>
+          <p className="text-[#64748b] text-center mb-10 max-w-xl mx-auto">
+            Remplissez ce formulaire pour obtenir une simulation de votre prêt étudiant LCL adaptée à votre situation. Un conseiller Edumove vous rappelle sous 24h.
+          </p>
+          <div className="bg-white rounded-2xl border border-gray-200/80 shadow-sm p-6 md:p-8">
+            <DiplomaFormEmbed form="simulateurFinancement" />
+          </div>
+        </div>
+      </section>
 
       {/* ══════════════════════════════════════════════════════════════════════
           2. COMMENT ÇA MARCHE
