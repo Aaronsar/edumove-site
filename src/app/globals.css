@@ -25,3 +25,171 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
 }
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Override CSS pour les formulaires Diploma Santé (hub.diploma-sante.fr)
+   embeddés via <DiplomaFormEmbed slug="..." />.
+   On force le style Edumove (orange #EC680A, inputs arrondis, etc.)
+   ───────────────────────────────────────────────────────────────────────── */
+
+/* Cache les titres/sous-titres du form (on les affiche déjà dans la modale) */
+.diploma-form-wrapper .diploma-form__title,
+.diploma-form-wrapper .diploma-form__subtitle {
+  display: none !important;
+}
+
+.diploma-form-wrapper .diploma-form__form {
+  display: flex !important;
+  flex-direction: column;
+  gap: 1rem;
+  font-family: var(--font-poppins), system-ui, sans-serif !important;
+}
+
+.diploma-form-wrapper .diploma-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.diploma-form-wrapper .diploma-form__label {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: var(--primary-navy) !important;
+  margin-bottom: 0.25rem;
+}
+
+.diploma-form-wrapper .diploma-form__input {
+  width: 100% !important;
+  padding: 0.625rem 0.875rem !important;
+  border: 1.5px solid var(--border) !important;
+  border-radius: 0.75rem !important;
+  background-color: #F8FAFC !important;
+  color: var(--primary-navy) !important;
+  font-size: 14px !important;
+  outline: none !important;
+  transition: all 0.15s ease !important;
+  box-shadow: none !important;
+}
+
+.diploma-form-wrapper .diploma-form__input::placeholder {
+  color: #94A3B8 !important;
+}
+
+.diploma-form-wrapper .diploma-form__input:focus {
+  border-color: var(--accent-orange) !important;
+  background-color: var(--white) !important;
+  box-shadow: 0 0 0 3px rgba(236, 104, 10, 0.1) !important;
+}
+
+/* Select : flèche custom */
+.diploma-form-wrapper select.diploma-form__input {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2394A3B8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 0.875rem center !important;
+  padding-right: 2.25rem !important;
+  cursor: pointer !important;
+}
+
+/* Checkboxes / radios */
+.diploma-form-wrapper .diploma-form__checkboxes,
+.diploma-form-wrapper .diploma-form__radios {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.25rem;
+}
+
+.diploma-form-wrapper .diploma-form__checkbox,
+.diploma-form-wrapper .diploma-form__radio {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  cursor: pointer !important;
+  font-size: 14px !important;
+  color: var(--primary-navy) !important;
+}
+
+.diploma-form-wrapper .diploma-form__checkbox input,
+.diploma-form-wrapper .diploma-form__radio input {
+  width: 16px !important;
+  height: 16px !important;
+  accent-color: var(--accent-orange) !important;
+  cursor: pointer !important;
+}
+
+/* Submit button */
+.diploma-form-wrapper .diploma-form__actions {
+  margin-top: 0.5rem;
+}
+
+.diploma-form-wrapper .diploma-form__submit {
+  width: 100% !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.5rem !important;
+  background-color: var(--accent-orange) !important;
+  color: var(--white) !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  padding: 0.75rem 1.25rem !important;
+  border: none !important;
+  border-radius: 0.75rem !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  box-shadow: none !important;
+}
+
+.diploma-form-wrapper .diploma-form__submit:hover:not(:disabled) {
+  background-color: var(--accent-orange-hover) !important;
+  box-shadow: 0 10px 25px -10px rgba(236, 104, 10, 0.4) !important;
+  transform: translateY(-1px);
+}
+
+.diploma-form-wrapper .diploma-form__submit:disabled {
+  opacity: 0.7 !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+}
+
+/* Erreur */
+.diploma-form-wrapper .diploma-form__error {
+  font-size: 12px !important;
+  color: #EF4444 !important;
+  margin-top: 0.25rem;
+}
+
+.diploma-form-wrapper .diploma-form__help {
+  font-size: 12px !important;
+  color: #64748B !important;
+  margin-top: 0.25rem;
+}
+
+/* Écran de succès */
+.diploma-form-wrapper .diploma-form__success {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.diploma-form-wrapper .diploma-form__success-title {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: var(--primary-navy) !important;
+  margin-bottom: 0.5rem;
+}
+
+.diploma-form-wrapper .diploma-form__success-text {
+  font-size: 14px !important;
+  color: #64748B !important;
+}
+
+/* Mention "Vos données sont traitées par Diploma Santé" */
+.diploma-form-wrapper .diploma-form-footer,
+.diploma-form-wrapper p[class*="footer"] {
+  font-size: 11px !important;
+  color: #94A3B8 !important;
+  text-align: center;
+  margin-top: 0.5rem;
+}
