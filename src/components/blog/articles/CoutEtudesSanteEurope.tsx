@@ -503,10 +503,10 @@ export default function CoutEtudesSanteEurope() {
       <div className="space-y-4 mb-6">
         <div className="bg-[#fafbff] border border-[#e2e8f0] rounded-xl p-5">
           <h4 className="font-bold text-[#1B1D3A] mb-2">
-            Le prêt étudiant LCL
+            Le prêt étudiant
           </h4>
           <p className="text-sm text-[#334155] leading-relaxed">
-            Edumove a un partenariat avec LCL pour des prêts étudiants
+            Edumove a un partenariat bancaire pour des prêts étudiants
             allant jusqu&apos;à <strong>75&nbsp;000&nbsp;€</strong>. Le
             remboursement ne commence qu&apos;après l&apos;obtention du
             diplôme, avec un différé total pendant toute la durée des

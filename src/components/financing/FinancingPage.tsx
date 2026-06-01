@@ -18,7 +18,7 @@ const STEPS = [
   {
     num: "02",
     title: "Constitution du dossier",
-    desc: "Edumove prépare votre dossier de prêt et vous met en relation directe avec notre partenaire LCL. Nous nous occupons de toute la partie administrative.",
+    desc: "Edumove prépare votre dossier de prêt et vous met en relation directe avec notre banque partenaire. Nous nous occupons de toute la partie administrative.",
     icon: FileText,
   },
   {
@@ -69,8 +69,8 @@ const BUDGET_ROME = [
 
 const FAQ = [
   {
-    question: "Qui peut bénéficier du prêt étudiant LCL ?",
-    answer: "Tout étudiant admis dans l'une de nos universités partenaires (UCJC, Universidad Europea ou LINK Campus) peut bénéficier du prêt étudiant LCL via Edumove. Il n'y a pas de condition de revenus des parents. Le montant minimum garanti est de 75 000 €, et peut être supérieur selon votre profil.",
+    question: "Qui peut bénéficier du prêt étudiant ?",
+    answer: "Tout étudiant admis dans l'une de nos universités partenaires (UCJC, Universidad Europea ou LINK Campus) peut bénéficier du prêt étudiant via Edumove. Il n'y a pas de condition de revenus des parents. Le montant minimum garanti est de 75 000 €, et peut être supérieur selon votre profil.",
   },
   {
     question: "Quand commence le remboursement du prêt ?",
@@ -78,11 +78,11 @@ const FAQ = [
   },
   {
     question: "Quel est le taux d'intérêt du prêt ?",
-    answer: "Edumove a négocié un taux préférentiel avec LCL, inférieur aux taux standards du marché pour les prêts étudiants. Le taux exact dépend de votre profil et de la durée du prêt. Votre conseiller Edumove vous présentera les conditions détaillées lors de l'évaluation de votre dossier.",
+    answer: "Edumove a négocié un taux préférentiel avec notre banque partenaire, inférieur aux taux standards du marché pour les prêts étudiants. Le taux exact dépend de votre profil et de la durée du prêt. Votre conseiller Edumove vous présentera les conditions détaillées lors de l'évaluation de votre dossier.",
   },
   {
-    question: "Peut-on cumuler le prêt LCL avec les bourses CROUS ?",
-    answer: "Oui, le prêt étudiant LCL est parfaitement cumulable avec la bourse CROUS (maintenue pour les études dans l'UE), l'aide à la mobilité internationale, l'aide au mérite et les aides régionales. Edumove vous accompagne pour identifier et obtenir toutes les aides auxquelles vous avez droit.",
+    question: "Peut-on cumuler le prêt avec les bourses CROUS ?",
+    answer: "Oui, le prêt étudiant est parfaitement cumulable avec la bourse CROUS (maintenue pour les études dans l'UE), l'aide à la mobilité internationale, l'aide au mérite et les aides régionales. Edumove vous accompagne pour identifier et obtenir toutes les aides auxquelles vous avez droit.",
   },
   {
     question: "Que se passe-t-il si je change de filière en cours d'études ?",
@@ -90,7 +90,7 @@ const FAQ = [
   },
   {
     question: "Comment Edumove m'accompagne dans le financement ?",
-    answer: "Edumove s'occupe de tout : évaluation gratuite de votre dossier, constitution du dossier de prêt, mise en relation directe avec LCL, suivi de la demande jusqu'à l'accord, et identification de toutes les aides complémentaires (bourses, aides régionales). Vous n'avez aucune démarche bancaire à faire seul.",
+    answer: "Edumove s'occupe de tout : évaluation gratuite de votre dossier, constitution du dossier de prêt, mise en relation directe avec notre banque partenaire, suivi de la demande jusqu'à l'accord, et identification de toutes les aides complémentaires (bourses, aides régionales). Vous n'avez aucune démarche bancaire à faire seul.",
   },
 ];
 
@@ -119,14 +119,12 @@ export default function FinancingPage() {
             <div>
               <div className="flex items-center gap-3 mb-4">
                 <Image src="/edumove-icon-orange.svg" alt="Edumove" width={32} height={32} className="h-7 w-auto" />
-                <span className="text-white/40 text-lg font-light">&times;</span>
-                <Image src="/lcl-logo-officiel.svg" alt="LCL" width={60} height={24} className="h-6 w-auto rounded" />
               </div>
               <h1 className="text-3xl md:text-4xl font-bold leading-tight mb-4" style={{ color: "#ffffff" }}>
                 Financez vos études de santé en Europe
               </h1>
               <p className="text-white/60 text-sm md:text-base leading-relaxed mb-6 max-w-md">
-                Grâce à notre partenariat avec LCL, vous pouvez financer jusqu'à 100% de vos études. Vous ne remboursez qu'une fois diplômé et en exercice.
+                Grâce à notre partenariat bancaire, vous pouvez financer jusqu'à 100% de vos études. Vous ne remboursez qu'une fois diplômé et en exercice.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <a href="https://candidature.edumove.fr" className="text-center bg-[#ec680a] hover:bg-[#d45e09] text-white font-semibold px-6 py-3 rounded-[5px] transition-all hover:shadow-lg hover:shadow-[#ec680a]/20">
@@ -194,7 +192,7 @@ export default function FinancingPage() {
             Obtenez votre simulation personnalisée
           </h2>
           <p className="text-[#64748b] text-center mb-10 max-w-xl mx-auto">
-            Remplissez ce formulaire pour obtenir une simulation de votre prêt étudiant LCL adaptée à votre situation. Un conseiller Edumove vous rappelle sous 24h.
+            Remplissez ce formulaire pour obtenir une simulation de votre prêt étudiant adaptée à votre situation. Un conseiller Edumove vous rappelle sous 24h.
           </p>
           <div className="bg-white rounded-2xl border border-gray-200/80 shadow-sm p-6 md:p-8">
             <DiplomaFormEmbed form="simulateurFinancement" />
@@ -247,7 +245,7 @@ export default function FinancingPage() {
       <section className="py-12 md:py-16 bg-[#fafbff]">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-2xl md:text-3xl font-bold text-[#1B1D3A] mb-8">
-            Pourquoi choisir le financement Edumove &times; LCL ?
+            Pourquoi choisir le financement Edumove ?
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {HIGHLIGHTS.map((h, i) => (
@@ -269,7 +267,7 @@ export default function FinancingPage() {
             Combien coûtent les études de santé en Europe ?
           </h2>
           <p className="text-[#64748b] mb-8">
-            Tous ces frais sont couverts par le prêt étudiant LCL.
+            Tous ces frais sont couverts par le prêt étudiant.
           </p>
 
           {/* Table */}
@@ -386,7 +384,7 @@ export default function FinancingPage() {
             Nos formations finançables
           </h2>
           <p className="text-[#64748b] mb-8">
-            Toutes nos formations sont éligibles au prêt étudiant LCL avec remboursement différé.
+            Toutes nos formations sont éligibles au prêt étudiant avec remboursement différé.
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {FORMATIONS.map((f, i) => (
@@ -533,7 +531,7 @@ export default function FinancingPage() {
                   Comment financer ses études de santé en Europe ?
                 </h3>
                 <p className="text-white/60 text-sm mb-4 max-w-lg">
-                  Avec la participation du LCL, découvrez toutes les solutions de financement lors de notre prochain webinaire en ligne.
+                  Avec la participation de notre banque partenaire, découvrez toutes les solutions de financement lors de notre prochain webinaire en ligne.
                 </p>
                 <div className="flex items-center gap-4">
                   <div className="flex items-center gap-2 text-white/70 text-sm">

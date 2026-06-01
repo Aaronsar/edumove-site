@@ -56,7 +56,7 @@ export default function WebinarBanner() {
 
         {/* Header band */}
         <div className="bg-[#1B1D3A] px-6 py-6 text-center">
-          {/* Logos Edumove x LCL — plus grands */}
+          {/* Logo Edumove */}
           <div className="flex items-center justify-center gap-3 mb-4">
             <Image
               src="/edumove-icon-orange.svg"
@@ -64,14 +64,6 @@ export default function WebinarBanner() {
               width={40}
               height={40}
               className="h-9 w-auto"
-            />
-            <span className="text-white/50 text-xl font-light">&times;</span>
-            <Image
-              src="/lcl-logo-officiel.svg"
-              alt="LCL"
-              width={72}
-              height={28}
-              className="h-8 w-auto"
             />
           </div>
           <p className="text-[#ec680a] text-xs font-semibold uppercase tracking-wider mb-2">
@@ -100,14 +92,14 @@ export default function WebinarBanner() {
             </div>
           </div>
 
-          {/* LCL highlight */}
+          {/* Banking partner highlight */}
           <div className="bg-[#615CA5]/5 border border-[#615CA5]/15 rounded-xl px-4 py-3 mb-4">
             <p className="text-sm text-[#334155] leading-relaxed">
               Avec la{" "}
               <strong className="text-[#1B1D3A]">
-                participation exceptionnelle du LCL
+                participation exceptionnelle de notre banque partenaire
               </strong>
-              , partenaire officiel d&apos;Edumove. Prêt étudiant à partir de
+              . Prêt étudiant à partir de
               75 000 &euro;, remboursement différé, bourses...
             </p>
           </div>

@@ -145,7 +145,6 @@ export default function HeroSection() {
                 <div className="flex flex-wrap items-center gap-4 opacity-40">
                   <span className="text-white font-black text-sm">BFMTV.</span>
                   <span className="text-white font-serif font-bold text-sm italic">Forbes</span>
-                  <span className="text-white font-bold text-sm">LCL</span>
                   <span className="text-white font-bold text-xs">L&apos;Étudiant</span>
                   <span className="text-white font-serif text-xs font-bold">Le Figaro</span>
                 </div>

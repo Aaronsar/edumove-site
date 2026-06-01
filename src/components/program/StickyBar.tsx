@@ -120,7 +120,7 @@ export default function StickyBar({
             )}
             {hideResponseTime && (
               <p className="text-[#64748B] text-[11px] text-center mb-4 leading-snug">
-                Grâce au partenariat entre Edumove et LCL, financez jusqu'à 100% vos études en Europe.
+                Grâce à notre partenariat bancaire, financez jusqu'à 100% vos études en Europe.
               </p>
             )}
 

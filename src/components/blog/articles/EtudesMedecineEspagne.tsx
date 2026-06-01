@@ -499,8 +499,8 @@ export default function EtudesMedecineEspagne() {
 
       <p className="text-[#334155] leading-relaxed mb-4">
         Ça représente un investissement important, mais qui est{" "}
-        <strong>finançable à 100&nbsp;%</strong> grâce au prêt étudiant. Le
-        partenariat Edumove × LCL permet d&apos;emprunter jusqu&apos;à
+        <strong>finançable à 100&nbsp;%</strong> grâce au prêt étudiant. Notre
+        partenariat bancaire permet d&apos;emprunter jusqu&apos;à
         75&nbsp;000&nbsp;€ avec un différé total : vous ne remboursez
         qu&apos;après votre diplôme. Toutes les infos sur notre{" "}
         <Link

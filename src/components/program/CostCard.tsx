@@ -75,7 +75,7 @@ export default function CostCard({ detail }: { detail: ProgramDetail }) {
 
         {/* Financing cards */}
         <div className="lg:col-span-3 grid sm:grid-cols-2 gap-6">
-          {/* LCL Partnership */}
+          {/* Banking Partnership */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -88,7 +88,7 @@ export default function CostCard({ detail }: { detail: ProgramDetail }) {
             </div>
             <p className="font-bold text-[#1B1D3A] text-lg mb-2">Prêt étudiant garanti</p>
             <p className="text-[#334155] text-sm leading-relaxed flex-1">
-              Partenariat Edumove x LCL : prêt à partir de <strong>75 000 €</strong> pour financer
+              Partenariat bancaire : prêt à partir de <strong>75 000 €</strong> pour financer
               100% de vos études.
             </p>
             <div className="mt-4 pt-4 border-t border-[#615CA5]/10">

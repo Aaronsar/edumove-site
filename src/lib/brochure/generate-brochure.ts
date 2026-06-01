@@ -623,7 +623,7 @@ function generate() {
     { num: "01", title: "Premier \u00e9change gratuit", desc: "Un conseiller Edumove analyse votre profil, vos ambitions et vous oriente vers les formations adapt\u00e9es. Appel sans engagement." },
     { num: "02", title: "Constitution du dossier", desc: "On pr\u00e9pare un dossier solide : bulletins, lettre de motivation, documents administratifs. Tout est v\u00e9rifi\u00e9 et optimis\u00e9." },
     { num: "03", title: "Candidature & test d'admission", desc: "Envoi des candidatures et pr\u00e9paration compl\u00e8te aux tests (test PE, QCM LINK, entretien UCJC)." },
-    { num: "04", title: "Admission & financement", desc: "R\u00e9ponse de l'universit\u00e9, financement avec LCL (\u00e0 partir de 75 000 \u20ac). Vous ne payez rien avant d'\u00eatre dipl\u00f4m\u00e9." },
+    { num: "04", title: "Admission & financement", desc: "R\u00e9ponse de l'universit\u00e9, financement avec notre banque partenaire (\u00e0 partir de 75 000 \u20ac). Vous ne payez rien avant d'\u00eatre dipl\u00f4m\u00e9." },
     { num: "05", title: "Installation & suivi", desc: "Logement, d\u00e9marches administratives, assurance, accompagnement continu apr\u00e8s votre arriv\u00e9e." },
   ];
 
@@ -642,7 +642,7 @@ function generate() {
   // Financing banner
   y += 5 * 118 + 15;
   fillRounded(doc, MG, y, CW, 70, 12, ORANGE);
-  textCenter(doc, "Financement garanti \u00e0 partir de 75 000 \u20ac avec LCL", y + 15, "PoppinsB", 16, WHITE);
+  textCenter(doc, "Financement garanti \u00e0 partir de 75 000 \u20ac", y + 15, "PoppinsB", 16, WHITE);
   textCenter(doc, "Remboursement uniquement une fois dipl\u00f4m\u00e9 et en poste. 0 \u20ac \u00e0 avancer.", y + 42, "Poppins", 10, WHITE, 0.85);
 
   pageNumber(doc, 10);
@@ -657,7 +657,7 @@ function generate() {
   const testi = [
     { name: "Marie D.", ctx: "Parent d'\u00e9tudiant en dentaire, Madrid", quote: "Le conseiller nous a tout expliqu\u00e9, g\u00e9r\u00e9 le dossier, trouv\u00e9 l'appart\u2026 Notre fils est en 2e ann\u00e9e de dentaire et il adore. On referait ce choix sans h\u00e9siter.", color: VIOLET },
     { name: "Lucas P.", ctx: "3e ann\u00e9e de m\u00e9decine, Rome", quote: "J'avais 12 de moyenne au bac, en France c'\u00e9tait mort pour m\u00e9decine. \u00c7a fait 3 ans que je suis \u00e0 Rome, je bosse dur mais j'adore ce que je fais.", color: ORANGE },
-    { name: "Sophie M.", ctx: "M\u00e8re d'une \u00e9tudiante en pharmacie", quote: "La question du financement nous bloquait. Ils nous ont mis en relation avec LCL, le pr\u00eat a \u00e9t\u00e9 accept\u00e9 en 3 semaines. Notre fille ne remboursera qu'une fois en poste.", color: VIOLET },
+    { name: "Sophie M.", ctx: "M\u00e8re d'une \u00e9tudiante en pharmacie", quote: "La question du financement nous bloquait. Ils nous ont mis en relation avec leur banque partenaire, le pr\u00eat a \u00e9t\u00e9 accept\u00e9 en 3 semaines. Notre fille ne remboursera qu'une fois en poste.", color: VIOLET },
     { name: "Thomas R.", ctx: "\u00c9tudiant en kin\u00e9 \u00e0 l'UCJC, Madrid", quote: "La formation est top, les stages commencent t\u00f4t et Madrid c'est une ville g\u00e9niale pour un \u00e9tudiant. Maintenant que je suis \u00e0 l'UCJC depuis 2 ans, je vois la diff\u00e9rence.", color: ORANGE },
     { name: "L\u00e9a B.", ctx: "2e ann\u00e9e de m\u00e9decine, Madrid", quote: "Deux tentatives en PASS, deux \u00e9checs. 3 mois apr\u00e8s mon appel \u00e0 Edumove, j'\u00e9tais inscrite \u00e0 l'Universidad Europea. Mes notes sont bonnes, j'y crois enfin.", color: VIOLET },
   ];
@@ -732,7 +732,7 @@ function generate() {
 
   const bullets = [
     "Accompagnement personnalis\u00e9 de A \u00e0 Z",
-    "Financement jusqu'\u00e0 100% avec LCL",
+    "Financement jusqu'\u00e0 100%",
     "Dipl\u00f4mes reconnus dans toute l'UE",
     "500+ \u00e9tudiants d\u00e9j\u00e0 accompagn\u00e9s",
   ];

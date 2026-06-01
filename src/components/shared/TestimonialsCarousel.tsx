@@ -26,7 +26,7 @@ const defaultTestimonials: Testimonial[] = [
     color: "bg-[#ec680a]",
   },
   {
-    quote: "La question du financement nous bloquait complètement. 6 ans d'études à l'étranger, on voyait pas comment faire. Ils nous ont mis en relation avec LCL, le prêt a été accepté en 3 semaines et notre fille ne remboursera qu'une fois en poste. Ça nous a enlevé un poids énorme.",
+    quote: "La question du financement nous bloquait complètement. 6 ans d'études à l'étranger, on voyait pas comment faire. Ils nous ont mis en relation avec leur banque partenaire, le prêt a été accepté en 3 semaines et notre fille ne remboursera qu'une fois en poste. Ça nous a enlevé un poids énorme.",
     author: "Sophie M.",
     context: "Mère d'une étudiante en pharmacie",
     initials: "SM",

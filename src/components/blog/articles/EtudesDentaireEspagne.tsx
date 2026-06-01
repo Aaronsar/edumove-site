@@ -518,7 +518,7 @@ export default function EtudesDentaireEspagne() {
       <p className="text-[#334155] leading-relaxed mb-4">
         L&apos;investissement est s&eacute;rieux, mais{" "}
         <strong>finan&ccedil;able &agrave; 100&nbsp;%</strong> gr&acirc;ce au
-        pr&ecirc;t &eacute;tudiant. Le partenariat Edumove &times; LCL permet
+        pr&ecirc;t &eacute;tudiant. Notre partenariat bancaire permet
         d&apos;emprunter jusqu&apos;&agrave;{" "}
         <strong>75&nbsp;000&nbsp;&euro;</strong> avec un diff&eacute;r&eacute;
         total&nbsp;: tu ne rembourses qu&apos;apr&egrave;s ton dipl&ocirc;me.

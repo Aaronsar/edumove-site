@@ -218,7 +218,7 @@ const QUESTIONS: Question[] = [
   {
     id: "budget",
     question: "Quel budget annuel tu envisages ?",
-    subtitle: "Frais de scolarité uniquement — le financement LCL couvre tout",
+    subtitle: "Frais de scolarité uniquement — le financement couvre tout",
     icon: Heart,
     answers: [
       {

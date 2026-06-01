@@ -64,7 +64,7 @@ function eventInfoBlock() {
 // ═══════════════════════════════════════════
 export function confirmationEmail(prenom: string) {
   return {
-    subject: "Inscription confirmée — Webinaire Financement Edumove x LCL",
+    subject: "Inscription confirmée — Webinaire Financement Edumove",
     html: baseTemplate(`
 <h1 style="margin:0 0 20px;font-size:24px;color:#1B1D3A;font-weight:700;">Inscription confirmée ! ✅</h1>
 <p style="margin:0 0 20px;font-size:15px;color:#334155;line-height:1.6;">
@@ -74,7 +74,7 @@ export function confirmationEmail(prenom: string) {
   Votre inscription au webinaire <strong style="color:#1B1D3A;">"Comment financer ses études de Santé en Europe ?"</strong> est bien confirmée.
 </p>
 <p style="margin:0 0 16px;font-size:15px;color:#334155;line-height:1.6;">
-  Avec la participation exceptionnelle du <strong>LCL</strong>, partenaire officiel d'Edumove, nous aborderons toutes les solutions pour financer vos études de santé en Europe.
+  Avec la participation exceptionnelle de notre <strong>banque partenaire</strong>, nous aborderons toutes les solutions pour financer vos études de santé en Europe.
 </p>
 
 ${eventInfoBlock()}
@@ -97,7 +97,7 @@ ${ctaButton("Découvrir nos formations", "https://www.edumove.fr/formations/mede
 // ═══════════════════════════════════════════
 export function reminderJ7Email(prenom: string) {
   return {
-    subject: "J-7 — Webinaire Financement Edumove x LCL",
+    subject: "J-7 — Webinaire Financement Edumove",
     html: baseTemplate(`
 <h1 style="margin:0 0 20px;font-size:24px;color:#1B1D3A;font-weight:700;">Plus qu'une semaine ! 📅</h1>
 <p style="margin:0 0 20px;font-size:15px;color:#334155;line-height:1.6;">
@@ -113,7 +113,7 @@ ${eventInfoBlock()}
   <strong>Au programme :</strong>
 </p>
 <ul style="margin:0 0 16px;padding-left:20px;font-size:14px;color:#334155;line-height:1.8;">
-  <li>Les solutions de financement (prêt LCL, bourses, aides)</li>
+  <li>Les solutions de financement (prêt étudiant, bourses, aides)</li>
   <li>Le remboursement différé : comment ça marche</li>
   <li>L'accompagnement Edumove pour votre dossier</li>
   <li>Session questions / réponses en direct</li>
@@ -133,7 +133,7 @@ ${ctaButton("Guide financement", "https://www.edumove.fr/financement")}
 // ═══════════════════════════════════════════
 export function reminderJ1Email(prenom: string) {
   return {
-    subject: "C'est demain ! — Webinaire Financement Edumove x LCL",
+    subject: "C'est demain ! — Webinaire Financement Edumove",
     html: baseTemplate(`
 <h1 style="margin:0 0 20px;font-size:24px;color:#1B1D3A;font-weight:700;">C'est demain ! 🎯</h1>
 <p style="margin:0 0 20px;font-size:15px;color:#334155;line-height:1.6;">
@@ -146,7 +146,7 @@ export function reminderJ1Email(prenom: string) {
 ${eventInfoBlock()}
 
 <p style="margin:16px 0;font-size:15px;color:#334155;line-height:1.6;">
-  Préparez vos questions ! Un représentant du LCL et l'équipe Edumove seront là pour y répondre en direct.
+  Préparez vos questions ! Un représentant de notre banque partenaire et l'équipe Edumove seront là pour y répondre en direct.
 </p>
 
 <p style="margin:0 0 16px;font-size:15px;color:#334155;line-height:1.6;">

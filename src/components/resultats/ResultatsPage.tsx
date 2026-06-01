@@ -432,10 +432,9 @@ export default function ResultatsPage() {
             <p>
               L&apos;accompagnement Edumove couvre toutes les étapes du parcours :
               orientation personnalisée, constitution du dossier de candidature,
-              préparation aux tests d&apos;admission, montage du financement avec notre
-              partenaire bancaire{" "}
+              préparation aux tests d&apos;admission, montage du financement avec notre{" "}
               <Link href="/financement" className="text-[#EC680A] underline underline-offset-2 font-medium hover:text-[#D45E09] transition-colors">
-                LCL
+                partenaire bancaire
               </Link>
               , et aide à l&apos;installation sur place. Nos étudiants ne sont
               jamais seuls.

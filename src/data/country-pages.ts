@@ -94,7 +94,7 @@ export const countryPages: CountryPageData[] = [
       },
       {
         question: "Comment Edumove accompagne les \u00E9tudiants en m\u00E9decine en Espagne ?",
-        answer: "Edumove vous accompagne de A \u00E0 Z : premier \u00E9change gratuit pour \u00E9valuer votre profil, pr\u00E9paration au test PE ou \u00E0 l\u2019entretien, constitution du dossier de candidature, aide au financement (pr\u00EAt \u00E9tudiant jusqu\u2019\u00E0 75\u00A0000 \u20AC avec LCL), recherche de logement \u00E0 Madrid, et suivi personnalis\u00E9 pendant toute la dur\u00E9e de vos \u00E9tudes.",
+        answer: "Edumove vous accompagne de A \u00E0 Z : premier \u00E9change gratuit pour \u00E9valuer votre profil, pr\u00E9paration au test PE ou \u00E0 l\u2019entretien, constitution du dossier de candidature, aide au financement (pr\u00EAt \u00E9tudiant jusqu\u2019\u00E0 75\u00A0000 \u20AC), recherche de logement \u00E0 Madrid, et suivi personnalis\u00E9 pendant toute la dur\u00E9e de vos \u00E9tudes.",
       },
       {
         question: "Peut-on se sp\u00E9cialiser apr\u00E8s m\u00E9decine en Espagne ?",
@@ -173,7 +173,7 @@ export const countryPages: CountryPageData[] = [
       },
       {
         question: "Comment financer ses \u00E9tudes dentaires en Espagne ?",
-        answer: "Edumove a n\u00E9goci\u00E9 un partenariat avec le LCL pour un pr\u00EAt \u00E9tudiant \u00E0 partir de 75\u00A0000\u00A0\u20AC, couvrant scolarit\u00E9, logement et vie courante. Le remboursement est diff\u00E9r\u00E9 : vous ne remboursez qu\u2019une fois dipl\u00F4m\u00E9 et en exercice. Pendant les \u00E9tudes, seule l\u2019assurance est \u00E0 payer (5 \u00E0 15\u00A0\u20AC/mois).",
+        answer: "Edumove a n\u00E9goci\u00E9 un partenariat bancaire pour un pr\u00EAt \u00E9tudiant \u00E0 partir de 75\u00A0000\u00A0\u20AC, couvrant scolarit\u00E9, logement et vie courante. Le remboursement est diff\u00E9r\u00E9 : vous ne remboursez qu\u2019une fois dipl\u00F4m\u00E9 et en exercice. Pendant les \u00E9tudes, seule l\u2019assurance est \u00E0 payer (5 \u00E0 15\u00A0\u20AC/mois).",
       },
       {
         question: "Quelle est la diff\u00E9rence entre le cursus dentaire en France et en Espagne ?",

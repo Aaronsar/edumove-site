@@ -40,7 +40,7 @@ const PROGRAMS: Program[] = [
 
 const FILIERES = [...new Set(PROGRAMS.map((p) => p.filiere))];
 
-// LCL Loan constants
+// Loan constants
 const TAEG = 0.0201;
 const MAX_LOAN = 75000;
 const MAX_MONTHS = 120;
@@ -136,7 +136,7 @@ export default function CostSimulator() {
             Simulez le coût de vos études
           </h2>
           <p className="text-[#64748b] text-base max-w-xl mx-auto">
-            Choisissez votre filière et votre université pour voir le coût total, le prêt du LCL et votre mensualité après le diplôme.
+            Choisissez votre filière et votre université pour voir le coût total, le prêt étudiant et votre mensualité après le diplôme.
           </p>
         </div>
 
@@ -253,7 +253,7 @@ export default function CostSimulator() {
                     <Lock className="w-7 h-7 text-[#EC680A]" />
                   </div>
                   <h3 className="text-[#1B1D3A] font-bold text-xl mb-2">Votre simulation est prête !</h3>
-                  <p className="text-[#64748b] text-sm mb-6">Coût total, prêt du LCL, mensualité après diplôme et retour sur investissement.</p>
+                  <p className="text-[#64748b] text-sm mb-6">Coût total, prêt étudiant, mensualité après diplôme et retour sur investissement.</p>
                   <button
                     onClick={() => setShowModal(true)}
                     className="inline-flex items-center gap-2 px-8 py-4 bg-[#EC680A] hover:bg-[#D45E09] text-white font-bold rounded-xl transition-all text-base shadow-lg shadow-[#EC680A]/20 cursor-pointer"
@@ -301,10 +301,9 @@ export default function CostSimulator() {
                     </div>
                   </div>
 
-                  {/* LCL Loan */}
+                  {/* Student Loan */}
                   <div className="bg-[#1B1D3A] rounded-xl p-4">
                     <div className="flex items-center gap-3 mb-3">
-                      <img src="/lcl-logo-officiel.svg" alt="LCL" className="h-6 brightness-200" />
                       <span className="text-white/60 text-sm">Prêt Solution Études</span>
                     </div>
                     <div className="grid grid-cols-3 gap-3">
@@ -381,7 +380,7 @@ export default function CostSimulator() {
                   </a>
 
                   <p className="text-[#94a3b8] text-[10px] text-center">
-                    *Simulation indicative basée sur un taux de 2,01% TAEG. La banque se réserve le droit d&apos;étude au cas par cas. Prêt Solution Études du LCL, partenaire Edumove.
+                    *Simulation indicative basée sur un taux de 2,01% TAEG. La banque se réserve le droit d&apos;étude au cas par cas. Prêt Solution Études via notre banque partenaire.
                   </p>
                 </div>
               </div>

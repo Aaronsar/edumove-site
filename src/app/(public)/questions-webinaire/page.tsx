@@ -31,7 +31,7 @@ export default function QuestionsWebinaire() {
         <div className="text-center mb-8">
           <img src="/edumove-icon-orange.svg" alt="Edumove" className="w-14 h-14 mx-auto mb-4" />
           <h1 className="text-[#1B1D3A] text-2xl font-bold mb-2">Posez votre question</h1>
-          <p className="text-[#64748b] text-sm">Webinaire Edumove × LCL — Financement santé</p>
+          <p className="text-[#64748b] text-sm">Webinaire Edumove — Financement santé</p>
         </div>
 
         <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">

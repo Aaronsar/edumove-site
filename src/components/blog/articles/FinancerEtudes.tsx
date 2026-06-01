@@ -134,8 +134,8 @@ export default function FinancerEtudes() {
       </p>
 
       <Callout variant="info">
-        <strong>Partenariat LCL &times; Edumove :</strong> grâce à notre
-        partenariat exclusif avec le <strong>LCL</strong>, les étudiants Edumove
+        <strong>Partenariat bancaire Edumove :</strong> grâce à notre
+        partenariat bancaire exclusif, les étudiants Edumove
         bénéficient d&apos;un prêt pouvant atteindre{" "}
         <strong>75&nbsp;000&nbsp;&euro;</strong> avec un{" "}
         <strong>taux compétitif</strong> et un{" "}
@@ -199,7 +199,7 @@ export default function FinancerEtudes() {
             desc: "On prépare avec vous un dossier solide pour la banque : justificatifs, lettre de motivation financière, plan de remboursement prévisionnel.",
           },
           {
-            title: "Mise en relation avec le LCL",
+            title: "Mise en relation avec notre banque partenaire",
             desc: "Grâce à notre partenariat, vous accédez à un interlocuteur dédié qui connaît parfaitement le profil des étudiants en santé à l\u2019étranger.",
           },
           {

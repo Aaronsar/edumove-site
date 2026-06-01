@@ -19,7 +19,7 @@ const QUICK_LINKS = [
   {
     icon: Euro,
     title: "Financement",
-    desc: "Prêt LCL à partir de 75 000 €",
+    desc: "Prêt étudiant à partir de 75 000 €",
     href: "/financement",
   },
   {

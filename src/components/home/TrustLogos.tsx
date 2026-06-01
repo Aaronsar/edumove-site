@@ -1,5 +1,4 @@
 const logos = [
-  { name: "LCL", style: "text-[#1B1D3A] font-bold text-2xl" },
   { name: "L'Étudiant", style: "text-[#1B1D3A] font-bold text-xl" },
   { name: "Le Figaro", style: "text-[#1B1D3A] font-serif text-xl font-bold tracking-wide" },
   { name: "DIPLOMA", style: "text-[#1B1D3A] font-bold text-xl tracking-widest" },

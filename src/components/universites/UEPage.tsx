@@ -29,7 +29,7 @@ const ueTestimonials: Testimonial[] = [
     color: "bg-[#615ca5]",
   },
   {
-    quote: "On hésitait entre Madrid et Malaga pour notre fils. Le conseiller nous a expliqué les différences, le coût de la vie, l'ambiance de chaque campus. Au final c'est Malaga qui collait le mieux. Le prêt LCL a été bouclé en un mois, et notre fils est parti serein.",
+    quote: "On hésitait entre Madrid et Malaga pour notre fils. Le conseiller nous a expliqué les différences, le coût de la vie, l'ambiance de chaque campus. Au final c'est Malaga qui collait le mieux. Le prêt étudiant a été bouclé en un mois, et notre fils est parti serein.",
     author: "Philippe G.",
     context: "Parent d'un étudiant en dentaire — UE Malaga",
     initials: "PG",

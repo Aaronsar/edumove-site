@@ -25,7 +25,7 @@ export default function FinancingBanner() {
                     Besoin de financer vos études ?
                   </h3>
                   <p className="text-white/60 text-sm max-w-md">
-                    À partir de 75 000 € avec notre partenaire LCL. Remboursement uniquement après l'obtention de votre diplôme.
+                    À partir de 75 000 € avec notre banque partenaire. Remboursement uniquement après l'obtention de votre diplôme.
                   </p>
                 </div>
               </div>
@@ -34,8 +34,6 @@ export default function FinancingBanner() {
               <div className="flex items-center gap-3 shrink-0">
                 <div className="hidden md:flex items-center gap-2">
                   <Image src="/edumove-icon-orange.svg" alt="Edumove" width={24} height={24} className="h-5 w-auto" />
-                  <span className="text-white/30 text-sm">&times;</span>
-                  <Image src="/lcl-logo.svg" alt="LCL" width={40} height={16} className="h-4 w-auto rounded" />
                 </div>
                 <span className="inline-flex items-center gap-2 bg-[#EC680A] hover:bg-[#D45E09] text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-colors group-hover:shadow-lg group-hover:shadow-[#EC680A]/20">
                   Découvrir le financement

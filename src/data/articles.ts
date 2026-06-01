@@ -119,7 +119,7 @@ export const articles: Article[] = [
       "Universités, admission, programme, vie étudiante à Madrid, financement, retour en France : le guide le plus complet pour faire médecine en Espagne.",
     metaTitle: "Études de médecine en Espagne : guide complet pour les Français | Edumove",
     metaDescription:
-      "Comment faire médecine en Espagne ? Universités (UCJC, UE), test PE, programme 6 ans, vie à Madrid, financement LCL, reconnaissance diplôme et retour en France.",
+      "Comment faire médecine en Espagne ? Universités (UCJC, UE), test PE, programme 6 ans, vie à Madrid, financement étudiant, reconnaissance diplôme et retour en France.",
     relatedSlugs: ["echec-pass-alternatives", "cout-etudes-sante-europe", "financer-etudes-sante-europe", "temoignage-medecine-espagne"],
     relatedFormations: ["medecine", "dentaire", "kinesitherapie", "pharmacie", "veterinaire"],
     relatedUniversities: ["/universites/universidad-europea", "/universites/ucjc"],
@@ -136,7 +136,7 @@ export const articles: Article[] = [
       "Universit\u00e9s, admission, programme 5 ans, vie \u00e9tudiante, financement et retour en France : le guide le plus complet pour faire dentaire en Espagne.",
     metaTitle: "\u00c9tudes dentaires en Espagne : guide complet pour les Fran\u00e7ais | Edumove",
     metaDescription:
-      "Comment faire dentaire en Espagne ? Universit\u00e9s (UCJC, UE, LINK Campus), admission, programme 5 ans, co\u00fbt, financement LCL et reconnaissance du dipl\u00f4me.",
+      "Comment faire dentaire en Espagne ? Universit\u00e9s (UCJC, UE, LINK Campus), admission, programme 5 ans, co\u00fbt, financement \u00e9tudiant et reconnaissance du dipl\u00f4me.",
     relatedSlugs: ["etudes-medecine-espagne", "echec-pass-alternatives", "cout-etudes-sante-europe", "financer-etudes-sante-europe"],
     relatedFormations: ["dentaire", "medecine", "kinesitherapie", "pharmacie", "veterinaire"],
     relatedUniversities: ["/universites/universidad-europea", "/universites/ucjc", "/universites/link-campus"],
@@ -153,7 +153,7 @@ export const articles: Article[] = [
       "Prêt étudiant, bourses, aides : toutes les solutions pour financer vos études de santé en Europe sans avancer un centime.",
     metaTitle: "Financer ses études de santé en Europe : prêt étudiant et aides | Edumove",
     metaDescription:
-      "Prêt étudiant LCL, bourses du CROUS, aides régionales : toutes les solutions pour financer des études de santé en Europe sans avance.",
+      "Prêt étudiant, bourses du CROUS, aides régionales : toutes les solutions pour financer des études de santé en Europe sans avance.",
     relatedSlugs: ["reconnaissance-diplomes-europeens", "avantages-kinesitherapie-europe"],
     relatedFormations: ["medecine", "dentaire", "kinesitherapie", "pharmacie", "veterinaire"],
     relatedUniversities: ["/universites/universidad-europea", "/universites/link-campus", "/universites/ucjc"],

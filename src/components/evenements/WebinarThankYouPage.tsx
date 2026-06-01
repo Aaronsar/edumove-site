@@ -194,7 +194,7 @@ export default function WebinarThankYouPage() {
                   Financement
                 </span>
                 <span className="text-xs text-[#64748b]">
-                  Prêt LCL à partir de 75 000 €
+                  Prêt étudiant à partir de 75 000 €
                 </span>
               </div>
               <ArrowRight className="w-4 h-4 text-[#64748b] group-hover:text-[#ec680a] transition-colors shrink-0" />

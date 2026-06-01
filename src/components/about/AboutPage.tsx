@@ -70,7 +70,7 @@ const steps = [
   {
     num: "04",
     title: "Admission & financement",
-    desc: "Réponse de l'université, mise en place du financement avec notre partenaire LCL (prêt à partir de 75 000 €).",
+    desc: "Réponse de l'université, mise en place du financement avec notre banque partenaire (prêt à partir de 75 000 €).",
   },
   {
     num: "05",
@@ -79,7 +79,7 @@ const steps = [
   },
 ];
 
-const mediaCoverage = ["BFMTV", "Forbes", "LCL", "L'Étudiant", "Le Figaro"];
+const mediaCoverage = ["BFMTV", "Forbes", "L'Étudiant", "Le Figaro"];
 
 /* ---------- COMPONENT ---------- */
 
@@ -290,7 +290,7 @@ export default function AboutPage() {
           <div className="grid sm:grid-cols-2 gap-4">
             {[
               "Accompagnement personnalisé : nous nous engageons sur votre admission",
-              "Financement jusqu'à 100 % grâce à notre partenariat LCL",
+              "Financement jusqu'à 100 % grâce à notre partenariat bancaire",
               "Suivi complet, du premier appel jusqu'à l'installation sur place",
               "Préparation complète aux tests d'admission",
               "Diplômes reconnus dans toute l'Union européenne",

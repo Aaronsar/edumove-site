@@ -28,22 +28,22 @@ const PROGRAMME = [
   {
     icon: Euro,
     title: "Les solutions de financement",
-    desc: "Prêt étudiant LCL, bourses CROUS, aides régionales... On fait le tour de toutes les options disponibles.",
+    desc: "Prêt étudiant, bourses CROUS, aides régionales... On fait le tour de toutes les options disponibles.",
   },
   {
     icon: GraduationCap,
     title: "Le remboursement différé",
-    desc: "Comment fonctionne le prêt LCL : vous ne remboursez rien pendant vos études, uniquement une fois diplômé et en exercice.",
+    desc: "Comment fonctionne le prêt étudiant : vous ne remboursez rien pendant vos études, uniquement une fois diplômé et en exercice.",
   },
   {
     icon: Users,
     title: "L'accompagnement Edumove",
-    desc: "Comment Edumove vous accompagne dans la constitution de votre dossier et la mise en relation avec LCL.",
+    desc: "Comment Edumove vous accompagne dans la constitution de votre dossier et la mise en relation avec notre banque partenaire.",
   },
   {
     icon: HelpCircle,
     title: "Session questions / réponses",
-    desc: "Posez toutes vos questions en direct à notre équipe et aux représentants du LCL.",
+    desc: "Posez toutes vos questions en direct à notre équipe et aux représentants de notre banque partenaire.",
   },
 ];
 
@@ -66,9 +66,9 @@ const FAQ = [
       "Oui, un replay sera disponible pour les inscrits qui ne pourraient pas assister en direct. Inscrivez-vous pour recevoir le lien automatiquement après le webinaire.",
   },
   {
-    question: "Qui peut bénéficier du prêt étudiant LCL ?",
+    question: "Qui peut bénéficier du prêt étudiant ?",
     answer:
-      "Tout étudiant admis dans l'une de nos universités partenaires (UCJC, Universidad Europea ou LINK Campus) peut bénéficier du prêt étudiant LCL via Edumove. Il n'y a pas de condition de revenus des parents.",
+      "Tout étudiant admis dans l'une de nos universités partenaires (UCJC, Universidad Europea ou LINK Campus) peut bénéficier du prêt étudiant via Edumove. Il n'y a pas de condition de revenus des parents.",
   },
   {
     question: "Quand commence le remboursement du prêt ?",
@@ -78,7 +78,7 @@ const FAQ = [
   {
     question: "Peut-on poser des questions pendant le webinaire ?",
     answer:
-      "Absolument ! Une session de questions/réponses est prévue à la fin du webinaire. Vous pourrez poser toutes vos questions en direct à notre équipe et aux représentants du LCL.",
+      "Absolument ! Une session de questions/réponses est prévue à la fin du webinaire. Vous pourrez poser toutes vos questions en direct à notre équipe et aux représentants de notre banque partenaire.",
   },
   {
     question: "Je suis parent, puis-je assister au webinaire ?",
@@ -221,7 +221,7 @@ export default function WebinarFinancementPage() {
                 Webinaire gratuit en ligne
               </div>
 
-              {/* Logos */}
+              {/* Logo */}
               <div className="flex items-center gap-3 mb-5">
                 <Image
                   src="/edumove-icon-orange.svg"
@@ -229,16 +229,6 @@ export default function WebinarFinancementPage() {
                   width={64}
                   height={64}
                   className="h-[56px] w-auto"
-                />
-                <span className="text-white/40 text-2xl font-light">
-                  &times;
-                </span>
-                <Image
-                  src="/lcl-logo-officiel.svg"
-                  alt="LCL"
-                  width={120}
-                  height={48}
-                  className="h-[48px] w-auto rounded"
                 />
               </div>
 
@@ -253,9 +243,8 @@ export default function WebinarFinancementPage() {
               </h1>
 
               <p className="text-white/60 text-sm md:text-base leading-relaxed mb-6 max-w-md">
-                Avec la participation exceptionnelle du{" "}
-                <strong className="text-white/80">LCL</strong>, partenaire
-                officiel d&apos;Edumove, découvrez toutes les solutions pour
+                Avec la participation exceptionnelle de notre{" "}
+                <strong className="text-white/80">banque partenaire</strong>, découvrez toutes les solutions pour
                 financer vos études de santé en Europe.
               </p>
 
@@ -361,27 +350,20 @@ export default function WebinarFinancementPage() {
               </div>
             </div>
 
-            {/* Right — Partenaire LCL */}
+            {/* Right — Banque partenaire */}
             <div className="bg-white rounded-2xl border border-[#e2e2ef] p-8">
               <div className="flex items-center gap-3 mb-4">
-                <Image
-                  src="/lcl-logo-officiel.svg"
-                  alt="LCL"
-                  width={80}
-                  height={32}
-                  className="h-8 w-auto"
-                />
                 <span className="text-xs font-semibold text-[#615CA5] bg-[#615CA5]/10 px-3 py-1 rounded-full">
                   Partenaire officiel
                 </span>
               </div>
               <h3 className="font-bold text-[#1B1D3A] text-lg mb-3">
-                LCL, partenaire officiel d&apos;Edumove
+                Notre banque partenaire
               </h3>
               <p className="text-sm text-[#64748b] leading-relaxed mb-4">
-                LCL accompagne les étudiants Edumove avec un prêt étudiant
+                Notre banque partenaire accompagne les étudiants Edumove avec un prêt étudiant
                 à partir de 75 000 euros (davantage selon les profils), avec un remboursement
-                différé après l&apos;obtention du diplôme. Un représentant LCL
+                différé après l&apos;obtention du diplôme. Un représentant
                 sera présent lors du webinaire pour répondre à toutes vos
                 questions.
               </p>
@@ -490,7 +472,7 @@ export default function WebinarFinancementPage() {
                 Financement
               </span>
               <h3 className="font-bold text-[#1B1D3A] text-lg mt-2 group-hover:text-[#615CA5] transition-colors">
-                Tout savoir sur le financement Edumove &times; LCL
+                Tout savoir sur le financement Edumove
               </h3>
               <p className="text-sm text-[#64748b] mt-1">
                 Prêt à partir de 75 000 &euro;, remboursement différé, bourses
@@ -659,7 +641,7 @@ export default function WebinarFinancementPage() {
             "@type": "EducationEvent",
             name: "Comment financer ses études de Santé en Europe ? On vous explique tout !",
             description:
-              "Webinaire gratuit organisé par Edumove avec la participation du LCL pour comprendre comment financer ses études de santé en Europe.",
+              "Webinaire gratuit organisé par Edumove avec la participation de notre banque partenaire pour comprendre comment financer ses études de santé en Europe.",
             startDate: "2026-04-15T18:30:00+02:00",
             endDate: "2026-04-15T19:15:00+02:00",
             eventAttendanceMode:
@@ -673,7 +655,7 @@ export default function WebinarFinancementPage() {
             },
             performer: {
               "@type": "Organization",
-              name: "LCL",
+              name: "Edumove",
             },
             location: {
               "@type": "VirtualLocation",
