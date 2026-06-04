@@ -67,116 +67,144 @@ async function generateFilledPdf(payload: Payload, signatureDataUrl: string | nu
 
   const pdfDoc = await PDFDocument.load(existingPdfBytes);
   const page = pdfDoc.getPage(0);
-  const { width, height } = page.getSize();
+  const { height: PAGE_HEIGHT } = page.getSize();
 
   const helvetica = await pdfDoc.embedFont(StandardFonts.Helvetica);
   const helveticaBold = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
 
-  const draw = (text: string, x: number, y: number, opts?: { size?: number; font?: PDFFont; color?: { r: number; g: number; b: number } }) => {
+  // Helper: convert Y from pdftotext bbox (top-down) to pdf-lib baseline (bottom-up).
+  // bboxYTop = yMin of text bbox dans pdftotext.
+  // Pour overlay du texte SUR une ligne d'écriture située sous un label,
+  // utiliser bboxYTop = yMin_label + ~12 pour passer sous le label.
+  const fromTop = (yTopBaseline: number) => PAGE_HEIGHT - yTopBaseline;
+
+  const drawText = (text: string, x: number, y: number, opts?: { size?: number; font?: PDFFont; color?: { r: number; g: number; b: number } }) => {
     const size = opts?.size ?? 9;
     const font = opts?.font ?? helvetica;
     const color = opts?.color ?? { r: 0.106, g: 0.114, b: 0.227 }; // #1B1D3A
-    page.drawText(text || "", {
-      x,
-      y,
-      size,
-      font,
-      color: rgb(color.r, color.g, color.b),
-    });
+    page.drawText(text || "", { x, y, size, font, color: rgb(color.r, color.g, color.b) });
   };
 
-  // PDF coordinates start from bottom-left
-  // A4 = 595 x 842 pt
-  // Y coordinates are estimated based on the PDF layout
-
-  // ────── Année scolaire (checkbox row) ──────
-  // 3 cases: 2025/2026 ~x=185, 2026/2027 ~x=320, 2027/2028 ~x=475
-  const anneesX: Record<string, number> = {
-    "2025/2026": 178,
-    "2026/2027": 320,
-    "2027/2028": 472,
+  const drawCheck = (x: number, y: number) => {
+    // X mark in orange, slightly bigger than text
+    drawText("X", x, y, { size: 12, font: helveticaBold, color: { r: 0.92, g: 0.4, b: 0.04 } });
   };
-  const anneeY = height - 110;
-  const xMark = anneesX[payload.anneeScolaire];
-  if (xMark !== undefined) {
-    draw("X", xMark, anneeY, { size: 11, font: helveticaBold, color: { r: 0.92, g: 0.4, b: 0.04 } });
+
+  // ────── ANNÉE SCOLAIRE (3 cases) ──────
+  // Texte des années à yMin≈182, yMax≈195 → centre ≈ 188.6
+  // Cases situées à x = textX - 18 environ
+  // baseline pdf-lib pour centrer "X" : fromTop(192)
+  {
+    const yMark = fromTop(192);
+    const xByYear: Record<string, number> = {
+      "2025/2026": 197,
+      "2026/2027": 333,
+      "2027/2028": 472,
+    };
+    const x = xByYear[payload.anneeScolaire];
+    if (x !== undefined) drawCheck(x, yMark);
   }
 
-  // ────── Programme (radio) ──────
-  // 2 colonnes : licence (gauche) et maîtrise (droite)
-  // Y baselines approximatives pour chaque programme
-  const programmeCoords: Record<string, [number, number]> = {
-    infirmier: [70, height - 195],
-    physiotherapie: [70, height - 225],
-    osteopathie: [70, height - 255],
-    autre_licence: [70, height - 285],
-    pharmacie: [330, height - 195],
-    medecine: [330, height - 225],
-    odontologie: [330, height - 255],
-    autre_maitrise: [330, height - 285],
+  // ────── PROGRAMME (radio buttons) ──────
+  // Licence (col gauche, ronds à x ≈ 53)
+  // Maîtrise (col droite, ronds à x ≈ 326)
+  // Y selon le programme (yMin du texte de chaque ligne)
+  const programmeCoords: Record<string, { x: number; yTop: number }> = {
+    infirmier: { x: 53, yTop: 282 },           // Soins infirmiers (L/SNT1) yMin=274.6
+    physiotherapie: { x: 53, yTop: 313 },      // Physiothérapie (L/SNT2) yMin=305.7
+    osteopathie: { x: 53, yTop: 342 },         // Ostéopathie (L/SNT4) yMin=335
+    autre_licence: { x: 53, yTop: 370 },       // Autre yMin=362.6
+    pharmacie: { x: 326, yTop: 282 },          // Pharmacie (LM-13) yMin=274.6
+    medecine: { x: 326, yTop: 313 },           // Médicine et chirurgie (LM-41) yMin=305.7
+    odontologie: { x: 326, yTop: 342 },        // Odontologie (LM-46) yMin=335
+    autre_maitrise: { x: 326, yTop: 370 },     // Autre yMin=362.6
   };
-  const progXY = programmeCoords[payload.programme];
-  if (progXY) {
-    draw("X", progXY[0], progXY[1], { size: 11, font: helveticaBold, color: { r: 0.92, g: 0.4, b: 0.04 } });
+  const prog = programmeCoords[payload.programme];
+  if (prog) drawCheck(prog.x, fromTop(prog.yTop));
+
+  // ────── NOM COMPLET ──────
+  // Label "NOM COMPLETE" à yMin=399.75
+  // Sous-labels "Premier milieu" / "Dernier" à yMin=413.56
+  // Ligne d'écriture juste APRÈS le label "NOM COMPLETE"
+  {
+    const yWrite = fromTop(411);
+    drawText(payload.firstname, 145, yWrite);    // après le label "NOM COMPLETE"
+    drawText(payload.middlename, 230, yWrite);   // sous "Premier milieu"
+    drawText(payload.lastname, 360, yWrite);     // sous "Dernier"
   }
 
-  // ────── Identité ──────
-  // NOM COMPLET (3 sub-cells: premier, milieu, dernier)
-  const yIdent = height - 360;
-  draw(payload.firstname, 60, yIdent);
-  draw(payload.middlename, 220, yIdent);
-  draw(payload.lastname, 360, yIdent);
-
-  // Sexe (Mâle / Femme)
-  if (payload.sexe === "M") draw("X", 462, height - 343, { size: 11, font: helveticaBold, color: { r: 0.92, g: 0.4, b: 0.04 } });
-  if (payload.sexe === "F") draw("X", 515, height - 343, { size: 11, font: helveticaBold, color: { r: 0.92, g: 0.4, b: 0.04 } });
-
-  // Date de naissance / Âge / Ville
-  const yLine2 = height - 410;
-  draw(formatDateFR(payload.dateNaissance), 60, yLine2);
-  draw(payload.age, 230, yLine2);
-  draw(payload.villeNaissance, 320, yLine2);
-
-  // Nationalité / Passeport
-  const yLine3 = height - 460;
-  draw(payload.nationalite, 60, yLine3);
-  draw(payload.passeport, 320, yLine3);
-
-  // Adresse permanente
-  const yAdresse = height - 510;
-  draw(`${payload.adresseRue}${payload.appartement ? `, apt ${payload.appartement}` : ""}`, 60, yAdresse);
-  // Ville / État / Pays / Zip on same row
-  draw(payload.ville, 200, yAdresse);
-  draw(payload.etat, 290, yAdresse);
-  draw(payload.pays, 365, yAdresse);
-  draw(payload.zip, 470, yAdresse);
-
-  // Téléphone / Email
-  const yContact = height - 560;
-  draw(payload.telephone, 110, yContact);
-  draw(payload.email, 360, yContact);
-
-  // ────── Diplôme (cases) ──────
-  if (payload.diplomeSecondaire) {
-    draw("X", 67, height - 625, { size: 11, font: helveticaBold, color: { r: 0.92, g: 0.4, b: 0.04 } });
-  }
-  if (payload.diplomeLicence) {
-    draw("X", 67, height - 650, { size: 11, font: helveticaBold, color: { r: 0.92, g: 0.4, b: 0.04 } });
-  }
-  if (payload.diplomeEnCours) {
-    draw("X", 67, height - 678, { size: 11, font: helveticaBold, color: { r: 0.92, g: 0.4, b: 0.04 } });
+  // ────── SEXE (cases Mâle / Femme) ──────
+  // "Mâle" yMin=399.75 x=459.81, "Femme" yMin=399.75 x=512.42
+  // Cases juste avant le texte
+  {
+    const yMark = fromTop(408);
+    if (payload.sexe === "M") drawCheck(449, yMark);
+    if (payload.sexe === "F") drawCheck(502, yMark);
   }
 
-  // ────── Signature (image) ──────
+  // ────── DATE NAISSANCE / ÂGE / VILLE NAISSANCE ──────
+  // Labels à yMin=433.25 — on écrit APRÈS chaque label sur la même ligne
+  {
+    const yWrite = fromTop(444);
+    drawText(formatDateFR(payload.dateNaissance), 150, yWrite);  // après "DATE DE NAISSANCE"
+    drawText(payload.age, 260, yWrite);                          // après "ÂGE"
+    drawText(payload.villeNaissance, 365, yWrite);               // après "VILLE DE NAISSANCE"
+  }
+
+  // ────── NATIONALITÉ / PASSEPORT ──────
+  // Labels à yMin=466.75
+  {
+    const yWrite = fromTop(478);
+    drawText(payload.nationalite, 105, yWrite);  // après "NATIONALITÉ"
+    drawText(payload.passeport, 380, yWrite);    // après "NUMÉRO DE PASSEPORT"
+  }
+
+  // ────── ADRESSE PERMANENTE ──────
+  // Label "ADRESSE PERMANENTE" à yMin=499.75
+  // Sous-labels "Numéro et rue..." à yMin=513.56
+  {
+    const yWrite = fromTop(511);
+    const adresseFull = `${payload.adresseRue}${payload.appartement ? `, apt ${payload.appartement}` : ""}`;
+    drawText(adresseFull, 140, yWrite, { size: 8 });
+    drawText(payload.ville, 320, yWrite);
+    drawText(payload.etat, 380, yWrite);
+    drawText(payload.pays, 444, yWrite);
+    drawText(payload.zip, 517, yWrite);
+  }
+
+  // ────── TÉLÉPHONE / COURRIEL ──────
+  // Labels à yMin=533.75
+  // "TÉLÉPHONE ( )" se termine vers x=128
+  // "COURRIEL" se termine vers x=320
+  {
+    const yWrite = fromTop(545);
+    drawText(payload.telephone, 135, yWrite);    // après "TÉLÉPHONE ( )"
+    drawText(payload.email, 340, yWrite);        // après "COURRIEL"
+  }
+
+  // ────── DIPLÔME (3 cases à cocher) ──────
+  // Lignes à yMin=599.4, 620.7, 642.1
+  // Cases à x ≈ 54 (avant les puces "Je suis...")
+  {
+    if (payload.diplomeSecondaire) drawCheck(54, fromTop(606));
+    if (payload.diplomeLicence) drawCheck(54, fromTop(627));
+    if (payload.diplomeEnCours) drawCheck(54, fromTop(648));
+  }
+
+  // ────── SIGNATURE (image PNG) ──────
+  // Label "Signature" à yMin=748.89 (et "Date" à droite)
+  // La ligne d'écriture est juste après le label
   if (signatureDataUrl) {
     try {
       const sigBase64 = signatureDataUrl.replace(/^data:image\/\w+;base64,/, "");
       const sigBytes = Buffer.from(sigBase64, "base64");
       const sigImage = await pdfDoc.embedPng(sigBytes);
-      const sigDims = sigImage.scaleToFit(160, 50);
+      // Dim signature: max 150x35 pour rentrer dans la ligne
+      const sigDims = sigImage.scaleToFit(150, 35);
+      // Position : juste après le label "Signature" qui se termine vers x=90
       page.drawImage(sigImage, {
-        x: 60,
-        y: height - 805,
+        x: 100,
+        y: fromTop(760) - sigDims.height / 2,
         width: sigDims.width,
         height: sigDims.height,
       });
@@ -185,13 +213,14 @@ async function generateFilledPdf(payload: Payload, signatureDataUrl: string | nu
     }
   }
 
-  // ────── Date (en bas) ──────
-  draw(formatDateFR(new Date().toISOString()), 450, height - 795);
+  // ────── DATE (à droite, sous label "Date") ──────
+  // Label "Date" yMin=748.89 x=391.8 — ligne d'écriture à yTop ≈ 758
+  drawText(formatDateFR(new Date().toISOString()), 430, fromTop(758));
 
-  // Marque "Soumis en ligne via edumove.fr" — discret en bas
+  // ────── Marque discrète "Soumis en ligne via edumove.fr" ──────
   page.drawText(`Soumis en ligne via edumove.fr le ${formatDateFR(new Date().toISOString())}`, {
-    x: 60,
-    y: 30,
+    x: 50,
+    y: 25,
     size: 7,
     font: helvetica,
     color: rgb(0.58, 0.6, 0.65),
