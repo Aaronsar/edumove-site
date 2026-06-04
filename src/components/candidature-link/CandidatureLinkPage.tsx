@@ -380,6 +380,7 @@ export default function CandidatureLinkPage() {
       <HubSpotEmbedModal
         isOpen={isModalOpen}
         onClose={closeModal}
+        form="inscription-link-k21s"
         title="Être rappelé par un conseiller"
         subtitle="Test LINK Campus du 25 juin 2026 — un conseiller Edumove vous rappelle sous 24h pour vous aider à constituer votre dossier."
       />
