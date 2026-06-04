@@ -168,27 +168,27 @@ async function generateFilledPdf(payload: Payload, signatureDataUrl: string | nu
 
   // ────── ADRESSE PERMANENTE ──────
   // Label "ADRESSE PERMANENTE" à yMin=499.75 yMax≈511, xMax=146
-  // Sous-labels colonnes : Numéro et rue (xMin=193.65), Ville (xMin=321.20),
-  // État (xMin=380.54), Pays (xMin=444.08), Zip (xMin=517.49) à yMin=513.56
-  // Underscore line à top-down y ≈ 512
+  // Pour ne pas chevaucher le label : on commence à x=170
+  // Sous-labels colonnes : Numéro/Ville/État/Pays/Zip
+  // On rapproche les colonnes pour un rendu compact
   {
     const yWrite = fromTop(508);
     const adresseFull = `${payload.adresseRue}${payload.appartement ? `, apt ${payload.appartement}` : ""}`;
-    drawText(adresseFull, 152, yWrite, { size: 8 });    // après "ADRESSE PERMANENTE"
-    drawText(payload.ville, 322, yWrite, { size: 8 });
-    drawText(payload.etat, 381, yWrite, { size: 8 });
-    drawText(payload.pays, 445, yWrite, { size: 8 });
-    drawText(payload.zip, 518, yWrite, { size: 8 });
+    drawText(adresseFull, 170, yWrite, { size: 7 });    // bien après "ADRESSE PERMANENTE"
+    drawText(payload.ville, 325, yWrite, { size: 7 });   // Ville
+    drawText(payload.etat, 385, yWrite, { size: 7 });    // État
+    drawText(payload.pays, 450, yWrite, { size: 7 });    // Pays
+    drawText(payload.zip, 522, yWrite, { size: 7 });     // Zip
   }
 
   // ────── TÉLÉPHONE / COURRIEL ──────
   // Labels à yMin=533.75 yMax≈545
-  // "TÉLÉPHONE ( )" se termine xMax=128 / "COURRIEL" se termine xMax=318
-  // Underscore line à top-down y ≈ 545
+  // "TÉLÉPHONE ( )" se termine xMax=128 / "COURRIEL" se termine xMax=325
+  // Décaler email à 345 pour ne pas chevaucher "COURRIEL"
   {
     const yWrite = fromTop(541);
-    drawText(payload.telephone, 138, yWrite, { size: 9 });    // après "TÉLÉPHONE ( )"
-    drawText(payload.email, 325, yWrite, { size: 9 });        // après "COURRIEL"
+    drawText(payload.telephone, 145, yWrite, { size: 8 });    // après "TÉLÉPHONE ( )"
+    drawText(payload.email, 345, yWrite, { size: 8 });        // bien après "COURRIEL"
   }
 
   // ────── DIPLÔME (3 cases à cocher) ──────
