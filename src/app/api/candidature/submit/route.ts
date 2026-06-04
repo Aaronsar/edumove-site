@@ -124,14 +124,13 @@ async function generateFilledPdf(payload: Payload, signatureDataUrl: string | nu
 
   // ────── NOM COMPLET ──────
   // Label "NOM COMPLETE" à yMin=399.75, yMax=411.49 — underscore line ≈ 411
-  // Les colonnes "Premier milieu" / "Dernier" sont conçues pour des noms longs,
-  // mais on rapproche les textes pour éviter les espaces vides visuels.
-  // Format compact : "Prénom Second-prénom" ensemble + Nom à droite.
+  // On colle tous les noms ensemble pour un rendu compact "Prénom Second Nom"
   {
     const yWrite = fromTop(408);
-    const prenoms = [payload.firstname, payload.middlename].filter(Boolean).join(" ");
-    drawText(prenoms, 135, yWrite, { size: 9 });               // Prénom(s) ensemble
-    drawText(payload.lastname, 305, yWrite, { size: 9 });      // Nom (col Dernier)
+    const fullName = [payload.firstname, payload.middlename, payload.lastname]
+      .filter(Boolean)
+      .join(" ");
+    drawText(fullName, 135, yWrite, { size: 9 });
   }
 
   // ────── SEXE (cases Mâle / Femme) ──────
@@ -165,16 +164,18 @@ async function generateFilledPdf(payload: Payload, signatureDataUrl: string | nu
 
   // ────── ADRESSE PERMANENTE ──────
   // Label "ADRESSE PERMANENTE" yMax≈511, xMax=146
-  // Les colonnes Numéro/Ville/État/Pays/Zip sont très espacées.
-  // On rapproche tous les textes pour un rendu compact et lisible.
+  // On concatène TOUT en une seule chaîne pour éviter les gros gaps
+  // entre colonnes. Format : "rue, appt, ville, état, pays, zip"
   {
     const yWrite = fromTop(508);
-    const adresseFull = `${payload.adresseRue}${payload.appartement ? `, apt ${payload.appartement}` : ""}`;
-    drawText(adresseFull, 170, yWrite, { size: 7 });    // Rue (après le label)
-    drawText(payload.ville, 290, yWrite, { size: 7 });   // Ville rapprochée
-    drawText(payload.etat, 350, yWrite, { size: 7 });    // État
-    drawText(payload.pays, 400, yWrite, { size: 7 });    // Pays
-    drawText(payload.zip, 470, yWrite, { size: 7 });     // Zip
+    const parts = [
+      payload.adresseRue + (payload.appartement ? `, apt ${payload.appartement}` : ""),
+      payload.ville,
+      payload.etat,
+      payload.pays,
+      payload.zip,
+    ].filter(Boolean);
+    drawText(parts.join(", "), 170, yWrite, { size: 7 });
   }
 
   // ────── TÉLÉPHONE / COURRIEL ──────
