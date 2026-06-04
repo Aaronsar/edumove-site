@@ -208,6 +208,27 @@ export default function CandidatureLinkPage() {
               </div>
             </a>
           </div>
+
+          {/* CTAs juste après les téléchargements */}
+          <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href={mailtoHref}
+              className="group inline-flex items-center justify-center gap-2 bg-[#EC680A] hover:bg-[#D45E09] text-white text-base font-semibold px-7 py-4 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#EC680A]/30 hover:gap-3"
+            >
+              <Mail className="w-5 h-5" />
+              Envoyer mon dossier par email
+            </a>
+            <button
+              type="button"
+              onClick={openModal}
+              className="inline-flex items-center justify-center gap-2 bg-white border-2 border-[#1B1D3A] hover:bg-[#1B1D3A] hover:text-white text-[#1B1D3A] text-base font-semibold px-7 py-4 rounded-full transition-all duration-300 cursor-pointer"
+            >
+              Être rappelé par un conseiller
+            </button>
+          </div>
+          <p className="mt-4 text-xs text-[#94a3b8] text-center">
+            Réponse d&apos;un conseiller Edumove sous 24h ouvrées · 100% gratuit
+          </p>
         </div>
       </section>
 
@@ -296,7 +317,7 @@ export default function CandidatureLinkPage() {
           </div>
 
           {/* Récap dossier */}
-          <div className="bg-[#fafbff] rounded-2xl border border-gray-200 p-6 mb-10">
+          <div className="bg-[#fafbff] rounded-2xl border border-gray-200 p-6">
             <p className="text-sm font-semibold uppercase tracking-widest text-[#EC680A] mb-4">
               Récapitulatif de votre dossier
             </p>
@@ -313,28 +334,6 @@ export default function CandidatureLinkPage() {
               ))}
             </ul>
           </div>
-
-          {/* CTAs envoi */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href={mailtoHref}
-              className="group inline-flex items-center justify-center gap-2 bg-[#EC680A] hover:bg-[#D45E09] text-white text-base font-semibold px-7 py-4 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#EC680A]/30 hover:gap-3"
-            >
-              <Mail className="w-5 h-5" />
-              Envoyer mon dossier par email
-            </a>
-            <button
-              type="button"
-              onClick={openModal}
-              className="inline-flex items-center justify-center gap-2 bg-white border-2 border-[#1B1D3A] hover:bg-[#1B1D3A] hover:text-white text-[#1B1D3A] text-base font-semibold px-7 py-4 rounded-full transition-all duration-300 cursor-pointer"
-            >
-              Être rappelé par un conseiller
-            </button>
-          </div>
-
-          <p className="mt-4 text-xs text-[#94a3b8] text-center">
-            Réponse d&apos;un conseiller Edumove sous 24h ouvrées · 100% gratuit
-          </p>
         </div>
       </section>
 
