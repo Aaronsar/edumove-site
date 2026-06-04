@@ -123,18 +123,15 @@ async function generateFilledPdf(payload: Payload, signatureDataUrl: string | nu
   if (prog) drawCheck(prog.x, fromTop(prog.yTop));
 
   // ────── NOM COMPLET ──────
-  // Label "NOM COMPLETE" à yMin=399.75, yMax=411.49
-  // Underscore line à top-down y ≈ 411
-  // → On écrit AU-DESSUS de la ligne, baseline à y_top=408 (= pdf-lib y de fromTop(408))
-  // Labels x : "NOM COMPLETE" se termine à xMax=126
-  //            "(tel qu'indiqué)" à xMin=49 (col 1 prénom)
-  //            "Premier milieu" à xMin=199.91 (col 2 second prénom)
-  //            "Dernier" à xMin=325.17 (col 3 nom)
+  // Label "NOM COMPLETE" à yMin=399.75, yMax=411.49 — underscore line ≈ 411
+  // Les colonnes "Premier milieu" / "Dernier" sont conçues pour des noms longs,
+  // mais on rapproche les textes pour éviter les espaces vides visuels.
+  // Format compact : "Prénom Second-prénom" ensemble + Nom à droite.
   {
     const yWrite = fromTop(408);
-    drawText(payload.firstname, 135, yWrite, { size: 9 });    // col 1
-    drawText(payload.middlename, 240, yWrite, { size: 9 });   // col 2
-    drawText(payload.lastname, 360, yWrite, { size: 9 });     // col 3
+    const prenoms = [payload.firstname, payload.middlename].filter(Boolean).join(" ");
+    drawText(prenoms, 135, yWrite, { size: 9 });               // Prénom(s) ensemble
+    drawText(payload.lastname, 305, yWrite, { size: 9 });      // Nom (col Dernier)
   }
 
   // ────── SEXE (cases Mâle / Femme) ──────
@@ -167,18 +164,17 @@ async function generateFilledPdf(payload: Payload, signatureDataUrl: string | nu
   }
 
   // ────── ADRESSE PERMANENTE ──────
-  // Label "ADRESSE PERMANENTE" à yMin=499.75 yMax≈511, xMax=146
-  // Pour ne pas chevaucher le label : on commence à x=170
-  // Sous-labels colonnes : Numéro/Ville/État/Pays/Zip
-  // On rapproche les colonnes pour un rendu compact
+  // Label "ADRESSE PERMANENTE" yMax≈511, xMax=146
+  // Les colonnes Numéro/Ville/État/Pays/Zip sont très espacées.
+  // On rapproche tous les textes pour un rendu compact et lisible.
   {
     const yWrite = fromTop(508);
     const adresseFull = `${payload.adresseRue}${payload.appartement ? `, apt ${payload.appartement}` : ""}`;
-    drawText(adresseFull, 170, yWrite, { size: 7 });    // bien après "ADRESSE PERMANENTE"
-    drawText(payload.ville, 325, yWrite, { size: 7 });   // Ville
-    drawText(payload.etat, 385, yWrite, { size: 7 });    // État
-    drawText(payload.pays, 450, yWrite, { size: 7 });    // Pays
-    drawText(payload.zip, 522, yWrite, { size: 7 });     // Zip
+    drawText(adresseFull, 170, yWrite, { size: 7 });    // Rue (après le label)
+    drawText(payload.ville, 290, yWrite, { size: 7 });   // Ville rapprochée
+    drawText(payload.etat, 350, yWrite, { size: 7 });    // État
+    drawText(payload.pays, 400, yWrite, { size: 7 });    // Pays
+    drawText(payload.zip, 470, yWrite, { size: 7 });     // Zip
   }
 
   // ────── TÉLÉPHONE / COURRIEL ──────
