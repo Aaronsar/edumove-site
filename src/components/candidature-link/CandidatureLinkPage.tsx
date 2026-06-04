@@ -15,6 +15,7 @@ import {
   AlertTriangle,
   GraduationCap,
   ChevronRight,
+  Sparkles,
 } from "lucide-react";
 import HubSpotEmbedModal from "@/components/shared/HubSpotEmbedModal";
 
@@ -116,9 +117,41 @@ export default function CandidatureLinkPage() {
           <p className="text-sm font-semibold uppercase tracking-widest text-[#EC680A] mb-3">
             Étape 1 — Documents à télécharger
           </p>
-          <h2 className="text-2xl md:text-3xl font-bold text-[#1B1D3A] mb-10 max-w-2xl">
+          <h2 className="text-2xl md:text-3xl font-bold text-[#1B1D3A] mb-6 max-w-2xl">
             Vos pièces de candidature
           </h2>
+
+          {/* CTA Remplir en ligne (option la plus rapide) */}
+          <div className="mb-8 bg-gradient-to-br from-[#1B1D3A] to-[#615CA5] rounded-2xl p-6 md:p-8 text-white relative overflow-hidden">
+            <div aria-hidden className="absolute -top-20 -right-20 w-48 h-48 rounded-full bg-[#EC680A]/20 blur-3xl" />
+            <div className="relative flex flex-col md:flex-row items-start md:items-center gap-5">
+              <div className="shrink-0 w-12 h-12 rounded-xl bg-[#EC680A] flex items-center justify-center">
+                <Sparkles className="w-6 h-6 text-white" />
+              </div>
+              <div className="flex-1">
+                <div className="inline-block bg-[#EC680A] text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full mb-2">
+                  Le plus rapide · 5 minutes
+                </div>
+                <h3 className="font-bold text-xl mb-1" style={{ color: "#ffffff" }}>
+                  Remplir mon dossier en ligne
+                </h3>
+                <p className="text-sm text-white/80 leading-relaxed">
+                  Formulaire pré-rempli, signature électronique, pièces jointes intégrées et envoi automatique. Aucune impression ni scan nécessaires.
+                </p>
+              </div>
+              <Link
+                href="/candidature-test-link/remplir"
+                className="shrink-0 group inline-flex items-center gap-2 bg-[#EC680A] hover:bg-[#D45E09] text-white font-semibold px-6 py-3 rounded-full transition-all hover:gap-3 hover:shadow-lg hover:shadow-[#EC680A]/30"
+              >
+                Commencer
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </div>
+          </div>
+
+          <p className="text-xs text-[#94a3b8] mb-6">
+            Ou téléchargez les documents pour les remplir à la main :
+          </p>
 
           <div className="grid md:grid-cols-3 gap-5">
             {/* Test médecine & chirurgie */}
