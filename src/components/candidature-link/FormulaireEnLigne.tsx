@@ -252,6 +252,9 @@ export default function FormulaireEnLigne() {
                     </button>
                   ))}
                 </div>
+                <p className="mt-3 text-xs text-[#615CA5] bg-[#615CA5]/8 border-l-2 border-[#615CA5] pl-3 py-2 rounded-r-md leading-relaxed">
+                  <strong>Pour une candidature à la rentrée de septembre 2026,</strong> sélectionnez <strong>2026/2027</strong>.
+                </p>
               </div>
 
               <div>
