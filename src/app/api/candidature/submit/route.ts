@@ -123,63 +123,72 @@ async function generateFilledPdf(payload: Payload, signatureDataUrl: string | nu
   if (prog) drawCheck(prog.x, fromTop(prog.yTop));
 
   // ────── NOM COMPLET ──────
-  // Label "NOM COMPLETE" à yMin=399.75
-  // Sous-labels "Premier milieu" / "Dernier" à yMin=413.56
-  // Ligne d'écriture juste APRÈS le label "NOM COMPLETE"
+  // Label "NOM COMPLETE" à yMin=399.75, yMax=411.49
+  // Underscore line à top-down y ≈ 411
+  // → On écrit AU-DESSUS de la ligne, baseline à y_top=408 (= pdf-lib y de fromTop(408))
+  // Labels x : "NOM COMPLETE" se termine à xMax=126
+  //            "(tel qu'indiqué)" à xMin=49 (col 1 prénom)
+  //            "Premier milieu" à xMin=199.91 (col 2 second prénom)
+  //            "Dernier" à xMin=325.17 (col 3 nom)
   {
-    const yWrite = fromTop(411);
-    drawText(payload.firstname, 145, yWrite);    // après le label "NOM COMPLETE"
-    drawText(payload.middlename, 230, yWrite);   // sous "Premier milieu"
-    drawText(payload.lastname, 360, yWrite);     // sous "Dernier"
+    const yWrite = fromTop(408);
+    drawText(payload.firstname, 135, yWrite, { size: 9 });    // col 1
+    drawText(payload.middlename, 240, yWrite, { size: 9 });   // col 2
+    drawText(payload.lastname, 360, yWrite, { size: 9 });     // col 3
   }
 
   // ────── SEXE (cases Mâle / Femme) ──────
-  // "Mâle" yMin=399.75 x=459.81, "Femme" yMin=399.75 x=512.42
-  // Cases juste avant le texte
+  // "SEXE:" yMin=399.75 xMax=437.20, "Mâle" yMin=399.75 x=459.81, "Femme" x=512.42
+  // Cases vides juste avant chaque texte
   {
-    const yMark = fromTop(408);
+    const yMark = fromTop(409);
     if (payload.sexe === "M") drawCheck(449, yMark);
     if (payload.sexe === "F") drawCheck(502, yMark);
   }
 
   // ────── DATE NAISSANCE / ÂGE / VILLE NAISSANCE ──────
-  // Labels à yMin=433.25 — on écrit APRÈS chaque label sur la même ligne
+  // Labels à yMin=433.25 yMax≈445
+  // "DATE DE NAISSANCE" se termine xMax=185 / "ÂGE" se termine xMax=255 / "VILLE DE NAISSANCE" xMax=405
+  // Underscore line à top-down y ≈ 446
   {
-    const yWrite = fromTop(444);
-    drawText(formatDateFR(payload.dateNaissance), 150, yWrite);  // après "DATE DE NAISSANCE"
-    drawText(payload.age, 260, yWrite);                          // après "ÂGE"
-    drawText(payload.villeNaissance, 365, yWrite);               // après "VILLE DE NAISSANCE"
+    const yWrite = fromTop(441);
+    drawText(formatDateFR(payload.dateNaissance), 190, yWrite, { size: 9 });  // après "DATE DE NAISSANCE"
+    drawText(payload.age, 265, yWrite, { size: 9 });                          // après "ÂGE"
+    drawText(payload.villeNaissance, 410, yWrite, { size: 9 });               // après "VILLE DE NAISSANCE"
   }
 
   // ────── NATIONALITÉ / PASSEPORT ──────
-  // Labels à yMin=466.75
+  // Labels à yMin=466.75 yMax≈478
+  // "NATIONALITÉ" se termine xMax=126 / "NUMÉRO DE PASSEPORT" se termine xMax=405
   {
-    const yWrite = fromTop(478);
-    drawText(payload.nationalite, 105, yWrite);  // après "NATIONALITÉ"
-    drawText(payload.passeport, 380, yWrite);    // après "NUMÉRO DE PASSEPORT"
+    const yWrite = fromTop(475);
+    drawText(payload.nationalite, 130, yWrite, { size: 9 });    // après "NATIONALITÉ"
+    drawText(payload.passeport, 410, yWrite, { size: 9 });      // après "NUMÉRO DE PASSEPORT"
   }
 
   // ────── ADRESSE PERMANENTE ──────
-  // Label "ADRESSE PERMANENTE" à yMin=499.75
-  // Sous-labels "Numéro et rue..." à yMin=513.56
+  // Label "ADRESSE PERMANENTE" à yMin=499.75 yMax≈511, xMax=146
+  // Sous-labels colonnes : Numéro et rue (xMin=193.65), Ville (xMin=321.20),
+  // État (xMin=380.54), Pays (xMin=444.08), Zip (xMin=517.49) à yMin=513.56
+  // Underscore line à top-down y ≈ 512
   {
-    const yWrite = fromTop(511);
+    const yWrite = fromTop(508);
     const adresseFull = `${payload.adresseRue}${payload.appartement ? `, apt ${payload.appartement}` : ""}`;
-    drawText(adresseFull, 140, yWrite, { size: 8 });
-    drawText(payload.ville, 320, yWrite);
-    drawText(payload.etat, 380, yWrite);
-    drawText(payload.pays, 444, yWrite);
-    drawText(payload.zip, 517, yWrite);
+    drawText(adresseFull, 152, yWrite, { size: 8 });    // après "ADRESSE PERMANENTE"
+    drawText(payload.ville, 322, yWrite, { size: 8 });
+    drawText(payload.etat, 381, yWrite, { size: 8 });
+    drawText(payload.pays, 445, yWrite, { size: 8 });
+    drawText(payload.zip, 518, yWrite, { size: 8 });
   }
 
   // ────── TÉLÉPHONE / COURRIEL ──────
-  // Labels à yMin=533.75
-  // "TÉLÉPHONE ( )" se termine vers x=128
-  // "COURRIEL" se termine vers x=320
+  // Labels à yMin=533.75 yMax≈545
+  // "TÉLÉPHONE ( )" se termine xMax=128 / "COURRIEL" se termine xMax=318
+  // Underscore line à top-down y ≈ 545
   {
-    const yWrite = fromTop(545);
-    drawText(payload.telephone, 135, yWrite);    // après "TÉLÉPHONE ( )"
-    drawText(payload.email, 340, yWrite);        // après "COURRIEL"
+    const yWrite = fromTop(541);
+    drawText(payload.telephone, 138, yWrite, { size: 9 });    // après "TÉLÉPHONE ( )"
+    drawText(payload.email, 325, yWrite, { size: 9 });        // après "COURRIEL"
   }
 
   // ────── DIPLÔME (3 cases à cocher) ──────
@@ -213,9 +222,9 @@ async function generateFilledPdf(payload: Payload, signatureDataUrl: string | nu
     }
   }
 
-  // ────── DATE (à droite, sous label "Date") ──────
-  // Label "Date" yMin=748.89 x=391.8 — ligne d'écriture à yTop ≈ 758
-  drawText(formatDateFR(new Date().toISOString()), 430, fromTop(758));
+  // ────── DATE (à droite, après label "Date") ──────
+  // Label "Date" yMin=748.89 x=391.8 xMax≈410
+  drawText(formatDateFR(new Date().toISOString()), 418, fromTop(755), { size: 9 });
 
   // ────── Marque discrète "Soumis en ligne via edumove.fr" ──────
   page.drawText(`Soumis en ligne via edumove.fr le ${formatDateFR(new Date().toISOString())}`, {
