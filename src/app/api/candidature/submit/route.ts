@@ -8,7 +8,7 @@ export const maxDuration = 60;
 
 const BREVO_API_KEY = process.env.BREVO_API_KEY_EDUMOVE;
 
-const TO_EMAIL = "admissions@diploma-sante.fr";
+const TO_EMAIL = "admissions@edumove.fr";
 const FROM_NAME = "Edumove — Candidature en ligne";
 const FROM_EMAIL = "admissions@edumove.fr";
 
