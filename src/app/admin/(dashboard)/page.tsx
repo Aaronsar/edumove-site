@@ -2,10 +2,12 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import { FileText, FilePlus, Library, TrendingUp } from "lucide-react";
 
+export const dynamic = "force-dynamic";
+
 async function getStats() {
   try {
-    const { createClient } = await import("@/lib/supabase/server");
-    const supabase = await createClient();
+    const { createAdminClient } = await import("@/lib/supabase/admin");
+    const supabase = createAdminClient();
 
     const { count: totalCount } = await supabase
       .from("edumove_articles")
@@ -39,7 +41,8 @@ async function getStats() {
       geds: gedsCount ?? 0,
       recent: recentArticles ?? [],
     };
-  } catch {
+  } catch (err) {
+    console.error("[admin/dashboard] getStats error:", err);
     return { total: 0, published: 0, drafts: 0, geds: 0, recent: [] as Array<{ id: number; title: string; slug: string; status: string; tag: string; updated_at: string }> };
   }
 }

@@ -1,7 +1,9 @@
 import { notFound } from "next/navigation";
-import { createClient } from "@/lib/supabase/server";
+import { createAdminClient } from "@/lib/supabase/admin";
 import ArticleEditor from "@/components/admin/ArticleEditor";
 import type { ArticleEditorState } from "@/lib/editor/useArticleEditor";
+
+export const dynamic = "force-dynamic";
 
 export default async function EditArticlePage({
   params,
@@ -9,7 +11,7 @@ export default async function EditArticlePage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const supabase = await createClient();
+  const supabase = createAdminClient();
 
   const { data: article, error } = await supabase
     .from("edumove_articles")

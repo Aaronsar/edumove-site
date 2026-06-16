@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 import PageEditor from "@/components/admin/PageEditor";
 
+export const dynamic = "force-dynamic";
+
 /* ---------- Page registry (maps slug to public URL) ---------- */
 
 const publicUrls: Record<string, string> = {
@@ -97,9 +99,9 @@ export default async function PageEditorPage({
 
   if (!publicUrl) notFound();
 
-  // Fetch page data from Supabase
-  const { createClient } = await import("@/lib/supabase/server");
-  const supabase = await createClient();
+  // Fetch page data from Supabase via le client admin (bypass RLS si service role dispo)
+  const { createAdminClient } = await import("@/lib/supabase/admin");
+  const supabase = createAdminClient();
 
   const { data: page } = await supabase
     .from("edumove_pages")

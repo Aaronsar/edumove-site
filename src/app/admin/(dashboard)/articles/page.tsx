@@ -2,23 +2,26 @@ import Link from "next/link";
 import { Plus } from "lucide-react";
 import ArticlesListClient from "@/components/admin/ArticlesList";
 
-async function getArticles() {
-  try {
-    const { createClient } = await import("@/lib/supabase/server");
-    const supabase = await createClient();
-    const { data, error } = await supabase
-      .from("edumove_articles")
-      .select("id, title, slug, status, tag, tag_color, read_time, seo_score, source, updated_at, published_at, scheduled_at")
-      .order("published_at", { ascending: false, nullsFirst: false });
+// Force SSR à chaque requête (jamais de cache statique) — l'admin a besoin de données fraîches
+export const dynamic = "force-dynamic";
 
-    if (error) {
-      console.error("Error fetching articles:", error);
-      return [];
-    }
-    return data ?? [];
-  } catch {
+async function getArticles() {
+  // Client admin (service role si dispo, fallback anon).
+  // L'auth est déjà vérifiée par le layout (dashboard) via cookies — pas besoin de re-vérifier
+  // RLS ici. Évite les soucis de session SSR / JWT expiré qui faisaient retourner [] silencieusement.
+  const { createAdminClient } = await import("@/lib/supabase/admin");
+  const supabase = createAdminClient();
+
+  const { data, error } = await supabase
+    .from("edumove_articles")
+    .select("id, title, slug, status, tag, tag_color, read_time, seo_score, source, updated_at, published_at, scheduled_at")
+    .order("published_at", { ascending: false, nullsFirst: false });
+
+  if (error) {
+    console.error("[admin/articles] Supabase error:", error);
     return [];
   }
+  return data ?? [];
 }
 
 export default async function AdminArticlesPage() {
