@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 
-// La génération d'article avec Opus 4.6 + 16k max_tokens peut prendre 90-180s.
-// Vercel Pro autorise jusqu'à 300s ; Hobby est capé à 60s (la fonction sera tuée).
-export const maxDuration = 300;
+// Vercel Hobby cap la durée des fonctions à 60s (Pro = 300s).
+// Configuration choisie pour tenir dans 60s : Sonnet 4.6 + max_tokens 8000 ≈ 30-45s.
+// Si upgrade Pro, on pourra repasser sur Opus 4.6 + 16k tokens (90-180s).
+export const maxDuration = 60;
 
 const INTERNAL_LINKS = `
 LIENS INTERNES DISPONIBLES (utilise-les dans le contenu via des balises <a href="...">texte</a> dans les paragraphes et callouts) :
@@ -104,12 +105,12 @@ Génère un article complet au format JSON. Réponds UNIQUEMENT avec le JSON bru
   ]
 }
 
-6-8 sections H2, 15+ paragraphes, 1-2 callouts, 1 FAQ avec 4-5 questions, 2-3 link-cards, MINIMUM 10 liens <a href> internes.`;
+5-6 sections H2, 8-12 paragraphes, 1-2 callouts, 1 FAQ avec 4-5 questions, 1-2 link-cards, MINIMUM 8 liens <a href> internes. Sois concis et dense, pas de remplissage.`;
 
     // Direct fetch to Anthropic API (no SDK).
-    // Model : claude-opus-4-6 (frontier, recommandé par la doc Anthropic).
-    // Les IDs avec suffixe date (ex. claude-sonnet-4-20250514) provoquaient
-    // une erreur "model: ..." côté Anthropic ; on utilise l'alias canonique.
+    // Model : claude-sonnet-4-6 (rapide + qualité élevée).
+    // Configuration calibrée pour tenir dans le timeout Vercel Hobby (60s).
+    // Si upgrade Pro → repasser sur claude-opus-4-6 + max_tokens 16000.
     const response = await fetch("https://api.anthropic.com/v1/messages", {
       method: "POST",
       headers: {
@@ -118,8 +119,8 @@ Génère un article complet au format JSON. Réponds UNIQUEMENT avec le JSON bru
         "content-type": "application/json",
       },
       body: JSON.stringify({
-        model: "claude-opus-4-6",
-        max_tokens: 16000,
+        model: "claude-sonnet-4-6",
+        max_tokens: 8000,
         messages: [{ role: "user", content: prompt }],
       }),
     });
