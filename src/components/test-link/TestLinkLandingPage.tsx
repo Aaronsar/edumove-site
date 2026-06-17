@@ -187,10 +187,10 @@ export default function TestLinkLandingPage() {
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-12 md:py-16 lg:py-20">
-          <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-12 lg:items-stretch">
+          <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-12 items-start">
 
             {/* ── Colonne gauche : pitch ── */}
-            <div className="flex flex-col">
+            <div>
               {/* Badge urgence */}
               <div className="inline-flex items-center gap-2 bg-[#EC680A]/15 border border-[#EC680A]/40 rounded-full px-4 py-2 mb-6 text-sm font-semibold text-[#EC680A]">
                 <CalendarDays className="w-4 h-4" />
@@ -240,9 +240,9 @@ export default function TestLinkLandingPage() {
               </div>
             </div>
 
-            {/* ── Colonne droite : carte form inline ── */}
-            <div className="flex flex-col h-full">
-              <div className="bg-white rounded-3xl shadow-[0_25px_80px_-15px_rgba(0,0,0,0.4)] overflow-hidden flex flex-col flex-1">
+            {/* ── Colonne droite : carte form inline (compacte) ── */}
+            <div>
+              <div className="bg-white rounded-3xl shadow-[0_25px_80px_-15px_rgba(0,0,0,0.4)] overflow-hidden">
                 {/* Bandeau supérieur */}
                 <div className="bg-gradient-to-br from-[#EC680A] to-[#D45E09] px-6 py-5 text-white text-center">
                   <div className="flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-widest mb-1.5">
@@ -253,31 +253,8 @@ export default function TestLinkLandingPage() {
                 </div>
 
                 {/* Form */}
-                <div className="px-6 py-6 flex-1 flex flex-col">
-                  <p className="text-xs md:text-sm text-[#64748b] mb-5 leading-relaxed">
-                    Laissez vos coordonnées : un conseiller Edumove vous rappelle <strong className="text-[#1B1D3A]">sous 24h</strong> pour répondre à toutes vos questions sur le test LINK et votre projet de médecine en Europe.
-                  </p>
-                  <div className="flex-1">
-                    <DiplomaFormEmbed form="inscription-link-k21s" />
-                  </div>
-                </div>
-
-                {/* Bandeau de réassurance */}
-                <div className="bg-[#fafbff] px-6 py-3 border-t border-gray-100">
-                  <div className="flex items-center justify-center gap-4 text-[11px] text-[#64748b] font-medium flex-wrap">
-                    <span className="flex items-center gap-1.5">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#10b981]" />
-                      Réponse sous 24h
-                    </span>
-                    <span className="flex items-center gap-1.5">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#10b981]" />
-                      Sans engagement
-                    </span>
-                    <span className="flex items-center gap-1.5">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#10b981]" />
-                      Données protégées
-                    </span>
-                  </div>
+                <div className="px-6 py-6">
+                  <DiplomaFormEmbed form="inscription-link-k21s" />
                 </div>
               </div>
 
