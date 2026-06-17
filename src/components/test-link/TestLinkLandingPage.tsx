@@ -245,10 +245,6 @@ export default function TestLinkLandingPage() {
               <div className="bg-white rounded-3xl shadow-[0_25px_80px_-15px_rgba(0,0,0,0.4)] overflow-hidden">
                 {/* Bandeau supérieur */}
                 <div className="bg-gradient-to-br from-[#EC680A] to-[#D45E09] px-6 py-5 text-white text-center">
-                  <div className="flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-widest mb-1.5">
-                    <Sparkles className="w-3.5 h-3.5" />
-                    Sans engagement · 100 % gratuit
-                  </div>
                   <p className="text-base md:text-lg font-bold">Être recontacté pour en savoir plus</p>
                 </div>
 
