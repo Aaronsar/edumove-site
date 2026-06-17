@@ -208,8 +208,8 @@ export default function TestLinkLandingPage() {
                 Le test d&apos;admission se passe <strong className="text-white">en français à Paris</strong>. QCM de niveau Terminale, frais d&apos;inscription 200 €. Rentrée septembre 2026 à Rome.
               </p>
 
-              {/* Bullets bénéfices */}
-              <ul className="space-y-2.5 mb-8">
+              {/* Bullets bénéfices — masqués sur mobile pour rapprocher le form du haut */}
+              <ul className="hidden lg:block space-y-2.5 mb-8">
                 {[
                   "QCM 100 % en français — pas besoin de parler italien",
                   "Diplôme reconnu dans toute l'Union Européenne",
