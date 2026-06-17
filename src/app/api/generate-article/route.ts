@@ -1,5 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 
+// La génération d'article peut prendre 30-60s avec Opus 4.6 + 16k max_tokens.
+// Default Vercel est 10s (Hobby) / 60s (Pro), on force 60s.
+export const maxDuration = 60;
+
 const INTERNAL_LINKS = `
 LIENS INTERNES DISPONIBLES (utilise-les dans le contenu via des balises <a href="...">texte</a> dans les paragraphes et callouts) :
 
@@ -102,7 +106,10 @@ Génère un article complet au format JSON. Réponds UNIQUEMENT avec le JSON bru
 
 6-8 sections H2, 15+ paragraphes, 1-2 callouts, 1 FAQ avec 4-5 questions, 2-3 link-cards, MINIMUM 10 liens <a href> internes.`;
 
-    // Direct fetch to Anthropic API (no SDK)
+    // Direct fetch to Anthropic API (no SDK).
+    // Model : claude-opus-4-6 (frontier, recommandé par la doc Anthropic).
+    // Les IDs avec suffixe date (ex. claude-sonnet-4-20250514) provoquaient
+    // une erreur "model: ..." côté Anthropic ; on utilise l'alias canonique.
     const response = await fetch("https://api.anthropic.com/v1/messages", {
       method: "POST",
       headers: {
@@ -111,7 +118,7 @@ Génère un article complet au format JSON. Réponds UNIQUEMENT avec le JSON bru
         "content-type": "application/json",
       },
       body: JSON.stringify({
-        model: "claude-sonnet-4-20250514",
+        model: "claude-opus-4-6",
         max_tokens: 16000,
         messages: [{ role: "user", content: prompt }],
       }),
