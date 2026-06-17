@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 
-// La génération d'article peut prendre 30-60s avec Opus 4.6 + 16k max_tokens.
-// Default Vercel est 10s (Hobby) / 60s (Pro), on force 60s.
-export const maxDuration = 60;
+// La génération d'article avec Opus 4.6 + 16k max_tokens peut prendre 90-180s.
+// Vercel Pro autorise jusqu'à 300s ; Hobby est capé à 60s (la fonction sera tuée).
+export const maxDuration = 300;
 
 const INTERNAL_LINKS = `
 LIENS INTERNES DISPONIBLES (utilise-les dans le contenu via des balises <a href="...">texte</a> dans les paragraphes et callouts) :
