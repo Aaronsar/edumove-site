@@ -17,9 +17,18 @@ import {
 } from "lucide-react";
 import TestDetails from "@/components/universites/TestDetails";
 import HubSpotEmbedModal from "@/components/shared/HubSpotEmbedModal";
+import DiplomaFormEmbed from "@/components/shared/DiplomaFormEmbed";
 
 const TEST_DATE_LABEL = "25 juin 2026";
 const TEST_DATE_ISO = "2026-06-25";
+
+// Calcul du nombre de jours restants jusqu'au test pour créer un sentiment d'urgence
+function getDaysUntilTest(): number {
+  const now = new Date();
+  const testDate = new Date(TEST_DATE_ISO);
+  const diff = Math.ceil((testDate.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
+  return Math.max(0, diff);
+}
 
 const AVANTAGES = [
   {
@@ -163,70 +172,136 @@ export default function TestLinkLandingPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+  const daysLeft = getDaysUntilTest();
 
   return (
     <main>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(eventJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
-      {/* ─── HERO ─── */}
+      {/* ─── HERO LEAD-FIRST (split : pitch + form inline) ─── */}
       <section className="relative overflow-hidden bg-[#1B1D3A] text-white">
         <div aria-hidden className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-32 -right-20 w-[420px] h-[420px] rounded-full bg-[#615CA5]/25 blur-3xl" />
           <div className="absolute -bottom-32 -left-32 w-[420px] h-[420px] rounded-full bg-[#EC680A]/15 blur-3xl" />
         </div>
 
-        <div className="relative z-10 max-w-6xl mx-auto px-6 py-16 md:py-24">
-          {/* Date badge */}
-          <div className="inline-flex items-center gap-2 bg-[#EC680A]/15 border border-[#EC680A]/40 rounded-full px-4 py-2 mb-6 text-sm font-semibold text-[#EC680A]">
-            <CalendarDays className="w-4 h-4" />
-            Prochaine session : {TEST_DATE_LABEL}, Paris
+        <div className="relative z-10 max-w-7xl mx-auto px-6 py-12 md:py-16 lg:py-20">
+          <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-12 items-start">
+
+            {/* ── Colonne gauche : pitch ── */}
+            <div>
+              {/* Badge urgence */}
+              <div className="inline-flex items-center gap-2 bg-[#EC680A]/15 border border-[#EC680A]/40 rounded-full px-4 py-2 mb-6 text-sm font-semibold text-[#EC680A]">
+                <CalendarDays className="w-4 h-4" />
+                {daysLeft > 0 ? `Plus que ${daysLeft} jour${daysLeft > 1 ? "s" : ""} — Test du ${TEST_DATE_LABEL}` : `Test du ${TEST_DATE_LABEL}`}
+              </div>
+
+              <h1
+                className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 tracking-tight"
+                style={{ color: "#ffffff" }}
+              >
+                Médecine à Rome avec <span style={{ color: "#EC680A" }}>LINK Campus</span> — sans PASS, sans LAS
+              </h1>
+
+              <p className="text-base md:text-lg mb-6 text-white/85">
+                Le test d&apos;admission se passe <strong className="text-white">en français à Paris</strong>. QCM de niveau Terminale, frais d&apos;inscription 200 €. Rentrée septembre 2026 à Rome.
+              </p>
+
+              {/* Bullets bénéfices */}
+              <ul className="space-y-2.5 mb-8">
+                {[
+                  "QCM 100 % en français — pas besoin de parler italien",
+                  "Diplôme reconnu dans toute l'Union Européenne",
+                  "Accompagnement Edumove gratuit (préparation, candidature, installation)",
+                  "Test 1 jour à Paris — rentrée 2 mois plus tard à Rome",
+                ].map((b) => (
+                  <li key={b} className="flex items-start gap-3 text-sm md:text-[15px] text-white/90">
+                    <CheckCircle2 className="w-5 h-5 text-[#EC680A] shrink-0 mt-0.5" />
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* Infos clés en mini-grille */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                {[
+                  { icon: CalendarDays, label: "Date", value: TEST_DATE_LABEL.replace(" 2026", "") },
+                  { icon: MapPin, label: "Lieu", value: "Paris" },
+                  { icon: FileText, label: "Format", value: "QCM FR" },
+                  { icon: Clock, label: "Durée", value: "2h30" },
+                ].map((item) => (
+                  <div key={item.label} className="bg-white/5 border border-white/10 rounded-2xl p-3">
+                    <item.icon className="w-4 h-4 text-[#EC680A] mb-1.5" />
+                    <p className="text-[10px] uppercase tracking-widest text-white/50 font-semibold">{item.label}</p>
+                    <p className="text-sm font-bold leading-tight">{item.value}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* ── Colonne droite : carte form inline ── */}
+            <div className="lg:sticky lg:top-24">
+              <div className="bg-white rounded-3xl shadow-[0_25px_80px_-15px_rgba(0,0,0,0.4)] overflow-hidden">
+                {/* Bandeau supérieur */}
+                <div className="bg-gradient-to-br from-[#EC680A] to-[#D45E09] px-6 py-4 text-white text-center">
+                  <div className="flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-widest mb-1">
+                    <Sparkles className="w-3.5 h-3.5" />
+                    Inscription gratuite
+                  </div>
+                  <p className="text-base font-bold">Démarrez votre candidature en 2 min</p>
+                </div>
+
+                {/* Form */}
+                <div className="px-6 py-6">
+                  <p className="text-xs text-[#64748b] mb-4 leading-relaxed">
+                    Un conseiller Edumove vous rappelle <strong className="text-[#1B1D3A]">sous 24h</strong> pour étudier votre profil et préparer votre candidature au test LINK.
+                  </p>
+                  <DiplomaFormEmbed form="inscription-link-k21s" />
+                </div>
+
+                {/* Bandeau de réassurance */}
+                <div className="bg-[#fafbff] px-6 py-3 border-t border-gray-100">
+                  <div className="flex items-center justify-center gap-4 text-[11px] text-[#64748b] font-medium flex-wrap">
+                    <span className="flex items-center gap-1.5">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#10b981]" />
+                      100 % gratuit
+                    </span>
+                    <span className="flex items-center gap-1.5">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#10b981]" />
+                      Sans engagement
+                    </span>
+                    <span className="flex items-center gap-1.5">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#10b981]" />
+                      Données protégées
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Mini-rappel sous le form */}
+              <p className="text-center text-xs text-white/60 mt-4">
+                Déjà <strong className="text-white">500+ étudiants</strong> accompagnés vers les facs de santé en Europe
+              </p>
+            </div>
+
           </div>
+        </div>
+      </section>
 
-          <h1
-            className="text-3xl md:text-5xl lg:text-6xl font-bold mb-5 tracking-tight max-w-4xl"
-            style={{ color: "#ffffff" }}
-          >
-            Réussir le test d&apos;admission de <span style={{ color: "#EC680A" }}>LINK Campus University</span>
-          </h1>
-
-          <p className="text-lg md:text-xl mb-3 text-white/85 max-w-2xl">
-            Médecine à Rome — Test en français à Paris, QCM de niveau Terminale. La voie la plus accessible vers la médecine en Europe pour les étudiants français.
-          </p>
-          <p className="text-base mb-10 text-white/60 max-w-2xl">
-            Accompagnement Edumove 100% gratuit : préparation, candidature, installation à Rome.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4">
-            <button
-              type="button"
-              onClick={openModal}
-              className="group inline-flex items-center justify-center gap-2 bg-[#EC680A] hover:bg-[#D45E09] text-white text-base font-semibold px-7 py-4 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#EC680A]/30 hover:gap-3 cursor-pointer"
-            >
-              Obtenir plus d&apos;informations
-              <ArrowRight className="w-5 h-5" />
-            </button>
-            <button
-              type="button"
-              onClick={openModal}
-              className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 border border-white/30 text-white text-base font-semibold px-7 py-4 rounded-full transition-all duration-300 cursor-pointer"
-            >
-              Parler à un conseiller
-            </button>
-          </div>
-
-          {/* Infos clés en hero */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
+      {/* ─── BANDE DE PREUVE SOCIALE / TRUST ─── */}
+      <section className="bg-white border-b border-gray-100">
+        <div className="max-w-6xl mx-auto px-6 py-6 md:py-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 text-center">
             {[
-              { icon: CalendarDays, label: "Date", value: TEST_DATE_LABEL },
-              { icon: MapPin, label: "Lieu", value: "Paris" },
-              { icon: FileText, label: "Format", value: "QCM français" },
-              { icon: Clock, label: "Durée", value: "~2h30" },
-            ].map((item) => (
-              <div key={item.label} className="bg-white/5 border border-white/10 rounded-2xl p-4">
-                <item.icon className="w-5 h-5 text-[#EC680A] mb-2" />
-                <p className="text-xs uppercase tracking-widest text-white/50 font-semibold">{item.label}</p>
-                <p className="text-base font-bold">{item.value}</p>
+              { value: "500+", label: "Étudiants accompagnés" },
+              { value: "100 %", label: "Accompagnement gratuit" },
+              { value: "24h", label: "Réponse d'un conseiller" },
+              { value: "200 €", label: "Frais test LINK" },
+            ].map((stat) => (
+              <div key={stat.label}>
+                <p className="text-2xl md:text-3xl font-bold text-[#1B1D3A] tracking-tight">{stat.value}</p>
+                <p className="text-xs md:text-sm text-[#64748b] font-medium">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -420,11 +495,12 @@ export default function TestLinkLandingPage() {
         </div>
       </section>
 
-      {/* ─── MODALE HUBSPOT ─── */}
+      {/* ─── MODALE HUBSPOT (CTA secondaires du reste de la page) ─── */}
       <HubSpotEmbedModal
         isOpen={isModalOpen}
         onClose={closeModal}
-        title="Obtenir plus d'informations"
+        form="inscription-link-k21s"
+        title="Démarrer ma candidature"
         subtitle="Test LINK Campus du 25 juin 2026 — un conseiller Edumove vous rappelle sous 24h pour préparer votre candidature. 100% gratuit, sans engagement."
       />
     </main>
