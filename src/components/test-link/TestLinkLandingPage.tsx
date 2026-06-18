@@ -195,7 +195,7 @@ export default function TestLinkLandingPage() {
               <div className="flex flex-wrap items-center gap-2 mb-6">
                 <div className="inline-flex items-center gap-2 bg-[#EC680A]/15 border border-[#EC680A]/40 rounded-full px-4 py-2 text-sm font-semibold text-[#EC680A]">
                   <CalendarDays className="w-4 h-4" />
-                  Clôture des inscriptions dimanche 21
+                  Clôture des inscriptions dimanche 21 juin 2026
                 </div>
                 <div className="inline-flex items-center gap-2 bg-red-500/15 border border-red-500/40 rounded-full px-4 py-2 text-sm font-semibold text-red-300">
                   <span className="relative flex w-2 h-2">
