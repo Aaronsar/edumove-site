@@ -39,12 +39,12 @@ const AVANTAGES = [
   {
     icon: GraduationCap,
     title: "Diplôme reconnu en Europe",
-    desc: "Le diplôme délivré par LINK Campus University est reconnu dans toute l'Union Européenne et en France.",
+    desc: "Le diplôme délivré par LINK University est reconnu dans toute l'Union Européenne et en France.",
   },
   {
     icon: Sparkles,
     title: "Étudier à Rome",
-    desc: "Vivre dans l'une des plus belles villes au monde, au cœur de la dolce vita, pendant vos études de médecine.",
+    desc: "Vivre dans l'une des plus belles villes au monde, au cœur de la dolce vita, à seulement 1h30 de Paris en avion.",
   },
   {
     icon: HeadphonesIcon,
@@ -62,12 +62,12 @@ const ETAPES_CANDIDATURE = [
   {
     n: 2,
     title: "Préparation du dossier",
-    desc: "Votre conseiller monte votre dossier de candidature pour LINK Campus University : bulletins, lettre de motivation, traductions.",
+    desc: "Votre conseiller monte votre dossier de candidature pour LINK University : bulletins, lettre de motivation, traductions.",
   },
   {
     n: 3,
     title: "Inscription au test (200 €)",
-    desc: "Vous payez les frais d'inscription au test directement à LINK Campus. Edumove vous fournit les annales et les fiches de révision.",
+    desc: "Vous payez les frais d'inscription au test directement à LINK University. Edumove vous fournit les annales et les fiches de révision.",
   },
   {
     n: 4,
@@ -77,7 +77,7 @@ const ETAPES_CANDIDATURE = [
   {
     n: 5,
     title: "Résultats sous quelques jours",
-    desc: "LINK Campus communique les résultats. Si vous êtes admis, vous recevez votre lettre d'admission officielle.",
+    desc: "LINK University communique les résultats. Si vous êtes admis, vous recevez votre lettre d'admission officielle.",
   },
   {
     n: 6,
@@ -88,9 +88,9 @@ const ETAPES_CANDIDATURE = [
 
 const FAQ = [
   {
-    question: "Le test de LINK Campus est-il difficile ?",
+    question: "Le test de LINK University est-il difficile ?",
     answer:
-      "Le test de LINK Campus est de niveau Terminale (bac scientifique). Si vous avez un dossier solide en sciences et que vous révisez le programme de Terminale (bio, chimie, maths, physique), vous avez toutes vos chances. La culture générale est la partie où la préparation Edumove fait la différence.",
+      "Le test de LINK University est de niveau Terminale (bac scientifique). Si vous avez un dossier solide en sciences et que vous révisez le programme de Terminale (bio, chimie, maths, physique), vous avez toutes vos chances. La culture générale est la partie où la préparation Edumove fait la différence.",
   },
   {
     question: "En quoi consiste exactement le test ?",
@@ -100,12 +100,12 @@ const FAQ = [
   {
     question: "Où se passe le test ?",
     answer:
-      "Le test se passe à Paris, dans un centre d'examen partenaire de LINK Campus University. Pas besoin de se déplacer à Rome pour candidater.",
+      "Le test se passe à Paris, dans un centre d'examen partenaire de LINK University. Pas besoin de se déplacer à Rome pour candidater.",
   },
   {
     question: "Combien coûte le test ?",
     answer:
-      "Les frais d'inscription au test sont de 200 €, payables directement à LINK Campus University. L'accompagnement Edumove (préparation, candidature, suivi) est entièrement gratuit pour les étudiants et leurs familles.",
+      "Les frais d'inscription au test sont de 200 €, payables directement à LINK University. L'accompagnement Edumove (préparation, candidature, suivi) est entièrement gratuit pour les étudiants et leurs familles.",
   },
   {
     question: "Faut-il parler italien pour étudier à LINK Rome ?",
@@ -142,9 +142,9 @@ const faqJsonLd = {
 const eventJsonLd = {
   "@context": "https://schema.org",
   "@type": "EducationEvent",
-  name: "Test d'admission LINK Campus University — Médecine Rome",
+  name: "Test d'admission LINK University — Médecine, Dentaire, Kiné, Pharmacie à Rome",
   description:
-    "Test d'admission en QCM (100% en français) pour intégrer le cursus de médecine de LINK Campus University à Rome.",
+    "Test d'admission en QCM (100% en français) pour intégrer les cursus santé (médecine, dentaire, kinésithérapie, pharmacie) de LINK University à Rome.",
   startDate: TEST_DATE_ISO,
   eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
   eventStatus: "https://schema.org/EventScheduled",
@@ -191,21 +191,30 @@ export default function TestLinkLandingPage() {
 
             {/* ── Colonne gauche : pitch ── */}
             <div>
-              {/* Badge urgence */}
-              <div className="inline-flex items-center gap-2 bg-[#EC680A]/15 border border-[#EC680A]/40 rounded-full px-4 py-2 mb-6 text-sm font-semibold text-[#EC680A]">
-                <CalendarDays className="w-4 h-4" />
-                {daysLeft > 0 ? `Plus que ${daysLeft} jour${daysLeft > 1 ? "s" : ""} — Test du ${TEST_DATE_LABEL}` : `Test du ${TEST_DATE_LABEL}`}
+              {/* Badges urgence (clôture + places restantes) */}
+              <div className="flex flex-wrap items-center gap-2 mb-6">
+                <div className="inline-flex items-center gap-2 bg-[#EC680A]/15 border border-[#EC680A]/40 rounded-full px-4 py-2 text-sm font-semibold text-[#EC680A]">
+                  <CalendarDays className="w-4 h-4" />
+                  Clôture des inscriptions dimanche 21
+                </div>
+                <div className="inline-flex items-center gap-2 bg-red-500/15 border border-red-500/40 rounded-full px-4 py-2 text-sm font-semibold text-red-300">
+                  <span className="relative flex w-2 h-2">
+                    <span className="absolute inline-flex w-full h-full rounded-full bg-red-400 opacity-75 animate-ping" />
+                    <span className="relative inline-flex w-2 h-2 rounded-full bg-red-500" />
+                  </span>
+                  19 places restantes
+                </div>
               </div>
 
               <h1
                 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 tracking-tight"
                 style={{ color: "#ffffff" }}
               >
-                Médecine à Rome avec <span style={{ color: "#EC680A" }}>LINK Campus</span> — sans PASS, sans LAS
+                Médecine, Dentaire, Kiné, Pharmacie à Rome avec <span style={{ color: "#EC680A" }}>LINK University</span>
               </h1>
 
               <p className="text-base md:text-lg mb-6 text-white/85">
-                Le test d&apos;admission se passe <strong className="text-white">en français à Paris</strong>. QCM de niveau Terminale, frais d&apos;inscription 200 €. Rentrée septembre 2026 à Rome.
+                Le test d&apos;admission se passe <strong className="text-white">en français à Paris</strong>. QCM de niveau Terminale, frais d&apos;inscription 200 €. <strong className="text-white">Rome à seulement 1h30 de Paris</strong> — rentrée septembre 2026.
               </p>
 
               {/* Bullets bénéfices — masqués sur mobile pour rapprocher le form du haut */}
@@ -287,7 +296,7 @@ export default function TestLinkLandingPage() {
       <section className="py-16 md:py-20 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <p className="text-sm font-semibold uppercase tracking-widest text-[#EC680A] mb-3">
-            Pourquoi choisir LINK Campus
+            Pourquoi choisir LINK University
           </p>
           <h2 className="text-2xl md:text-3xl font-bold text-[#1B1D3A] mb-10 max-w-2xl">
             Un test accessible, un cursus reconnu, une ville incroyable
@@ -333,7 +342,7 @@ export default function TestLinkLandingPage() {
                 </div>
                 <div>
                   <p className="font-bold">Thomas</p>
-                  <p className="text-sm text-white/70">Étudiant en médecine, LINK Campus Rome</p>
+                  <p className="text-sm text-white/70">Étudiant en médecine, LINK University Rome</p>
                 </div>
               </div>
             </div>
@@ -476,7 +485,7 @@ export default function TestLinkLandingPage() {
         onClose={closeModal}
         form="inscription-link-k21s"
         title="Être recontacté par un conseiller"
-        subtitle="Test LINK Campus du 25 juin 2026 — laissez vos coordonnées, un conseiller Edumove vous rappelle sous 24h pour répondre à vos questions. 100 % gratuit, sans engagement."
+        subtitle="Test LINK University du 25 juin 2026 — laissez vos coordonnées, un conseiller Edumove vous rappelle sous 24h pour répondre à vos questions. 100 % gratuit, sans engagement."
       />
     </main>
   );
