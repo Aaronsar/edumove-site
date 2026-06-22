@@ -663,10 +663,11 @@ export default function ArticleEditor({ articleId, initialData }: ArticleEditorP
     setGenerating(true);
     setGenerateError("");
     try {
-      // Try Supabase Edge Function first, fallback to local API
-      const edgeFnUrl = "https://jhopwqpbaiyjfoggvcaf.supabase.co/functions/v1/generate-article";
-      const localUrl = "/api/generate-article";
-      const url = edgeFnUrl;
+      // On utilise la route Next.js locale /api/generate-article
+      // (l'Edge Function Supabase est obsolète : modèle Claude périmé,
+      // configuration figée. La route Next.js est tenue à jour avec
+      // claude-sonnet-4-6 + max_tokens 5000.)
+      const url = "/api/generate-article";
       const res = await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
