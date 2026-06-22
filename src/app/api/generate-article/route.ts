@@ -105,7 +105,7 @@ Génère un article complet au format JSON. Réponds UNIQUEMENT avec le JSON bru
   ]
 }
 
-5-6 sections H2, 8-12 paragraphes, 1-2 callouts, 1 FAQ avec 4-5 questions, 1-2 link-cards, MINIMUM 8 liens <a href> internes. Sois concis et dense, pas de remplissage.`;
+4-5 sections H2, 6-8 paragraphes, 1 callout, 1 FAQ avec 3-4 questions, 1 link-card, MINIMUM 6 liens <a href> internes. Sois concis et dense, pas de remplissage. Article CIBLÉ et COURT, pas un long format.`;
 
     // Direct fetch to Anthropic API (no SDK).
     // Model : claude-sonnet-4-6 (rapide + qualité élevée).
@@ -120,7 +120,7 @@ Génère un article complet au format JSON. Réponds UNIQUEMENT avec le JSON bru
       },
       body: JSON.stringify({
         model: "claude-sonnet-4-6",
-        max_tokens: 8000,
+        max_tokens: 5000,
         messages: [{ role: "user", content: prompt }],
       }),
     });
