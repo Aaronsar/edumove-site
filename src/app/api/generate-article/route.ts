@@ -1,9 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 
-// Vercel Hobby cap la durée des fonctions à 60s (Pro = 300s).
-// Configuration choisie pour tenir dans 60s : Sonnet 4.6 + max_tokens 8000 ≈ 30-45s.
-// Si upgrade Pro, on pourra repasser sur Opus 4.6 + 16k tokens (90-180s).
-export const maxDuration = 60;
+// Vercel Pro : maxDuration jusqu'à 300s. On configure 300s pour absorber
+// Opus 4.6 + 16k tokens (90-180s typique). Largement assez.
+export const maxDuration = 300;
 
 const INTERNAL_LINKS = `
 LIENS INTERNES DISPONIBLES (utilise-les dans le contenu via des balises <a href="...">texte</a> dans les paragraphes et callouts) :
@@ -105,12 +104,11 @@ Génère un article complet au format JSON. Réponds UNIQUEMENT avec le JSON bru
   ]
 }
 
-4-5 sections H2, 6-8 paragraphes, 1 callout, 1 FAQ avec 3-4 questions, 1 link-card, MINIMUM 6 liens <a href> internes. Sois concis et dense, pas de remplissage. Article CIBLÉ et COURT, pas un long format.`;
+6-8 sections H2, 15+ paragraphes, 1-2 callouts, 1 FAQ avec 4-5 questions, 2-3 link-cards, MINIMUM 10 liens <a href> internes. Article SEO long format dense et structuré.`;
 
     // Direct fetch to Anthropic API (no SDK).
-    // Model : claude-sonnet-4-6 (rapide + qualité élevée).
-    // Configuration calibrée pour tenir dans le timeout Vercel Hobby (60s).
-    // Si upgrade Pro → repasser sur claude-opus-4-6 + max_tokens 16000.
+    // Model : claude-opus-4-6 (frontier, qualité maximale pour articles SEO).
+    // Vercel Pro autorise maxDuration 300s, largement assez pour Opus + 16k tokens.
     const response = await fetch("https://api.anthropic.com/v1/messages", {
       method: "POST",
       headers: {
@@ -119,8 +117,8 @@ Génère un article complet au format JSON. Réponds UNIQUEMENT avec le JSON bru
         "content-type": "application/json",
       },
       body: JSON.stringify({
-        model: "claude-sonnet-4-6",
-        max_tokens: 5000,
+        model: "claude-opus-4-6",
+        max_tokens: 16000,
         messages: [{ role: "user", content: prompt }],
       }),
     });
