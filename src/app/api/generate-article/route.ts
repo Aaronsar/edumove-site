@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 
-// Vercel Pro : maxDuration jusqu'à 300s. On configure 300s pour absorber
-// Opus 4.6 + 16k tokens (90-180s typique). Largement assez.
-export const maxDuration = 300;
+// Vercel applique 60s de cap sur ce projet (vérifier le plan).
+// Si réellement Pro confirmé → repasser sur 300s + Opus 4.6 + 16k tokens.
+export const maxDuration = 60;
 
 const INTERNAL_LINKS = `
 LIENS INTERNES DISPONIBLES (utilise-les dans le contenu via des balises <a href="...">texte</a> dans les paragraphes et callouts) :
@@ -104,11 +104,11 @@ Génère un article complet au format JSON. Réponds UNIQUEMENT avec le JSON bru
   ]
 }
 
-6-8 sections H2, 15+ paragraphes, 1-2 callouts, 1 FAQ avec 4-5 questions, 2-3 link-cards, MINIMUM 10 liens <a href> internes. Article SEO long format dense et structuré.`;
+4-5 sections H2, 6-8 paragraphes, 1 callout, 1 FAQ avec 3-4 questions, 1 link-card, MINIMUM 6 liens <a href> internes. Sois concis et dense, pas de remplissage. Article CIBLÉ et COURT, pas un long format.`;
 
     // Direct fetch to Anthropic API (no SDK).
-    // Model : claude-opus-4-6 (frontier, qualité maximale pour articles SEO).
-    // Vercel Pro autorise maxDuration 300s, largement assez pour Opus + 16k tokens.
+    // Config calibrée pour tenir dans 60s (cap actuel observé sur ce projet Vercel).
+    // Si plan Pro confirmé : revenir à claude-opus-4-6 + max_tokens 16000.
     const response = await fetch("https://api.anthropic.com/v1/messages", {
       method: "POST",
       headers: {
@@ -117,8 +117,8 @@ Génère un article complet au format JSON. Réponds UNIQUEMENT avec le JSON bru
         "content-type": "application/json",
       },
       body: JSON.stringify({
-        model: "claude-opus-4-6",
-        max_tokens: 16000,
+        model: "claude-sonnet-4-6",
+        max_tokens: 5000,
         messages: [{ role: "user", content: prompt }],
       }),
     });
