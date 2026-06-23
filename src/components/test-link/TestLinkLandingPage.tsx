@@ -195,14 +195,14 @@ export default function TestLinkLandingPage() {
               <div className="flex flex-wrap items-center gap-2 mb-6">
                 <div className="inline-flex items-center gap-2 bg-[#EC680A]/15 border border-[#EC680A]/40 rounded-full px-4 py-2 text-sm font-semibold text-[#EC680A]">
                   <CalendarDays className="w-4 h-4" />
-                  Clôture des inscriptions dimanche 21 juin 2026
+                  Clôture des inscriptions le 23 juin à 19h
                 </div>
                 <div className="inline-flex items-center gap-2 bg-red-500/15 border border-red-500/40 rounded-full px-4 py-2 text-sm font-semibold text-red-300">
                   <span className="relative flex w-2 h-2">
                     <span className="absolute inline-flex w-full h-full rounded-full bg-red-400 opacity-75 animate-ping" />
                     <span className="relative inline-flex w-2 h-2 rounded-full bg-red-500" />
                   </span>
-                  19 places restantes
+                  8 places restantes
                 </div>
               </div>
 
