@@ -10,6 +10,7 @@ export const DIPLOMA_FORMS = {
   webinaire1504: "edumove-webinaire-du-15-04-hsbcbeb9",
   quizzFac: "edumove-quizz-fac-hs8b744f",
   testLink: "edumove-test-link-hs611b26",
+  testLinkSeptembre: "form-test-link-septembre-6fld",
   contact: "edumove-contact-hs166547",
 } as const;
 

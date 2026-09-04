@@ -19,16 +19,9 @@ import TestDetails from "@/components/universites/TestDetails";
 import HubSpotEmbedModal from "@/components/shared/HubSpotEmbedModal";
 import DiplomaFormEmbed from "@/components/shared/DiplomaFormEmbed";
 
-const TEST_DATE_LABEL = "25 juin 2026";
-const TEST_DATE_ISO = "2026-06-25";
-
-// Calcul du nombre de jours restants jusqu'au test pour créer un sentiment d'urgence
-function getDaysUntilTest(): number {
-  const now = new Date();
-  const testDate = new Date(TEST_DATE_ISO);
-  const diff = Math.ceil((testDate.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
-  return Math.max(0, diff);
-}
+const TEST_DATE_LABEL = "14 septembre 2026";
+const TEST_DATE_ISO = "2026-09-14";
+const TEST_FORM = "testLinkSeptembre" as const;
 
 const AVANTAGES = [
   {
@@ -100,7 +93,7 @@ const FAQ = [
   {
     question: "Où se passe le test ?",
     answer:
-      "Le test se passe à Paris, dans un centre d'examen partenaire de LINK University. Pas besoin de se déplacer à Rome pour candidater.",
+      "Le test se passe à Paris, dans le même centre d'examen partenaire de LINK University que les sessions précédentes. Pas besoin de se déplacer à Rome pour candidater.",
   },
   {
     question: "Combien coûte le test ?",
@@ -115,7 +108,7 @@ const FAQ = [
   {
     question: "Quand commencent les cours après le test ?",
     answer:
-      "Si vous êtes admis au test de juin 2026, la rentrée a lieu en octobre 2026 à Rome. Vous avez donc 3 à 4 mois pour préparer votre installation (logement, visa, démarches administratives) — Edumove vous accompagne sur chaque étape.",
+      "Si vous êtes admis au test du 14 septembre 2026, la rentrée a lieu en octobre 2026 à Rome. Edumove vous accompagne sur chaque étape de votre installation (logement, visa, démarches administratives).",
   },
   {
     question: "Quel est le taux de réussite au test LINK ?",
@@ -172,7 +165,6 @@ export default function TestLinkLandingPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
-  const daysLeft = getDaysUntilTest();
 
   return (
     <main>
@@ -195,14 +187,14 @@ export default function TestLinkLandingPage() {
               <div className="flex flex-wrap items-center gap-2 mb-6">
                 <div className="inline-flex items-center gap-2 bg-[#EC680A]/15 border border-[#EC680A]/40 rounded-full px-4 py-2 text-sm font-semibold text-[#EC680A]">
                   <CalendarDays className="w-4 h-4" />
-                  Clôture des inscriptions le 23 juin à 19h
+                  Clôture des inscriptions le 12 septembre à 19h
                 </div>
                 <div className="inline-flex items-center gap-2 bg-red-500/15 border border-red-500/40 rounded-full px-4 py-2 text-sm font-semibold text-red-300">
                   <span className="relative flex w-2 h-2">
                     <span className="absolute inline-flex w-full h-full rounded-full bg-red-400 opacity-75 animate-ping" />
                     <span className="relative inline-flex w-2 h-2 rounded-full bg-red-500" />
                   </span>
-                  8 places restantes
+                  Places limitées
                 </div>
               </div>
 
@@ -214,7 +206,7 @@ export default function TestLinkLandingPage() {
               </h1>
 
               <p className="text-base md:text-lg mb-6 text-white/85">
-                Le test d&apos;admission se passe <strong className="text-white">en français à Paris</strong>. QCM de niveau Terminale, frais d&apos;inscription 200 €. <strong className="text-white">Rome à seulement 1h30 de Paris</strong> — rentrée septembre 2026.
+                Le test d&apos;admission se passe <strong className="text-white">en français à Paris le 14 septembre 2026</strong>, dans le même lieu que les sessions précédentes. QCM de niveau Terminale, frais d&apos;inscription 200 €. <strong className="text-white">Rome à seulement 1h30 de Paris</strong> — rentrée octobre 2026.
               </p>
 
               {/* Bullets bénéfices — masqués sur mobile pour rapprocher le form du haut */}
@@ -223,7 +215,7 @@ export default function TestLinkLandingPage() {
                   "QCM 100 % en français — pas besoin de parler italien",
                   "Diplôme reconnu dans toute l'Union Européenne",
                   "Accompagnement Edumove gratuit (préparation, candidature, installation)",
-                  "Test 1 jour à Paris — rentrée 2 mois plus tard à Rome",
+                  "Test 1 jour à Paris — rentrée en octobre à Rome",
                 ].map((b) => (
                   <li key={b} className="flex items-start gap-3 text-sm md:text-[15px] text-white/90">
                     <CheckCircle2 className="w-5 h-5 text-[#EC680A] shrink-0 mt-0.5" />
@@ -259,7 +251,7 @@ export default function TestLinkLandingPage() {
 
                 {/* Form */}
                 <div className="px-6 py-6">
-                  <DiplomaFormEmbed form="inscription-link-k21s" />
+                  <DiplomaFormEmbed form={TEST_FORM} />
                 </div>
               </div>
 
@@ -483,9 +475,9 @@ export default function TestLinkLandingPage() {
       <HubSpotEmbedModal
         isOpen={isModalOpen}
         onClose={closeModal}
-        form="inscription-link-k21s"
+        form={TEST_FORM}
         title="Être recontacté par un conseiller"
-        subtitle="Test LINK University du 25 juin 2026 — laissez vos coordonnées, un conseiller Edumove vous rappelle sous 24h pour répondre à vos questions. 100 % gratuit, sans engagement."
+        subtitle="Test LINK University du 14 septembre 2026 à Paris — laissez vos coordonnées, un conseiller Edumove vous rappelle sous 24h pour répondre à vos questions. 100 % gratuit, sans engagement."
       />
     </main>
   );
