@@ -209,6 +209,33 @@ export const articles: Article[] = [
     relatedFormations: ["kinesitherapie"],
     relatedUniversities: ["/universites/universidad-europea", "/universites/ucjc", "/universites/link-campus"],
   },
+  {
+    slug: "edumove-vs-geds-comparatif",
+    title:
+      "Edumove vs GEDS : quel accompagnement choisir pour ses études de santé en Europe ?",
+    date: "6 septembre 2026",
+    dateISO: "2026-09-06",
+    tag: "Guide",
+    tagColor: "bg-[#615ca5]",
+    readTime: "7 min",
+    excerpt:
+      "Tu hésites entre Edumove et GEDS pour tes études de santé en Europe ? Comparatif des deux organismes : universités partenaires, destinations, services et financement.",
+    metaTitle: "Edumove vs GEDS : comparatif études santé Europe 2026",
+    metaDescription:
+      "Comparatif des deux organismes : universités partenaires, destinations, services et financement. Données relevées sur les sites publics.",
+    isGuide: true,
+    relatedSlugs: [
+      "financer-etudes-sante-europe",
+      "reconnaissance-diplomes-europeens",
+      "presenter-sa-candidature",
+    ],
+    relatedFormations: ["medecine", "dentaire", "kinesitherapie", "pharmacie", "veterinaire"],
+    relatedUniversities: [
+      "/universites/universidad-europea",
+      "/universites/ucjc",
+      "/universites/link-campus",
+    ],
+  },
 ];
 
 export function getArticleBySlug(slug: string): Article | undefined {
