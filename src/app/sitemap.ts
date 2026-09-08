@@ -82,6 +82,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       .eq("status", "published");
 
     for (const row of rows ?? []) {
+      if (row.slug === "edumove-vs-geds-comparatif") continue;
       const path = row.is_guide ? `/guides/${row.slug}` : `/blog/${row.slug}`;
       const last = toLastModified(row.published_at) ?? toLastModified(row.updated_at);
       add(path, last);

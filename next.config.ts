@@ -116,6 +116,10 @@ const nextConfig: NextConfig = {
       { source: "/blog/etudes-medecine-espagne", destination: "/guides/faire-medecine-en-espagne-le-guide-complet-pour-les-francais", permanent: true },
       { source: "/blog/temoignage-medecine-espagne", destination: "/", permanent: true },
 
+      // ── Article retiré ──
+      { source: "/guides/edumove-vs-geds-comparatif", destination: "/", permanent: true },
+      { source: "/blog/edumove-vs-geds-comparatif", destination: "/", permanent: true },
+
       // ── WordPress Elementor / docs / misc ──
       { source: "/docs", destination: "/", permanent: true },
       { source: "/docs/:path*", destination: "/", permanent: true },

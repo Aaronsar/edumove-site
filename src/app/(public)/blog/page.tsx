@@ -31,7 +31,9 @@ async function getDbArticles(): Promise<Article[]> {
 
     if (!data || data.length === 0) return [];
 
-    return data.map((a) => ({
+    return data
+      .filter((a) => a.slug !== "edumove-vs-geds-comparatif")
+      .map((a) => ({
       slug: a.slug,
       title: a.title,
       date: a.published_at

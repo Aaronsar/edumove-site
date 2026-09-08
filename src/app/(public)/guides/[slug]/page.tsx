@@ -7,7 +7,10 @@ import type { EdumoveArticle } from "@/types/sections";
 
 export const revalidate = 60;
 
+const REMOVED_GUIDE_SLUGS = new Set(["edumove-vs-geds-comparatif"]);
+
 async function getGuideArticle(slug: string): Promise<EdumoveArticle | null> {
+  if (REMOVED_GUIDE_SLUGS.has(slug)) return null;
   try {
     const supabase = await createClient();
     const { data } = await supabase

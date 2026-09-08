@@ -79,6 +79,7 @@ const contentMap: Record<
 /* ---------- Dynamic Supabase fetch ---------- */
 
 async function getSupabaseArticle(slug: string): Promise<EdumoveArticle | null> {
+  if (slug === "edumove-vs-geds-comparatif") return null;
   try {
     const supabase = await createClient();
     const { data } = await supabase
