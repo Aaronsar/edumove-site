@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import {
@@ -17,49 +17,9 @@ import {
   MapPin,
 } from "lucide-react";
 import ContactButton from "@/components/shared/ContactButton";
+import AnimatedNumber from "@/components/shared/AnimatedNumber";
 import StickyBar from "@/components/program/StickyBar";
 import FinancingBanner from "@/components/shared/FinancingBanner";
-
-/* ── Animated number (same pattern as StatsSection) ── */
-function AnimatedNumber({
-  target,
-  prefix = "",
-  suffix = "",
-  isVisible,
-}: {
-  target: number;
-  prefix?: string;
-  suffix?: string;
-  isVisible: boolean;
-}) {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    if (!isVisible) return;
-    const duration = 1800;
-    let frameId: number;
-    const startTime = performance.now();
-    const animate = (now: number) => {
-      const elapsed = now - startTime;
-      if (elapsed >= duration) {
-        setCount(target);
-        return;
-      }
-      setCount(Math.floor((elapsed / duration) * target));
-      frameId = requestAnimationFrame(animate);
-    };
-    frameId = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(frameId);
-  }, [isVisible, target]);
-
-  return (
-    <span>
-      {prefix}
-      {count}
-      {suffix}
-    </span>
-  );
-}
 
 /* ── Progress bar with animation ── */
 function ProgressBar({

@@ -1,6 +1,7 @@
 "use client";
 import { motion, useInView } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
+import { useRef } from "react";
+import AnimatedNumber from "@/components/shared/AnimatedNumber";
 
 const stats = [
   { target: 3, prefix: "", suffix: "", label: "Universités partenaires" },
@@ -10,53 +11,6 @@ const stats = [
   { target: 100, prefix: "", suffix: "%", label: "Financement possible" },
   { target: 0, prefix: "", suffix: "€", label: "À avancer" },
 ];
-
-function AnimatedNumber({
-  target,
-  prefix,
-  suffix,
-  isVisible,
-}: {
-  target: number;
-  prefix: string;
-  suffix: string;
-  isVisible: boolean;
-}) {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    if (!isVisible) return;
-
-    const duration = 1800;
-
-    let frameId: number;
-    const startTime = performance.now();
-
-    const animate = (now: number) => {
-      const elapsed = now - startTime;
-      if (elapsed >= duration) {
-        setCount(target);
-        return;
-      }
-      const progress = elapsed / duration;
-      const nextValue = Math.floor(progress * target);
-      setCount(nextValue);
-      frameId = requestAnimationFrame(animate);
-    };
-
-    frameId = requestAnimationFrame(animate);
-
-    return () => cancelAnimationFrame(frameId);
-  }, [isVisible, target]);
-
-  return (
-    <span>
-      {prefix}
-      {count}
-      {suffix}
-    </span>
-  );
-}
 
 export default function StatsSection() {
   const ref = useRef(null);

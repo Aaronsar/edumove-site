@@ -3,34 +3,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { Globe } from "lucide-react";
 import { motion, useInView } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
+import { useRef } from "react";
+import AnimatedNumber from "@/components/shared/AnimatedNumber";
 
 function AnimatedStat({ value, isVisible }: { value: string; isVisible: boolean }) {
   const num = parseInt(value.replace(/[^0-9]/g, ""));
   const prefix = value.startsWith("+") ? "+" : "";
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    if (!isVisible || isNaN(num)) return;
-    let start = 0;
-    const duration = 1500;
-    const steps = 50;
-    const increment = num / steps;
-    const stepTime = duration / steps;
-
-    const timer = setInterval(() => {
-      start += increment;
-      if (start >= num) {
-        setCount(num);
-        clearInterval(timer);
-      } else {
-        setCount(Math.floor(start));
-      }
-    }, stepTime);
-    return () => clearInterval(timer);
-  }, [isVisible, num]);
-
-  return <>{prefix}{count}</>;
+  if (isNaN(num)) return <>{value}</>;
+  return <AnimatedNumber target={num} prefix={prefix} isVisible={isVisible} />;
 }
 
 const universites = [
